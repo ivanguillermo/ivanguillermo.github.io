@@ -1,0 +1,148 @@
+<body>
+	<div class='uno'><p>Uno</p></div>
+	<div class='dos'><p>Dos</p></div>
+	<div class='tres'><p>Tres</p></div>
+	<div class='cuatro'><p>Cuatro</p></div>
+	<div class='cinco'>
+		<img src='Barny.jpg'/>
+	</div>
+	<div class='seis'><p>Seis</p></div>
+	<div>
+		<img src='prueba.svg'/>
+	</div>
+	<iframe src="prueba.svg">
+		
+	</iframe>
+</body>
+
+<style type="text/css">
+	body{
+		display:flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+
+	}
+	div{
+		width:130px;
+		height:130px;
+		color:black;
+		border-color: black;
+		background-color: tomato;
+		margin:2%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	@keyframes colores1{
+		from{
+			background-color: purple;
+		};
+		to{
+			background-color: yellow;
+		}
+	}
+	
+	@keyframes colores2{
+		0%{
+			background-color: purple;
+		};
+		50%{
+			background-color: chocolate;
+		}
+		100%{
+			background-color: yellow;
+		}
+	}
+
+	.uno{
+		animation-name: colores2; 
+		animation-duration: 5s;
+		animation-delay: 3s;
+	}
+
+	@keyframes aparecer{
+		to{
+			opacity:1;
+			background-color: tomato;
+		}
+	}
+	.dos{
+		opacity:0;
+		background-color: transparent;
+		animation-name: aparecer;
+		animation-duration: 5s;
+		animation-fill-mode: forwards;
+	}
+	@keyframes girar{
+		to{
+			transform: rotate(1turn);
+		}
+	}
+
+	.tres{
+		height: 50px;
+		width:250px;
+		margin:120px auto;
+
+		animation-name:girar;
+		animation-duration: 1s;
+		animation-iteration-count: 3;
+		animation-timing-function: steps(3); /*toma enteros, decimales o infinite*/
+		animation-duration: alternate;
+
+	}
+
+	@keyframes super{
+		0%{
+			background-color: pink;
+		}
+		30%{
+			background-color: blue;
+		}
+		70%{
+			background-color: yellow;
+		}
+		100%{
+			background-color: black;
+		}
+	}
+	.cuatro{
+		animation-name: super;
+		animation-duration: 3s;
+
+		animation-play-state: paused
+	}
+	.cuatro:hover{
+		animation-play-state: running;
+	}
+	
+	.cinco{
+		margin-left:20px;
+		/*filter: grayscale(1); filter: sepia(0.8); 
+		  filter: contrast(0.5); 	filter: invert(1);
+		*/
+		transition: filter 1s;		
+	}
+
+	.cinco:hover{
+		filter:hue-rotate(200deg);
+	}
+
+	.seis{
+		margin-top: 40px;
+		text-align: center;
+		transition: filter 2s;
+		
+	}
+	.seis:hover{
+		filter: hue-rotate(360deg);
+	}
+	@media (prefers-reduce-motion: reduced){
+		body{
+			background-color: red;
+		}
+
+	}
+</style>
