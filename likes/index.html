@@ -1,1 +1,1634 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head> 
+	      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	          
+	      
+	      
+	      <meta content='Website personal sobre los gustos de Ivan Lopez Pedreanez' name='description'/>
+	      <title>Mis Gustos</title>
+	    
+		  <link async="async" href="" rel="stylesheet" />
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		  <link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+		  <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
+		  <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		  <link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Proxima+Nova|Roboto|Monserrat" rel="stylesheet" />
+
+		  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+		  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+
+		  <style>
+		  	html{overflow-x: hidden; background-color: #191414}
+		  	.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}
+
+		  	#deportes{background-image: url(deportes/ballack.png);background-size: cover; background-position: center center; display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: flex-end; align-content: flex-end;height:80vh;}
+
+		  </style>
+  	</head>
+
+
+
+	<body>	
+		<nav id='navflix' class='flex-centrado'>
+					<a href=''><img src='ivan_guillermo.png' style='width:150px'/></a>
+					<span><a href='#films'>Peliculas</a></span>
+					<span><a href='#series'>Series</a></span>
+					<span><a href='#musica'>Musica</a></span>
+					<span><a href='#literatura'>Literatura</a></span>				
+					<span><a href='#deportes'>Deportes</a></span>
+					<span><a href='#deportes'>Reproductor</a></span>
+					<span><a href='#deportes'>Redes</a></span>
+		</nav>
+
+		<div id='player'>
+			<div class="playero">			
+
+				<video class="player_video viewer" id='player_video_p' poster='death_note.jpeg' src="">
+				</video>
+
+				<div class="player_controls">
+				    <div class="progress">
+				  	   <div class="progress_filled"></div>
+				    </div>
+				    <button class="player_button toggle" title="Toggle Play">►</button>
+				    <input type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
+				    <input id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
+				    <button class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>
+				    <button onclick='skip(-10)' data-skip="-10" class="player_button">« 10s</button>
+				    <button onclick='skip(25)' data-skip="25" class="player_button">25s »</button>
+				    <button class="fullScreen" onclick="fullScreening()">[ ]</button>
+				</div>				    
+			</div>
+
+			<div id='sidevideoplayer' style='z-index:4'>
+				<table id='youtable'>
+		            <thead style='height:11vh;position:absolute;width:100%'>
+		              
+		                <th style='height:11vh;position: relative; top:-6px;'>Episodes</th>
+		              
+		            </thead>
+
+		            <tbody>
+		             <tr >		             	
+		             	<td style='padding-top:10.8vh'>
+		             		<div class='preview' style="background:url('series/Death_Note/DN_01.png')">
+		             			<source src="https://www.dropbox.com/s/kz3h517osdywzn0/Death%20Note%201%20Sub%20Esp.mp4.mp4?raw=1" type="video/mp4">
+		             		</div>
+			             	<div>				                
+				                <i data-label="Nombre" class='video_name'>1. Renacimiento</i><br/>
+				                <i data-label="Otro">Shinsei (新生)</i><br/>
+				                <i data-label="Fecha">Octubre 03, 2006 </i><br/>
+			            	</div>
+		            	</td>
+		             </tr>
+
+		             <tr>		              	
+		             	<td>
+			             	<div class='preview' style="background:url('series/Death_Note/DN_02.png')">
+			             		<source src="https://www.dropbox.com/s/bl8afd57cqj5w7f/Death%20Note%202%20Sub%20Esp.mp4.mp4?raw=1" type="video/mp4">
+			             	</div>
+			             	<div>				                
+				                <i data-label="Nombre" class='video_name'>2. Confrontación</i><br/>
+				                <i data-label="Otro">Taiketsu (対决) </i><br/>
+				                <i data-label="Fecha">Octubre 10, 2006</i>
+			            	</div>
+		            	</td>
+		              </tr>
+		              <tr>
+		              	<td>
+			             	<div class='preview' style="background:url('series/Death_Note/DN_03.png')">
+			             		<source src="https://www.dropbox.com/s/fjihzvyway5dk59/Death%20Note%203%20Sub%20Esp.mp4.mp4?raw=1" type="video/mp4">
+			             	</div>
+			             	<div>
+				                
+				                <i data-label="Nombre">3. Negociaciones </i><br/>
+				                <i data-label="Artista">Torihiki (取引)</i><br/>
+				                <i data-label="Album">Octubre 17, 2006</i><br/>
+				            </div>
+			            </td>
+		              </tr>
+		              <tr>
+		                <td>
+			                <div class='preview'></div>
+			             	<div>
+				                
+				                <i data-label="Nombre"><a>4. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+			            	</div>
+		            	</td>
+		              </tr>
+		              <tr>		                
+		             	<td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>5. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>6. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>7. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		              <tr>
+		                <td>
+			             	<div class='preview'></div>
+			             	<div>
+			                	
+			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
+				                <i data-label="Artista">Los Mesoneros</i><br/>
+				                <i data-label="Album">Caiga la Noche</i><br/>
+				            </div>
+		            	</td>
+		              </tr>
+		               
+		              
+		            </tbody>
+          		</table>
+			</div>
+
+			<style>
+				#navflix{position: fixed; width:100vw; height: 11vh; color:white; font-size: 12px; background-color: #333a;
+				justify-content: space-between; align-items: center; align-content: center;padding:2%; z-index:3;}
+
+				#player{width:100vw; height:90vh;
+						display:flex; flex-flow: row nowrap; 
+						background: black;  
+						align-items: space-between;}
+
+				.playero{height:90vh; background:black;  align-items: center;}
+
+				#sidevideoplayer{width:25vw;height:100%; overflow-y:scroll;overflow-x: hidden; background: white;  align-items: center; border: 1px double #E50914; align-self: flex-end}
+					#sidevideoplayer table tbody tr{width:25vw; border-top:1px solid white;margin-bottom: 8px}
+					#sidevideoplayer thead, th, tbody, td {margin-top:1vh;height:4vh;width:25vw;}
+					#sidevideoplayer i{font-size: 11px;width:25vw;height:4vh;}
+
+				#youtable tbody tr div{display:inline-block;;}	
+				.preview{display:inline-block; width:45px;height:45px; background:blue;}
+
+
+
+				.playero {width:75vw; border:0px solid rgba(0,0,0,0.2); box-shadow:0 0 20px rgba(0,0,0,0.2);}
+				.player_video {width:75vw; height:90vh;}
+				.player_button {background:none;border:0;line-height:1;color:white;text-align: center;outline:0;padding: 0;cursor:pointer; max-width:50px;}
+				.player_button:focus { border-color: #00c6ff;}
+				.player_slider {width:10px;height:30px;}
+				.player_controls {position:absolute; display:flex; top:80vh; width:75vw;; transform: translateY(100%) translateY(-5px); transition:all .3s;
+				  flex-wrap:wrap; background:rgba(0,0,0,0.1);}
+				.playero:hover .player_controls {transform: translateY(0);}
+				.playero:hover .progress {height:15px;}
+				.player_controls > * {flex:1;}
+				.progress {flex:10; position: relative; display:none; flex-basis:80%; height:5px; transition:height 0.3s; background:rgba(0,0,0,0.5); cursor:pointer;}
+				.playero:hover > .player_controls{display:flex;}
+				.progress_filled { width:50%; background:#C600ff; flex:0; flex-basis:50%;}
+				 .fullScreen{ flex:0.3;background-color:black; border:black;font-size: 20px;color:white;}
+				 .resetSpeed { flex:0.3;background-color:black; border:black;font-size: 8px;color:white;}
+				/* unholy css to style input type="range" */
+				input[type=range] { -webkit-appearance: none; background:transparent; width: 100%; margin: 0 5px;}
+				input[type=range]:focus { outline: none;}
+				input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+				  background: rgba(255,255,255,0.8); border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
+				input[type=range]::-webkit-slider-thumb {  height: 15px; width: 15px; border-radius: 50px; background: #ffc600; cursor: pointer; -webkit-appearance: none;  margin-top: -3.5px; box-shadow:0 0 2px rgba(0,0,0,0.2);}
+				input[type=range]:focus::-webkit-slider-runnable-track { background: #bada55;}
+				input[type=range]::-moz-range-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0); background: #ffffff;
+				  border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
+				input[type=range]::-moz-range-thumb { box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); height: 15px; width: 15px; border-radius: 50px; background: #ffc600; cursor: pointer;}
+
+				@media only screen and  (max-width: 760px) {
+					#sidevideoplayer{display:none;}
+					.playero, #player, nav{width:100vw;}
+				}
+			</style>
+
+			<script>
+				const playero= document.querySelector('.playero');
+				const videox = playero.querySelector('.viewer');
+				const progress = playero.querySelector('.progress');
+				const progressBar = playero.querySelector('.progress_filled');
+				const toggle = playero.querySelector('.toggle');		
+				const speedBtn = document.getElementById('speed');
+				const ranges = playero.querySelectorAll('.player_slider');
+				let currentTime = videox.currentTime;
+
+				videox.volume = 0.2;
+				progressBar.style.flexBasis = `0%`;
+
+				function togglePlayBtn(){
+					const method = videox.paused ? 'play' : 'pause';
+					videox[method]();
+					console.log(currentTime);
+				}
+
+				function death_vid(){
+					videox.src = 'video.webm';
+					videox.play();
+				};
+
+				function skip(t){
+					//video.currentTime += parseFloat(this.dataset.skip);
+					videox.currentTime += t;
+					console.log(videox.currentTime);
+				}
+
+				function handleRangeUpdate(){
+					videox[this.name] = this.value;
+					console.log(videox.currentTime);
+				}
+
+				function scrub(e){
+					const scrubTime= (e.offsetX / progress.offsetWidth) * videox.duration;
+					videox.currentTime = scrubTime;
+					console.log(videox.currentTime);
+				}
+				function resetSpeed(){
+					videox.playbackRate = 1;
+					speedBtn.value = 1;
+					console.log(videox.currentTime);
+				}
+
+				function updateButton(){
+					const icon = this.paused ? '►' : '=';
+					toggle.textContent = icon;
+					console.log(videox.currentTime);
+				}
+
+				function handleProgress(){
+					const percent = (videox.currentTime / videox.duration) * 100;
+					progressBar.style.flexBasis = `${percent}%`;
+					progressBar.style.width = `${percent}%`;
+					progressBar.style.backgroundColor = '#C600ff';
+					console.log(videox.currentTime + ' handleProgress');
+				}
+
+
+				function fullScreening() {
+					videox.mozRequestFullScreen();
+					videox.requestFullscreen();
+					console.log(currentTime);
+				}
+
+				videox.addEventListener('click', togglePlayBtn);
+				videox.addEventListener('play', updateButton);
+				videox.addEventListener('pause', updateButton);
+				videox.addEventListener('timeupdate', handleProgress);
+				toggle.addEventListener('click', togglePlayBtn);
+				
+				ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+				ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+
+
+				let mousedown = false;
+				progress.addEventListener('click', scrub);
+				progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+				progress.addEventListener('mousedown', () => mousedown = true);
+				progress.addEventListener('mouseup', () => mousedown = false);
+			</script>
+		</div>
+
+		<div id='myLikes' style='background-color: #191414; height:10px'>
+		</br>
+			<h2><img src='my_likes.png'/></h2>
+
+
+			<div id='cinema'>
+				<div id='films'>					
+					<style>
+						.display_1, .display_2, .display_3, .display_4{
+								 width:140vw; height:25vh; 
+								 display:flex; 
+								 flex-flow: row nowrap; 
+								 justify-content:space-around; 
+								 align-items: center ; 
+								 background-color: black;
+								 color:white;				 								 
+								 font-size: 15px;
+								 margin-left: 4vw;
+								 position:relative;
+								 right:40vw;
+								 }
+
+						.item{height:24vh; width: 20vw; background:white; border:2px solid #191414;
+							background-repeat: no-repeat; background-size: cover; position: relative;}
+							.item:hover {height:40vh; width:56vw; transition: all 0.5s}
+							.item:hover > .movie_name{display:flex;}
+							.item:hover > .actions{display:flex;opacity:1;transition: all 0.5s}
+							
+
+						.movie_name, .btn-play-movie{font-size: 28px; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
+							.btn-play-movie:hover {font-size: 50px;}
+
+						.actions{display: none; flex-flow: column wrap; justify-content: center; align-items: center; align-content: center; width: 20%; height:100%;position: relative; left:80%; opacity:0;color:#aaa;}
+
+							.actions div{width:25px; height: 25px; border: 1px solid black; background-color: white;border-radius: 50%; margin:1px;}
+
+						.song_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center}
+
+						.lefter{width:5vw; height:25vh; 
+								position:absolute; 
+								background-color: #111a;
+								font-size: 40px;
+								color:white;
+								font-weight: 800;
+								display:flex;
+								left:95vw; 
+								justify-content: center; align-content: center; align-items: center;}
+					</style>
+					<script type="text/javascript">						
+
+						var display_a = document.getElementById('fav_movies');
+						var display_b = document.getElementById('fav_series');
+						var display_c = document.getElementById('fav_movies_crime');
+						var display_d = document.getElementById('fav_animes');
+
+							
+						displaya.style.border='30px solid blue';
+						displayb.style.margin='20vw 40vw';
+						displayc.style.margin='100vw 40vw';
+						displayd.style.margin='0vw 30vw';
+
+						const lefters = document.querySelectorAll('.lefter');
+						lefters.forEach(lefter => lefter.addEventListener('click', lefting));
+
+						function lefting(){
+							var how_left = this.style.left;
+							console.log(how_left);
+						}
+					</script>
+
+					<!--peliculas favoritas-->
+					<div class='films_list' id="fav_movies">
+					  <h3 class='secTit' id="peliculas">Peliculas Favs</h3>
+						<div  style=''>
+						  <div class='display display_1'>
+							<style>
+								#film01{background-image: url(movies/matrix.png)}
+								#film02{background-image: url(movies/septimo_sello.png)}
+								#film03{background-image: url(movies/antikorper.png)}
+								#film04{background-image: url(movies/psycho.png)}
+								#film05{background-image: url(movies/seven_samurais.png)}
+								#film06{background-image: url(movies/le_samurai.png)}
+								#film07{background-image: url(movies/el_padrino.png)}
+							</style>
+
+							<!--Movie 01-->
+							<div class='item item01' id='film01'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Matrix</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 02-->						
+							<div class='item item02' id='film02'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Septimo Sello</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 03-->						
+							<div class='item item03' id='film03'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Antikorper</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 04-->						
+							<div class='item item04' id='film04'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Psycho</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 05-->						
+							<div class='item item05' id='film05'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Sinshinin no Samurai</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 06-->						
+							<div class='item item06' id='film06'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Le Samurai</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 07-->	
+							<div class='item item06' id='film07'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>El Padrino</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							
+						</div>
+					  <div>
+					  <div class='lefter'> > </div>							
+					</div>
+
+					<!--series favoritas-->
+					<style>
+						#ser01{background-image: url(series/death_note.png)}
+						#ser02{background-image: url(series/peep_show.png)}
+						#ser03{background-image: url(series/breaking_bad.png)}
+						#ser04{background-image: url(series/bojack.png)}
+						#ser05{background-image: url(series/house.png)}
+						#ser06{background-image: url(series/got.png)}
+						#ser07{background-image: url(series/got.png)}								
+					</style>
+					<div class='series_list' id="fav_series">
+						<h3 class='secTit'>Series</h3>
+						<div class='display display_2'>
+
+							<!--Movie 01-->						
+							<div class='item item01' id='ser01'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Death Note</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 02-->						
+							<div class='item item02' id='ser02'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>The Peep Show</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 03-->						
+							<div class='item item03' id='ser03'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Breaking Bad</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 04-->						
+							<div class='item item04' id='ser04'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i>Bojack</div>
+								<h4 class='movie_name'></h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 05-->						
+							<div class='item item05' id='ser05'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Le Samurai</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 06-->						
+							<div class='item item06' id='ser06'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'></h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 07-->	
+							<div class='item item06' id='ser07'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'></h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							
+						</div>
+					</div>
+
+					<!--crime films favoritas-->
+					<style>
+							#crfilm01{background-image: url(movies/matrix.png)}
+							#crfilm02{background-image: url(movies/septimo_sello.png)}
+							#crfilm03{background-image: url(movies/antikorper.png)}
+							#crfilm04{background-image: url(movies/psycho.png)}
+							#crfilm05{background-image: url(movies/seven_samurais.png)}
+							#crfilm06{background-image: url(movies/le_samurai.png)}								
+					</style>
+					<div class='films_list' id="fav_movies_crime">
+						<h3 class='secTit'>Peliculas Crimen</h3>
+						<div class='display display_3'>
+							<!--Movie 01-->						
+							<div class='item item01' id='crfilm01'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Septimo Sello</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 02-->						
+							<div class='item item02' id='crfilm02'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Psycho</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 03-->						
+							<div class='item item03' id='crfilm03'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Antikorper</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 04-->						
+							<div class='item item04' id='crfilm04'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Seven Samurais</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 05-->						
+							<div class='item item05' id='crfilm05'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Le Samuraoi</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 06-->						
+							<div class='item item06' id='crfilm06'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'></h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+							<div class='item item06' id='crfilm06'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'></h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+							
+
+						</div>
+					</div>
+					
+					<!--Animes favoritas-->
+					<style>
+						#anime01{background-image: url(series/death_note.png)}
+						#anime02{background-image: url(series/psycho_pass.png)}
+						#anime03{background-image: url(series/sel.png)}
+						#anime04{background-image: url(series/ergo_proxy.png)}
+						#anime05{background-image: url(series/code_geass.png)}
+						#anime06{background-image: url(series/naruto.png)}								
+					</style>
+					<div class='series_list' id="fav_animes">
+						<h3 class='secTit'>Animes</h3>
+						<div class='display display_4'>
+							<!--Movie 01-->						
+							<div class='item item01' id='anime01'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Death Note</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 02-->						
+							<div class='item item02' id='anime02'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Psycho Pass</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 03-->						
+							<div class='item item03' id='anime03'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>serial Experiment Lain</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 04-->						
+							<div class='item item04' id='anime04'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Ergo Proxy</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 05-->						
+							<div class='item item05' id='anime05'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+								<h4 class='movie_name'>Code Geass</h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 06-->						
+							<div class='item item06' id='anime06'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i>Naruto</div>
+								<h4 class='movie_name'></h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+							<div class='item item06' id='anime06'>
+								<div class='btn-play-movie'><i class="fa fa-play-circle"></i>Dragon Ball</div>
+								<h4 class='movie_name'></h4>
+								<div class='actions'>
+									<div class='btn-sound'>🔊</div>
+									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+								</div>
+								<div class='see_more'> + </div>
+							</div>
+							
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id='musica'>
+				<h2><img src='mis_canciones.png'/></h2>
+				<table style='height:40px;position: relative;left:1vw;font-family: "Monserrat";'>
+					<thead>
+				    	    <tr>
+				    	       <th style='width:4vw'></th>
+				               <th style='width:4vw'>Play</th>
+				               <th>Nombre</th>
+				               <th>Artista</th>
+				               <th>Album</th>
+				            </tr>
+				    </thead>
+				</table>
+				 
+				<div id='canciones' >					
+					<table>				        
+				        <tbody>
+				              <tr>				 
+				              	<td style='width:2vw' data-label="More">+</td>             	
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/keane_nothing_in_my_way.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Somewhere only we know </a></td>
+				                <td data-label="Artista">Keane</td>
+				                <td data-label="Album">Hopes and Fears</td>
+				                
+				              </tr>
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/cdc_a_guerra_lenta.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a> La Terraza</a></td>
+				                <td data-label="Artista">Caramelos de Cianuro</td>
+				                <td data-label="Album">Frisbee</td>
+				                
+				              </tr>
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/los_mesoneros_caiga_la_noche.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Caiga la Noche </a></td>
+				                <td data-label="Artista">Los Mesoneros</td>
+				                <td data-label="Album">Caiga la Noche</td>
+				                
+				              </tr>
+				               <tr>
+				               	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/alter_bridge_metalingus.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Metalingus</a></td>
+				                <td data-label="Artista">Alter Bridge</td>
+				                <td data-label="Album">Leadership</td>
+				                
+				              </tr>
+				               <tr>
+				               	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/rhcp_otherside.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Otherside </a></td>
+				                <td data-label="Artista">Red Hot Chilie Peppers</td>
+				                <td data-label="Album">Leadership</td>
+				                
+				              </tr>
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/foo_fighters_my_hero.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>My Hero </a></td>
+				                <td data-label="Artista">Foo Fighter</td>
+				                <td data-label="Album"></td>
+				                
+				              </tr>
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/number_1_party_anthem_arctic_monkeys.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>No.1 Party Anthem </a></td>
+				                <td data-label="Artista">Arctic Monkeys</td>
+				                <td data-label="Album"></td>
+				                
+				              </tr>
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/nirvana_smells_like_teen_spirit.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Smells Like Teen Spirit</a></td>
+				                <td data-label="Artista">Nirvana</td>
+				                <td data-label="Album"></td>
+				                
+				              </tr>
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/cdc_a_guerra_lenta.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Everybody's Changing </a></td>
+				                <td data-label="Artista">Keane</td>
+				                <td data-label="Album"></td>				                
+				              </tr>
+
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/cdc_flor_de_fuego.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Guerra Lenta </a></td>
+				                <td data-label="Artista">Caramelos de Cianuro</td>
+				                <td data-label="Album">Flor de Fuego</td>				                
+				              </tr>
+
+				              <tr>
+				              	<td style='width:2vw' data-label="More">+</td>
+				                <td style='width:4vw' data-label="playmusic_bot">
+				                	<p class="playmusic fa fa-play-circle">
+				                		<audio src="sounds/los_mesoneros_riesgo.mp3"></audio>
+				                	</p>
+				                </td>
+				                <td data-label="Nombre"><a>Riesgo </a></td>
+				                <td data-label="Artista">Los Mesoneros</td>
+				                <td data-label="Album">Caiga la Noche</td>				                
+				              </tr>
+				              			              
+				        </tbody>
+				    </table>
+
+					<style>	
+							#canciones{
+								overflow-y: scroll;
+								overflow-x: hidden;
+								height:50vh;
+								position: relative;
+								left:1vw;
+								font-family: "Proxima Nova";
+							}
+							table
+							{
+								width:100vw;
+								height:70vh;								
+								background-color: black;		
+								color:white;
+								text-align: justify;
+								border:0px;
+							}
+
+							th{background-color: var(--spotify)}
+							td{padding:0% 2%;	}
+
+							tr::first-child{width:4vw}
+
+							@media only screen and  (max-width: 760px) {
+							td, tr { display: block; } 
+
+							thead tr {
+							  position: absolute;
+							  top: -9999px;
+							  left: -9999px;
+							}
+
+							tr { border: 1px solid #E74C3C; }
+							tr + tr { margin-top: 1.5em; }
+							td {
+							  border: none;
+							  border-bottom: 1px solid #eee;
+							  position: relative;
+							  padding-left: 50%;
+							  background-color: #333;
+							  text-align: left;
+							}
+
+							td:before {
+							  content: attr(data-label);
+							  display: inline-block;
+							  line-height: 1.5;
+							  margin-left: -100%;
+							  width: 100%;
+							  white-space: nowrap;
+							}
+							}
+
+							.playmusic{
+								background:var(--spotify);
+								border-radius: 40%;
+								font-weight: 800;
+							}
+					</style>
+       			</div>  
+				
+				<div id='bandas' style='overflow: hidden; height:70vh'>
+					<div class="panels">
+				      <div class="panel panel1">
+				      <p>The</p>
+				      <div class="centro">
+				      	<ul>
+							<li>Naive</li>
+							<li>Sofa Song</li>
+							<li>Sway</li>
+				      	</ul>
+				      	Mis <audio src="sounds/the_kooks_see_the_world.mp3"></audio>
+				      	<ul>
+							<li>Happy</li>
+							<li>Always where <br/>I need to be</li>
+							<li>Young Folks</li>
+				      	</ul>
+				      </div>
+				      <p>Kooks</p>
+				    </div>
+				    <div class="panel panel2">
+				      <p>Caramelos</p>
+				      <div class="centro">
+				      	<ul>
+							<li>La Terraza</li>
+							<li>Veronica</li>
+							<li>El mar</li>
+				      	</ul>
+				      	Bandas  <audio src="sounds/cdc_a_guerra_lenta.mp3"></audio>
+				      	<ul>
+							<li>Flor de Fuego</li>
+							<li>La Llama</li>
+							<li>Verano</li>
+				      </ul>
+				      </div>
+				      <p>de Cianuro</p>
+				    </div>
+
+
+				    <div class="panel panel3 open">
+				      <p>Keane</p>
+				      <div class="centro">
+				      	<ul>
+							<li>Hamburg Song</li>
+							<li>Nothing in<br/>my Way</li>
+							<li>Silenced by the Night</li>
+				      	</ul>
+				      	De   <audio src="sounds/keane_nothing_in_my_way.mp3"></audio>
+				      	<ul>
+							<li>Bedshaped</li>
+							<li>Bend and Break</li>
+							<li>She has no time</li>
+				      	</ul>
+				      </div>
+				      <p>Monkeys</p>
+				    </div>
+				    
+
+				    <div class="panel panel4">
+				      <p>Arctic</p>
+				      <div class="centro">
+				      	<ul>
+							<li>R U Mine</li>
+							<li>Fluorescent<br/>Adolescent</li>
+							<li>Four out of Five</li>
+				      	</ul>
+				      	Rock   <audio src="sounds/number_1_party_anthem_arctic_monkeys.mp3"></audio>
+				      	<ul>
+							<li>No.1 Party Anthem</li>
+							<li>505</li>
+							<li>The Bakery</li>
+				      	</ul>
+				      </div>
+				      <p>Monkeys</p>
+				    </div>
+
+
+				    <div class="panel panel5">
+				      <p>Muse</p>
+				      <div class="centro">
+				      	<ul>
+							<li>Hysteria</li>
+							<li>Unintended</li>
+							<li>Uprising</li>
+				      	</ul>
+				      	Favoritas  
+				      	<audio src="sounds/rhcp_otherside.mp3"></audio>
+				      	<ul>
+							<li>Resistance</li>
+							<li>Unintended</li>
+							<li>Starlight</li>
+				      	</ul>
+				      </div>
+				      <p>Muse</p>
+				    </div>
+				</div>
+
+				<style type="text/css">
+					.panels {
+					      height:70vh;
+					      width:100vw;
+					      overflow: hidden;
+					      display:flex;
+					      margin: 2vh 0px;
+					    }
+
+					    .panel {
+					      background:#6B0F9C;
+					      box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
+					      color: var(--color);
+					      text-align: center;
+					      align-items:center;
+					      align-content: center;
+					      /* Safari transitionend event.propertyName === flex */
+					      /* Chrome + FF transitionend event.propertyName === flex-grow */
+					      transition:
+					        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+					        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+					        background 0.2s;
+					      font-size: 30px;
+					      background-size:cover;
+					      background-position:center;
+					      flex:1;
+					      justify-content:center;	      
+					      display: flex;
+					      flex-direction:column;
+					    }
+
+					    .panel1 {background-image:url(the_kooks.jpg); }
+					    .panel2 {background-image:url(caramelos_de_cianuro.jpg); }
+					    .panel3 {background-image:url(keane.jpg); }
+					    .panel4 {background-image:url(arctic_monkeys.jpg); }
+					    .panel5 {background-image:url(muse.jpg); }
+
+					    .panel > * {
+					      margin:0;
+					      width: 100%;
+					      transition:transform 0.5s;
+					      display:flex;
+					      flex: 1 0 auto;
+					      justify-content: center;  align-items: center;
+					    }
+
+					    .panel > *:first-child {transform: translateY(-100%);} 
+					    
+					    .panel.open-active > *:first-child {transform: translateY(0);} 
+
+					    .panel > *:last-child {transform: translateY(100%);}
+					    
+					    .panel.open-active > *:last-child { transform: translateY(0); }
+
+					    .panel p {
+					      text-transform: uppercase;
+					      font-family: 'Amatic SC', cursive;
+					      text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+					      font-size: 20px;
+					    }
+					    .panel p:nth-child(2) {
+					      
+					      font-size: 22px;
+					    }
+
+					    .panel.open {
+					      font-size:20px;
+					      flex: 9;
+					      color:rgb(133,10,133);
+					    }
+					    .centro{display:flex; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center;padding:0;}
+					    	.centro ul{font-size: 10px;display:none;list-style-type: none;}
+					    .open-active > .centro {color:#3439dc;background-color:rgba(245,245,245,0.25);}
+					    .open-active > .centro ul{display:flex; flex-flow: column wrap; justify-content: space-around;}
+				</style>			
+			</div>		
+				
+				
+
+				<h2>Mis Albums favoritos</h2>
+			<div id='albums'>
+					
+					<style type="text/css">
+						h2{display: flex; justify-content: center; font-size: 40px; color:white; font-weight: 600; text-shadow: 2px solid black}
+
+						#albums{background-color:#aa3302; height:95vh; 
+								font-size: 14px;
+								border: 2px solid black;
+								color:white;
+								display: grid;
+								grid-gap:2px;
+								grid-template-columns: repeat(8, 1fr);
+							    grid-template-rows: repeat(4, 1fr) ;
+							    grid-template-areas:
+							        "a a c c b . d g"
+							        "a a c c n n o o" 
+							        "k l f . n n o o"
+							        "e . i m j . . h"
+							        							                     
+							    }
+							.album {display:flex; justify-content: center; align-items: center; align-content: center; border: 2.75px solid #fff; background-repeat: no-repeat; background-size:cover; background-position: center center; }
+
+							.album span{font-size:14px; transform:rotate(-45deg); font-weight: 600; text-shadow: 1px 2px black; background-color: #333c }	
+
+
+						    .album01{grid-area: a;background-image:url(albums/caiga_la_noche.png);}  
+						    .album02{grid-area: b;background-image:url(albums/revolver.png);} 
+						    .album03{grid-area: c;background-image:url(albums/frisbee.png);}  
+						    .album04{grid-area: d;background-image:url(albums/insidein.png);}  
+						    .album05{grid-area: e;background-image:url(albums/louise.png);} 
+						    .album06{grid-area: f;background-image:url(albums/franz_ferdinand.png);}  
+						    .album07{grid-area: g;background-image:url(albums/this_is_it.png);}  
+						    .album08{grid-area: h;background-image:url(albums/pure_heroine.png);} 
+						    .album09{grid-area: i;background-image:url(albums/black_parade.png);}  
+						    .album10{grid-area: j;background-image:url(albums/konk.png);}  
+						    .album11{grid-area: k;background-image:url(albums/talking_dreams.png);} 
+						    .album12{grid-area: l;background-image:url(albums/badlands.png);} 
+						    .album13{grid-area: m;background-image:url(albums/flor_de_fuego.png);} 
+						    .album14{grid-area: n;background-image:url(albums/santo_pecado.png);} 
+						    .album15{grid-area: o;background-image:url(albums/born2die.png);}
+						    
+						  
+					</style>
+					
+						<div class='album album01'><span>Caiga la noche <br/> Los Mesoneros</span></div>
+						<div class='album album02'><span>Revolver <br/> The Beatles</span></div>
+						<div class='album album03'><span>Frisbee <br/> Caramelos de Cianuro</span></div>
+						<div class='album album04'><span>Inside In/ Inside Out <br/> The Kooks</span></div>
+						<div class='album album05'><span>Louise Attaque <br/> Louise Attaque</span></div>
+						<div class='album album06'><span>Franz Ferdinand  <br/> Franz Ferdinand</span> </div>
+						<div class='album album07'><span>The Strokes <br/> This is it</span></div>
+						<div class='album album08'><span>Pure Heroine <br/> Lorde</span></div>
+						<div class='album album09'><span>Black Parade  <br/> My Chemical Romance</span></div>
+						<div class='album album10'><span>Konk <br/> The Kooks</span></div>
+						<div class='album album11'><span>Talking Dreams <br/> Echosmith</span></div>							
+						<div class='album album12'><span>Badlands <br/> Halsey</span></div>							
+						<div class='album album13'><span>Flor de Fuego <br/> CDC</span></div>							
+						<div class='album album14'><span>Santo Pecado <br/> Arjona</span></span></div>						
+						<div class='album album15'><span>Born to die <br/> Lana del Rey</span></div>					
+			</div>
+
+			<div id='literatura'>
+					<style>
+						.display2{width:100vw; height:40vh; 
+								 display:flex; 
+								 flex-flow: row nowrap; 
+								 justify-content:space-around; 
+								 align-items: center ; 
+								 background-color: black;
+								 color:#E50914; 
+								 margin:10vh 0vh;}
+
+						.item2{height:40vh; width: 24vw; background:white; border:2px solid #191414;
+								display:flex; flex-flow: column wrap; justify-content: flex-end; align-items: center; align-items: center;
+								padding:20px;}
+							.item2:hover {width:32vw; height:60vh;transition: all 0.5s}
+							.item2:hover > .book_name{display:flex;}
+
+							.item2 button{background-color: #ffffff33; border:2px solid var(--spotify); border-radius: 12px 12px; width:30%;}
+							.item2 button a{text-decoration: none;color:white;}
+
+						.book_name{font-size: 12px; display:none; color:var(--netflix);}			
+
+						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center}
+						h3{font-size: 20px;color:white;font-weight: 600; margin-left: 5vw}
+
+					</style>
+					<!--peliculas favoritas-->
+					<div class='books_list' id="fav_books">
+						<h3 class='secTit'>Libros Favs</h3>
+						<div class='display display2'>
+							<!--Movie 01-->		
+							<style>
+								.item2{background-repeat: no-repeat; background-size: 100% 100%; }
+								#book01{background-image: url(books/demian.png)}
+								#book02{background-image: url(books/zaratustra.png)}
+								#book03{background-image: url(books/la_nausea.png)}
+								#book04{background-image: url(books/orestiada.png)}
+								#book05{background-image: url(books/iliada.png)}
+								#book06{background-image: url(books/ficciones.png)}	
+								#book07{background-image: url(books/existencialismo.png)}								
+
+							</style>				
+							<div class='item2 item01' id='book01'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>Demian</h4>
+								<button class='read'>
+									<a target='_blank' href='http://biblio3.url.edu.gt/Libros/2011/Demian.pdf'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 02-->						
+							<div class='item2 item02' id='book02'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>Asi hablo Zaratustra</h4>
+								<button class='read'>
+									<a target='_blank' href='http://www.enxarxa.com/biblioteca/NIETZSCHE%20Asi%20hablo%20Zaratustra.pdf'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 03-->						
+							<div class='item2 item03' id='book03'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>La Nausea</h4>
+								<button class='read'>
+									<a target='_blank' href='http://imago.yolasite.com/resources/Sartre,%20Jean%20Paul%20-%20La%20nausea.pdf'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Movie 04-->						
+							<div class='item2 item04' id='book04'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>Orestiada</h4>
+								<button class='read'>
+									<a target='_blank' href='https://rossami.files.wordpress.com/2009/03/la-orestiada1.pdf'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Book 05-->						
+							<div class='item2 item05' id='book05'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>Iliada</h4>
+								<button class='read'>
+									<a target='_blank' href='https://www.biblioteca.org.ar/libros/130860.pdf'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>
+
+							<!--Book 06-->						
+							<div class='item2 item06' id='book06'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>Ficciones</h4>
+								<button class='read'>
+									<a target='_blank' href='https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxiaWJsaWJyb3NwZGZ8Z3g6MWU1OWFiN2EwYWMwNjRiNA'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>
+							
+							<!--Book 07-->
+							<div class='item2 item07' id='book07'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>Existencialismo es un Humanismo</h4>
+								<button class='read'>
+									<a target='_blank' href='https://www.ucm.es/data/cont/docs/241-2015-06-16-Sartre%20%20El_existencialismo_es_un_humanismo.pdf'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>
+
+							
+
+						</div>
+					</div>		
+			</div>
+
+			<div id='deportes' style="">	
+				<style type="text/css">
+						.sports{display: inline-flex; width:15vw; height: 42vh;}
+						    
+						  
+					</style>
+					
+						<img class='sports' src='deportes/maldini.png'>
+						<img class='sports' src='deportes/cr7.png'>
+						<img class='sports' src='deportes/zlatan.png'>
+						
+						<img class='sports' src='deportes/schweini.png'>
+						<img class='sports' src='deportes/schumi.png'>
+						<img class='sports' src='deportes/nowitski.png'>
+			</div>
+		</div>
+		
+		<br/>
+		<br/>
+		
+
+		
+		<div id='music_player' class='flex-centrado'>
+			<div>						
+					<i>Now Playing</i><br/>
+					<i id='song_on'>Caiga la Noche</i><br/>
+					<i id='song_on_band'>Los Mesoneros</i><br/>
+			</div>
+			<div id="audioplayer" class=''>				
+				<div id='audiocontrols'>
+					<div id=''>x</div>
+					<div id='rep_forward-btn'>⏮</div>
+					<div id='rep_play-btn'>▶️</div>
+					<div id='rep_back-btn'>⏭</div>
+					<div id=''>y</div>
+				</div>
+				
+				<audio id='reproductor'></audio>
+
+				<progress id="progress_audio" value="30" max="100" > 32% </progress>
+			</div>
+			<div style=''>
+					<i>Now Playing</i><br/>
+					<i>Caiga la Noche</i><br/>					
+			</div>
+		</div>	
+
+
+			<script type="text/javascript">
+				var reproductor = document.getElementById('reproductor');
+				const play_centros = document.querySelectorAll('.playmusic');
+
+				var play_bot = document.getElementById('rep_play-btn');
+				play_bot.addEventListener('click', play_stop);
+				var p_s= 1;
+
+				function play_stop()
+				{
+					p_s++;
+					if ((p_s%2)==0){reproductor.play();play_bot.style.color='red'};
+					if ((p_s%2)>0){play_bot.style.color='blue'};
+				}
+
+
+				function play_music(){        			      
+			      const audiosrc = this.querySelector('audio');
+			      play_centros.forEach(play_centro => play_centro.style.backgroundColor='var(--spotify)');
+			      reproductor.src = audiosrc.src;
+			      reproductor.currentTime = 0;
+			      reproductor.play();
+			      this.style.backgroundColor='red';
+			    }			    
+			    play_centros.forEach(play_centro => play_centro.addEventListener('click', play_music));
+
+			</script>
+
+			<script type="text/javascript">
+				const vplayer = document.getElementById('player_video_p');
+				const videov = document.querySelectorAll('.preview');				
+
+				function playvideos(){
+				  const videosrc = this.querySelector('source');        			      	      
+			      
+			      vplayer.src = videosrc.src;			      
+			      vplayer.play();		      
+			      
+			      
+			      videov.forEach(v => v.style.border='3px solid var(--spotify)');
+			      this.style.borderColor='blue';
+			    }			    
+			    videov.forEach(v => v.addEventListener('click', playvideos));
+			</script>
+
+
+
+
+			<style>
+				#music_player{
+					width:100vw; height:8vh; position: fixed; top: 92vh;background-color: var(--spotify);flex-flow: row wrap;
+					justify-content: space-between;font-size: 12px; padding:0px 5vw; color:white; font-weight: 300; font-family: sans;
+				}
+				#music_player div li{text-decoration: none}
+
+				#audio_player{
+					 width:800px; justify-content: space-between; align-content: space-between; align-items: space-between;
+
+				}
+				#audiocontrols{
+					display:flex; flex-flow: row wrap; justify-content: space-between;
+				}
+				#progress_audio{
+					height:3px; width:100%;background-color: #E50914; color:white;
+				}
+			</style>	
+	</body>
+
+
+
+	<style>
+	  :root {
+   		 --color: rgb(200,200,200);
+   		 --spotify:#1DB954;
+   		}
+  
+	    html {
+	      box-sizing: border-box;	            
+	    }
+
+	    body {
+	      margin: 0;
+	    }
+	    *, *:before, *:after {
+	      box-sizing: inherit;
+	    }
+
+	    
+
+  	</style>
+
+  <script>
+  	const panels = document.querySelectorAll('.panel');
+
+  	function toggleOpen(){
+  		this.classList.toggle('open');      
+  	}
+
+document.getElementById('player').volume = 0.1;
+  	function toggleActive(e){
+  		if (e.propertyName.includes('flex')){
+  			this.classList.toggle('open-active');
+        }
+  	}
+
+  	panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+  	panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+    caja_colores = ['#ef1df3','#5ae6e6','#0c2121','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];
+
+    const centros = document.querySelectorAll('.centro');
+    const player = document.getElementById('player');
+
+    function mine(){
+ 
+      const colores = caja_colores[Math.floor(Math.random() * 6)];
+      document.documentElement.style.setProperty(`--color`,colores);
+      
+      const audiosrc = this.querySelector('audio');
+      
+      if (2>1){
+      player.src = audiosrc.src;
+      player.currentTime = 0;}
+      player.play();            
+    }    
+    centros.forEach(centro => centro.addEventListener('click', mine));    
+   
+  </script>
+
+
+</html>
