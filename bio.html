@@ -1,203 +1,382 @@
 <!DOCTYPE html>
-<html class="client-nojs" lang="en" dir="ltr">
+<html lang="es" >
 <head>
-<meta charset="UTF-8"/>
-<title>Ivan Lopez Pedreanez - Ivanpedia</title>
+	<meta charset="UTF-8"/>
+	<title>Ivan Lopez Pedreanez - Mi Historia</title>
 
-	<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cjquery.makeCollapsible.styles%7Cjquery.tablesorter.styles%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.interface%7Cmediawiki.toc.styles%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
-	<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
-	<meta name="ResourceLoaderDynamicStyles" content=""/>
-	<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
-	<meta name="generator" content="MediaWiki 1.35.0-wmf.15"/>
-	<meta name="referrer" content="origin"/>
-	<meta name="referrer" content="origin-when-crossorigin"/>
-	<meta name="referrer" content="origin-when-cross-origin"/>
 	<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/10._Tag_der_Legenden_2014_69.jpg/1200px-10._Tag_der_Legenden_2014_69.jpg"/>
-	<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.orghttps://en.wikipedia.org/wiki/Michael_Ballack"/>
-	<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Michael_Ballack&amp;action=edit"/>
-	<link rel="edit" title="Edit this page" href="/w/index.php?title=Michael_Ballack&amp;action=edit"/>
-	<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
-	<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
-	<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
-	<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
-	<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
-	<link rel="canonical" href="https://en.wikipedia.orghttps://en.wikipedia.org/wiki/Michael_Ballack"/>
-	<link rel="dns-prefetch" href="//login.wikimedia.org"/>
-	<link rel="dns-prefetch" href="//meta.wikimedia.org" />
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script> 
+	$(document).ready(function(){     
+	           	           
+	           $("h1").click(function(){
+				  $(this).siblings('.toggler:first').slideToggle();
+				});	           
+	           $("h2").click(function(){
+				  $(this).siblings('.toggler:first').slideToggle();
+				});
+	           $("h3").click(function(){
+				  $(this).siblings('.toggler:first').slideToggle();
+				});
+	           
+	           $("#fadeinner").click(function(){ 
+	           	$("#fade1").fadeIn();  
+	           	$("#fade2").fadeIn("slow"); 
+	           	$("#fade3").fadeIn(4000); 
+	           });
+
+	           $("#fadeouter").click(function(){ 
+	           	$("#fade1").fadeOut("slow");  
+	           	$("#fade2").fadeOut("fast"); 
+	           	$("#fade3").fadeOut(4000); 
+	           });
+
+	           $("#animator").click(function(){
+	           	$("#animable").animate({left: '80%'}); 
+	           });
+	                             });
+	</script>	
 </head>
 
 
-<body class="" style='overflow-x: hidden'>
-	<h1 id="firstHeading" class="firstHeading" lang="es">Ivan Guillermo Lopez</h1>	
-	<div id="bodyContent" class="mw-body-content" style="display: grid">
+<body class="" style='overflow-x: hidden; font-family: sans-serif;'>
 		<style>
 			#bodyContent{
-						display: grid;
-						grid-gap:12px;
-						grid-template-columns: 12vw 46vw 1fr ;
-						grid-template-rows: 450px auto 1fr;
-						
+						display: grid; 	
+						grid-gap:10px;
+						grid-template-columns: 14vw 46vw auto ;
+						grid-template-rows: auto auto 1fr 20vh;
 						grid-template-areas:
 							        "a b c"
 							        "a b ."
-							        "a d d";              
+							        "a d d"
+							        "a e e";              
 						}
+
+			html .thumbcaption {
+				    line-height: 1.4em; padding: 3px; font-size: 94%; text-align: left;
+				}
+			html .thumbimage {background-color: #fff; border: 1px solid #c8ccd1;}
+			img {vertical-align: middle;}
+			div.tleft, div.floatleft, table.floatleft {float: left;clear: left;}
+			div.tleft { margin: 0.5em 1.4em 1.3em 0;}
+			div.thumb {
+				    margin-bottom: 0.5em;
+				    width: auto;
+				    background-color: 
+				    transparent;
+				}
+			div.tright, div.floatright, table.floatright {
+			    clear: right;
+			    float: right;
+			}
+			div.tright {
+			    margin: 0.5em 0 1.3em 1.4em;
+			}
+			.mw-content-ltr .thumbcaption {text-align: left;}
+			.mw-body-content p { margin: 0.5em 0;}
+			.mw-content-ltr {  direction: ltr;}
+			.mw-body-content {font-size: 0.875em; font-size: calc(1em * 0.875);line-height: 1.6;}
+			.mw-body-content p { margin: 0.5em 0;}
+
+			.nwrap-bline-r {white-space: nowrap; vertical-align: baseline;text-align: right}
+			.nwrap-bline-l {white-space: nowrap; vertical-align: baseline;text-align: left}
+			.nwrap-bline {white-space: nowrap; vertical-align: baseline}
 		</style>
 
-		<div class="portal" role="navigation" id="p-lang" aria-labelledby="p-lang-label" style="grid-area: a; background-color: red">asdasdasdasdasd
-		</div>	
+	<div id="bodyContent" class="mw-body-content">		
+		
+		<!--BARRA LATERAL-->
+		<style>
+			#bio-side-nav{
+				grid-area: a; 
+				color:#0645ad;
+				display: flex;
+				flex-flow: column nowrap;
+				justify-content: flex-start;
+				align-content: flex-start;
+				align-items: center;
 
-		<table class="infobox vcard" style="line-height: 1.2em; grid-area: c; border: 1px solid #111">
-			<caption class="fn" style="line-height: 1.5em; text-align: center;">Ivan Guillermo Lopez</caption>
+				font-size: 90%;
+				line-height: 1.125em;
+				word-wrap: break-word;
+				text-decoration: none;
+				list-style: none none;
+				font-family: sans-serif;
+				background-color: #f8f9fa;
+				border-right:1px solid #a7d7f9;
+			}
+
+			#p-logo{
+				background-position: center center;
+				background-repeat: no-repeat;
+				display: block;				
+				height: 160px;
+				width:14vw; 
+				background-image: url('wikilogo.png'); 
+				background-size:150px 150px;
+			}
+		</style>
+		<div class="portal" role="navigation" id="bio-side-nav" aria-labelledby="p-lang-label">
+			<a title="Visitar la página principal" class="mw-wiki-logo" href="https://ivanguillermo.github.io">
+				<div id="p-logo" role="banner">				
+				</div>
+			</a>
+			
+			<hr>
+				<ul>
+					<li>Home
+						<ul>
+							<li>Ivan Guillermo</li>
+							<li>Programador</li>
+							<li>Matematico</li>
+							<li>Traductor</li>
+							<li>Educador</li>
+						</ul>
+					</li>
+					<li>My Likes</li>
+					<li></li>
+					<li></li>					
+				</ul>
+				<hr/>
+
+				<ul>
+					<li>Mis Otros Sitios
+						<ul>
+							<li>Informaticos15</li>
+							<li>LiteraturaMagna</li>
+							<li>Maxemas</li>
+							<li>Mi Blog</li>							
+						</ul>
+					</li>
+					<li>Perfil en Freelancer</li>
+					<li>Perfil en LinkedIn</li>
+					<li>Redes Sociales
+						<ul>
+							<li>Twitter</li>
+							<li>Facebook</li>
+							<li>Instagram</li>
+							<li>Youtube</li>							
+						</ul>
+					</li>					
+				</ul>
+				</hr>
+
+				<h3 id="p-lang-label">
+					<span>Idiomas</span>
+						<ul class="vector-menu-content-list">
+							<li class="interlanguage-link interwiki-ar" style="">
+								<a href="" title="My Life" hreflang="en" class="interlanguage-link-target" lang="en">English</a>
+							</li>
+							<li class="interlanguage-link interwiki-az" style="">
+								<a href="" title="Mein Leben" hreflang="de" class="interlanguage-link-target" lang="de">Deutsch</a>
+							</li>
+							<li class="interlanguage-link interwiki-azb" style="display: ;">
+								<a href="" title="Ma Vie" hreflang="fr" class="interlanguage-link-target" lang="fr">Francais</a>
+							</li>
+						</ul>
+				</h3>			
+		</div>			
+		
+		<!--TABLA RESUMEN-->
+		<style>
+			.vcard{	
+				grid-area: c; 
+				line-height: 1.2em; 				
+				border: 1px solid #a7d7f9;
+			}
+			.vcard caption{
+				line-height: 1.5em; 
+				text-align: center; 
+				width: 150px; 
+				background-color:#CCCC88; 
+				width:100%;
+			}
+			.vcard caption img{
+				width:362px;
+				height:38px;
+			}
+			#foto_yo{width:162px; height:178px;padding: 6% 0%}
+			.sec_tabla{text-align:center;background-color: #CCCC88; line-height: 1.5em}
+		</style>
+		<table class="infobox vcard">
+			<caption>
+				<img src="ivan_wikipedia.png"/>
+			</caption>
+
 			<tbody>
 					<tr>
-						<td colspan="4" style="text-align:center">
+						<td colspan="4" style="text-align:center; background-image: url('imgx/background.jpg'); background-size:cover;">
 							<a href="ivan192.png" class="image">
-								<img alt="yo" src="ivan192.png" decoding="async" width="262" height="278" data-file-width="2385" data-file-height="2528" />
+								<img id="foto_yo" alt="yo" src="ivan192.png"/>
 							</a>
-							<div>Yo siendo yo</div>
+							<div>Programador, Matematico y Traductor</div>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="4" style="text-align:center;background-color: #b0c4de; line-height: 1.5em">
+						<th colspan="4" class="sec_tabla">
 						Informacion Personal
 						</th>
 					</tr>
 					<tr>
-						<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">Nombre Completo</th>
-						<td colspan="3" class="nickname" style="white-space: nowrap; vertical-align: baseline">
-							<span style="white-space:normal;">Ivan Guillermo Lopez Pedreanez</span>
+						<th scope="row" class='nwrap-bline-l'>Nombre Completo</th>
+						<td colspan="3" class="nickname nwrap-bline">
+							<span style="">Ivan Guillermo Lopez Pedreanez</span>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">Fecha de Nacimiento</th>
-						<td colspan="3" style="white-space: nowrap; vertical-align: baseline">
-							<span style="display:none"> (<span class="bday">1991-02-24</span>) </span>24 Febrero 1991<span class="noprint ForceAgeToShow"> (edad)</span>
+						<th scope="row" class='nwrap-bline-l'>Fecha de Nacimiento</th>
+						<td colspan="3" class="nwrap-bline">
+							<span class="bday">24 Febrero 1991</span>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">Lugar de Nacimiento</th>
-						<td colspan="3" class="birthplace" style="white-space: nowrap; vertical-align: baseline">
-							<a href="https://en.wikipedia.org/wiki/Maracaibo" title="Maracaibo">Maracaibo
+						<th scope="row" class='nwrap-bline-l'>Nacionalidad</th>
+						<td colspan="3" class="nwrap-bline">
+							<span class="nacionalidad">Venezolano</span>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class='nwrap-bline-l'>Lugar de Nacimiento</th>
+						<td colspan="3" class="birthplace nwrap-bline">
+							<a href="https://es.wikipedia.org/wiki/Maracaibo" title="Maracaibo">Maracaibo
 							</a>, 
-							<a href="https://en.wikipedia.org/wiki/Venezuela" title="Venezuela">Venezuela
+							<a href="https://es.wikipedia.org/wiki/Venezuela" title="Venezuela">Venezuela
 							</a>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">Altura</th>
-						<td colspan="3" style="white-space: nowrap; vertical-align: baseline">1.72m</td>
+						<th scope="row" class='nwrap-bline-l'>Altura</th>
+						<td colspan="3" class="nwrap-bline">1.72m</td>
 					</tr>
 					<tr>
-						<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">Estilo de Programacion</th>
-						<td colspan="3" class="role" style="white-space: nowrap; vertical-align: baseline">
-							<a href="https://en.wikipedia.org/wiki/frontend" title="frontend">Front End</a>
+						<th scope="row" class='nwrap-bline-l'>Profesion</th>
+						<td colspan="3" class="nwrap-bline">
+							<span class="profesion">Programador</span>
 						</td>
-					</tr>
-					<tr>
-						<th colspan="4" style="text-align:center;background-color: #b0c4de; line-height: 1.5em">Estudios</th>
-					</tr>
-					<tr>
-						<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">
-							<span style="font-weight:normal">1997-2008</span>
-						</th>
-						<td colspan="3" style="white-space: nowrap; vertical-align: baseline">
-							<a href="https://en.wikipedia.org/wiki/Chemnitzer_FC" title="Chemnitzer FC">Colegio Fray Luis Amigo</a>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="4" style="text-align:center;background-color: #b0c4de; line-height: 1.5em">Estudios Superiores</th>
-					</tr>
-					<tr>
-						<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">Anyos</th>
-						<td style="white-space: nowrap; vertical-align: baseline">
-							<b>Universidad
-							</b>
-						</td>
-						<td style="white-space: nowrap; vertical-align: baseline;text-align: right">
-									<b>
-										<abbr title="League appearances">Apps</abbr>
-									</b>
-						</td>
-						<td style="white-space: nowrap; vertical-align: baseline; text-align: right">
-									<b>(
-										<abbr title="League goals">Gls</abbr>)
-									</b>
-						</td>
-					</tr>
-					<tr>
-									<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">
-										<span style="font-weight:normal">2008-2010</span>
-									</th>
-									<td style="white-space: nowrap; vertical-align: baseline">
-										<a href="https://en.wikipedia.org/wiki/Universidad_Central_Venezuela" class="mw-redirect" title="UCV">UCV</a>
-									</td>
-									<td style="white-space: nowrap; vertical-align: baseline;text-align: right">18</td>
-									<td style="white-space: nowrap; vertical-align: baseline; text-align: right">(5)</td>
-					</tr>
-					<tr>
-									<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">
-										<span style="font-weight:normal">2010-2011</span>
-									</th>
-									<td style="white-space: nowrap; vertical-align: baseline">
-										<a href="https://en.wikipedia.org/wiki/educacion_online" title="Educacion Online">cursos Online</a>
-									</td>
-									<td style="white-space: nowrap; vertical-align: baseline;text-align: right">49</td>
-									<td style="white-space: nowrap; vertical-align: baseline; text-align: right">(10)</td>
-					</tr>
-					<tr>
-									<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">
-										<span style="font-weight:normal">2011-presente</span>
-									</th>
-									<td style="white-space: nowrap; vertical-align: baseline">
-										<a href="https://en.wikipedia.org/wiki/Universidad_Nacional_Abierta" title="UNA">UNA</a>
-									</td>
-									<td style="white-space: nowrap; vertical-align: baseline;text-align: right">17</td>
-									<td style="white-space: nowrap; vertical-align: baseline; text-align: right">(8)</td>
-					</tr>
-					<tr>
-									<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">
-										<span style="font-weight:normal">2015-2018</span>
-									</th>
-									<td style="white-space: nowrap; vertical-align: baseline">
-										<a href="https://en.wikipedia.org/wiki/1._FC_Kaiserslautern" title="1. FC Kaiserslautern">UPEL
-										</a>
-									</td>
-									<td style="white-space: nowrap; vertical-align: baseline;text-align: right">46</td>
-									<td style="white-space: nowrap; vertical-align: baseline; text-align: right">(4)</td>
 					</tr>
 					
 					<tr>
-								<th colspan="4" style="text-align:center;background-color: #b0c4de; line-height: 1.5em">Experiencia Profesional
+						<th scope="row" class='nwrap-bline-l'>Estilo de Programacion</th>
+						<td colspan="3" class="role" class="nwrap-bline">
+							<a href="https://es.wikipedia.org/wiki/Front_end_y_back_end" title="frontend">Front End</a>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="4" class="sec_tabla">Estudios Secundarios</th>
+					</tr>
+					<tr>
+						<th scope="row" class='nwrap-bline-l'>
+							<span style="font-weight:normal">1997-2008</span>
+						</th>
+						<td colspan="3" class="nwrap-bline">
+							<a href="https://es.wikipedia.org/wiki/Chemnitzer_FC" title="Chemnitzer FC">Colegio Fray Luis Amigo</a>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="4" class="sec_tabla"class="sec_tabla">Estudios Superiores</th>
+					</tr>
+					<tr>
+						<th scope="row" class='nwrap-bline-l'>Años</th>
+						<td class="nwrap-bline">
+							<b>Institucion
+							</b>
+						</td>
+						<td class="nwrap-bline">
+							<b>Materias</b>
+						</td>
+						<td class="nwrap-bline-r">
+							<b>Prom</b>
+						</td>
+					</tr>
+					<tr>
+									<th scope="row" class='nwrap-bline-l'>
+										<span style="font-weight:normal">2008-2010</span>
+									</th>
+									<td class="nwrap-bline">
+										<a href="#UCV" class="mw-redirect" title="UCV">UCV</a>
+									</td>
+									<td class="nwrap-bline">18</td>
+									<td class="nwrap-bline-r">(5)</td>
+					</tr>
+					<tr>
+									<th scope="row" class='nwrap-bline-l'>
+										<span style="font-weight:normal">2010-2012</span>
+									</th>
+									<td class="nwrap-bline">
+										<a href="#Autoaprendizaje" title="Educacion Online">Autoaprendizaje</a>
+									</td>
+									<td class="nwrap-bline">49</td>
+									<td class="nwrap-bline-r">(10)</td>
+					</tr>
+					<tr>
+									<th scope="row" class='nwrap-bline-l'>
+										<span style="font-weight:normal">2012-presente</span>
+									</th>
+									<td class="nwrap-bline">
+										<a href="#UNA" title="UNA">UNA</a>
+									</td>
+									<td class="nwrap-bline">17</td>
+									<td class="nwrap-bline-r">(8)</td>
+					</tr>
+					<tr>
+									<th scope="row" class='nwrap-bline-l'>
+										<span style="font-weight:normal">2015-2018</span>
+									</th>
+									<td class="nwrap-bline">
+										<a href="#UPEL" title="UPEL">UPEL
+										</a>
+									</td>
+									<td class="nwrap-bline">46</td>
+									<td class="nwrap-bline-r">(4)</td>
+					</tr>
+					
+					<tr>
+								<th colspan="4" style="text-align:center;background-color: #CCCC88; line-height: 1.5em">Experiencia Profesional
 								</th>
 					</tr>
 					<tr>
-									<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">
-										<span style="font-weight:normal">1996–1998</span>
+									<th scope="row" class='nwrap-bline-l'>
+										<span style="font-weight:normal">2016-</span>
 									</th>
-									<td style="white-space: nowrap; vertical-align: baseline">
-										<a href="https://en.wikipedia.org/wiki/Germany_national_under-21_football_team" title="Germany national under-21 football team">Traductor Freelancer</a>
+									<td class="nwrap-bline">
+										<a href="https://es.wikipedia.org/wiki/Germany_national_under-21_football_team" title="Germany national under-21 football team">Traductor Freelancer</a>
 									</td>
-									<td style="white-space: nowrap; vertical-align: baseline;text-align: right">19</td>
-									<td style="white-space: nowrap; vertical-align: baseline; text-align: right">(7)</td>
+									<td class='nwrap-bline-l'>19</td>
+									<td class="nwrap-bline-r">(7)</td>
 					</tr>
+
 					<tr>
-									<th scope="row" style="white-space: nowrap; vertical-align: baseline; text-align: left">
-										<span style="font-weight:normal">1999–2010</span>
+									<th scope="row" class='nwrap-bline-l'>
+										<span style="font-weight:normal">2016-</span>
 									</th>
-									<td style="white-space: nowrap; vertical-align: baseline">
-										<a href="https://en.wikipedia.org/wiki/Germany_national_football_team" title="Germany national football team">Delivery</a>
+									<td>
+										<a href="#Escritor" title="">Escritor Freelacer</a>
 									</td>
-									<td style="white-space: nowrap; vertical-align: baseline;text-align: right">98</td>
-									<td style="white-space: nowrap; vertical-align: baseline; text-align: right">(42)</td>
+									<td class='nwrap-bline'>98</td>
+									<td class="nwrap-bline-r">(42)</td>
 					</tr>
+
 					<tr>
-									<th colspan="4" style="text-align:center;background-color: #b0c4de; line-height: 1.5em">
-										<div class="NavFrame collapsed" style="border: none; padding: 0;">
-											<div class="NavHead" style="font-size:105%; text-align: center; background-color: transparent;">Honours</div>
-											<div class="NavContent" style="font-size:105%; font-weight: normal; width: 100%;">
-												<table style="width:100%; background-color: #f9f9f9; color: #000000;">
+									<th scope="row" class='nwrap-bline-l'>
+										<span style="font-weight:normal">2018-</span>
+									</th>
+									<td class="nwrap-bline">
+										<a href="#Repartidor" title="Repartidor">Delivery</a>
+									</td>
+									<td class='nwrap-bline'>98</td>
+									<td class="nwrap-bline-r">(42)</td>
+					</tr>
+					<tr style='display:'>
+						<th colspan="4" style="text-align:center;background-color: #CCCC88; line-height: 1.5em">
+							<div class="NavFrame collapsed" style="border: none; padding: 0;">
+								<div class="NavHead" style="font-size:105%; text-align: center; background-color: transparent;">
+									Honours
+								</div>
+								<div class="NavContent" style="font-size:105%; font-weight: normal; width: 100%;">
+									<table style="width:100%; background-color: #f9f9f9; color: #000000;">
 													<tbody>						
 														<tr>
 															<th colspan="3" style="text-align:center;vertical-align:middle;background-color:#eeeeee;">Men's 
@@ -264,392 +443,484 @@
 															<td style="text-align:center;vertical-align:middle;"></td>
 														</tr>
 													</tbody>
-												</table>
-									</th>
+									</table>
+								</div>
+							</div>
+						</th>
 					</tr>
 			</tbody>
 		</table>
+		
+		<!--INTRODUCCION-->
+		<style type="text/css">
+			#intro{grid-area:b;}
+			#biografia{	grid-area:d;}
+			#otros{grid-area: e}
 
-		<div style="grid-area: b">
-			<p>
-				<b>Ivan Guillermo Lopez Pedreañez</b>  (Maracaibo, 24 de Febrero de 1991) Es un programador front-end. Además estudió Matemática y Educación y trabajo como
-				 <a href="https://en.wikipedia.org/wiki/traductor" title="traductor">traductor</a> freelancer.
-				Ivan maneja con diferentes niveles de dominio y experiencia, diversos lenguajes de programación como 
-				<a href="https://en.wikipedia.org/wiki/traductor" title="traductor">traductor</a> 
-				<a href="https://en.wikipedia.org/wiki/html" title="html">HTML</a> 
-				<a href="https://en.wikipedia.org/wiki/css" title="cssr">CSS</a> 
-				<a href="https://en.wikipedia.org/wiki/Javascript" title="Javascript">Javascript</a> 
-				<a href="https://en.wikipedia.org/wiki/Php" title="Php">PHP</a> 
-				<a href="https://en.wikipedia.org/wiki/Php" title="Mysql">MySQL</a> 
-				<a href="https://en.wikipedia.org/wiki/Python" title="Python">Python</a> y herramientas como 
-				<a href="https://en.wikipedia.org/wiki/NodeJs" title="NodeJs">NodeJs</a>
-				<a href="https://en.wikipedia.org/wiki/Bootstrap" title="Bootstrap">Bootstrap</a> 
-				<a href="https://en.wikipedia.org/wiki/Sass" title="Sass">Sass</a> 
-				
-			</p>
-			<p>	Ballack began his career as a youth at 
-				<a href="https://en.wikipedia.org/wiki/Chemnitzer_FC" title="Chemnitzer FC">Chemnitzer FC</a>, his local team, and made his professional debut in 1995.<sup id="cite_ref-club_and_country_stats_5-0" class="reference">
-					<a href="#cite_note-club_and_country_stats-5">&#91;5&#93;</a></sup> On 26 March 1996, Ballack made his debut for <a href="https://en.wikipedia.org/wiki/Germany_national_under-21_football_team" title="Germany national under-21 football team">Germany's under-21 side</a>. Although the team were relegated in his first season, his performances in the <a href="https://en.wikipedia.org/wiki/Regionalliga" title="Regionalliga">Regionalliga</a> the following season led to a transfer to 1. FC Kaiserslautern in 1997. He won the <a href="https://en.wikipedia.org/wiki/Bundesliga" title="Bundesliga">Bundesliga</a> in his first season at the club, his first major honour. He became a first team regular in <a href="https://en.wikipedia.org/wiki/1998%E2%80%9399_Bundesliga" title="1998–99 Bundesliga">1998–99 season</a> and also earned his first senior national cap for Germany. He moved to <a href="https://en.wikipedia.org/wiki/Bayer_04_Leverkusen" title="Bayer 04 Leverkusen">Bayer Leverkusen</a> for €4.1&#160;million in 1999. The <a href="https://en.wikipedia.org/wiki/2001%E2%80%9302_Bayer_04_Leverkusen_season" title="2001–02 Bayer 04 Leverkusen season">2001–02 season</a> saw him win a slew of runners-up medals: Bayer Leverkusen <a href="https://en.wikipedia.org/wiki/The_Treble#Near_trebles" class="mw-redirect" title="The Treble">finished second</a> in the Bundesliga, <a href="https://en.wikipedia.org/wiki/DFB-Pokal" title="DFB-Pokal">DFB-Pokal</a>, <a href="https://en.wikipedia.org/wiki/UEFA_Champions_League" title="UEFA Champions League">UEFA Champions League</a> and Germany lost to <a href="https://en.wikipedia.org/wiki/Brazil_national_football_team" title="Brazil national football team">Brazil</a> in the <a href="https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_Final" title="2002 FIFA World Cup Final">2002 World Cup Final</a>.
-			</p>
-			<p>A €12.9&#160;million move to 
-				<a href="https://en.wikipedia.org/wiki/FC_Bayern_Munich" title="FC Bayern Munich">Bayern Munich</a> led to further honours: the team won the Bundesliga and DFB-Pokal 
-				<a href="https://en.wikipedia.org/wiki/Double_(association_football)" title="Double (association football)">double</a> in 2003, 2005 and 2006. Ballack had become a prolific goalscorer from midfield, scoring 58 goals for Bayern between 2002 and 2006. He joined 
-				<a href="https://en.wikipedia.org/wiki/Premier_League" title="Premier League">Premier League</a> club 
-				<a href="https://en.wikipedia.org/wiki/Chelsea_F.C." title="Chelsea F.C.">Chelsea</a> in mid-2006 and won English honours in his first season at the club. Injury ruled him out of much of 2007, but he returned the following season to help Chelsea reach their first ever 
-				<a href="https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_Final" title="2008 UEFA Champions League Final">Champions League final</a>. He also went on to win the 
-				<a href="https://en.wikipedia.org/wiki/2008%E2%80%9309_FA_Cup" title="2008–09 FA Cup">FA Cup</a> again in 2009 and then once more as part of a 
-				<a href="https://en.wikipedia.org/wiki/2009%E2%80%9310_Premier_League" title="2009–10 Premier League">league</a> and 
-				<a href="https://en.wikipedia.org/wiki/2009%E2%80%9310_FA_Cup" title="2009–10 FA Cup">cup</a> double in 2010.
-			</p>
-			<p>
-				Internationally, Ballack has played in the 
-				<a href="https://en.wikipedia.org/wiki/UEFA_European_Football_Championship" class="mw-redirect" title="UEFA European Football Championship">UEFA European Football Championship</a> in <a href="https://en.wikipedia.org/wiki/UEFA_Euro_2000" title="UEFA Euro 2000">2000</a>, 
-				<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2004" title="UEFA Euro 2004">2004</a> and 
-				<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2008" title="UEFA Euro 2008">2008</a>, and the 
-				<a href="https://en.wikipedia.org/wiki/FIFA_World_Cup" title="FIFA World Cup">FIFA World Cup</a> in 
-				<a href="https://en.wikipedia.org/wiki/2002_FIFA_World_Cup" title="2002 FIFA World Cup">2002</a> and 
-				<a href="https://en.wikipedia.org/wiki/2006_FIFA_World_Cup" title="2006 FIFA World Cup">2006</a>. 
-				<a href="https://en.wikipedia.org/wiki/J%C3%BCrgen_Klinsmann" title="Jürgen Klinsmann">Jürgen Klinsmann</a> appointed him captain of the national team in 2004. Ballack scored consecutive game-winning goals in the quarter-final and semi-final to help his country to the 
-				<a href="https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_Final" title="2002 FIFA World Cup Final">2002 World Cup final</a>, and led his team to the semi-finals of the 2006 World Cup and the 
-				<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2008_Final" title="UEFA Euro 2008 Final">Euro 2008 final</a>.
-			</p>
+			.mostrar{padding-left: 5px; font-weight: normal; text-align: right; width: 6em;}
+		</style>
+		<div id='Intro'>
+			<h1 id="firstHeading" class="firstHeading" lang="es">Ivan Guillermo Lopez</h1>
+			<hr></hr>
+			
+			<div class="toggler">
+				<p>
+					<b>Ivan Guillermo Lopez Pedreañez</b>  (Maracaibo, 24 de Febrero de 1991) Es un programador front-end. Además estudió Matemática y Educación y trabajo como
+					 <a href="https://es.wikipedia.org/wiki/traductor" title="traductor">traductor</a> freelancer.
+					Ivan maneja con diferentes niveles de dominio y experiencia, diversos lenguajes de programación como 
+					<a href="https://es.wikipedia.org/wiki/programador" title="traductor">Programador</a> 
+					<a href="https://es.wikipedia.org/wiki/html" title="html">HTML</a> 
+					<a href="https://es.wikipedia.org/wiki/css" title="cssr">CSS</a> 
+					<a href="https://es.wikipedia.org/wiki/Javascript" title="Javascript">Javascript</a> 
+					<a href="https://es.wikipedia.org/wiki/Php" title="Php">PHP</a> 
+					<a href="https://es.wikipedia.org/wiki/MySql" title="Mysql">MySQL</a> 
+					<a href="https://es.wikipedia.org/wiki/Python" title="Python">Python</a> y herramientas como 
+					<a href="https://www.wikidata.org/wiki/Q756100" title="NodeJs">NodeJs</a>
+					<a href="https://es.wikipedia.org/wiki/Bootstrap_(framework)" title="Bootstrap">Bootstrap</a> 
+					<a href="https://es.wikipedia.org/wiki/Sass" title="Sass">Sass</a> 				
+				</p>
 
-			<div id="toc" class="toc" style='font-size:12px '>	
-				<div class="toctitle" lang="en" dir="ltr">
-					<h2>Contents</h2>
+				<p>	Ivan comenzo su interes por la programacion en la pagina web
+					<a href="https://es.wikipedia.org/wiki/Codecademy" title="Codecademy">Codecademy</a>, donde empezo a hacer pequenos proyectos en Javascript en 2014.
+					En 2015, Ivan realizo un curso de programcion de videojuegos usando Python en 
+					<a href="https://es.wikipedia.org/wiki/Coursera" title="Coursera">Coursera</a>. Aunque no profundizo en sus proyectos en Python, el concepto de Algoritmos y logica estaba ya bien desrrolldo en su mente, y fue utilizado en sus estudios de Programacion en la 
+					<a href="https://www.wikidata.org/wiki/Q16644491" title="UNA">Universidad Nacional Abierta</a> en el segundo semestre de 2015. Luego cuando comenzo a estudiar Educacion Informatica en la 
+					<a href="https://es.wikipedia.org/wiki/Universidad_Pedag%C3%B3gica_Experimental_Libertador" title="UPEL">Universidad Pedagogica Experimental Libertador</a> 
+					Alli descubrio su pasion por la programacion de paginas web a traves del uso de HTML y PHP. Fue entonces que empezo a poner en practica sus conocimientos en la administracion de un blog educativo sobre su carrera de Educacion 
+					<a href="https://informaticos15.blogspot.com" title="Informaticos15">Informaticos15</a> 
+				</p>
+
+				<p>En Julio de 2018, Ivan se fue a vivir a 
+					<a href="https://es.wikipedia.org/wiki/Buenos_Aires" title="Buenos Aires">Buenos Aires</a> con la idea de tener un mejor futuro al que le ofrecia Venezuela, con la primera intencion de desempenarse como programador. Entonces realizo diversos trabajos como profesor particular de matematicas, de programacion mientras afinaba sus conocimientos para las necesidades del mercado labolar. Y entonces se involucro con grupos de programadores con quienes descubrio la importancia de manejar 
+					<a href="https://es.wikipedia.org/wiki/framework" title="Frameworks">Frameworks</a> tales como Jquery, Bootstrap, React, entre otros. Ademas de la valia que tiene en el mercado actual  
+					<a href="https://es.wikipedia.org/wiki/Javascript" title="Javascript">Javascript</a> por lo que comenzo a expander los conocimientos que ya poseia de dicho Lenguaje de Programacion. 
+					A su vez decidio comenzar un curso de programacion ofrecido por el Gobierno de la Ciudad llamado
+					<a href="https://aulavirtual.codoacodo.com.ar/" title="Codo a Codo">Codo a Codo</a> y un curso de Automaizacion. A la vez comenzo a trabajar como delivery en bicicleta mientras practicaba creando sus propias paginas web de diversos contenidos y usando sus varias habilidades, sobre todo en cuanto a lo referente al proceso de Web Hosting. Entonces comenzo a mejorar el blog que tenia mientras estudiaa educacion para hacerlo totalmente a su estilo pero manteniendo la esencia de 
+					<a href="https://ivanguillermo.github.io/informaticos15" title="Informaticos 15 web">Informaticos 15</a>. 
+					Tambien creo una pagina para explorar su amor por la literatura clasica llamada 
+					<a href="https://ivanguillermo.github.io/literaturamagna" title="LiteraturaMagna">Literatura Magna</a> entre otras.
+				</p>
+				<p>
+					Durante los ultimos 5 anyos Ivan ha trabajado como Freelancer haciendo traducciones, escribiendo articulos, adminstrando paginas web, haciendo investigaciones y ensayos, etc. con clientes de diversos paises, con los cuales recibido solamente buenas referencias. Paises tales como: 
+					<a href="https://www.freelancer.com/projects/Content-Writing/Game-Tester-Juego-rol-Europa/reviews" title="FL-Argentina">Argentina</a>
+					<a href="https://www.freelancer.com/projects/Translation/Translate-Something-from-English-Spanish-11859190/reviews" title="FL-USA">Estados Unidos</a>, 
+					<a href="https://www.freelancer.com/projects/photoshop/Asistente-virtual-espa/reviews" title="Fl-Espanya">Espanya,</a> 
+					<a href="https://www.freelancer.com/projects/Translation/NATIVE-spanish-speaker-wanted-word/reviews" title="FL-Austria">Austria,</a>
+					<a href="https://www.freelancer.com/projects/Research-Writing/Research-Writing-13427691/reviews" title="FL-Canada">Canada,</a>  
+					<a href="https://www.freelancer.com/projects/Translation/Project-for-IvanD/reviews" title="FL-India">India,</a> 
+					<a href="https://www.freelancer.com/projects/Articles/Content-Writing-13124330/reviews" title="FL-Polonia">Polonia,</a>
+					<a href="https://www.freelancer.com/projects/Translation/Translate-home-page-article-blog/reviews" title="FL-Portugal">Portugal,</a>  
+					<a href="https://www.freelancer.com/projects/Articles/Project-for-IvanD/reviews" title="FL-Panama">Panama,</a>
+					<a href="https://www.freelancer.com/projects/Articles/Clareamento-Dental/reviews" title="FL-Filipinas">Filipinas</a>.
+				</p>
+			</div>
+			
+			<!--Table of contents-->
+			<div id="toc" class="toc" style='font-size:12px;line-height: 1.6;color: #202122;font-family: sans-serif; '>	
+				<style type="text/css">
+					.toc{border: 1px solid	#a2a9b1;
+						background-color:#f8f9fa;
+						padding: 5px;
+						font-size: 95%;
+						display: table;
+						padding: 7px;
+					}
+					.toc .toctitle {text-align: center;}
+					.toc ul {
+						margin: 0.3em 0;
+					    list-style-type: none;
+					    list-style-image: none;
+					    text-align: left;
+							}
+					.toc ul li {margin-bottom: 0.1em;}
+					
+
+				</style>
+				<div class="toctitle" lang="es" dir="ltr">
+					<h2>Contenido</h2>
 					<span class="toctogglespan">
 						<label class="toctogglelabel" for="toctogglecheckbox"></label>
 					</span>
 				</div>
 				<ul>
 					<li class="toclevel-1 tocsection-1">
-						<a href="#Early_life">
+						<a href="#juventud">
 							<span class="tocnumber">1</span>
-							<span class="toctext">Early life</span>
+							<span class="toctext">Juventud</span>
 						</a>
 					</li>
 					<li class="toclevel-1 tocsection-2">
-						<a href="#Club_career">
+						<a href="#estudios">
 							<span class="tocnumber">2</span> 
-							<span class="toctext">Club career</span>
+							<span class="toctext">Estudios</span>
 						</a>
 						<ul>
 							<li class="toclevel-2 tocsection-3">
-								<a href="#Chemnitzer_FC">
+								<a href="#UCV">
 									<span class="tocnumber">2.1</span> 
-									<span class="toctext">Chemnitzer FC</span>
+									<span class="toctext">UCV</span>
 								</a>
 							</li>
 							<li class="toclevel-2 tocsection-4">
-								<a href="#1._FC_Kaiserslautern">
+								<a href="#autoaprendizaje">
 									<span class="tocnumber">2.2</span> 
-									<span class="toctext">1. FC Kaiserslautern</span>
+									<span class="toctext">Autoaprendizaje</span>
 								</a>
 							</li>
 							<li class="toclevel-2 tocsection-5">
-								<a href="#Bayer_Leverkusen">
+								<a href="#UNA">
 									<span class="tocnumber">2.3</span> 
-									<span class="toctext">Bayer Leverkusen</span>
+									<span class="toctext">UNA</span>
 								</a>
 							</li>
 							<li class="toclevel-2 tocsection-6">
-								<a href="#Bayern_Munich">
+								<a href="#UPEL">
 									<span class="tocnumber">2.4</span> 
-									<span class="toctext">Bayern Munich</span>
+									<span class="toctext">UPEL</span>
 								</a>
 							</li>
 							<li class="toclevel-2 tocsection-7">
-								<a href="#Chelsea">
+								<a href="#cursos_presenciales">
 									<span class="tocnumber">2.5</span> 
-									<span class="toctext">Chelsea</span>
+									<span class="toctext">Cursos Presenciales</span>
 								</a>
 								<ul>
 									<li class="toclevel-3 tocsection-8">
-										<a href="#2006–07_season">
+										<a href="#inces">
 											<span class="tocnumber">2.5.1</span> 
-											<span class="toctext">2006–07 season</span>
+											<span class="toctext">INCES</span>
 										</a>
 									</li>
 									<li class="toclevel-3 tocsection-9">
-										<a href="#2007–08_season">
+										<a href="#lamp">
 											<span class="tocnumber">2.5.2</span> 
-											<span class="toctext">2007–08 season</span>
+											<span class="toctext">UNA</span>
 										</a>
 									</li>
 									<li class="toclevel-3 tocsection-10">
-										<a href="#2008–09_season">
+										<a href="#smata">
 											<span class="tocnumber">2.5.3</span> 
-											<span class="toctext">2008–09 season</span>
+											<span class="toctext">SMATA</span>
 										</a>
-									</li>
-									<li class="toclevel-3 tocsection-11">
-										<a href="#2009–10_season">
-											<span class="tocnumber">2.5.4</span> 
-											<span class="toctext">2009–10 season</span>
-										</a>
-									</li>
+									</li>									
 								</ul>
-							</li>
-							<li class="toclevel-2 tocsection-12">
-								<a href="#Return_to_Bayer_Leverkusen">
-									<span class="tocnumber">2.6</span> 
-									<span class="toctext">Return to Bayer Leverkusen</span>
-								</a>
-							</li>
-							<li class="toclevel-2 tocsection-13">
-								<a href="#Retirement">
-									<span class="tocnumber">2.7</span> 
-									<span class="toctext">Retirement</span>
-								</a>
-							</li>
+							</li>							
 						</ul>
 					</li>
+
 					<li class="toclevel-1 tocsection-14">
-						<a href="#International_career">
+						<a href="#emigracion">
 							<span class="tocnumber">3</span> 
-							<span class="toctext">International career</span>
+							<span class="toctext">Emigracion a Argentina</span>
 						</a>
 					</li>
 					<li class="toclevel-1 tocsection-15">
-						<a href="#Style_of_play">
+						<a href="#trabajo">
 							<span class="tocnumber">4</span> 
-							<span class="toctext">Style of play</span>
-						</a>
-					</li>
-					<li class="toclevel-1 tocsection-16">
-						<a href="#Personal_life">
-							<span class="tocnumber">5</span> 
-							<span class="toctext">Personal life</span>
-						</a>
-					</li>
-					<li class="toclevel-1 tocsection-17">
-						<a href="#Career_statistics">
-							<span class="tocnumber">6</span> 
-							<span class="toctext">Career statistics</span>
+							<span class="toctext">Desempenyo Profesionales</span>
 						</a>
 						<ul>
-							<li class="toclevel-2 tocsection-18">
-								<a href="#Club">
-									<span class="tocnumber">6.1</span> 
-									<span class="toctext">Club</span>
+							<li class="toclevel-2 tocsection-16">
+								<a href="#freelancer">
+									<span class="tocnumber">4.1</span> 
+									<span class="toctext">Freelancer</span>
 								</a>
 							</li>
-							<li class="toclevel-2 tocsection-19">
-								<a href="#International">
-									<span class="tocnumber">6.2</span> 
-									<span class="toctext">International</span>
+							<li class="toclevel-2 tocsection-17">
+								<a href="#repartidor">
+									<span class="tocnumber">4.2</span> 
+									<span class="toctext">Repartidor</span>
 								</a>
-								<ul>
-									<li class="toclevel-3 tocsection-20">
-										<a href="#International_goals">
-											<span class="tocnumber">6.2.1</span> 
-											<span class="toctext">International goals</span>
-										</a>
-									</li>
-								</ul>
 							</li>
+							<li class="toclevel-3 tocsection-18">
+								<a href="#metas">
+									<span class="tocnumber">4.3</span> 
+									<span class="toctext">Metas Futuras</span>
+								</a>
+							</li>							
 						</ul>
 					</li>
+					<li class="toclevel-1 tocsection-19">
+						<a href="#estilo_de_trabajo">
+							<span class="tocnumber">5</span> 
+							<span class="toctext">Estilo de Trabajo</span>
+						</a>
+					</li>
+					<li class="toclevel-1 tocsection-20">
+						<a href="#vida_personal">
+							<span class="tocnumber">6</span> 
+							<span class="toctext">Vida Personal</span>
+						</a>
+					</li>
+					
 					<li class="toclevel-1 tocsection-21">
-						<a href="#Honours">
+						<a href="#logros">
 							<span class="tocnumber">7</span> 
-							<span class="toctext">Honours</span>
+							<span class="toctext">Logros</span>
 						</a>
 					</li>
 					<li class="toclevel-1 tocsection-22">
-						<a href="#References">
+						<a href="#referencias">
 							<span class="tocnumber">8</span> 
-							<span class="toctext">References</span>
+							<span class="toctext">Referencias</span>
 						</a>
 					</li>
 					<li class="toclevel-1 tocsection-23">
-						<a href="#External_links">
+						<a href="#otros_links">
 							<span class="tocnumber">9</span> 
-							<span class="toctext">External links</span>
+							<span class="toctext">Otros Links</span>
 						</a>
 					</li>
 				</ul>
 			</div>
 		</div>
-
-		<div style='grid-area:d'>
-			<h2>
-				<span class="mw-headline" id="Juventud">Juventud</span>				
-			</h2>
-			<p>Ivan Guillermo Lopez nació el 24 de Febrero 1991 en 
-				<a href="https://en.wikipedia.org/wiki/Maracaibo" title="Maracaibo">Maracaibo</a>, la capital del estado 
-				<a href="https://en.wikipedia.org/wiki/Zulia" title="Zulia">Zulia</a> en 
-				<a href="https://en.wikipedia.org/wiki/Venezuela" title="Venezuela">Venezuela</a>. Sus padres son Ivan Lopez Pinto (1942), ingeniero civil y Zulima Pedreanez Rubio es economista (1955). Su hermana mayor, Fabiana Estefania Lopez Pedreanez, ingeniero metalúrgico, nació en 1988. Su hermano menor Ruben Ernesto Lopez Pedreanez, ingeniero en 1994.
-
-				Nació en Maracaibo por iniciativa de su madre que es oriunda de alla; pero toda su juventud la vivió en el pueblo natal de padre, 
-				<a href="https://en.wikipedia.org/wiki/Guama" title="Guama">Guama</a>
-				, en el estado Yaracuy. Estudio preescolar en el colegio de monjas Maria Santisima en San Pablo, un pueblo aledaño a Guama. El resto de su etapa escolar, primaria y secundaria, la cursó en el Colegio “Fray Luis Amigo”, en la capital del estado, San Felipe. Durante este tiempo el joven Ivan comenzo a practicar  lo que ha sido parte de toda su vida de una u otra manera, el futbol
-
 				
-			</p>
+		<!--BIOGRAFIA-->
+		<div id='biografia'>
 			<h2>
-				<span class="mw-headline" id="Club_career">Club career</span>
-			</h2>	
-			<h3>
-				<span class="mw-headline" id="Chemnitzer_FC">Universidad Central de Venezuela
-				</span>
-			</h3>
-
-			<p>
-				Ballack's parents sent him to train with the side at age seven. He later moved on to FC Karl-Marx-Stadt (renamed 
-				<a href="https://en.wikipedia.org/wiki/Chemnitzer_FC" title="Chemnitzer FC">Chemnitzer FC</a> in 1990). His father had played second-division football himself in Germany. Unusual for his early age was Ballack's ability to use both feet with equal authority.
-			</p>
-			<p>In 1995, Ballack earned his first professional contract, thanks to his performances in the role of central midfielder. He was dubbed the "Little Kaiser", in reference to 
-				<a href="https://en.wikipedia.org/wiki/Franz_Beckenbauer" title="Franz Beckenbauer">Franz Beckenbauer</a>
-				, who was nicknamed "<i>Der Kaiser</i>". His professional debut came on 4 August 1995, on the first day of the new <a href="https://en.wikipedia.org/wiki/2._Bundesliga" title="2. Bundesliga">2. Bundesliga</a> season. Chemnitz lost the game 2–1, against <a href="https://en.wikipedia.org/wiki/Lokomotive_Leipzig" class="mw-redirect" title="Lokomotive Leipzig">VfB Leipzig</a>.<sup id="cite_ref-7" class="reference"><a href="#cite_note-7">&#91;7&#93;</a></sup> At the end of the season, during which Ballack made 15 appearances, Chemnitz were relegated to the multi-tiered, regional <a href="https://en.wikipedia.org/wiki/Regionalliga_Nordost" title="Regionalliga Nordost">third division</a>.<sup id="cite_ref-club_and_country_stats_5-1" class="reference"><a href="#cite_note-club_and_country_stats-5">&#91;5&#93;</a></sup> The following season, Ballack became a regular first-team player as Chemnitz missed out on an immediate return to the Bundesliga. He did not miss a game and scored ten goals for the "Sky Blues". It was not enough for Chemnitz to be promoted, but in the summer of 1997, coach <a href="https://en.wikipedia.org/wiki/Otto_Rehhagel" title="Otto Rehhagel">Otto Rehhagel</a> of just-promoted <a href="https://en.wikipedia.org/wiki/1._FC_Kaiserslautern" title="1. FC Kaiserslautern">1. FC Kaiserslautern</a> signed Ballack at their return to top flight football.<sup id="cite_ref-nearlyman_6-1" class="reference"><a href="#cite_note-nearlyman-6">&#91;6&#93;</a></sup>
-			</p>
-			<h3>
-				<span class="mw-headline" id="1._FC_Kaiserslautern">Autodidactismo
-				</span>
-			</h3>
-			<div class="thumb tright">
-				<div class="thumbinner" style="width:172px;">
-					<a href="https://en.wikipedia.org/wiki/File:Michael_Ballack.JPG" class="image">
-						<img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/75/Michael_Ballack.JPG/170px-Michael_Ballack.JPG" decoding="async" width="170" height="263" class="thumbimage" data-file-width="678" data-file-height="1049" />
-					</a> 
-					<div class="thumbcaption">
-						<div class="magnify">
-					 		<a href="https://en.wikipedia.org/wiki/File:Michael_Ballack.JPG" class="internal" title="Enlarge"></a>
-					 	</div>
-					 	<center>Ballack in action against <a href="https://en.wikipedia.org/wiki/Fulham_F.C." title="Fulham F.C.">Fulham</a> in December 2009.</center>
-					</div>
-				</div>
+				<span class="mw-headline" id="juventud">Juventud</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>				
+			</h2>
+			<div class="toggler">
+				<p id='juventud_text'>
+					Ivan Guillermo Lopez nació el 24 de Febrero 1991 en 
+					<a href="https://es.wikipedia.org/wiki/Maracaibo" title="Maracaibo">Maracaibo</a>, la capital del estado 
+					<a href="https://es.wikipedia.org/wiki/Zulia" title="Zulia">Zulia</a> en 
+					<a href="https://es.wikipedia.org/wiki/Venezuela" title="Venezuela">Venezuela</a>. Sus padres son Ivan Lopez Pinto (1942), ingeniero civil y Zulima Pedreanez Rubio es economista (1955). Su hermana mayor, Fabiana Estefania Lopez Pedreanez, ingeniero metalúrgico, nació en 1988. Su hermano menor Ruben Ernesto Lopez Pedreanez, ingeniero en 1994.
+					<br/>
+					Nació en Maracaibo por iniciativa de su madre que es oriunda de alla; pero toda su juventud la vivió en el pueblo natal de padre, 
+					<a href="https://es.wikipedia.org/wiki/Guama" title="Guama">Guama</a>, en el estado Yaracuy. Estudio preescolar en el colegio de monjas Maria Santisima en San Pablo, un pueblo aledaño a Guama. El resto de su etapa escolar, primaria y secundaria, la cursó en el Colegio “Fray Luis Amigo”, en la capital del estado, San Felipe. Durante este tiempo el joven Ivan comenzo a practicar  lo que ha sido parte de toda su vida de una u otra manera, el futbol.								
+				</p>
 			</div>
-			<p>Ballack 
-				<a href="https://en.wikipedia.org/wiki/Captain_(association_football)" title="Captain (association football)">captained</a> the Chelsea team in the absence of captain John Terry and vice-captain Frank Lampard in a 2–1 win over 
-				<a href="https://en.wikipedia.org/wiki/Newcastle_United_F.C." title="Newcastle United F.C.">Newcastle United</a> on 29 December 2007. Ballack then played his 50th game in a Chelsea shirt in a 2–1 win against 
-				<a href="https://en.wikipedia.org/wiki/Fulham_F.C." title="Fulham F.C.">Fulham</a> in which he scored the winning goal for Chelsea. He also scored the only goal that won the match for Chelsea against 
-				<a href="https://en.wikipedia.org/wiki/Reading_F.C." title="Reading F.C.">Reading</a> to extend the blues' winning streak to a record of nine. And, on 5 March 2007, he scored again, this time against 
-				<a href="https://en.wikipedia.org/wiki/Olympiacos_F.C." title="Olympiacos F.C.">Olympiacos</a> in the Champions League round of 16 in a 3–0 win. He scored the winning goal in the 2–0 win in the second leg of the quarter-finals against 
-				<a href="https://en.wikipedia.org/wiki/Fenerbah%C3%A7e_S.K._(football)" title="Fenerbahçe S.K. (football)">Fenerbahçe</a>, a victory that secured Chelsea a place in the semi-finals.
-			</p>
 
-			<p>Ballack continued to score vital goals and, on 26 April 2008, he scored a header and a penalty to give Chelsea a 2–1 win over Manchester United. He was named 
-				<a href="https://en.wikipedia.org/wiki/Man_of_The_Match" class="mw-redirect" title="Man of The Match">Man of The Match</a> for his performance. It brought the two teams level in the race for the Premier League title only two matchdays before the end of the 
-				<a href="https://en.wikipedia.org/wiki/2007%E2%80%9308_Premier_League" title="2007–08 Premier League">season</a>.
-			</p>
-			<p>
-				The season ended on a low note for Ballack as Chelsea finished runners-up in the League Cup, Premier League and Champions League. This completed another treble horror for Ballack and his club. On 29 June 2008, 
-				<a href="https://en.wikipedia.org/wiki/Germany_national_football_team" title="Germany national football team">Germany</a>, captained by Ballack, lost to 
-				<a href="https://en.wikipedia.org/wiki/Spain_national_football_team" title="Spain national football team">Spain</a> 1–0 in the 
-				<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2008_Final" title="UEFA Euro 2008 Final">final</a> of 
-				<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2008" title="UEFA Euro 2008">UEFA Euro 2008</a>. 
-				This became the second season in Ballack's career after 2002 that he was runner-up for four major trophies.
-			</p>
+			<h2>
+				<span class="mw-headline" id="Estudios">Estudios Universitarios</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
 
-			<div class="thumb tleft">
-				<div class="thumbinner" style="width:222px;">
-					<a href="https://en.wikipedia.org/wiki/File:Michael_Ballack_on_the_ground_FA_Cup_Final_2010_(cropped).jpg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Michael_Ballack_on_the_ground_FA_Cup_Final_2010_%28cropped%29.jpg/220px-Michael_Ballack_on_the_ground_FA_Cup_Final_2010_%28cropped%29.jpg" decoding="async" width="220" height="146" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Michael_Ballack_on_the_ground_FA_Cup_Final_2010_%28cropped%29.jpg/330px-Michael_Ballack_on_the_ground_FA_Cup_Final_2010_%28cropped%29.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Michael_Ballack_on_the_ground_FA_Cup_Final_2010_%28cropped%29.jpg/440px-Michael_Ballack_on_the_ground_FA_Cup_Final_2010_%28cropped%29.jpg 2x" data-file-width="3356" data-file-height="2233" />
-					</a>  
-					<div class="thumbcaption">
-						<div class="magnify">
-							<a href="https://en.wikipedia.org/wiki/File:Michael_Ballack_on_the_ground_FA_Cup_Final_2010_(cropped).jpg" class="internal" title="Enlarge"></a>
+				<h3>
+					<span class="mw-headline" id="UCV"><a href='http://www.ucv.ve/'>Universidad Central de Venezuela</a></span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>				
+				<div class="toggler">
+					<div class="thumb tright">
+						<div class="thumbinner" style="width:172px;">
+							<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" class="image">
+								<img alt="" src="http://www.ucv.ve/fileadmin/templates/core/img/ucv.png" class="thumbimage"/>
+							</a> 
+							<div class="thumbcaption">
+								<center>La Universidad mas importante de Venezuela 
+									<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" title="UCV">UCV</a> 
+								</center>
+							</div>
 						</div>
-						<center>Ballack on the ground with the ankle injury in the <a href="https://en.wikipedia.org/wiki/2010_FA_Cup_Final" title="2010 FA Cup Final">2010 FA Cup Final</a> that eventually ruled him out of the <a href="https://en.wikipedia.org/wiki/2010_FIFA_World_Cup" title="2010 FIFA World Cup">World Cup</a> after a tackle from <a href="https://en.wikipedia.org/wiki/Kevin-Prince_Boateng" title="Kevin-Prince Boateng">Boateng</a> (23).
-						</center>
+					</div>
+					<p>
+						Un mes antes de graduarme como Bachiller presente la prueba interna para en entrar en la Universidad Central de Venezuela a estudiar Fisica en la <a href="http://www.ucv.ve/organizacion/facultades/facultad-de-ciencias.html" target='_blanck' title="Facultad de Ciencias UCV"> Facultad de Ciencias</a>  Mi padre tambien estudio alli y se gradui de Ingeniero Civil. Profesion que ejercio por mas de 30 anyos. La prueba fue presentada por mas de 400 aspirantes de los cuales yo termine conla mayor calificacion, lo que me permitio asegurar mi cupo para empezar a estudiar apenas saliera del Colegio.
+						<br/>
+						En la UCV descubri mi amor a la matematica y la logica. Estuve ahi dos anyos hasta mediados de 2010. La adaptacion a vivir solo en un ciudad grande fue dificil pero realmente obtuve buenas notas en varias materias y sobre todo mucho conocimiento, pero el deseo de continuar en la carrera se fue diluyende semestre a semestre hasta que decidi regresar a mi casa y replantearme que haria.
+					</p>
+				</div>
+
+				<h3>
+					<span class="mw-headline" id="Autoaprendizaje">Autoaprendizaje</span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>
+				<div class='toggler'>
+					<p>
+						Al regresar a Yaracuy decidi replantearme mi futuro y comence a estudiar por mi cuenta cobre diversos temas y areas, realizando diversos cursos online en las plataformas de e-learning que estaban surgiendo por ese entonces como Coursera, edX, Udemy, Khan Academy, Codecademy, etc. Viendo tutoriales y leyendo libros. Tambien comence a prancticar y aprender idiomas, en particular Aleman y Frances, y a perfeccionar mi Ingles, con diversos cursos, softwares y paginas web como Duolingo
+						<a href="https://es.wikipedia.org/wiki/Captain_(association_football)" title="Captain (association football)">captained</a> the Chelsea team in the absence of captain John Terry and vice-captain Frank Lampard in a 2–1 win over 
+						<a href="https://es.wikipedia.org/wiki/Newcastle_United_F.C." title="Newcastle United F.C.">Newcastle United</a> on 29 December 2007. Ballack then played his 50th game in a Chelsea shirt in a 2–1 win against 
+						<a href="https://es.wikipedia.org/wiki/Fulham_F.C." title="Fulham F.C.">Fulham</a> in which he scored the winning goal for Chelsea. He also scored the only goal that won the match for Chelsea against 
+						<a href="https://es.wikipedia.org/wiki/Reading_F.C." title="Reading F.C.">Reading</a> to extend the blues' winning streak to a record of nine. And, on 5 March 2007, he scored again, this time against 
+						<a href="https://es.wikipedia.org/wiki/Olympiacos_F.C." title="Olympiacos F.C.">Olympiacos</a> in the Champions League round of 16 in a 3–0 win. He scored the winning goal in the 2–0 win in the second leg of the quarter-finals against 
+						<a href="https://es.wikipedia.org/wiki/Fenerbah%C3%A7e_S.K._(football)" title="Fenerbahçe S.K. (football)">Fenerbahçe</a>, a victory that secured Chelsea a place in the semi-finals.
+					</p>
+
+					<p>
+						Una pasion que descubri fue mi amor por todo lo realcionado a la tecnologia. Tanto software como hardware. Primeramente me involucre en el mundo del Software Libre y desde 2013 soy usuario de Linux. Desde 2014 utilizo como mi Sistema Operativo principal y casi exclusivo alguna distro de Linux (Ubuntu, Linux Mint, Lubuntu, Puppy Linux, Tails) y comence a descubrir el mundo de la programacion a traves de la linea de comandos y un curso de Javascript que realice en Codecademy
+						<a href="https://es.wikipedia.org/wiki/Man_of_The_Match" class="mw-redirect" title="Man of The Match">Man of The Match</a> for his performance. It brought the two teams level in the race for the Premier League title only two matchdays before the end of the 
+						<a href="https://es.wikipedia.org/wiki/2007%E2%80%9308_Premier_League" title="2007–08 Premier League">season</a>.
+					</p>
+
+					<p>
+						The season ended on a low note for Ballack as Chelsea finished runners-up in the League Cup, Premier League and Champions League. This completed another treble horror for Ballack and his club. On 29 June 2008, 
+						<a href="https://es.wikipedia.org/wiki/Germany_national_football_team" title="Germany national football team">Germany</a>, captained by Ballack, lost to 
+						<a href="https://es.wikipedia.org/wiki/Spain_national_football_team" title="Spain national football team">Spain</a> 1–0 in the 
+						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008_Final" title="UEFA Euro 2008 Final">final</a> of 
+						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008" title="UEFA Euro 2008">UEFA Euro 2008</a>. 
+						This became the second season in Ballack's career after 2002 that he was runner-up for four major trophies.
+					</p>
+				</div>		
+
+				<h3>
+					<span class="mw-headline" id="UNA">Universidad Nacional Abierta</span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>			
+				<div class='toggler'>
+					<div class="thumb tleft">
+						<div class="thumbinner" style="width:222px;">
+							<a href="https://es.wikipedia.org/wiki/Universidad_Nacional_Abierta" class="image">
+								<center>
+									<img alt="UNA" src="http://unasec.com/gifpaginaweb/LOGO.gif" class="thumbimage"/>
+								</center>						
+							</a>  
+							<div class="thumbcaption">
+								<center>La UNA en Venezuela ofrece educacion de calidad sin clases presenciales desde 1977
+								</center>
+							</div>
+						</div>
+					</div>
+					<p>	
+						In the 
+						<a href="https://es.wikipedia.org/wiki/2006_FIFA_World_Cup" title="2006 FIFA World Cup">2006 World Cup</a>, he was unable to start in Germany's first game against 
+						<a href="https://es.wikipedia.org/wiki/Costa_Rica_national_football_team" title="Costa Rica national football team">Costa Rica</a> due to a calf strain, but appeared in the following five matches. Germany were eliminated in the semi-finals, but they managed to clinch third place in a match against 
+						<a href="https://es.wikipedia.org/wiki/Portugal_national_football_team" title="Portugal national football team">Portugal</a>. He was named 
+						<a href="https://es.wikipedia.org/wiki/Man_of_the_Match" class="mw-redirect" title="Man of the Match">Man of the Match</a> in the games against 
+						<a href="https://es.wikipedia.org/wiki/Ecuador_national_football_team" title="Ecuador national football team">Ecuador</a> and 
+						<a href="https://es.wikipedia.org/wiki/Argentina_national_football_team" title="Argentina national football team">Argentina</a>,<sup id="cite_ref-41" class="reference">
+							<a href="#cite_note-41">&#91;41&#93;</a></sup> and was included in 
+						<a href="https://es.wikipedia.org/wiki/FIFA" title="FIFA">FIFA</a>'s <a href="https://es.wikipedia.org/wiki/FIFA_World_Cup_awards#All-Star_Team" title="FIFA World Cup awards">World Cup All Star Team</a> for a second consecutive time. After the tournmanent, Klinsmann stood down as national team head coach and was succeeded by assistant 
+						<a href="https://es.wikipedia.org/wiki/Joachim_L%C3%B6w" title="Joachim Löw">Joachim Löw</a>.
+					</p>
+					<p>	
+						Ballack started and captained Germany in their first game of 
+						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008" title="UEFA Euro 2008">Euro 2008</a> against 
+						<a href="https://es.wikipedia.org/wiki/Poland_national_football_team" title="Poland national football team">Poland</a>.<sup id="cite_ref-42" class="reference">
+							<a href="#cite_note-42">&#91;42&#93;</a></sup> He proved to be an influential figure in the midfield as Germany came back from a shock defeat to 
+						<a href="https://es.wikipedia.org/wiki/Croatia_national_football_team" title="Croatia national football team">Croatia</a> to make it to the 
+						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008_Final" title="UEFA Euro 2008 Final">final</a>, scoring a free kick against 
+						<a href="https://es.wikipedia.org/wiki/Austria_national_football_team" title="Austria national football team">Austria</a> to secure Germany a 1–0 win and a place in the quarter-finals.<sup id="cite_ref-rsssf3_43-0" class="reference"><a href="#cite_note-rsssf3-43">&#91;43&#93;</a></sup> In the quarter-finals, he scored a controversial header against Portugal to make the score 3–1 in their 3–2 win after an assist by 
+						<a href="https://es.wikipedia.org/wiki/Bastian_Schweinsteiger" title="Bastian Schweinsteiger">Bastian Schweinsteiger</a>'s 60th minute free-kick, helping Germany to advance to the semi-finals. Germany went on to beat 
+						<a href="https://es.wikipedia.org/wiki/Turkey_national_football_team" title="Turkey national football team">Turkey</a> 3–2 in the semifinals. Prior to the final, Ballack sustained a calf injury but eventually overcame it in time. Germany, however, ended up losing 1–0 to 
+						<a href="https://es.wikipedia.org/wiki/Spain_national_football_team" title="Spain national football team">Spain</a>. Nevertheless, he was named in the Team of the Tournament.
+					</p>
+				</div>			
+
+				<h3>
+					<span class="mw-headline" id="UPEL">Universidad Pedagogica Experimental Libertador</span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>
+				<div class='toggler'>
+					<p>
+						Between June 2005 and Ballack's retirement, Germany never lost a game when Ballack scored. He scored four goals in the 
+						<a href="https://es.wikipedia.org/wiki/2010_FIFA_World_Cup_qualification_(UEFA)" title="2010 FIFA World Cup qualification (UEFA)">2010 World Cup qualifiers</a>. Ballack, however, missed the 
+						<a href="https://es.wikipedia.org/wiki/2010_FIFA_World_Cup" title="2010 FIFA World Cup">2010 World Cup</a> following a foul by Portsmouth's Kevin-Prince Boateng in the 2010 FA Cup final that caused an ankle injury. Boateng is a former Germany under-21 player and half-brother of current German international 
+						<a href="https://es.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng" title="Jérôme Boateng">Jérôme Boateng</a>. Kevin-Prince Boateng went on to play for 
+						<a href="https://es.wikipedia.org/wiki/Ghana_national_football_team" title="Ghana national football team">Ghana</a> against the German team in the World Cup group stages.<sup id="cite_ref-WC2010-Ankle_44-0" class="reference">
+							<a href="#cite_note-WC2010-Ankle-44">&#91;44&#93;</a></sup> Ballack did travel to South Africa to provide moral support for the national team but he departed after 
+						<a href="https://es.wikipedia.org/wiki/Philipp_Lahm" title="Philipp Lahm">Philipp Lahm</a>, who was appointed team captain due to Ballack's injury, commented after the quarter-finals that he would not relinquish the captaincy back to Ballack. Team manager 
+						<a href="https://es.wikipedia.org/wiki/Oliver_Bierhoff" title="Oliver Bierhoff">Oliver Bierhoff</a> criticized Lahm's comments and clarified the situation, saying, "Philipp Lahm is the World Cup captain and Michael Ballack is still the captain."
+					</p>
+					<div class="thumb tright">
+						<div class="thumbinner" style="width:222px">
+							<a href="https://es.wikipedia.org/wiki/Universidad_Pedag%C3%B3gica_Experimental_Libertador" class="image">
+								<center>
+									<img src="https://i2.wp.com/lanacionweb.com//fotoedicion/2019/07/upell-1.jpg?fit=215%2C183&ssl=1" class="thumbimage"/>
+								</center>						
+							</a>  
+							<div class="thumbcaption">										
+								<center>En la UPEL combine mi pasion por la educacion con mi amor por la Informatica</center>
+							</div>
+						</div>
+					</div>			
+					<p>
+						Germany played strongly in the tournament despite Ballack's absence, including a 4–1 win over 
+						<a href="https://es.wikipedia.org/wiki/England_national_football_team" title="England national football team">England</a> and a 4–0 win over Argentina en route to finishing third, thanks to emerging midfield talents such as 
+					 	<a href="https://es.wikipedia.org/wiki/Sami_Khedira" title="Sami Khedira">Sami Khedira</a>, 
+					 	<a href="https://es.wikipedia.org/wiki/Thomas_M%C3%BCller" title="Thomas Müller">Thomas Müller</a>, and 
+					 	<a href="https://es.wikipedia.org/wiki/Mesut_%C3%96zil" title="Mesut Özil">Mesut Özil</a>. Former German captain Lothar Matthäus suggested that Ballack's absence had allowed these young players to blossom.	
+					</p>
+					<p>
+						Since the 2010 World Cup qualifiers, Ballack had not been called up for any international matches. It was reported that Germany coach Joachim Löw was waiting for Ballack to retire from international football after the 2010 World Cup, however Ballack refused to give up despite a rash of injuries suffered in 2010–11 with Bayer Leverkusen. On 16 June 2011, it was announced that Ballack would no longer be a part of the national team. The 
+						<a href="https://es.wikipedia.org/wiki/German_Football_Association" title="German Football Association">German Football Association</a>(DFB) offered him two 
+					 	<a href="https://es.wikipedia.org/wiki/Exhibition_game" title="Exhibition game">friendlies</a> to reach 100 matches for Germany, which he refused, accusing Löw of disrespecting him ever since his injury dating back to March 2010 and calling the invitation to compete in another two games for Germany a "farce".		  
+					</p>
+				</div>
+
+				<h3>
+					<span class="mw-headline" id="cursos_presenciales">Cursos Presenciales</span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>
+				<div class='toggler'>
+					<h4>
+						<span class="mw-headline" id="inces">Reparacion de Computadoras: INCES</span>
+						<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+					</h4>
+					<div class='toggler'>
+						<p>
+							
+						</p>
+					</div>
+
+					<h4>
+						<span class="mw-headline" id="lamp">LAMP (Linux+Apache+PHP+MySQL)</span>
+						<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+					</h4>
+					<div class='toggler'>
+						<p>
+							
+						</p>
+					</div>
+
+					<h4>
+						<span class="mw-headline" id="smata">Automtizacion: SMATA</span>
+						<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+					</h4>
+					<div class='toggler'>
+						<p>
+							
+						</p>
 					</div>
 				</div>
-			</div>
 
-			<table role="presentation" class="mbox-small plainlinks sistersitebox" style="background-color:#f9f9f9;border:1px solid #aaa;color:#000">
-				<tbody>
-					<tr>
-						<td class="mbox-image">
-							<img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/40px-Wikinews-logo.svg.png" decoding="async" width="40" height="22" class="noviewer" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/60px-Wikinews-logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/80px-Wikinews-logo.svg.png 2x" data-file-width="759" data-file-height="415" />
-						</td>
-						<td class="mbox-text plainlist">Wikinews has related news:
-							<i>
-								<b>
-									<a href="https://en.wikinews.orghttps://en.wikipedia.org/wiki/Football:_Chelsea_confirm_Joe_Cole_and_Michael_Ballack_departure" class="extiw" title="wikinews:Football: Chelsea confirm Joe Cole and Michael Ballack departure"> Football: Chelsea confirm Joe Cole and Michael Ballack departure</a>
-								</b>
-							</i>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<div class="thumb tleft">
-				<div class="thumbinner" style="width:172px;"> 
-					<div class="thumbcaption">
-						<div class="magnify">
-							<a href="https://en.wikipedia.org/wiki/File:Sweden_x_germany_2006.jpg" class="internal" title="Enlarge"></a>
-						</div>Ballack during the match against 
-							<a href="https://en.wikipedia.org/wiki/Sweden_national_football_team" title="Sweden national football team">Sweden</a> at the 
-							<a href="https://en.wikipedia.org/wiki/2006_FIFA_World_Cup" title="2006 FIFA World Cup">2006 World Cup</a>
-					</div>
-				</div>
-			</div>
-
-			<p>	In the 
-				<a href="https://en.wikipedia.org/wiki/2006_FIFA_World_Cup" title="2006 FIFA World Cup">2006 World Cup</a>, he was unable to start in Germany's first game against 
-				<a href="https://en.wikipedia.org/wiki/Costa_Rica_national_football_team" title="Costa Rica national football team">Costa Rica</a> due to a calf strain, but appeared in the following five matches. Germany were eliminated in the semi-finals, but they managed to clinch third place in a match against 
-				<a href="https://en.wikipedia.org/wiki/Portugal_national_football_team" title="Portugal national football team">Portugal</a>. He was named 
-				<a href="https://en.wikipedia.org/wiki/Man_of_the_Match" class="mw-redirect" title="Man of the Match">Man of the Match</a> in the games against 
-				<a href="https://en.wikipedia.org/wiki/Ecuador_national_football_team" title="Ecuador national football team">Ecuador</a> and 
-				<a href="https://en.wikipedia.org/wiki/Argentina_national_football_team" title="Argentina national football team">Argentina</a>,<sup id="cite_ref-41" class="reference">
-					<a href="#cite_note-41">&#91;41&#93;</a></sup> and was included in 
-				<a href="https://en.wikipedia.org/wiki/FIFA" title="FIFA">FIFA</a>'s <a href="https://en.wikipedia.org/wiki/FIFA_World_Cup_awards#All-Star_Team" title="FIFA World Cup awards">World Cup All Star Team</a> for a second consecutive time. After the tournmanent, Klinsmann stood down as national team head coach and was succeeded by assistant 
-				<a href="https://en.wikipedia.org/wiki/Joachim_L%C3%B6w" title="Joachim Löw">Joachim Löw</a>.
-			</p>
-
-			<p>	Ballack started and captained Germany in their first game of 
-				<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2008" title="UEFA Euro 2008">Euro 2008</a> against 
-				<a href="https://en.wikipedia.org/wiki/Poland_national_football_team" title="Poland national football team">Poland</a>.<sup id="cite_ref-42" class="reference">
-					<a href="#cite_note-42">&#91;42&#93;</a></sup> He proved to be an influential figure in the midfield as Germany came back from a shock defeat to 
-				<a href="https://en.wikipedia.org/wiki/Croatia_national_football_team" title="Croatia national football team">Croatia</a> to make it to the 
-				<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2008_Final" title="UEFA Euro 2008 Final">final</a>, scoring a free kick against 
-				<a href="https://en.wikipedia.org/wiki/Austria_national_football_team" title="Austria national football team">Austria</a> to secure Germany a 1–0 win and a place in the quarter-finals.<sup id="cite_ref-rsssf3_43-0" class="reference"><a href="#cite_note-rsssf3-43">&#91;43&#93;</a></sup> In the quarter-finals, he scored a controversial header against Portugal to make the score 3–1 in their 3–2 win after an assist by 
-				<a href="https://en.wikipedia.org/wiki/Bastian_Schweinsteiger" title="Bastian Schweinsteiger">Bastian Schweinsteiger</a>'s 60th minute free-kick, helping Germany to advance to the semi-finals. Germany went on to beat 
-				<a href="https://en.wikipedia.org/wiki/Turkey_national_football_team" title="Turkey national football team">Turkey</a> 3–2 in the semifinals. Prior to the final, Ballack sustained a calf injury but eventually overcame it in time. Germany, however, ended up losing 1–0 to 
-				<a href="https://en.wikipedia.org/wiki/Spain_national_football_team" title="Spain national football team">Spain</a>. Nevertheless, he was named in the Team of the Tournament.
-			</p>
-			<p>Between June 2005 and Ballack's retirement, Germany never lost a game when Ballack scored. He scored four goals in the 
-				<a href="https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_qualification_(UEFA)" title="2010 FIFA World Cup qualification (UEFA)">2010 World Cup qualifiers</a>. Ballack, however, missed the 
-				<a href="https://en.wikipedia.org/wiki/2010_FIFA_World_Cup" title="2010 FIFA World Cup">2010 World Cup</a> following a foul by Portsmouth's Kevin-Prince Boateng in the 2010 FA Cup final that caused an ankle injury. Boateng is a former Germany under-21 player and half-brother of current German international 
-				<a href="https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng" title="Jérôme Boateng">Jérôme Boateng</a>. Kevin-Prince Boateng went on to play for 
-				<a href="https://en.wikipedia.org/wiki/Ghana_national_football_team" title="Ghana national football team">Ghana</a> against the German team in the World Cup group stages.<sup id="cite_ref-WC2010-Ankle_44-0" class="reference">
-					<a href="#cite_note-WC2010-Ankle-44">&#91;44&#93;</a></sup> Ballack did travel to South Africa to provide moral support for the national team but he departed after 
-				<a href="https://en.wikipedia.org/wiki/Philipp_Lahm" title="Philipp Lahm">Philipp Lahm</a>, who was appointed team captain due to Ballack's injury, commented after the quarter-finals that he would not relinquish the captaincy back to Ballack. Team manager 
-				<a href="https://en.wikipedia.org/wiki/Oliver_Bierhoff" title="Oliver Bierhoff">Oliver Bierhoff</a> criticized Lahm's comments and clarified the situation, saying, "Philipp Lahm is the World Cup captain and Michael Ballack is still the captain."
-			</p>
-
-			<div class="thumb tright">
-				<div class="thumbinner" style="width:222px;">
-					<a href="https://en.wikipedia.org/wiki/File:Michael_Ballack_2009_cropped.jpg" class="image">
-						<img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/26/Michael_Ballack_2009_cropped.jpg/220px-Michael_Ballack_2009_cropped.jpg" decoding="async" width="220" height="156" class="thumbimage" data-file-width="449" data-file-height="318" />
-					</a>  
-					<div class="thumbcaption">
-						<div class="magnify">
-							<a href="https://en.wikipedia.org/wiki/File:Michael_Ballack_2009_cropped.jpg" class="internal" title="Enlarge"></a>
-						</div>Michael Ballack in 2009</div>
-					</div>
-				</div>
-				<p>Germany played strongly in the tournament despite Ballack's absence, including a 4–1 win over 
-					<a href="https://en.wikipedia.org/wiki/England_national_football_team" title="England national football team">England</a> and a 4–0 win over Argentina en route to finishing third, thanks to emerging midfield talents such as 
-				 	<a href="https://en.wikipedia.org/wiki/Sami_Khedira" title="Sami Khedira">Sami Khedira</a>, 
-				 	<a href="https://en.wikipedia.org/wiki/Thomas_M%C3%BCller" title="Thomas Müller">Thomas Müller</a>, and 
-				 	<a href="https://en.wikipedia.org/wiki/Mesut_%C3%96zil" title="Mesut Özil">Mesut Özil</a>. Former German captain Lothar Matthäus suggested that Ballack's absence had allowed these young players to blossom.	
-				</p>
-
+			<h2>
+				<span class="mw-headline" id="emigracion">Migracion a Argentina</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
+			<div class='toggler'>
 				<p>
+					
+				</p>				
+			</div>
 
-					Since the 2010 World Cup qualifiers, Ballack had not been called up for any international matches. It was reported that Germany coach Joachim Löw was waiting for Ballack to retire from international football after the 2010 World Cup, however Ballack refused to give up despite a rash of injuries suffered in 2010–11 with Bayer Leverkusen. On 16 June 2011, it was announced that Ballack would no longer be a part of the national team. The 
-					<a href="https://en.wikipedia.org/wiki/German_Football_Association" title="German Football Association">German Football Association</a>(DFB) offered him two 
-				 	<a href="https://en.wikipedia.org/wiki/Exhibition_game" title="Exhibition game">friendlies</a> to reach 100 matches for Germany, which he refused, accusing Löw of disrespecting him ever since his injury dating back to March 2010 and calling the invitation to compete in another two games for Germany a "farce".		  
-				</p>
+			<h2>
+				<span class="mw-headline" id="trabajo">Desempeno Profesional</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
+			<div class='toggler'>
+				<h3>
+					<span class="mw-headline" id="freelancer">Freelancer </span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>
+				<div class='toggler'>
+					
+				</div>
 
-				<h2>
-					<span class="mw-headline" id="Style_of_play">Style of play
-					</span>
-				</h2>
+				<h3>
+					<span class="mw-headline" id='repartidor'>Repartidor </span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>
+				<div class='toggler'>
+					
+				</div>
 
+				<h3>
+					<span class="mw-headline" id="metas">Metas Futuras</span>
+					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				</h3>
+				<div class='toggler'>
+					
+				</div>				
+			</div>
+
+			<h2>
+				<span class="mw-headline" id="estilo_de_trabajo">Estilo de Trabajo</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
+			<div class='toggler'>
 				<p>Ballack is considered to be one of the most complete and versatile 
-					<a href="https://en.wikipedia.org/wiki/Midfielder" title="Midfielder">midfielders</a> of his generation;
+					<a href="https://es.wikipedia.org/wiki/Midfielder" title="Midfielder">midfielders</a> of his generation;
 					<sup id="cite_ref-51" class="reference">
 						<a href="#cite_note-51">&#91;51&#93;</a>
 					</sup> he played in several midfield positions during his career, and was noted for his powerful shot with both feet.
@@ -658,121 +929,169 @@
 					</sup>
 				</p>
 				<p>
-
 					On a technical level, he was a commanding, physically strong and aggressive player, with excellent passing range, who moved the ball efficiently.
 					<sup id="cite_ref-Ballack_retires_3-2" class="reference">
 						<a href="#cite_note-Ballack_retires-3">&#91;3&#93;</a>
-					</sup> The technicality and intelligence of his game was extremely high. He started his football career as a <a href="https://en.wikipedia.org/wiki/Sweeper_(association_football)" class="mw-redirect" title="Sweeper (association football)">sweeper</a>,
+					</sup> The technicality and intelligence of his game was extremely high. He started his football career as a <a href="https://es.wikipedia.org/wiki/Sweeper_(association_football)" class="mw-redirect" title="Sweeper (association football)">sweeper</a>,
 					<sup id="cite_ref-52" class="reference">
 						<a href="#cite_note-52">&#91;52&#93;</a>
 					</sup> 
 					but when he moved to Leverkusen in 1999, then-coach Christoph Daum moved him to midfield. He adapted to a deeper role during his spell at Chelsea.
 				</p>
 				<p>
-
-						In 2011, Ballack's international coach at the time, Joachim Löw, praised him, describing him as a player who "exudes authority and calm on the pitch".
+					In 2011, Ballack's international coach at the time, Joachim Löw, praised him, describing him as a player who "exudes authority and calm on the pitch".
 				</p>
 				<table class="wikitable" style="text-align: center;font-size:90%">
-			  <tbody>
-					<tr>
-						<th colspan="3">Club performance</th>
-						<th colspan="2">League</th>
-						<th colspan="2">Cup</th>
-						<th colspan="2">League Cup</th>
-						<th colspan="2">Continental</th>
-						<th colspan="2">Other</th>
-						<th colspan="2">Total</th>
-						<th rowspan="3"><abbr title="Reference">Ref.</abbr></th>
-					</tr>
-					<tr>
-						<th>Club</th>
-						<th>League</th>
-						<th>Season</th>
-						<th>Apps</th>
-						<th>Goals</th>
-						<th>Apps</th>
-						<th>Goals</th>
-						<th>Apps</th>
-						<th>Goals</th>
-						<th>Apps</th>
-						<th>Goals</th>
-						<th>Apps</th>
-						<th>Goals</th>
-						<th>Apps</th>
-						<th>Goals</th>
-					</tr>
-					<tr>
-						<th colspan="3">Germany</th>
-						<th colspan="2">League</th>
-						<th colspan="2">
-							<a href="https://en.wikipedia.org/wiki/DFB-Pokal" title="DFB-Pokal">DFB-Pokal</a>
-						</th>
-						<th colspan="2">
-							<a href="https://en.wikipedia.org/wiki/DFB-Ligapokal" class="mw-redirect" title="DFB-Ligapokal">DFB-Ligapokal</a>
-						</th>
-						<th colspan="2">
-							<a href="https://en.wikipedia.org/wiki/UEFA" title="UEFA">Europe</a>
-						</th>
-						<th colspan="2">
-							Other
-						</th>
-						<th colspan="2">Total</th>
-					</tr>
-					<tr>
-						<td rowspan="2">Chemnitzer FC II</td>
-						<td rowspan="2">Oberliga Nordost Süd</td>
-						<td>1994–95</td>
-						<td>7</td>
-						<td>2</td>
-						<td rowspan="2" colspan="8">—</td>
-						<td><b>7</b></td>
-						<td><b>2</b></td>
-						<td><14</td>
-					</tr>
-					<tr>
-						<td>1995–96</td>
-						<td>11</td>
-						<td>3</td>
-						<td><b>11</b></td>
-						<td><b>3</b></td>
-						<td>14</td>
-					</tr>
-					<tr>
-						<th colspan="3">Chemnitzer FC II totals</th>
-						<th>18</th>
-						<th>5</th>
-						<th colspan="8">—</th>
-						<th>18</th>
-						<th>5</th>
-						<th>—</th>
-					</tr>
-					<tr>
-						<td rowspan="2"><a href="https://en.wikipedia.org/wiki/Chemnitzer_FC" title="Chemnitzer FC">Chemnitzer FC</a>
-						</td>
-						<td>
-							<a href="https://en.wikipedia.org/wiki/2._Bundesliga" title="2. Bundesliga">2. Bundesliga</a>
-						</td>
-						<td>
-							<a href="/w/index.php?title=1995%E2%80%9396_Chemnitzer_FC_season&amp;action=edit&amp;redlink=1" class="new" title="1995–96 Chemnitzer FC season (page does not exist)">1995–96</a>
-						</td>
-						<td>15</td>
-						<td>0</td>
-						<td>1</td>
-						<td>0</td>
-						<td rowspan="2" colspan="6">—</td>
-						<td><b>16</b></td>
-						<td><b>0</b></td>
-						<td>
-							<sup id="cite_ref-60" class="reference">
-								<a href="#cite_note-60">&#91;60&#93;</a></sup><sup id="cite_ref-61" class="reference"><a href="#cite_note-61">&#91;61&#93;</a>
-							</sup>
-						</td>
-					</tr>
-			  </tbody>
-			</table>
+					<style type="text/css">
+						.wikitable {
+						background-color:#f8f9fa;
+						color:#202122;
+						margin: 1em 0;
+						border: 1px solid  #a2a9b1;
+						border-collapse: collapse;
+						}
+
+					</style>
+				  <tbody>
+						<tr>
+							<th colspan="3">Club performance</th>
+							<th colspan="2">League</th>
+							<th colspan="2">Cup</th>
+							<th colspan="2">League Cup</th>
+							<th colspan="2">Continental</th>
+							<th colspan="2">Other</th>
+							<th colspan="2">Total</th>
+							<th rowspan="3"><abbr title="Reference">Ref.</abbr></th>
+						</tr>
+						<tr>
+							<th>Club</th>
+							<th>League</th>
+							<th>Season</th>
+							<th>Apps</th>
+							<th>Goals</th>
+							<th>Apps</th>
+							<th>Goals</th>
+							<th>Apps</th>
+							<th>Goals</th>
+							<th>Apps</th>
+							<th>Goals</th>
+							<th>Apps</th>
+							<th>Goals</th>
+							<th>Apps</th>
+							<th>Goals</th>
+						</tr>
+						<tr>
+							<th colspan="3">Germany</th>
+							<th colspan="2">League</th>
+							<th colspan="2">
+								<a href="https://es.wikipedia.org/wiki/DFB-Pokal" title="DFB-Pokal">DFB-Pokal</a>
+							</th>
+							<th colspan="2">
+								<a href="https://es.wikipedia.org/wiki/DFB-Ligapokal" class="mw-redirect" title="DFB-Ligapokal">DFB-Ligapokal</a>
+							</th>
+							<th colspan="2">
+								<a href="https://es.wikipedia.org/wiki/UEFA" title="UEFA">Europe</a>
+							</th>
+							<th colspan="2">
+								Other
+							</th>
+							<th colspan="2">Total</th>
+						</tr>
+						<tr>
+							<td rowspan="2">Chemnitzer FC II</td>
+							<td rowspan="2">Oberliga Nordost Süd</td>
+							<td>1994–95</td>
+							<td>7</td>
+							<td>2</td>
+							<td rowspan="2" colspan="8">—</td>
+							<td><b>7</b></td>
+							<td><b>2</b></td>
+							<td><14</td>
+						</tr>
+						<tr>
+							<td>1995–96</td>
+							<td>11</td>
+							<td>3</td>
+							<td><b>11</b></td>
+							<td><b>3</b></td>
+							<td>14</td>
+						</tr>
+						<tr>
+							<th colspan="3">Chemnitzer FC II totals</th>
+							<th>18</th>
+							<th>5</th>
+							<th colspan="8">—</th>
+							<th>18</th>
+							<th>5</th>
+							<th>—</th>
+						</tr>
+						<tr>
+							<td rowspan="2"><a href="https://es.wikipedia.org/wiki/Chemnitzer_FC" title="Chemnitzer FC">Chemnitzer FC</a>
+							</td>
+							<td>
+								<a href="https://es.wikipedia.org/wiki/2._Bundesliga" title="2. Bundesliga">2. Bundesliga</a>
+							</td>
+							<td>
+								<a href="/w/index.php?title=1995%E2%80%9396_Chemnitzer_FC_season&amp;action=edit&amp;redlink=1" class="new" title="1995–96 Chemnitzer FC season (page does not exist)">1995–96</a>
+							</td>
+							<td>15</td>
+							<td>0</td>
+							<td>1</td>
+							<td>0</td>
+							<td rowspan="2" colspan="6">—</td>
+							<td><b>16</b></td>
+							<td><b>0</b></td>
+							<td>
+								<sup id="cite_ref-60" class="reference">
+									<a href="#cite_note-60">&#91;60&#93;</a></sup><sup id="cite_ref-61" class="reference"><a href="#cite_note-61">&#91;61&#93;</a>
+								</sup>
+							</td>
+						</tr>
+				  </tbody>
+				</table>
 			</div>
 
-						
+			<h2>
+				<span class="mw-headline" id="vida_personal">Vida Personal</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
+			<div class='toggler'>
+				<p>
+					
+				</p>				
+			</div>
+
+			<h2>
+				<span class="mw-headline" id="logros">Logros</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
+			<div class='toggler'>
+				<p>
+					
+				</p>				
+			</div>						
+		</div>
+
+		<div id='otros' style="background:'red'; height:15vh;">
+			<h2>
+				<span class="mw-headline" id="referencias">Referencias</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
+			<div class='toggler'>
+				<p>
+					
+				</p>				
+			</div>	
+
+			<h2>
+				<span class="mw-headline" id="otros_links">otros_links</span>
+				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			</h2>
+			<div class='toggler'>
+				<p>
+					
+				</p>				
+			</div>	
 		</div>
 	</div>
 </body>

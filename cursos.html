@@ -20,22 +20,11 @@
       <meta name="keywords" content="Ivan Lopez Pedreanez, Ivan Guillermo Lopez, Ivan Guillermo Lopez Pedreanez, Programador web, frontend developer, frontend, matematico">
       <meta name="author" content="ivan lopez pedreanez">
       
-      <meta property="og:title" content="Ivan Lopez Pedreanez">
-      <meta property="og:image" content="imgx/ivanlopezpedreanez.jpg">
-      <meta property="og:description" content="Website personal de Ivan Lopez Pedreanez">
-      <meta property="og:url" content="http://ivanlopezpedreanez.net.ve">
       
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@ivanlopezped" />
-      <meta name="twitter:title" content="Ivan Lopez Pedreanez" />
-      <meta name="twitter:description" content="Website personal de Ivan Lopez Pedreanez" />
-      <meta name="twitter:image" content="imgx/ivanlopezpedreanez.jpg" />
-      <meta name="twitter:image:alt" content="Ivan Lopez Pedreanez" />
-      
-      <meta content='Website personal de Ivan Lopez Pedreanez' name='description'/><!--<meta content='3000' http-equiv='refresh'/>-->
+      <meta content='Cursos realizados por Ivan Lopez Pedreanez' name='description'/>
       <title>Mis Cursos</title>
     
-    <link async="async" href="" rel="stylesheet" />
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
     <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
@@ -52,10 +41,10 @@
 
 </script>
 <style>
-    h3.post-title {display:none;}
+    
     #pptx {background-color:white;width:100%}
     .courses{display:flex; flex-flow: row wrap; justify-content:flex-start; align-content: space-between; align-items: center}
-    .pptx_title {display:; font-size:42px; text-align:center;  font-family:;  text-shadow:;}
+    .pptx_title {display:; font-size:42px; text-align:center;  font-family: Barriecito;  text-shadow:;}
 
     button{width:23vw;} 
       button h3{font-size: 15px; font-weight:600; text-shadow: 1px 1px #000000aa; color: #eee;}
@@ -63,23 +52,24 @@
     .btn-leyenda{width:13.3vw; margin:1vh 1vw;}
 
     #leyenda{margin: 2vh 1vw;}
-    .categoria{font-size: 0.94vw; font-weight: 600;}
+    .categoria cat_1{font-size: 0.94vw; font-weight: 600;}
     .img_pptx {width:;display:inline-block;}
     .img_pptx:hover {opacity:0.5;}
 
     .img_codecademy{display:inline-block; width:800px; height: 380px;margin:2%}
 
-    .pptx_btn {display:inline-block; margin:0.5%;}
+    .curso_btn {display:inline-block; margin:0.5%;}
 
     h3{font-size: 14px;}
     img{width: 20vw; height:;padding:0px;}
     i{font-size: 8px;}
+    .navbar-link i{font-size: 12px;}
     p{font-size: 14px;}
 
     .other_courses button{width:45vw; border:0.81px solid #000000aa; background: white; padding:12px;margin-left:2vw; margin-top:2vh; color:black; }
     .oth_cours_btn {width:45vw; border:0.81px solid #000000aa; background: white; padding:12px;margin-left:2vw; margin-top:2vh; color:black; }
 
-    .talleres{display: flex; flex-flow: row wrap;font-size: 44px;}
+    .talleres{display: flex; flex-flow: row wrap;}
 
     .taller{
       display: flex; 
@@ -90,13 +80,11 @@
       background: #eee; 
       border-radius: ;
       border: 2px solid var(--color); 
-
-
-
     }
         .taller img{height:100px;width:120px;border: 1px solid #777;}
         
-    .partes{display: flex; justify-content: flex-start; flex-flow: column wrap;  align-content: space-between; align-items: start}
+    .partes{display: flex; justify-content: flex-start; flex-flow: column wrap;  align-content: space-between; align-items: start;}
+    .partes i{font-size: 12px;}
     .vop{width:40px;height: 40px; display: inline-block;margin:1.5vw;}
 
      @media only screen and (max-width: 800px) {
@@ -107,56 +95,116 @@
               .taller{width:42vw; display: flex; flex-flow: column nowrap; justify-content:flex-start; align-content: space-between; align-items: center; }
               .taller img{display:none; height:15px;width:20px;} 
       }
-
-
 </style>
 </head>
 
 
 <body>
+  <!-- Modales -->
+            <div id="id01" class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <header class="containerheader">
+                    <a href="#pptxs" class="closebtn">×</a>
+                    <h2 id='cert_shower_t'>ssss</h2>
+                  </header>
+                  <div class="containercontainer">
+                    <iframe id='cert_shower' 
+                            src="imgx/cursos/calculo1.png" 
+                            frameborder="0" width="100%" height="420px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+                    </iframe>
+                  </div>
+                  <footer class="containerfooter">
+                    <a href='' id='cert_shower_go'><p>Ir al sitio</p></a>
+                    <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
+                    </div>
+                  </footer>
+                </div>
+              </div>
+            </div>
+            <!-- Fin Modales -->
+
+            <style type="text/css">
+                 .modal { 
+            display:none; 
+            position: absolute; 
+            top:0vh;
+            padding-top:0.5vh; 
+            left: 0px;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: #000; 
+            z-index:180;
+          }
+
+          #cert_shower_t{color:white;}
+
+          /* Display the modal when targeted */
+          .modal:target {display: block;position: absolute;}
+          /* The modal box */
+          .modal-dialog {display: block;vertical-align: middle;margin-top:30px;}
+          /* The modal's content */
+          .modal-dialog .modal-content {
+            background-color: #232323;  border: 1px #777 solid; width: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 12px 12px;            
+          }
+    
+          /* The button used to close the modal */
+          .closebtn {text-decoration: none;float: right;font-size: 25px;font-weight: bold;color: black;}
+          .closebtn:hover, .closebtn:focus {color: var(--rojo);text-decoration: none;cursor: pointer;}
+          .containercontainer {padding: 2px 16px;}
+            </style>
+
+            
+
+
       <nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
-              <div class="container-fluid" id='fluid' style='display:flex;'>
-                <div class="navbar-header" style='display:flex; height:100%'>
-                  
-                  <a class="navbar-brand" href="#" style="background-color:var(--color); color:black;font-weight: 400;"><b>Hola!</b></a>
-          
-              <a id='navYo' class="navbar-link" href="#quote" style="color:white; text-decoration: none;align-self: center"><b>Ivan Guillermo</b>
-                    <img alt='yo' src="imgx/ivan512.png"/>
+          <div class="container-fluid" id='fluid' style='display:flex;'>
+              <div class="navbar-header" style='display:flex; height:100%'>             
+                  <a class="navbar-brand" 
+                    href="https://ivanguillermo.github.io" 
+                    style="background-color:var(--color); color:black;font-weight: 400;">
+                    <b>Home</b>
                   </a>
-                      
+          
+                  <a id='nav_uno' 
+                     class="navbar-link" 
+                     href="https://ivanguillermo.github.io" 
+                     style="color:white; text-decoration: none;align-self: center">
+                     <b>Ivan Guillermo</b>
+                     <img alt='yo' src="imgx/ivan512.png"/>
+                  </a>                      
                              
-                  <a id='navPro' class="navbar-link" href="#cursoscertificados" style="text-decoration: none;align-self: center">
-                    
+                  <a id='nav_dos' class="navbar-link" href="#cursos_certificados" style="text-decoration: none;align-self: center">                    
                     <i>Certificados</i>
                   </a>
-                  <a id='navMat' class="navbar-link" href="#matematico" style="text-decoration: none;align-self: center">
-                    <i>Codecademy</i>
-                    
+                  <a id='nav_tres' class="navbar-link" href="#codecademy" style="text-decoration: none;align-self: center">
+                    <i>Codecademy</i>                    
                   </a>
 
-                  <a id='navTra' class="navbar-link" href="#translator" style="text-decoration: none;align-self: center">
-                    <i>No Certificados</i>
-                    
+                  <a id='nav_cua' class="navbar-link" href="#nocertificados" style="text-decoration: none;align-self: center">
+                    <i>No certificado</i>                    
                   </a>
 
-                  <a id='navEdu' class="navbar-link" href="#otros" style="text-decoration: none;align-self: center">
-                    <i>Otros</i>
-                    
-                  </a>
-
-                  
+                  <a id='nav_cin' class="navbar-link" href="#otros" style="text-decoration: none;align-self: center">
+                    <i>Otros</i>                    
+                  </a>                  
                   
                   <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar">
-            </span>
-            </button>
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                  </button>
                 </div>
+
               <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:1.5%">
                   <li>
-                    <a href="contacto.html" style="background-color:var(--color);color:white"><b>Contacto</b></a>
+                    <a href="contacto.html" style="background-color:var(--color); color:white">
+                      <b>Contacto</b>
+                    </a>
                   </li>
-                </ul>
+              </ul>
 
               <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav">                                     
@@ -165,10 +213,12 @@
                     style="">Algo mas </a> 
                     <ul class="dropdown-menu">
                       <li><a href="mis_gustos.html">Mis Gustos</a></li>
-                      <li class="divider" role="separator"></li>
-                      <li><a href="cursos.html">Cursos</a></li>
+
                       <li class="divider" role="separator"></li>
                       <li ><a href="bio.html">Biografia</a></li>
+
+                      <li class="divider" role="separator"></li>
+                      <li ><a href="https://ivanguillermo.github.io/informaticos15">Informaticos15</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -183,401 +233,130 @@
             --orange:#ff9800;
             --magenta:#D1215F;
             --green: #a3bf34;
-          }
+           }
               html{font-family: 'Roboto'; font-weight: 500}
               body{overflow-x:hidden;}
               ul {list-style:none;}
 
-        .flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
-              
+            .flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
+            .navbar{min-height:8vh;}
 
-          .navbar{min-height:8vh;}
+            .navbar-link{display:flex; flex-flow: row wrap; justify-content: center; align-content: center; align-content: center;height:4vh; width:10vw; padding:1.5vw;font-size:1vw;}
+            .color {color:var(--color);}
+            .navbar-link {height:4vh; display:flex;}
+            .navbar-link i{color:var(--color); align-self: center}
+            
+            .navbar-link img{width: 44px;height:44px;display:none;padding:0px 2px;}
 
-          .navbar-header{}
-          .navbar-brand{;}
-        .navbar-link{display:flex; flex-flow: row wrap; justify-content: center; align-content: center; align-content: center;height:4vh; width:10vw; padding:1.5vw;font-size:1vw;}
-        .color {color:var(--color);}
-        .navbar-link {height:4vh; display:flex;}
-        .navbar-link i{color:var(--color); align-self: center}
+            .dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
+            .dropdown-toggle{width:190%; color:white; align-self: flex-end; text-align: center}    
         
-        .navbar-link img{width: 44px;height:44px;display:none;padding:0px 2px;}
+           @media only screen and (max-width: 800px) {
+            .navbar{width:100vw;}
+            .container-fluid{width:100vw;position:relative;left:0px;}
+            #nav_uno{display:inline-flex;}
 
-        .dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
-        .dropdown-toggle{width:190%; color:white; align-self: flex-end; text-align: center}
+            .navbar-toggle {}
+            .navbar-brand{width:15vw;font-size: 2.5vw; text-align: center}
+            .navbar-link i{display:none;}
+            .navbar-link img{display:block; padding:0vh;margin-left:1vw; width:7vw;height:7vw;}
+            .dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
+            .dropdown{}
+            #contacto{display:;width:15vw;position:static;left:85vw;}     
+            } 
 
-        
-        
-        @media only screen and (max-width: 800px) {
-          .navbar{width:100vw;}
-          .container-fluid{width:100vw;position:relative;left:0px;}
-          #navYo{display:inline-flex;}
-
-          .navbar-toggle {}
-          .navbar-brand{width:15vw;font-size: 2.5vw; text-align: center}
-          .navbar-link i{display:none;}
-          .navbar-link img{display:block; padding:0vh;margin-left:1vw; width:7vw;height:7vw;}
-          .dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
-          .dropdown{}
-          #contacto{display:;width:15vw;position:static;left:85vw;}     
-          }   
-
+            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700; text-shadow: -2.5px 3px var(--color); font-size: 23px;}
+            #selector option{color:white;}
         </style>
 
-  <div id="pptx" class="container" id='cursoscertificados'>
+  <div id="pptx" class="container">
     <br/>
     <br/>
     <br/>
     <h1 class="pptx_title">Mis Cursos Realizados</h1>
 
-    <b>Ordenar por:</b>
-    <select style='color:#fff; font-weight: 600; text-shadow: -0.5px 1px var(--color); font-size: 20px;'>
+    <label for="orden">Ordenar por:</label>
+
+    <select name='orden' id='selector'>
         <option value="escuela">Escuela</option>
         <option value="area">Area</option>
         <option value="anyo">Ano</option>
         <option value="relevancia">Relevancia</option>
     </select>
+    <input type="submit" value="Submit">
 
     <center id='leyenda'>
-      <button type="button" class="btn btn-info btn-leyenda"><span class='categoria'><a onclick='misCursos'>Ciencias</a></span></button>
-      <button type="button" class="btn btn-success btn-leyenda"><span class='categoria'>Programacion</span></button>
-      <button type="button" class="btn btn-default btn-leyenda"><span class='categoria'>Matematica</span></button>
-      <button type="button" class="btn btn-danger btn-leyenda"><span class='categoria'>Filosofia</span></button>
-      <button type="button" class="btn btn-warning btn-leyenda"><span class='categoria'>Arte</span></button>
+      <button id='cat_0' data-cat='0' type="button" class="btn btn-info btn-leyenda"><span class='categoria' >Escuela</span></button>
+      <button id='cat_1' data-cat='1' type="button" class="btn btn-success btn-leyenda"><span class='categoria' >Area</span></button>
+      <button id='cat_2' data-cat='2' type="button" class="btn btn-default btn-leyenda"><span class='categoria' >Ano</span></button>
+      <button id='cat_3' data-cat='3' type="button" class="btn btn-danger btn-leyenda"><span class='categoria' >Relevancia</span></button>
+      <button id='cat_4' data-cat='4' type="button" class="btn btn-warning btn-leyenda"><span class='categoria' >Arte</span></button>
     </center>
+    
 
-    <h2>
-      <a href="https://www.coursera.org/user/375131001b1b0e543d612f357dbbc8b5" id='tit_0'>
+    <!----------------------------------------------COURSERA--------------------------------------------------->
+    
+
+    <h2 id='cursos_certificados'>
+      <a id='tit_0' target="_blank" href="https://www.coursera.org/user/375131001b1b0e543d612f357dbbc8b5" >
         <img src='imgx/cursos/coursera.svg'/>
       </a>
     </h2>
-    <div class="courses">
-      
-
-        <!--Calculo I-->
-        <button type="button" class="btn btn-default btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/calculo1.png" />
-        </a><h3>Calculo I</h3>
-        </button>
-
-         <!--Calculo II-->
-        <button type="button" class="btn btn-default btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/calculo2.png"/>
-        </a><h3>Calculo II</h3>
-        </button>      
-
-        <!--Game Theory-->
-        <button type="button" class="btn btn-default btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/game_theory.png"/>
+    <div id='courses0' class="courses" ></div>
+    
+      <!----------------------------------------------SAYLOR--------------------------------------------------->
+      <h2>
+        <a id='tit_1' target='_blank' href="https://www.saylor.org" >
+          <img style='width:140px;' src='imgx/cursos/saylor.svg'/>
         </a>
-        <br/><h3>Game Theory</h3>
-        </button>
+      </h2>
+        <div id='courses1' class="courses"></div>
 
-        <!--Math Philosophy-->
-        <button type="button" class="btn btn-default btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf">  
-        <img class="img_pptx" src="imgx/cursos/mathematical_philosophy.png"/>
-        </a>
-        <br/><h3>Math Philosophy</h3>
-        </button>
-
-        <!--Ancient Greeks-->
-        <button type="button" class="btn btn-warning btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/ancient_greeks.png"/>
-        </a>
-        <br/><h3>Ancient Greeks</h3>
-        </button>
-
-        <!--Vital Signs--> 
-        <button type="button" class="btn btn-warning btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-          <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf">  
-            <img class="img_pptx" src="imgx/cursos/vital_signs.png"/>
-        </a>
-        <br/><h3>Vital Signs</h3>
-        </button>     
-
-        <!--Derechos del Hombre-->
-        <button type="button" class="btn btn-warning btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/droit_del_homme.png"/>
-        </a>
-        <br/><h3>Derechos del Hombre</h3>
-        </button>
-
-        <!--Languages-->
-        <button type="button" class="btn btn-warning btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-          <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf">  
-            <img class="img_pptx" src="imgx/cursos/human_languages.png"/>
-          </a>
-        <br/><h3>Languages</h3>
-        </button>
-
-      <!--Philosophy and Science-->
-        <button type="button" class="btn btn-danger btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf">  
-        <img class="img_pptx" src="imgx/cursos/philosophy_and_sciences.png"/>
-        </a>
-        <br/><h3>Philosophy and Science</h3>
-        </button>
-         
-        <!--Kierkegaard--> 
-        <button type="button" class="btn btn-danger btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-          <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf">  
-            <img class="img_pptx" src="imgx/cursos/kierkergaard.png"/>
-          </a>
-        <br/><h3>Kierkegaard</h3>
-        </button>
-
-         <!--Introduction to Philosophy-->
-        <button type="button" class="btn btn-danger btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/introduction_to_philosophy.png"/>
-        </a>
-        <br/>
-        <h3>Introduction to Philosophy</h3>
-        </button>   
-
-        <!--Big Bang-->
-        <button type="button" class="btn btn-info btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/big_bang.png"/>
-        </a>
-        <br/><h3>Big Bang</h3>
-        </button>
-
-        <!--Competitive Strategy-->
-        <button type="button" class="btn btn-info btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf">  
-          <img class="img_pptx" src="imgx/cursos/competitive_strategy.png"/>
-        </a>
-        <br/><h3>Competitive Strategy</h3>
-        </button>
-
-
-        </div>
+        <!----------------------------------------------UDEMY--------------------------------------------------->
         <h2>
-          <a href="https://www.saylor.org" id='tit_1'>
-            <img style='width:140px;' src='imgx/cursos/saylor.svg'/>
-          </a>
-        </h2>
-        <div class="courses">
-        <!--College Algebra-->
-        <button id='say0' type="button" class="btn btn-info btn-lg pptx_btn" data-toggle="modal" data-target="#certificados" id='saylor_0'>
-          <a id='say0_a' target="_blank" href="">  
-           <img id='say0_img' class="img_pptx" src=""/>
-          </a>
-          <br/>
-          <h3 id='say0_h3'></h3>
-        </button>
-
-        <!--Precalculo-->
-        <button id='saylor_1' type="button" class="btn btn-success btn-lg pptx_btn" data-toggle="modal" data-target="#certificados" >
-          <a id='say1_a' target="_blank" href="">  
-            <img id='say1_img' class="img_pptx"  src=""/>
-          </a>
-          <br/>
-          <h3 id='say1_h3'></h3>
-        </button>
-      </div>
-
-
-      <script>
-        saylor=[
-                ['College Algebra', 'college_algebra', 'ce471213-1e9a-4633-859d-68cb9e413bbc'],
-                ['Precalculo', 'precalculo','3713bef1-23ce-4fab-a28a-4a5659392d0c' ],
-              ]        
-
-        for (i = 0; i < saylor.length; i++)
-          {
-              document.getElementById('say'+`${i}`+'_h3').innerHTML = saylor[i][0];       
-              document.getElementById('say'+`${i}`+'_img').src= 'imgx/cursos/' + saylor[i][1] + '.png';
-              document.getElementById('say'+`${i}`+'_a').href= 'https://www.credential.net/' + saylor[i][2];
-          }   
-      </script>
-
-        <h2>
-          <a href="https://www.udemy.com/" id='tit_2'>
+          <a id='tit_2' target='_blank' href="https://www.udemy.com/" >
             <img style='width:120px;' src='imgx/cursos/udemy.png'/>
           </a>
         </h2>
-
-        <div class="courses">
-        <!--Python-->
-          <button type="button" class="btn btn-info btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-            <a target="_blank" href="https://www.udemy.com/certificate/UC-6G3AAQR5/">  
-              <img class="img_pptx" src="imgx/cursos/pythonU.png"/>
-            </a>
-            <br/>
-            <h3>Python</h3>
-        </button>
-
-         <!--Linux Command Line-->
-        <button type="button" class="btn btn-success btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-          <a target="_blank" href="https://www.udemy.com/certificate/UC-9YTEXXY8/">  
-            <img class="img_pptx" src="imgx/cursos/linux_cl.png"/>
-          </a>
-          <br/>
-          <h3>Linux Command Line</h3>
-        </button>
-
-        <!--C Coder-->
-        <button type="button" class="btn btn-default btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.udemy.com/certificate/UC-DQ152DHG/">  
-        <img class="img_pptx" src="imgx/cursos/c_coder.png"/>
-        </a>
-        <br/><h3>C Coder</h3>
-        </button>
-
-        <!--Paul and his letter to Philemon-->
-        <button type="button" class="btn btn-danger btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.udemy.com/certificate/UC-DD84E92J/">  
-        <img class="img_pptx" src="imgx/cursos/philemon.jpg"/>
-        </a>
-        <br/><h3>Paul and his letter to Philemon</h3>
-        </button>
-
-        <!--Greek Religion-->
-        <button type="button" class="btn btn-warning btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.udemy.com/certificate/UC-YL9EMCDC">  
-        <img class="img_pptx" src="imgx/cursos/greek_religion.png"/>
-        </a>
-        <br/><h3>Greek Religion</h3>
-        </button>
-
-        <!--Estudiar Mas-->
-        <button type="button" class="btn btn-info btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a target="_blank" href="https://www.udemy.com/certificate/UC-FL12KOPT/">  
-        <img class="img_pptx" src="imgx/cursos/estudiar_mas.png"/>
-        </a>
-        <br/><h3>Estudiar Mas</h3>
-        </button>  
-      </div>
-
-
-
+        <div id='courses2' class="courses"></div>
+      <!----------------------------------------------EDX--------------------------------------------------->
         <h2>
-          <a href="https://www.edX.org" id='tit_3'>
+          <a id='tit_3' target='_blank' href="https://www.edX.org" >
             <img id='tit_3_img' style='height:40px; width:70px;' src='imgx/cursos/edx.png'/>
           </a>
-        </h2>
-
-
-        <div id='courses3' class="courses">
-
-        <!--Intro to Linux-->
-        <button type="button" class="btn btn-info btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-          <a id='courses3_0_a'  target="_blank" href="">  
-            <img id='courses3_0_img' class="img_pptx" src=""/>
+        </h2>       
+        <div id='courses3' class="courses"></div>
+        <!----------------------------------------------EDX--------------------------------------------------->
+        <h2>
+          <a id='tit_4' target='_blank' href="https://www.edX.org" >
+            <img id='tit_4_img' style='height:40px; width:70px;' src='imgx/cursos/edx.png'/>
           </a>
-          <br/>
-          <h3 id='courses3_0_h3'></h3>
-        </button>
-
-
-        <!--Prime Numbers-->
-        <button type="button" class="btn btn-success btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-          <a id='courses3_1_a' target="_blank" href="">  
-            <img id='courses3_1_img' class="img_pptx" src=""/>
-          </a>
-          <br/>
-          <h3 id='courses3_1_h3'></h3>
-        </button>
-
-        <!--AP French-->
-        <button type="button" class="btn btn-default btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-          <a id='courses3_2_a' target="_blank" href="">  
-            <img id='courses3_2_img' class="img_pptx" src=""/>
-          </a>
-          <br/>
-          <h3 id='courses3_2_h3'></h3>
-        </button>
-
-        <!--Ancient Greek Hero-->
-      <button type="button" class="btn btn-danger btn-lg pptx_btn" data-toggle="modal" data-target="#certificados">
-        <a id='courses3_3_a' target="_blank" href="">  
-          <img id='courses3_3_img' class="img_pptx" src=""/>
-        </a>
-        <br/>
-        <h3 id='courses3_3_h3'></h3>
-      </button>
-        </div>
-      <script>
-
-        cours3 = document.getElementById('courses3_');
-
-        edX=[
-                ['Intro to Linux', 'intro_linux', 'c9e4a91e1d7a438ebb67fe1cbe1e84f4'],
-                ['Prime Numbers', 'prime_numbers','897083f36fc345e597477a60aa028bf5' ],
-                ['AP French', 'french','f234fbb0f3744549955007cad284dbe6' ],
-                ['Ancient Greek Hero', 'greek_hero','4186e2075e2b496d920a45561841be88/Certificate.pdf' ]
-            ];
-
-        programacion=[
-                  ['Intro to Linux', 'intro_linux', 'c9e4a91e1d7a438ebb67fe1cbe1e84f4'],
-                  ['Linux Command Line', 'linux_cl', 'https://www.udemy.com/certificate/UC-9YTEXXY8/'],
-                  ['Python', 'pythonU', "https://www.udemy.com/certificate/UC-6G3AAQR5/"],
-                  ['C Coder', 'c_coder', 'https://www.udemy.com/certificate/UC-DQ152DHG/']
-        ]
-
-        courses3_ = programacion;       
-
-        for (i = 0; i < courses3_.length; i++)
-          {
-              document.getElementById('courses3_'+`${i}`+'_h3').innerHTML = courses3_[i][0];       
-              document.getElementById('courses3_'+`${i}`+'_img').src= 'imgx/cursos/' + courses3_[i][1] + '.png';
-              document.getElementById('courses3_'+`${i}`+'_a').href= 'https://s3.amazonaws.com/verify.courses3_.org/downloads/' + courses3_[i][2];
-          }   
-      </script>
-
-      <div id='def' class='def'>
-
-      </div>
-   
-      <script type="text/javascript">
-        var divs = [
-        "<button id='saylor_1' type='button' class='btn btn-success btn-lg pptx_btn' data-toggle='modal' data-target='#certificados'><a id='say1_a' target='_blank' href='https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf'><img id='say1_img' class='img_pptx' src='imgx/cursos/calculo1.png'/></a><br/><h3 id='say1_h3'>Calculo I</h3></button>",
-
-        "<button id='saylor_1' type='button' class='btn btn-success btn-lg pptx_btn' data-toggle='modal' data-target='#certificados'><a id='say1_a' target='_blank' href='https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf'><img id='say1_img' class='img_pptx' src='imgx/cursos/calculo1.png'/></a><br/><h3 id='say1_h3'>Calculo I</h3></button>",
-
-        "<button id='saylor_1' type='button' class='btn btn-success btn-lg pptx_btn' data-toggle='modal' data-target='#certificados'><a id='say1_a' target='_blank' href='https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf'><img id='say1_img' class='img_pptx' src='imgx/cursos/calculo2.png'/></a><br/><h3 id='say1_h3'>Calculo II</h3></button>"];
-
+        </h2>       
+        <div id='courses4' class="courses"></div>
         
-
-        def_p=document.getElementById('def');
-        function div_printer(x)
-        { 
-          for (i = 0; i < divs.length; i++)
-          {
-            def_p.innerHTML+= divs[i];
-          }
-        }
-
-        div_printer();
-      </script>
-
-
-        <center >
-          <h2>Codecademy</h2>            
-            <div style="display:inline-block;">
-              <p>Learn SQL</p>
-              <p>SQL: Transformation tables</p>
-              <p>Learn Java</p>
-            </div>
+      
+        <center id='codecademy'>
+          <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R">  
+                <h2>Codecademy</h2> 
+          </a>           
+          <div style="display:inline-block;">
+            <p>Learn SQL</p>
+            <p>SQL: Transformation tables</p>
+            <p>Learn Java</p>
+          </div>
             
-              <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R">  
-                <img class="img_codecademy" src="imgx/cursos/codecademy.png"/>
-              </a>             
-                     
+          <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R">  
+            <img class="img_codecademy" src="imgx/cursos/codecademy.png"/>
+          </a>       
         </center>
+        
+        <hr id='nocertificados'>
+        <hr>
+        <div class="item workshops flex-centrado" id='talleres'>
+        </div>
 
-        <div class="item workshops flex-centrado" id='talleres'>  
 
-              
-      </div>
-        <div>
+        <div id='otros'>
           <h2>Otros cursos:</h2>
             <ul>
               <li>Reparacion pc  -  INCES </li>
@@ -596,26 +375,7 @@
         <br/>
   
 
-           <!-- Modales -->
-            <div class="modal fade" id="certificados" role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Seguridad Informática</h4></div>
-                  <div class="modal-body"> 
-                    <iframe allowfullscreen="true" frameborder="0" height="489" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1GpZ_Yq6JZjGqCNPEjMOkqtWM0Zne-Qcdk6NpA3mIJ14/embed?start=false&amp;loop=false&amp;delayms=3000" webkitallowfullscreen="true" width="100%"></iframe>
-                  </div>
-
-                  <div class="modal-footer">
-                    <span style=''>Ir <i class="fa  fa-external-link"></i></span> 
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button> 
-                  </div>
-                  <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
-                  </div>
-                </div>
-              </div>
-            </div> 
-            <!-- Fin Modales -->
+           
             
             <style>
               :root{
@@ -625,83 +385,167 @@
             --magenta:#D1215F;
             --green: #a3bf34;
           }
-            .modal { 
-            display:none; 
-            position: absolute; 
-            top:1vh;
-            padding-top:1vh; 
-            left: 0px;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: #000; 
-            z-index:80;
-          }
-
-          /* Display the modal when targeted */
-          .modal:target {display: block;position: absolute;}
-
-          /* The modal box */
-          .modal-dialog {display: block;vertical-align: middle;margin-top:30px;}
-          /* The modal's content */
-          .modal-dialog .modal-content {
-            margin: auto;
-            background-color: #232323;            
-            border: 1px #777 solid;
-            text-align: justify;
-            width: 100%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            border-radius: 12px 12px;
-
-            /* Add animation */
-            -webkit-animation-name: example; /* Chrome, Safari, Opera */
-            -webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
-            animation-name: example;
-            animation-duration: 3s;
-          }
-
-          /* The button used to close the modal */
-          .closebtn {text-decoration: none;float: right;font-size: 35px;font-weight: bold;color: black;}
-          .closebtn:hover, .closebtn:focus {color: var(--rojo);text-decoration: none;cursor: pointer;}
-          .containercontainer {padding: 2px 16px;}
+         
           header {background-color: white; font-size: 25px;color: black; padding:0px 10px;}
-          footer {background-color: white font-size: 20px;color: black; padding:0px 10px;}    
-   
+          footer {background-color: white font-size: 20px;color: black; padding:0px 10px;}      
 
-              </style>
-      
-
-      
+              </style>  
     </div>
+
+    <script>         
+          var botones = ['btn-danger', 'btn-info', 'btn-success', 'btn-warning', 'btn-default']; 
+          
+          const coursera=[
+                    ['Calculo I', 'calculo1', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf'],
+                    ['Calculo2', 'calculo2','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf' ],
+                    ['Game Theory', 'game_theory','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf' ],
+                    ['Math Philosophy', 'mathematical_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf' ],
+                    ['Ancient Greek', 'ancient_greeks','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf' ],
+                    ['Vital Signs', 'vital_signs','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf' ],
+                    ['Derechos del Hombre','droit_del_homme','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf' ],                    
+                    ['Languages', 'human_languages','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf' ],   
+                    ['Philosophy and Science', 'philosophy_and_sciences','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf' ],                    
+                    ['Kierkegaard', 'kierkergaard','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf' ],     
+                    ['Introduction to Philosophy', 'introduction_to_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf' ],                    
+                    ['Big Bang', 'big_bang','hhttps://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf' ],          
+                    ['Competitive Strategy', 'competitive_strategy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf' ]                                                            
+                ];
+
+          const saylor=[
+                    ['College Algebra', 'college_algebra', 'https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc'],
+                    ['Algebra', 'algebra', 'https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg'],
+                    ['Ingles', 'english', 'https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe'],
+                    ['Historia', 'historia', 'https://certificates.saylor.org/8ced9c4d-a63d-487e-825b-71d95b8fe876#gs.a3xcpt'],                    
+                    ['Precalculo', 'precalculo','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c' ]
+                  ];
+
+          const udemy=[
+                    ['Linux Command Line', 'linux_cl', 'https://www.udemy.com/certificate/UC-9YTEXXY8/'],
+                    ['Python', 'pythonU','https://www.udemy.com/certificate/UC-6G3AAQR5/' ],
+                    ['C Coder', 'c_coder','https://www.udemy.com/certificate/UC-DQ152DHG/' ],
+                    ['Paul and his letter to Philemon', 'philemon','https://www.udemy.com/certificate/UC-DD84E92J/' ],
+                    ['Greek Religion', 'greek_religion','https://www.udemy.com/certificate/UC-YL9EMCDC' ],
+                    ['Estudiar Mas', 'estudiar_mas','https://www.udemy.com/certificate/UC-FL12KOPT/' ]                    
+                ];
+
+          const edx=[
+                ['Intro to Linux', 'intro_linux', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/c9e4a91e1d7a438ebb67fe1cbe1e84f4'],
+                ['Prime Numbers', 'prime_numbers','https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5' ],
+                ['AP French', 'french','https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6' ],
+                ['Ancient Greek Hero', 'greek_hero','https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf' ]
+            ]; 
+
+          const w3=[
+                ['html','html_w3',''],
+                ['css','css',''],
+                ['Aleman','german',''],
+                ['ingles','ingles','']
+          ];
+
+          var programacion=[
+                  ['Intro to Linux', 'intro_linux', 'c9e4a91e1d7a438ebb67fe1cbe1e84f4'],
+                  ['Linux Command Line', 'linux_cl', 'https://www.udemy.com/certificate/UC-9YTEXXY8/'],
+                  ['Python', 'pythonU', "https://www.udemy.com/certificate/UC-6G3AAQR5/"],
+                  ['C Coder', 'c_coder', 'https://www.udemy.com/certificate/UC-DQ152DHG/'],
+                  ['html','html_w3',''],
+                  ['css','css','']
+          ];
+          var matematica=[
+                  ['Calculo I', 'calculo1', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf'],
+                    ['Calculo2', 'calculo2','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf' ],
+                    ['Game Theory', 'game_theory','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf' ],
+                    ['Math Philosophy', 'mathematical_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf' ],                              
+                    ['Competitive Strategy', 'competitive_strategy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf' ],
+                    ['College Algebra', 'college_algebra', 'https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc'],
+                    ['Algebra', 'algebra', 'https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg'],                   
+                    ['Precalculo', 'precalculo','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c' ],
+                    ['Prime Numbers', 'prime_numbers','https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5' ]
+          ];
+          var ciencia=[
+                    
+                    ['Vital Signs', 'vital_signs','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf' ],    
+                    ['Philosophy and Science', 'philosophy_and_sciences','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf' ],                                                           
+                    ['Big Bang', 'big_bang','hhttps://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf' ]       
+                ];
+          const arte=[                    
+                    ['Ancient Greek', 'ancient_greeks','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf' ],
+                    
+                    ['Derechos del Hombre','droit_del_homme','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf' ],                    
+                    ['Languages', 'human_languages','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf' ],                                           
+                    ['Kierkegaard', 'kierkergaard','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf' ],     
+                    ['Introduction to Philosophy', 'introduction_to_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf' ],
+                    ['Paul and his letter to Philemon', 'philemon','https://www.udemy.com/certificate/UC-DD84E92J/' ],
+                    ['Greek Religion', 'greek_religion','https://www.udemy.com/certificate/UC-YL9EMCDC' ],
+                    ['Estudiar Mas', 'estudiar_mas','https://www.udemy.com/certificate/UC-FL12KOPT/' ],
+                    ['Ancient Greek Hero', 'greek_hero','https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf' ]                                                           
+                ];
+          var idiomas=[
+                    ['Aleman','german',''],
+                    ['ingles','ingles',''],
+                    ['AP French', 'french','https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6' ],
+                    ['Ingles', 'english', 'https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe']       
+                ];            
+          
+          const t0 = [ [coursera,saylor,udemy,edx,w3], ['cou','say','ude','edx','w3'] ];
+          const t1 = [ [saylor,coursera,edx,udemy,w3], ['say','cou','edx','ude','w3'] ];
+          const t2 = [ [programacion,matematica,ciencia,arte,idiomas], ['pro','mat','cie','art','idio'] ];
+          const t3 = [ [saylor,coursera,edx,udemy,w3], ['5','4','3','2','1'] ];
+
+          var k = 0; //lo que debe cambiar el selector//
+          const cats=[t0,t1,t2,t3];
+
+          var btnls = document.querySelectorAll('.btn-leyenda');
+
+          function print1(b){
+          var a=cats[k][0][b].length;
+          var z=cats[k][1][b];
+          for (i = 0; i < a; i++) 
+            {document.getElementById(`courses${b}`).innerHTML ='';}
+
+          for (i = 0; i < a; i++) 
+            {document.getElementById(`courses${b}`).innerHTML += 
+                `<button id='${z}${i}' type="button" class="btn ${botones[i]} btn-lg curso_btn">
+                    <a id='${z}${i}_a' href="#id01">  
+                      <img id='${z}${i}_img' class="img_pptx"  src=""/>
+                    </a>
+                    <br/>            
+                    <h3 id='${z}${i}_h3'></h3>
+                </button>
+                </br>`;}
+          };                 
+                       
+          function print2(y){
+            var x = cats[k][0][y];
+            var n = x.length;
+            print1(y);            
+
+            for (i = 0; i < n; i++)
+              {
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_h3').innerHTML = x[i][0];       
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_img').src= 'imgx/cursos/' + x[i][1] + '.png';                  
+              }
+            }
+
+          function ordenar(){
+              k= this.dataset.cat;
+
+              print2(0);
+              print2(1);
+              print2(2);
+              print2(3);
+              print2(4);
+
+            };
+          btnls.forEach(btnl => btnl.addEventListener('click', ordenar));      
+
+          print2(0);
+          print2(1);
+          print2(2);
+          print2(3);
+          print2(4);          
+      </script>  
   </body>
-  <script>
-    escuelas['coursera', 'courses3_', 'udemy', 'saylor'];
-    anos['2013','2014','2015','2016'];
-    area['ciencia','matematica','arte','filosofia'];
-    relevancia['*****','****','***','**']
-
-    function misCursos(){
-     var tit0 = document.getElementById('tit_0').innerHTML;
-     var tit1 = document.getElementById('tit_1').innerHTML;
-     var tit2 = document.getElementById('tit_2').innerHTML;
-     var tit3 = document.getElementById('tit_3').innerHTML;
-
-
-
-     tit0 = area[0];
-     tit1 = area[1];
-     tit2 = area[2];
-     tit3 = area[3];      
-
-     this.style.background='red'
-    }
-
-
-  </script>
-
-
-
-
+    
   <script type="text/babel">
       function Talleres(props){
       return(
@@ -715,17 +559,17 @@
       function Otroscursos (props){
        var etapas = [ 
           [' Reason and Persuasion:Thinking Through Three Dialogues By Plato', ' National University of Singapore', '2014'],
-          [' Introduction to Mathematical Thinking', 'Stanford University', ' Venezuela'],
-          [' Soul Beliefs: Causes and Consequences', 'Rutgers the State University of New Jersey', '2014'],
-          [' Shakespeare in Community', 'University of Wisconsin–Madison', '2014'],               
-          [' The French Revolution', 'The University of Melbourne', '2014'],
-          [' Animal Behaviour and Welfare', 'The University of Edinburgh', '2014'],
-          [' EDIVET: Do you have what it takes to be a veterinarian?', 'The University of Edinburgh', '2014'],
+          [' Introduction to Mathematical Thinking', 'Stanford University', ' 2015'],
+          [' Soul Beliefs: Causes and Consequences', 'Rutgers the State University of New Jersey', '2015'],
+          [' Shakespeare in Community', 'University of Wisconsin–Madison', '2016'],               
+          [' The French Revolution', 'The University of Melbourne', '2015'],
+          [' Animal Behaviour and Welfare', 'The University of Edinburgh', '2015'],
+          [' EDIVET: Do you have what it takes to be a veterinarian?', 'The University of Edinburgh', '2015'],
           [' An Introduction to Interactive Programming in Python', 'Rice University', '2014'],
           [' Ancient Philosophy: Plato & His Predecessors', 'University of Pennsylvania', '2014'],
           [' Was Alexander Great?', 'Wellesley', '2014'],
-          [' Quantum Mechanics and Quantum Computation', ' Berkeley', '2014'],
-          [' Egiptologia', ' Universitat Autònoma de Barcelona', '2014']   
+          [' Quantum Mechanics and Quantum Computation', ' Berkeley', '2013'],
+          [' Egiptologia', ' Universitat Autònoma de Barcelona', '2015']   
         ]
 
         return(
@@ -743,7 +587,6 @@
           <Taller title='Alexander the Great' src='imgx/cursos/alexander.jpg' e={etapas[9]}/>
           <Taller title='Quantum Mechanics and Quantum Computation' src='imgx/cursos/quantum.jpg' e={etapas[10]}/>
           <Taller title='Egiptoligia' src='imgx/cursos/Egiptologia.jpg' e={etapas[11]}/>
-
         </div>
         )
       }        
@@ -785,5 +628,19 @@
           document.getElementById("talleres")
       );
     </script>
+
+    <script type="text/javascript">
+              var cursos = document.querySelectAll('.curso_btn');
+              cursos.forEach(btn => btn.addEventListener('click', show_cert));
+
+              const cert_shower_t= document.getElementById('cert_shower_t');
+              const cert_shower= document.getElementById('cert_shower');
+              const cert_shower_go= document.getElementById('cert_shower_go');
+
+              function show_cert(){
+                cert_shower_t.innerHTML='xxxx';                
+                cert_shower_go.innerHTML='xxxx';
+                }
+            </script>
 </html>
 
