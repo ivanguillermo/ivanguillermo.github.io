@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="/manifest.json" rel="manifest" />
-		<link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-		<link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
-		<meta content='Website personal de Ivan Lopez Pedreanez' name='description'/>
-		<title>Ivan Lopez Pedreanez</title>
+
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<link href="/manifest.json" rel="manifest" />
+
+			<link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+			<link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
+
+			<meta content='Website personal de Ivan Lopez Pedreanez' name='description'/>
+			<title>Ivan Lopez Pedreanez</title>
+		
 		<link async="async" href="" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
 		<script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
 		<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Barriecito|Roboto|Lora|Raleway" rel="stylesheet" />
+
 		<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
-	        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
-        	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
 	</head>
 	<body>
 	<!-- Main -->
 		<div>
-			<div class="jumbotron">
+			<div class="jumbotron" id='jumbo_ivan'>
 				<div class="container">
 					<div class="media">
 						<div class="media-left media-middle">
-							<img alt="ivanlopezpedreanez" class="media-object" src="ivan192.png" />
+							<img alt="ivanlopezpedreanez" class="media-object" src="yo2019.png" />
 							<button class="btn btn-lg" href="#" role="button" id="about_btn">	Mi Historia
-							</button>
 						</div>
 						<div class="media-body">
 							<h1 class="media-heading" style='font-size:7vh'>Ivan Lopez Pedreañez</h1>
@@ -45,13 +51,13 @@
 					.jumbotron {
 							height: 92vh;
 							width: 100vw;
-							background: url("background.jpg") no-repeat fixed center; 									
+							background: url("https://www.dropbox.com/s/ek9n0lri4bykfz5/background.jpg?raw=1") no-repeat fixed center  ; 									
 							background-size: cover;
 							display: flex;
 							flex-flow:row wrap;
 							justify-content: center;
 							align-items: center;
-							overflow: hidden;
+							overflow: hidden
 							}
 						
 					
@@ -74,6 +80,8 @@
 					
 					a:link{text-decoration:none }
 			</style>
+								
+
 
 			<nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
 		          <div class="container-fluid" id='fluid' style='display:flex;'>
@@ -81,28 +89,31 @@
 		              
 		              <a class="navbar-brand" href="#" style="background-color:var(--color); color:black;font-weight: 400;"><b>Hola!</b></a>
 					
-				      <a id='navYo' class="navbar-link" href="#quote" style="text-decoration: none;align-self: center"><b><i style="color:white;">Ivan Guillermo</i></b>
-		              	<img alt='yo' src="ivan192.png"/>
-		              </a>     
+				      <a id='navYo' class="navbar-link" href="#quote" style="text-decoration: none;align-self: center">
+				      	<b>	<i style="color:white;">Ivanguillermo</i> </b>
+		              	<img alt='yo' src="yo2019.png"/>
+		              </a>				  
 		              
 		              <a id='navPro' class="navbar-link" href="#programmer" style="text-decoration: none;align-self: center">
-		              	<img alt='programador' src="prog.gif"/>
+		              	<img alt='programador' src="imgx/prog.gif"/>
 		              	<span>PROGRAMADOR</span>
 		              </a>
 		              <a id='navMat' class="navbar-link" href="#matematico" style="text-decoration: none;align-self: center">
 		              	<span>MATEMATICO</span>
-		              	<img alt='matematico' src="icono_mat.png"/>
+		              	<img alt='matematico' src="imgx/icono_mat.png"/>
 		              </a>
 
 		              <a id='navTra' class="navbar-link" href="#translator" style="text-decoration: none;align-self: center">
 		              	<span>TRADUCTOR</span>
-		              	<img alt='traductor' src="trans.gif"/>
+		              	<img alt='traductor' src="imgx/trans.gif"/>
 		              </a>
 
 		              <a id='navEdu' class="navbar-link" href="#educador" style="text-decoration: none;align-self: center">
 		              	<span>EDUCADOR</span>
-		              	<img alt='educador' src="ivan192.png"/>
+		              	<img alt='educador' src="yo2019.png"/>
 		              </a>
+
+		              
 		              
 		              <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
 						<span class="sr-only">Toggle navigation</span>
@@ -140,7 +151,8 @@
 		    </nav>
 
 		    <style type="text/css">
-.navbar{min-height:8vh;}
+
+		    	.navbar{min-height:8vh;}
 
 		    	.navbar-header{}
 		    	.navbar-brand{;}
@@ -206,7 +218,7 @@
 				</div>								
 				<div class='logos_profs'>
 					<div class='icon'>
-						<img class='logo_prof' src='https://www.dropbox.com/s/0tf1mltg0teav0j/trans.gif?raw=1' id="transl_ico" alt='traductor'/>
+						<img class='logo_prof' src='imgx/trans.gif' id="transl_ico" alt='traductor'/>
 						<div>
 							<h2 class='tit_prof' >TRADUCTOR</h2>
 							<p class="prof_txt" >
@@ -217,7 +229,7 @@
 						</div>			
 					</div>
 					<div id='adasda' class='icon'>
-						<img class='logo_prof' src='https://www.dropbox.com/s/v3lllxp1jqrkr1z/prog.gif?raw=1' id="programmr_ico" alt='programador'/>
+						<img class='logo_prof' src='imgx/prog.gif' id="programmr_ico" alt='programador'/>
 						<div>
 							<h2 class='tit_prof'>PROGRAMADOR</h2>
 							<p class="prof_txt" >
@@ -228,7 +240,7 @@
 						</div>
 					</div>
 					<div class='icon'>
-						<img class='logo_prof' src='https://www.dropbox.com/s/su1etfai7t3p21b/icono_mat.png?raw=1' id="matemat_ico"  alt='matematico'/>
+						<img class='logo_prof' src='imgx/icono_mat.png' id="matemat_ico"  alt='matematico'/>
 						<div>
 							<h2 class='tit_prof'>MATEMÁTICO</h2>
 							<p class="prof_txt" >Actualmente curso el último año de Licenciatura en Matemáticas en la 
@@ -282,6 +294,7 @@
 
 					}
 			</style>
+
 			<div id="sections">
 				<section class="job" id="translator">
 					<h2 class='sec_tit'>TRADUCTOR</h2>
@@ -297,17 +310,17 @@
 					</div>
 					<div id="langs" style="float:right; display:flex; justify-content: space-between; align-items: center">
 						<!--por-->
-						<a class='aflag' data-lang='0'> <img id='br-flag' alt="brazil-flag" class="flagies" src="https://www.dropbox.com/s/yj0wdmitqttggq5/bra.png?raw=1" /></a> 
+						<a class='aflag' data-lang='0'> <img id='br-flag' alt="brazil-flag" class="flagies" src="imgx/langs/bra.png" /></a> 
 						<!--ger-->
-						<a class='aflag' data-lang='1'>	<img id='de-flag' alt="germany-flag" class="flagies" src="https://www.dropbox.com/s/t39q4ct22uoguf8/deu.png?raw=1" /></a> 
+						<a class='aflag' data-lang='1'>	<img id='de-flag' alt="germany-flag" class="flagies" src="imgx/langs/deu.png" /></a> 
 						<!--fra-->
-						<a class='aflag' data-lang='2'>	<img id='fr-flag' alt="france-flag" class="flagies" src="https://www.dropbox.com/s/xbg893s64dvaxn8/fra.png?raw=1" /></a> 
+						<a class='aflag' data-lang='2'>	<img id='fr-flag' alt="france-flag" class="flagies" src="imgx/langs/fra.png" /></a> 
 						<!--ita-->
-						<a class='aflag' data-lang='3'>	<img id='it-flag' alt="italy-flag" class="flagies" src="https://www.dropbox.com/s/h2m2kpf3er31x6j/spa.png?raw=1" /></a> 
+						<a class='aflag' data-lang='3'>	<img id='it-flag' alt="italy-flag" class="flagies" src="imgx/langs/ita.png" /></a> 
 						<!--spa-->
-						<a class='aflag big_flag' data-lang='4'>	<img id='sp-flag' alt="spain-flag" class="flagies" src="https://www.dropbox.com/s/b33a3a4648cg5jw/ita.png?raw=1" /></a> 
+						<a class='aflag big_flag' data-lang='4'>	<img id='sp-flag' alt="spain-flag" class="flagies" src="imgx/langs/spa.png" /></a> 
 						<!--eng-->
-						<a class='aflag' data-lang='5'>	<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="https://www.dropbox.com/s/y97ongk6iplq97k/eng.png?raw=1" /></a>
+						<a class='aflag' data-lang='5'>	<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="imgx/langs/eng.png" /></a>
 					</div>
 					<script>
 						const idiomas=[
@@ -371,7 +384,7 @@
 					<div id="progr_langs">
 						<div class='p_langs' id="python" >
 							<a target="_blank" href='https://github.com/ivanguillermo/python'>
-								<img class='p_langs_img' alt="python" src='https://www.dropbox.com/s/9v23pulk2h7yu36/python.png?raw=1'/>
+								<img class='p_langs_img' alt="python" src='imgx/devs/python.png'/>
 							</a>
 							<div class="projects">
 								<ul>
@@ -394,7 +407,7 @@
 							</div>
 						</div>
 						<div class='p_langs' id="html"> 
-							<img class='p_langs_img' alt='html5' src='https://www.dropbox.com/s/la0czpgv79dumfl/html.png?raw=1'/>
+							<img class='p_langs_img' alt='html5' src='imgx/devs/html.png'/>
 							<div class="projects">
 								<ul>
 									<li><a target='_blank' href='https://github.com/ivanguillermo/30dayJSchallenge/blob/master/30%20-%20Whack%20A%20Mole/index-START.html'>MaduroCTM</a></li>
@@ -404,7 +417,7 @@
 							</div>
 						</div>
 						<div class='p_langs' id="css"> 
-							<img class='p_langs_img' alt='css' src='https://www.dropbox.com/s/0hov945mydtydtu/css.png?raw=1'/>
+							<img class='p_langs_img' alt='css' src='imgx/devs/css.png'/>
 							<div class="projects">
 								<ul>									
 									<li><a  target='_blank' href=''></a>.</li>
@@ -414,7 +427,7 @@
 							</div>
 						</div>
 						<div class='p_langs' id="js"> 
-							<img class='p_langs_img' alt="javascript" src='https://www.dropbox.com/s/1jqz1ecce5t9n8u/js.png?raw=1'/>
+							<img class='p_langs_img' alt="javascript" src='imgx/devs/js.png'/>
 							<div class="projects">
 								<ul>
 									<li><a target='_blank' href=''></a>.</li>
@@ -425,7 +438,7 @@
 						</div>
 						<div class='p_langs' id="php">
 							<a target="_blank" href='https://github.com/ivanguillermo/PrettyHorribleProjects'> 
-							<img class='p_langs_img' alt="php" src='https://www.dropbox.com/s/j37i55rcban9qlq/php2.png?raw=1'/>
+							<img class='p_langs_img' alt="php" src='imgx/devs/php2.png'/>
 							<div class="projects">
 								<ul>
 									<li>
@@ -448,7 +461,7 @@
 						</div>
 						<div class='p_langs' id="mysql">  
 							<a  target='_blank' href='https://github.com/ivanguillermo/mySQL_databases'>
-								<img class='p_langs_img' alt="mysql" src='https://www.dropbox.com/s/fm42sldl9b0cv1l/mysql.png?raw=1'/>
+								<img class='p_langs_img' alt="mysql" src='imgx/devs/mysql.png'/>
 							</a>
 							<div class="projects">
 								<ul>
@@ -470,16 +483,17 @@
 								</ul>
 							</div>
 						</div>
-					</div>	
+					</div>					
+
 					<button class='github_btn'> <a style='color:white; text-decoration-style: none' href='https://github.com/ivanguillermo'>mi GutHub <i class="fa fa-github"></i></a></button>
 					<style type="text/css">
-						#programmer{background:var(--orange) left top no-repeat fixed ; display:flex; flex-flow: column wrap; justify-content: flex-start; align-items: center;align-content: stretch; height:95vh;}
+						#programmer{background:var(--orange) url('') left top no-repeat fixed ; display:flex; flex-flow: column wrap; justify-content: flex-start; align-items: center;align-content: stretch; height:95vh;}
 
 							#progr_langs{display:flex; flex-flow: row wrap; justify-content: space-between; align-items: space-around; align-content: center; width:80%;height:10vh;
-										 border:4px solid var(--blue);border-radius:80px; margin-top: 5%;
+										 border:4px solid var(--blue);border-radius:80px; margin-top: 4%;
 										 background-color: #1AA9ECa2}
 							#programmer h2{margin-bottom: 2%}
-							#programmer p{font-family:raleway; text-align: center; margin:1% 8%; color:#111111; font-size: 17px; text-shadow: 0px 0px black; font-weight: 300;}
+							#programmer p{font-family:raleway; text-align: center; margin:1% 8%; color:#111111; font-size: 16px; text-shadow: 0px 0px black; font-weight: 300;}
 
 							.p_langs{display:flex; flex-flow:column nowrap; justify-content: center;align-items: center;}
 							.p_langs img{border: 5px solid white;border-radius: 50%; height:7.2vw;}
@@ -533,7 +547,7 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
 								<div class="item ">
-									<img alt="Estadistica" id='mat_img0' src="https://www.dropbox.com/s/c81t4vi3twmsnxn/estadistica.png?raw=1" />
+									<img alt="Estadistica" id='mat_img0' src="imgx/estadistica.png" />
 									
 									<div class="carousel-caption">
 										<div class="mat_art">
@@ -550,7 +564,7 @@
 								</div>
 
 								<div class="item">
-									<img alt="Calculo" id='mat_img1' src="https://www.dropbox.com/s/7dsiu4vhd0w071c/calculo.png?raw=1" />
+									<img alt="Calculo" id='mat_img1' src="imgx/calculo.png" />
 									
 
 									<div class="carousel-caption">												
@@ -566,7 +580,7 @@
 
 
 								<div class="item active">
-									<img alt="Optimizacion" id='mat_img2' src="https://www.dropbox.com/s/e8sd7vt8mwplbjx/optimizacion.png?raw=1"/>									
+									<img alt="Optimizacion" id='mat_img2' src="imgx/optimizacion.png"/>									
 										
 									<div id='optimizacion'class="carousel-caption">
 										<h3 >OPTIMIZACIÓN</h3>
@@ -655,9 +669,9 @@
 								width:20vw;
 								height:10vw;
 							}
-							#est_pptx_1 {background-image: url('datos_no_agrupados.png');background-size:cover;}
-							#est_pptx_2 {background-image: url('probabilidad.png');background-size:cover;}
-							#est_pptx_3 {background-image: url('alg_conj.png');background-size:cover;}	
+							#est_pptx_1 {background-image: url('imgx/pptx/datos_no_agrupados.png');background-size:cover;}
+							#est_pptx_2 {background-image: url('imgx/pptx/probabilidad.png');background-size:cover;}
+							#est_pptx_3 {background-image: url('imgx/pptx/alg_conj.png');background-size:cover;}	
 
 							#optimizacion p{background: white; color:black;}							
 							
@@ -672,58 +686,58 @@
 				<section class="job" id="educador">
 					<h2  class="pptx pptx21 sec_tit">EDUCADOR</h2>
 					<div class="pptx pptx0" data-pptx='0'>
-						<a href='#id01' id='pptx_link0'><img id='pptx_img0' alt='pptx0' src='https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/datos_no_agrupados.png'/></a>
+						<a href='#id01' id='pptx_link0'><img id='pptx_img0' alt='pptx0' src='imgx/pptx/datos_no_agrupados.png'/></a>
 					</div>
 					<div class="pptx pptx1" data-pptx='1'>
-						<a href='#id01' id='pptx_link1'><img id='pptx_img1' alt='pptx1' src='https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/electronica_digital.png'/></a>
+						<a href='#id01' id='pptx_link1'><img id='pptx_img1' alt='pptx1' src='imgx/pptx/electronica_digital.png'/></a>
 					</div>
 					<div class="pptx pptx2" data-pptx='2'>
-						<a href='#id01' id='pptx_link2'><img id='pptx_img2' alt='pptx2' src='https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/funciones.png'/></a>
+						<a href='#id01' id='pptx_link2'><img id='pptx_img2' alt='pptx2' src='imgx/pptx/funciones.png'/></a>
 					</div>
 					<div class="pptx pptx3" data-pptx='3'>
-						<a href='#id01' id='pptx_link3'><img id='pptx_img3' alt='pptx3' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/datos_no_agrupados.png"/></a>
+						<a href='#id01' id='pptx_link3'><img id='pptx_img3' alt='pptx3' src="imgx/pptx/datos_no_agrupados.png"/></a>
 					</div>
 					<div class="pptx pptx4" data-pptx='4'>
-						<a href='#id01' id='pptx_link4'><img id='pptx_img4' alt='pptx4' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/derivada.png"/></a>
+						<a href='#id01' id='pptx_link4'><img id='pptx_img4' alt='pptx4' src="imgx/pptx/derivada.png"/></a>
 					</div>
 					<div class="pptx pptx5" data-pptx='5'>
-						<a href='#id01' id='pptx_link5'><img id='pptx_img5' alt='pptx5' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/didactica.png"/></a>
+						<a href='#id01' id='pptx_link5'><img id='pptx_img5' alt='pptx5' src="imgx/pptx/didactica.png"/></a>
 					</div>
 					<div class="pptx pptx6" data-pptx='6'>
-						<a href='#id01' id='pptx_link6'><img id='pptx_img6' alt='pptx6' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/electronica_digital.png"/></a>
+						<a href='#id01' id='pptx_link6'><img id='pptx_img6' alt='pptx6' src="imgx/pptx/electronica_digital.png"/></a>
 					</div>
 					<div class="pptx pptx7" data-pptx='7'>
-						<a href='#id01' id='pptx_link7'><img id='pptx_img7' alt='pptx7' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/estructura_datos_2.png"/></a>
+						<a href='#id01' id='pptx_link7'><img id='pptx_img7' alt='pptx7' src="imgx/pptx/estructura_datos_2.png"/></a>
 					</div>
 					<div class="pptx pptx8" data-pptx='8'>
-						<a href='#id01' id='pptx_link8'><img id='pptx_img8' alt='pptx8' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/estructura_datos_3.png"/></a>
+						<a href='#id01' id='pptx_link8'><img id='pptx_img8' alt='pptx8' src="imgx/pptx/estructura_datos_3.png"/></a>
 					</div>
 					<div class="pptx pptx9" data-pptx='9'>
-						<a href='#id01' id='pptx_link9'><img id='pptx_img9' alt='pptx9' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/funciones.png"/></a>
+						<a href='#id01' id='pptx_link9'><img id='pptx_img9' alt='pptx9' src="imgx/pptx/funciones.png"/></a>
 					</div>
 					<div class="pptx pptx10" data-pptx='10'>
-						<a href='#id01' id='pptx_link10'><img id='pptx_img10' alt='pptx10' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/historia_internet_memes.png"/></a>
+						<a href='#id01' id='pptx_link10'><img id='pptx_img10' alt='pptx10' src="imgx/pptx/historia_internet_memes.png"/></a>
 					</div>
 					<div class="pptx pptx11" data-pptx='11'>
-						<a href='#id01' id='pptx_link11'><img id='pptx_img11' alt='pptx11' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/html_5.png"/></a>
+						<a href='#id01' id='pptx_link11'><img id='pptx_img11' alt='pptx11' src="imgx/pptx/html_5.png"/></a>
 					</div>
 					<div class="pptx pptx12" data-pptx='12'>
-						<a href='#id01' id='pptx_link12'><img id='pptx_img12' alt='pptx12' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/internet.png"/></a>
+						<a href='#id01' id='pptx_link12'><img id='pptx_img12' alt='pptx12' src="imgx/pptx/internet.png"/></a>
 					</div>
 					<div class="pptx pptx13" data-pptx='13'>
-						<a href='#id01' id='pptx_link13'><img id='pptx_img13' alt='pptx13' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/lenguajes_programacion.png"/></a>
+						<a href='#id01' id='pptx_link13'><img id='pptx_img13' alt='pptx13' src="imgx/pptx/lenguajes_programacion.png"/></a>
 					</div>
 					<div class="pptx pptx14" data-pptx='14'>
-						<a href='#id01' id='pptx_link14'><img id='pptx_img14' alt='pptx14' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/redes_informaticas.png"/></a>
+						<a href='#id01' id='pptx_link14'><img id='pptx_img14' alt='pptx14' src="imgx/pptx/redes_informaticas.png"/></a>
 					</div>
 					<div class="pptx pptx15" data-pptx='15'>
-						<a href='#id01' id='pptx_link15'><img id='pptx_img15' alt='pptx15' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/seguridad_informatica.png"/></a>
+						<a href='#id01' id='pptx_link15'><img id='pptx_img15' alt='pptx15' src="imgx/pptx/seguridad_informatica.png"/></a>
 					</div>
 					<div class="pptx pptx16" data-pptx='16'>
-						<a href='#id01' id='pptx_link16'><img id='pptx_img16' alt='pptx16' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/sistemas_admin_bases_datos.png"/></a>
+						<a href='#id01' id='pptx_link16'><img id='pptx_img16' alt='pptx16' src="imgx/pptx/sistemas_admin_bases_datos.png"/></a>
 					</div>
 					<div class="pptx pptx17" data-pptx='17'>
-						<a href='#id01' id='pptx_link17'><img id='pptx_img17' alt='pptx17' src="https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/teaching.png"/></a>					
+						<a href='#id01' id='pptx_link17'><img id='pptx_img17' alt='pptx17' src="imgx/pptx/teaching.png"/></a>					
 					</div>	
 					
 					<div class="pptx pptx19">
@@ -753,7 +767,7 @@
 			                <div class="containercontainer">
 			                  <iframe id='pptx_shower_frame' 
 			                          src="" 
-			                          frameborder="0" width="100%" height="420px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+			                          frameborder="0" width="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
 			                  </iframe>
 			                </div>
 			                <footer class="containerfooter">
@@ -827,6 +841,7 @@
 							        "y y e l k j i h g a a a"              
 							    }
 
+
 				    	#educador img{width:100%;height:100%;}   
 				    		.pptx img{border: 2.75px solid #fff}
 				    		.pptx17 img{border: 0px solid black}      
@@ -859,20 +874,20 @@
 							    #pptx_shower_frame{
 							    	height:320px;
 							    }
-							    
+							    .pptx22, .pptx19{font-size: 10px;}
 							        
-						    } 
+						    } 	
+						    
 
 							@media only screen and (max-width: 500px) {
 								.sec_tit {font-size:10px;}				    	
-						    	#educador{height:83.3vh;	}
-
-						    	
+						    	#educador{height:83.3vh;	}					    	
 							    	
 							}
 					</style>
 
 					<script type="text/javascript">
+				
 						var pptxs=
                 [
                   ["datos_no_agrupados", "Datos no agrupados", 'https://docs.google.com/presentation/d/e/2PACX-1vRndRh69UxkKMdnXo-8NJuSvBFVhPO-vALoLAyaacHHZVURx8OxoYz-jZB30PoLCX65PiN6oJyoqfo3/embed?start=false&loop=false&delayms=3000'],
@@ -926,7 +941,7 @@
 						function pptxs_change(){	
 							ranpptxs = shuffle(pptxs);						
 							for (i = 0; i < 15; i++) {
-							  document.getElementById(`pptx_img`+`${i}`).src='https://raw.githubusercontent.com/ivanguillermo/ivanlopezpedreanez/gh-pages/'+ pptxs[i][0] +'.png';							  
+							  document.getElementById(`pptx_img`+`${i}`).src='imgx/pptx/'+ pptxs[i][0] +'.png';							  
 							}
 							
 						};									
@@ -943,7 +958,7 @@
 				            shower.src = k ;
 				            shower_tit.innerHTML = l;				            
 				          }	          
-		        		pptxs_change();              
+		        		pptxs_change();          
       				</script> 	   						
 				</section>		
 			</div>
@@ -955,8 +970,8 @@
 					        <a id='instagram' href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-instagram"></i></div></a>
 					        <a id='twitter' href="https://twitter.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-twitter"></i></div></a>
 					        <a id='youtube' href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA?view_as=subscriber" target="_blank" rel="noopener"><div><i class="fa fa-youtube"></i></div></a>
-					        <a id='linkdin' href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener"><div><i class="fa fa-linkedin"></i></div></a>
-					        <a id='github' href="https://github.com/ivanguillermo" target="_blank" rel="noopener"><div><i class="fa fa-github"></i></div></a>
+					        <a id='facebook' href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener"><div><i class="fa fa-linkedin"></i></div></a>
+					        <a id='facebook' href="https://github.com/ivanguillermo" target="_blank" rel="noopener"><div><i class="fa fa-github"></i></div></a>
 				    	</center>
 				    	<div style='background-color: black; height:5.5vh'></div>
 		</div>
@@ -1089,7 +1104,7 @@
 				function activeNav(){
 				    if(window.scrollY >= topOfYop && window.scrollY < topOfTra)  {
 				    	document.querySelector('#quote').classList.add('active');} 
-				    	else{document.querySelector('#navYo').classList.remove('active');}
+				    	else{document.querySelector('#quote').classList.remove('active');}
 
 				    if(window.scrollY >= topOfTra && window.scrollY < topOfDev)  {
 				    	document.querySelector('#navTra').classList.add('active');} 
@@ -1105,7 +1120,7 @@
 				    	
 				    if(window.scrollY >= topOfEdu)  {
 				    	document.querySelector('#navEdu').classList.add('active');} 
-				    	else{document.querySelector('#navEdu').classList.remove('active');}
+				    	else{document.querySelector('#navEdu').classList.remove('active');}				    
 				  } 
   
 				window.addEventListener('scroll', activeNav);
@@ -1141,7 +1156,6 @@
 
 							  `;
 		  
-						
 							if(window.scrollY >= topOfTra && window.scrollY <= topOfMat)  {
 						    	document.getElementById("myDIV2").appendChild(para);
 						    	para.classList.add('balloon');
@@ -1152,7 +1166,7 @@
 				    	}     		  			  
 				
 				}
-				setInterval(glovos,1300)
+				setInterval(glovos,1300)				
 		</script>		
 
 		<script type="text/javascript">
@@ -1179,5 +1193,13 @@
 			  window.addEventListener('keydown', forwardNav);
 		</script>
 
-		
+		<script type="text/javascript">
+			function EngEsp() {
+				english=[
+					 '<p>My name is Ivan and I am a <a>Programmer</a>and Translator</p><p>I am a Math and Education student, and I love creating educational blogs</p><p>I love sport, cinema, technology, literature y philosofy</p>',
+
+					 'I am a young venezuelan men currently living in Argentina. I am passionate about learning a litttle more every day, and then I always look for a way to ut into practice what I learned, to solve real-life problems and specially to help others. I consider myself as...'
+				]
+			}
+		</script>
 </html>
