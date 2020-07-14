@@ -1,894 +1,1485 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
 
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<link href="/manifest.json" rel="manifest" />
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <meta content='Ivan Lopez Pedreañez' name='author'/>
+    <meta content='blog de informática, matematica, programación, microelectrónica, investigacion' name='description'/>
+    <meta content='informatica, sistemas, programacion, lenguajes programacion, matematica,electronica digital,investigacion, educacion, upel' name='keywords'/>
 
-			<link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-			<link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
+    <link async='async' href='https://fonts.googleapis.com/css?family=Barriecito|Roboto' rel='stylesheet'/>
+    <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-			<meta content='Website personal de Ivan Lopez Pedreanez' name='description'/>
-			<title>Ivan Lopez Pedreanez</title>
-		
-		<link async="async" href="" rel="stylesheet" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
-		<script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script> 
 
-		<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Barriecito|Roboto|Lora|Raleway" rel="stylesheet" />
-
-		<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
-        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
-	</head>
-	<body>
-	<!-- Main -->
-		<div>
-			<div class="jumbotron" id='jumbo_ivan'>
-				<div class="container">
-					<div class="media">
-						<div class="media-left media-middle">
-							<img alt="ivanlopezpedreanez" class="media-object" src="yo2019.png" />
-							<button class="btn btn-lg" href="#" role="button" id="about_btn">	Mi Historia
-						</div>
-						<div class="media-body">
-							<h1 class="media-heading" style='font-size:7vh'>Ivan Lopez Pedreañez</h1>
-							<div id='resume' class="resume">
-								<p>Me llamo Ivan y soy<a>Programador Web</a> y traductor freelance</p>
-								<p>Estudio Matemática y Educación Informática, y amo crear blogs educativos</p>
-								<p>Me encantan los deportes, el cine, la tecnología y la literatura</p>
-							</div>
-						</div>					
-					</div>
-				</div>
-			</div>
-
-			<style>
-					.jumbotron {
-							height: 92vh;
-							width: 100vw;
-							background: url("https://www.dropbox.com/s/ek9n0lri4bykfz5/background.jpg?raw=1") no-repeat fixed center  ; 									
-							background-size: cover;
-							display: flex;
-							flex-flow:row wrap;
-							justify-content: center;
-							align-items: center;
-							overflow: hidden
-							}
-						
-					
-					.jumbotron *{margin:2%;text-align:center;}
-					.media-object{border-radius:50%;width:45vh;border:4px solid black;}
-					.media-heading{font-family:Sans;font-weight: 200; position: relative; left:17.5%;font-size: 80%; }
-						.resume p{padding-right:-10%;text-align: right; font-size: 16px;}
-					#about_btn{font-weight:800; color:white; height:5vh; width:7vw; display: inline-flex; align-items: center; align-content: center; justify-content: center; font-size: 12px; background: transparent; border: 2px solid var(--color);text-shadow: 1px 1px black; box-shadow: -0.5px 0.5px black}
-
-					@media only screen and (max-width: 800px) {
-						.jumbotron {flex-flow:column nowrap;}
-						.media{display: flex;flex-flow:row wrap;}
-						.media-object{width:40%;margin-left: 30%; border-width: 0px; padding:0% 2%; }
-						#about_btn{display:none;}
-						.resume {padding-left:0%;text-align: center}
-						.media-heading{font-size:50%; }
-						
-						.resume p{color:white;text-shadow: 1px 1px black; font-weight: 800;}
-					}						
-					
-					a:link{text-decoration:none }
-			</style>
-								
-
-
-			<nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
-		          <div class="container-fluid" id='fluid' style='display:flex;'>
-		            <div class="navbar-header" style='display:flex; height:100%'>
-		              
-		              <a class="navbar-brand" href="#" style="background-color:var(--color); color:black;font-weight: 400;"><b>Hola!</b></a>
-					
-				      <a id='navYo' class="navbar-link" href="#quote" style="text-decoration: none;align-self: center">
-				      	<b>	<i style="color:white;">Ivanguillermo</i> </b>
-		              	<img alt='yo' src="yo2019.png"/>
-		              </a>				  
-		              
-		              <a id='navPro' class="navbar-link" href="#programmer" style="text-decoration: none;align-self: center">
-		              	<img alt='programador' src="imgx/prog.gif"/>
-		              	<span>PROGRAMADOR</span>
-		              </a>
-		              <a id='navMat' class="navbar-link" href="#matematico" style="text-decoration: none;align-self: center">
-		              	<span>MATEMATICO</span>
-		              	<img alt='matematico' src="imgx/icono_mat.png"/>
-		              </a>
-
-		              <a id='navTra' class="navbar-link" href="#translator" style="text-decoration: none;align-self: center">
-		              	<span>TRADUCTOR</span>
-		              	<img alt='traductor' src="imgx/trans.gif"/>
-		              </a>
-
-		              <a id='navEdu' class="navbar-link" href="#educador" style="text-decoration: none;align-self: center">
-		              	<span>EDUCADOR</span>
-		              	<img alt='educador' src="yo2019.png"/>
-		              </a>
-
-		              
-		              
-		              <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar">
-						</span>
-					  </button>
-		            </div>
-		          <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:1.5%">
-			          	<li>
-			              <a href="contacto.html" style="background-color:var(--color);color:white"><b>Contacto</b></a>
-			            </li>
-			          </ul>
-
-		          <div class="navbar-collapse collapse" id="navbar">
-			          <ul class="nav navbar-nav">		         		          	         	
-			          	<li class="dropdown" >
-			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-			              ><span>Algo mas</span> </a> 
-			            	<ul class="dropdown-menu">
-			            		<li><a href="likes/index.html">Mis Gustos</a></li>
-			            		<li class="divider" role="separator"></li>
-			            		<li><a href="cursos.html">Cursos</a></li>
-			            		<li class="divider" role="separator"></li>
-			            		<li><a href="bio.html">Biografia</a></li>
-			            		<li class="divider" role="separator"></li>
-			            		<li id="contacto_nav">
-					              <a href="contacto.html" >Contacto</a>
-					            </li>
-			            	</ul>
-			            </li>
-			          </ul>
-			       </div>
-			          
-			       </div> 
-		    </nav>
-
-		    <style type="text/css">
-
-		    	.navbar{min-height:8vh;}
-
-		    	.navbar-header{}
-		    	.navbar-brand{;}
-				.navbar-link{display:flex; flex-flow: row wrap; justify-content: center; align-content: center; align-content: center;height:4vh; width:10vw; padding:1.5vw;font-size:1vw;}
-				.color {color:var(--color);}
-				.navbar-link {height:4vh; display:flex;}
-				.navbar-link span{color:var(--color); align-self: center}
-				
-				.navbar-link img{width: 44px;height:44px;display:none;padding:0px 2px;}
-
-				.dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
-				.dropdown-toggle{width:190%; color:white; align-self: flex-end; text-align: center}
-				#contacto_nav{display: none}
-
-
-
-				
-				
-				@media only screen and (max-width: 800px) {
-					.navbar{width:100vw;}
-					.container-fluid{width:100vw;position:relative;left:0px;}
-					#navYo{display:inline-flex;}
-
-					.navbar-toggle {}
-					.navbar-brand{width:15vw;font-size: 2.5vw; text-align: center}
-					.navbar-link span{display:none;}
-					.navbar-link img{display:block; padding:0vh;margin-left:1vw; width:7vw;height:7vw;}
-					.dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
-					.dropdown{}
-					#contacto{display:none;width:15vw;position:static;left:85vw;}
-					#contacto_nav{display: flex}				
-
-					}
-		    </style>
-
-			<div id="quote">
-				<br/>
-				<q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q>
-				<p>Friedrich Nietzsche</p>
-			</div>
-
-			
-
-			<style>
-					#quote{display:flex; align-content: center; align-items: center; justify-content: space-around; flex-flow: column wrap;  text-align:center;color:white;height:12vh;}
-					#quote q{font-size: 120%}
-					#yo_descripcion {background:transparent;}
-					#mi_nombre {text-align:center; padding-top:; color:#ddd; text-shadow: 2px 1px 2px #4fdb98  ; }
-					#descripcion {text-align:center; color:#fff; font-weight: 500; text-shadow: 0.5px 0.5px #292929; padding:0% 15%;}
-					@media only screen and (max-width: 800px) {
-						section {height:150px;}
-						#descripcion {font-size: 9px;padding:3.5%;text-align: justify;}
-
-					}
-			</style>
-
-			<div id="logos">
-				<div id='yo_descripcion'>
-				<h3 id="mi_nombre" >Ivan Guillermo</h3>
-				<p id="descripcion">
-					Soy un joven venezolano actualmente viviendo en Argentina. Apasionado por estudiar y aprender cada d&iacute;a un poco m&aacute;s. y luego siempre busco poner en pr&aacute;ctica lo que aprendo, para resolver problemas de la vida real y sobre todo ayudar a los dem&aacute;s con los suyos. Me considero a mi mismo como...
-				</p>
-				</div>								
-				<div class='logos_profs'>
-					<div class='icon'>
-						<img class='logo_prof' src='imgx/trans.gif' id="transl_ico" alt='traductor'/>
-						<div>
-							<h2 class='tit_prof' >TRADUCTOR</h2>
-							<p class="prof_txt" >
-								Buscando nuevas perspectivas, descubrí que debo tomar las fuentes en su idioma original
-								Revisa mi perfil en <a style='color:var(--green) ' href="https://www.freelancer.com/u/IvanD413R" rel="noopener" target="_blank"> Freelancer.com</a>
-								y los trabajos que he realizado allí;
-							</p>
-						</div>			
-					</div>
-					<div id='adasda' class='icon'>
-						<img class='logo_prof' src='imgx/prog.gif' id="programmr_ico" alt='programador'/>
-						<div>
-							<h2 class='tit_prof'>PROGRAMADOR</h2>
-							<p class="prof_txt" >
-								Disfruto buscar soluciones a los problemas, y la programación me ofrece la posibilidad de alcanzar
-								<a href="https://github.com/ivanguillermo" rel="noopener" target="_blank">soluciones óptimas</a> 
-								mirando las cosas desde perspectivas nuevas
-							</p>
-						</div>
-					</div>
-					<div class='icon'>
-						<img class='logo_prof' src='imgx/icono_mat.png' id="matemat_ico"  alt='matematico'/>
-						<div>
-							<h2 class='tit_prof'>MATEMÁTICO</h2>
-							<p class="prof_txt" >Actualmente curso el último año de Licenciatura en Matemáticas en la 
-								<a href="https://www.una.edu.ve" rel="noopener" target="_blank">Universidad Nacional Abierta</a> (UNA). Particularmente amo la estadísticas y la optimización
-							</p>
-						</div>			
-					</div>
-				</div>
-			</div>
-
-			<style>
-				#logos{background:#555;
-					   display:flex;
-					   flex-flow:column wrap;
-					   align-items: center;
-					   justify-content: space-around;
-					   align-content: center;
-					   height:80vh;
-					   width:100vw;
-					   color:black;
-						}
-				.logos_profs{display:flex;
-						flex-flow:row nowrap;
-						align-items: center;
-						justify-content: space-around;
-							width:100%}
-					.logo_prof{height:25vh;}
-					.tit_prof{font-family: Sans; font-size: 2vw; font-weight: 200}
-					.icon {
-						display:flex;
-						flex-flow:column nowrap;
-						align-items: center;
-						justify-content: space-between;
-						
-						}
-					.icon div h2,.icon div a {color:#ff7f2a;text-align:center;text-shadow: 1px 1px #222222;font-family:Roboto;}
-					
-					.icon:first-child h2, .icon:first-child a{color: var(--green)}
-					.icon:last-child h2, .icon:last-child a{color: var(--blue)}
-					.icon div p {width:19.5vw;color:white;text-align: center}
-
-				@media only screen and (max-width: 800px) {
-						#logos {flex-flow:column nowrap;}
-						.logos_profs{flex-flow:column wrap;width:100vw}
-						.icon {flex-flow:row nowrap;}
-						.icon img {width:14vh;height:14vh;}
-						.icon div {font-size:9px;color:var(--green);}
-						
-						.icon div p {width: 65vw;}
-						.icon div h2{font-size: 10px;}
-
-					}
-			</style>
-
-			<div id="sections">
-				<section class="job" id="translator">
-					<h2 class='sec_tit'>TRADUCTOR</h2>
-					<div class='body2' id="myDIV2">
-					</div>
-					<div id="langs_p">
-						<p style='color:black'>Por un tiempo me dedique a realizar traducciones como freelancer. Principalmente de Ingles a Espanol y viceversa. Pero tambien realice otras traducciones que me ayudaron a crear una cultura de responsabilidad y compromiso</p>
-						<span id="tr_txt" style="color:#eee; text-shadow: 1px 1px black; font-weight: 600;">							
-							Puedo traducir entre varios idiomas. Soy un hablante nativo de ESPAÑOL y altamente competente en INGLÉS.
-							<br />Y además soy capaz de traducir a esos 2 idiomas desde:
-							<br />ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  ITALIANO 🇮🇹 PORTUGUES 
-						</span>
-					</div>
-					<div id="langs" style="float:right; display:flex; justify-content: space-between; align-items: center">
-						<!--por-->
-						<a class='aflag' data-lang='0'> <img id='br-flag' alt="brazil-flag" class="flagies" src="imgx/langs/bra.png" /></a> 
-						<!--ger-->
-						<a class='aflag' data-lang='1'>	<img id='de-flag' alt="germany-flag" class="flagies" src="imgx/langs/deu.png" /></a> 
-						<!--fra-->
-						<a class='aflag' data-lang='2'>	<img id='fr-flag' alt="france-flag" class="flagies" src="imgx/langs/fra.png" /></a> 
-						<!--ita-->
-						<a class='aflag' data-lang='3'>	<img id='it-flag' alt="italy-flag" class="flagies" src="imgx/langs/ita.png" /></a> 
-						<!--spa-->
-						<a class='aflag big_flag' data-lang='4'>	<img id='sp-flag' alt="spain-flag" class="flagies" src="imgx/langs/spa.png" /></a> 
-						<!--eng-->
-						<a class='aflag' data-lang='5'>	<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="imgx/langs/eng.png" /></a>
-					</div>
-					<script>
-						const idiomas=[
-							'Eu posso traduzir entre vários idiomas. Eu sou um falante nativo de ESPANHOL e sou altamente proficiente em INGLÊS.<br/> Eu também posso traduzir para esses 2 idiomas de:<br/> ALEMAO 🇩🇪 FRANCÈS 🇫🇷 ITALIANO 🇮🇹 PORTUGES',
-
-							'Ich kann zwischen mehreren Sprachen übersetzen. Ich bin ein Muttersprachler von SPANISCH und ich bin sehr gut in ENGLISCH.<br/> Ich kann auch in diese 2 Sprachen übersetzen von:<br/> DEUTSCH🇩🇪   FRANZöSISCH 🇫🇷 ITALIENISCH 🇮🇹 PORTUGES', 
-
-							'Je peux traduire entre plusieurs langues. Je suis un locuteur natif de L`ESPAGNOL et je suis très compétent en ANGLAIS . <br/>Je peux aussi traduire vers ces 2 langues depuis:<br/> ALLEMAN 🇩🇪  FRANÇAIS 🇫🇷    ITALIAN 🇮🇹 PORTUGAIS',
-
-							'Posso tradurre tra più lingue. Sono un madrelingua SPAGNOLO e sono molto bravo in INGLESE. <br/>E posso anche tradurre in quelle 2 lingue da:<br/> TEDESCO 🇩🇪   FRANCESE 🇫🇷  ITALIANO 🇮🇹 PORTOGHESE',	
-
-							'Puedo traducir entre varios idiomas. Soy un hablante nativo de ESPAÑOL y soy altamente competente en INGLÉS. <br/>Y además puedo traducir a esos 2 idiomas desde:<br/> ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  ITALIANO 🇮🇹 PORTUGUÉS',	 
-
-							'I can translate between several languages. I am a native speaker of SPANISH and I am highly proficient in ENGLISH.  <br/>And I can also translate to those 2 languages from:<br/> GERMAN 🇩🇪  FRENCH 🇫🇷  ITALIAN 🇮🇹 PORTUGES'];
-
-						const langs = document.getElementById('langs');
-						const flagies = Array.from(langs.querySelectorAll('.aflag'));
-						const lang_txt = document.getElementById('tr_txt');
-
-						flagies.forEach(flag => flag.addEventListener('click', flangs));
-						
-						function flangs(){							 								 	
-						 	var x = this.dataset.lang ;
-						 	var z = langs.querySelector('.big_flag');
-
-						 	flagies.forEach(flag => flag.classList.remove('big_flag'));
-						 	this.classList.add('big_flag')
-						 	lang_txt.innerHTML=idiomas[x];	
-						 }					 
-
-							 
-							  				
-					</script>
-					<style>
-						#translator{background: var(--color) url('https://www.dropbox.com/s/6qp7habxfp7h3f8/ballon_langs.png?raw=1') left bottom no-repeat  fixed ; height:93vh;font-weight: 500; text-shadow: 0.5px 0.5px #292929;}
-							#langs{width:25%; align-self: flex-end; justify-content: flex-end; margin-right: 15%;}
-							
-								#flag_icons{float:right; margin-left: 10px}
-					 			.flagies{margin: 1px;}
-					 			#langs_p{font-family: raleway; line-height:185%; font-size:21px; float:right; color:white; width:60%;text-align: center; margin:4% 10% 5% 30%;}
-					 			.languages{padding-top:100px;margin:1px;}
-
-					 			.big_flag img{transform: rotate(30deg);}
-
-						@media only screen and (max-width: 800px) {
-							#translator{background: var(--color)}
-							#langs_p{ line-height:150%; width:75%;text-align: justify; margin:4% 10% 5% 10%;font-size: 16px;}							
-							#langs{margin-right:50%;}
-							.body2{display:none;}
-							
-						}
-					</style>			
-				</section>
-
-				<section class="job" id="programmer">
-					<h2 class='sec_tit'>PROGRAMADOR</h2>		
-					<p>Comence a interesarme por la programacion en <span style='font-size:150%'>2014</span>. </p>
-					<p>El primer curso que hice fue de Javascript en la plataforma <a href='Codecademy.com'>Codecademy.com</a>, donde tambien realice cursos de Python y Java. Para mis estudios de matematica aprender a programar en Pascal y Octave. Sin embargo, fue cuando en mi carrera de Educacion Informatica tuve la necesidad de aprender <span class='att_pls'>HTML</span> y <span class='att_pls'>PHP</span> que descubri mi verdadera pasion: <span style='color:white; font-weight: 500; font-size: 150%;text-shadow: 3px 2px darkcyan'><i>La programacion Frontend</i></span>
-					</p>
-					<p>Desde entonces me he especializado por mi cuenta en <b><i>HTML, CSS y Javascript</i></b>. Utilizo tambien herramientas como GIT. Estoy familiarizado con Node.js y SASS, y regularmente utilizo Bootstrap, React.JS y JQuery.
-					<div id="progr_langs">
-						<div class='p_langs' id="python" >
-							<a target="_blank" href='https://github.com/ivanguillermo/python'>
-								<img class='p_langs_img' alt="python" src='imgx/devs/python.png'/>
-							</a>
-							<div class="projects">
-								<ul>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/python/blob/master/Lagrange.py'>
-											Lagrange
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href=''>
-											.
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/python/blob/master/Integral_doble_metodo_de_Simpson.py'>Integral Langrange
-										</a>
-									</li>
-																
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="html"> 
-							<img class='p_langs_img' alt='html5' src='imgx/devs/html.png'/>
-							<div class="projects">
-								<ul>
-									<li><a target='_blank' href='https://github.com/ivanguillermo/30dayJSchallenge/blob/master/30%20-%20Whack%20A%20Mole/index-START.html'>MaduroCTM</a></li>
-									<li><a target='_blank' href=''>.</a></li>
-									<li><a target='_blank' href='https://github.com/ivanguillermo/30dayJSchallenge/blob/master/12%20-%20Key%20Sequence%20Detection/index-START.html'>Piano</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="css"> 
-							<img class='p_langs_img' alt='css' src='imgx/devs/css.png'/>
-							<div class="projects">
-								<ul>									
-									<li><a  target='_blank' href=''></a>.</li>
-									<li><a  target='_blank' href=''>Gatanimation</a></li>
-									<li><a  target='_blank' href=''></a>.</li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="js"> 
-							<img class='p_langs_img' alt="javascript" src='imgx/devs/js.png'/>
-							<div class="projects">
-								<ul>
-									<li><a target='_blank' href=''></a>.</li>
-									<li><a target='_blank' href=''>Multichange</a></li>									
-									<li><a target='_blank' href=''></a>.</li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="php">
-							<a target="_blank" href='https://github.com/ivanguillermo/PrettyHorribleProjects'> 
-							<img class='p_langs_img' alt="php" src='imgx/devs/php2.png'/>
-							<div class="projects">
-								<ul>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/caja_registradora.php'>
-											Caja Registradora
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/cajero_2.php'>
-											Cajero
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/prom_notas.php'>
-											Prom. Notas
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="mysql">  
-							<a  target='_blank' href='https://github.com/ivanguillermo/mySQL_databases'>
-								<img class='p_langs_img' alt="mysql" src='imgx/devs/mysql.png'/>
-							</a>
-							<div class="projects">
-								<ul>
-									<li>
-										<a target='_blank' href=''>
-											
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href=''>
-											
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href=''>
-											
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>					
-
-					<button class='github_btn'> <a style='color:white; text-decoration-style: none' href='https://github.com/ivanguillermo'>mi GutHub <i class="fa fa-github"></i></a></button>
-					<style type="text/css">
-						#programmer{background:var(--orange) url('') left top no-repeat fixed ; display:flex; flex-flow: column wrap; justify-content: flex-start; align-items: center;align-content: stretch; height:95vh;}
-
-							#progr_langs{display:flex; flex-flow: row wrap; justify-content: space-between; align-items: space-around; align-content: center; width:80%;height:10vh;
-										 border:4px solid var(--blue);border-radius:80px; margin-top: 4%;
-										 background-color: #1AA9ECa2}
-							#programmer h2{margin-bottom: 2%}
-							#programmer p{font-family:raleway; text-align: center; margin:1% 8%; color:#111111; font-size: 16px; text-shadow: 0px 0px black; font-weight: 300;}
-
-							.p_langs{display:flex; flex-flow:column nowrap; justify-content: center;align-items: center;}
-							.p_langs img{border: 5px solid white;border-radius: 50%; height:7.2vw;}
-
-							.p_langs:first-child{flex-direction:row-reverse;}
-							.p_langs:first-child img{border:0px;}
-							.p_langs:nth-child(2){flex-direction:column-reverse;}
-							.p_langs:nth-child(5){flex-direction:column-reverse;}
-							.p_langs:nth-child(6){flex-direction:row;}
-								.projects{
-									width:90px;
-									height:15vh;
-									background-color: white;
-									border: 4px red;
-									visibility: hidden;
-									border-radius:7% 30% 7% 10%;
-									border: 1px solid black;
-															
-								}				
-								.projects ul {list-style-type:none; margin-left: -30%;text-decoration: none;}		
-								.p_langs:hover > * {visibility: visible;}
-								.projects::before {width: 25px; background-color: var(--color); height:30px; content: ' < / > '; color:white; border-radius: ;top:-30px; border-top:1px solid var(--color)}
-								.github_btn{
-									font-weight:400; color:white; text-shadow: 1px 1px var(--orange);
-									height:8vh; width:24vw; margin-top:5%; 
-									
-									display: inline-flex; align-items: center; align-content: center; justify-content: center; font-size: 2vw; 
-									background: black;
-									border: 1px double black; box-shadow:0.1px 0.1px #fff7 ; border-radius: 25px 25px
-									 								
-									
-									}
-							@media only screen and (max-width: 800px) {
-								#programmer p{font-size: 14px;	 }
-								.p_langs img {width:7.5vw; border: 1px solid white; height:7.5vw;}
-								.projects{display:none;}
-								.github_btn{display:none; background:black;height:6vh;} 
-							}
-					</style>
-				</section>
-
-				<section class="job" id="matematico">
-					<h2 class='sec_tit'>MATEMATICO</h2>
-					<div class="carousel slide" data-ride="carousel" id="myCarousel">
-							<!-- Indicators -->
-							<ol class="carousel-indicators">
-								<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
-								<li data-slide-to="1" data-target="#myCarousel"></li>
-								<li data-slide-to="2" data-target="#myCarousel"></li>
-							</ol>
-							<!-- Wrapper for slides -->
-							<div class="carousel-inner">
-								<div class="item ">
-									<img alt="Estadistica" id='mat_img0' src="imgx/estadistica.png" />
-									
-									<div class="carousel-caption">
-										<div class="mat_art">
-											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vRndRh69UxkKMdnXo-8NJuSvBFVhPO-vALoLAyaacHHZVURx8OxoYz-jZB30PoLCX65PiN6oJyoqfo3/pub?start=false&loop=false&delayms=3000'> <div id="est_pptx_1" class="est_pptx mat_arts" alt='Datos no Agrupados'></div></a>
-											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vQ8euIkKrum8Us_pAYqfVeceGPcNuJ444mnR2W5u06Vae6dMXjVJr4EYEi43IBVAHishGzwFCF4zhll/pub?start=false&loop=false&delayms=3000'> <div id="est_pptx_2" class="est_pptx mat_arts" alt='Probabilidad'></div></a>
-											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vQUNevSzp9rmdiU0mIPO2FuzAuadkPzzfpbKYPKUDaECiSISXvEDIVgUc4Qag3bIdGbR2_uFx1-LLQh/pub?start=false&loop=false&delayms=3000'> <div id="est_pptx_3" class="est_pptx mat_arts" alt='Algebra de Conjuntos'></div></a>  
-										</div>
-										<div>
-											<h3>ESTADÍSTICAS</h3>
-										<p>Describir al conjunto de datos obtenidos para la toma de decisiones</p>
-											
-										</div>
-									</div>
-								</div>
-
-								<div class="item">
-									<img alt="Calculo" id='mat_img1' src="imgx/calculo.png" />
-									
-
-									<div class="carousel-caption">												
-										<div class="mat_art">
-											<div class="mat_arts"><a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vQWri_NNj0CwWdnBT1TGx6T_diQFyZ5WEOp1Rrz1GzahfzktMhIqLKL5y3dIkEm-3N9yjR5WarkQkhB/pub'> Integracion Imaginaria</a></div>
-											<div class="mat_arts"><a target='_blank'  href='https://docs.google.com/presentation/d/e/2PACX-1vQrWrRbGcxRPtw9ZoMiwevnYa9r33CHRGjXaUZmh2ASk5PXFUO-juHLfegCYvVP0pBNQDKqJRHRDUJz/pub?start=false&loop=false&delayms=3000'>Raiz cuadrada de una recta</a></div>
-											<div class="mat_arts"><a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vTGWhOqoDkZWZ7o30ViC4UsPv2QrWeoDXF9eDWMVYq-7ho_GW7Wrt13oThJl4bmt8Yl-rWqJeSichTU/pub'>All in One</a></div>  
-										</div>	
-										<h3>CÁLCULO</h3>
-										<p>Determinar las consecuencias cuantificables de eventos y circunstacias de las que tenemos informacion relevante</p>
-									</div>
-								</div>
-
-
-								<div class="item active">
-									<img alt="Optimizacion" id='mat_img2' src="imgx/optimizacion.png"/>									
-										
-									<div id='optimizacion'class="carousel-caption">
-										<h3 >OPTIMIZACIÓN</h3>
-											<p>Selección del mejor elemento de un conjunto de elementos disponibles</p>
-											<p>Son técnicas de modelización matemática</p>
-											<p>que permiten dar respuesta a problemas de planificación</p>
-											<p>y apoyar de una forma eficiente el proceso de toma de decisiones</p>
-											<br/>
-											<br/>
-									</div>
-								</div>
-							</div>
-							<!-- Left and right controls -->
+    <link href="/manifest.json" rel="manifest"/>
+    <meta name="msapplication-TileColor" content="#6248cc">
+    <meta name="msapplication-TileImage" content="img/i15.ico">
+    <meta name="theme-color" content="#3d47d9">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-							<a class="left carousel-control" data-slide="prev" href="#myCarousel">
-								<span class='glyphicon glyphicon-chevron-left'/>
-								<span class="sr-only">Previous</span> 
-							</a>
-							<a class="right carousel-control" data-slide="next" href="#myCarousel">
-								<span class='glyphicon glyphicon-chevron-right'/>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-						
-						<style type="text/css">
-							#matematico{background-color:var(--blue);
-										display:flex; 
-										flex-flow: column wrap ; 
-										justify-content: center; 
-										align-items: center; 
-										height: 91vh}
+    <link rel="shortcut icon" href="img/i15.ico" type="image/x-icon">
+    <link rel="icon" href="img/i15.ico" type="image/x-icon">
+    
+    <meta class='swiftype' name='image' data-type='enum' content='img/i15.png' />
+    <meta name="image" content="img/i15.png">
+    <meta name="keywords" content="matematica, informatica, educacion, blog, programacion, sistemas, investigacion">
+    <meta name="author" content="Ivan Lopez Pedreanez">  
 
-							.carousel{display:flex; 
-									 flex-flow: ;
-									 justify-content: center; 
-									 align-items: center;
-									 align-content: center; }
+    <title>Informaticos 15</title>
+  </head>
 
-							.carousel-inner .item {flex-flow: row wrap}
+  <body>
+    <div class="toptwo"> toptwo     
+    </div>
 
-							.carousel-inner .item img{width:99vw;
-								                      height:75vh;
-								                      text-align: center}
+    <div class="container">
+        <!--------------------------------------------Head------------------------------------------------>
+      <div class="item head">
 
-							.carousel-caption {background:rgb(10,10,10,0.52);
-												bottom:;width:100%;
-												left:0;
-												padding-top: 30%}
+        <div class="back"> INFORMATICOS 15</div>
+        <div id="a" class="lamina"></div>
+        <div id="b" class="lamina"></div>
+        <div id="c" class="lamina"></div>
+        <div id="d" class="lamina"></div>
+        <marquee id="marq">
+  	       	<b>
+  	          Bienvenido al Blog de la Cohorte 2015 de Informática de la UPEL-IMPM Yaracuy. Aquí encontrarás: Toda la 
+  	            <a href="pensum.html">INFORMACIÓN</a> de las materias de la especialidad informática
+  	          + <a href="pensum.html">CONTENIDOS</a> de otras materias generales
+  	          + <a href="reglamentos.html"> NORMATIVAS</a> de la UPEL 
+  	          + <a href='posts.html'> TIPS</a> de estudio 
+  	          + <a href='recursos.html'> RECURSOS</a> de estudio 
+  	          + <a href="libros-de-texto.html">LIBROS</a> de texto
+  	        </b>
+        </marquee>	      
+      </div>    
+        <!--------------------------------------------NavBar---------------------------------------------->
+      <div class="nav navbar15 flex-centrado" id='navbar15'>
+        <ul class="nav45">       
+          
 
-							.mat_art
-											{
-												display: flex;
-												flex-flow:row wrap;
-												align-content: center;
-												justify-content: space-evenly;
-												align-items: baseline;
-												
-												width:100vw;
-												background:transparent;
-												color:blue;
-												padding:2px;
-												margin:7px;
-												
-												position:relative;
-												left:0%;
-											}
-											.mat_arts
-											{
-												display: inline-flex;
-												flex-flow:row wrap;												
-												width:20vw;
-												height:20vw;												
+          <li id='nav_home' class="flex-centrado">
+            <a id='sider' class='flex-centrado'>
+              <img alt="informaticos 15" src="img/i15_mini.png">
+            </a>
+            <kbd style="letter-spacing: 3px">/home</kbd>
+          </li>
 
-												background:#ccca;
-												color:blue;
-												border-color: black;
-												padding:2px;
-												
-												justify-content: center;
-												align-content: center;
-												align-items: center;												
-											}
+           <li id='nav_heuristica' class='li45'><a href='a/heuristica.html' class='nav_links'><i class="fa fa-search"></i> Heurística</a>
+            <ul>
+              <li class='primera'><a href='investigacion/intro-investigacion.html'>Intro Investigación</a></li>
+              <li><a href='investigacion/investigacion-educativa.html'>Invest. Educativa</a></li>
+            </ul>
+          </li>
 
-							.est_pptx{																	
-								border: 10px solid black;										
-								width:20vw;
-								height:10vw;
-							}
-							#est_pptx_1 {background-image: url('imgx/pptx/datos_no_agrupados.png');background-size:cover;}
-							#est_pptx_2 {background-image: url('imgx/pptx/probabilidad.png');background-size:cover;}
-							#est_pptx_3 {background-image: url('imgx/pptx/alg_conj.png');background-size:cover;}	
+          <li class='li45' id='nav_programacion'> <a href='a/programacion.html' class='nav_links'>{ } Programación</a> 
+            <ul>
+              <div id='programacion_div'>
+                <div>              
+                      <li><a href="programacion/estructura-de-datos-y-programacion-i.html"> Estruct de Datos I</a></li>
+                    <li><a href="programacion/estructura-de-datos-y-programacion-ii.html"> Estruct de Datos II</a></li>
+                    <li><a href="programacion/estructura-de-datos-y-programacion-iii.html"> Estruct de Datos III</a></li>
+                </div>
+                <div>
+                    <li><a href="programacion/bases-de-datos.html"> Bases de Datos</a></li>
+                    <li><a href="programacion/lenguajes-de-programacion-web.html"> Leng. de Program WEB</a></li>
+                    <li><a href="programacion/internet-y-html.html"> Internet y HTML</a></li>            
+                </div>
+              </div>
+            </ul>
+          </li>	   
+         	
+  		    <li class='li45' id='nav_mat'><a href='a/matematica.html' class='nav_links'>∑ Matemática</a> 
+            <ul>
+              <div id='matematica_div'>
+                <div>              
+                    <li><a href='matematica/intro-calculo.html'>Intro al Cálculo</a></li>
+                    <li><a href='matematica/intro-algebra.html'>Intro al Álgebra</a></li>
+                    <li><a href='matematica/intro-algebra-lineal.html'>Álgebra Lineal</a></li>
+                </div>
+                <div>
+                    <li><a href='matematica/calculo-integral-y-diferencial.html'>Cálculo Integral</a></li>
+                    <li><a href='matematica/matematica-discreta.html'>Matemática Discreta</a></li>
+                    <li><a href='matematica/eae.html'>Estadísticas</a></li>        
+                </div>
+              </div>              
+            </ul>
+          </li>
+        
+          <li class='li45' id='nav_sis'><a href='a/sistemas.html' class='nav_links'>ㅱ Sistemas</a>        	
+          	<ul >
+          		<div id='sis_div'>
+          			<div id='sis_div2'>       
+                </div>
 
-							#optimizacion p{background: white; color:black;}							
-							
+          			<div id=''> 
+  	        			  <li id='nav_iinf' class='img_sist_nav' data-img='0'><a href="http://informaticos15.blogspot.com/p/intro-informatica.html">Intro Informática</a></li>
+  	             		<li id='nav_edig' class='img_sist_nav' data-img='1'><a href='sistemas/electronica-digital.html'>Electrónica Digital</a></li>
+  	             		<li id='nav_sinf' class='img_sist_nav' data-img='2'><a href='sistemas/sistemas-de-info.html'>Sistemas de <br/>Información</a></li>
+  	             		<li id='nav_scom' class='img_sist_nav' data-img='3'><a href='sistemas/redes-de-compu.html'>Sistemas de Computación</a></li>
+  	             		<li id='nav_rinf' class='img_sist_nav' data-img='4'><a href='sistemas/redes-de-compu.html'>Redes Informáticas</a></li>
+               		</div>
+        			</div>
+        		</ul>
+          </li>
 
-							@media only screen and (max-width: 800px) {								
-								.carousel-inner .item img{width:99vw;height:45vh;text-align: center}
-								.carousel-caption {font-size: 10px;padding-top: 40%}
-							}
-						</style>
-				</section>
-
-				<section class="job" id="educador">
-					<h2  class="pptx pptx21 sec_tit">EDUCADOR</h2>
-					<div class="pptx pptx0" data-pptx='0'>
-						<a href='#id01' id='pptx_link0'><img id='pptx_img0' alt='pptx0' src='imgx/pptx/datos_no_agrupados.png'/></a>
-					</div>
-					<div class="pptx pptx1" data-pptx='1'>
-						<a href='#id01' id='pptx_link1'><img id='pptx_img1' alt='pptx1' src='imgx/pptx/electronica_digital.png'/></a>
-					</div>
-					<div class="pptx pptx2" data-pptx='2'>
-						<a href='#id01' id='pptx_link2'><img id='pptx_img2' alt='pptx2' src='imgx/pptx/funciones.png'/></a>
-					</div>
-					<div class="pptx pptx3" data-pptx='3'>
-						<a href='#id01' id='pptx_link3'><img id='pptx_img3' alt='pptx3' src="imgx/pptx/datos_no_agrupados.png"/></a>
-					</div>
-					<div class="pptx pptx4" data-pptx='4'>
-						<a href='#id01' id='pptx_link4'><img id='pptx_img4' alt='pptx4' src="imgx/pptx/derivada.png"/></a>
-					</div>
-					<div class="pptx pptx5" data-pptx='5'>
-						<a href='#id01' id='pptx_link5'><img id='pptx_img5' alt='pptx5' src="imgx/pptx/didactica.png"/></a>
-					</div>
-					<div class="pptx pptx6" data-pptx='6'>
-						<a href='#id01' id='pptx_link6'><img id='pptx_img6' alt='pptx6' src="imgx/pptx/electronica_digital.png"/></a>
-					</div>
-					<div class="pptx pptx7" data-pptx='7'>
-						<a href='#id01' id='pptx_link7'><img id='pptx_img7' alt='pptx7' src="imgx/pptx/estructura_datos_2.png"/></a>
-					</div>
-					<div class="pptx pptx8" data-pptx='8'>
-						<a href='#id01' id='pptx_link8'><img id='pptx_img8' alt='pptx8' src="imgx/pptx/estructura_datos_3.png"/></a>
-					</div>
-					<div class="pptx pptx9" data-pptx='9'>
-						<a href='#id01' id='pptx_link9'><img id='pptx_img9' alt='pptx9' src="imgx/pptx/funciones.png"/></a>
-					</div>
-					<div class="pptx pptx10" data-pptx='10'>
-						<a href='#id01' id='pptx_link10'><img id='pptx_img10' alt='pptx10' src="imgx/pptx/historia_internet_memes.png"/></a>
-					</div>
-					<div class="pptx pptx11" data-pptx='11'>
-						<a href='#id01' id='pptx_link11'><img id='pptx_img11' alt='pptx11' src="imgx/pptx/html_5.png"/></a>
-					</div>
-					<div class="pptx pptx12" data-pptx='12'>
-						<a href='#id01' id='pptx_link12'><img id='pptx_img12' alt='pptx12' src="imgx/pptx/internet.png"/></a>
-					</div>
-					<div class="pptx pptx13" data-pptx='13'>
-						<a href='#id01' id='pptx_link13'><img id='pptx_img13' alt='pptx13' src="imgx/pptx/lenguajes_programacion.png"/></a>
-					</div>
-					<div class="pptx pptx14" data-pptx='14'>
-						<a href='#id01' id='pptx_link14'><img id='pptx_img14' alt='pptx14' src="imgx/pptx/redes_informaticas.png"/></a>
-					</div>
-					<div class="pptx pptx15" data-pptx='15'>
-						<a href='#id01' id='pptx_link15'><img id='pptx_img15' alt='pptx15' src="imgx/pptx/seguridad_informatica.png"/></a>
-					</div>
-					<div class="pptx pptx16" data-pptx='16'>
-						<a href='#id01' id='pptx_link16'><img id='pptx_img16' alt='pptx16' src="imgx/pptx/sistemas_admin_bases_datos.png"/></a>
-					</div>
-					<div class="pptx pptx17" data-pptx='17'>
-						<a href='#id01' id='pptx_link17'><img id='pptx_img17' alt='pptx17' src="imgx/pptx/teaching.png"/></a>					
-					</div>	
-					
-					<div class="pptx pptx19">
-						<p>A pasionado por la educación. Lo que más amo en la vida es aprender. Cada día sin aprender algo es un día perdido.</p> 
-					</div>
-					<div class="pptx pptx22">
-						<p> Ese principio lo intento poner en práctica lo segundo que más amo: Compartir lo que he aprendido, lo que me parece interesante y útil, todo aquello que creo que puede ayudar a alguien </p> 
-					</div>
-					<div class="pptx pptx20">
-						<p>y que me encantó cuando alguien más me guió a ello. Enseñar es una pasión y un sueño para mí, y además un medio efectivo para reforzar mis conocimientos</p>
-					</div>
-					<div class="pptx pptx23">
-							<br/>
-							Haz click en la imagen para visitar mi blog educativo de informatica						
-							<a target="_blank" href="https://informaticos15.blogspot.com">
-								<img style='padding: 2% 15% 25% 15%; border:0;' src="informaticos15.png"/>
-							</a>
-					</div>
-					
-					<div id="id01" class="modal">
-			            <div class="modal-dialog">
-			              <div class="modal-content">
-			                <header class="containerheader">
-			                  <a href="#pptxs" class="closebtn">×</a>
-			                  <h2 id='pptx_shower_tit'>Didactica</h2>
-			                </header>
-			                <div class="containercontainer">
-			                  <iframe id='pptx_shower_frame' 
-			                          src="" 
-			                          frameborder="0" width="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-			                  </iframe>
-			                </div>
-			                <footer class="containerfooter">
-			                  <p style='color:white'>by Ivan Guillermo Lopez</p>
-			                  <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
-			                  </div>
-			                </footer>
-			              </div>
-			            </div>
-			        </div>
-
-			        <style>
-			        	.modal { 
-			            display:none; 
-			            position: absolute; 
-			            top:475vh;
-			            padding-top:0vh; 
-			            left: 0px;
-			            width: 100%; 
-			            height: 100%; 
-			            overflow: auto; 
-			            background-color: #000c; 
-			            z-index:80;
-		          		}
-			          /* Display the modal when targeted */
-			          .modal:target {display: block;position: absolute;}
-
-			          /* The modal box */
-			          .modal-dialog {display: block;vertical-align: middle;margin-top:30px;}
-			          /* The modal's content */
-			          .modal-dialog .modal-content {
-			            margin: auto;
-			            background-color: #232323;            
-			            border: 1px #777 solid;
-			            text-align: justify;
-			            width: 100%;
-			            height:75vh;
-			            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			            border-radius: 12px 12px;
-
-			            /* Add animation */
-			            -webkit-animation-name: example; /* Chrome, Safari, Opera */
-			            -webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
-			            animation-name: example;
-			            animation-duration: 3s;
-			          }
-
-			          #pptx_shower_frame{ 	height:60vh;   }
-
-			          /* The button used to close the modal */
-			          .closebtn {text-decoration: none;float: right;font-size: 25px;font-weight: bold;color: var(--magenta);}
-			          .closebtn:hover, .closebtn:focus {color: var(--blue);text-decoration: none;cursor: pointer;}
-			          .containercontainer {padding: 2px 14px;}
-		          		header {background-color: white; font-size: 20px;color: black; padding:0px 10px;}
-		          		footer {background-color: white font-size: 20px;color: black; padding:0px 10px;}    
-		   	        </style>
-
-					<style type="text/css">
-						#educador{background-color:var(--magenta); height:85vh; 
-								display: grid;
-								grid-gap:4px;
-								grid-template-columns: 4fr repeat(11, 1fr);
-							    grid-template-rows: 1fr repeat(6, 1fr) ;font-weight: 500; text-shadow: 0.5px 0.5px #292929;
-							    grid-template-areas:
-							        "p p p . . w w w . . . ."
-							        "p p p . . . t t t t d d" 
-							        "p p p x x x x . q q c c"
-							        "z z z z . . . n f b b ñ" 
-							        "z z z z . . m m m b b ñ"					       
-							        "y y . . o o m m m a a a" 
-							        "y y e l k j i h g a a a"              
-							    }
+          <li class='li45' id='nav_bib'> <a href='a/biblioteca.html' class='nav_links'><i class="fa fa-book"></i>Biblioteca</a>
+          	<div class='punta'>🔺</div>
+             	<ul id='bib_div'>  
+          			<li class='primera'><a href='/pensum-de-informatica-upel.html'>Pensum</a></li>
+          		  <li><a href='/recursos.html'>Recursos</a></li>
+          		  <li><a href='/libros-de-texto.html'>Libros de Texto</a></li>
+          		  <li><a href='/planes-de-curso.html'>Planes de Curso</a></li>
+          		  <li><a href='/reglamentos.html'>Reglamentos</a></li> 
+             </ul>
+          </li>
 
 
-				    	#educador img{width:100%;height:100%;}   
-				    		.pptx img{border: 2.75px solid #fff}
-				    		.pptx17 img{border: 0px solid black}      
-						    .pptx0{grid-area: a;}  .pptx1{grid-area: b;} .pptx2{grid-area: c;}  
-						    .pptx3{grid-area: d;}  .pptx4{grid-area: e;} .pptx5{grid-area: f;}  
-						    .pptx6{grid-area: ñ;}  .pptx7{grid-area: g;} .pptx8{grid-area: h;}  
-						    .pptx9{grid-area: i;}  .pptx10{grid-area: j;} .pptx11{grid-area: k;} 
-						    .pptx12{grid-area: l;} .pptx13{grid-area: m;} .pptx14{grid-area: n;}
-						    .pptx15{grid-area: o; } .pptx16{grid-area: q; } .pptx17{grid-area: p; } 
-						    
-						    .pptx19{grid-area: t; font-size:16px; color:white; padding:1px; text-align:center;}
-						    .pptx20{grid-area: z; font-size:16px; color:white; padding-left:35%; text-align:center; } 
-						    .pptx21{grid-area: w;} 
-						    .pptx22{grid-area: x; font-size:14px; color:white; padding:1px; text-align:center}
-						    .pptx23{grid-area: y; font-size:13px; color:white; padding:1px 3px; text-align:center} 
+
+          <li class='li45'> <a href='a/workshops.html' class='nav_links'><i class="fa fa-connectdevelop"></i> Workshops</a>
+            <ul>
+              <div class='workshops_menu' >
+                <div class='primera'>
+                  <a>Rey de Redes</a>
+                  <img src="img/taller_redes.png" alt="taller-redes"/>
+                </div>
+                <div>
+                  <a>Web Developer</a>
+                  <img src="img/web_dev.png" alt="taller-web-developer"/>
+                </div>
+                <div>
+                  <a>LAGIGF</a>
+                  <img src="img/lacigf.png" alt="taller-lacigf"/>
+                </div>
+                <div>
+                  <a>Automatizacion</a>
+                  <img src="img/automatizacion.png" alt="taller-automatizacion"/>         
+                </div>
+              </div>
+            </ul>
+          </li>
+
+          <li class='li45' id='nav_contacto'><a href='contacto.html'><i class="fa fa-phone-square"></i> Contacto</a></li>
+        </ul>       
+      </div>
+        <!--------------------------------------------Side Bar------------------------------------------------>
+      <div class="item side" id='side'>
+        	<div class="item logos">
+        		<div class="logo i15">
+        			<p>Informaticos15</p>
+        			<img alt="informaticos15" src="img/i15.png"><!---->
+    	      </div>
+    	      <div class="logo upel"><!--UPEL--><img alt="UPEL" src="img/upel.jpg"><div><p>Universidad<p>Pedagogica<p>Experimental<p>Libertador</div>
+    	      </div>
+    	      <div class="logo impm"><!--IMPM--><img alt="IMPM" src="img/impm.png"><div><p>Instituto<p>Mejoramiento<p>Profesional<p>Magisterio</div>
+    	      </div>
+          </div>
+
+    	    <div class="item buscar flex-centrado">
+            <input>
+            <button><i class="fa fa-search"></i>Buscar</button>
+          </div>
+
+          <div class="item menuv flex-centrado">
+              <ul class='flex-centrado'>
+                <li class='nivel1'><a href='a/matematica.html' class='nivel1'>MATEMÁTICA</a>
+                  <ul>
+                    <li class='primera'><a href='matematica/intro-calculo.html'><i class="fa fa-caret-right"></i> Intro al Cálculo</a></li>
+                    <li><a href='matematica/intro-algebra.html'><i class="fa fa-caret-right"></i> Intro al Álgebra</a></li>
+                    <li><a href='matematica/intro-algebra-lineal.html'><i class="fa fa-caret-right"></i> Álgebra Lineal</a></li>
+                    <li><a href='matematica/calculo-integral-y-diferencial.html'><i class="fa fa-caret-right"></i> Cálculo Integral</a></li>
+                    <li><a href='matematica/matematica-discreta.html'><i class="fa fa-caret-right"></i> Matemática Discreta</a></li>
+                    <li><a href='matematica/eae.html'><i class="fa fa-caret-right"></i> Estadísticas</a></li>
+                  </ul>
+                </li>
+
+                <li class='nivel1'><a href='a/sistemas.html' class='nivel1'>SISTEMAS</a>
+                  <ul>
+                    <li class='primera'><a href='programacion/intro_informatica.html'><i class="fa fa-caret-right"></i> Intro Informática</a></li>
+                    <li ><a href='sistemas/electronica-digital.html'><i class="fa fa-caret-right"></i> Electrónica Digital</a></li>
+                    <li><a href='sistemas/sistemas-de-info.html'><i class="fa fa-caret-right"></i> Sist de Información</a></li>
+                    <li><a href='sistemas/redes-de-compu.html'><i class="fa fa-caret-right"></i> Sist de Computación</a></li>
+                    <li><a href='sistemas/redes-de-compu.html'><i class="fa fa-caret-right"></i> Redes Informáticas</a></li>
+                  </ul>
+                </li>
+
+                <li class='nivel1'><a href='a/programacion.html' class='nivel1'>PROGRAMACIÓN</a>
+                  <ul>                  
+                    <li class='primera'><a href='programacion/estructura-de-datos-y-programacion-i.html'><i class="fa fa-caret-right"></i> Estruc Datos Progr I</a></li>
+                    <li><a href='programacion/estructura-de-datos-y-programacion-ii.html'><i class="fa fa-caret-right"></i> Estruct Datos Progr II</a></li>
+                    <li><a href='programacion/bases-de-datos.html'><i class="fa fa-caret-right"></i> Bases de Datos</a></li>
+                    <li><a href='programacion/estructura-de-datos-y-programacion-iii.html'><i class="fa fa-caret-right"></i> Estruc Datos Progr III</a></li>
+                    <li><a href='programacion/internet-y-html.html'><i class="fa fa-caret-right"></i> Internet y HTML</a></li>
+                    <li><a href='programacion/lenguajes-de-programacion-web.html'><i class="fa fa-caret-right"></i> Lenguajes Progr Web</a></li>
+                  </ul>
+                </li>
+
+                <li class='nivel1'><a href='a/heuristica.html' class='nivel1'>HEURÍSTICA</a>
+                  <ul>
+                    <li class='primera'><a href='investigacion/intro-investigacion.html'><i class="fa fa-caret-right"></i> Intro Investigación</a></li>
+                    <li><a href='investigacion/investigacion-educativa.html'><i class="fa fa-caret-right"></i> Investig Educativa</a></li>
+                  </ul>
+                </li>
+                
+                <li class='nivel1'><a href='a/biblioteca.html' class='nivel1'>BIBLIOTECA</a>
+                  <ul>
+                    <li class='primera'><a href='/pensum-de-informatica-upel.html'><i class="fa fa-caret-right"></i> Pensum</a></li>
+                    <li><a href='/recursos.html'><i class="fa fa-caret-right"></i> Recursos</a></li>
+                    <li><a href='/libros-de-texto.html'><i class="fa fa-caret-right"></i> Libros de Texto</a></li>
+                    <li><a href='/planes-de-curso.html'><i class="fa fa-caret-right"></i> Planes de Curso</a></li>
+                    <li><a href='/reglamentos.html'><i class="fa fa-caret-right"></i> Reglamentos</a></li>
+                  </ul>
+                </li>
+                <li class='nivel1'><a href='a/workshops.html' class='nivel1'>WORKSHOPS</a>
+                  <ul>
+                    <li class='primera'><a href=''><i class="fa fa-caret-right"></i> Rey de Redes</a></li>
+                    <li><a href='/'><i class="fa fa-caret-right"></i> Web Developer</a></li>
+                    <li><a href='/'><i class="fa fa-caret-right"></i> LACIGF</a></li>
+                    <li><a href='/'><i class="fa fa-caret-right"></i> Automatizacion</a></li>                  
+                  </ul>
+                </li>
+                 <li class='nivel1'><a href='a/snippets.html' class='nivel1'>SNIPPETS</a>
+                  <ul>
+                    <li class='primera'><a href=''><i class="fa fa-caret-right"></i> Pensum</a></li>
+                    <li><a href='/'><i class="fa fa-caret-right"></i> Recursos</a></li>
+                    <li><a href='/'><i class="fa fa-caret-right"></i> Libros de Texto</a></li>
+                    <li><a href='/'><i class="fa fa-caret-right"></i> Planes de Curso</a></li>
+                    <li><a href='/'><i class="fa fa-caret-right"></i> Reglamentos</a></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+
+          <div class="item twitter"   async='async'>
+          <a class="twitter-timeline" data-lang="es" data-width="150%" data-height="100%" data-dnt="true" data-link-color="#3499fe" href="https://twitter.com/gatuso413?ref_src=twsrc%5Etfw"></a> 
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+          </div>
+      </div>
+      <!--------------------------------------------Main------------------------------------------------>
+      <div class="item main">
+      	<div class="item posts">
+  	        <div class="post uno">
+              <div class="post_descr">
+                <h4 id='prev0'> </h4>
+                <p id='preview1'>
+                  CUANDO QUEREMOS CONECTARNOS A FACEBOOK, suponiendo que tenemos una computadora conectada a INTERNET, (ya sea por red cableada, satelital o wifi) existe un proceso de diferentes capas y pasos que deben realizarse <br/><br/>
+            Facebook es un sitio web, el cual consiste de varias paginas web interconectadas. Cada pagina web es un documento escrito en un lenguaje de programación WEB llamado HTML.<br/><br/>
+            Para poder visualizar la página web, se utiliza un navegador web, el cual es software que funciona como un interprete de los lenguajes de programación, y de esta manera permite visualizar la página como fue la intención del creador de la misma, e interactuar con ella
+                </p>
+                <a id='prev_go' href=''>
+                  <button type="button" class='but15'>
+                  Ir al articulo
+                  </button></a>
+              </div>
+              <span id='prevvbut' class='prenext' style="left:15vw;"> <i  class="fa fa-chevron-left"> </i></span>            
+              <span id='nexttbut' class='prenext' style="left:66vw;"> <i class="fa fa-chevron-right"> </i></span> 
+            </div>
+  	    
+            <div class="post dos">
+              <div class='miniimg flex-centrado'>
+                  <h4>Dev Ops</h4>
+                  <p>El término DevOps se refiere usualmente al movimiento profesional emergente que aboga por una relación colaborativa... </p>
+              </div>
+            </div>
+            <div class="post tres">
+              <div class='miniimg flex-centrado'>
+                  <h4>Evolucion del Concepto de Limite</h4>
+                  <p>Seguramente, estudiando matemática, alguna que otra vez te has encontrado con problemas para entender realmente... </p>
+              </div>
+            </div>
+            <div class="post cuatro">
+             <div class='miniimg flex-centrado'>
+                  <h4>jQuery</h4>
+                  <p>Las bases de la programación Web, cuanto a los Lenguajes de Programación son ... </p>
+              </div>
+            </div>
+         
+
+  	        <div class="post txt1">
+              <img id='img1' alt='historia internet memes' src='p/hdiem.png'>
+              <h2> Historia de Internet en Memes</h2>
+              <p>Descubre <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style='text-decoration: none; color:black; text-shadow: 1px 1px white'> ¡
+                <b >AQUÍ</b>! </a> todo lo que debes saber sobre el Origen de los Memes de Internet.</p>
+            </div>
+         
+            <div class="post txt2">
+  	        	<div class='minitxt flex-centrado'>
+  	            	<h4>Protocolo de Transferencia</h4>
+  	            	<p>Internet la entendemos como "un conjunto de redes informáticas internconectadas" la idea detrás de lograr... </p>
+  	          </div> 
+            </div>
+  	        <div class="post txt3">
+  	        	<div class='minitxt flex-centrado'>
+  		        	<h4>Por qué el intenet es tan lento en vzla</h4>
+              		<p>Para prácticamente cualquier usuario regular de internet en Venezuela no es un secreto que la conexión...</p>
+  	          </div>            	
+            </div>
+  	        <div class="post txt4">
+  	        	<div class='minitxt flex-centrado'>
+  		        	<h4>Nacimiento de la Geometria Analítica</h4>
+  	            	<p>La geometría analítica es básicamente una ayuda de la geometría al álgebra y del álgebra a la geometría. La geometría confiere al álgebra...</p>
+  	          </div>
+            </div>
+  	        <div class="post publicidad"></div>
+      	</div>
+          <!--------------------------------------------Post Scripts----------------------------------------->     
+        <script type="text/javascript">
+              const post_uno=[
+                ['Internet', 'internet.gif', `CUANDO QUEREMOS CONECTARNOS A FACEBOOK, suponiendo que tenemos una computadora conectada a INTERNET, (ya sea por red cableada, satelital o wifi) existe un proceso de diferentes capas y pasos que deben realizarse <br/><br/>
+                Facebook es un sitio web, el cual consiste de varias paginas web interconectadas. Cada pagina web es un documento escrito en un lenguaje de programación WEB llamado HTML.<br/><br/>
+                Para poder visualizar la página web, se utiliza un navegador web, el cual es software que funciona como un interprete de los lenguajes de programación, y de esta manera permite visualizar la página como fue la intención del creador de la misma, e interactuar con ella`],
+                ['TCP', 'TCP.png', `Internet la entendemos como "un conjunto de redes informáticas internconectadas", la idea detrás de lograr está interconexión, era principalmente que entre computadores de todo el mundo pudieran compartirse información. <br/><br/>
+                 Para poder lograr esto, la comunicación entre los diferentes computadores, cada uno posiblemente con diferentes fabricantes, arquitecturas, etc. se necesitaba desarrollar, tal y como para la comunicación entre diferentes personas, un lenguaje común por medio del cual los computadores pudieran ponerse de acuerdo sobre como se llevaría a cabo el proceso de...`],
+                ['FTP', 'FTP.png', `Este protocolo de red para transferencia de archivos entre sistemas conectados a una red TCP basada en la arquitectura Cliente-Servidor. Independientemente del sistema operativo que se utilice en dos equipos, estos pueden conectarse para compartir archivos de audio, video, imágenes, texto, aplicaciones, etc. Además de la posibilidad de transmitir archivos, también permite visualizar directorios, cambiar el nombre o limitar derechos`],
+                ['DNS', 'DNS.png', ` El Sistema de Nombres de Dominio (DNS) es la guía telefónica de Internet. Las personas acceden a la información online a través de nombres de dominio, como wikipedia.org o espn.com. Los navegadores web interactúan a través de direcciones de Protocolo de Internet (IP). El DNS traduce nombres de dominio a direcciones IP para que los navegadores puedan cargar recursos de Internet.<br/><br/>
+                  Cada dispositivo conectado a Internet tiene una dirección IP única que otras máquinas utilizan para encontrar el dispositivo. Los servidores DNS 
+                  eliminan la necesidad de que los humanos memoricen direcciones IP como 192.168.1.1 (en IPv4), o direcciones IP alfanuméricas más complejas más nuevas, 
+                  como... `],
+                ['IP','IP.png', `Es un protocolo de comunicación de datos digitales clasificado funcionalmente en la capa de red según el modelo internacional OSI.<br/>
+                Su función principal es el uso bidireccional en origen o destino de comunicación para transmitir datos mediante un protocolo no orientado a conexión que
+                transfiere paquetes conmutados a través de distintas redes físicas previamente enlazadas según la norma OSI de enlace de datos.<br/><br/>
+                El diseño del protocolo IP se realizó presuponiendo que la entrega de los paquetes de datos sería no confiable. Por ello, IP tratará de realizarla del
+                mejor modo posible...`]  
+               ]
+
+              var prevvbut = document.getElementById('prevvbut');
+              var nexttbut = document.getElementById('nexttbut');
+           
+              var unopost=500;
+              var puno = document.querySelector('.uno');
+              var puno_t = document.getElementById('prev0');
+              var puno_c = document.getElementById('preview1');      
+
+              prevvbut.addEventListener('click', prevv);
+              nexttbut.addEventListener('click', nextt);
+
+              function prevv(){
+                unopost--;
+                up=unopost%5;
+                puno.style.background=`url('p/` + post_uno[up][1] + `')`;
+                puno.style.backgroundSize=`100% 100%`;
+                puno_t.innerHTML= post_uno[up][0];
+                puno_c.innerHTML= post_uno[up][2];        
+                };   
+              function nextt(){
+                unopost++;
+                up=unopost%5;
+                puno.style.background=`url('p/` + post_uno[up][1] + `')`;
+                puno.style.backgroundSize=`100% 100%`;
+                puno_t.innerHTML= post_uno[up][0];
+                puno_c.innerHTML= post_uno[up][2];        
+                }; 
+        </script> 
+          <!--------------------------------------------React Workshops-------------------------------------->
+  	    <div class="item workshops flex-centrado" id='talleres'>          
+  	    </div>
+          <!--------------------------------------------PPTXS------------------------------------------------>
+  	    <div class="item pptxs">  
+  	      <div class="pptx item1 flex-centrado" id='pptx_img0'/>
+  	      	<a href="#id01">
+              <div data-pptx='0' class="pptx_descr">a  </div>
+            </a>
+  	      </div>
+
+    		  <div class="pptx item2 flex-centrado" id='pptx_img1' />
+    		  	<a href='#id01'>
+              <div data-pptx='1' class="pptx_descr">  a  </div>
+            </a>
+    		  </div>
+
+    		  <div class="pptx item3 flex-centrado" id='pptx_img2' />		  	
+              <a href="#id01">
+                <div data-pptx='2' class="pptx_descr">a</div>
+              </a>        
+    		  </div>
+
+    		  <div class="pptx item4 flex-centrado" id='pptx_img3' />		  	
+              <a href="#id01">
+                <div data-pptx='3' class="pptx_descr">  a  </div>
+              </a>        
+    		  </div>
+
+    		    <div class="pptx item5 flex-centrado" id='pptx_img4' />          
+                <a href="#id01"><div data-pptx='4' class="pptx_descr">a</div>
+                </a>
+            </div>
+
+    		    <div class="pptx item6 flex-centrado" id='pptx_img5' />          
+                <a href="#id01"> <div data-pptx='5' class="pptx_descr">a</div>         
+                </a>          
+            </div>
+
+    		    <div class="pptx item7 flex-centrado" id='pptx_img6' />        
+              <a href="#id01">
+                <div data-pptx='6' class="pptx_descr">a</div>
+              </a>
+            </div>
+
+    		    <div class="pptx item8 flex-centrado" id='pptx_img7' />        
+              <a href="#id01">
+                <div data-pptx='7' class="pptx_descr">a</div>
+              </a>
+            </div>
+
+    		    <div class="pptx item9 flex-centrado" id='pptx_img8' />        
+              <a href="#id01">
+                <div data-pptx='8' class="pptx_descr">a</div>
+              </a>
+            </div>
+
+    		    <div class="pptx item10 flex-centrado" id='pptx_img9'/>        
+              <a href="#id01">
+                <div data-pptx='9' class="pptx_descr">a</div>
+              </a>
+            </div>
+
+    		    <div class="pptx item11 flex-centrado" id='pptx_img10'>        
+              <a href="#id01">
+                <div data-pptx='10' class="pptx_descr">a</div>
+              </a>
+            </div>
+
+    		    <div class="pptx item12 flex-centrado" id='pptx_img11'/>        
+              <a href="#id01">
+                <div data-pptx='11' class="pptx_descr">a</div>
+              </a>
+            </div>
+
+    		    <div class="pptx item13 flex-centrado" id='pptx_img12'/>          
+                <a href="#id01">
+                  <div data-pptx='12' class="pptx_descr">a </div>
+                </a>          
+            </div>
+
+    		    <div class="pptx item14 flex-centrado" id='pptx_img13'/>         
+                <a href="#id01">
+                   <div data-pptx='13' class="pptx_descr">a </div>
+                </a>          
+            </div>
+    		    
+            <div class="pptx item15 flex-centrado" id='pptx_img14'/>          
+                <a href="#id01">
+                  <div data-pptx='14' class="pptx_descr"> a  </div>             
+                </a>          
+            </div>
+            
+    		    <div class="item16">
+              <h2>Presentaciones Educativas</h2>
+              <p>Ponemos a tu disposicion diferentes libros, ebooks, presentaciones, etc. de corte educativo realizados en su por nosotros con clara intencion pedagogica usando al maximo los recursos digitales y basados en las teorias sobre tecnicas didacticas mas actuales, sobre todos los temas que se abordan en este sitio
+              </p> 
+            </div>
+  	    </div> 
+          <!--------------------------------------------PPTX shower modal------------------------------------>
+        <div id="id01" class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <header class="containerheader">
+                    <a href="#pptxs" class="closebtn">×</a>
+                    <h2 id='pptx_shower_tit'>Didactica</h2>
+                  </header>
+                  <div class="containercontainer">
+                    <iframe id='pptx_shower_frame' 
+                            src="https://docs.google.com/presentation/d/e/2PACX-1vTmKY3bmFhkl5eT-oWLOA-bACxfNE1DDFZjg2-J3UkiLRAuQdwvsCP_wln94J273pllbQ4Gj9HWI7pa/embed?start=false&loop=false&delayms=3000" 
+                            frameborder="0" width="100%" height="420px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+                    </iframe>
+                  </div>
+                  <footer class="containerfooter">
+                    <p style='color:white'>by Ivan Guillermo Lopez</p>
+                    <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
+                    </div>
+                  </footer>
+                </div>
+              </div>
+        </div>
+  	  </div>
+      <!--------------------------------------------Footer------------------------------------------------>
+  	  <div class="item foot flex-centrado">
+       <div>  
+  	   <center class="rrss">
+          <a href="https://www.facebook.com/" rel="noopener"><div class='flex-centrado'><i class="fa fa-facebook-official"></i></div></a>
+          <a href="https://www.instagram.com/informaticos15" target="_blank" rel="noopener"><div class='flex-centrado'><i class="fa fa-instagram"></i></div></a>
+          <a href="https://twitter.com/ivanguillermolp" target="_blank" rel="noopener"><div class='flex-centrado'><i class="fa fa-twitter"></i></div></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener"><div class='flex-centrado'><i class="fa fa-youtube"></i></div></a>
+       </center> 
+       <br/>  
+       </div>   
+  	   <p>por <a href="ivanlopezpedreanez.net.ve">Ivan Guillermo Lopez Pedreañez</a></p>     
+       </div>
+      </div>
+    </div>
+  </body>
+      <!--------------------------------------------Page Distribution style------------------------------------------------>
+    <style>
+      :root {
+      --azul:#3499fe;
+      --rosa:#D1215F;
+      --verde:#00f2bf;
+      --rojo:#ea4335 ;
+      --amarillo:#ffa151;
+      --gris:#7c7c7c;
+      --azulM:#045FB4;
+      --morado:#6248cc;
+      --modalcolor: #232323;
+     }
+      html{font-family: 'Roboto'; font-weight: 500}
+      body{overflow-x:hidden;}
+      ul {list-style:none;}
+
+      .flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
+      
+
+      .item{border: 0px solid black;}
+      .container {
+        position: absolute; 
+        top: 0px; 
+        margin:0px;
+        left:0px;
+        display: grid;
+        width:100%;
+        grid-gap: 0.5px;
+        grid-template-columns: auto 1fr 1fr;
+        grid-template-rows: 250px 50px auto 100px;
+        grid-template-areas:
+          "head   head   head"
+          "nav    nav    nav"
+          "side   main   main"
+          "foot   foot   foot"
+      }
+    </style>
+      <!--------------------------------------------Head Style------------------------------------------------>
+    <style> 
+      .head {
+        grid-area: head;
+        background:var(--morado);
+      
+      }
+        #a,#b {transition: left 1s;}
+        #c,#d {transition: right 1s, z-index 0s;}
+
+        .back {z-index:0;  height: 250px; position: relative;top: -10px;
+        			background-image:url('informaticos15.png');background-repeat: repeat;background-size:64% 93%;background-position:top center;
+              animation-name: gify;
+              animation-duration: 5s;
+              animation-iteration-count: infinite;         
+
+        }
+
+          @-webkit-keyframes gify {            
+              0% {filter: hue-rotate(0deg)} 25% {filter: hue-rotate(90deg)} 50% {filter: hue-rotate(180deg)} 75% {filter: hue-rotate(90deg)} 100% {filter: hue-rotate(0deg)}          
+            }
+            /* Add animation (Standard syntax) */
+            @keyframes gify {                      
+               0% {filter: hue-rotate(0deg)} 25% {filter: hue-rotate(90deg)} 50% {filter: hue-rotate(180deg)} 75% {filter: hue-rotate(270deg)} 100% {filter: hue-rotate(360deg)} 
+            }
+
+        .lamina{  position: absolute;  top: 0;    
+          width:80%;  height: 250px; padding: 0px; 
+          background-repeat: no-repeat; background-size:100% 100%;
+          transition-timing-function: cubic-bezier(0.25,0.1,0.25,1); z-index:3
+        }
+
+        #a{left:-62%;z-index:2; background-color:white; background-position: right  center;}
+
+        #b{left:-71%; z-index:3; background-color:var(--verde);background-position: right  center;}
+
+        #c{right:-62%; z-index:2; background-color:var(--rojo);background-position: left  center;}
+
+        #d{right:-71%; z-index:3; background-color:var(--azul);background-position: left  ;}
+
+        #marq {padding-top:6px; position: absolute;  left:15%; top: 220px; height:24px; width:80%; font-size:12px; z-index:1;
+        background-color:var(--morado); color:white; font-family:"Courier New"}
+
+        #marq b{margin-top:20%;vertical-align: middle}
+        #marq b a{color:rgb(25,20,30);}
+
+        #a:hover,  #b:hover{left:0%;;}
+        #c:hover, #d:hover{right:0%;z-index:3;}      
+
+        #a{background-image:url('programacion.png');}
+        #b{background-image:url('matematica.png');;}
+        #c{background-image:url('heuristica.png');}
+        #d{background-image:url('sistemas.png');}
+    </style>
+      <!--------------------------------------------Navbar style------------------------------------------------>
+    <style>
+          /*div de navegacion*/
+          body.fixed-nav #navbar15 {
+            position:fixed;
+            box-shadow: 2px 3px rgba(0,0,0,0.2);
+            z-index:2000;
+            border-bottom: 2px solid black;
+            border-top: 2px solid black;
+            height:50px;
+          }
 
 
-						    @media only screen and (max-width: 1200px){
-						    	.pptx5, .pptx6, .pptx7, .pptx8, .pptx9, .pptx10, .pptx11, .pptx12, .pptx13, .pptx14, .pptx15, .pptx16, .pptx17, .pptx18, .pptx20 {display:none;}
+          .navbar15 {
+            grid-area: nav;
+            width:100%;
+            background: var(--azul);
+            font-weight: 600;
+            color:white;     
+          }
 
-								#educador{
-									grid-template-rows: 1fr repeat(2, 3fr) repeat(2, 1fr); 
-									grid-template-columns: repeat(6, 1fr);
-									grid-template-areas:
-							        "w w w w w w"
-							        "a a b b c c"
-							        "d d d e e e"
-							        "t t t t t t"
-							        "x x x x x x"}
-							    #pptx_shower_frame{
-							    	height:320px;
-							    }
-							    .pptx22, .pptx19{font-size: 10px;}
-							        
-						    } 	
-						    
+          /*ul de la navbar*/
+          .nav45{
+            display: flex;      
+            justify-content: space-between;
+            align-items: flex-start;
+            align-content: flex-start;      
 
-							@media only screen and (max-width: 500px) {
-								.sec_tit {font-size:10px;}				    	
-						    	#educador{height:83.3vh;	}					    	
-							    	
-							}
-					</style>
+            height:100%;
+            width: 95%;
+            
+          }
 
-					<script type="text/javascript">
-				
-						var pptxs=
+          /*elementos de la navbar*/
+          .nav45 > li {
+                  display: inline-block;            
+                  align-self: center;
+                  text-align: center;
+                  
+                  position: relative;
+                  left:-6%;
+                  padding-top:15px;
+                  height:30px;
+
+                  margin-right:3px;
+                  top:0px;
+                  min-width:13%; 
+                   
+                  text-align: center;              
+                  font-size:12px;           
+                  
+                  transition: all 0.25s; 
+                  }
+               
+                      
+              .li45:hover {background: #ffffff32; letter-spacing:105%; border:2px solid white; transition: 0s; border-radius: 22px 22px;  }
+              .nav_links:link{text-decoration: none; color:white;}
+              .nav_links:visited{color:white;} 
+              
+              .nav45 li:hover > ul {display:block; z-index:2;}
+
+          /*ul de matematica programacion sistemas heuristica*/
+          .nav45 li ul { 
+                      display:none; 
+                      position:relative;
+                      background: white; 
+                      padding:0px; 
+                      margin:0px;
+                      border-radius:1px 5px;
+                      box-shadow: 1px 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);}
+
+          .nav45 li ul a {letter-spacing:0px; padding:0% 2%;text-decoration: none;}
+          
+          .nav45 li ul li {position:relative; font-size:13px; height:45px; padding-top:10%;}
+          .nav45 li ul li a{color:black; font-weight: 700;}   
+          
+          .nav45 li ul li:hover {background: var(--rosa); font-size:85%; width:120%; left:-10%; border:4.5px solid black; }             
+          .nav45 li ul li:hover *{color:white; }
+
+
+          .side {
+            grid-area: side;
+            position:relative;
+            width:200px;
+            transition: all 1s;         
+            display:grid;
+            grid-template-rows: 4fr 1fr auto 8fr;
+            grid-template-areas:
+                "logos"
+                "buscar"
+                "menuv"
+                "twitter"
+          }
+
+          .logos {
+            grid-area: logos;
+            display:flex; flex-flow: column wrap; justify-content: space-around; align-items: center;
+          }
+            .logo p::first-letter, .logo p br::first-letter {color: var(--rojo);font-weight: 800; font-size: 110%;}
+            .logo {display:flex; justify-content: center; align-items: stretch;margin-left:5%;font-size: 12px;}
+            .logo div {line-height: 40%}
+            .logo img {width:50%}
+
+          .i15 {flex-flow: column-reverse wrap; align-items: center;margin: 0%}
+          .i15 p{margin-left: 10%;font-family: Barriecito; font-size: 200%;}
+          .i15 img{width:100%}
+
+          .upel img {margin-right: 10%}
+          .impm img {margin: 0% 19% 0% 11%; ;height: 90%} 
+
+          .buscar {
+            grid-area: buscar;
+            flex-flow: column wrap;      
+          }
+
+          .menuv {
+            grid-area: menuv;
+            width:100%;
+          }
+
+          .menuv {flex-flow: column wrap; text-align: center; font-size:14px; background-color:var(--azulM);}
+          .menuv ul{flex-flow: column wrap; list-style: none; position:relative; left:-10%;}
+          .menuv ul li.nivel1 {width: 100%;}
+          .menuv ul li.primera {border-top: 1px solid #fff;}
+          .menuv ul li a {display:block;text-decoration:none;color:#fff;background-color:var(--azulM);border-bottom:double 1px #fff;padding:4%;margin:4%;position: relative;}
+          .menuv ul li:hover {position: relative; color: #000;}
+          .menuv ul li a:hover, .menuv ul li:hover a.nivel1 { background-color: #6E6E6E; color: #000; position: relative;}
+          .menuv ul li a.nivel1 {display: block !important; display: none; position: relative;}
+          .menuv ul li ul {display: none;}
+          .menuv ul li a:hover ul, .menuv ul li:hover ul {display: block;position: relative;top: -1px;}
+          .menuv ul li ul li a {width: 130px; background-color: white; color: #000; left: -42px; font-size:12px;text-align: left; }
+          .menuv ul li ul li a:hover {position: relative; background-color: #6E6E6E; color: #000; }
+          .fa-caret-right {color: white;}
+
+          .twitter{
+            grid-area: twitter;
+          }
+    </style>    
+      <!--------------------------------------------Navbar animations------------------------------------------------>
+    <style>
+            #nav_home{align-self: center; padding-top: 0px; height:45px  }
+            #nav_home a img {border-radius:50%; background: white; width:32px; margin: 0px 2px}
+
+            #nav_heuristica ul{position: relative; top:18px;}
+            
+            #nav_programacion ul{margin:0%; padding: 0%;}
+
+            #programacion_div::before{background-color: transparent; content:'</>';width:20px;height: 20%;font-size: 40px;margin:32% 2%;}
+            #programacion_div{
+              -webkit-animation-name: programacion; /* Chrome, Safari, Opera */
+              -webkit-animation-duration: 0.3s; /* Chrome, Safari, Opera */
+              animation-name: programacion;
+              animation-duration: 0.3s;
+                        
+              transition: all 0.5s; 
+              top:16px;
+              width:400px; 
+              background: var(--rojo); 
+              height:200px; 
+              position: absolute; 
+              left:-150px;
+              border:2px solid black;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              margin:0%;
+              padding: 0%;
+              border-top:3px solid var(--azul);
+              }
+
+            #programacion_div div, #programacion_div div li a{
+              display:flex;            
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+              color:white;
+              margin:0%;
+              padding:0%;
+              width:150px;
+              height:60px;
+              padding: 0px;
+              align-self: center;
+            }
+
+            #programacion_div div li{display:flex; align-content: center; justify-content: center; align-items: center;}
+
+            #programacion_div div li{margin:0%;}
+            #programacion_div div li:hover { ;background:white;top:0px; left:0px; border-radius: 30px;}
+            #programacion_div div li:hover > a{color:var(--rojo);font-size: 13px; text-align: center;align-self: center; top:0px;}
+            #nav_programacion:hover > ul #programacion_div{width:500px;}
+
+            #nav_mat *{z-index:800;font-size: 12px;}  
+
+            #matematica_div{            
+              transition: all 1s; 
+              position: absolute;           
+              width: 60vw; 
+              height:50vh; 
+              top:15px; 
+              left:-344px;
+              transform:skewY(-7deg);           
+
+              background: transparent;
+              border-bottom:38px groove rgba(35, 229, 56, 0.6);
+              box-shadow: 15px 0.8px rgba(35, 189, 56, 0.5);             
+
+              display:flex;
+              justify-content: space-between;
+              align-items: stretch;
+              align-content: center;
+              margin:0%; padding: 0%;
+              color:var(--rojo);
+              border-radius: 50%;
+              }
+
+            #matematica_div div{
+              height:150%;
+              display:flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items:center; 
+              align-content: flex-start;            
+              width:35%;
+            }
+
+            #matematica_div div:nth-child(1) li:nth-child(1)
+            {align-self: flex-start; margin-left:0px;margin-top: 10px; }
+
+            #matematica_div div:nth-child(2) li:nth-child(3)
+            {align-self: flex-start; margin-right:0px;margin-bottom: 25px; }
+
+            #matematica_div div:nth-child(1) li:nth-child(3)
+            {align-self:flex-end; margin-left:0px; margin-bottom: 25px;}
+
+            #matematica_div div:nth-child(2) li:nth-child(1) 
+            {align-self:flex-end; margin-right:0px;margin-top: 10px;}
+
+            #matematica_div div:nth-child(1) li:nth-child(2) 
+            { margin-right:30px;margin-top: 10px;}
+
+            #matematica_div div:nth-child(2) li:nth-child(2) 
+            {margin-right:-30px;margin-top: 10px;}
+
+            #matematica_div div li{width:30%; height:12%; border:2px solid var(--rosa); border-radius: 50%; background-color: white;
+              box-shadow: 8px 4px rgba(0,0,0,0.4)}
+            
+            #matematica_div div li:hover {background:var(--rosa);top:0px;left:0px;}
+            #matematica_div div li:hover > a{color:white;}         
+
+
+            @-webkit-keyframes programacion {
+              from {left:-500px;opacity: 1;}
+              to {left:-50px;opacity:1;}            
+            }
+            /* Add animation (Standard syntax) */
+            @keyframes programacion {
+              from {left:-500px;opacity: 1;}            
+              to {left:-50px;opacity:1;}
+            }
+
+            .punta{
+             background-color: transparent;  
+             width:100%; 
+             height: 100px;
+             font-size: 45px; 
+             color:white;           
+             z-index: 1000;
+             padding-top: -25px;
+             display:none;
+            }
+
+            #bib_div{top:-60px;}
+            #bib_div li:hover{top:0px;;}
+            #nav_bib:hover > .punta{display:block;}
+
+            #nav_sis ul{top:18px;}
+            #nav_sis ul li{border-right:5px solid var(--azul);width:200px;} 
+            #nav_sis ul li:hover{box-shadow: 5px 5px rgba(0,0,0,0.4);left:-4px;} 
+            #sis_div {display: flex; background-color: white; box-shadow: -5px 4px #0007; position: absolute;left:-40vw;}
+            #sis_div2 {
+              display: block; 
+              background-color: 
+              transparent; 
+              width:900px;
+              background: url('sistemas.png'); 
+              background-size: 900px 340px; 
+              background-repeat: no-repeat;
+            }
+         
+            .workshops_menu{
+              top:18px;
+              width:80vw; 
+              background: white; 
+              height:36vh; 
+              position: absolute; 
+              left:-900px;
+              border:2px solid black;
+              display:flex;
+              justify-content: space-around;
+              align-items: center;
+            }
+            .workshops_menu div{
+              width:20%;
+              height:24vh;
+              border:2px solid rgb(33,33,33,0.1);
+              color:var(--rojo);
+              box-shadow:0.48px 0.41px #1115; ;
+            }
+            .workshops_menu div img{padding-top: 2%}
+            .workshops_menu div img:hover{width:100%;height:85%;}
+
+            #nav_contacto:hover{background: #44ff4488;font-size: 105%; transition: font-size 0.3s}
+            
+            #nav_contacto a {color:white; text-decoration: none}
+    </style>
+      <!--------------------------------------------Posts style------------------------------------------------>
+    <style>
+       .txt1{grid-area:txt1;font-size:15px; background: #3499fe; overflow: hidden;}
+            .txt1 h2{color:black; text-shadow: 1px 1px black}
+            .txt1 img{float:left; width:25%; margin:1% 1%; height:80%;}
+       .txt2{grid-area:txt2; background-image: url('p/IP.png')}
+       .txt3{grid-area:txt3; background-image: url('p/internet-en-vzla.png')}
+       .txt4{grid-area:txt4; background-image: url('p/geomet_analit.png')}          
+
+       .post_descr{background:#fff; visibility:hidden; 
+                   width:100%;height:100%;
+                   transition:all 0.8s;opacity:0.1;
+                   text-align:center;
+                   font-size:8px;
+                   display:flex;
+                        
+                  justify-content: center;
+                  align-items: center;
+                  }
+       .post_descr p{
+              padding:0% 10%;
+              font-size: 145%;
+            }
+
+       .post:hover > .post_descr{visibility:visible;opacity:0.8}
+       .post div {
+            font-size:12px;      
+            width:98%; 
+            height:100%; 
+            margin-top:0px;
+            overflow: hidden;
+            padding-left: 2%;     
+            flex-direction: column;
+            }
+        
+        .prenext{height:380px;width:70px;display:flex; justify-content: center; align-items: center; align-content: center; z-index:1;position:absolute;top:320px;font-weight: 800; color:var(--morado); font-size: 40px;text-shadow: 2px 2px solid black;transition: all 1s;;}
+
+        .minitxt{ background-color: white;}
+        .miniimg{ background-color: transparent; color:white;}
+        .miniimg{display: none}
+        .post:hover > .minitxt {background-color: transparent; font-size: 105%; text-shadow:1px 1px white; text-align: center} 
+        .post:hover > .minitxt p {display:none;}     
+        .post:hover > .miniimg {background-color: var(--morado); opacity: 0.9 ;text-shadow:1px 1px black; text-align: center} 
+        .post:hover > .miniimg {display:flex;}     
+    </style>
+      <!--------------------------------------------Navbar Animation Script------------------------------------------------>
+    <script>
+        const img_sist=[
+          'intro_informatica', 'electronica_digital', 'sistemas_informacion', 'sistemas_computacion',  'redes_informaticas'  
+        ]
+        const imgsistnav = Array.from(document.querySelectorAll('.img_sist_nav'));
+        var z = document.querySelector('#sis_div2');
+
+        imgsistnav.forEach( isn => isn.addEventListener('mouseover', imgsistnavchange))
+        imgsistnav.forEach( isn => isn.addEventListener('mouseout', imgsistnavchangeback))
+
+        function imgsistnavchange(){
+          var i = this.dataset.img ;
+         
+
+          z.style.background=`url('img/pptx/` + img_sist[i] + `.png')`;
+          z.style.backgroundSize=`900px 330px`;   
+        }
+        function imgsistnavchangeback(){
+          z.style.background=`url('sistemas.png')`;
+          z.style.backgroundSize=`900px 330px`; 
+        }
+    </script>
+      <!--------------------------------------------Main Style----------------------------------------------->
+    <style>
+        .main{
+          grid-area: main;
+          background:white;
+          display: grid;
+            margin:1%;
+            border-radius:4px;
+            border:1px solid #aaa;
+          width:98%;
+          grid-gap: 0px;
+            grid-template-columns: 1fr;
+            grid-template-rows: 80vh 1fr auto;
+            grid-template-areas:
+              "posts"
+              "workshops"
+              "pptxs"
+        }
+
+        .posts{
+          grid-area: posts;
+          display: grid;
+            padding:0%;
+          width:100%;
+          grid-gap: 2px;
+          grid-template-columns: 66.6% 1fr 1fr;
+          grid-template-rows: repeat(4, 20vh);
+          grid-template-areas:
+              "uno dos txt2"
+              "uno txt3 tres"
+              "uno cuatro txt4"
+              "txt1 publicidad publicidad"
+        }
+
+            .post{background-repeat: no-repeat; background-size: 100% 100%; background-position: center center; flex-direction: column;}
+            .post div{border:0.2px solid #0003;}
+              .uno   {grid-area:uno; display: flex; flex-direction: row ;  background-image: url('p/internet.gif'); background-size: 97% 97%;}
+              
+              .dos   {grid-area:dos;    background-image: url('p/DevOps.png'); background-position: center center; background-size: 90% 90%;  animation-duration: 1.8s;animation-iteration-count: infinite; }
+
+                .tres  {grid-area:tres;   background-image: url('p/evolucion_concepto_limite.png');
+                animation-name: zooming; animation-duration: 4.8s;animation-iteration-count: infinite;}
+
+                .cuatro{grid-area:cuatro; background-image: url('p/jQuery.png');}
+              
+                .publicidad{grid-area:publicidad; font-size:12px;background-image: url('img/LP_Freelancers.png');}
+
+         @-webkit-keyframes zooming{ 
+          from{background-size: 100% 85%;} to {background-size: 170% 85%; background-position-x: 102%}
+         }
+        @keyframes zooming{ 
+          from{background-size: 100% 85%;} to {background-size: 170% 85%;background-position-x: 102%} 
+        }
+
+        .workshops {
+          grid-area: workshops;
+          width:100%;      
+          text-align:justify;
+          align-items: center;
+          justify-content: center;
+          align-content: center;
+        }
+
+        .workshop_tit{border: 0px solid blue;
+          font-style: italic;
+          letter-spacing: 2.5px;    
+          display:inline-flex;
+          text-align: center;
+          padding:0 25px;
+          margin:0px;
+          height:100%;font-size: 58px; background:white; top:155px;position:relative; left:-150px;transform-origin:; 
+          transform: rotate(-90deg); -webkit-transform:rotate(-90deg); -moz-transform: rotate(-90deg); -ms-transform: rotate(-90deg);
+          -o-transform: rotate(-90deg); filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3))
+        }
+        #Talleres{
+        }
+
+        .talleres{      
+          display:inline-flex;
+          align-items: center; 
+          flex-flow: row wrap;     
+          justify-content: space-around;
+          background:var(--amarillo);
+          min-width:60vw;
+          width:90%;
+          margin: 1% 0% 3% 0%;
+          border: 0px solid blue;
+          position: relative;
+          top:0%;
+          left:6vw;
+        }
+        .talleres *{padding: 1% 0%;}
+        .talleres img{margin-top:10%;width: 10vw;}
+
+        .taller{
+          width:15vw;
+          margin:0.3vw;
+          display:flex;
+          flex-flow: column wrap;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+        }
+        .pptxs{
+          grid-area: pptxs;
+          background:var(--rosa);
+          padding:2%;
+          display: grid;
+          width:96%;
+          grid-gap:0.5%;
+          grid-template-columns: repeat(12, 1fr);
+          grid-template-rows: 2fr repeat(5, 1fr) ;
+          grid-template-areas:
+            " t  t  t  t    t   t   t  t    t   t   t  t"
+            " . pf pf  .    .  pd  pd  .   pc  pc  pc  ."
+            "vc vc  .  ib  ib  ib  va  va  pc  pc  pc  ."
+            "ia ia  ia ib  ib  ib   .  ic  ic  .   p   p"
+            "ia ia  ia  .  ph  ph  pe  pe  .   pa  pa  pa"
+            " . pg pg  vb  vb  .   .   pb  pb  pa  pa  pa"              
+        }
+        .pptx{background-size:100% 100%; background-position: center center; background-repeat: no-repeat; width:100%; color:red; border:1px solid white;}
+           .pptx_descr{ 
+              background-color: #fffc;
+              visibility:hidden;
+              display:flex;
+              justify-content: center;
+              align-items: center;
+              align-content: center;
+              height:100%;
+              transition:all 0.5s;
+              opacity:0.1;
+              text-align:center;
+              font-size: 12px;                   
+              overflow: hidden ;
+              color: var(--azul);
+              font-size: 18px;
+
+            }
+          .pptx a:link {text-decoration: none;} 
+          .pptxs div a:hover > .pptx_descr{visibility:visible; opacity:1}
+
+                     
+          .item1{grid-area: pa; backgroundurl("img/pptx/administracion_bases_datos.png");}
+          .item2{grid-area: pb; background-image:url("img/pptx/algebra_lineal.png")}
+          .item3{grid-area: pc; background-image:url("img/pptx/datos_no_agrupados.png")}
+          .item4{grid-area: pd; background-image:url("img/pptx/derivada.png")}
+          .item5{grid-area: pe; background-image:url("img/pptx/didactica.png")}
+          .item6{grid-area: pf; background-image:url("img/pptx/electronica_digital.png")}
+          .item7{grid-area: pg; background-image:url("img/pptx/estructura_datos_2.png")}
+          .item8{grid-area: ph; background-image:url("img/pptx/estructura_datos_3.png")}
+          .item9{grid-area: va; background-image:url("img/pptx/funciones.png")}
+          .item10{grid-area: vb; background-image:url("img/pptx/historia_internet_memes.png")}
+          .item11{grid-area: vc; background-image:url("img/pptx/html_5.png")}
+          .item12{grid-area: ia; background-image:url("img/pptx/internet.png")}
+          .item13{grid-area: ib; background-image:url("img/pptx/lenguajes_programacion.png")}
+          .item14{grid-area: ic; background-image:url("img/pptx/redes_informaticas.png")}
+          .item15{grid-area: p; background-image:url("img/pptx/seguridad_informatica.png")}
+          .item16{grid-area: t; text-align:center;font-size:18px; color:white;line-height:160%; }
+            .item16 h2{text-shadow: 2px 0px 2px rgba(20,20,20,0.7)}
+            .item16 p {font-size: 16px;padding: 0% 13%}
+
+
+        /* Add animation (Chrome, Safari, Opera) */
+              @-webkit-keyframes example {
+                from {top:-100px;opacity: 0;}
+                to {top:200vh;opacity:1;}           
+              }
+              /* Add animation (Standard syntax) */
+              @keyframes example {
+                from {top:-100px;opacity: 0;}
+                to {top:200vh;opacity:1;} 
+              }
+
+              /* The modal's background */
+              .modal { 
+                display:none; 
+                position: absolute; 
+                top:200vh;
+                padding-top:0vh; 
+                left: 0px;
+                width: 100%; 
+                height: 100%; 
+                overflow: auto; 
+                background-color: #000c; 
+                z-index:80;
+              }
+
+              /* Display the modal when targeted */
+              .modal:target {display: block;position: absolute;}
+
+              /* The modal box */
+              .modal-dialog {display: block;vertical-align: middle;margin-top:30px;}
+              /* The modal's content */
+              .modal-dialog .modal-content {
+                margin: auto;
+                background-color: var(--modalcolor);            
+                border: 1px #777 solid;
+                text-align: justify;
+                width: 55%;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                border-radius: 12px 12px;
+
+                /* Add animation */
+                -webkit-animation-name: example; /* Chrome, Safari, Opera */
+                -webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
+                animation-name: example;
+                animation-duration: 3s;
+              }
+
+              /* The button used to close the modal */
+              .closebtn {text-decoration: none;float: right;font-size: 35px;font-weight: bold;color: black;}
+              .closebtn:hover, .closebtn:focus {color: var(--rojo);text-decoration: none;cursor: pointer;}
+              .containercontainer {padding: 2px 16px;}
+              header {background-color: white; font-size: 25px;color: black; padding:0px 10px;}
+              footer {background-color: white font-size: 20px;color: black; padding:0px 10px;} 
+    </style>
+      <!--------------------------------------------Foot Style----------------------------------------------->
+    <style>
+        .foot {grid-area: foot;
+        width:100%;
+        background: #232323;
+        flex-flow: column wrap;
+        }
+
+        .rrss{
+              border-color: black;
+              text-align:center;
+              height:8vh;
+              color:white;
+              display: flex; flex-wrap: wrap; justify-content: space-around; align-items: stretch;
+              margin: 0px 10px;
+              font-size:18px;
+            }
+
+            .rrss *{color:white; font.-size:24px; text-decoration: none;}
+            .rrss div{ border:3px double white; border-radius:50%; width:45px; height: 45px;text-align:center; margin: 0px 30px;}
+            .rrss div:hover {background:var(--rosa);}
+          .foot p {color:white;}
+          .foot p a {color:var(--rosa);}
+      
+        .toptwo{display:none;}
+    </style>
+      <!--------------------------------------------Media Queries----------------------------------------------->
+    <style>
+          @media (max-width: 1000px) { 
+            .container{
+              grid-template-columns:1fr ;
+              grid-template-rows: 200px 50px 1vh;
+               grid-template-areas:
+              "toptwo" 
+              "navtwo" 
+              "main"
+            }        
+            .side,.side *,.head,.head *,.foot, .foot *,.navbar15 {display:none}        
+            .workshop_tit{display:none;}
+            .talleres{width:;}
+            .item16 p {font-size: 13px;padding: 0% 10%} 
+            .toptwo{display:flex; grid-area:toptwo;
+             height: 200px; position: relative;
+             background-image:url('informaticos15.png');background-repeat: no-repeat; background-size:100% 100%; background-position:center center;
+                animation-name: gify;
+                animation-duration: 5s;
+                animation-iteration-count: infinite; 
+            } 
+           .prenext{display:none;} 
+           #preview1{font-size: 11px}    
+
+          }
+
+          @media (max-width: 900px) { 
+            .taller{
+            width: 40%;  
+            flex-flow: column wrap;
+            align-items: center;
+            justify-content: center;
+            font-size:90%;
+                  }
+            .taller img {width:100px;}
+            .item16 p {font-size: 12px;padding: 0% 9%}
+          }
+          #img1{display: none}
+
+          @media (max-width: 700px) {       
+          .main{
+            grid-template-columns: 1fr;
+            grid-template-rows: 120vh 100vh auto;
+          }
+          
+          .posts{
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 100px 40vh repeat(2, 15vh);
+            grid-template-areas:
+              "toptwo toptwo toptwo toptwo" 
+              "uno uno uno txt1"
+              "dos txt2 tres txt3"
+              "cuatro txt4 publicidad publicidad"
+          }
+
+          .item16 p {font-size: 12px;padding: 0% 7%}
+         }
+
+          @media (max-width: 500px) { 
+          .container {
+            grid-template-columns: 1fr;
+            grid-template-rows:100px 50px 1vh ;
+            grid-template-areas:
+            "toptwo" 
+            "nav"
+            "main"
+
+          }
+          .txt2, .txt3, .txt4, .publicidad, .toptwo {display:none;}
+          .posts{
+            grid-template-columns: repeat(2, 1fr);
+            font-size:8px;
+            grid-template-rows: 2fr repeat(3, 1fr);
+            grid-template-areas:
+              "uno  uno "
+              "txt1 txt1 "
+              "dos  tres " 
+              "cuatro cuatro"
+            }
+          
+          .pptxs{
+            grid-area: pptxs;
+            height:350px;
+            background:#D1215F;
+            font-size:4px;
+            display: grid;
+            width:100%
+            grid-gap:0px;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(8, 1fr) ;
+            grid-template-areas:
+              " t  t  t  t   t  t"
+              " .  .  .  .  pd ph"
+              " .  .  .  pg pg ia"
+              " .  .  vb pg pg ia"
+              " .  vc pf ib va va"
+              " .  pe pe ib va va"
+              " ic pe pe pa pa pa"
+              " ic pc pb pa pa pa"              
+           }
+      
+          
+          .item16{font-size:12px;}
+
+           .rrss{          
+              height:5vh;  
+              margin: 0px 6px;
+              font-size:14px;
+            }
+            .rrss *{color:white; font.-size:16px;}
+            .rrss div{ border:3px double white; border-radius:50%; width:30px; height: 30px;
+                      margin: 0px 12px;}
+                    }    
+           }  
+    </style>
+      <!--------------------------------------------Side hidden script------------------------------------------------>   
+    <script>
+      var home = document.getElementById('sider');
+      home.addEventListener('click', side);
+
+      var sideb=document.getElementById('side');
+
+      var x = 0;
+    	function side(){
+        x++;
+        if(x%2 > 0){
+    		sideb.style.left='-220px';
+        sideb.style.width='0px';
+        prevvbut.style.left='0vw';
+        nexttbut.style.left='61vw';    
+        }
+        else
+        {
+        sideb.style.left='0px';
+        sideb.style.width='200px';
+        prevvbut.style.left='15vw';
+        nexttbut.style.left='66vw';
+        }
+        
+    	}    
+    </script>
+      <!--------------------------------------------Fixed Nav script------------------------------------------------>
+    <script>
+    	const navs = document.querySelector('#navbar15');  
+      const topOfNav = navs.offsetTop;  
+      
+      function fixNav(){
+      if(window.scrollY >= topOfNav)
+        {
+        document.body.style.paddingTop = document.querySelector('#navbar15').offsetHeight + 'px';
+        document.body.classList.add('fixed-nav');
+        }
+      else 
+        {
+        document.body.classList.remove('fixed-nav')
+        document.body.style.paddingTop = 0
+        }
+      }
+      window.addEventListener('scroll', fixNav);
+    </script>    
+      <!--------------------------------------------React Workshops script------------------------------------------------>
+    <script type="text/babel">
+        function Talleres(props){
+        return(
+          <div>
+            <h2 className="workshop_tit" > Workshops </h2>
+            <Workshops/>
+          </div>
+          )
+        }
+
+        function Workshops(props){
+        var etapas = [ 
+            [' Red de Redes', ' Protocolos', ' Dispositivos'],
+            [' ISOC', ' IPv6', ' Venezuela'],
+            [' HTML', ' CSS', ' JavaScript'],
+            [' Aire', ' Electronico', ' PLC']  
+            ]
+          return(
+          
+          <div className="item talleres" >                  
+            <Taller title='Rey de Redes' src='img/taller_redes.png' e={etapas[0]}/>
+            <Taller title='LACIGF' src='img/lacigf.png' e={etapas[1]}/>
+            <Taller title='Web Dev' src='img/web_dev.png' e={etapas[2]}/>
+            <Taller title='Automatizacion' src='img/automatizacion.png' e={etapas[3]}/>
+          </div>
+          )
+        }        
+
+        function Taller(props){
+        
+          return (
+                  <div className="taller"> 
+                    <b>{props.title}</b>
+                    <img src= {props.src} />
+                    <Partes txt={props.e}/>
+                    <button className="but15_info"> + info </button>
+                  </div>)
+        };
+
+        
+
+        function Partes(props){     
+           ;         
+          return(
+                 <ul >
+                  <Etapa  p={props.txt[0]}/>                
+                  <Etapa  p={props.txt[1]}/>                
+                  <Etapa  p={props.txt[2]}/>
+                 </ul>
+          )
+        };
+
+        function Etapa(props){
+         
+          var a = 2;
+          return (
+          <li className='partes'> 
+            <i className="fa fa-arrow-circle-right"></i>  
+            <b>{props.p}</b>
+            <a className='tlinks' target='_blank' href='https://www.google.com'>(ver)</a>
+          </li> )
+        };     
+
+        ReactDOM.render(
+            <Talleres/> ,
+            document.getElementById("talleres")
+        );
+    </script>
+      <!--------------------------------------------React Workshops Style------------------------------------------------>
+    <style>
+        .fa-arrow-circle-right{
+            padding-right: 12px;
+          }
+        .but15{
+        width:150%;padding:15% 25%; border-radius: 8px 8px; background-color: transparent; border:2px double skyblue;
+        }
+        .but15_info{
+        width:;padding:5% 15%; font-weight: 600; border-radius: 8px 8px; background-color: #fff; border:2px double skyblue; word-spacing:2px ;
+        }
+        .tlinks{padding:2.5px;}
+        .tlinks:link{text-decoration:none; color:var(--rosa); font-weight: 400}
+        .tlinks:visited{text-decoration:none; color:var(--rosa); font-weight: 400} 
+    </style>
+      <!--------------------------------------------Pptx shower Script------------------------------------------------>
+    <script>
+          var pptxs=
                 [
                   ["datos_no_agrupados", "Datos no agrupados", 'https://docs.google.com/presentation/d/e/2PACX-1vRndRh69UxkKMdnXo-8NJuSvBFVhPO-vALoLAyaacHHZVURx8OxoYz-jZB30PoLCX65PiN6oJyoqfo3/embed?start=false&loop=false&delayms=3000'],
 
@@ -916,290 +1507,63 @@
                   
                   ["seguridad_informatica","Seguridad Informatica",'https://docs.google.com/presentation/d/e/2PACX-1vTln-XIH3L6AA91-Wt06pqcIN2GRXL2zrdYEC6JGfqy84qeab7V0ncvbOWwCYuhYDi8UO2a1xvWmdBc/embed?start=false&loop=false&delayms=3000'],
                   
-                  ["sistemas_admin_bases_datos","Sist. Admin. de Bases de Datos",'https://docs.google.com/presentation/d/e/2PACX-1vQFM-zsk_a02vf1T59ro4oyOSms2iMjAtvXqd5qsHjQ35z5jtTIUK9Jtz-ozzoBuHcMwUJ99DAN5dPy/embed?start=false&loop=false&delayms=3000'],
+                  ["sistemas_admin_bases_datos","Sistemas Administracion de Bases de Datos",'https://docs.google.com/presentation/d/e/2PACX-1vQFM-zsk_a02vf1T59ro4oyOSms2iMjAtvXqd5qsHjQ35z5jtTIUK9Jtz-ozzoBuHcMwUJ99DAN5dPy/embed?start=false&loop=false&delayms=3000'],
                   
-                  ["sistemas_computacion","Sistemas Computacion", 'https://docs.google.com/presentation/d/e/2PACX-1vT4JQ4EusltX1FKSGTd2SHYEzEp4og2H1w0BLzDZl0dikc2KpWy9pKqtUoRDNFT3l4-ByrdHTocLDKU/embed?start=false&loop=false&delayms=3000'],    
+                  ["sistemas_computacion","Sistemas Computacion", 'https://docs.google.com/presentation/d/e/2PACX-1vT4JQ4EusltX1FKSGTd2SHYEzEp4og2H1w0BLzDZl0dikc2KpWy9pKqtUoRDNFT3l4-ByrdHTocLDKU/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["algebra_lineal","Algebra Lineal",'https://docs.google.com/presentation/d/e/2PACX-1vQigbVB0nQvCYmtF98IFbdtMBvPW_dXVKOyUSL5JSm-BHBV3_aWVDAFfFJnZ97N7OfPAztX8bDoa8gS/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["analisis_real","Analisis Real",'https://docs.google.com/presentation/d/e/2PACX-1vSQlqtbpmqs8zowSuKU5soFBENDuOmN3Xhg_PzfD2Y0EI403KlXVVaGhL9Nv-EMx8zTKHWQmMXxr-Uc/embed?start=false&loop=false&delayms=3000'],
 
                   ["descartes", "Descartes",'https://docs.google.com/presentation/d/e/2PACX-1vTNBdAb2wgOK10TA61NemgvqSR_YY9uNiz1XSM5_xfakTRqhZ9PjztwHvUCDSJiYDLfmwYgxjwylESL/embed?start=false&loop=false&delayms=3000']
                 ];
-
-				 		var shower = document.getElementById('pptx_shower_frame');
-		         		var shower_tit = document.getElementById('pptx_shower_tit');
-
-						function shuffle(array) {
-		          			var currentIndex = array.length, temporaryValue, randomIndex;
-		          			while (0 !== currentIndex) {
-			            		randomIndex = Math.floor(Math.random() * currentIndex);
-			            		currentIndex -= 1;
-		  					    temporaryValue = array[currentIndex];
-					            array[currentIndex] = array[randomIndex];
-			            		array[randomIndex] = temporaryValue;
-								 }
-							return array;				  
-						}
-							
-						function pptxs_change(){	
-							ranpptxs = shuffle(pptxs);						
-							for (i = 0; i < 15; i++) {
-							  document.getElementById(`pptx_img`+`${i}`).src='imgx/pptx/'+ pptxs[i][0] +'.png';							  
-							}
-							
-						};									
-						
-						setInterval(pptxs_change, 15000)
-
-						var pptxss = document.querySelectorAll('.pptx');
-						pptxss.forEach(pptx => pptx.addEventListener('click', show))
-
-				        function show(){
-				            var j = this.dataset.pptx;           
-				            var k = pptxs[j][2];
-				            var l = pptxs[j][1];
-				            shower.src = k ;
-				            shower_tit.innerHTML = l;				            
-				          }	          
-		        		pptxs_change();          
-      				</script> 	   						
-				</section>		
-			</div>
-		</div>
-			
-		<div class="item foot"> 
-					   <center class="rrss">
-					        <a id='facebook' href="https://www.facebook.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-facebook-official"></i></div></a>
-					        <a id='instagram' href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-instagram"></i></div></a>
-					        <a id='twitter' href="https://twitter.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-twitter"></i></div></a>
-					        <a id='youtube' href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA?view_as=subscriber" target="_blank" rel="noopener"><div><i class="fa fa-youtube"></i></div></a>
-					        <a id='facebook' href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener"><div><i class="fa fa-linkedin"></i></div></a>
-					        <a id='facebook' href="https://github.com/ivanguillermo" target="_blank" rel="noopener"><div><i class="fa fa-github"></i></div></a>
-				    	</center>
-				    	<div style='background-color: black; height:5.5vh'></div>
-		</div>
-			
-		<style type="text/css">
-		 		.rrss{
-							border-color: black;
-							text-align:center;
-							height:11vh;
-							color:white;
-							display: flex; flex-flow: row nowrap; justify-content: center; align-items: flex-start;
-							padding-top: 0.5vh;
-							font-size:2.5vh;
-
-						}
-						.rrss *{color:white;}
-						.rrss a{text-decoration: none}
-						.rrss div{ border:3px double white; border-radius:50%; width:6vh; height: 6vh;text-align:center;
-		                  display: flex; flex-flow: row wrap; justify-content: center; align-items: center;
-		                  margin: 0px 15px;}
-		                .rrss div:hover {background: var(--color);} 
-		                .rrss div:hover > i{color:black; } 
+                
+          var yes = Array.from(document.querySelectorAll('.pptx_descr'));
+           
+           var shower = document.getElementById('pptx_shower_frame');
+           var shower_tit = document.getElementById('pptx_shower_tit');
 
 
+          function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+            while (0 !== currentIndex) {
+              randomIndex = Math.floor(Math.random() * currentIndex);
+              currentIndex -= 1;
 
-
-		                @media only screen and (max-width: 800px) {
-
-		                	.rrss div{width: 30px; height:30px;}
-		                	#youtube{display:none;}
-
-
-		                	html{overflow:hidden;}
-		                }
-		</style>
-	
-	</body>
-
-
-		<style>
-					:root{
-						--color:#4fdb98;
-						--blue:#1AA9EC;
-						--orange:#ff9800;
-						--magenta:#D1215F;
-						--green: #a3bf34;
-					}
-					@font-face {
-					  font-family: Roboto;
-					  src: url('https://fonts.googleapis.com/css?family=Roboto');
-					  font-family: Macondo;
-					  src: url('https://fonts.googleapis.com/css?family=Macondo');
-					  font-family: Volkorn;
-					  src: url('https://fonts.googleapis.com/css?family=Volkorn');
-					}
-					html{overflow:hidden;	scroll-behavior:;}
-
-					body {background: black;font-size: 120%;}
-					button{background-color:var(--color);}
-					section{height:92vh;}
-						.sec_tit{color:white;text-align:center;width:100%;margin-top: 20px;margin-bottom: 10px;text-shadow: 0.5px 0.5px #292929;padding:10px;}	
-
-					a.active span{font-weight:600;font-size: 110%;color:#eee;text-shadow: -0.61px -0.9px var(--color)}
-
-							.jumbotron, #quote, #yo_descripcion, #logos{z-index: 2; position: relative;}
-							
-							#translator, #programmer {position: relative;top:-20px;}
-							{position: relative;top:-20px;}
-							#matematico{position: relative;top:-10px;}
-							.body2{
-								width:50%;
-								border:0px solid yellow;
-								background: transparent;height:300;
-								z-index:;
-								position:absolute; ;
-								transform:rotate(-45deg);
-								height:400px;
-								width:250px;
-								top:-100;
-								left:30%;
-							}
-
-							
-							@-webkit-keyframes subir {
-				            0% {top:500px;}
-				            100% {top:-1300px;right:500px}
-				                      
-				          }
-				          /* Add animation (Standard syntax) */
-				          @keyframes subir {
-				            0% {top:500px;}
-				            100% {top:-1300px;}
-				              
-				          }
-				         
-				            
-							.balloon{
-								-webkit-animation-name: subir; /* Chrome, Safari, Opera */
-				            	 /* Chrome, Safari, Opera */
-				            	animation-name: subir;     	 
-				            	transform:rotate(30deg);
-						
-									
-								font-size: 12px;	
-								border-radius: 65%;
-								display:inline-flex;
-								justify-content: center;
-								align-items: center;
-								align-content: center;
-								top:-1300px;
-								position:absolute;	
-								width: 8vw;	
-								height: 10vw;
-								font-weight: 700;
-
-							}		
-		</style>
-
-		<script type="text/javascript">
-				const navs = document.querySelector('#navbarIvan');  const topOfNav = navs.offsetTop;
-
-				const yop = document.querySelector('#quote');  const topOfYop = yop.offsetTop -10  ;	
-			  	const tra = document.querySelector('#translator');  const topOfTra = tra.offsetTop-10   ;
-			  	const dev = document.querySelector('#programmer');  const topOfDev = dev.offsetTop -10 ;
-			  	const mat = document.querySelector('#matematico');  const topOfMat = mat.offsetTop -10 ;
-			  	const edu = document.querySelector('#educador');  const topOfEdu = edu.offsetTop-10 ;
-			  	const rrss = document.querySelector('.rrss');  const topOfRrss = rrss.offsetTop-10;
-
-  
-				function activeNav(){
-				    if(window.scrollY >= topOfYop && window.scrollY < topOfTra)  {
-				    	document.querySelector('#quote').classList.add('active');} 
-				    	else{document.querySelector('#quote').classList.remove('active');}
-
-				    if(window.scrollY >= topOfTra && window.scrollY < topOfDev)  {
-				    	document.querySelector('#navTra').classList.add('active');} 
-				    	else{document.querySelector('#navTra').classList.remove('active');}
-
-				    if(window.scrollY >= topOfDev && window.scrollY < topOfMat)  {
-				    	document.querySelector('#navPro').classList.add('active');} 
-				    	else{document.querySelector('#navPro').classList.remove('active');}
-
-				    if(window.scrollY >= topOfMat && window.scrollY < topOfEdu)  {
-				    	document.querySelector('#navMat').classList.add('active');} 
-				    	else{document.querySelector('#navMat').classList.remove('active');}
-				    	
-				    if(window.scrollY >= topOfEdu)  {
-				    	document.querySelector('#navEdu').classList.add('active');} 
-				    	else{document.querySelector('#navEdu').classList.remove('active');}				    
-				  } 
-  
-				window.addEventListener('scroll', activeNav);
-
-							colors=['var(--blue)', 'var(--green)', 'var(--magenta)', '#ff00ff', '#ffc600'];
-							letras=['skyblue', 'black', 'white']
-							hello=['Hola', 'Hallo', 'Translator', 'Spanish', 'Hi', 'Francais', 'Deutsch', 'Ubersetzer', 'ESPAÑOL', 'English', 'Bonjour']
-					
-									
-							function glovos() {
-							  
-							  var translator= document.querySelector('.body2');
-							  
-							  var para = document.createElement("div");
-							  var left = Math.floor(Math.random() * 100) - 100;
-							  var vel =  (Math.floor(Math.random() * 3)+25);		  	
-							  			  
-							  para.style.background = colors[Math.floor(Math.random() * 5)];;
-							  para.style.color = letras[Math.floor(Math.random() * 3)];		
-
-							  para.style.left = `${left}`+`vw`;	
-							  
-							  para.style.animationDuration = `${vel}`+'s';			  		  
-							  para.innerHTML = `
-
-							  <div style=' background: white; width:35px; height:15px;position:relative;border-radius:50%; top:-30%; opacity:0.5; margin-left:10%;transform:rotate(-45deg)'>
-							  </div>
-							  <p style='border:; width:80%; position:relative; text-align:center; left:-18%'>`+ hello[Math.floor(Math.random() * 11)] + `
-							  </p>
-							  <div style=' background: black; width:6px; height:3px;position:relative;top:49%;left:-32%; transform:rotate(-18deg)'></div>
-							  <div style=' background: ${para.style.background}; width:8px; height:6px;position:relative;top:52%;left:-35%; transform:rotate(-18deg)'></div>
-							  <div style=' background: black; width:0.5px; height:145px;position:relative;top:100%;left:-38%; transform:rotate(0deg)'></div>
-
-							  `;
-		  
-							if(window.scrollY >= topOfTra && window.scrollY <= topOfMat)  {
-						    	document.getElementById("myDIV2").appendChild(para);
-						    	para.classList.add('balloon');
-								para.classList.add('transition');	
-						    	;
-
-						    if(window.scrollY > topOfDev){document.querySelectorAll('.balloon').forEach (ball => ball.style.display='none');}
-				    	}     		  			  
-				
-				}
-				setInterval(glovos,1300)				
-		</script>		
-
-		<script type="text/javascript">
-			var sections=['#','#quote','#translator','#programmer','#matematico','#educador'];
-			var c = 0;	
-
-			function scrollNav() 
-				{			  
-				  window.open(sections[`${c}`],'_self');
-				  if(c < 5) {c++;			  }
-				  else{	c = 0;}
-			  	}
-
-			function forwardNav(e) 
-				{		
-				  
-				  console.log(e.keyCode);
-				  if((c < 5) &&  (e.keyCode == 39 || e.keyCode == 40 || e.keyCode == 13 || e.keyCode == 34) ){ c++};
-				  if((c > 0) &&  (e.keyCode == 37 || e.keyCode == 38 || e.keyCode == 8 || e.keyCode == 33) ){ c--};	
-				  window.open(sections[`${c}`],'_self');   
-			  	}
-	
-			  window.addEventListener('wheel', scrollNav);
-			  window.addEventListener('keydown', forwardNav);
-		</script>
-
-		<script type="text/javascript">
-			function EngEsp() {
-				english=[
-					 '<p>My name is Ivan and I am a <a>Programmer</a>and Translator</p><p>I am a Math and Education student, and I love creating educational blogs</p><p>I love sport, cinema, technology, literature y philosofy</p>',
-
-					 'I am a young venezuelan men currently living in Argentina. I am passionate about learning a litttle more every day, and then I always look for a way to ut into practice what I learned, to solve real-life problems and specially to help others. I consider myself as...'
-				]
-			}
-		</script>
+              temporaryValue = array[currentIndex];
+              array[currentIndex] = array[randomIndex];
+              array[randomIndex] = temporaryValue;
+            }
+            return array;         
+          }
+         
+          // Used like so 
+          function pptxs_change(){
+            ranpptxs = shuffle(pptxs); 
+            var i;
+            for (i = 0; i < 15; i++) {
+                  let sx= 93 + (Math.floor(Math.random()*7));
+                  
+                  document.getElementById(`pptx_img`+`${i}`).style.backgroundImage='url("img/pptx/'+ pptxs[i][0] +'.png")';
+                  document.getElementById(`pptx_img`+`${i}`).style.backgroundSize= ''+ sx +'% '+ sx +'%';
+                  yes.forEach ( text => text.innerHTML = pptxs[text.dataset.pptx][1] + '' );
+                  yes.forEach ( text => text.style.width = ''+ 170  + 'px' );
+                  yes.forEach ( text => text.style.height = ''+ 80 +'px' );                                         
+                }                    
+                       
+          };                  
+          
+            function show(){
+              var j = this.dataset.pptx;           
+              var k = pptxs[j][2];
+              var l = pptxs[j][1];
+              shower.src = k ;
+              shower_tit.innerHTML = l;
+              
+            }
+            yes.forEach( pptxy => pptxy.addEventListener('click', show));
+            
+          pptxs_change();  
+          setInterval(pptxs_change, 10000)
+    </script>
 </html>
