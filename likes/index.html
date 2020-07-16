@@ -22,16 +22,23 @@
 		  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
 
-		  <style>
-		  	html{overflow-x: hidden; background-color: #191414}
-		  	.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}
+		<style>
+			  	:root {
+	   		 --color: rgb(200,200,200);
+	   		 --spotify:#1DB954;
+	   			}
+	  
+			    html {box-sizing: border-box;	}
 
-		  	#deportes{background-image: url(deportes/ballack.png);background-size: cover; background-position: center center; display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: flex-end; align-content: flex-end;height:80vh;}
+			    body {margin: 0;}
+			    *, *:before, *:after {box-sizing: inherit;}
+				html{overflow-x: hidden; background-color: #191414}
+				
+				.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}
 
-		  </style>
+				 #deportes{background-image: url(deportes/ballack.png);background-size: cover; background-position: center center; display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: flex-end; align-content: flex-end;height:80vh;}
+		</style>
   	</head>
-
-
 
 	<body>	
 		<nav id='navflix' class='flex-centrado'>
@@ -46,7 +53,7 @@
 		</nav>
 
 		<div id='player'>
-			<div class="playero">			
+			<div class="playero">
 
 				<video class="player_video viewer" id='player_video_p' poster='death_note.jpeg' src="">
 				</video>
@@ -67,207 +74,10 @@
 
 			<div id='sidevideoplayer' style='z-index:4'>
 				<table id='youtable'>
-		            <thead style='height:11vh;position:absolute;width:100%'>
-		              
-		                <th style='height:11vh;position: relative; top:-6px;'>Episodes</th>
-		              
+		            <thead style='height:11vh;position:absolute;width:100%'>		              
+		                <th style='height:11vh;position: relative; top:-6px;'>Episodes</th>		              
 		            </thead>
-
-		            <tbody>
-		             <tr >		             	
-		             	<td style='padding-top:10.8vh'>
-		             		<div class='preview' style="background:url('series/Death_Note/DN_01.png')">
-		             			<source src="https://www.dropbox.com/s/kz3h517osdywzn0/Death%20Note%201%20Sub%20Esp.mp4.mp4?raw=1" type="video/mp4">
-		             		</div>
-			             	<div>				                
-				                <i data-label="Nombre" class='video_name'>1. Renacimiento</i><br/>
-				                <i data-label="Otro">Shinsei (新生)</i><br/>
-				                <i data-label="Fecha">Octubre 03, 2006 </i><br/>
-			            	</div>
-		            	</td>
-		             </tr>
-
-		             <tr>		              	
-		             	<td>
-			             	<div class='preview' style="background:url('series/Death_Note/DN_02.png')">
-			             		<source src="https://www.dropbox.com/s/bl8afd57cqj5w7f/Death%20Note%202%20Sub%20Esp.mp4.mp4?raw=1" type="video/mp4">
-			             	</div>
-			             	<div>				                
-				                <i data-label="Nombre" class='video_name'>2. Confrontación</i><br/>
-				                <i data-label="Otro">Taiketsu (対决) </i><br/>
-				                <i data-label="Fecha">Octubre 10, 2006</i>
-			            	</div>
-		            	</td>
-		              </tr>
-		              <tr>
-		              	<td>
-			             	<div class='preview' style="background:url('series/Death_Note/DN_03.png')">
-			             		<source src="https://www.dropbox.com/s/fjihzvyway5dk59/Death%20Note%203%20Sub%20Esp.mp4.mp4?raw=1" type="video/mp4">
-			             	</div>
-			             	<div>
-				                
-				                <i data-label="Nombre">3. Negociaciones </i><br/>
-				                <i data-label="Artista">Torihiki (取引)</i><br/>
-				                <i data-label="Album">Octubre 17, 2006</i><br/>
-				            </div>
-			            </td>
-		              </tr>
-		              <tr>
-		                <td>
-			                <div class='preview'></div>
-			             	<div>
-				                
-				                <i data-label="Nombre"><a>4. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-			            	</div>
-		            	</td>
-		              </tr>
-		              <tr>		                
-		             	<td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>5. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>6. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>7. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		              <tr>
-		                <td>
-			             	<div class='preview'></div>
-			             	<div>
-			                	
-			                	<i data-label="Nombre"><a>8. Caiga la Noche </a></i><br/>
-				                <i data-label="Artista">Los Mesoneros</i><br/>
-				                <i data-label="Album">Caiga la Noche</i><br/>
-				            </div>
-		            	</td>
-		              </tr>
-		               
-		              
+		            <tbody id='episodios'>               		              
 		            </tbody>
           		</table>
 			</div>
@@ -290,8 +100,6 @@
 
 				#youtable tbody tr div{display:inline-block;;}	
 				.preview{display:inline-block; width:45px;height:45px; background:blue;}
-
-
 
 				.playero {width:75vw; border:0px solid rgba(0,0,0,0.2); box-shadow:0 0 20px rgba(0,0,0,0.2);}
 				.player_video {width:75vw; height:90vh;}
@@ -324,7 +132,7 @@
 					.playero, #player, nav{width:100vw;}
 				}
 			</style>
-
+				<!--playero script-->
 			<script>
 				const playero= document.querySelector('.playero');
 				const videox = playero.querySelector('.viewer');
@@ -410,14 +218,8 @@
 			</script>
 		</div>
 
-		<div id='myLikes' style='background-color: #191414; height:10px'>
-		</br>
-			<h2><img src='my_likes.png'/></h2>
-
-
-			<div id='cinema'>
-				<div id='films'>					
-					<style>
+				<!--lists films style-->
+		<style>
 						.display_1, .display_2, .display_3, .display_4{
 								 width:140vw; height:25vh; 
 								 display:flex; 
@@ -435,455 +237,126 @@
 						.item{height:24vh; width: 20vw; background:white; border:2px solid #191414;
 							background-repeat: no-repeat; background-size: cover; position: relative;}
 							.item:hover {height:40vh; width:56vw; transition: all 0.5s}
-							.item:hover > .movie_name{display:flex;}
+							.item:hover > .movies_name{display:flex;}
+							.item:hover > .series_name{display:flex;}
+							.item:hover > .series_2{display:flex;}
+							.item:hover > .movies_2{display:flex;}																																			
 							.item:hover > .actions{display:flex;opacity:1;transition: all 0.5s}
 							
 
-						.movie_name, .btn-play-movie{font-size: 28px; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
-							.btn-play-movie:hover {font-size: 50px;}
+						.movies_name, .series_name{font-size: 28px; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
+							
 
-						.actions{display: none; flex-flow: column wrap; justify-content: center; align-items: center; align-content: center; width: 20%; height:100%;position: relative; left:80%; opacity:0;color:#aaa;}
+						.actions{display: none; flex-flow: column wrap; justify-content: center; align-items: center; align-content: center; width: 20%; height:100%;position: relative; left:80%; opacity:0;color:white;}
 
-							.actions div{width:25px; height: 25px; border: 1px solid black; background-color: white;border-radius: 50%; margin:1px;}
+							.actions div{display:flex; justify-content: center; align-items: center; align-content:center;  width:25px; height: 25px; border: 1px solid white; background-color: white;border-radius: 50%; margin:1px;background-color: transparent;}
 
 						.song_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center}
 
-						.lefter{width:5vw; height:25vh; 
-								position:absolute; 
-								background-color: #111a;
-								font-size: 40px;
-								color:white;
-								font-weight: 800;
-								display:flex;
-								left:95vw; 
-								justify-content: center; align-content: center; align-items: center;}
-					</style>
-					<script type="text/javascript">						
+						.movies_2{font-size: 14px; display:none; color:white; font-weight: 300;}
+						.series_2{font-size: 14px; display:none; color:white; font-weight: 300;}
+		</style>
+				
+		<div id='myLikes' style='background-color: #191414; height:10px'>
+		</br>
+			<h2><img src='my_likes.png'/></h2>
 
-						var display_a = document.getElementById('fav_movies');
-						var display_b = document.getElementById('fav_series');
-						var display_c = document.getElementById('fav_movies_crime');
-						var display_d = document.getElementById('fav_animes');
-
-							
-						displaya.style.border='30px solid blue';
-						displayb.style.margin='20vw 40vw';
-						displayc.style.margin='100vw 40vw';
-						displayd.style.margin='0vw 30vw';
-
-						const lefters = document.querySelectorAll('.lefter');
-						lefters.forEach(lefter => lefter.addEventListener('click', lefting));
-
-						function lefting(){
-							var how_left = this.style.left;
-							console.log(how_left);
-						}
-					</script>
-
-					<!--peliculas favoritas-->
+			<div id='cinema'>
+				<div id='films'>							
+					<!--peliculas favoritas-->	
 					<div class='films_list' id="fav_movies">
-					  <h3 class='secTit' id="peliculas">Peliculas Favs</h3>
-						<div  style=''>
-						  <div class='display display_1'>
-							<style>
-								#film01{background-image: url(movies/matrix.png)}
-								#film02{background-image: url(movies/septimo_sello.png)}
-								#film03{background-image: url(movies/antikorper.png)}
-								#film04{background-image: url(movies/psycho.png)}
-								#film05{background-image: url(movies/seven_samurais.png)}
-								#film06{background-image: url(movies/le_samurai.png)}
-								#film07{background-image: url(movies/el_padrino.png)}
-							</style>
+					 	<h3 class='secTit'>Peliculas Favs</h3>
+						<div class='display_1' id='filmes'>
 
-							<!--Movie 01-->
-							<div class='item item01' id='film01'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Matrix</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 02-->						
-							<div class='item item02' id='film02'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Septimo Sello</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 03-->						
-							<div class='item item03' id='film03'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Antikorper</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 04-->						
-							<div class='item item04' id='film04'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Psycho</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 05-->						
-							<div class='item item05' id='film05'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Sinshinin no Samurai</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 06-->						
-							<div class='item item06' id='film06'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Le Samurai</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 07-->	
-							<div class='item item06' id='film07'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>El Padrino</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							
 						</div>
-					  <div>
-					  <div class='lefter'> > </div>							
 					</div>
 
-					<!--series favoritas-->
-					<style>
-						#ser01{background-image: url(series/death_note.png)}
-						#ser02{background-image: url(series/peep_show.png)}
-						#ser03{background-image: url(series/breaking_bad.png)}
-						#ser04{background-image: url(series/bojack.png)}
-						#ser05{background-image: url(series/house.png)}
-						#ser06{background-image: url(series/got.png)}
-						#ser07{background-image: url(series/got.png)}								
-					</style>
 					<div class='series_list' id="fav_series">
 						<h3 class='secTit'>Series</h3>
-						<div class='display display_2'>
-
-							<!--Movie 01-->						
-							<div class='item item01' id='ser01'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Death Note</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 02-->						
-							<div class='item item02' id='ser02'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>The Peep Show</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 03-->						
-							<div class='item item03' id='ser03'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Breaking Bad</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 04-->						
-							<div class='item item04' id='ser04'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i>Bojack</div>
-								<h4 class='movie_name'></h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 05-->						
-							<div class='item item05' id='ser05'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Le Samurai</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 06-->						
-							<div class='item item06' id='ser06'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'></h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 07-->	
-							<div class='item item06' id='ser07'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'></h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
+						<div class='display_2' id='seriess'>
 							
 						</div>
 					</div>
 
-					<!--crime films favoritas-->
-					<style>
-							#crfilm01{background-image: url(movies/matrix.png)}
-							#crfilm02{background-image: url(movies/septimo_sello.png)}
-							#crfilm03{background-image: url(movies/antikorper.png)}
-							#crfilm04{background-image: url(movies/psycho.png)}
-							#crfilm05{background-image: url(movies/seven_samurais.png)}
-							#crfilm06{background-image: url(movies/le_samurai.png)}								
-					</style>
-					<div class='films_list' id="fav_movies_crime">
-						<h3 class='secTit'>Peliculas Crimen</h3>
-						<div class='display display_3'>
-							<!--Movie 01-->						
-							<div class='item item01' id='crfilm01'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Septimo Sello</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 02-->						
-							<div class='item item02' id='crfilm02'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Psycho</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 03-->						
-							<div class='item item03' id='crfilm03'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Antikorper</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 04-->						
-							<div class='item item04' id='crfilm04'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Seven Samurais</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 05-->						
-							<div class='item item05' id='crfilm05'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Le Samuraoi</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 06-->						
-							<div class='item item06' id='crfilm06'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'></h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-							<div class='item item06' id='crfilm06'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'></h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-							
-
-						</div>
-					</div>
-					
-					<!--Animes favoritas-->
-					<style>
-						#anime01{background-image: url(series/death_note.png)}
-						#anime02{background-image: url(series/psycho_pass.png)}
-						#anime03{background-image: url(series/sel.png)}
-						#anime04{background-image: url(series/ergo_proxy.png)}
-						#anime05{background-image: url(series/code_geass.png)}
-						#anime06{background-image: url(series/naruto.png)}								
-					</style>
 					<div class='series_list' id="fav_animes">
 						<h3 class='secTit'>Animes</h3>
-						<div class='display display_4'>
-							<!--Movie 01-->						
-							<div class='item item01' id='anime01'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Death Note</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 02-->						
-							<div class='item item02' id='anime02'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Psycho Pass</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 03-->						
-							<div class='item item03' id='anime03'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>serial Experiment Lain</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 04-->						
-							<div class='item item04' id='anime04'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Ergo Proxy</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 05-->						
-							<div class='item item05' id='anime05'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-								<h4 class='movie_name'>Code Geass</h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 06-->						
-							<div class='item item06' id='anime06'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i>Naruto</div>
-								<h4 class='movie_name'></h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-							<div class='item item06' id='anime06'>
-								<div class='btn-play-movie'><i class="fa fa-play-circle"></i>Dragon Ball</div>
-								<h4 class='movie_name'></h4>
-								<div class='actions'>
-									<div class='btn-sound'>🔊</div>
-									<div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-									<div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-								</div>
-								<div class='see_more'> + </div>
-							</div>
-							
+						<div class='display_3' id='animess'>											
 
 						</div>
 					</div>
 				</div>
 			</div>
+
+					<script type="text/javascript">
+						var slide1= document.getElementById('filmes');
+						var slide2= document.getElementById('seriess');
+						var slide3= document.getElementById('animess');
+
+
+						function film(name, seg, year, src) {
+							  this.name  = name; 
+							  this.seg = seg; 
+							  this.year = year;
+							  this.src = src}
+
+							var padrino = new film("El Padrino","F. Coppola", "1957", 'el_padrino.png');
+							var matrix = new film("Matrix","Wachowski", "1998", 'matrix.png');
+							var psycho = new film("Psycho","Hitchcock", "1950", 'psycho.png');
+							var antik = new film("antikorper","", "2004", 'antikorper.png');
+							var samurai = new film("Le Samurai",'Jean Paul', '', 'le_samurai.png');
+							var seven_s = new film("Seven Samurais","A Kurosawa", "", 'seven_samurais.png');
+							var sept = new film("Septimo Sello","Ingmar Bergman", "", 'septimo_sello.png');
+
+							var peliculas = [matrix, sept, antik, psycho, seven_s, padrino, samurai]
+
+						function serie(name, seg, src) {
+							  this.name  = name;
+							  this.seg  = seg; 							   
+							  this.src = src;};
+
+							var DN = new serie("Death Note","1", "death_note.png");
+							var breakB= new serie("Breacking Bad", " ", "breaking_bad.png");
+							var bojack= new serie("Bojack", " ", "bojack.png");
+							var peep_show= new serie("The Peep Show", " ", "peep_show.png");
+							var house= new serie("House MD", " ", "house.png");
+							var got= new serie("Game of Thrones", "7", "got.png");							
+
+
+							var series = [DN, breakB, bojack, peep_show, house, got];
+
+							var deno = new serie("Death Note","1", "death_note.png");
+							var sel= new serie("Serial Experiment Lain", " ", "sel.png");
+							var codeg= new serie("Code Geass", " ", "code_geass.png");
+							var naruto= new serie("Naruto", " ", "naruto.png");
+							var psypass= new serie("Psycho Pass", " ", "psycho_pass.png");
+							var ergo= new serie("Ergo Proxy", "7", "ergo_proxy.png");
+
+							var animes = [deno, sel, ergo, codeg, psypass, naruto];
+
+
+							 function print_slide(x, a, b){
+							  for (i = 0; i < a.length; i++) 
+							    {x.innerHTML += 
+							    `<div class='item' id='film0${i+1}' style='background-image: url(${b}/${a[i].src}) '>
+	                                
+							        <h4 class='${b}_name'>${a[i].name}</h4>
+							        <h4 class='${b}_2'>${a[i].seg}</h4>
+							        <div class='actions'>
+							        	<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+							            <div class='btn-sound'>🔊</div>
+							            <div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+							            <div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+							        </div>
+							        <div class='see_more'> + </div>							          
+							     </div>`;}
+							  };
+							  print_slide(slide1, peliculas, 'movies');
+							  print_slide(slide2, series, 'series');
+							  print_slide(slide3, animes, 'series');
+
+					</script>
+					
+					
 
 			<div id='musica'>
 				<h2><img src='mis_canciones.png'/></h2>
@@ -901,141 +374,56 @@
 				 
 				<div id='canciones' >					
 					<table>				        
-				        <tbody>
-				              <tr>				 
-				              	<td style='width:2vw' data-label="More">+</td>             	
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/keane_nothing_in_my_way.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Somewhere only we know </a></td>
-				                <td data-label="Artista">Keane</td>
-				                <td data-label="Album">Hopes and Fears</td>
-				                
-				              </tr>
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/cdc_a_guerra_lenta.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a> La Terraza</a></td>
-				                <td data-label="Artista">Caramelos de Cianuro</td>
-				                <td data-label="Album">Frisbee</td>
-				                
-				              </tr>
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/los_mesoneros_caiga_la_noche.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Caiga la Noche </a></td>
-				                <td data-label="Artista">Los Mesoneros</td>
-				                <td data-label="Album">Caiga la Noche</td>
-				                
-				              </tr>
-				               <tr>
-				               	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/alter_bridge_metalingus.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Metalingus</a></td>
-				                <td data-label="Artista">Alter Bridge</td>
-				                <td data-label="Album">Leadership</td>
-				                
-				              </tr>
-				               <tr>
-				               	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/rhcp_otherside.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Otherside </a></td>
-				                <td data-label="Artista">Red Hot Chilie Peppers</td>
-				                <td data-label="Album">Leadership</td>
-				                
-				              </tr>
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/foo_fighters_my_hero.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>My Hero </a></td>
-				                <td data-label="Artista">Foo Fighter</td>
-				                <td data-label="Album"></td>
-				                
-				              </tr>
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/number_1_party_anthem_arctic_monkeys.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>No.1 Party Anthem </a></td>
-				                <td data-label="Artista">Arctic Monkeys</td>
-				                <td data-label="Album"></td>
-				                
-				              </tr>
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/nirvana_smells_like_teen_spirit.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Smells Like Teen Spirit</a></td>
-				                <td data-label="Artista">Nirvana</td>
-				                <td data-label="Album"></td>
-				                
-				              </tr>
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/cdc_a_guerra_lenta.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Everybody's Changing </a></td>
-				                <td data-label="Artista">Keane</td>
-				                <td data-label="Album"></td>				                
-				              </tr>
-
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/cdc_flor_de_fuego.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Guerra Lenta </a></td>
-				                <td data-label="Artista">Caramelos de Cianuro</td>
-				                <td data-label="Album">Flor de Fuego</td>				                
-				              </tr>
-
-				              <tr>
-				              	<td style='width:2vw' data-label="More">+</td>
-				                <td style='width:4vw' data-label="playmusic_bot">
-				                	<p class="playmusic fa fa-play-circle">
-				                		<audio src="sounds/los_mesoneros_riesgo.mp3"></audio>
-				                	</p>
-				                </td>
-				                <td data-label="Nombre"><a>Riesgo </a></td>
-				                <td data-label="Artista">Los Mesoneros</td>
-				                <td data-label="Album">Caiga la Noche</td>				                
-				              </tr>
+				        <tbody id='mis_canciones'>			              
 				              			              
 				        </tbody>
 				    </table>
+
+				    <script type="text/javascript">
+						var song_list= document.getElementById('mis_canciones');
+
+						function song(name, grupo, album) {
+							  this.name  = name; 
+							  this.grupo = grupo; 
+							  this.album = album;
+							  }
+
+							var riesgo = new song("riesgo ","los_mesoneros ", "caiga_la_noche ");
+							var cln = new song("caiga_la_noche ","los_mesoneros ", "caiga_la_noche ");							
+							var flor_de_fuego= new song("flor_de_fuego ","cdc ", "flor_de_fuego");
+							var slts= new song("smells_like_teen_spirit ","nirvana ", "in utero");
+							var a_guerra_lenta= new song("a_guerra_lenta ","cdc ", "flor_de_fuego ");
+							var my_hero= new song("my_hero ","foo_fighters ", " ");
+							var metalingus = new song('metalingus', 'alter_bridge', '');
+							var sown = new song ('somewhere_only_we_know', 'keane', 'Hopes and Fears');
+							var ebic = new song ('everybodys_changing','keane', 'Hopes and Fears');
+							var terraza = new song ('la_terraza', 'cdc', 'frisbee');
+							var otherside = new song ('otherside', 'rhcp', '');
+							var nopa = new song ('number_1_party_anthem', 'arctic_monkeys', '');
+
+							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa ]					
+
+
+							 function print_songs(){
+							 
+							  for (i = 0; i < songs.length; i++) 
+							    {song_list.innerHTML += 
+							    `<tr>
+					              	<td style='width:2vw' data-label="More">+</td>
+					                <td style='width:4vw' data-label="playmusic_bot">
+					                	<p class="playmusic fa fa-play-circle">
+					                		<audio src="sounds/${songs[i].grupo}-${songs[i].name}.mp3"></audio>
+					                	</p>
+					                </td>
+					                <td data-label="Nombre"><a>${songs[i].name} </a></td>
+					                <td data-label="Artista">${songs[i].grupo}</td>
+					                <td data-label="Album">${songs[i].album}</td>				                
+					              </tr>`}
+							  };
+							  print_songs();
+							
+
+					</script>
 
 					<style>	
 							#canciones{
@@ -1109,7 +497,7 @@
 							<li>Sofa Song</li>
 							<li>Sway</li>
 				      	</ul>
-				      	Mis <audio src="sounds/the_kooks_see_the_world.mp3"></audio>
+				      	Mis <audio src="sounds/the_kooks-see_the_world.mp3"></audio>
 				      	<ul>
 							<li>Happy</li>
 							<li>Always where <br/>I need to be</li>
@@ -1126,7 +514,7 @@
 							<li>Veronica</li>
 							<li>El mar</li>
 				      	</ul>
-				      	Bandas  <audio src="sounds/cdc_a_guerra_lenta.mp3"></audio>
+				      	Bandas  <audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
 				      	<ul>
 							<li>Flor de Fuego</li>
 							<li>La Llama</li>
@@ -1145,7 +533,7 @@
 							<li>Nothing in<br/>my Way</li>
 							<li>Silenced by the Night</li>
 				      	</ul>
-				      	De   <audio src="sounds/keane_nothing_in_my_way.mp3"></audio>
+				      	De   <audio src="sounds/keane-nothing_in_my_way.mp3"></audio>
 				      	<ul>
 							<li>Bedshaped</li>
 							<li>Bend and Break</li>
@@ -1164,7 +552,7 @@
 							<li>Fluorescent<br/>Adolescent</li>
 							<li>Four out of Five</li>
 				      	</ul>
-				      	Rock   <audio src="sounds/number_1_party_anthem_arctic_monkeys.mp3"></audio>
+				      	Rock   <audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
 				      	<ul>
 							<li>No.1 Party Anthem</li>
 							<li>505</li>
@@ -1184,7 +572,7 @@
 							<li>Uprising</li>
 				      	</ul>
 				      	Favoritas  
-				      	<audio src="sounds/rhcp_otherside.mp3"></audio>
+				      	<audio src="sounds/rhcp-otherside.mp3"></audio>
 				      	<ul>
 							<li>Resistance</li>
 							<li>Unintended</li>
@@ -1338,7 +726,7 @@
 
 			<div id='literatura'>
 					<style>
-						.display2{width:100vw; height:40vh; 
+						.display_books{width:100vw; height:40vh; 
 								 display:flex; 
 								 flex-flow: row nowrap; 
 								 justify-content:space-around; 
@@ -1351,122 +739,80 @@
 								display:flex; flex-flow: column wrap; justify-content: flex-end; align-items: center; align-items: center;
 								padding:20px;}
 							.item2:hover {width:32vw; height:60vh;transition: all 0.5s}
+							.item2:hover > .book_autor{display:flex;}
 							.item2:hover > .book_name{display:flex;}
 
 							.item2 button{background-color: #ffffff33; border:2px solid var(--spotify); border-radius: 12px 12px; width:30%;}
 							.item2 button a{text-decoration: none;color:white;}
 
-						.book_name{font-size: 12px; display:none; color:var(--netflix);}			
+						.book_name, .book_autor{font-size: 13px; display:none; color:white;background: black}			
 
 						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center}
 						h3{font-size: 20px;color:white;font-weight: 600; margin-left: 5vw}
+						.item2{background-repeat: no-repeat; background-size: 100% 100%; }																
+	
 
 					</style>
-					<!--peliculas favoritas-->
+				
+					
 					<div class='books_list' id="fav_books">
 						<h3 class='secTit'>Libros Favs</h3>
-						<div class='display display2'>
-							<!--Movie 01-->		
-							<style>
-								.item2{background-repeat: no-repeat; background-size: 100% 100%; }
-								#book01{background-image: url(books/demian.png)}
-								#book02{background-image: url(books/zaratustra.png)}
-								#book03{background-image: url(books/la_nausea.png)}
-								#book04{background-image: url(books/orestiada.png)}
-								#book05{background-image: url(books/iliada.png)}
-								#book06{background-image: url(books/ficciones.png)}	
-								#book07{background-image: url(books/existencialismo.png)}								
-
-							</style>				
-							<div class='item2 item01' id='book01'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'>Demian</h4>
-								<button class='read'>
-									<a target='_blank' href='http://biblio3.url.edu.gt/Libros/2011/Demian.pdf'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 02-->						
-							<div class='item2 item02' id='book02'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'>Asi hablo Zaratustra</h4>
-								<button class='read'>
-									<a target='_blank' href='http://www.enxarxa.com/biblioteca/NIETZSCHE%20Asi%20hablo%20Zaratustra.pdf'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 03-->						
-							<div class='item2 item03' id='book03'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'>La Nausea</h4>
-								<button class='read'>
-									<a target='_blank' href='http://imago.yolasite.com/resources/Sartre,%20Jean%20Paul%20-%20La%20nausea.pdf'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Movie 04-->						
-							<div class='item2 item04' id='book04'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'>Orestiada</h4>
-								<button class='read'>
-									<a target='_blank' href='https://rossami.files.wordpress.com/2009/03/la-orestiada1.pdf'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Book 05-->						
-							<div class='item2 item05' id='book05'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'>Iliada</h4>
-								<button class='read'>
-									<a target='_blank' href='https://www.biblioteca.org.ar/libros/130860.pdf'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>
-
-							<!--Book 06-->						
-							<div class='item2 item06' id='book06'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'>Ficciones</h4>
-								<button class='read'>
-									<a target='_blank' href='https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxiaWJsaWJyb3NwZGZ8Z3g6MWU1OWFiN2EwYWMwNjRiNA'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>
-							
-							<!--Book 07-->
-							<div class='item2 item07' id='book07'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'>Existencialismo es un Humanismo</h4>
-								<button class='read'>
-									<a target='_blank' href='https://www.ucm.es/data/cont/docs/241-2015-06-16-Sartre%20%20El_existencialismo_es_un_humanismo.pdf'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>
-
-							
-
+						<div class='display display_books' id='mis_libros'>
 						</div>
 					</div>		
 			</div>
 
+			<script type="text/javascript">
+						var books_list= document.getElementById('mis_libros');
+
+						function book(name, autor, href, src) {
+							  this.name  = name; 
+							  this.autor = autor; 
+							  this.href = href;
+							  this.src = src;							  
+							  }
+
+							var ahz = new book("Asi Hablo Zaratustra","F. Nietzsche", "http://www.enxarxa.com/biblioteca/NIETZSCHE%20Asi%20hablo%20Zaratustra.pdf","ahz");
+							var ficciones= new book("ficciones","JL Borges", "https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxiaWJsaWJyb3NwZGZ8Z3g6MWU1OWFiN2EwYWMwNjRiNA", 'ficciones');
+							var demian= new book("Demian","H. Hesse", "http://biblio3.url.edu.gt/Libros/2011/Demian.pdf","demian");
+							var iliada= new book("La Iliada","Homero", " https://www.biblioteca.org.ar/libros/130860.pdf","iliada");
+							var nausea= new book("La Nausea","JP Sartre", "http://imago.yolasite.com/resources/Sartre,%20Jean%20Paul%20-%20La%20nausea.pdf","nausea");
+							var existencialismo= new book("Existencialismo es un Humanismo","JP Sartre", " ","existencialismo");
+							var orestiada= new book("Orestiadaa","", "https://rossami.files.wordpress.com/2009/03/la-orestiada1.pdf","orestiada");
+
+							var books = [ahz, iliada, demian, nausea, ficciones, existencialismo, orestiada ]					
+
+
+							 function print_books(){
+							 
+							  for (i = 0; i < books.length; i++) 
+							    {books_list.innerHTML += 							    
+
+					        `<div class='item2 item0${i}' id='book0${i}' style='background-image:url("books/${books[i].src}.png")'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'>${books[i].name}</h4>
+								<h4 class='book_autor'>${books[i].autor}</h4>								
+								<button class='read'>
+									<a target='_blank' href='${books[i].href}'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>`}
+							  };
+							  print_books();
+					</script>
+
 			<div id='deportes' style="">	
 				<style type="text/css">
 						.sports{display: inline-flex; width:15vw; height: 42vh;}
-						    
-						  
 					</style>
 					
-						<img class='sports' src='deportes/maldini.png'>
-						<img class='sports' src='deportes/cr7.png'>
-						<img class='sports' src='deportes/zlatan.png'>
+						<img class='sports' src='deportes/maldini.png'/>d
+						<img class='sports' src='deportes/cr7.png'/>ddsds
+						<img class='sports' src='deportes/zlatan.png'/>d
 						
-						<img class='sports' src='deportes/schweini.png'>
-						<img class='sports' src='deportes/schumi.png'>
-						<img class='sports' src='deportes/nowitski.png'>
+						<img class='sports' src='deportes/schweini.png'/>ddsd
+						<img class='sports' src='deportes/schumi.png'/>d
+						<img class='sports' src='deportes/nowitski.png'/>dsdsd
 			</div>
 		</div>
 		
@@ -1483,11 +829,11 @@
 			</div>
 			<div id="audioplayer" class=''>				
 				<div id='audiocontrols'>
-					<div id=''>x</div>
+					<div id='rep_shuffle-btn'>🔀</div>
 					<div id='rep_forward-btn'>⏮</div>
-					<div id='rep_play-btn'>▶️</div>
+					<div id='rep_play-btn' class='flex-centrado'>▶️</div>
 					<div id='rep_back-btn'>⏭</div>
-					<div id=''>y</div>
+					<div id='rep_repeat-btn'>🔁</div>
 				</div>
 				
 				<audio id='reproductor'></audio>
@@ -1495,25 +841,32 @@
 				<progress id="progress_audio" value="30" max="100" > 32% </progress>
 			</div>
 			<div style=''>
-					<i>Now Playing</i><br/>
+					<i></i><progress id="progress_audio" value="30" max="100" > 32% </progress><br/>
 					<i>Caiga la Noche</i><br/>					
 			</div>
 		</div>	
 
-
+			<style type="text/css">
+				#rep_play-btn{
+					border-radius: 50%;
+					border: 1px solid black;
+					width:23px;
+					height:23px;
+				}
+			</style>
 			<script type="text/javascript">
 				var reproductor = document.getElementById('reproductor');
 				const play_centros = document.querySelectorAll('.playmusic');
 
 				var play_bot = document.getElementById('rep_play-btn');
-				play_bot.addEventListener('click', play_stop);
+				
 				var p_s= 1;
 
 				function play_stop()
 				{
 					p_s++;
 					if ((p_s%2)==0){reproductor.play();play_bot.style.color='red'};
-					if ((p_s%2)>0){play_bot.style.color='blue'};
+					if ((p_s%2)>0){reproductor.pause();play_bot.style.color='blue'};
 				}
 
 
@@ -1526,6 +879,7 @@
 			      this.style.backgroundColor='red';
 			    }			    
 			    play_centros.forEach(play_centro => play_centro.addEventListener('click', play_music));
+			    play_bot.addEventListener('click', play_stop);
 
 			</script>
 
@@ -1570,64 +924,110 @@
 	</body>
 
 
-
-	<style>
-	  :root {
-   		 --color: rgb(200,200,200);
-   		 --spotify:#1DB954;
-   		}
-  
-	    html {
-	      box-sizing: border-box;	            
-	    }
-
-	    body {
-	      margin: 0;
-	    }
-	    *, *:before, *:after {
-	      box-sizing: inherit;
-	    }
-
-	    
-
-  	</style>
-
   <script>
-  	const panels = document.querySelectorAll('.panel');
+	  	const panels = document.querySelectorAll('.panel');
 
-  	function toggleOpen(){
-  		this.classList.toggle('open');      
-  	}
+	  	function toggleOpen(){
+	  		this.classList.toggle('open');      
+	  	}
 
-document.getElementById('player').volume = 0.1;
-  	function toggleActive(e){
-  		if (e.propertyName.includes('flex')){
-  			this.classList.toggle('open-active');
-        }
-  	}
+		document.getElementById('player').volume = 0.5;
+	  	function toggleActive(e){
+	  		if (e.propertyName.includes('flex')){
+	  			this.classList.toggle('open-active');
+	        }
+	  	}
 
-  	panels.forEach(panel => panel.addEventListener('click', toggleOpen));
-  	panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+	  	panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+	  	panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
-    caja_colores = ['#ef1df3','#5ae6e6','#0c2121','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];
+	    caja_colores = ['#ef1df3','#5ae6e6','#0c2121','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];
 
-    const centros = document.querySelectorAll('.centro');
-    const player = document.getElementById('player');
+	    const centros = document.querySelectorAll('.centro');
+	    const player = document.getElementById('player');
 
-    function mine(){
- 
-      const colores = caja_colores[Math.floor(Math.random() * 6)];
-      document.documentElement.style.setProperty(`--color`,colores);
-      
-      const audiosrc = this.querySelector('audio');
-      
-      if (2>1){
-      player.src = audiosrc.src;
-      player.currentTime = 0;}
-      player.play();            
-    }    
-    centros.forEach(centro => centro.addEventListener('click', mine));    
-   
+	    function mine(){
+	 
+	      const colores = caja_colores[Math.floor(Math.random() * 6)];
+	      document.documentElement.style.setProperty(`--color`,colores);
+	      
+	      const audiosrc = this.querySelector('audio');
+	      
+	      if (2>1){
+	      player.src = audiosrc.src;
+	      player.currentTime = 0;}
+	      player.play();            
+	    }    
+	    centros.forEach(centro => centro.addEventListener('click', mine));      
+  </script>
+
+
+  <script type="text/javascript">
+	  
+	  var psyp_epi =[];
+	  var sel_epi=[];
+	  var dn_epi = [['',''],
+	            ['1. Renacimiento','Shinsei (新生)','Oct 03, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%201%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['2. Confrontación','Taiketsu (対决) ','Oct 10, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%202%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['3. Negociaciones ','Torihiki (取引)','Oct 14, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%203%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['4. Persecución','Tsuiseki (追跡)','Oct, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%204%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['5. Estrategia','Kakehiki (駆引)','Octubre 31, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%205%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['6. Florecer','Hokorobi (綻び) ','Nov 7, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%206%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['7. Nublado','Donten (曇天) ','Nov 14, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%207%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['8. Mirada','Mesen (目線) ','Nov 21, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%208%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['9. Contacto','Sesshoku (接触) ','Nov 28, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%209%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['10. Sospechas','Giwaku (疑惑) ','Dic 5 , 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%210%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['11. Asalto','Totsunyū (突入) ','Dic 12, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%211%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['12. Enamoramiento','Koigokoro (恋心) ','Dic 19, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%212%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['13. Confesión',' Kokuhaku (告白)','Dic 26, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%213%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['14. Amigo','Tomodachi (友達) ','Ene 2, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%214%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['15. Apuesta','Kake (賭け) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%215%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['16. Decisión','Ketsudan (決断) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%216%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['17. Ejecución','Shikkō (執行) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%217%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['18. Compañeros','Nakama (仲間) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%218%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['19. Matsuda','Matsuda (松田) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%219%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['20. Improvisación','Kosoku (姑息) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%220%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['21. Actividad','Katsuyaku (活躍) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%221%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['22. Inducción','Yūdō (誘導) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%222%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['23. Frenesí','Kyōsō (狂騒) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%223%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['24. Resurrección','Fukkatsu (復活) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%224%20Sub%20Esp.mp4.mp4?raw=1'],           
+	            ['25. Silencio','Chinmoku (沈黙)','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%225%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['26. Regeneración','Saisei (再生) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%226%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['27. Secuestro','Yūkai (誘拐) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%227%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['28. Impaciencia','Shōsō (焦燥) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%228%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['29. Padre','Chichioya (父親) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%229%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['30. Justicia','Seigi (正義) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%230%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['31. Traspaso','Ijō (移譲) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%231%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['32. Selección','Sentaku (選択) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%232%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['33. Desprecio','Chōshō (嘲笑) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%233%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['34. Acecho','Koshi (虎視) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%234%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['35. Malicia','Satsui (殺意) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%235%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['36. 28 de enero','28 (1.28) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%236%20Sub%20Esp.mp4.mp4?raw=1'],
+	            ['37. Nuevo Mundo','Shinsekai (新世界) ','Junio 26, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%237%20Sub%20Esp.mp4.mp4?raw=1']
+	          ];
+	    var series_epi=[[psyp_epi, dn_epi, sel_epi],['Psycho_Pass','Death_Note','sel']];
+
+		var epi= document.getElementById('episodios');
+	  
+
+		function print_epi(x){
+	    var k=series_epi[0][x];
+	  for (i = 1; i < k.length; i++) 
+	    {epi.innerHTML += 
+	              `<tr>                    
+	                  <td>
+	                    <div class='preview' style="background:url('series/${series_epi[1][x]}/DN_${i}.png')">
+	                      <source src="" type="video/mp4">
+	                    </div>
+	                    <div>                       
+	                        <i data-label="epi_name">${k[i][0]} </i><br/>
+	                        <i data-label="epi_a">${k[i][1]} </i><br/>
+	                        <i data-label="epi_b">${k[i][2]}</i><br/>
+	                    </div>
+	                  </td>
+	              </tr>`;}
+	  };
+	  print_epi(1);
   </script>
 
 
