@@ -129,7 +129,7 @@
 
 				@media only screen and  (max-width: 760px) {
 					#sidevideoplayer{display:none;}
-					.playero, #player, nav{width:100vw;}
+					.playero, #player, #player_video_p, .player_controls, nav{width:100vw;}
 				}
 			</style>
 				<!--playero script-->
@@ -231,7 +231,7 @@
 								 font-size: 15px;
 								 margin-left: 4vw;
 								 position:relative;
-								 right:40vw;
+								 right:vw;
 								 }
 
 						.item{height:24vh; width: 20vw; background:white; border:2px solid #191414;
@@ -360,7 +360,7 @@
 
 			<div id='musica'>
 				<h2><img src='mis_canciones.png'/></h2>
-				<table style='height:40px;position: relative;left:1vw;font-family: "Monserrat";'>
+				<table class='song_table'>
 					<thead>
 				    	    <tr>
 				    	       <th style='width:4vw'></th>
@@ -393,15 +393,17 @@
 							var flor_de_fuego= new song("flor_de_fuego ","cdc ", "flor_de_fuego");
 							var slts= new song("smells_like_teen_spirit ","nirvana ", "in utero");
 							var a_guerra_lenta= new song("a_guerra_lenta ","cdc ", "flor_de_fuego ");
-							var my_hero= new song("my_hero ","foo_fighters ", " ");
-							var metalingus = new song('metalingus', 'alter_bridge', '');
+							var my_hero= new song("my_hero ","foo_fighters ", " The Colour and the Shape");
+							var metalingus = new song('metalingus', 'alter_bridge', 'One Day Remain');
 							var sown = new song ('somewhere_only_we_know', 'keane', 'Hopes and Fears');
 							var ebic = new song ('everybodys_changing','keane', 'Hopes and Fears');
-							var terraza = new song ('la_terraza', 'cdc', 'frisbee');
-							var otherside = new song ('otherside', 'rhcp', '');
-							var nopa = new song ('number_1_party_anthem', 'arctic_monkeys', '');
+							var terraza = new song ('la_terraza', 'cdc', 'Frisbee');
+							var otherside = new song ('otherside', 'rhcp', 'Californication');
+							var nopa = new song ('number_1_party_anthem', 'arctic_monkeys', 'AM');
+							var awin2b = new song ('always_where_I_need_to_be', 'the_kooks', 'Konk');
 
-							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa ]					
+
+							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa, awin2b ]					
 
 
 							 function print_songs(){
@@ -409,8 +411,8 @@
 							  for (i = 0; i < songs.length; i++) 
 							    {song_list.innerHTML += 
 							    `<tr>
-					              	<td style='width:2vw' data-label="More">+</td>
-					                <td style='width:4vw' data-label="playmusic_bot">
+					              	<td style='width:2vw' data-label="More" class='more_music'>+</td>
+					                <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
 					                	<p class="playmusic fa fa-play-circle">
 					                		<audio src="sounds/${songs[i].grupo}-${songs[i].name}.mp3"></audio>
 					                	</p>
@@ -442,41 +444,13 @@
 								color:white;
 								text-align: justify;
 								border:0px;
+
 							}
-
-							th{background-color: var(--spotify)}
-							td{padding:0% 2%;	}
-
-							tr::first-child{width:4vw}
-
-							@media only screen and  (max-width: 760px) {
-							td, tr { display: block; } 
-
-							thead tr {
-							  position: absolute;
-							  top: -9999px;
-							  left: -9999px;
-							}
-
-							tr { border: 1px solid #E74C3C; }
-							tr + tr { margin-top: 1.5em; }
-							td {
-							  border: none;
-							  border-bottom: 1px solid #eee;
-							  position: relative;
-							  padding-left: 50%;
-							  background-color: #333;
-							  text-align: left;
-							}
-
-							td:before {
-							  content: attr(data-label);
-							  display: inline-block;
-							  line-height: 1.5;
-							  margin-left: -100%;
-							  width: 100%;
-							  white-space: nowrap;
-							}
+							.song_table{
+								height:40px;
+								position: relative;
+								left:1vw;
+								font-family: "Monserrat";
 							}
 
 							.playmusic{
@@ -484,6 +458,45 @@
 								border-radius: 40%;
 								font-weight: 800;
 							}
+
+							th{background-color: var(--spotify)}
+							td{padding:0% 2%;	}
+
+							tr::first-child{width:50vw}
+
+							@media only screen and  (max-width: 760px) {
+								td, tr { display: block; width:50vw; }
+								.more_music, .play_music_but{display:none;}
+								table{width:100vw;} 
+
+								thead tr {
+								  position: absolute;
+								  top: -9999px;
+								  left: -9999px;
+								}
+
+								tr { border: 1px solid #E74C3C; }
+								tr + tr { margin-top: 1.5em; }
+								td {
+								  border: none;
+								  border-bottom: 1px solid #eee;
+								  position: relative;
+								  padding-left: 5%;
+								  background-color: #333;
+								  text-align: ;
+								}
+
+								td:before {
+								  content: attr(data-label);
+								  display: inline-block;
+								  line-height: 1.5;
+								  margin-left: -100%;
+								  width: 100%;
+								  white-space: nowrap;
+								}
+							}
+
+							
 					</style>
        			</div>  
 				
@@ -492,92 +505,67 @@
 				      <div class="panel panel1">
 				      <p>The</p>
 				      <div class="centro">
-				      	<ul>
-							<li>Naive</li>
-							<li>Sofa Song</li>
-							<li>Sway</li>
-				      	</ul>
-				      	Mis <audio src="sounds/the_kooks-see_the_world.mp3"></audio>
-				      	<ul>
-							<li>Happy</li>
-							<li>Always where <br/>I need to be</li>
-							<li>Young Folks</li>
-				      	</ul>
+				      	<div class="box box1">Naive</div>
+					    <div class="box box2">Sofa Song</div>
+					    <div class="box box3">Sway</div>
+					    <div class="box box4">Mis <audio src="sounds/the_kooks-always_where_I_need_to_be.mp3"></audio></div>
+					    <div class="box box5">Happy</div>
+					    <div class="box box6">See the World</div>
+					    <div class="box box7">Young Folks</div>				      	
 				      </div>
 				      <p>Kooks</p>
 				    </div>
 				    <div class="panel panel2">
 				      <p>Caramelos</p>
 				      <div class="centro">
-				      	<ul>
-							<li>La Terraza</li>
-							<li>Veronica</li>
-							<li>El mar</li>
-				      	</ul>
-				      	Bandas  <audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
-				      	<ul>
-							<li>Flor de Fuego</li>
-							<li>La Llama</li>
-							<li>Verano</li>
-				      </ul>
+				      	<div class="box box1">La Terraza</div>
+					    <div class="box box7">Flor de Fuego</div>
+					    <div class="box box6">Verano</div>
+					    <div class="box box4">Bandas  <audio src="sounds/cdc-a_guerra_lenta.mp3"></audio></div>
+					    <div class="box box2">Veronica</div>
+					    <div class="box box3">La Llama</div>
+					    <div class="box box5">El mar</div>							
 				      </div>
-				      <p>de Cianuro</p>
+				      <p>Cianuro</p>
 				    </div>
 
 
 				    <div class="panel panel3 open">
 				      <p>Keane</p>
 				      <div class="centro">
-				      	<ul>
-							<li>Hamburg Song</li>
-							<li>Nothing in<br/>my Way</li>
-							<li>Silenced by the Night</li>
-				      	</ul>
-				      	De   <audio src="sounds/keane-nothing_in_my_way.mp3"></audio>
-				      	<ul>
-							<li>Bedshaped</li>
-							<li>Bend and Break</li>
-							<li>She has no time</li>
-				      	</ul>
+				      	
+				      	<div class="box box4"> De<audio src="sounds/keane-nothing_in_my_way.mp3"></audio></div>
+				      	
 				      </div>
-				      <p>Monkeys</p>
+				      <p>ǝuɐǝ>|</p>
 				    </div>
 				    
 
 				    <div class="panel panel4">
-				      <p>Arctic</p>
+				      <p>𝔸𝕣𝕔𝕥𝕚𝕔</p>
 				      <div class="centro">
-				      	<ul>
-							<li>R U Mine</li>
-							<li>Fluorescent<br/>Adolescent</li>
-							<li>Four out of Five</li>
-				      	</ul>
-				      	Rock   <audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
-				      	<ul>
-							<li>No.1 Party Anthem</li>
-							<li>505</li>
-							<li>The Bakery</li>
-				      	</ul>
+				      	<div class="box box7">R U Mine</div>
+					    <div class="box box3">Mardy Bum</div>
+					    <div class="box box6">Four out of Five</div>
+					    <div class="box box4">Rock   <audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio></div>
+					    <div class="box box5">505</div>
+					    <div class="box box2">Crying Lightning</div>
+					    <div class="box box1">The Bakery</div>
 				      </div>
-				      <p>Monkeys</p>
+				      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
 				    </div>
 
 
 				    <div class="panel panel5">
 				      <p>Muse</p>
 				      <div class="centro">
-				      	<ul>
-							<li>Hysteria</li>
-							<li>Unintended</li>
-							<li>Uprising</li>
-				      	</ul>
-				      	Favoritas  
-				      	<audio src="sounds/rhcp-otherside.mp3"></audio>
-				      	<ul>
-							<li>Resistance</li>
-							<li>Unintended</li>
-							<li>Starlight</li>
-				      	</ul>
+				      		<div class="box box1">Unintended</div>
+						    <div class="box box3">Unintended</div>
+						    <div class="box box6">Hysteria</div>
+						    <div class="box box4">Favoritas <audio src="sounds/rhcp-otherside.mp3"></audio></div>
+						    <div class="box box2">Starlight</div>
+						    <div class="box box6">Resistance</div>
+						    <div class="box box7">Uprising</div>
 				      </div>
 				      <p>Muse</p>
 				    </div>
@@ -651,11 +639,48 @@
 					    .panel.open {
 					      font-size:20px;
 					      flex: 9;
-					      color:rgb(133,10,133);
+					    
+					      ;
+					      transition: 1s all;
 					    }
-					    .centro{display:flex; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center;padding:0;}
-					    	.centro ul{font-size: 10px;display:none;list-style-type: none;}
-					    .open-active > .centro {color:#3439dc;background-color:rgba(245,245,245,0.25);}
+					    .panel.open p{
+					      transform: rotate(3deg);
+					      
+					    }
+					    .box {
+							  text-align: center;
+							  text-shadow:4px 4px 0 rgba(0,0,0,0.1);
+							  padding:;
+							}
+
+							/* Colours for each box */
+							.box1 { background:#1abc9c;font-size: 12px;color:white;}
+							.box2 { background:#3498db;font-size: 12px;color:white;}
+							.box3 { background:#9b59b6;font-size: 12px;color:white;}
+							.box4 { font-weight: 800}
+							.box5 { background:#f1c40f;font-size: 12px;color:white;}
+							.box6 { background:#e67e22;font-size: 12px;color:white;}
+							.box7 { background:#e74c3c;font-size: 12px;color:white;}				
+
+
+							/* We start writing out flexbox here. The above is just page setup */
+							
+
+							.box {flex-basis:150px;flex-grow:1;}
+							.box3 {flex-grow:5;}
+							.box4 {flex-basis:100%;}
+							.box7 {flex-basis: 70%;}
+
+					    .centro{display:flex; 
+					    		flex-flow: row wrap; 
+					    		justify-content: space-around; 
+					    		align-items: center; 
+					    		align-content: center;
+					    		padding:0;
+					    		display:flex;
+							  }
+					    	
+					    .open-active > .centro {color:white;background-color:rgba(245,245,245,0.25);}
 					    .open-active > .centro ul{display:flex; flex-flow: column wrap; justify-content: space-around;}
 				</style>			
 			</div>		
@@ -703,6 +728,22 @@
 						    .album13{grid-area: m;background-image:url(albums/flor_de_fuego.png);} 
 						    .album14{grid-area: n;background-image:url(albums/santo_pecado.png);} 
 						    .album15{grid-area: o;background-image:url(albums/born2die.png);}
+
+						    @media only screen and (max-width: 1000px){
+							#albums {
+								height:75vh;
+								grid-gap:1px;
+								grid-template-columns: repeat(4, 1fr);
+							    grid-template-rows: repeat(3, 1fr) ;
+							    grid-template-areas:
+							        "a a b . "
+							        ". g c c " 
+							        "d e . f "
+							        }
+							.album span{font-size: 9px;}
+							.album08, .album09, .album10, .album11, .album12, .album13, .album14, .album15 {display: none}
+							
+						}
 						    
 						  
 					</style>
@@ -726,7 +767,7 @@
 
 			<div id='literatura'>
 					<style>
-						.display_books{width:100vw; height:40vh; 
+						.display_books{width:; height:40vh; 
 								 display:flex; 
 								 flex-flow: row nowrap; 
 								 justify-content:space-around; 
@@ -742,14 +783,27 @@
 							.item2:hover > .book_autor{display:flex;}
 							.item2:hover > .book_name{display:flex;}
 
-							.item2 button{background-color: #ffffff33; border:2px solid var(--spotify); border-radius: 12px 12px; width:30%;}
-							.item2 button a{text-decoration: none;color:white;}
+							.item2 button{background-color: #ffffff99; border:2px solid var(--spotify); border-radius: 12px 12px; width:30%;}
+							.item2 button a, .see_more{text-decoration: none;color:red;font-weight: 600;}
 
-						.book_name, .book_autor{font-size: 13px; display:none; color:white;background: black}			
+						.book_name, .book_autor{font-size: 13px; display:none; color:white; background: black; }			
 
-						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center}
+						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center; padding:1px 1.5px;}
 						h3{font-size: 20px;color:white;font-weight: 600; margin-left: 5vw}
-						.item2{background-repeat: no-repeat; background-size: 100% 100%; }																
+						.item2{background-repeat: no-repeat; background-size: 100% 100%; }
+
+						 @media only screen and (max-width: 1000px){
+						 	.display_books{width:; height:90vh; 
+								 display:flex; 
+								 flex-flow: row wrap; }
+							.item2{
+								height:28vh;
+								width:22vw;
+							        }
+							.item2:hover {width:29vw; height:42vh;transition: all 0.5s}
+
+							
+						}																
 	
 
 					</style>
@@ -773,14 +827,15 @@
 							  }
 
 							var ahz = new book("Asi Hablo Zaratustra","F. Nietzsche", "http://www.enxarxa.com/biblioteca/NIETZSCHE%20Asi%20hablo%20Zaratustra.pdf","ahz");
-							var ficciones= new book("ficciones","JL Borges", "https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxiaWJsaWJyb3NwZGZ8Z3g6MWU1OWFiN2EwYWMwNjRiNA", 'ficciones');
+							var ficciones= new book("Ficciones","JL Borges", "https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxiaWJsaWJyb3NwZGZ8Z3g6MWU1OWFiN2EwYWMwNjRiNA", 'ficciones');
 							var demian= new book("Demian","H. Hesse", "http://biblio3.url.edu.gt/Libros/2011/Demian.pdf","demian");
 							var iliada= new book("La Iliada","Homero", " https://www.biblioteca.org.ar/libros/130860.pdf","iliada");
 							var nausea= new book("La Nausea","JP Sartre", "http://imago.yolasite.com/resources/Sartre,%20Jean%20Paul%20-%20La%20nausea.pdf","nausea");
 							var existencialismo= new book("Existencialismo es un Humanismo","JP Sartre", " ","existencialismo");
 							var orestiada= new book("Orestiadaa","", "https://rossami.files.wordpress.com/2009/03/la-orestiada1.pdf","orestiada");
+							var etranger = new book('El Extranjero', 'Albert Camus', 'http://www.libroteca.net/_Mas-descargados/Camus,%20Albert%20-%20El%20Extranjero.pdf', 'extranjero')
 
-							var books = [ahz, iliada, demian, nausea, ficciones, existencialismo, orestiada ]					
+							var books = [ahz, iliada, demian, nausea, ficciones, existencialismo, orestiada, etranger ]					
 
 
 							 function print_books(){
@@ -790,7 +845,7 @@
 
 					        `<div class='item2 item0${i}' id='book0${i}' style='background-image:url("books/${books[i].src}.png")'>
 								<div class='btn-play-book'></div>
-								<h4 class='book_name'>${books[i].name}</h4>
+								<h4 class='book_name'><center>${books[i].name}</center></h4>
 								<h4 class='book_autor'>${books[i].autor}</h4>								
 								<button class='read'>
 									<a target='_blank' href='${books[i].href}'>Leer</a>
@@ -803,16 +858,20 @@
 
 			<div id='deportes' style="">	
 				<style type="text/css">
-						.sports{display: inline-flex; width:15vw; height: 42vh;}
+						.sports{display: inline-flex; width:19vw; height: 42vh;}
+						@media only screen and (max-width: 1000px){
+							.sports {width:75%;}
+							
+						}
 					</style>
 					
-						<img class='sports' src='deportes/maldini.png'/>d
-						<img class='sports' src='deportes/cr7.png'/>ddsds
-						<img class='sports' src='deportes/zlatan.png'/>d
+						<img class='sports' src='deportes/maldini.png'/>
+						<img class='sports' src='deportes/cr7.png'/>
+						<img class='sports' src='deportes/zlatan.png'/>
 						
-						<img class='sports' src='deportes/schweini.png'/>ddsd
-						<img class='sports' src='deportes/schumi.png'/>d
-						<img class='sports' src='deportes/nowitski.png'/>dsdsd
+						<img class='sports' src='deportes/schweini.png'/>
+						<img class='sports' src='deportes/schumi.png'/>
+						<img class='sports' src='deportes/nowitski.png'/>
 			</div>
 		</div>
 		
@@ -852,6 +911,7 @@
 					border: 1px solid black;
 					width:23px;
 					height:23px;
+					font-weight: 800;					
 				}
 			</style>
 			<script type="text/javascript">
@@ -865,8 +925,8 @@
 				function play_stop()
 				{
 					p_s++;
-					if ((p_s%2)==0){reproductor.play();play_bot.style.color='red'};
-					if ((p_s%2)>0){reproductor.pause();play_bot.style.color='blue'};
+					if ((p_s%2)==0){reproductor.play();play_bot.style.color='white';play_bot.innerHTML='▶️'};
+					if ((p_s%2)>0){reproductor.pause();play_bot.style.color='red';play_bot.innerHTML='||'};
 				}
 
 
@@ -877,6 +937,7 @@
 			      reproductor.currentTime = 0;
 			      reproductor.play();
 			      this.style.backgroundColor='red';
+			      play_stop();
 			    }			    
 			    play_centros.forEach(play_centro => play_centro.addEventListener('click', play_music));
 			    play_bot.addEventListener('click', play_stop);
@@ -892,6 +953,7 @@
 			      
 			      vplayer.src = videosrc.src;			      
 			      vplayer.play();		      
+
 			      
 			      
 			      videov.forEach(v => v.style.border='3px solid var(--spotify)');
@@ -926,6 +988,7 @@
 
   <script>
 	  	const panels = document.querySelectorAll('.panel');
+	  	
 
 	  	function toggleOpen(){
 	  		this.classList.toggle('open');      
@@ -941,15 +1004,15 @@
 	  	panels.forEach(panel => panel.addEventListener('click', toggleOpen));
 	  	panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
-	    caja_colores = ['#ef1df3','#5ae6e6','#0c2121','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];
+	    caja_colores = ['#ef1df3','#5ae6e6','#0ca1a1','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];
 
 	    const centros = document.querySelectorAll('.centro');
 	    const player = document.getElementById('player');
 
 	    function mine(){
 	 
-	      const colores = caja_colores[Math.floor(Math.random() * 6)];
-	      document.documentElement.style.setProperty(`--color`,colores);
+	      const colores = caja_colores[Math.floor(Math.random() * 7)];
+	     document.documentElement.style.setProperty(`--color`,colores);
 	      
 	      const audiosrc = this.querySelector('audio');
 	      
@@ -990,7 +1053,7 @@
 	            ['21. Actividad','Katsuyaku (活躍) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%221%20Sub%20Esp.mp4.mp4?raw=1'],
 	            ['22. Inducción','Yūdō (誘導) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%222%20Sub%20Esp.mp4.mp4?raw=1'],
 	            ['23. Frenesí','Kyōsō (狂騒) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%223%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['24. Resurrección','Fukkatsu (復活) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%224%20Sub%20Esp.mp4.mp4?raw=1'],           
+	            ['24. Resurrección','Fukkatsu (復活) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%224%20Sub%20Esp.mp4.mp4?raw=1'],
 	            ['25. Silencio','Chinmoku (沈黙)','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%225%20Sub%20Esp.mp4.mp4?raw=1'],
 	            ['26. Regeneración','Saisei (再生) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%226%20Sub%20Esp.mp4.mp4?raw=1'],
 	            ['27. Secuestro','Yūkai (誘拐) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%227%20Sub%20Esp.mp4.mp4?raw=1'],
@@ -1029,6 +1092,6 @@
 	  };
 	  print_epi(1);
   </script>
-
+	
 
 </html>
