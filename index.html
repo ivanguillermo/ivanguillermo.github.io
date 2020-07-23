@@ -51,7 +51,7 @@
 					.jumbotron {
 							height: 92vh;
 							width: 100vw;
-							background: url("https://www.dropbox.com/s/ek9n0lri4bykfz5/background.jpg?raw=1") no-repeat fixed center  ; 									
+							background: url("imgx/background.jpg") no-repeat fixed center  ; 									
 							background-size: cover;
 							display: flex;
 							flex-flow:row wrap;
@@ -70,10 +70,10 @@
 					@media only screen and (max-width: 800px) {
 						.jumbotron {flex-flow:column nowrap;}
 						.media{display: flex;flex-flow:row wrap;}
-						.media-object{width:40%;margin-left: 30%; border-width: 0px; padding:0% 2%; }
+						.media-object{width:40%;margin-right: 20%; border-width: 0px; padding:0% 2%; }
 						#about_btn{display:none;}
 						.resume {padding-left:0%;text-align: center}
-						.media-heading{font-size:50%; }
+						.media-heading{font-size:45%; }
 						
 						.resume p{color:white;text-shadow: 1px 1px black; font-weight: 800;}
 					}						
@@ -177,7 +177,7 @@
 					#navYo{display:inline-flex;}
 
 					.navbar-toggle {}
-					.navbar-brand{width:15vw;font-size: 2.5vw; text-align: center}
+					.navbar-brand{width:15vw;font-size: 2.3vw; text-align: center}
 					.navbar-link span{display:none;}
 					.navbar-link img{display:block; padding:0vh;margin-left:1vw; width:7vw;height:7vw;}
 					.dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
@@ -378,7 +378,7 @@
 				<section class="job" id="programmer">
 					<h2 class='sec_tit'>PROGRAMADOR</h2>		
 					<p>Comence a interesarme por la programacion en <span style='font-size:150%'>2014</span>. </p>
-					<p>El primer curso que hice fue de Javascript en la plataforma <a href='Codecademy.com'>Codecademy.com</a>, donde tambien realice cursos de Python y Java. Para mis estudios de matematica aprender a programar en Pascal y Octave. Sin embargo, fue cuando en mi carrera de Educacion Informatica tuve la necesidad de aprender <span class='att_pls'>HTML</span> y <span class='att_pls'>PHP</span> que descubri mi verdadera pasion: <span style='color:white; font-weight: 500; font-size: 150%;text-shadow: 3px 2px darkcyan'><i>La programacion Frontend</i></span>
+					<p>El primer curso que hice fue de Javascript en la plataforma <a href='Codecademy.com'>Codecademy.com</a>, donde tambien realice cursos de Python y Java. Para mis estudios de matematica aprender a programar en Pascal y Octave. Sin embargo, fue cuando en mi carrera de Educacion Informatica tuve la necesidad de aprender <span class='att_pls'>HTML</span> y <span class='att_pls'>PHP</span> que descubri mi verdadera pasion: <span ><i id='frontend_subt'>La programacion Frontend</i></span>
 					</p>
 					<p>Desde entonces me he especializado por mi cuenta en <b><i>HTML, CSS y Javascript</i></b>. Utilizo tambien herramientas como GIT. Estoy familiarizado con Node.js y SASS, y regularmente utilizo Bootstrap, React.JS y JQuery.
 					<div id="progr_langs">
@@ -394,8 +394,8 @@
 										</a>
 									</li>
 									<li>
-										<a target='_blank' href=''>
-											.
+										<a target='_blank' href='http://www.codeskulptor.org/#user40_iEe4UkyObGItgSa_6.py'>
+											Dibujar un circulo
 										</a>
 									</li>
 									<li>
@@ -494,6 +494,7 @@
 										 background-color: #1AA9ECa2}
 							#programmer h2{margin-bottom: 2%}
 							#programmer p{font-family:raleway; text-align: center; margin:1% 8%; color:#111111; font-size: 16px; text-shadow: 0px 0px black; font-weight: 300;}
+							#frontend_subt{color:white; font-weight: 500; font-size: 150%;text-shadow: 3px 2px darkcyan};
 
 							.p_langs{display:flex; flex-flow:column nowrap; justify-content: center;align-items: center;}
 							.p_langs img{border: 5px solid white;border-radius: 50%; height:7.2vw;}
@@ -531,6 +532,7 @@
 								.p_langs img {width:7.5vw; border: 1px solid white; height:7.5vw;}
 								.projects{display:none;}
 								.github_btn{display:none; background:black;height:6vh;} 
+								#frontend_subt{font-size: 100%;text-shadow: 2px 1px darkcyan}
 							}
 					</style>
 				</section>
@@ -679,6 +681,10 @@
 							@media only screen and (max-width: 800px) {								
 								.carousel-inner .item img{width:99vw;height:45vh;text-align: center}
 								.carousel-caption {font-size: 10px;padding-top: 40%}
+								.est_pptx{																	
+								border: 2px solid black;										
+								
+							}
 							}
 						</style>
 				</section>
@@ -860,7 +866,7 @@
 
 
 						    @media only screen and (max-width: 1200px){
-						    	.pptx5, .pptx6, .pptx7, .pptx8, .pptx9, .pptx10, .pptx11, .pptx12, .pptx13, .pptx14, .pptx15, .pptx16, .pptx17, .pptx18, .pptx20 {display:none;}
+						    	.pptx5, .pptx6, .pptx7, .pptx8, .pptx9, .pptx10, .pptx11, .pptx12, .pptx13, .pptx14, .pptx15, .pptx16, .pptx17, .pptx18, .pptx20, .pptx23 {display:none;}
 
 								#educador{
 									grid-template-rows: 1fr repeat(2, 3fr) repeat(2, 1fr); 
