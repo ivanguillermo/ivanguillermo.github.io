@@ -84,16 +84,18 @@
         .taller img{height:100px;width:120px;border: 1px solid #777;}
         
     .partes{display: flex; justify-content: flex-start; flex-flow: column wrap;  align-content: space-between; align-items: start;}
-    .partes i{font-size: 12px;}
+    .partes i{font-size: 8px;}
     .vop{width:40px;height: 40px; display: inline-block;margin:1.5vw;}
 
      @media only screen and (max-width: 800px) {
-              button{width:29vw;}  
-              button h3{font-size: 9px; font-weight:500; text-shadow: 0.6px 0.6px #000000aa; color: #eee;}
-              button img {display:none;width:25px;height:25px;display:inline-block;} 
-              .img_codecademy{width:90vw; height:60vh;}
+              button{width:45vw;}  
+              button h3{font-size: 60%; font-weight:500; text-shadow: 0.6px 0.6px #000000aa; color: #eee;background: black}
+              button img {display:none;width:60%;height:60%;display:inline-block;margin:0; padding:0;} 
+              .img_codecademy{width:60%; height:60%;}
               .taller{width:42vw; display: flex; flex-flow: column nowrap; justify-content:flex-start; align-content: space-between; align-items: center; }
-              .taller img{display:none; height:15px;width:20px;} 
+              .taller img{display:flex; height:50%;width:50%;} 
+
+              .parter i{font-size: 6px;}
       }
 </style>
 </head>
@@ -263,8 +265,8 @@
             .container-fluid{width:100vw;position:relative;left:0px;}
             #nav_uno{display:inline-flex;}
 
-            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700; text-shadow: -2.5px 3px var(--color); font-size: 21px;}
-            #selector option{color:white;}
+            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700; text-shadow: -2.5px 3px var(--color); }
+            #selector option{color:white;font-size: 12px;}
 
             .navbar-toggle {}
             .navbar-brand{width:15vw;font-size: 2.3vw; text-align: center}
@@ -273,6 +275,8 @@
             .dropdown{}
             #contacto{display:none;}
             #contacto_nav{display: flex}
+
+            .btn-leyenda span{font-size: 9px;padding-left: -10; margin:-15px;}
         </style>
 
   <div id="pptx" class="container">
@@ -566,17 +570,17 @@
 
       function Otroscursos (props){
        var etapas = [ 
-          [' Reason and Persuasion:Thinking Through Three Dialogues By Plato', ' National University of Singapore', '2014'],
-          [' Introduction to Mathematical Thinking', 'Stanford University', ' 2015'],
-          [' Soul Beliefs: Causes and Consequences', 'Rutgers the State University of New Jersey', '2015'],
+          [' Thinking Through Three Dialogues By Plato', ' National University of Singapore', '2014'],
+          [' Introd to Mathem Thinking', 'Stanford University', ' 2015'],
+          [' Soul Beliefs', 'Rutgers the State University of New Jersey', '2015'],
           [' Shakespeare in Community', 'University of Wisconsin–Madison', '2016'],               
           [' The French Revolution', 'The University of Melbourne', '2015'],
           [' Animal Behaviour and Welfare', 'The University of Edinburgh', '2015'],
-          [' EDIVET: Do you have what it takes to be a veterinarian?', 'The University of Edinburgh', '2015'],
-          [' An Introduction to Interactive Programming in Python', 'Rice University', '2014'],
-          [' Ancient Philosophy: Plato & His Predecessors', 'University of Pennsylvania', '2014'],
+          [' Do you have what it takes to be a veterinarian?', 'The University of Edinburgh', '2015'],
+          [' Interactive Programming in Python', 'Rice University', '2014'],
+          [' Plato & His Predecessors', 'University of Pennsylvania', '2014'],
           [' Was Alexander Great?', 'Wellesley', '2014'],
-          [' Quantum Mechanics and Quantum Computation', ' Berkeley', '2013'],
+          [' Quantum Mech. and Quantum Comp.', ' Berkeley', '2013'],
           [' Egiptologia', ' Universitat Autònoma de Barcelona', '2015']   
         ]
 
