@@ -11,15 +11,15 @@
 	<script> 
 	$(document).ready(function(){     
 	           	           
-	           $("h1").click(function(){
-				  $(this).siblings('.toggler:first').slideToggle();
-				});	           
-	           $("h2").click(function(){
-				  $(this).siblings('.toggler:first').slideToggle();
-				});
 	           $("h3").click(function(){
-				  $(this).siblings('.toggler:first').slideToggle();
-				});
+				  $(this).siblings('.toggler').slideToggle();
+				});	
+			   $("h2").click(function(){
+				  $(this).siblings('.toggler').slideToggle();
+				}); 
+
+	           
+	           
 	           
 	           $("#fadeinner").click(function(){ 
 	           	$("#fade1").fadeIn();  
@@ -126,7 +126,7 @@
 			</a>
 			
 			<hr>
-				<ul>
+				<ul id='bio_nav'>
 					<li>Home
 						<ul>
 							<li>Ivan Guillermo</li>
@@ -677,8 +677,8 @@
 				
 		<!--BIOGRAFIA-->
 		<div id='biografia'>
-			<h2>
-				<span class="mw-headline" id="juventud">Juventud</span>
+			<h2 id="juventud">
+				<span class="mw-headline" >Juventud</span>
 				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>				
 			</h2>
 			<div class="toggler">
@@ -698,11 +698,15 @@
 				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
 
-				<h3>
-					<span class="mw-headline" id="UCV"><a href='http://www.ucv.ve/'>Universidad Central de Venezuela</a></span>
+				<h3 id="UCV">
+					<span class="mw-headline" ><a href='http://www.ucv.ve/'>Universidad Central de Venezuela</a></span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
-				</h3>				
-				<div class="toggler">
+				</h3>				<div class="thumbcaption">
+								<center>La Universidad mas importante de Venezuela 
+									<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" title="UCV">UCV</a> 
+								</center>
+							</div>
+				<div class="toggler" id='ucv_txt'>
 					<div class="thumb tright">
 						<div class="thumbinner" style="width:172px;">
 							<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" class="image">
@@ -722,8 +726,8 @@
 					</p>
 				</div>
 
-				<h3>
-					<span class="mw-headline" id="Autoaprendizaje">Autoaprendizaje</span>
+				<h3 id="Autoaprendizaje">
+					<span class="mw-headline" >Autoaprendizaje</span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>
 				<div class='toggler'>
@@ -738,19 +742,9 @@
 					</p>
 
 					<p>
-						Una pasion que descubri fue mi amor por todo lo realcionado a la tecnologia. Tanto software como hardware. Primeramente me involucre en el mundo del Software Libre y desde 2013 soy usuario de Linux. Desde 2014 utilizo como mi Sistema Operativo principal y casi exclusivo alguna distro de Linux (Ubuntu, Linux Mint, Lubuntu, Puppy Linux, Tails) y comence a descubrir el mundo de la programacion a traves de la linea de comandos y un curso de Javascript que realice en Codecademy
-						<a href="https://es.wikipedia.org/wiki/Man_of_The_Match" class="mw-redirect" title="Man of The Match">Man of The Match</a> for his performance. It brought the two teams level in the race for the Premier League title only two matchdays before the end of the 
-						<a href="https://es.wikipedia.org/wiki/2007%E2%80%9308_Premier_League" title="2007–08 Premier League">season</a>.
-					</p>
-
-					<p>
-						The season ended on a low note for Ballack as Chelsea finished runners-up in the League Cup, Premier League and Champions League. This completed another treble horror for Ballack and his club. On 29 June 2008, 
-						<a href="https://es.wikipedia.org/wiki/Germany_national_football_team" title="Germany national football team">Germany</a>, captained by Ballack, lost to 
-						<a href="https://es.wikipedia.org/wiki/Spain_national_football_team" title="Spain national football team">Spain</a> 1–0 in the 
-						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008_Final" title="UEFA Euro 2008 Final">final</a> of 
-						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008" title="UEFA Euro 2008">UEFA Euro 2008</a>. 
-						This became the second season in Ballack's career after 2002 that he was runner-up for four major trophies.
-					</p>
+						Una pasion que descubrio fue su amor por todo lo realcionado a la tecnologia. Tanto software como hardware. Primeramente se involucro en el mundo del Software Libre y desde 2013 es usuario de Linux. Desde 2014 utilizo como Sistema Operativo principal y casi exclusivo alguna distro de Linux (Ubuntu, Linux Mint, Lubuntu, Puppy Linux, Tails) y comenzo a descubrir el mundo de la programacion a traves de la linea de comandos y un curso de Javascript que realizo en Codecademy
+						
+					</p>					
 				</div>		
 
 				<h3>
@@ -772,29 +766,13 @@
 						</div>
 					</div>
 					<p>	
-						In the 
-						<a href="https://es.wikipedia.org/wiki/2006_FIFA_World_Cup" title="2006 FIFA World Cup">2006 World Cup</a>, he was unable to start in Germany's first game against 
-						<a href="https://es.wikipedia.org/wiki/Costa_Rica_national_football_team" title="Costa Rica national football team">Costa Rica</a> due to a calf strain, but appeared in the following five matches. Germany were eliminated in the semi-finals, but they managed to clinch third place in a match against 
-						<a href="https://es.wikipedia.org/wiki/Portugal_national_football_team" title="Portugal national football team">Portugal</a>. He was named 
-						<a href="https://es.wikipedia.org/wiki/Man_of_the_Match" class="mw-redirect" title="Man of the Match">Man of the Match</a> in the games against 
-						<a href="https://es.wikipedia.org/wiki/Ecuador_national_football_team" title="Ecuador national football team">Ecuador</a> and 
-						<a href="https://es.wikipedia.org/wiki/Argentina_national_football_team" title="Argentina national football team">Argentina</a>,<sup id="cite_ref-41" class="reference">
-							<a href="#cite_note-41">&#91;41&#93;</a></sup> and was included in 
-						<a href="https://es.wikipedia.org/wiki/FIFA" title="FIFA">FIFA</a>'s <a href="https://es.wikipedia.org/wiki/FIFA_World_Cup_awards#All-Star_Team" title="FIFA World Cup awards">World Cup All Star Team</a> for a second consecutive time. After the tournmanent, Klinsmann stood down as national team head coach and was succeeded by assistant 
-						<a href="https://es.wikipedia.org/wiki/Joachim_L%C3%B6w" title="Joachim Löw">Joachim Löw</a>.
+						Luego de un tiempo en Yaracuy, Ivan se dio cuenta que preferia continuar ss estudios cerca de su hogar, pero dado que no habian opciones cercanas para estudiar Fisica decidio cambiar de carrera a Matematicas. Asi que optopor ingresar a la 
+						<a href="https://es.wikipedia.org/wiki/Universidad_Centroccidental_Lisandro_Alvarado" title="UCLA">Universidad Central Lisandro Alvarado</a>, ubicada en Barquisimeto, a una hora de su casa. Sin embargo por aun poseer cupo en la UCV le fue negado el ingreso, perouna vez que ya habia decidido cambiar de carrera comenzo a buscar opciones para estudiar Matematicas y eligio la 
+						<a href="https://es.wikipedia.org/wiki/Universidad_Nacional_Abierta" title="unayaracuy">Universidad Nacional Abierta</a> con sede en su estado a solo 20 minutos de viaje
 					</p>
-					<p>	
-						Ballack started and captained Germany in their first game of 
-						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008" title="UEFA Euro 2008">Euro 2008</a> against 
-						<a href="https://es.wikipedia.org/wiki/Poland_national_football_team" title="Poland national football team">Poland</a>.<sup id="cite_ref-42" class="reference">
-							<a href="#cite_note-42">&#91;42&#93;</a></sup> He proved to be an influential figure in the midfield as Germany came back from a shock defeat to 
-						<a href="https://es.wikipedia.org/wiki/Croatia_national_football_team" title="Croatia national football team">Croatia</a> to make it to the 
-						<a href="https://es.wikipedia.org/wiki/UEFA_Euro_2008_Final" title="UEFA Euro 2008 Final">final</a>, scoring a free kick against 
-						<a href="https://es.wikipedia.org/wiki/Austria_national_football_team" title="Austria national football team">Austria</a> to secure Germany a 1–0 win and a place in the quarter-finals.<sup id="cite_ref-rsssf3_43-0" class="reference"><a href="#cite_note-rsssf3-43">&#91;43&#93;</a></sup> In the quarter-finals, he scored a controversial header against Portugal to make the score 3–1 in their 3–2 win after an assist by 
-						<a href="https://es.wikipedia.org/wiki/Bastian_Schweinsteiger" title="Bastian Schweinsteiger">Bastian Schweinsteiger</a>'s 60th minute free-kick, helping Germany to advance to the semi-finals. Germany went on to beat 
-						<a href="https://es.wikipedia.org/wiki/Turkey_national_football_team" title="Turkey national football team">Turkey</a> 3–2 in the semifinals. Prior to the final, Ballack sustained a calf injury but eventually overcame it in time. Germany, however, ended up losing 1–0 to 
-						<a href="https://es.wikipedia.org/wiki/Spain_national_football_team" title="Spain national football team">Spain</a>. Nevertheless, he was named in the Team of the Tournament.
-					</p>
+					<p> 
+						La UNA le ofrecio la posibilidad de estudiar desde casa sin asistir a clases presenciales por lo que era ideal para su forma de vida. En la actualidad, debido a multiples problemas de paros y semestres perdidos por la situacion politica y economica en Venezuela, Ivan no logro graduarse antes de decidir salir de su pais con rumbo a Argentina. Sin embargo actualmente se encuentra cursando un semestre aprovechando la oportunidad que le brinda la situacion mundial de pandemia y su consecuente aislamiento social.					
+					</p>					
 				</div>			
 
 				<h3>
@@ -820,7 +798,7 @@
 								</center>						
 							</a>  
 							<div class="thumbcaption">										
-								<center>En la UPEL combine mi pasion por la educacion con mi amor por la Informatica</center>
+								<center>En la UPEL combino su pasion por la educacion con su amor por la Informatica</center>
 							</div>
 						</div>
 					</div>			

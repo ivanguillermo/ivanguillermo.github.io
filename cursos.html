@@ -108,14 +108,14 @@
                     <a href="#pptxs" class="closebtn">×</a>
                     <h2 id='cert_shower_t'>ssss</h2>
                   </header>
-                  <div class="containercontainer">
-                    <iframe id='cert_shower' 
+                  <center class="containercontainer">
+                    <img id='cert_shower' 
                             src="imgx/cursos/calculo1.png" 
-                            frameborder="0" width="100%" height="420px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-                    </iframe>
-                  </div>
+                            width="100%" height="400px">
+                    </img>
+                  </center>
                   <footer class="containerfooter">
-                    <a href='' id='cert_shower_go'><p>Ir al sitio</p></a>
+                    <a target='_blank' href='' id='cert_shower_go'><p>Ir al sitio</p></a>
                     <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
                     </div>
                   </footer>
@@ -138,7 +138,7 @@
             z-index:180;
           }
 
-          #cert_shower_t{color:white;}
+          #cert_shower_t{color:black;}
 
           /* Display the modal when targeted */
           .modal:target {display: block;position: absolute;}
@@ -161,49 +161,42 @@
 
 
       <nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
-          <div class="container-fluid" id='fluid' style='display:flex;'>
+          <div class="container-fluid" id='fluid' style='display:flex; width:100%;'>
               <div class="navbar-header" style='display:flex; height:100%'>             
                   <a class="navbar-brand" 
                     href="https://ivanguillermo.github.io" 
                     style="background-color:var(--color); color:black;font-weight: 400;">
-                    <b>Home</b>
-                  </a>
-          
-                  <a id='nav_uno' 
-                     class="navbar-link" 
-                     href="https://ivanguillermo.github.io" 
-                     style="color:white; text-decoration: none;align-self: center">
-                     <b>Ivan Guillermo</b>
-                     <img alt='yo' src="imgx/ivan512.png"/>
-                  </a>                      
+                    <b>Ivan</b>
+                  </a>            
                              
                   <a id='nav_dos' class="navbar-link" href="#cursos_certificados" style="text-decoration: none;align-self: center">                    
-                    <i>Certificados</i>
+                    <i>Certifieds</i>
                   </a>
                   <a id='nav_tres' class="navbar-link" href="#codecademy" style="text-decoration: none;align-self: center">
                     <i>Codecademy</i>                    
                   </a>
 
                   <a id='nav_cua' class="navbar-link" href="#nocertificados" style="text-decoration: none;align-self: center">
-                    <i>No certificado</i>                    
+                    <i><center>No certifieds</center></i>                    
                   </a>
 
                   <a id='nav_cin' class="navbar-link" href="#otros" style="text-decoration: none;align-self: center">
                     <i>Otros</i>                    
-                  </a>                  
+                  </a>   
+                  <a class="navbar-link"  style="text-decoration: none;align-self: center">
+                    <i></i>                    
+                  </a>                
                   
-                  <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
+                  <button aria-controls="navbar" style='width:10vw; position:absolute; right:0px' aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
                       <span class="sr-only">Toggle navigation</span>
                       <span class="icon-bar"></span>
-                  </button>
+                  </button>                   
                 </div>
 
               <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:1.5%">
-                  <li>
-                    <a href="contacto.html" style="background-color:var(--color); color:white">
-                      <b>Contacto</b>
-                    </a>
-                  </li>
+                <li>
+                    <a href="contacto.html" style="background-color:var(--color);color:white"><b>Contacto</b></a>
+                </li>
               </ul>
 
               <div class="navbar-collapse collapse" id="navbar">
@@ -212,18 +205,21 @@
                     <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" 
                     style="">Algo mas </a> 
                     <ul class="dropdown-menu">
-                      <li><a href="mis_gustos.html">Mis Gustos</a></li>
+                      <li><a href="likes/index.html">Mis Gustos</a></li>
 
                       <li class="divider" role="separator"></li>
                       <li ><a href="bio.html">Biografia</a></li>
 
                       <li class="divider" role="separator"></li>
                       <li ><a href="https://ivanguillermo.github.io/informaticos15">Informaticos15</a></li>
+                      <li class="divider" role="separator"></li>
+                      <li id="contacto_nav">
+                        <a href="contacto.html" >Contacto</a>
+                      </li>
                     </ul>
                   </li>
                 </ul>
-             </div>
-                
+             </div>                
              </div> 
         </nav>
         <style type="text/css">
@@ -241,32 +237,42 @@
             .flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
             .navbar{min-height:8vh;}
 
-            .navbar-link{display:flex; flex-flow: row wrap; justify-content: center; align-content: center; align-content: center;height:4vh; width:10vw; padding:1.5vw;font-size:1vw;}
+
+
+            .navbar-link{
+              display:flex; 
+              flex-flow: row wrap; 
+              justify-content: center; 
+              align-content: center; 
+              align-content: center; 
+              width:25%; 
+              padding:0vw 2.5vw;
+              font-size:1vw;
+            }
             .color {color:var(--color);}
             .navbar-link {height:4vh; display:flex;}
             .navbar-link i{color:var(--color); align-self: center}
             
-            .navbar-link img{width: 44px;height:44px;display:none;padding:0px 2px;}
-
             .dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
-            .dropdown-toggle{width:190%; color:white; align-self: flex-end; text-align: center}    
+            .dropdown-toggle{width:; color:white; align-self: flex-end; text-align: center} 
+
+            #contacto_nav{display: none}   
         
            @media only screen and (max-width: 800px) {
             .navbar{width:100vw;}
             .container-fluid{width:100vw;position:relative;left:0px;}
             #nav_uno{display:inline-flex;}
 
+            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700; text-shadow: -2.5px 3px var(--color); font-size: 21px;}
+            #selector option{color:white;}
+
             .navbar-toggle {}
-            .navbar-brand{width:15vw;font-size: 2.5vw; text-align: center}
-            .navbar-link i{display:none;}
-            .navbar-link img{display:block; padding:0vh;margin-left:1vw; width:7vw;height:7vw;}
+            .navbar-brand{width:15vw;font-size: 2.3vw; text-align: center}
+            
             .dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
             .dropdown{}
-            #contacto{display:;width:15vw;position:static;left:85vw;}     
-            } 
-
-            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700; text-shadow: -2.5px 3px var(--color); font-size: 23px;}
-            #selector option{color:white;}
+            #contacto{display:none;}
+            #contacto_nav{display: flex}
         </style>
 
   <div id="pptx" class="container">
@@ -329,7 +335,7 @@
         <!----------------------------------------------EDX--------------------------------------------------->
         <h2>
           <a id='tit_4' target='_blank' href="https://www.edX.org" >
-            <img id='tit_4_img' style='height:40px; width:70px;' src='imgx/cursos/edx.png'/>
+            <img id='tit_4_img' alt='Otros' style='height:40px; width:70px;' src=''/>
           </a>
         </h2>       
         <div id='courses4' class="courses"></div>
@@ -504,12 +510,12 @@
 
           for (i = 0; i < a; i++) 
             {document.getElementById(`courses${b}`).innerHTML += 
-                `<button id='${z}${i}' type="button" class="btn ${botones[i]} btn-lg curso_btn">
-                    <a id='${z}${i}_a' href="#id01">  
+                `<button id='${z}${i}' type="button" class="btn ${botones[i]} btn-lg curso_btn" data-name='' data-dir=''>
+                    <a id='${z}${i}_a' href="#id01" >  
                       <img id='${z}${i}_img' class="img_pptx"  src=""/>
                     </a>
                     <br/>            
-                    <h3 id='${z}${i}_h3'></h3>
+                    <h3 id='${z}${i}_h3' ></h3>
                 </button>
                 </br>`;}
           };                 
@@ -521,7 +527,9 @@
 
             for (i = 0; i < n; i++)
               {
-                  document.getElementById(`${cats[k][1][y]}${i}`+'_h3').innerHTML = x[i][0];       
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_h3').innerHTML = x[i][0];
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.name = x[i][0];
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.dir = x[i][2];        
                   document.getElementById(`${cats[k][1][y]}${i}`+'_img').src= 'imgx/cursos/' + x[i][1] + '.png';                  
               }
             }
@@ -630,17 +638,22 @@
     </script>
 
     <script type="text/javascript">
-              var cursos = document.querySelectAll('.curso_btn');
-              cursos.forEach(btn => btn.addEventListener('click', show_cert));
+              var kursos = document.querySelectorAll('.curso_btn');
+              
 
               const cert_shower_t= document.getElementById('cert_shower_t');
               const cert_shower= document.getElementById('cert_shower');
               const cert_shower_go= document.getElementById('cert_shower_go');
+              const cert_shower_img= document.getElementById('cert_shower_img');              
 
-              function show_cert(){
-                cert_shower_t.innerHTML='xxxx';                
-                cert_shower_go.innerHTML='xxxx';
+              function show_kert(){
+                b= this.dataset.name;
+                cert_shower_t.innerHTML=b ;
+                cert_shower_go.href=this.dataset.dir;
+                
                 }
+
+              kursos.forEach(btn => btn.addEventListener('click', show_kert));
             </script>
 </html>
 
