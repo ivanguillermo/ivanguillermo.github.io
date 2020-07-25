@@ -191,9 +191,8 @@
 
 			<div id="quote">
 				</br>
-				<p><q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q></p>
-				
-				<p>Friedrich Nietzsche</p>
+				<p>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</p>				
+				<i>Friedrich Nietzsche</i>
 			</div>
 
 			
@@ -207,15 +206,17 @@
 						flex-flow: column wrap;  
 						text-align:center;
 						color:white;
-						height:12vh;}
-					#quote q{padding-top:1vh; font-size: 120%;}
+						height:12vh;
+					}
+					#quote p{padding-top:1vh; font-size: 120%;}
 					#yo_descripcion {background:transparent;}
 					#mi_nombre {text-align:center; padding-top:; color:#ddd; text-shadow: 2px 1px 2px #4fdb98  ; }
 					#descripcion {text-align:center; color:#fff; font-weight: 500; text-shadow: 0.5px 0.5px #292929; padding:0% 15%;}
 					@media only screen and (max-width: 800px) {
 						section {height:150px;}
 						#descripcion {font-size: 9px;padding:3%;text-align: justify;}
-						#quote q{padding-top:1vh; font-size: 90%;}
+						#quote p{padding-top:1vh; font-size: 80%;}
+						#quote i{font-size: 70%;}
 					}
 			</style>
 
@@ -308,8 +309,10 @@
 			<div id="sections">
 				<section class="job" id="translator">
 					<h2 class='sec_tit'>TRADUCTOR</h2>
+
 					<div class='body2' id="myDIV2">
 					</div>
+
 					<div id="langs_p">
 						<p style='color:black'>Por un tiempo me dedique a realizar traducciones como freelancer. Principalmente de Ingles a Espanol y viceversa. Pero tambien realice otras traducciones que me ayudaron a crear una cultura de responsabilidad y compromiso</p>
 						<span id="tr_txt" style="color:#eee; text-shadow: 1px 1px black; font-weight: 600;">							
@@ -318,6 +321,7 @@
 							<br />ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  ITALIANO 🇮🇹 PORTUGUES 
 						</span>
 					</div>
+
 					<div id="langs" style="float:right; display:flex; justify-content: space-between; align-items: center">
 						<!--por-->
 						<a class='aflag' data-lang='0'> <img id='br-flag' alt="brazil-flag" class="flagies" src="imgx/langs/bra.png" /></a> 
@@ -332,6 +336,7 @@
 						<!--eng-->
 						<a class='aflag' data-lang='5'>	<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="imgx/langs/eng.png" /></a>
 					</div>
+
 					<script>
 						const idiomas=[
 							'Eu posso traduzir entre vários idiomas. Eu sou um falante nativo de ESPANHOL e sou altamente proficiente em INGLÊS.<br/> Eu também posso traduzir para esses 2 idiomas de:<br/> ALEMAO 🇩🇪 FRANCÈS 🇫🇷 ITALIANO 🇮🇹 PORTUGES',
@@ -365,11 +370,26 @@
 							  				
 					</script>
 					<style>
-						#translator{background: var(--color) url('https://www.dropbox.com/s/6qp7habxfp7h3f8/ballon_langs.png?raw=1') left bottom no-repeat  fixed ; height:93vh;font-weight: 500; text-shadow: 0.5px 0.5px #292929;}
-							#langs{width:25%; align-self: flex-end; justify-content: flex-end; margin-right: 15%;}
+						#translator{
+							background: var(--color) 
+										url('https://www.dropbox.com/s/6qp7habxfp7h3f8/ballon_langs.png?raw=1') 
+										left bottom no-repeat  fixed ; 
+							height:93vh;
+							font-weight: 500; 
+							text-shadow: 0.5px 0.5px #292929;
+							display: flex;
+							flex-flow: column wrap;
+							justify-content: space-around;
+							}
+							#langs{
+								width:25%; 
+								align-self: flex-end; 
+								justify-content: flex-end; 
+								margin-right: 15%;
+							}
 							
 								#flag_icons{float:right; margin-left: 10px}
-					 			.flagies{margin: 1px;}
+					 			.flagies{margin: 3px;}
 					 			#langs_p{font-family: raleway; line-height:185%; font-size:21px; float:right; color:white; width:60%;text-align: center; margin:4% 10% 5% 30%;}
 					 			.languages{padding-top:100px;margin:1px;}
 
@@ -377,7 +397,7 @@
 
 						@media only screen and (max-width: 800px) {
 							#translator{background: var(--color)}
-							#langs_p{ line-height:150%; width:75%;text-align: justify; margin:4% 10% 5% 10%;font-size: 16px;}							
+							#langs_p{ line-height:150%; width:75%;text-align: justify; margin:4% 10% 5% 10%;font-size: 14px;}							
 							#langs{margin-right:50%;}
 							.body2{display:none;}
 							
@@ -386,11 +406,19 @@
 				</section>
 
 				<section class="job" id="programmer">
-					<h2 class='sec_tit'>PROGRAMADOR</h2>		
-					<p>Comence a interesarme por la programacion en <span style='font-size:150%'>2014</span>. </p>
-					<p>El primer curso que hice fue de Javascript en la plataforma <a href='Codecademy.com'>Codecademy.com</a>, donde tambien realice cursos de Python y Java. Para mis estudios de matematica aprender a programar en Pascal y Octave. Sin embargo, fue cuando en mi carrera de Educacion Informatica tuve la necesidad de aprender <span class='att_pls'>HTML</span> y <span class='att_pls'>PHP</span> que descubri mi verdadera pasion: <span ><i id='frontend_subt'>La programacion Frontend</i></span>
-					</p>
-					<p>Desde entonces me he especializado por mi cuenta en <b><i>HTML, CSS y Javascript</i></b>. Utilizo tambien herramientas como GIT. Estoy familiarizado con Node.js y SASS, y regularmente utilizo Bootstrap, React.JS y JQuery.
+					<h2 class='sec_tit'>PROGRAMADOR</h2>
+					<div>		
+						<p>
+							Comence a interesarme por la programacion en <span style='font-size:150%'>2014</span>. 
+						</p>
+						<p>
+							El primer curso que hice fue de Javascript en la plataforma <a href='Codecademy.com'>Codecademy.com</a>, donde tambien realice cursos de Python y Java. Para mis estudios de matematica aprender a programar en Pascal y Octave. Sin embargo, fue cuando en mi carrera de Educacion Informatica tuve la necesidad de aprender <span class='att_pls'>HTML</span> y <span class='att_pls'>PHP</span> que descubri mi verdadera pasion: <span ><i id='frontend_subt'>La programacion Frontend</i></span>
+						</p>
+						<p>
+							Desde entonces me he especializado por mi cuenta en <b><i>HTML, CSS y Javascript</i></b>. Utilizo tambien herramientas como GIT. Estoy familiarizado con Node.js y SASS, y regularmente utilizo Bootstrap, React.JS y JQuery.
+						</p>
+					</div>
+
 					<div id="progr_langs">
 						<div class='p_langs' id="python" >
 							<a target="_blank" href='https://github.com/ivanguillermo/python'>
@@ -497,11 +525,28 @@
 
 					<button class='github_btn'> <a style='color:white; text-decoration-style: none' href='https://github.com/ivanguillermo'>mi GutHub <i class="fa fa-github"></i></a></button>
 					<style type="text/css">
-						#programmer{background:var(--orange) url('') left top no-repeat fixed ; display:flex; flex-flow: column wrap; justify-content: flex-start; align-items: center;align-content: stretch; height:95vh;}
+						#programmer{
+							background:var(--orange) url('') left top no-repeat fixed ; 
+							display:flex; 
+							flex-flow: column wrap; 
+							justify-content: space-around; 
+							align-items: center;
+							align-content: stretch; 
+							height:95vh;}
 
-							#progr_langs{display:flex; flex-flow: row wrap; justify-content: space-between; align-items: space-around; align-content: center; width:80%;height:10vh;
-										 border:4px solid var(--blue);border-radius:80px; margin-top: 4%;
-										 background-color: #1AA9ECa2}
+							#progr_langs{
+									display:flex; 
+									flex-flow: row wrap; 
+									justify-content: space-between; 
+									align-items: space-around; 
+									align-content: center; 
+									width:80%;height:10vh;
+									border:4px solid var(--blue);
+									background-color: #1AA9ECa2;
+									border-radius:80px; margin-top: 4%;
+									transform-origin: ;
+								}
+
 							#programmer h2{margin-bottom: 2%}
 							#programmer p{font-family:raleway; text-align: center; margin:1% 8%; color:#111111; font-size: 16px; text-shadow: 0px 0px black; font-weight: 300;}
 							#frontend_subt{color:white; font-weight: 500; font-size: 150%;text-shadow: 3px 2px darkcyan};
@@ -538,7 +583,7 @@
 									
 									}
 							@media only screen and (max-width: 800px) {
-								#programmer p{font-size: 14px;	 }
+								#programmer p{font-size: 12px;	 }
 								.p_langs img {width:7.5vw; border: 1px solid white; height:7.5vw;}
 								.projects{display:none;}
 								.github_btn{display:none; background:black;height:6vh;} 
@@ -581,9 +626,15 @@
 
 									<div class="carousel-caption">												
 										<div class="mat_art">
-											<div class="mat_arts"><a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vQWri_NNj0CwWdnBT1TGx6T_diQFyZ5WEOp1Rrz1GzahfzktMhIqLKL5y3dIkEm-3N9yjR5WarkQkhB/pub'> Integracion Imaginaria</a></div>
-											<div class="mat_arts"><a target='_blank'  href='https://docs.google.com/presentation/d/e/2PACX-1vQrWrRbGcxRPtw9ZoMiwevnYa9r33CHRGjXaUZmh2ASk5PXFUO-juHLfegCYvVP0pBNQDKqJRHRDUJz/pub?start=false&loop=false&delayms=3000'>Raiz cuadrada de una recta</a></div>
-											<div class="mat_arts"><a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vTGWhOqoDkZWZ7o30ViC4UsPv2QrWeoDXF9eDWMVYq-7ho_GW7Wrt13oThJl4bmt8Yl-rWqJeSichTU/pub'>All in limits<br/> in One</a></div>  
+											<div class="mat_arts">
+												<a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vQWri_NNj0CwWdnBT1TGx6T_diQFyZ5WEOp1Rrz1GzahfzktMhIqLKL5y3dIkEm-3N9yjR5WarkQkhB/pub'> Integracion Imaginaria</a>
+											</div>
+											<div class="mat_arts">
+												<a target='_blank'  href='https://docs.google.com/presentation/d/e/2PACX-1vQrWrRbGcxRPtw9ZoMiwevnYa9r33CHRGjXaUZmh2ASk5PXFUO-juHLfegCYvVP0pBNQDKqJRHRDUJz/pub?start=false&loop=false&delayms=3000'>Raiz cuadrada de una recta</a>
+											</div>
+											<div class="mat_arts">
+												<a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vTGWhOqoDkZWZ7o30ViC4UsPv2QrWeoDXF9eDWMVYq-7ho_GW7Wrt13oThJl4bmt8Yl-rWqJeSichTU/pub'>Todos los limites son Uno</a>
+											</div>  
 										</div>	
 										<h3>CÁLCULO</h3>
 										<p>Determinar las consecuencias cuantificables de eventos y circunstacias de las que tenemos informacion relevante</p>
@@ -675,6 +726,7 @@
 												align-content: center;
 												align-items: center;												
 											}
+											.mat_arts a{background-color: black; padding:2%;}
 
 							.est_pptx{																	
 								border: 10px solid black;										
