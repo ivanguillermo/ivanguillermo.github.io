@@ -19,7 +19,7 @@
 
 		<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Barriecito|Roboto|Lora|Raleway" rel="stylesheet" />
+		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Roboto|Raleway|Satisfy" rel="stylesheet" />
 
 		<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
         <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
@@ -33,11 +33,11 @@
 					<div class="media">
 						<div class="media-left media-middle">
 							<img alt="ivanlopezpedreanez" class="media-object" src="yo2019.png" />
-							<button class="btn btn-lg" href="#" role="button" id="about_btn">	Mi Historia
+							<button class="btn btn-lg" href="#" role="button" id="about_btn" style='font-family: satisfy;'>	Mi Historia
 						</div>
 						<div class="media-body">
-							<h1 class="media-heading" style='font-size:7vh'>Ivan Lopez Pedreañez</h1>
-							<div id='resume' class="resume">
+							<h1 class="media-heading" style='font-size:8.5vh;font-family: satisfy;'>Ivan Lopez Pedreañez</h1>
+							<div id='resume' class="resume" >
 								<p>Me llamo Ivan y soy<a>Programador Web</a> y traductor freelance</p>
 								<p>Estudio Matemática y Educación Informática, y amo crear blogs educativos</p>
 								<p>Me encantan los deportes, el cine, la tecnología y la literatura</p>
@@ -48,6 +48,7 @@
 			</div>
 
 			<style>
+					.flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
 					.jumbotron {
 							height: 92vh;
 							width: 100vw;
@@ -101,7 +102,7 @@
 		          <div class="container-fluid" id='fluid' style='display:flex;'>
 		            <div class="navbar-header" style='display:flex; height:100%'>
 		              
-		              <a class="navbar-brand" href="#" style="background-color:var(--color); color:black;font-weight: 400;"><b>Hola!</b></a>
+		              <a class="navbar-brand" href="#" style="background-color:var(--color); color:black;font-weight: 500;"><i style='font-family: satisfy; color:; letter-spacing: 2px;'>Hola!</i></a>
 					
 				      <a id='navYo' class="navbar-link" href="#quote" style="text-decoration: none;align-self: center">
 				      	<b>	<i style="color:white;">Ivanguillermo</i> </b>
@@ -145,8 +146,8 @@
 		          <div class="navbar-collapse collapse" id="navbar">
 			          <ul class="nav navbar-nav">		         		          	         	
 			          	<li class="dropdown" >
-			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-			              ><span>Algo mas</span> </a> 
+			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
+			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'><i class="fa fa-ellipsis-v"></i></span> </a> 
 			            	<ul class="dropdown-menu">
 			            		<li><a href="likes/index.html">Mis Gustos</a></li>
 			            		<li class="divider" role="separator"></li>
@@ -285,7 +286,7 @@
 					   align-items: center;
 					   justify-content: space-around;
 					   align-content: center;
-					   height:80vh;
+					   height:78.8vh;
 					   width:100vw;
 					   color:black;
 						}
@@ -304,7 +305,11 @@
 						align-items: center;
 						justify-content: space-between;						
 						}
-					.icon div h2,.icon div a {color:#ff7f2a;text-align:center;text-shadow: 1px 1px #222222;font-family:Roboto;}
+					.icon div h2,.icon div a {
+						color:#ff7f2a;
+						text-align:center;
+						text-shadow: 1px 1px #222222;
+						font-family:Roboto;}
 					
 					.icon:first-child h2, .icon:first-child a{color: var(--green)}
 					.icon:last-child h2, .icon:last-child a{color: var(--blue)}
@@ -338,7 +343,7 @@
 						</span>
 					</div>
 
-					<div id="langs" style="float:right; display:flex; justify-content: space-between; align-items: center">
+					<div id="langs">
 						<!--por-->
 						<a class='aflag' data-lang='0'> <img id='br-flag' alt="brazil-flag" class="flagies" src="imgx/langs/bra.png" /></a> 
 						<!--ger-->
@@ -399,17 +404,33 @@
 							}
 							#langs{
 								width:25%; 
-								align-self: flex-end; 
-								justify-content: flex-end; 
+								align-self: flex-end; 								
 								margin-right: 15%;
+								float:right; 
+								display:flex; 
+								justify-content: space-between; 
+								align-items: center;
+								position: relative;
+								top:-3vh;
 							}
 							
 								#flag_icons{float:right; margin-left: 10px}
 					 			.flagies{margin: 3px;}
-					 			#langs_p{font-family: raleway; line-height:185%; font-size:21px; float:right; color:white; width:60%;text-align: center; margin:4% 10% 5% 30%;}
+					 			#langs_p{
+					 				font-family: raleway; 
+					 				line-height:185%; 
+					 				font-size:21px; 
+					 				float:right; 
+					 				color:white; width:60%;
+					 				text-align: center; 
+					 				margin:4% 10% 5% 30%;}
 					 			.languages{padding-top:100px;margin:1px;}
 
-					 			.big_flag img{transform: rotate(30deg);}
+					 			.big_flag img{					 				
+					 				transform: scale(1.3) rotate(30deg);
+					 				border:6px double var(--orange);
+									border-radius: 50%;
+					 				}
 
 						@media only screen and (max-width: 800px) {
 							#translator{background: var(--color)}
@@ -517,7 +538,7 @@
 							<a  target='_blank' href='https://github.com/ivanguillermo/mySQL_databases'>
 								<img class='p_langs_img' alt="mysql" src='imgx/devs/mysql.png'/>
 							</a>
-							<div class="projects">
+							<div class="projects ">
 								<ul>
 									<li>
 										<a target='_blank' href=''>
@@ -539,7 +560,7 @@
 						</div>
 					</div>					
 
-					<button class='github_btn'> <a style='color:white; text-decoration-style: none' href='https://github.com/ivanguillermo'>mi GutHub <i class="fa fa-github"></i></a></button>
+					<button class='github_btn' style='position:relative;top:-10vh;'> <a style='color:white; text-decoration-style: none' href='https://github.com/ivanguillermo'>mi GutHub <i class="fa fa-github"></i></a></button>
 					<style type="text/css">
 						#programmer{
 							background:var(--orange) url('') left top no-repeat fixed ; 
@@ -564,37 +585,71 @@
 								}
 
 							#programmer h2{margin-bottom: 2%}
-							#programmer p{font-family:raleway; text-align: center; margin:1% 8%; color:#111111; font-size: 16px; text-shadow: 0px 0px black; font-weight: 300;}
+							#programmer p{
+								font-family:raleway; 
+								text-align: center; 
+								margin:1% 8%; 
+								color:#111111; 
+								font-size: 16px; 
+								text-shadow: 0px 0px black; 
+								font-weight: 300;}
 							#frontend_subt{color:white; font-weight: 500; font-size: 150%;text-shadow: 3px 2px darkcyan};
 
-							.p_langs{display:flex; flex-flow:column nowrap; justify-content: center;align-items: center;}
-							.p_langs img{border: 5px solid white;border-radius: 50%; height:7.2vw;}
+							.p_langs{
+								display:flex; 
+								flex-flow:column nowrap; 
+								justify-content: center;
+								align-items: center;}
+							.p_langs img{
+								border: 1vh solid white;
+								border-radius: 50%; 
+								height:7.2vw;}
 
-							.p_langs:first-child{flex-direction:row-reverse;}
+							
 							.p_langs:first-child img{border:0px;}
 							.p_langs:nth-child(2){flex-direction:column-reverse;}
 							.p_langs:nth-child(5){flex-direction:column-reverse;}
 							.p_langs:nth-child(6){flex-direction:row;}
 								.projects{
-									width:90px;
-									height:15vh;
+									width:7.5vw;
+									height:14vh;
 									background-color: white;
 									border: 4px red;
 									visibility: hidden;
 									border-radius:7% 30% 7% 10%;
 									border: 1px solid black;
+									z-index:2;
+									font-family: roboto;
+									font-size: 11px;
 															
-								}				
+								}	
+											
 								.projects ul {list-style-type:none; margin-left: -30%;text-decoration: none;}		
-								.p_langs:hover > * {visibility: visible;}
-								.projects::before {width: 25px; background-color: var(--color); height:30px; content: ' < / > '; color:white; border-radius: ;top:-30px; border-top:1px solid var(--color)}
+								.p_langs:hover > * {visibility: visible;position: relative;top:-1.5vh;}
+
+								.projects::before {
+									 
+									background-color: var(--color); 
+									 
+									content: ' < / > '; 
+									color:white; 									
+									 
+									border-top:1px solid var(--color);
+								}
 								.github_btn{
 									font-weight:400; color:white; text-shadow: 1px 1px var(--orange);
-									height:8vh; width:24vw; margin-top:5%; 
+									height:8vh; width:24vw; margin-top:5%;
+									z-index: 0; 
 									
-									display: inline-flex; align-items: center; align-content: center; justify-content: center; font-size: 2vw; 
+									display: inline-flex; 
+									align-items: center; 
+									align-content: center; 
+									justify-content: center; 
+									font-size: 2vw; 
 									background: black;
-									border: 1px double black; box-shadow:0.1px 0.1px #fff7 ; border-radius: 25px 25px
+									border: 1px double black; 
+									box-shadow:0.1px 0.1px #fff7 ; 
+									border-radius: 25px 25px
 									 								
 									
 									}
@@ -837,7 +892,7 @@
 							<br/>
 							Haz click en la imagen para visitar mi blog educativo de informatica						
 							<a target="_blank" href="https://ivanguillermo.github.io/informaticos15/">
-								<img style='padding: 2% 15% 25% 15%; border:0;' src="informaticos15.png"/>
+								<img style='padding: 2% 18% 21% 19%; border:0;' src="informaticos15.png"/>
 							</a>
 					</div>
 					
@@ -910,11 +965,11 @@
 		   	        </style>
 
 					<style type="text/css">
-						#educador{background-color:var(--magenta); height:85vh; 
+						#educador{background-color:var(--magenta); height:83vh; 
 								display: grid;
-								grid-gap:4px;
+								grid-gap:1.7px;
 								grid-template-columns: 4fr repeat(11, 1fr);
-							    grid-template-rows: 1fr repeat(6, 1fr) ;font-weight: 500; text-shadow: 0.5px 0.5px #292929;
+							    grid-template-rows: 0.4fr repeat(6, 1fr) ;font-weight: 500; text-shadow: 0.5px 0.5px #292929;
 							    grid-template-areas:
 							        "p p p . . w w w . . . ."
 							        "p p p . . . t t t t d d" 
@@ -927,7 +982,7 @@
 
 
 				    	#educador img{width:100%;height:100%;}   
-				    		.pptx img{border: 2.75px solid #fff}
+				    		.pptx img{border:2.25px solid #fff}
 				    		.pptx17 img{border: 0px solid black}      
 						    .pptx0{grid-area: a;}  .pptx1{grid-area: b;} .pptx2{grid-area: c;}  
 						    .pptx3{grid-area: d;}  .pptx4{grid-area: e;} .pptx5{grid-area: f;}  
@@ -966,7 +1021,8 @@
 
 							@media only screen and (max-width: 500px) {
 								.sec_tit {font-size:10px;}				    	
-						    	#educador{height:83.3vh;	}					    	
+						    	#educador{height:83.3vh;	}
+						    	.rrss{display: none;}					    	
 							    	
 							}
 					</style>
@@ -1104,14 +1160,7 @@
 						--magenta:#D1215F;
 						--green: #a3bf34;
 					}
-					@font-face {
-					  font-family: Roboto;
-					  src: url('https://fonts.googleapis.com/css?family=Roboto');
-					  font-family: Macondo;
-					  src: url('https://fonts.googleapis.com/css?family=Macondo');
-					  font-family: Volkorn;
-					  src: url('https://fonts.googleapis.com/css?family=Volkorn');
-					}
+					
 					html{overflow:hidden;	scroll-behavior:;}
 
 					body {background: black;font-size: 120%;}
