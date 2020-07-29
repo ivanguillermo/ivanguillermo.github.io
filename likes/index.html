@@ -42,7 +42,7 @@
 
 	<body>	
 		<nav id='navflix' class='flex-centrado'>
-					<a href=''><img src='ivan_guillermo.png' style='width:150px'/></a>
+					<a href=''><img src='ivan_guillermo.png' style='width:15vw'/></a>
 					<span><a href='#films'>Peliculas</a></span>
 					<span><a href='#series'>Series</a></span>
 					<span><a href='#musica'>Musica</a></span>
@@ -87,8 +87,21 @@
 			</div>
 
 			<style>
-				#navflix{position: fixed; width:100vw; height: 11vh; color:white; font-size: 12px; background-color: #333a;
-				justify-content: space-between; align-items: center; align-content: center;padding:2%; z-index:3;}
+				#navflix{
+					position: fixed;
+					width:100vw;
+					height: 11vh;
+					color:white;
+					font-size: 12px;
+					background-color: #111a;
+					
+					justify-content: space-between;
+					align-items: center;
+					align-content: center;
+					padding:2%;
+					z-index:3;}
+
+				.active{background-color: #333333ff;}
 
 				#player{width:100vw; height:90vh;
 						display:flex; flex-flow: row nowrap; 
@@ -238,24 +251,64 @@
 								 right:vw;
 								 }
 
-						.item{height:24vh; width: 20vw; background:white; border:2px solid #191414;
-							background-repeat: no-repeat; background-size: cover; position: relative;}
-							.item:hover {height:40vh; width:56vw; transition: all 0.5s}
+						.item{height:24vh; 
+							width: 20vw; 
+							background:white; 
+							border:2px solid #191414;
+							background-repeat: no-repeat; 
+							background-size: cover; 
+							position: relative;}
+
+							.item:hover {height:36vh; width:30vw; transition: all 0.5s}
+
 							.item:hover > .movies_name{display:flex;}
 							.item:hover > .series_name{display:flex;}
 							.item:hover > .series_2{display:flex;}
 							.item:hover > .movies_2{display:flex;}																																			
-							.item:hover > .actions{display:flex;opacity:1;transition: all 0.5s}
+							.item:hover > .actions{
+								display:flex;
+								opacity:1;
+								transition: all 0.5s}
 							
 
 						.movies_name, .series_name{font-size: 28px; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
 							
 
-						.actions{display: none; flex-flow: column wrap; justify-content: center; align-items: center; align-content: center; width: 20%; height:100%;position: relative; left:80%; opacity:0;color:white;}
+						.actions{
+							display: none; 
+							flex-flow: column wrap; 
+							justify-content: center; 
+							align-items: center; 
+							align-content: center; 
+							width: 20%; 
+							height:100%;
+							position: relative; 
+							top:-10vh;
+							left:80%; 
+							opacity:0;
+							color:white;}
 
-							.actions div{display:flex; justify-content: center; align-items: center; align-content:center;  width:25px; height: 25px; border: 1px solid white; background-color: white;border-radius: 50%; margin:1px;background-color: transparent;}
+							.actions div{
+								display:flex; 
+								justify-content: center; 
+								align-items: center; 
+								align-content:center;  
+								width:4vh; 
+								height: 4vh; 
+								border: 1px solid white; 
+								background-color: 
+								white;border-radius: 50%; 
+								margin:;
+								background-color: black;}
 
-						.song_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center}
+						.song_data {
+							width:25vw; 
+							display: flex; 
+							font-size: 12px; 
+							flex-flow: row wrap; 
+							justify-content: space-around; 
+							align-items: center; 
+							align-content: center}
 
 						.movies_2{font-size: 14px; display:none; color:white; font-weight: 300;}
 						.series_2{font-size: 14px; display:none; color:white; font-weight: 300;}
@@ -349,7 +402,7 @@
 							        <h4 class='${b}_2'>${a[i].seg}</h4>
 							        <div class='actions'>
 							        	<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-							            <div class='btn-sound'>🔊</div>
+							            <div class='btn-sound'><i class="fa fa-volume-up"></i></div>
 							            <div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
 							            <div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
 							        </div>
@@ -769,16 +822,16 @@
 						<div class='album album05' data-src=''>
 							<span>Louise Attaque <br/> Louise Attaque</span>
 						</div>
-						<div class='album album06' data-src='https://bit.ly/3hEAFYu'>
+						<div class='album album06' data-src='sounds/ff.mp4'>
 							<span>Franz Ferdinand  <br/> Franz Ferdinand</span> 
 						</div>
 						<div class='album album07' data-src=''>
 							<span>The Strokes <br/> This is it</span>
 						</div>
-						<div class='album album08' data-src=''>
+						<div class='album album08' data-src='sounds/pure_heroine.mp4'>
 							<span>Pure Heroine <br/> Lorde</span>
 						</div>
-						<div class='album album09' data-src='https://bit.ly/3jEoLzO'>
+						<div class='album album09' data-src='sounds/the_black_parade.mp4'>
 							<span>Black Parade  <br/> My Chemical Romance</span>
 						</div>
 						<div class='album album10' data-src=''>
@@ -919,7 +972,7 @@
 			<div>						
 					<i>Now Playing</i><br/>
 					<i id='song_on'>Caiga la Noche</i><br/>
-					<i id='song_on_band'>Los Mesoneros</i><br/>
+					
 			</div>
 			<div id="audioplayer" class=''>				
 				<div id='audiocontrols'>
@@ -936,7 +989,7 @@
 			</div>
 			<div style=''>
 					<i></i><progress id="progress_audio" value="30" max="100" > 32% </progress><br/>
-					<i>Caiga la Noche</i><br/>					
+					<i id='song_on_band'>Los Mesoneros</i><br/>					
 			</div>
 		</div>	
 
@@ -986,8 +1039,19 @@
 
 			<style>
 				#music_player{
-					width:100vw; height:8vh; position: fixed; top: 92vh;background-color: var(--spotify);flex-flow: row wrap;
-					justify-content: space-between;font-size: 12px; padding:0px 5vw; color:white; font-weight: 300; font-family: sans;
+					width:100vw; 
+					height:8vh; 
+					position: fixed; 
+					top: 92vh;
+					bottom:0;
+					background-color: var(--spotify);
+					flex-flow: row wrap;
+					justify-content: space-between;
+					font-size: 12px; 
+					padding:0px 5vw; 
+					color:white; 
+					font-weight: 300; 
+					font-family: sans;
 				}
 				#music_player div li{text-decoration: none}
 
@@ -999,7 +1063,10 @@
 					display:flex; flex-flow: row wrap; justify-content: space-between;
 				}
 				#progress_audio{
-					height:3px; width:100%;background-color: #E50914; color:white;
+					height:3px; 
+					width:15vw;
+					background-color: #E50914; 
+					color:white;
 				}
 			</style>	
 	</body>
@@ -1144,8 +1211,25 @@
 							  this.src = src;
 							  this.img = img}
 
-  	var ff= new album('Franz Ferdinand', "franz_ferdinand", 'https://bit.ly/3hEAFYu','ff.png')
+  	var ff= new album('Franz Ferdinand', "franz_ferdinand", 'sounds/ff.mp4','ff.png')
   	var mcr = new album ('The Black Parade', 'My Chemical Romance', 'https://bit.ly/3jEoLzO','tbp.png')
+  	var lorde = new album ('Pure Heroine', 'Pure Heroine', 'sounds/pure_heroine.mp4','lorde.png')
+
+  </script>
+
+  <script type="text/javascript">
+  	const navs = document.querySelector('navflix');  const topOfNav = navs.offsetTop;
+
+	const myLikes = document.querySelector('#myLikes');  const topOfLikes = myLikes.offsetTop  ;	
+	
+	function activeNav(){
+				    if(window.scrollY >= topOfLikes)  {
+				    	
+				    	document.querySelector("#navflix").style.color='green';} 
+				    					    			    
+				  } 
+  
+	window.addEventListener('scroll', activeNav);
 
   </script>
 
