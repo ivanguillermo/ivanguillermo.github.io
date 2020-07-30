@@ -34,9 +34,8 @@
 			    *, *:before, *:after {box-sizing: inherit;}
 				html{overflow-x: hidden; background-color: #191414}
 				
-				.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}
+				.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}		 
 
-				 #deportes{background-image: url(deportes/ballack.png);background-size: cover; background-position: center center; display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: flex-end; align-content: flex-end;height:80vh;}
 		</style>
   	</head>
 
@@ -465,25 +464,29 @@
 							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa, awin2b ]					
 
 
-							 function print_songs(){
-							 
-							  for (i = 0; i < songs.length; i++) 
-							    {song_list.innerHTML += 
-							    `<tr>
-					              	<td style='width:2vw' data-label="More" class='more_music'>+</td>
-					                <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
-					                	<p class="playmusic fa fa-play-circle">
-					                		<audio src="sounds/${songs[i].grupo}-${songs[i].name}.mp3"></audio>
-					                	</p>
-					                </td>
-					                <td data-label="Nombre"><a>${songs[i].name} </a></td>
-					                <td data-label="Artista">${songs[i].grupo}</td>
-					                <td data-label="Album">${songs[i].album}</td>				                
-					              </tr>`}
-							  };
-							  print_songs();
-							
-
+						function print_songs(){
+						 
+						  for (i = 0; i < songs.length; i++) 
+						   {song_list.innerHTML += 
+						    `<tr class=''>
+					           	<td style='width:2vw' data-label="More" class='more_music'>+</td>
+					            <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
+					               	<p class="playmusic fa fa-play-circle">
+					               	  <audio 
+					               		src="sounds/${songs[i].grupo}-${songs[i].name}.mp3"
+										data-name='${songs[i].name}'
+										data-band='${songs[i].grupo}'
+									  >
+					               	  </audio>
+					               	  <td data-label="Nombre"><a>${songs[i].name} </a></td>
+							          <td data-label="Artista">${songs[i].grupo}</td>
+							          <td data-label="Album">${songs[i].album}</td>
+					               	</p>
+					            </td>
+					                				                
+					        </tr>`}
+							};
+						print_songs();
 					</script>
 
 					<style>	
@@ -516,6 +519,7 @@
 								background:var(--spotify);
 								border-radius: 40%;
 								font-weight: 800;
+								border-top:4px solid black;
 							}
 
 							th{background-color: var(--spotify)}
@@ -946,9 +950,27 @@
 
 			<div id='deportes' style="">	
 				<style type="text/css">
-						.sports{display: inline-flex; width:19vw; height: 42vh;}
-						@media only screen and (max-width: 1000px){
+					#deportes{
+					 	background-image: url(deportes/ballack.png);
+					 	background-size: 100% auto;					 	 
+					 	display: flex; 
+					 	background-repeat: no-repeat;
+					 	background-position: bottom right;
+					 	flex-flow: row nowrap; 
+					 	justify-content: space-between; 
+					 	align-items: flex-end; 
+					 	align-content: flex-end;
+					 	height:80vh;
+					 }
+
+					.sports{
+						display: inline-flex; 
+						width:19vw; 
+						height:;}
+
+					@media only screen and (max-width: 1000px){
 							.sports {width:75%;}
+							#deportes{height: 40vw}
 							
 						}
 					</style>
@@ -968,38 +990,39 @@
 		
 
 		
-		<div id='music_player' class='flex-centrado'>
-			<div>						
+		<nav id='music_player' class='navbar navbar-inverse navbar-fixed-bottom'>
+			<div style='display: flex; flex-direction: column;justify-content: center; align-content: center; align-items: center'>						
 					<i>Now Playing</i><br/>
-					<i id='song_on'>Caiga la Noche</i><br/>
-					
+					<i id='song_on'>Caiga la Noche</i><br/>					
 			</div>
-			<div id="audioplayer" class=''>				
+
+			<div id="audioplayer" style='margin:0 20vw'>				
 				<div id='audiocontrols'>
 					<div id='rep_shuffle-btn'>🔀</div>
 					<div id='rep_forward-btn'>⏮</div>
 					<div id='rep_play-btn' class='flex-centrado'>▶️</div>
 					<div id='rep_back-btn'>⏭</div>
 					<div id='rep_repeat-btn'>🔁</div>
-				</div>
-				
+				</div>				
 				<audio id='reproductor'></audio>
-
 				<progress id="progress_audio" value="30" max="100" > 32% </progress>
 			</div>
-			<div style=''>
+
+			<div style='display: flex; flex-direction: column;justify-content: center; align-content: center; align-items: center'>
 					<i></i><progress id="progress_audio" value="30" max="100" > 32% </progress><br/>
 					<i id='song_on_band'>Los Mesoneros</i><br/>					
 			</div>
-		</div>	
+		</nav>	
 
 			<style type="text/css">
 				#rep_play-btn{
 					border-radius: 50%;
 					border: 1px solid black;
-					width:23px;
-					height:23px;
-					font-weight: 800;					
+					width:1.6vw;
+					height:1.6vw;
+					font-weight: 800;
+					padding: 0;
+					margin:0;					
 				}
 			</style>
 			<script type="text/javascript">
@@ -1007,23 +1030,29 @@
 				const play_centros = document.querySelectorAll('.playmusic');
 
 				var play_bot = document.getElementById('rep_play-btn');
+
+				const songOn =document.querySelector('song_on');
+			    const songOnBand =document.querySelector('song_on_band');	
 				
 				var p_s= 1;
 
 				function play_stop()
 				{
 					p_s++;
-					if ((p_s%2)==0){reproductor.play();play_bot.style.color='white';play_bot.innerHTML='▶️'};
-					if ((p_s%2)>0){reproductor.pause();play_bot.style.color='red';play_bot.innerHTML='||'};
+					if ((p_s%2)==0){reproductor.play();play_bot.style.color='red';play_bot.innerHTML='||'};
+					if ((p_s%2)>0){reproductor.pause();play_bot.style.color='white';play_bot.innerHTML='▶️'};
 				}
 
 
 				function play_music(){        			      
-			      const audiosrc = this.querySelector('audio');
+			      const audiosrc = this.querySelector('audio');		      		      
+
 			      play_centros.forEach(play_centro => play_centro.style.backgroundColor='var(--spotify)');
-			      reproductor.src = audiosrc.src;
+			      reproductor.src = audiosrc.src;			      
 			      reproductor.currentTime = 0;
 			      reproductor.play();
+			      song_on.innerHTML = audiosrc.dataset.name;
+			      song_on_band.innerHTML = audiosrc.dataset.band;
 			      this.style.backgroundColor='red';
 			      play_stop();
 			    }			    
@@ -1032,26 +1061,24 @@
 
 			</script>
 
-			
-
-
-
 
 			<style>
 				#music_player{
 					width:100vw; 
-					height:8vh; 
-					position: fixed; 
-					top: 92vh;
-					bottom:0;
+					height:8vh; 				 
+					
 					background-color: var(--spotify);
+					display: flex;
 					flex-flow: row wrap;
 					justify-content: space-between;
+					align-items: stretch;
+					align-content: center;
 					font-size: 12px; 
-					padding:0px 5vw; 
+					padding:0px 0vw; 
 					color:white; 
 					font-weight: 300; 
 					font-family: sans;
+					margin: 0;
 				}
 				#music_player div li{text-decoration: none}
 
