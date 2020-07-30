@@ -237,7 +237,8 @@
 				<!--lists films style-->
 		<style>
 						.display_1, .display_2, .display_3, .display_4{
-								 width:140vw; height:25vh; 
+								 width:80vw; 
+								 height:25vh; 
 								 display:flex; 
 								 flex-flow: row nowrap; 
 								 justify-content:space-around; 
@@ -245,9 +246,9 @@
 								 background-color: black;
 								 color:white;				 								 
 								 font-size: 15px;
-								 margin-left: 4vw;
+								 margin-left:18vw ;
 								 position:relative;
-								 right:vw;
+								 right:;
 								 }
 
 						.item{height:24vh; 
@@ -393,7 +394,7 @@
 
 
 							 function print_slide(x, a, b){
-							  for (i = 0; i < a.length; i++) 
+							  for (i = 0; i < 4; i++) 
 							    {x.innerHTML += 
 							    `<div class='item' id='film0${i+1}' style='background-image: url(${b}/${a[i].src}) '>
 	                                
@@ -417,7 +418,7 @@
 					
 
 			<div id='musica'>
-				<h2><img src='mis_canciones.png'/></h2>
+				<h2><img style='width:40vw' src='mis_canciones.png'/></h2>
 				<table class='song_table'>
 					<thead>
 				    	    <tr>
@@ -565,73 +566,75 @@
 				
 				<div id='bandas' style='overflow: hidden; height:70vh'>
 					<div class="panels">
-				      <div class="panel panel1">
-				      <p>The</p>
-				      <div class="centro">
-				      	<div class="box box1">Naive</div>
-					    <div class="box box2">Sofa Song</div>
-					    <div class="box box3">Sway</div>
-					    <div class="box box4">Mis <audio src="sounds/the_kooks-always_where_I_need_to_be.mp3"></audio></div>
-					    <div class="box box5">Happy</div>
-					    <div class="box box6">See the World</div>
-					    <div class="box box7">Young Folks</div>				      	
-				      </div>
-				      <p>Kooks</p>
-				    </div>
-				    <div class="panel panel2">
-				      <p>Caramelos</p>
-				      <div class="centro">
-				      	<div class="box box1">La Terraza</div>
-					    <div class="box box7">Flor de Fuego</div>
-					    <div class="box box6">Verano</div>
-					    <div class="box box4">Bandas  <audio src="sounds/cdc-a_guerra_lenta.mp3"></audio></div>
-					    <div class="box box2">Veronica</div>
-					    <div class="box box3">La Llama</div>
-					    <div class="box box5">El mar</div>							
-				      </div>
-				      <p>Cianuro</p>
-				    </div>
-
-
-				    <div class="panel panel3 open">
-				      <p>Keane</p>
-				      <div class="centro">
-				      	
-				      	<div class="box box4"> De<audio src="sounds/keane-nothing_in_my_way.mp3"></audio></div>
-				      	
-				      </div>
-				      <p>ǝuɐǝ>|</p>
-				    </div>
-				    
-
-				    <div class="panel panel4">
-				      <p>𝔸𝕣𝕔𝕥𝕚𝕔</p>
-				      <div class="centro">
-				      	<div class="box box7">R U Mine</div>
-					    <div class="box box3">Mardy Bum</div>
-					    <div class="box box6">Four out of Five</div>
-					    <div class="box box4">Rock   <audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio></div>
-					    <div class="box box5">505</div>
-					    <div class="box box2">Crying Lightning</div>
-					    <div class="box box1">The Bakery</div>
-				      </div>
-				      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
-				    </div>
-
-
-				    <div class="panel panel5">
-				      <p>Muse</p>
-				      <div class="centro">
-				      		<div class="box box1">Unintended</div>
-						    <div class="box box3">Unintended</div>
-						    <div class="box box6">Hysteria</div>
-						    <div class="box box4">Favoritas <audio src="sounds/rhcp-otherside.mp3"></audio></div>
-						    <div class="box box2">Starlight</div>
-						    <div class="box box6">Resistance</div>
-						    <div class="box box7">Uprising</div>
-				      </div>
-				      <p>Muse</p>
-				    </div>
+				        <div class="panel panel1">
+					      	<p>The</p>
+					      	<div class="centro">
+						      	<div class="box box1">Naive</div>
+							    <div class="box box2">Sofa Song</div>
+							    <div class="box box3">Sway</div>
+							    <div class="box box4">Mis 
+							       <audio src='sounds/the_kooks-always_where_I_need_to_be.mp3'></audio>
+							    </div>
+							    <div class="box box5">Happy</div>
+							    <div class="box box6">See the World</div>
+							    <div class="box box7">Young Folks</div>				      	
+					      	</div>
+				     		<p>Kooks</p>
+				     	</div>
+					    <div class="panel panel2">
+					      	<p>Caramelos</p>
+					      	<div class="centro">
+						      	<div class="box box1">La Terraza</div>
+							    <div class="box box7">Flor de Fuego</div>
+							    <div class="box box6">Verano</div>
+							    <div class="box box4">Bandas  
+							    	<audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
+							    </div>
+							    <div class="box box2">Veronica</div>
+							    <div class="box box3">La Llama</div>
+							    <div class="box box5">El mar</div>							
+					      	</div>
+					     	<p>Cianuro</p>
+					    </div>
+					    <div class="panel panel3">
+					      <p>Keane</p>
+					      <div class="centro">
+					      	<div class="box box4"> De
+					      		<audio src="sounds/keane-nothing_in_my_way.mp3"></audio>
+					      	</div>
+					      </div>
+					      <p>ǝuɐǝ>[</p>
+					    </div>
+					    <div class="panel panel4">
+					      <p>𝔸𝕣𝕔𝕥𝕚𝕔</p>
+					      <div class="centro">
+					      	<div class="box box7">R U Mine</div>
+						    <div class="box box3">Mardy Bum</div>
+						    <div class="box box6">Four out of Five</div>
+						    <div class="box box4">Rock   
+						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
+						    </div>
+						    <div class="box box5">505</div>
+						    <div class="box box2">Crying Lightning</div>
+						    <div class="box box1">The Bakery</div>
+					      </div>
+					      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
+					    </div>
+					    <div class="panel panel5">
+					      <p>Muse</p>
+					      <div class="centro">
+					      		<div class="box box1">Unintended</div>
+							    <div class="box box3">Unintended</div>
+							    <div class="box box6">Hysteria</div>
+							    <div class="box box4">Favoritas 
+							    	<audio src="sounds/rhcp-otherside.mp3"></audio>
+							    </div>
+							    <div class="box box2">Starlight</div>
+							    <div class="box box6">Resistance</div>
+							    <div class="box box7">Uprising</div>
+					      </div>
+					      <p>ǝs𝕟W</p>
+					    </div>
 				</div>
 
 				<style type="text/css">
@@ -893,7 +896,6 @@
 								width:22vw;
 							        }
 							.item2:hover {width:29vw; height:42vh;transition: all 0.5s}
-
 							
 						}																
 	
@@ -965,7 +967,7 @@
 
 					.sports{
 						display: inline-flex; 
-						width:19vw; 
+						width:14vw; 
 						height:;}
 
 					@media only screen and (max-width: 1000px){
