@@ -237,7 +237,7 @@
 				<!--lists films style-->
 		<style>
 						.display_1, .display_2, .display_3, .display_4{
-								 width:80vw; 
+								 width:100vw; 
 								 height:25vh; 
 								 display:flex; 
 								 flex-flow: row nowrap; 
@@ -246,20 +246,20 @@
 								 background-color: black;
 								 color:white;				 								 
 								 font-size: 15px;
-								 margin-left:18vw ;
+								 margin-bottom:4vw ;
 								 position:relative;
 								 right:;
 								 }
 
-						.item{height:24vh; 
-							width: 20vw; 
+						.item{height:13vw; 
+							width: 23vw; 
 							background:white; 
 							border:2px solid #191414;
 							background-repeat: no-repeat; 
-							background-size: cover; 
+							background-size: 100% 100%; 
 							position: relative;}
 
-							.item:hover {height:36vh; width:30vw; transition: all 0.5s}
+							.item:hover {height:18vw; width:31vw; transition: all 0.5s}
 
 							.item:hover > .movies_name{display:flex;}
 							.item:hover > .series_name{display:flex;}
@@ -323,8 +323,7 @@
 					<!--peliculas favoritas-->					
 						<div class='films_list' id="fav_movies">
 						 	<h3 class='secTit'>Peliculas Favs</h3>
-						 	<dir style='border: 12px solid green; background: red; width:80vw'>	
-								
+						 	<dir style='border: 12px solid green; background: red; width:100vw'>									
 								<div class='display_1' id='filmes'></div>
 								
 							</div>
@@ -405,8 +404,7 @@
 							            <div class='btn-sound'><i class="fa fa-volume-up"></i></div>
 							            <div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
 							            <div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-							        </div>
-							        <div class='see_more'> + </div>							          
+							        </div>							        						          
 							     </div>`;}
 							  };
 							  print_slide(slide1, peliculas, 'movies');
@@ -529,7 +527,7 @@
 							tr::first-child{width:50vw}
 
 							@media only screen and  (max-width: 760px) {
-								td, tr { display: block; width:50vw; }
+								td, tr { display: block; width:100vw; }
 								.more_music, .play_music_but{display:none;}
 								table{width:100vw;} 
 
@@ -871,7 +869,9 @@
 								 color:#E50914; 
 								 margin:10vh 0vh;}
 
-						.item2{height:40vh; width: 24vw; background:white; border:2px solid #191414;
+						.item2{height:40vh; width: 24vw; 
+								background:white; 
+								border:2px solid #191414;
 								display:flex; flex-flow: column wrap; justify-content: flex-end; align-items: center; align-items: center;
 								padding:20px;}
 							.item2:hover {width:32vw; height:60vh;transition: all 0.5s}
