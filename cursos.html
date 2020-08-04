@@ -43,22 +43,36 @@
 <style>
     
     #pptx {background-color:white;width:100%}
-    .courses{display:flex; flex-flow: row wrap; justify-content:flex-start; align-content: space-between; align-items: center}
+    .courses{
+      display:flex; 
+      flex-flow: row wrap; 
+      justify-content:flex-start; 
+      align-content: flex-start; 
+      align-items: center}
     .pptx_title {display:; font-size:42px; text-align:center;  font-family: Barriecito;  text-shadow:;}
 
     button{width:23vw;} 
-      button h3{font-size: 15px; font-weight:600; text-shadow: 1px 1px #000000aa; color: #eee;}
+      button h3{
+        font-size: 15px; 
+        font-weight:600; 
+        text-shadow: 1px 1px #000000aa; 
+        color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center
+      }
       button img {width:18vw;}
     .btn-leyenda{width:13.3vw; margin:1vh 1vw;}
 
     #leyenda{margin: 2vh 1vw;}
     .categoria cat_1{font-size: 0.94vw; font-weight: 600;}
-    .img_pptx {width:;display:inline-block;}
+    .img_pptx {width:90%;display:flex;flex-flow:column wrap }
     .img_pptx:hover {opacity:0.5;}
 
     .img_codecademy{display:inline-block; width:800px; height: 380px;margin:2%}
 
-    .curso_btn {display:inline-block; margin:0.5%;}
+    .curso_btn {display:flex; flex-direction: column; margin:0.5%;}
 
     h3{font-size: 14px;}
     img{width: 20vw; height:;padding:0px;}
@@ -81,21 +95,73 @@
       border-radius: ;
       border: 2px solid var(--color); 
     }
-        .taller img{height:100px;width:120px;border: 1px solid #777;}
+    
+    .taller img{
+      height:100px;
+      width:120px;
+      border: 1px solid #777;
+    }
         
-    .partes{display: flex; justify-content: flex-start; flex-flow: column wrap;  align-content: space-between; align-items: start;}
-    .partes i{font-size: 8px;}
-    .vop{width:40px;height: 40px; display: inline-block;margin:1.5vw;}
+    .partes{
+      display: flex; 
+      justify-content: flex-start; 
+      flex-flow: column wrap;  
+      align-content: space-between; 
+      align-items: flex-start;
+      width:25vw;
+      white-space: wrap;
+      overflow: hidden;
+      text-overflow: fade;
+      line-break:auto;}
+
+    .partes i{font-size: 10px;}
+
+    .vop{
+      width:40px;
+      height: 40px; 
+      display: inline-block;
+      margin:1.5vw;}
 
      @media only screen and (max-width: 800px) {
-              button{width:45vw;}  
-              button h3{font-size: 60%; font-weight:500; text-shadow: 0.6px 0.6px #000000aa; color: #eee;background: black}
-              button img {display:none;width:60%;height:60%;display:inline-block;margin:0; padding:0;} 
+              button{width:88vw;text-overflow: hidden}  
+              button h3{
+                font-size: 18px; 
+                font-weight:500; 
+                text-shadow: 0.6px 0.6px #000000aa; 
+                color: #eee; 
+                background: transparent;
+                width:;
+                height:;
+                margin:0 3vw;
+                white-space: nowrap;
+                overflow: scroll;
+                text-overflow: ellipsis;
+                justify-content: flex-start;
+
+             ;}
+
+              button img {
+                display:none;
+                width:65vw;
+                ;
+                display:inline-block;
+                margin:0; 
+                padding:0;} 
               .img_codecademy{width:60%; height:60%;}
-              .taller{width:42vw; display: flex; flex-flow: column nowrap; justify-content:flex-start; align-content: space-between; align-items: center; }
+
+              .taller{
+                width:42vw; 
+                display: flex; 
+                flex-flow: column nowrap; 
+                justify-content:center; 
+                align-content: space-between; 
+                align-items: center; }
               .taller img{display:flex; height:50%;width:50%;} 
 
-              .parter i{font-size: 6px;}
+              
+
+              .curso_btn {display:flex; flex-direction: row;}
+              .img_pptx{width:20vw;height: 90%;}
       }
 </style>
 </head>
@@ -223,7 +289,7 @@
                 </ul>
              </div>                
              </div> 
-        </nav>
+      </nav>
         <style type="text/css">
            :root{
             --color:#4fdb98;
