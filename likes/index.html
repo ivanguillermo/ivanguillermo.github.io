@@ -22,33 +22,19 @@
 		  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
 
-		<style>
-			  	:root {
-	   		 --color: rgb(200,200,200);
-	   		 --spotify:#1DB954;
-	   			}
-	  
-			    html {box-sizing: border-box;	}
-
-			    body {margin: 0;}
-			    *, *:before, *:after {box-sizing: inherit;}
-				html{overflow-x: hidden; background-color: #191414}
-				
-				.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}		 
-
-		</style>
+		
   	</head>
 
 	<body>	
 		<nav id='navflix' class='flex-centrado'>
-					<a href=''><img src='ivan_guillermo.png' style='width:15vw'/></a>
-					<span><a href='#films'>Peliculas</a></span>
+					<a href=''><img class='img_nav' src='ivan_guillermo.png'/></a>
+					<span><a href='#films'>Films</a></span>
 					<span><a href='#series'>Series</a></span>
 					<span><a href='#musica'>Musica</a></span>
 					<span><a href='#literatura'>Literatura</a></span>				
 					<span><a href='#deportes'>Deportes</a></span>
-					<span><a href='#deportes'>Reproductor</a></span>
-					<span><a href='#deportes'>Redes</a></span>
+					<span><a href='#player'>Player</a></span>
+					<span><a href=''>Redes</a></span>
 		</nav>
 
 		<div id='player'>
@@ -97,8 +83,16 @@
 					justify-content: space-between;
 					align-items: center;
 					align-content: center;
+					flex-shrink: 
 					padding:2%;
 					z-index:3;}
+
+				.img_nav{width:15vw; margin: 0 1vw;}
+				#navflix span{
+					flex-shrink: 0.4;
+					font-size: 15px;}
+					#navflix span {width: 12vw}
+				#navflix span a:link{text-decoration: none}
 
 				.active{background-color: #333333ff;}
 
@@ -119,7 +113,17 @@
 
 				.playero {width:75vw; border:0px solid rgba(0,0,0,0.2); box-shadow:0 0 20px rgba(0,0,0,0.2);}
 				.player_video {width:75vw; height:90vh;}
-				.player_button {background:none;border:0;line-height:1;color:white;text-align: center;outline:0;padding: 0;cursor:pointer; max-width:50px;}
+				.player_button {
+					background:none;
+					border:0;
+					line-height:1;
+					color:white;
+					text-align: center;
+					outline:0;
+					padding: 0;
+					cursor:pointer;
+					max-width:50px;
+					font-size: 10px;}
 				.player_button:focus { border-color: #00c6ff;}
 				.player_slider {width:10px;height:30px;}
 				.player_controls {position:absolute; display:flex; top:80vh; width:75vw;; transform: translateY(100%) translateY(-5px); transition:all .3s;
@@ -130,7 +134,7 @@
 				.progress {flex:10; position: relative; display:none; flex-basis:80%; height:5px; transition:height 0.3s; background:rgba(0,0,0,0.5); cursor:pointer;}
 				.playero:hover > .player_controls{display:flex;}
 				.progress_filled { width:50%; background:#C600ff; flex:0; flex-basis:50%;}
-				 .fullScreen{ flex:0.3;background-color:black; border:black;font-size: 20px;color:white;}
+				 .fullScreen{ flex:0.3;background-color:black; border:black;font-size: 10px;color:white;}
 				 .resetSpeed { flex:0.3;background-color:black; border:black;font-size: 8px;color:white;}
 				/* unholy css to style input type="range" */
 				input[type=range] { -webkit-appearance: none; background:transparent; width: 100%; margin: 0 5px;}
@@ -143,10 +147,7 @@
 				  border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
 				input[type=range]::-moz-range-thumb { box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); height: 15px; width: 15px; border-radius: 50px; background: #ffc600; cursor: pointer;}
 
-				@media only screen and  (max-width: 760px) {
-					#sidevideoplayer{display:none;}
-					.playero, #player, #player_video_p, .player_controls, nav{width:100vw;}
-				}
+				
 			</style>
 				<!--playero script-->
 			<script>
@@ -245,7 +246,7 @@
 								 align-items: center ; 
 								 background-color: black;
 								 color:white;				 								 
-								 font-size: 15px;
+								 font-size: 2.3vw;
 								 margin-bottom:4vw ;
 								 position:relative;
 								 right:;
@@ -271,7 +272,7 @@
 								transition: all 0.5s}
 							
 
-						.movies_name, .series_name{font-size: 28px; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
+						.movies_name, .series_name{font-size: 2.8vw; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
 							
 
 						.actions{
@@ -312,18 +313,22 @@
 
 						.movies_2{font-size: 14px; display:none; color:white; font-weight: 300;}
 						.series_2{font-size: 14px; display:none; color:white; font-weight: 300;}
+
+						#myLikes{background-color: #191414; height:10px}
+
+						
 		</style>
 				
-		<div id='myLikes' style='background-color: #191414; height:10px'>
+		<div id='myLikes'>
 		</br>
-			<h2><img src='my_likes.png'/></h2>
+			<h2><img class='img_myLikes' src='my_likes.png'/></h2>
 
 			<div id='cinema'>
 				<div id='films'>							
 					<!--peliculas favoritas-->					
 						<div class='films_list' id="fav_movies">
 						 	<h3 class='secTit'>Peliculas Favs</h3>
-						 	<dir style='border: 12px solid green; background: red; width:100vw'>									
+						 	<dir style='border: 0px solid green; background: transparent; width:100vw'>									
 								<div class='display_1' id='filmes'></div>
 								
 							</div>
@@ -574,7 +579,7 @@
 							       <audio src='sounds/the_kooks-always_where_I_need_to_be.mp3'></audio>
 							    </div>
 							    <div class="box box5">Happy</div>
-							    <div class="box box6">See the World</div>
+							    <div class="box box6">Ooh la</div>
 							    <div class="box box7">Young Folks</div>				      	
 					      	</div>
 				     		<p>Kooks</p>
@@ -608,12 +613,12 @@
 					      <div class="centro">
 					      	<div class="box box7">R U Mine</div>
 						    <div class="box box3">Mardy Bum</div>
-						    <div class="box box6">Four out of Five</div>
+						    <div class="box box6">4 out of 5</div>
 						    <div class="box box4">Rock   
 						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
 						    </div>
 						    <div class="box box5">505</div>
-						    <div class="box box2">Crying Lightning</div>
+						    <div class="box box2">Balaclava</div>
 						    <div class="box box1">The Bakery</div>
 					      </div>
 					      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
@@ -622,7 +627,7 @@
 					      <p>Muse</p>
 					      <div class="centro">
 					      		<div class="box box1">Unintended</div>
-							    <div class="box box3">Unintended</div>
+							    <div class="box box3">Bliss</div>
 							    <div class="box box6">Hysteria</div>
 							    <div class="box box4">Favoritas 
 							    	<audio src="sounds/rhcp-otherside.mp3"></audio>
@@ -693,15 +698,15 @@
 					      text-transform: uppercase;
 					      font-family: 'Amatic SC', cursive;
 					      text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-					      font-size: 20px;
+					      font-size: 2.5vw;;
 					    }
 					    .panel p:nth-child(2) {
 					      
-					      font-size: 22px;
+					      font-size: 2.5vw;
 					    }
 
 					    .panel.open {
-					      font-size:20px;
+					      font-size:2vw;
 					      flex: 9;
 					    
 					      ;
@@ -715,33 +720,27 @@
 							  text-align: center;
 							  text-shadow:4px 4px 0 rgba(0,0,0,0.1);
 							  padding:;
-							}
-
+							  flex-basis:18vw;
+							  flex-grow:1;
+							  font-size: 11px;}
 							/* Colours for each box */
-							.box1 { background:#1abc9c;font-size: 12px;color:white;}
-							.box2 { background:#3498db;font-size: 12px;color:white;}
-							.box3 { background:#9b59b6;font-size: 12px;color:white;}
-							.box4 { font-weight: 800}
-							.box5 { background:#f1c40f;font-size: 12px;color:white;}
-							.box6 { background:#e67e22;font-size: 12px;color:white;}
-							.box7 { background:#e74c3c;font-size: 12px;color:white;}				
+							.box1 { background:#1abc9c;font-size: ;color:white;}
+							.box2 { background:#3498db;font-size: ;color:white;}
+							.box3 { background:#9b59b6;font-size: ;color:white; flex-grow:5;}
+							.box4 { font-weight: 800; font-size: 18px; flex-basis:100%;}
+							.box5 { background:#f1c40f;font-size: ;color:white;}
+							.box6 { background:#e67e22;font-size: ;color:white;}
+							.box7 { background:#e74c3c;font-size: ;color:white; flex-basis: 70%;}				
 
 
 							/* We start writing out flexbox here. The above is just page setup */
 							
-
-							.box {flex-basis:150px;flex-grow:1;}
-							.box3 {flex-grow:5;}
-							.box4 {flex-basis:100%;}
-							.box7 {flex-basis: 70%;}
-
 					    .centro{display:flex; 
 					    		flex-flow: row wrap; 
 					    		justify-content: space-around; 
 					    		align-items: center; 
 					    		align-content: center;
 					    		padding:0;
-					    		display:flex;
 							  }
 					    	
 					    .open-active > .centro {color:white;background-color:rgba(245,245,245,0.25);}
@@ -751,7 +750,7 @@
 				
 				
 
-				<h2>Mis Albums favoritos</h2>
+				<h2 style='font-size: 7vw'>Mis Albums favoritos</h2>
 			<div id='albums'>
 					
 					<style type="text/css">
@@ -878,10 +877,10 @@
 							.item2:hover > .book_autor{display:flex;}
 							.item2:hover > .book_name{display:flex;}
 
-							.item2 button{background-color: #ffffff99; border:2px solid var(--spotify); border-radius: 12px 12px; width:30%;}
-							.item2 button a, .see_more{text-decoration: none;color:red;font-weight: 600;}
+							.read{background-color: #ffffff99; border:2px solid var(--spotify); border-radius: 12px 12px; width:11vw;}
+							.read a, .see_more{text-decoration: none;color:red;font-weight: 600;}
 
-						.book_name, .book_autor{font-size: 13px; display:none; color:white; background: black; }			
+						.book_name, .book_autor{font-size: 12px; display:none; color:white; background: black; justify-content: center; align-content: center; align-items: center;}			
 
 						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center; padding:1px 1.5px;}
 						h3{font-size: 20px;color:white;font-weight: 600; margin-left: 5vw}
@@ -895,9 +894,9 @@
 								height:28vh;
 								width:22vw;
 							        }
-							.item2:hover {width:29vw; height:42vh;transition: all 0.5s}
-							
-						}																
+							.item2:hover {width:29vw; height:42vh;transition: all 0.5s}						
+						}		
+																				
 	
 
 					</style>
@@ -927,7 +926,7 @@
 							var nausea= new book("La Nausea","JP Sartre", "http://imago.yolasite.com/resources/Sartre,%20Jean%20Paul%20-%20La%20nausea.pdf","nausea");
 							var existencialismo= new book("Existencialismo es un Humanismo","JP Sartre", " ","existencialismo");
 							var orestiada= new book("Orestiadaa","", "https://rossami.files.wordpress.com/2009/03/la-orestiada1.pdf","orestiada");
-							var etranger = new book('El Extranjero', 'Albert Camus', 'http://www.libroteca.net/_Mas-descargados/Camus,%20Albert%20-%20El%20Extranjero.pdf', 'extranjero')
+							var etranger = new book('El Extranjero', 'A. Camus', 'http://www.libroteca.net/_Mas-descargados/Camus,%20Albert%20-%20El%20Extranjero.pdf', 'extranjero')
 
 							var books = [ahz, iliada, demian, nausea, ficciones, existencialismo, orestiada, etranger ]					
 
@@ -993,12 +992,12 @@
 
 		
 		<nav id='music_player' class='navbar navbar-inverse navbar-fixed-bottom'>
-			<div style='display: flex; flex-direction: column;justify-content: center; align-content: center; align-items: center'>						
+			<div class='side_music-player'>						
 					<i>Now Playing</i><br/>
 					<i id='song_on'>Caiga la Noche</i><br/>					
 			</div>
 
-			<div id="audioplayer" style='margin:0 20vw'>				
+			<div id="audioplayer">				
 				<div id='audiocontrols'>
 					<div id='rep_shuffle-btn'>🔀</div>
 					<div id='rep_forward-btn'>⏮</div>
@@ -1010,8 +1009,8 @@
 				<progress id="progress_audio" value="30" max="100" > 32% </progress>
 			</div>
 
-			<div style='display: flex; flex-direction: column;justify-content: center; align-content: center; align-items: center'>
-					<i></i><progress id="progress_audio" value="30" max="100" > 32% </progress><br/>
+			<div class='side_music-player'>
+					<i></i><progress id="progress_audio2" value="30" max="100" > 32% </progress><br/>
 					<i id='song_on_band'>Los Mesoneros</i><br/>					
 			</div>
 		</nav>	
@@ -1026,6 +1025,17 @@
 					padding: 0;
 					margin:0;					
 				}
+				.side_music-player{
+					display: flex; 
+					flex-direction: column;
+					justify-content: center; 
+					align-content: center; 
+					align-items: center;
+					flex-shrink: 0.5
+					font-size: 12px;
+					width: 
+				}
+				#audioplayer{margin:0 20vw; justify-content: center; align-content: center; align-items: center;}
 			</style>
 			<script type="text/javascript">
 				var reproductor = document.getElementById('reproductor');
@@ -1075,7 +1085,7 @@
 					justify-content: space-between;
 					align-items: stretch;
 					align-content: center;
-					font-size: 12px; 
+					font-size: 15px; 
 					padding:0px 0vw; 
 					color:white; 
 					font-weight: 300; 
@@ -1083,15 +1093,11 @@
 					margin: 0;
 				}
 				#music_player div li{text-decoration: none}
-
-				#audio_player{
-					 width:800px; justify-content: space-between; align-content: space-between; align-items: space-between;
-
-				}
+				
 				#audiocontrols{
 					display:flex; flex-flow: row wrap; justify-content: space-between;
 				}
-				#progress_audio{
+				#progress_audio, #progress_audio2{
 					height:3px; 
 					width:15vw;
 					background-color: #E50914; 
@@ -1262,4 +1268,69 @@
 
   </script>
 
+ <style>
+			  	:root {
+	   		 --color: rgb(200,200,200);
+	   		 --spotify:#1DB954;
+	   			}
+	  
+			    html {box-sizing: border-box;	}
+
+			    body {margin: 0;}
+			    *, *:before, *:after {box-sizing: inherit;}
+				html{overflow-x: hidden; background-color: #191414}
+				
+				.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}
+
+				@media only screen and  (max-width: 760px) {
+					#navflix{background:black;}
+					.img_nav{width: 22vw;margin:0 1.3vw;}
+					#navflix span a{font-size: 7px;color:red;font-weight: 800;width:13vw;}
+
+					#sidevideoplayer{display:none;}
+					.playero, #player, #player_video_p, .player_controls, nav{width:100vw;}
+					.player_button{font-size: 8px}
+					.fullScreen{display:none;}
+
+					#music_player {font-size: 6px; }
+					#music_player div{margin:0; padding:0;}
+					#audiocontrols{	margin: 0 5vw ;width: 30vw}
+					#progress_audio{width: 30vw}
+
+					#rep_shuffle-btn{font-size: 10px;}
+					#rep_forward-btn{font-size: 10px;}
+					#rep_play-btn {width: 20px; height: 20px; font-size: 11px;}
+					#rep_back-btn{font-size: 10px;}
+					#rep_repeat-btn{font-size: 10px;}
+					
+					.side_music-player{width:;font-size: 9px;}
+					.resetSpeed{display: none}
+
+
+					.display_1, .display_2, .display_3, .display_4{
+								 width:100vw; 
+								 height:15vh; }
+					input[type=range]::-moz-range-thumb { width: 5px; height: 5px}
+
+					table{height: 50vw}
+				
+						
+					.secTit{font-size: 13px;}	
+					.item:hover > .actions{
+								display:none;
+								opacity:1;
+								transition: all 0.5s}
+					.movies_2 {font-size: 8px; font-weight: 800;}
+					.box{font-size: 9.5px; height:4vh; display: flex; align-items: center; align-content: center; justify-content: center}
+					.box4{font-size: 12px;}
+					#myLikes{ height:8px}
+					.img_myLikes{height:25px;}
+
+					.display_books{width:; height:70vh;}
+
+					.read a{width: 8vw; font-size: 11px;}
+
+						.book_name, .book_autor{font-size: 10px;width: 18vw}
+				}
+		</style>
 </html>
