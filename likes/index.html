@@ -51,13 +51,20 @@
 				    <div class="progress">
 				  	   <div class="progress_filled"></div>
 				    </div>
-				    <button class="player_button toggle" title="Toggle Play">►</button>
-				    <input type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
-				    <input id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
-				    <button class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>
-				    <button onclick='skip(-10)' data-skip="-10" class="player_button">« 10s</button>
-				    <button onclick='skip(25)' data-skip="25" class="player_button">25s »</button>
-				    <button class="fullScreen" onclick="fullScreening()">[ ]</button>
+
+				    <button class="player_button toggle" title="Play/Stop">►</button>
+
+				    <input title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
+
+				    <input title='Velocidad de Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
+
+				    <button title='Reset velocidad' class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>
+
+				    <button title='retrasar 10s' onclick='skip(-10)' data-skip="-10" class="player_button">« 10s</button>
+
+				    <button title='adelantar 25s' onclick='skip(25)' data-skip="25" class="player_button">25s »</button>
+
+				    <button title='Pantalla completa' class="fullScreen" onclick="fullScreening()">[ ]</button>
 				</div>				    
 			</div>
 
@@ -126,9 +133,21 @@
 					font-size: 10px;}
 				.player_button:focus { border-color: #00c6ff;}
 				.player_slider {width:10px;height:30px;}
-				.player_controls {position:absolute; display:flex; top:80vh; width:75vw;; transform: translateY(100%) translateY(-5px); transition:all .3s;
-				  flex-wrap:wrap; background:rgba(0,0,0,0.1);}
-				.playero:hover .player_controls {transform: translateY(0);}
+				.player_controls {
+					position:absolute; 
+					display:flex; 
+					top:85vh; 
+					width:75vw;; 
+					transform: translateY(100%) translateY(-5px); 
+					transition:all .3s;
+				  	flex-wrap:wrap; 
+				  	background:rgba(0,0,0,0.1);
+				  	opacity:0;}
+
+				.playero:hover .player_controls {
+					transform: translateY(0);
+					opacity:1;}
+
 				.playero:hover .progress {height:15px;}
 				.player_controls > * {flex:1;}
 				.progress {flex:10; position: relative; display:none; flex-basis:80%; height:5px; transition:height 0.3s; background:rgba(0,0,0,0.5); cursor:pointer;}
@@ -197,7 +216,7 @@
 				}
 
 				function updateButton(){
-					const icon = this.paused ? '►' : '=';
+					const icon = this.paused ? '►' : '||';
 					toggle.textContent = icon;
 					console.log(videox.currentTime);
 				}
@@ -294,13 +313,14 @@
 								justify-content: center; 
 								align-items: center; 
 								align-content:center;  
-								width:4vh; 
-								height: 4vh; 
+								width:5vh; 
+								height: 5vh; 
+								font-size: 12px;
 								border: 1px solid white; 
 								background-color: 
 								white;border-radius: 50%; 
 								margin:;
-								background-color: black;}
+								background-color: #000a;}
 
 						.song_data {
 							width:25vw; 
@@ -328,10 +348,10 @@
 					<!--peliculas favoritas-->					
 						<div class='films_list' id="fav_movies">
 						 	<h3 class='secTit'>Peliculas Favs</h3>
-						 	<dir style='border: 0px solid green; background: transparent; width:100vw'>									
+						 									
 								<div class='display_1' id='filmes'></div>
 								
-							</div>
+							
 						</dir>
 
 					<div class='series_list' id="fav_series">
@@ -894,7 +914,7 @@
 								height:28vh;
 								width:22vw;
 							        }
-							.item2:hover {width:29vw; height:42vh;transition: all 0.5s}						
+							.item2:hover {width:29vw; height:38vh;transition: all 0.5s}						
 						}		
 																				
 	
