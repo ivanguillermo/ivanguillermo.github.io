@@ -1,1395 +1,1339 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head> 
-	      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	          
-	      
-	      
-	      <meta content='Website personal sobre los gustos de Ivan Lopez Pedreanez' name='description'/>
-	      <title>Koreraga Suki</title>
-	    
-		  <link async="async" href="" rel="stylesheet" />
-		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		  <link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
-		  <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+	<head>
 
-		  <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<link href="/manifest.json" rel="manifest" />
 
-		  <link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Proxima+Nova|Roboto|Monserrat" rel="stylesheet" />
+			<link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+			<link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
 
-		  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
-		  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
-		  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
-
+			<meta content='Website personal de Ivan Lopez Pedreanez' name='description'/>
+			<title>Ivan Lopez Pedreanez</title>
 		
-  	</head>
+		<link async="async" href="" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+		<script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
-	<body>	
-		<nav id='navflix' class='flex-centrado'>
-					<a href=''><img class='img_nav' src='ivan_guillermo.png'/></a>
-					<span><a href='#films'>Films</a></span>
-					<span><a href='#series'>Series</a></span>
-					<span><a href='#musica'>Musica</a></span>
-					<span><a href='#literatura'>Literatura</a></span>				
-					<span><a href='#deportes'>Deportes</a></span>
-					<span><a href='#player'>Player</a></span>
-					<span><a href=''>Redes</a></span>
-		</nav>
+		<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-		<div id='player'>
-			<div class="playero">
+		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Roboto|Raleway|Satisfy" rel="stylesheet" />
 
-				<video 
-				class="player_video viewer" 
-				id='player_video_p' 
-				poster='death_note.jpeg' 
-				src="">
-				</video>
-
-				<div class="player_controls">
-				    <div class="progress">
-				  	   <div class="progress_filled"></div>
-				    </div>
-
-				    <button class="player_button toggle" title="Play/Stop">►</button>
-
-				    <input title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
-
-				    <input title='Velocidad de Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
-
-				    <button title='Reset velocidad' class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>
-
-				    <button title='retrasar 10s' onclick='skip(-10)' data-skip="-10" class="player_button">« 10s</button>
-
-				    <button title='adelantar 25s' onclick='skip(25)' data-skip="25" class="player_button">25s »</button>
-
-				    <button title='Pantalla completa' class="fullScreen" onclick="fullScreening()">[ ]</button>
-				</div>				    
-			</div>
-
-			<div id='sidevideoplayer' style='z-index:4'>
-				<table id='youtable'>
-		            <thead style='height:11vh;position:absolute;width:100%'>		              
-		                <th style='height:11vh;position: relative; top:-6px;'>Episodes</th>		              
-		            </thead>
-		            <tbody id='episodios'>               		              
-		            </tbody>
-          		</table>
-			</div>
-
-			<style>
-				#navflix{
-					position: fixed;
-					width:100vw;
-					height: 11vh;
-					color:white;
-					font-size: 12px;
-					background-color: #111a;
-					
-					justify-content: space-between;
-					align-items: center;
-					align-content: center;
-					flex-shrink: 
-					padding:2%;
-					z-index:3;}
-
-				.img_nav{width:15vw; margin: 0 1vw;}
-				#navflix span{
-					flex-shrink: 0.4;
-					font-size: 15px;}
-					#navflix span {width: 12vw}
-				#navflix span a:link{text-decoration: none}
-
-				.active{background-color: #333333ff;}
-
-				#player{width:100vw; height:90vh;
-						display:flex; flex-flow: row nowrap; 
-						background: black;  
-						align-items: space-between;}
-
-				.playero{height:90vh; background:black;  align-items: center;}
-
-				#sidevideoplayer{width:25vw;height:100%; overflow-y:scroll;overflow-x: hidden; background: white;  align-items: center; border: 1px double #E50914; align-self: flex-end}
-					#sidevideoplayer table tbody tr{width:25vw; border-top:1px solid white;margin-bottom: 8px}
-					#sidevideoplayer thead, th, tbody, td {margin-top:1vh;height:4vh;width:25vw;}
-					#sidevideoplayer i{font-size: 11px;width:25vw;height:4vh;}
-
-				#youtable tbody tr div{display:inline-block;;}	
-				.preview{display:inline-block; width:45px;height:45px; background:blue;}
-
-				.playero {width:75vw; border:0px solid rgba(0,0,0,0.2); box-shadow:0 0 20px rgba(0,0,0,0.2);}
-				.player_video {width:75vw; height:90vh;}
-				.player_button {
-					background:none;
-					border:0;
-					line-height:1;
-					color:white;
-					text-align: center;
-					outline:0;
-					padding: 0;
-					cursor:pointer;
-					max-width:50px;
-					font-size: 10px;}
-				.player_button:focus { border-color: #00c6ff;}
-				.player_slider {width:10px;height:30px;}
-				.player_controls {
-					position:absolute; 
-					display:flex; 
-					top:85vh; 
-					width:75vw;; 
-					transform: translateY(100%) translateY(-5px); 
-					transition:all .3s;
-				  	flex-wrap:wrap; 
-				  	background:rgba(0,0,0,0.1);
-				  	opacity:0;}
-
-				.playero:hover .player_controls {
-					transform: translateY(0);
-					opacity:1;}
-
-				.playero:hover .progress {height:15px;}
-				.player_controls > * {flex:1;}
-				.progress {flex:10; position: relative; display:none; flex-basis:80%; height:5px; transition:height 0.3s; background:rgba(0,0,0,0.5); cursor:pointer;}
-				.playero:hover > .player_controls{display:flex;}
-				.progress_filled { width:50%; background:#C600ff; flex:0; flex-basis:50%;}
-				 .fullScreen{ flex:0.3;background-color:black; border:black;font-size: 10px;color:white;}
-				 .resetSpeed { flex:0.3;background-color:black; border:black;font-size: 8px;color:white;}
-				/* unholy css to style input type="range" */
-				input[type=range] { -webkit-appearance: none; background:transparent; width: 100%; margin: 0 5px;}
-				input[type=range]:focus { outline: none;}
-				input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-				  background: rgba(255,255,255,0.8); border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
-				input[type=range]::-webkit-slider-thumb {  height: 15px; width: 15px; border-radius: 50px; background: #ffc600; cursor: pointer; -webkit-appearance: none;  margin-top: -3.5px; box-shadow:0 0 2px rgba(0,0,0,0.2);}
-				input[type=range]:focus::-webkit-slider-runnable-track { background: #bada55;}
-				input[type=range]::-moz-range-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0); background: #ffffff;
-				  border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
-				input[type=range]::-moz-range-thumb { box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); height: 15px; width: 15px; border-radius: 50px; background: #ffc600; cursor: pointer;}
-
-				
-			</style>
-				<!--playero script-->
-			<script>
-				const playero= document.querySelector('.playero');
-				const videox = playero.querySelector('.viewer');
-				const progress = playero.querySelector('.progress');
-				const progressBar = playero.querySelector('.progress_filled');
-				const toggle = playero.querySelector('.toggle');		
-				const speedBtn = document.getElementById('speed');
-				const ranges = playero.querySelectorAll('.player_slider');
-				let currentTime = videox.currentTime;
-
-				videox.volume = 0.2;
-				progressBar.style.flexBasis = `0%`;
-
-				function togglePlayBtn(){
-					const method = videox.paused ? 'play' : 'pause';
-					videox[method]();
-					console.log(currentTime);
-				}
-
-				function death_vid(){
-					videox.src = 'video.webm';
-					videox.play();
-				};
-
-				function skip(t){
-					//video.currentTime += parseFloat(this.dataset.skip);
-					videox.currentTime += t;
-					console.log(videox.currentTime);
-				}
-
-				function handleRangeUpdate(){
-					videox[this.name] = this.value;
-					console.log(videox.currentTime);
-				}
-
-				function scrub(e){
-					const scrubTime= (e.offsetX / progress.offsetWidth) * videox.duration;
-					videox.currentTime = scrubTime;
-					console.log(videox.currentTime);
-				}
-				function resetSpeed(){
-					videox.playbackRate = 1;
-					speedBtn.value = 1;
-					console.log(videox.currentTime);
-				}
-
-				function updateButton(){
-					const icon = this.paused ? '►' : '||';
-					toggle.textContent = icon;
-					console.log(videox.currentTime);
-				}
-
-				function handleProgress(){
-					const percent = (videox.currentTime / videox.duration) * 100;
-					progressBar.style.flexBasis = `${percent}%`;
-					progressBar.style.width = `${percent}%`;
-					progressBar.style.backgroundColor = '#C600ff';
-					console.log(videox.currentTime + ' handleProgress');
-				}
-
-
-				function fullScreening() {
-					videox.mozRequestFullScreen();
-					videox.requestFullscreen();
-					console.log(currentTime);
-				}
-
-				videox.addEventListener('click', togglePlayBtn);
-				videox.addEventListener('play', updateButton);
-				videox.addEventListener('pause', updateButton);
-				videox.addEventListener('timeupdate', handleProgress);
-				toggle.addEventListener('click', togglePlayBtn);
-				
-				ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-				ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-
-
-				let mousedown = false;
-				progress.addEventListener('click', scrub);
-				progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
-				progress.addEventListener('mousedown', () => mousedown = true);
-				progress.addEventListener('mouseup', () => mousedown = false);
-			</script>
-		</div>
-
-				<!--lists films style-->
-		<style>
-						.display_1, .display_2, .display_3, .display_4{
-								 width:100vw; 
-								 height:25vh; 
-								 display:flex; 
-								 flex-flow: row nowrap; 
-								 justify-content:space-around; 
-								 align-items: center ; 
-								 background-color: black;
-								 color:white;				 								 
-								 font-size: 2.3vw;
-								 margin-bottom:4vw ;
-								 position:relative;
-								 right:;
-								 }
-
-						.item{height:13vw; 
-							width: 23vw; 
-							background:white; 
-							border:2px solid #191414;
-							background-repeat: no-repeat; 
-							background-size: 100% 100%; 
-							position: relative;}
-
-							.item:hover {height:18vw; width:31vw; transition: all 0.5s}
-
-							.item:hover > .movies_name{display:flex;}
-							.item:hover > .series_name{display:flex;}
-							.item:hover > .series_2{display:flex;}
-							.item:hover > .movies_2{display:flex;}																																			
-							.item:hover > .actions{
-								display:flex;
-								opacity:1;
-								transition: all 0.5s}
-							
-
-						.movies_name, .series_name{font-size: 2.8vw; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
-							
-
-						.actions{
-							display: none; 
-							flex-flow: column wrap; 
-							justify-content: center; 
-							align-items: center; 
-							align-content: center; 
-							width: 20%; 
-							height:100%;
-							position: relative; 
-							top:-10vh;
-							left:80%; 
-							opacity:0;
-							color:white;}
-
-							.actions div{
-								display:flex; 
-								justify-content: center; 
-								align-items: center; 
-								align-content:center;  
-								width:5vh; 
-								height: 5vh; 
-								font-size: 12px;
-								border: 1px solid white; 
-								background-color: 
-								white;border-radius: 50%; 
-								margin:;
-								background-color: #000a;}
-
-						.song_data {
-							width:25vw; 
-							display: flex; 
-							font-size: 12px; 
-							flex-flow: row wrap; 
-							justify-content: space-around; 
-							align-items: center; 
-							align-content: center}
-
-						.movies_2{font-size: 14px; display:none; color:white; font-weight: 300;}
-						.series_2{font-size: 14px; display:none; color:white; font-weight: 300;}
-
-						#myLikes{background-color: #191414; height:10px}
-
-						
-		</style>
-				
-		<div id='myLikes'>
-		</br>
-			<h2><img class='img_myLikes' src='my_likes.png'/></h2>
-
-			<div id='cinema'>
-				<div id='films'>							
-					<!--peliculas favoritas-->					
-						<div class='films_list' id="fav_movies">
-						 	<h3 class='secTit'>Peliculas Favs</h3>
-						 									
-								<div class='display_1' id='filmes'></div>
-								
-							
-						</dir>
-
-					<div class='series_list' id="fav_series">
-						<h3 class='secTit' id='series'>Series</h3>
-						<div class='display_2' id='seriess'>
-							
+		<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+	</head>
+	<body>
+	<!-- Main -->
+		<div>
+			<div class="jumbotron" id='jumbo_ivan'>
+				<div class="container">
+					<div class="media">
+						<div class="media-left media-middle">
+							<img alt="ivanlopezpedreanez" class="media-object" src="yo2019.png" />
+							<button class="btn btn-lg" href="#" role="button" id="about_btn" style='font-family: satisfy;'>	Mi Historia
 						</div>
-					</div>
-
-					<div class='series_list' id="fav_animes">
-						<h3 class='secTit'>Animes</h3>
-						<div class='display_3' id='animess'>											
-
-						</div>
+						<div class="media-body">
+							<h1 class="media-heading" style='font-size:8.5vh;font-family: satisfy;'>Ivan Lopez Pedreañez</h1>
+							<div id='resume' class="resume" >
+								<p>Me llamo Ivan y soy<a>Programador Web</a> y traductor freelance</p>
+								<p>Estudio Matemática y Educación Informática, y amo crear blogs educativos</p>
+								<p>Me encantan los deportes, el cine, la tecnología y la literatura</p>
+							</div>
+						</div>					
 					</div>
 				</div>
 			</div>
+
+			<style>
+					.flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
+					.jumbotron {
+							height: 92vh;
+							width: 100vw;
+							background: url("imgx/background.jpg") no-repeat fixed center  ; 									
+							background-size: cover;
+							display: flex;
+							flex-flow:row wrap;
+							justify-content: center;
+							align-items: center;
+							overflow: hidden;
+							}
+						
+					
+					.jumbotron *{margin:2%;text-align:center;}
+					.media-object{border-radius:50%;width:45vh;border:4px solid black;}
+					.media-heading{font-family:Sans;font-weight: 200; position: relative; left:17.5%;font-size: 80%; }
+						.resume p{padding-right:-10%;text-align: right; font-size: 16px;}
+					#about_btn{
+						font-weight:800; 
+						color:white; 
+						height:5vh; 
+						width:7vw; 
+						display: inline-flex; 
+						align-items: center; 
+						align-content: center; 
+						justify-content: center; 
+						font-size: 12px; 
+						background: transparent; 
+						border: 2px solid var(--color);
+						text-shadow: 1px 1px black; 
+						box-shadow: -0.5px 0.5px black
+					}
+
+					@media only screen and (max-width: 800px) {
+						.jumbotron {flex-flow:column nowrap;}
+						.media{display: flex;flex-flow:row wrap;}
+						.media-object{width:40%;margin-right: 20%; border-width: 0px; padding:0% 2%; }
+						#about_btn{display:none;}
+						.resume {padding-left:0%;text-align: center}
+						.media-heading{font-size:45%; }
+						
+						.resume p{color:white;text-shadow: 1px 1px black; font-weight: 800;}
+					}						
+					
+					a:link{text-decoration:none }
+			</style>
+								
+
+
+			<nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
+		          <div class="container-fluid" id='fluid' style='display:flex;'>
+		            <div class="navbar-header" style='display:flex; height:100%'>
+		              
+		              <a class="navbar-brand" href="#" style="background-color:var(--color); color:black;font-weight: 500;"><i style='font-family: satisfy; color:; letter-spacing: 2px;'>Hola!</i></a>
+					
+				      <a id='navYo' class="navbar-link" href="#quote" style="text-decoration: none;align-self: center">
+				      	<b>	<i style="color:white;">Ivanguillermo</i> </b>
+		              	<img alt='yo' src="yo2019.png"/>
+		              </a>				  
+		              
+		              <a id='navPro' class="navbar-link" href="#programmer" style="text-decoration: none;align-self: center">
+		              	<img alt='programador' src="imgx/prog.gif"/>
+		              	<span>PROGRAMADOR</span>
+		              </a>
+		              <a id='navMat' class="navbar-link" href="#matematico" style="text-decoration: none;align-self: center">
+		              	<span>MATEMATICO</span>
+		              	<img alt='matematico' src="imgx/icono_mat.png"/>
+		              </a>
+
+		              <a id='navTra' class="navbar-link" href="#translator" style="text-decoration: none;align-self: center">
+		              	<span>TRADUCTOR</span>
+		              	<img alt='traductor' src="imgx/trans.gif"/>
+		              </a>
+
+		              <a id='navEdu' class="navbar-link" href="#educador" style="text-decoration: none;align-self: center">
+		              	<span>EDUCADOR</span>
+		              	<img alt='educador' src="yo2019.png"/>
+		              </a>
+
+		              
+		              
+		              <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar">
+						</span>
+					  </button>
+		            </div>
+
+		          <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:1.5%">
+			        <li>
+			            <a href="contacto.html" style="background-color:var(--color);color:white"><b>Contacto</b></a>
+			        </li>
+			      </ul>
+
+		          <div class="navbar-collapse collapse" id="navbar">
+			          <ul class="nav navbar-nav">		         		          	         	
+			          	<li class="dropdown" >
+			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
+			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'><i class="fa fa-ellipsis-v"></i></span> </a> 
+			            	<ul class="dropdown-menu">
+			            		<li><a href="likes/index.html">Mis Gustos</a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li><a href="cursos.html">Cursos</a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li><a href="bio.html">Biografia</a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li id="contacto_nav">
+					              <a href="contacto.html" >Contacto</a>
+					            </li>
+			            	</ul>
+			            </li>
+			          </ul>
+			       </div>
+			          
+			       </div> 
+		    </nav>
+
+		    <style type="text/css">
+
+		    	.navbar{min-height:8vh;}
+
+		    	.navbar-header{}
+		    	.navbar-brand{;}
+				.navbar-link{display:flex; flex-flow: row wrap; justify-content: center; align-content: center; align-content: center;height:4vh; width:10vw; padding:1.5vw;font-size:1vw;}
+				.color {color:var(--color);}
+				.navbar-link {height:4vh; display:flex;}
+				.navbar-link span{color:var(--color); align-self: center}
+				
+				.navbar-link img{width: 44px;height:44px;display:none;padding:0px 2px;}
+
+				.dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
+				.dropdown-toggle{width:190%; color:white; align-self: flex-end; text-align: center}
+				#contacto_nav{display: none}
+
+
+
+				
+				
+				@media only screen and (max-width: 800px) {
+					.navbar{width:100vw;}
+					.container-fluid{width:100vw;position:relative;left:0px;}
+					#navYo{display:inline-flex;}
+
+					.navbar-toggle {}
+					.navbar-brand{width:15vw;font-size: 2.3vw; text-align: center}
+					.navbar-link span{display:none;}
+					.navbar-link img{display:block; padding:0vh;margin-left:1vw; width:7vw;height:7vw;}
+					.dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
+					.dropdown{}
+					#contacto{display:none;width:15vw;position:static;left:85vw;}
+					#contacto_nav{display: flex}				
+
+					}
+		    </style>
+
+			<div id="quote">				
+				<p>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas
+				</br>
+				<em>Friedrich Nietzsche</em>
+				</p>				
+				
+			</div>
+
+			
+
+			<style>
+					#quote{
+						display:flex; 
+						align-content: center; 
+						align-items: center; 
+						justify-content: space-around; 
+						flex-flow: column wrap;  
+						text-align:center;
+						color:white;
+						height:12vh;
+					}
+					#quote p{padding-top:1vh; font-size: 120%;}
+					#yo_descripcion {background:transparent;}
+					#mi_nombre {text-align:center; padding-top:; color:#ddd; text-shadow: 2px 1px 2px #4fdb98  ; }
+					#descripcion {text-align:center; color:#fff; font-weight: 500; text-shadow: 0.5px 0.5px #292929; padding:0% 15%;}
+					@media only screen and (max-width: 800px) {
+						section {height:150px;}
+						#descripcion {font-size: 9px;padding:3%;text-align: justify;}
+						#quote p{padding-top:1vh; font-size: 80%;}
+						#quote em{font-size: 70%;}
+					}
+			</style>
+
+			<div id="logos">
+				<div id='yo_descripcion'>
+				<h3 id="mi_nombre" >Ivan Guillermo</h3>
+				<p id="descripcion">
+					Soy un joven venezolano actualmente viviendo en Argentina. Apasionado por estudiar y aprender cada d&iacute;a un poco m&aacute;s. y luego siempre busco poner en pr&aacute;ctica lo que aprendo, para resolver problemas de la vida real y sobre todo ayudar a los dem&aacute;s con los suyos. Me considero a mi mismo como...
+				</p>
+				</div>								
+				<div class='logos_profs'>
+					<div class='icon'>
+						<img class='logo_prof' src='imgx/trans.gif' id="transl_ico" alt='traductor'/>
+						<div>
+							<h2 class='tit_prof' >TRADUCTOR</h2>
+							<p class="prof_txt" >
+								Buscando nuevas perspectivas, descubrí que debo tomar las fuentes en su idioma original
+								Revisa mi perfil en <a style='color:var(--green) ' href="https://www.freelancer.com/u/IvanD413R" rel="noopener" target="_blank"> Freelancer.com</a>
+								y los trabajos que he realizado allí;
+							</p>
+						</div>			
+					</div>
+					<div id='adasda' class='icon'>
+						<img class='logo_prof' src='imgx/prog.gif' id="programmr_ico" alt='programador'/>
+						<div>
+							<h2 class='tit_prof'>PROGRAMADOR</h2>
+							<p class="prof_txt" >
+								Disfruto buscar soluciones a los problemas, y la programación me ofrece la posibilidad de alcanzar
+								<a href="https://github.com/ivanguillermo" rel="noopener" target="_blank">soluciones óptimas</a> 
+								mirando las cosas desde perspectivas nuevas
+							</p>
+						</div>
+					</div>
+					<div class='icon'>
+						<img class='logo_prof' src='imgx/icono_mat.png' id="matemat_ico"  alt='matematico'/>
+						<div>
+							<h2 class='tit_prof'>MATEMÁTICO</h2>
+							<p class="prof_txt" >Actualmente curso el último año de Licenciatura en Matemáticas en la 
+								<a href="https://www.una.edu.ve" rel="noopener" target="_blank">Universidad Nacional Abierta</a> (UNA). Particularmente amo la estadísticas y la optimización
+							</p>
+						</div>			
+					</div>
+				</div>
+			</div>
+
+			<style>
+				#logos{background:#555;
+					   display:flex;
+					   flex-flow:column wrap;
+					   align-items: center;
+					   justify-content: space-around;
+					   align-content: center;
+					   height:78.8vh;
+					   width:100vw;
+					   color:black;
+						}
+				.logos_profs{
+						display:flex;
+						flex-flow:row nowrap;
+						align-items: center;
+						justify-content: space-around;
+						width:100%
+					}
+					.logo_prof{height:25vh;}
+					.tit_prof{font-family: Sans; font-size: 2vw; font-weight: 200}
+					.icon {
+						display:flex;
+						flex-flow:column nowrap;
+						align-items: center;
+						justify-content: space-between;						
+						}
+					.icon div h2,.icon div a {
+						color:#ff7f2a;
+						text-align:center;
+						text-shadow: 1px 1px #222222;
+						font-family:Roboto;}
+					
+					.icon:first-child h2, .icon:first-child a{color: var(--green)}
+					.icon:last-child h2, .icon:last-child a{color: var(--blue)}
+					.icon div p {width:19.5vw;color:white;text-align: center}
+
+				@media only screen and (max-width: 800px) {
+						#logos {flex-flow:column nowrap;}
+						.logos_profs{flex-flow:column wrap;width:100vw}
+						.icon {flex-flow:row nowrap;}
+						.icon img {width:14vh;height:14vh;}
+						.icon div {font-size:9px;color:var(--green);}						
+						.icon div p {width: 65vw;}
+						.icon div h2{font-size: 10px;}
+
+					}
+			</style>
+
+			<div id="sections">
+				<section class="job" id="translator">
+					<h2 class='sec_tit'>TRADUCTOR</h2>
+
+					<div class='body2' id="myDIV2">
+					</div>
+
+					<div id="langs_p">
+						<p style='color:black'>Por un tiempo me dedique a realizar traducciones como freelancer. Principalmente de Ingles a Espanol y viceversa. Pero tambien realice otras traducciones que me ayudaron a crear una cultura de responsabilidad y compromiso</p>
+						<span id="tr_txt" style="color:#eee; text-shadow: 1px 1px black; font-weight: 600;">							
+							Puedo traducir entre varios idiomas. Soy un hablante nativo de ESPAÑOL y altamente competente en INGLÉS.
+							<br />Y además soy capaz de traducir a esos 2 idiomas desde:
+							<br />ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  ITALIANO 🇮🇹 PORTUGUES 
+						</span>
+					</div>
+
+					<div id="langs">
+						<!--por-->
+						<a class='aflag' data-lang='0'> <img id='br-flag' alt="brazil-flag" class="flagies" src="imgx/langs/bra.png" /></a> 
+						<!--ger-->
+						<a class='aflag' data-lang='1'>	<img id='de-flag' alt="germany-flag" class="flagies" src="imgx/langs/deu.png" /></a> 
+						<!--fra-->
+						<a class='aflag' data-lang='2'>	<img id='fr-flag' alt="france-flag" class="flagies" src="imgx/langs/fra.png" /></a> 
+						<!--ita-->
+						<a class='aflag' data-lang='3'>	<img id='it-flag' alt="italy-flag" class="flagies" src="imgx/langs/ita.png" /></a> 
+						<!--spa-->
+						<a class='aflag big_flag' data-lang='4'>	<img id='sp-flag' alt="spain-flag" class="flagies" src="imgx/langs/spa.png" /></a> 
+						<!--eng-->
+						<a class='aflag' data-lang='5'>	<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="imgx/langs/eng.png" /></a>
+					</div>
+
+					<script>
+						const idiomas=[
+							'Eu posso traduzir entre vários idiomas. Eu sou um falante nativo de ESPANHOL e sou altamente proficiente em INGLÊS.<br/> Eu também posso traduzir para esses 2 idiomas de:<br/> ALEMAO 🇩🇪 FRANCÈS 🇫🇷 ITALIANO 🇮🇹 PORTUGES',
+
+							'Ich kann zwischen mehreren Sprachen übersetzen. Ich bin ein Muttersprachler von SPANISCH und ich bin sehr gut in ENGLISCH.<br/> Ich kann auch in diese 2 Sprachen übersetzen von:<br/> DEUTSCH🇩🇪   FRANZöSISCH 🇫🇷 ITALIENISCH 🇮🇹 PORTUGES', 
+
+							'Je peux traduire entre plusieurs langues. Je suis un locuteur natif de L`ESPAGNOL et je suis très compétent en ANGLAIS . <br/>Je peux aussi traduire vers ces 2 langues depuis:<br/> ALLEMAN 🇩🇪  FRANÇAIS 🇫🇷    ITALIAN 🇮🇹 PORTUGAIS',
+
+							'Posso tradurre tra più lingue. Sono un madrelingua SPAGNOLO e sono molto bravo in INGLESE. <br/>E posso anche tradurre in quelle 2 lingue da:<br/> TEDESCO 🇩🇪   FRANCESE 🇫🇷  ITALIANO 🇮🇹 PORTOGHESE',	
+
+							'Puedo traducir entre varios idiomas. Soy un hablante nativo de ESPAÑOL y soy altamente competente en INGLÉS. <br/>Y además puedo traducir a esos 2 idiomas desde:<br/> ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  ITALIANO 🇮🇹 PORTUGUÉS',	 
+
+							'I can translate between several languages. I am a native speaker of SPANISH and I am highly proficient in ENGLISH.  <br/>And I can also translate to those 2 languages from:<br/> GERMAN 🇩🇪  FRENCH 🇫🇷  ITALIAN 🇮🇹 PORTUGES'];
+
+						const langs = document.getElementById('langs');
+						const flagies = Array.from(langs.querySelectorAll('.aflag'));
+						const lang_txt = document.getElementById('tr_txt');
+
+						flagies.forEach(flag => flag.addEventListener('click', flangs));
+						
+						function flangs(){							 								 	
+						 	var x = this.dataset.lang ;
+						 	var z = langs.querySelector('.big_flag');
+
+						 	flagies.forEach(flag => flag.classList.remove('big_flag'));
+						 	this.classList.add('big_flag')
+						 	lang_txt.innerHTML=idiomas[x];	
+						 }					 
+
+							 
+							  				
+					</script>
+					<style>
+						#translator{
+							background: var(--color) 
+										url('https://www.dropbox.com/s/6qp7habxfp7h3f8/ballon_langs.png?raw=1') 
+										left bottom no-repeat  fixed ; 
+							height:93vh;
+							font-weight: 500; 
+							text-shadow: 0.5px 0.5px #292929;
+							display: flex;
+							flex-flow: column wrap;
+							justify-content: space-around;
+							}
+							#langs{
+								width:25%; 
+								align-self: flex-end; 								
+								margin-right: 15%;
+								float:right; 
+								display:flex; 
+								justify-content: space-between; 
+								align-items: center;
+								position: relative;
+								top:-3vh;
+							}
+							
+								#flag_icons{float:right; margin-left: 10px}
+					 			.flagies{margin: 3px;}
+					 			#langs_p{
+					 				font-family: raleway; 
+					 				line-height:185%; 
+					 				font-size:21px; 
+					 				float:right; 
+					 				color:white; width:60%;
+					 				text-align: center; 
+					 				margin:4% 10% 5% 30%;}
+					 			.languages{padding-top:100px;margin:1px;}
+
+					 			.big_flag img{					 				
+					 				transform: scale(1.3) rotate(30deg);
+					 				border:6px double var(--orange);
+									border-radius: 50%;
+					 				}
+
+						@media only screen and (max-width: 800px) {
+							#translator{background: var(--color)}
+							#langs_p{ line-height:150%; width:75%;text-align: justify; margin:4% 10% 5% 10%;font-size: 14px;}							
+							#langs{margin-right:50%;}
+							.body2{display:none;}
+							
+						}
+					</style>			
+				</section>
+
+				<section class="job" id="programmer">
+					<h2 class='sec_tit'>PROGRAMADOR</h2>
+					<div>		
+						<p>
+							Comence a interesarme por la programacion en <span style='font-size:150%'>2014</span>. 
+						</p>
+						<p>
+							El primer curso que hice fue de Javascript en la plataforma <a href='Codecademy.com'>Codecademy.com</a>, donde tambien realice cursos de Python y Java. Para mis estudios de matematica aprender a programar en Pascal y Octave. Sin embargo, fue cuando en mi carrera de Educacion Informatica tuve la necesidad de aprender <span class='att_pls'>HTML</span> y <span class='att_pls'>PHP</span> que descubri mi verdadera pasion: <span ><i id='frontend_subt'>La programacion Frontend</i></span>
+						</p>
+						<p>
+							Desde entonces me he especializado por mi cuenta en <b><i>HTML, CSS y Javascript</i></b>. Utilizo tambien herramientas como GIT. Estoy familiarizado con Node.js y SASS, y regularmente utilizo Bootstrap, React.JS y JQuery.
+						</p>
+					</div>
+
+					<div id="progr_langs">
+						<div class='p_langs' id="python" >
+							<a target="_blank" href='https://github.com/ivanguillermo/python'>
+								<img class='p_langs_img' alt="python" src='imgx/devs/python.png'/>
+							</a>
+							<div class="projects">
+								<ul>
+									<li>
+										<a target='_blank' href='https://github.com/ivanguillermo/python/blob/master/Lagrange.py'>
+											Lagrange
+										</a>
+									</li>
+									<li>
+										<a target='_blank' href='http://www.codeskulptor.org/#user40_iEe4UkyObGItgSa_6.py'>
+											Dibujar un circulo
+										</a>
+									</li>
+									<li>
+										<a target='_blank' href='https://github.com/ivanguillermo/python/blob/master/Integral_doble_metodo_de_Simpson.py'>Integral Langrange
+										</a>
+									</li>
+																
+								</ul>
+							</div>
+						</div>
+						<div class='p_langs' id="html"> 
+							<img class='p_langs_img' alt='html5' src='imgx/devs/html.png'/>
+							<div class="projects">
+								<ul>
+									<li><a target='_blank' href='https://github.com/ivanguillermo/30dayJSchallenge/blob/master/30%20-%20Whack%20A%20Mole/index-START.html'>MaduroCTM</a></li>
+									<li><a target='_blank' href=''>.</a></li>
+									<li><a target='_blank' href='https://github.com/ivanguillermo/30dayJSchallenge/blob/master/12%20-%20Key%20Sequence%20Detection/index-START.html'>Piano</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class='p_langs' id="css"> 
+							<img class='p_langs_img' alt='css' src='imgx/devs/css.png'/>
+							<div class="projects">
+								<ul>									
+									<li><a  target='_blank' href=''></a>.</li>
+									<li><a  target='_blank' href=''>Gatanimation</a></li>
+									<li><a  target='_blank' href=''></a>.</li>
+								</ul>
+							</div>
+						</div>
+						<div class='p_langs' id="js"> 
+							<img class='p_langs_img' alt="javascript" src='imgx/devs/js.png'/>
+							<div class="projects">
+								<ul>
+									<li><a target='_blank' href=''></a>.</li>
+									<li><a target='_blank' href=''>Multichange</a></li>									
+									<li><a target='_blank' href=''></a>.</li>
+								</ul>
+							</div>
+						</div>
+						<div class='p_langs' id="php">
+							<a target="_blank" href='https://github.com/ivanguillermo/PrettyHorribleProjects'> 
+							<img class='p_langs_img' alt="php" src='imgx/devs/php2.png'/>
+							<div class="projects">
+								<ul>
+									<li>
+										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/caja_registradora.php'>
+											Caja Registradora
+										</a>
+									</li>
+									<li>
+										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/cajero_2.php'>
+											Cajero
+										</a>
+									</li>
+									<li>
+										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/prom_notas.php'>
+											Prom. Notas
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class='p_langs' id="mysql">  
+							<a  target='_blank' href='https://github.com/ivanguillermo/mySQL_databases'>
+								<img class='p_langs_img' alt="mysql" src='imgx/devs/mysql.png'/>
+							</a>
+							<div class="projects ">
+								<ul>
+									<li>
+										<a target='_blank' href=''>
+											
+										</a>
+									</li>
+									<li>
+										<a target='_blank' href=''>
+											
+										</a>
+									</li>
+									<li>
+										<a target='_blank' href=''>
+											
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>					
+
+					<button class='github_btn' style='position:relative;top:-10vh;'> <a style='color:white; text-decoration-style: none' href='https://github.com/ivanguillermo'>mi GutHub <i class="fa fa-github"></i></a></button>
+					<style type="text/css">
+						#programmer{
+							background:var(--orange) url('') left top no-repeat fixed ; 
+							display:flex; 
+							flex-flow: column wrap; 
+							justify-content: space-around; 
+							align-items: center;
+							align-content: stretch; 
+							height:95vh;}
+
+							#progr_langs{
+									display:flex; 
+									flex-flow: row wrap; 
+									justify-content: space-between; 
+									align-items: space-around; 
+									align-content: center; 
+									width:80%;height:10vh;
+									border:4px solid var(--blue);
+									background-color: #1AA9ECa2;
+									border-radius:80px; margin-top: 4%;
+									transform-origin: ;
+								}
+
+							#programmer h2{margin-bottom: 2%}
+							#programmer p{
+								font-family:raleway; 
+								text-align: center; 
+								margin:1% 8%; 
+								color:#111111; 
+								font-size: 16px; 
+								text-shadow: 0px 0px black; 
+								font-weight: 300;}
+							#frontend_subt{color:white; font-weight: 500; font-size: 150%;text-shadow: 3px 2px darkcyan};
+
+							.p_langs{
+								display:flex; 
+								flex-flow:column nowrap; 
+								justify-content: center;
+								align-items: center;}
+							.p_langs img{
+								border: 1vh solid white;
+								border-radius: 50%; 
+								height:7.2vw;}
+
+							
+							.p_langs:first-child img{border:0px;}
+							.p_langs:nth-child(2){flex-direction:column-reverse;}
+							.p_langs:nth-child(5){flex-direction:column-reverse;}
+							.p_langs:nth-child(6){flex-direction:row;}
+								.projects{
+									width:7.5vw;
+									height:14vh;
+									background-color: white;
+									border: 4px red;
+									visibility: hidden;
+									border-radius:7% 30% 7% 10%;
+									border: 1px solid black;
+									z-index:2;
+									font-family: roboto;
+									font-size: 11px;
+															
+								}	
+											
+								.projects ul {list-style-type:none; margin-left: -30%;text-decoration: none;}		
+								.p_langs:hover > * {visibility: visible;position: relative;top:-1.5vh;}
+
+								.projects::before {
+									 
+									background-color: var(--color); 
+									 
+									content: ' < / > '; 
+									color:white; 									
+									 
+									border-top:1px solid var(--color);
+								}
+								.github_btn{
+									font-weight:400; color:white; text-shadow: 1px 1px var(--orange);
+									height:8vh; width:24vw; margin-top:5%;
+									z-index: 0; 
+									
+									display: inline-flex; 
+									align-items: center; 
+									align-content: center; 
+									justify-content: center; 
+									font-size: 2vw; 
+									background: black;
+									border: 1px double black; 
+									box-shadow:0.1px 0.1px #fff7 ; 
+									border-radius: 25px 25px
+									 								
+									
+									}
+							@media only screen and (max-width: 800px) {
+								#programmer p{font-size: 12px;	 }
+								.p_langs img {width:7.5vw; border: 1px solid white; height:7.5vw;}
+								.projects{display:none;}
+								.github_btn{display:none; background:black;height:6vh;} 
+								#frontend_subt{font-size: 100%;text-shadow: 2px 1px darkcyan}
+							}
+					</style>
+				</section>
+
+				<section class="job" id="matematico">
+					<h2 class='sec_tit'>MATEMATICO</h2>
+					<div class="carousel slide" data-ride="carousel" id="myCarousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+								<li data-slide-to="1" data-target="#myCarousel"></li>
+								<li data-slide-to="2" data-target="#myCarousel"></li>
+							</ol>
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item ">
+									<img alt="Estadistica" id='mat_img0' src="imgx/estadistica.png" />
+									
+									<div class="carousel-caption">
+										<div class="mat_art">
+											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vRndRh69UxkKMdnXo-8NJuSvBFVhPO-vALoLAyaacHHZVURx8OxoYz-jZB30PoLCX65PiN6oJyoqfo3/pub?start=false&loop=false&delayms=3000'> <div id="est_pptx_1" class="est_pptx mat_arts" alt='Datos no Agrupados'></div></a>
+											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vQ8euIkKrum8Us_pAYqfVeceGPcNuJ444mnR2W5u06Vae6dMXjVJr4EYEi43IBVAHishGzwFCF4zhll/pub?start=false&loop=false&delayms=3000'> <div id="est_pptx_2" class="est_pptx mat_arts" alt='Probabilidad'></div></a>
+											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vQUNevSzp9rmdiU0mIPO2FuzAuadkPzzfpbKYPKUDaECiSISXvEDIVgUc4Qag3bIdGbR2_uFx1-LLQh/pub?start=false&loop=false&delayms=3000'> <div id="est_pptx_3" class="est_pptx mat_arts" alt='Algebra de Conjuntos'></div></a>  
+										</div>
+										<div>
+											<h3>ESTADÍSTICAS</h3>
+										<p>Describir al conjunto de datos obtenidos para la toma de decisiones</p>
+											
+										</div>
+									</div>
+								</div>
+
+								<div class="item">
+									<img alt="Calculo" id='mat_img1' src="imgx/calculo.png" />
+									
+
+									<div class="carousel-caption">												
+										<div class="mat_art">
+											<div class="mat_arts">
+												<a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vQWri_NNj0CwWdnBT1TGx6T_diQFyZ5WEOp1Rrz1GzahfzktMhIqLKL5y3dIkEm-3N9yjR5WarkQkhB/pub'> Integracion Imaginaria</a>
+											</div>
+											<div class="mat_arts">
+												<a target='_blank'  href='https://docs.google.com/presentation/d/e/2PACX-1vQrWrRbGcxRPtw9ZoMiwevnYa9r33CHRGjXaUZmh2ASk5PXFUO-juHLfegCYvVP0pBNQDKqJRHRDUJz/pub?start=false&loop=false&delayms=3000'>Raiz cuadrada de una recta</a>
+											</div>
+											<div class="mat_arts">
+												<a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vTGWhOqoDkZWZ7o30ViC4UsPv2QrWeoDXF9eDWMVYq-7ho_GW7Wrt13oThJl4bmt8Yl-rWqJeSichTU/pub'>Todos los limites son Uno</a>
+											</div>  
+										</div>	
+										<h3>CÁLCULO</h3>
+										<p>Determinar las consecuencias cuantificables de eventos y circunstacias de las que tenemos informacion relevante</p>
+									</div>
+								</div>
+
+
+								<div class="item active">
+									<img alt="Optimizacion" id='mat_img2' src="imgx/optimizacion.png"/>									
+										
+									<div id='optimizacion'class="carousel-caption">
+										<h3 >OPTIMIZACIÓN</h3>
+											<p>Selección del mejor elemento de un conjunto de elementos disponibles</p>
+											<p>Son técnicas de modelización matemática</p>
+											<p>que permiten dar respuesta a problemas de planificación</p>
+											<p>y apoyar de una forma eficiente el proceso de toma de decisiones</p>
+											<br/>
+											<br/>
+									</div>
+								</div>
+							</div>
+							<!-- Left and right controls -->
+    
+							<a class="left carousel-control" data-slide="prev" href="#myCarousel">
+								<span class='glyphicon glyphicon-chevron-left'/>
+								<span class="sr-only">Previous</span> 
+							</a>
+							<a class="right carousel-control" data-slide="next" href="#myCarousel">
+								<span class='glyphicon glyphicon-chevron-right'/>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+						
+						<style type="text/css">
+							#matematico{background-color:var(--blue);
+										display:flex; 
+										flex-flow: column wrap ; 
+										justify-content: center; 
+										align-items: center; 
+										height: 91vh}
+
+							.carousel{display:flex; 
+									 flex-flow: ;
+									 justify-content: center; 
+									 align-items: center;
+									 align-content: center; }
+
+							.carousel-inner .item {flex-flow: row wrap}
+
+							.carousel-inner .item img{width:99vw;
+								                      height:75vh;
+								                      text-align: center}
+
+							.carousel-caption {background:rgb(10,10,10,0.52);
+												bottom:;width:100%;
+												left:0;
+												padding-top: 30%}
+
+							.mat_art
+											{
+												display: flex;
+												flex-flow:row wrap;
+												align-content: center;
+												justify-content: space-evenly;
+												align-items: baseline;
+												
+												width:100vw;
+												background:transparent;
+												color:blue;
+												padding:2px;
+												margin:7px;
+												
+												position:relative;
+												left:0%;
+											}
+											.mat_arts
+											{
+												display: inline-flex;
+												flex-flow:row wrap;												
+												width:20vw;
+												height:20vw;												
+
+												background:#ccca;
+												color:blue;
+												border-color: black;
+												padding:2px;
+												
+												justify-content: center;
+												align-content: center;
+												align-items: center;												
+											}
+											.mat_arts a{background-color: black; padding:2%;}
+
+							.est_pptx{																	
+								border: 10px solid black;										
+								width:20vw;
+								height:10vw;
+							}
+							#est_pptx_1 {background-image: url('imgx/pptx/datos_no_agrupados.png');background-size:cover;}
+							#est_pptx_2 {background-image: url('imgx/pptx/probabilidad.png');background-size:cover;}
+							#est_pptx_3 {background-image: url('imgx/pptx/alg_conj.png');background-size:cover;}	
+
+							#optimizacion p{background: white; color:black;}							
+							
+
+							@media only screen and (max-width: 800px) {								
+								.carousel-inner .item img{width:99vw;height:45vh;text-align: center}
+								.carousel-caption {font-size: 10px;padding-top: 40%}
+								.est_pptx{																	
+								border: 2px solid black;										
+								
+							}
+							}
+						</style>
+				</section>
+
+				<section class="job" id="educador">
+					<h2  class="pptx pptx21 sec_tit">EDUCADOR</h2>
+					<div class="pptx pptx0" data-pptx='0'>
+						<a href='#id01' id='pptx_link0'><img id='pptx_img0' alt='pptx0' src='imgx/pptx/datos_no_agrupados.png'/></a>
+					</div>
+					<div class="pptx pptx1" data-pptx='1'>
+						<a href='#id01' id='pptx_link1'><img id='pptx_img1' alt='pptx1' src='imgx/pptx/electronica_digital.png'/></a>
+					</div>
+					<div class="pptx pptx2" data-pptx='2'>
+						<a href='#id01' id='pptx_link2'><img id='pptx_img2' alt='pptx2' src='imgx/pptx/funciones.png'/></a>
+					</div>
+					<div class="pptx pptx3" data-pptx='3'>
+						<a href='#id01' id='pptx_link3'><img id='pptx_img3' alt='pptx3' src="imgx/pptx/datos_no_agrupados.png"/></a>
+					</div>
+					<div class="pptx pptx4" data-pptx='4'>
+						<a href='#id01' id='pptx_link4'><img id='pptx_img4' alt='pptx4' src="imgx/pptx/derivada.png"/></a>
+					</div>
+					<div class="pptx pptx5" data-pptx='5'>
+						<a href='#id01' id='pptx_link5'><img id='pptx_img5' alt='pptx5' src="imgx/pptx/didactica.png"/></a>
+					</div>
+					<div class="pptx pptx6" data-pptx='6'>
+						<a href='#id01' id='pptx_link6'><img id='pptx_img6' alt='pptx6' src="imgx/pptx/electronica_digital.png"/></a>
+					</div>
+					<div class="pptx pptx7" data-pptx='7'>
+						<a href='#id01' id='pptx_link7'><img id='pptx_img7' alt='pptx7' src="imgx/pptx/estructura_datos_2.png"/></a>
+					</div>
+					<div class="pptx pptx8" data-pptx='8'>
+						<a href='#id01' id='pptx_link8'><img id='pptx_img8' alt='pptx8' src="imgx/pptx/estructura_datos_3.png"/></a>
+					</div>
+					<div class="pptx pptx9" data-pptx='9'>
+						<a href='#id01' id='pptx_link9'><img id='pptx_img9' alt='pptx9' src="imgx/pptx/funciones.png"/></a>
+					</div>
+					<div class="pptx pptx10" data-pptx='10'>
+						<a href='#id01' id='pptx_link10'><img id='pptx_img10' alt='pptx10' src="imgx/pptx/historia_internet_memes.png"/></a>
+					</div>
+					<div class="pptx pptx11" data-pptx='11'>
+						<a href='#id01' id='pptx_link11'><img id='pptx_img11' alt='pptx11' src="imgx/pptx/html_5.png"/></a>
+					</div>
+					<div class="pptx pptx12" data-pptx='12'>
+						<a href='#id01' id='pptx_link12'><img id='pptx_img12' alt='pptx12' src="imgx/pptx/internet.png"/></a>
+					</div>
+					<div class="pptx pptx13" data-pptx='13'>
+						<a href='#id01' id='pptx_link13'><img id='pptx_img13' alt='pptx13' src="imgx/pptx/lenguajes_programacion.png"/></a>
+					</div>
+					<div class="pptx pptx14" data-pptx='14'>
+						<a href='#id01' id='pptx_link14'><img id='pptx_img14' alt='pptx14' src="imgx/pptx/redes_informaticas.png"/></a>
+					</div>
+					<div class="pptx pptx15" data-pptx='15'>
+						<a href='#id01' id='pptx_link15'><img id='pptx_img15' alt='pptx15' src="imgx/pptx/seguridad_informatica.png"/></a>
+					</div>
+					<div class="pptx pptx16" data-pptx='16'>
+						<a href='#id01' id='pptx_link16'><img id='pptx_img16' alt='pptx16' src="imgx/pptx/sistemas_admin_bases_datos.png"/></a>
+					</div>
+					<div class="pptx pptx17" data-pptx='17'>
+						<a href='#id01' id='pptx_link17'><img id='pptx_img17' alt='pptx17' src="imgx/pptx/teaching.png"/></a>					
+					</div>	
+					
+					<div class="pptx pptx19">
+						<p>A pasionado por la educación. Lo que más amo en la vida es aprender. Cada día sin aprender algo es un día perdido.</p> 
+					</div>
+					<div class="pptx pptx22">
+						<p> Ese principio lo intento poner en práctica lo segundo que más amo: Compartir lo que he aprendido, lo que me parece interesante y útil, todo aquello que creo que puede ayudar a alguien </p> 
+					</div>
+					<div class="pptx pptx20">
+						<p>y que me encantó cuando alguien más me guió a ello. Enseñar es una pasión y un sueño para mí, y además un medio efectivo para reforzar mis conocimientos</p>
+					</div>
+					<div class="pptx pptx23">
+							<br/>
+							Haz click en la imagen para visitar mi blog educativo de informatica						
+							<a target="_blank" href="https://ivanguillermo.github.io/informaticos15/">
+								<img style='padding: 2% 18% 21% 19%; border:0;' src="informaticos15.png"/>
+							</a>
+					</div>
+					
+					<div id="id01" class="modal">
+			            <div class="modal-dialog">
+			              <div class="modal-content">
+			                <header class="containerheader">
+			                  <a href="#pptxs" class="closebtn">×</a>
+			                  <h2 id='pptx_shower_tit'>Didactica</h2>
+			                </header>
+			                <div class="containercontainer">
+			                  <iframe id='pptx_shower_frame' 
+			                          src="" 
+			                          frameborder="0" width="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+			                  </iframe>
+			                </div>
+			                <footer class="containerfooter">
+			                  <p style='color:white'>by Ivan Guillermo Lopez</p>
+			                  <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
+			                  </div>
+			                </footer>
+			              </div>
+			            </div>
+			        </div>
+
+			        <style>
+			        	.modal { 
+			            display:none; 
+			            position: absolute; 
+			            top:475vh;
+			            padding-top:0vh; 
+			            left: 0px;
+			            width: 100%; 
+			            height: 100%; 
+			            overflow: auto; 
+			            background-color: #000c; 
+			            z-index:80;
+		          		}
+			          /* Display the modal when targeted */
+			          .modal:target {display: block;position: absolute;}
+
+			          /* The modal box */
+			          .modal-dialog {display: block;vertical-align: middle;margin-top:30px;}
+			          /* The modal's content */
+			          .modal-dialog .modal-content {
+			            margin: auto;
+			            background-color: #232323;            
+			            border: 1px #777 solid;
+			            text-align: justify;
+			            width: 100%;
+			            height:75vh;
+			            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			            border-radius: 12px 12px;
+
+			            /* Add animation */
+			            -webkit-animation-name: example; /* Chrome, Safari, Opera */
+			            -webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
+			            animation-name: example;
+			            animation-duration: 3s;
+			          }
+
+			          #pptx_shower_frame{ 	height:60vh;   }
+
+			          /* The button used to close the modal */
+			          .closebtn {text-decoration: none;float: right;font-size: 25px;font-weight: bold;color: var(--magenta);}
+			          .closebtn:hover, .closebtn:focus {color: var(--blue);text-decoration: none;cursor: pointer;}
+			          .containercontainer {padding: 2px 14px;}
+		          		header {background-color: white; font-size: 20px;color: black; padding:0px 10px;}
+		          		footer {background-color: white font-size: 20px;color: black; padding:0px 10px;}    
+		   	        </style>
+
+					<style type="text/css">
+						#educador{background-color:var(--magenta); height:83vh; 
+								display: grid;
+								grid-gap:1.7px;
+								grid-template-columns: 4fr repeat(11, 1fr);
+							    grid-template-rows: 0.4fr repeat(6, 1fr) ;font-weight: 500; text-shadow: 0.5px 0.5px #292929;
+							    grid-template-areas:
+							        "p p p . . w w w . . . ."
+							        "p p p . . . t t t t d d" 
+							        "p p p x x x x . q q c c"
+							        "z z z z . . . n f b b ñ" 
+							        "z z z z . . m m m b b ñ"					       
+							        "y y . . o o m m m a a a" 
+							        "y y e l k j i h g a a a"              
+							    }
+
+
+				    	#educador img{width:100%;height:100%;}   
+				    		.pptx img{border:2.25px solid #fff}
+				    		.pptx17 img{border: 0px solid black}      
+						    .pptx0{grid-area: a;}  .pptx1{grid-area: b;} .pptx2{grid-area: c;}  
+						    .pptx3{grid-area: d;}  .pptx4{grid-area: e;} .pptx5{grid-area: f;}  
+						    .pptx6{grid-area: ñ;}  .pptx7{grid-area: g;} .pptx8{grid-area: h;}  
+						    .pptx9{grid-area: i;}  .pptx10{grid-area: j;} .pptx11{grid-area: k;} 
+						    .pptx12{grid-area: l;} .pptx13{grid-area: m;} .pptx14{grid-area: n;}
+						    .pptx15{grid-area: o; } .pptx16{grid-area: q; } .pptx17{grid-area: p; } 
+						    
+						    .pptx19{grid-area: t; font-size:16px; color:white; padding:1px; text-align:center;}
+						    .pptx20{grid-area: z; font-size:16px; color:white; padding-left:35%; text-align:center; } 
+						    .pptx21{grid-area: w;} 
+						    .pptx22{grid-area: x; font-size:14px; color:white; padding:1px; text-align:center}
+						    .pptx23{grid-area: y; font-size:13px; color:white; padding:1px 3px; text-align:center} 
+
+
+						    @media only screen and (max-width: 1200px){
+						    	.pptx5, .pptx6, .pptx7, .pptx8, .pptx9, .pptx10, .pptx11, .pptx12, .pptx13, .pptx14, .pptx15, .pptx16, .pptx17, .pptx18, .pptx20, .pptx23 {display:none;}
+
+								#educador{
+									grid-template-rows: 1fr repeat(2, 3fr) repeat(2, 1fr); 
+									grid-template-columns: repeat(6, 1fr);
+									grid-template-areas:
+							        "w w w w w w"
+							        "a a b b c c"							        
+							        "d d d e e e"
+							        "d d d e e e"
+							        "t t t t t t"
+							        "x x x x x x"}
+							    #pptx_shower_frame{
+							    	height:320px;
+							    }
+							    .pptx22, .pptx19{font-size: 10px;}
+							        
+						    } 	
+						    
+
+							@media only screen and (max-width: 500px) {
+								.sec_tit {font-size:10px;}				    	
+						    	#educador{height:83.3vh;	}
+						    	.rrss{display: none;}					    	
+							    	
+							}
+					</style>
 
 					<script type="text/javascript">
-						var slide1= document.getElementById('filmes');
-						var slide2= document.getElementById('seriess');
-						var slide3= document.getElementById('animess');
-
-
-						function film(name, seg, year, src, vsrc) {
-							  this.name  = name; 
-							  this.seg = seg; 
-							  this.year = year;
-							  this.src = src;
-							  this.vsrc = vsrc;}
-
-							var padrino = new film("El Padrino","F.F. Coppola", "1957", 'el_padrino.png','');
-							var matrix = new film("Matrix","The Wachowski", "1998", 'matrix.png','');
-							var psycho = new film("Psycho","Hitchcock", "1950", 'psycho.png','');
-							var antik = new film("antikorper","Christian Alvart", "2005", 'antikorper.png','');
-							var samurai = new film("Le Samurai",'Jean Pierre Meville', '1967', 'le_samurai.png','');
-							var seven_s = new film("Seven Samurais","A Kurosawa", "1954", 'seven_samurais.png','');
-							var sept = new film("Septimo Sello","Ingmar Bergman", "1957", 'septimo_sello.png','videos/septimo_sello.mp4');
-
-							var peliculas = [matrix, sept, antik, psycho, seven_s, padrino, samurai]
-
-						function serie(name, seg, src, vsrc) {
-							  this.name  = name;
-							  this.seg  = seg; 							   
-							  this.src = src;
-							  this.vsrc = vsrc;
-							};
-
-							var DN = new serie("Death Note","1", "death_note.png",'');
-							var breakB= new serie("Breacking Bad", " ", "breaking_bad.png",'');
-							var bojack= new serie("Bojack", " ", "bojack.png",'');
-							var peep_show= new serie("The Peep Show", " ", "peep_show.png",'');
-							var house= new serie("House MD", " ", "house.png",'');
-							var got= new serie("Game of Thrones", "7", "got.png",'');							
-
-
-							var series = [DN, breakB, bojack, peep_show, house, got];
-
-							var deno = new serie("Death Note","1", "death_note.png",'');
-							var sel= new serie("Serial Experiment Lain", " ", "sel.png",'');
-							var codeg= new serie("Code Geass", " ", "code_geass.png",'');
-							var naruto= new serie("Naruto", " ", "naruto.png",'');
-							var psypass= new serie("Psycho Pass", " ", "psycho_pass.png",'');
-							var ergo= new serie("Ergo Proxy", "7", "ergo_proxy.png",'');
-
-							var animes = [deno, sel, ergo, codeg, psypass, naruto];
-
-
-							 function print_slide(x, a, b){
-							  for (i = 0; i < 4; i++) 
-							    {x.innerHTML += 
-							    `<div class='item ${b}v' id='film0${i+1}' style='background-image: url(${b}/${a[i].src})' data-src=${a[i].vsrc}>
-	                                
-							        <h4 class='${b}_name'>${a[i].name}</h4>
-							        <h4 class='${b}_2'>${a[i].seg}</h4>
-							        <div class='actions'>
-							        	<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
-							            <div class='btn-sound'><i class="fa fa-volume-up"></i></div>
-							            <div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
-							            <div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
-							        </div>							        						          
-							     </div>`;}
-							  };
-							  print_slide(slide1, peliculas, 'movies');
-							  print_slide(slide2, series, 'series');
-							  print_slide(slide3, animes, 'series');
-
-					</script>
-					
-					
-
-			<div id='musica'>
-				<h2><img style='width:40vw' src='mis_canciones.png'/></h2>
-				<table class='song_table'>
-					<thead>
-				    	    <tr>
-				    	       <th style='width:4vw'></th>
-				               <th style='width:4vw'>Play</th>
-				               <th>Nombre</th>
-				               <th>Artista</th>
-				               <th>Album</th>
-				            </tr>
-				    </thead>
-				</table>
-				 
-				<div id='canciones' >					
-					<table>				        
-				        <tbody id='mis_canciones'>			              
-				              			              
-				        </tbody>
-				    </table>
-
-				    <script type="text/javascript">
-						var song_list= document.getElementById('mis_canciones');
-
-						function song(name, grupo, album) {
-							  this.name  = name; 
-							  this.grupo = grupo; 
-							  this.album = album;
-							  }
-
-							var riesgo = new song("riesgo ","los_mesoneros ", "caiga_la_noche ");
-							var cln = new song("caiga_la_noche ","los_mesoneros ", "caiga_la_noche ");							
-							var flor_de_fuego= new song("flor_de_fuego ","cdc ", "flor_de_fuego");
-							var slts= new song("smells_like_teen_spirit ","nirvana ", "in utero");
-							var a_guerra_lenta= new song("a_guerra_lenta ","cdc ", "flor_de_fuego ");
-							var my_hero= new song("my_hero ","foo_fighters ", " The Colour and the Shape");
-							var metalingus = new song('metalingus', 'alter_bridge', 'One Day Remain');
-							var sown = new song ('somewhere_only_we_know', 'keane', 'Hopes and Fears');
-							var ebic = new song ('everybodys_changing','keane', 'Hopes and Fears');
-							var terraza = new song ('la_terraza', 'cdc', 'Frisbee');
-							var otherside = new song ('otherside', 'rhcp', 'Californication');
-							var nopa = new song ('number_1_party_anthem', 'arctic_monkeys', 'AM');
-							var awin2b = new song ('always_where_I_need_to_be', 'the_kooks', 'Konk');
-
-
-							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa, awin2b ]					
-
-
-						function print_songs(){
-						 
-						  for (i = 0; i < songs.length; i++) 
-						   {song_list.innerHTML += 
-						    `<tr class=''>
-					           	<td style='width:2vw' data-label="More" class='more_music'>+</td>
-					            <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
-					               	<p class="playmusic fa fa-play-circle">
-					               	  <audio 
-					               		src="sounds/${songs[i].grupo}-${songs[i].name}.mp3"
-										data-name='${songs[i].name}'
-										data-band='${songs[i].grupo}'
-									  >
-					               	  </audio>
-					               	  <td data-label="Nombre"><a>${songs[i].name} </a></td>
-							          <td data-label="Artista">${songs[i].grupo}</td>
-							          <td data-label="Album">${songs[i].album}</td>
-					               	</p>
-					            </td>
-					                				                
-					        </tr>`}
-							};
-						print_songs();
-					</script>
-
-					<style>	
-							#canciones{
-								overflow-y: scroll;
-								overflow-x: hidden;
-								height:50vh;
-								position: relative;
-								left:1vw;
-								font-family: "Proxima Nova";
-							}
-							table
-							{
-								width:100vw;
-								height:70vh;								
-								background-color: black;		
-								color:white;
-								text-align: justify;
-								border:0px;
-
-							}
-							.song_table{
-								height:40px;
-								position: relative;
-								left:1vw;
-								font-family: "Monserrat";
-							}
-
-							.playmusic{
-								background:var(--spotify);
-								border-radius: 40%;
-								font-weight: 800;
-								border-top:4px solid black;
-							}
-
-							th{background-color: var(--spotify)}
-							td{padding:0% 2%;	}
-
-							tr::first-child{width:50vw}
-
-							@media only screen and  (max-width: 760px) {
-								td, tr { display: block; width:100vw; }
-								.more_music, .play_music_but{display:none;}
-								table{width:100vw;} 
-
-								thead tr {
-								  position: absolute;
-								  top: -9999px;
-								  left: -9999px;
-								}
-
-								tr { border: 1px solid #E74C3C; }
-								tr + tr { margin-top: 1.5em; }
-								td {
-								  border: none;
-								  border-bottom: 1px solid #eee;
-								  position: relative;
-								  padding-left: 5%;
-								  background-color: #333;
-								  text-align: ;
-								}
-
-								td:before {
-								  content: attr(data-label);
-								  display: inline-block;
-								  line-height: 1.5;
-								  margin-left: -100%;
-								  width: 100%;
-								  white-space: nowrap;
-								}
-							}
-
-							
-					</style>
-       			</div>  
 				
-				<div id='bandas' style='overflow: hidden; height:70vh'>
-					<div class="panels">
-				        <div class="panel panel1">
-					      	<p>The</p>
-					      	<div class="centro">
-						      	<div class="box box1">Naive</div>
-							    <div class="box box2">Sofa Song</div>
-							    <div class="box box3">Sway</div>
-							    <div class="box box4">Mis 
-							       <audio src='sounds/the_kooks-always_where_I_need_to_be.mp3'></audio>
-							    </div>
-							    <div class="box box5">Happy</div>
-							    <div class="box box6">Ooh la</div>
-							    <div class="box box7">Young Folks</div>				      	
-					      	</div>
-				     		<p>Kooks</p>
-				     	</div>
-					    <div class="panel panel2">
-					      	<p>Caramelos</p>
-					      	<div class="centro">
-						      	<div class="box box1">La Terraza</div>
-							    <div class="box box7">Flor de Fuego</div>
-							    <div class="box box6">Verano</div>
-							    <div class="box box4">Bandas  
-							    	<audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
-							    </div>
-							    <div class="box box2">Veronica</div>
-							    <div class="box box3">La Llama</div>
-							    <div class="box box5">El mar</div>							
-					      	</div>
-					     	<p>Cianuro</p>
-					    </div>
-					    <div class="panel panel3">
-					      <p>Keane</p>
-					      <div class="centro">
-					      	<div class="box box4"> De
-					      		<audio src="sounds/keane-nothing_in_my_way.mp3"></audio>
-					      	</div>
-					      </div>
-					      <p>ǝuɐǝ>[</p>
-					    </div>
-					    <div class="panel panel4">
-					      <p>𝔸𝕣𝕔𝕥𝕚𝕔</p>
-					      <div class="centro">
-					      	<div class="box box7">R U Mine</div>
-						    <div class="box box3">Mardy Bum</div>
-						    <div class="box box6">4 out of 5</div>
-						    <div class="box box4">Rock   
-						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
-						    </div>
-						    <div class="box box5">505</div>
-						    <div class="box box2">Balaclava</div>
-						    <div class="box box1">The Bakery</div>
-					      </div>
-					      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
-					    </div>
-					    <div class="panel panel5">
-					      <p>Muse</p>
-					      <div class="centro">
-					      		<div class="box box1">Unintended</div>
-							    <div class="box box3">Bliss</div>
-							    <div class="box box6">Hysteria</div>
-							    <div class="box box4">Favoritas 
-							    	<audio src="sounds/rhcp-otherside.mp3"></audio>
-							    </div>
-							    <div class="box box2">Starlight</div>
-							    <div class="box box6">Resistance</div>
-							    <div class="box box7">Uprising</div>
-					      </div>
-					      <p>ǝs𝕟W</p>
-					    </div>
-				</div>
+						var pptxs=
+                [
+                  ["datos_no_agrupados", "Datos no agrupados", 'https://docs.google.com/presentation/d/e/2PACX-1vRndRh69UxkKMdnXo-8NJuSvBFVhPO-vALoLAyaacHHZVURx8OxoYz-jZB30PoLCX65PiN6oJyoqfo3/embed?start=false&loop=false&delayms=3000'],
 
-				<style type="text/css">
-					.panels {
-					      height:70vh;
-					      width:100vw;
-					      overflow: hidden;
-					      display:flex;
-					      margin: 2vh 0px;
-					    }
+                  ["derivada","Derivadas",  'https://docs.google.com/presentation/d/e/2PACX-1vSyWsf67g0hTONcUMN-tlXjAzHyoatA-u-C7agtV6wQFEuLCA4tvK-6cTSDPDXPebKOsZMGQjvIryZk/embed?start=false&loop=false&delayms=3000'],
 
-					    .panel {
-					      background:#6B0F9C;
-					      box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
-					      color: var(--color);
-					      text-align: center;
-					      align-items:center;
-					      align-content: center;
-					      /* Safari transitionend event.propertyName === flex */
-					      /* Chrome + FF transitionend event.propertyName === flex-grow */
-					      transition:
-					        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-					        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-					        background 0.2s;
-					      font-size: 30px;
-					      background-size:cover;
-					      background-position:center;
-					      flex:1;
-					      justify-content:center;	      
-					      display: flex;
-					      flex-direction:column;
-					    }
+                  ["didactica", "Didactica",'https://docs.google.com/presentation/d/e/2PACX-1vSrG0GkskW6HR6z9hgkoQmq61UE_K81Stogr5Gwished9Sdox20PcrAhxSQOUgkB8bgsG6ZE4puXZ01/embed?start=false&loop=false&delayms=3000'],
 
-					    .panel1 {background-image:url(the_kooks.jpg); }
-					    .panel2 {background-image:url(caramelos_de_cianuro.jpg); }
-					    .panel3 {background-image:url(keane.jpg); }
-					    .panel4 {background-image:url(arctic_monkeys.jpg); }
-					    .panel5 {background-image:url(muse.jpg); }
+                  ["electronica_digital","Electronica Digital",'https://docs.google.com/presentation/d/e/2PACX-1vRCdEw85JiDkLsdGDjVVrpFDcH6LuojqAz1mFoUstDeq6tGMqHmp-FPmtmEsxrKz2eDYLChZzOK40h2/embed?start=false&loop=false&delayms=3000'],
 
-					    .panel > * {
-					      margin:0;
-					      width: 100%;
-					      transition:transform 0.5s;
-					      display:flex;
-					      flex: 1 0 auto;
-					      justify-content: center;  align-items: center;
-					    }
+                  ["estructura_datos_2",  "Estructura Datos 2",'https://docs.google.com/presentation/d/e/2PACX-1vTvtZBStPW16UbZ9pm_eiW4ClMdjDyuINHmPNSrfpEHMUQeFfozknVf_f0HMbaPiHwxsTBayHZFo2NU/embed?start=false&loop=false&delayms=3000'],
 
-					    .panel > *:first-child {transform: translateY(-100%);} 
-					    
-					    .panel.open-active > *:first-child {transform: translateY(0);} 
+                  ["estructura_datos_3","Estructura Datos 3",'https://docs.google.com/presentation/d/e/2PACX-1vQH3_0WnKUT0V1Yv0xtszTMSixMEPiTDE4qqgduPSwj74Nu4f-Mm4yOdNtz2elLW_-G6TLeEXp7lcbn/embed?start=false&loop=false&delayms=3000'],
 
-					    .panel > *:last-child {transform: translateY(100%);}
-					    
-					    .panel.open-active > *:last-child { transform: translateY(0); }
+                  ["funciones","Funciones", 'https://docs.google.com/presentation/d/e/2PACX-1vSz7Cuhk4abHtZCby7C-H_7-U0FK1A0ZEU9QM63VLlC2G8A2cMcqLvHf_uJcWhB0nEped-yKDxmLLm3/embed?start=false&loop=false&delayms=3000'],
 
-					    .panel p {
-					      text-transform: uppercase;
-					      font-family: 'Amatic SC', cursive;
-					      text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-					      font-size: 2.5vw;;
-					    }
-					    .panel p:nth-child(2) {
-					      
-					      font-size: 2.5vw;
-					    }
+                  ["historia_internet_memes","Historia de Internet en Memes", 'https://docs.google.com/presentation/d/e/2PACX-1vQPbOEJmlAOhqGZSgWI6dw-PstlNQATLjnEIe2nfLtMsZvwWeYnLDlwK3EQnvzpHslfUiZzsjuVi6kc/embed?start=false&loop=false&delayms=3000'],
 
-					    .panel.open {
-					      font-size:2vw;
-					      flex: 9;
-					    
-					      ;
-					      transition: 1s all;
-					    }
-					    .panel.open p{
-					      transform: rotate(3deg);
-					      
-					    }
-					    .box {
-							  text-align: center;
-							  text-shadow:4px 4px 0 rgba(0,0,0,0.1);
-							  padding:;
-							  flex-basis:18vw;
-							  flex-grow:1;
-							  font-size: 11px;}
-							/* Colours for each box */
-							.box1 { background:#1abc9c;font-size: ;color:white;}
-							.box2 { background:#3498db;font-size: ;color:white;}
-							.box3 { background:#9b59b6;font-size: ;color:white; flex-grow:5;}
-							.box4 { font-weight: 800; font-size: 18px; flex-basis:100%;}
-							.box5 { background:#f1c40f;font-size: ;color:white;}
-							.box6 { background:#e67e22;font-size: ;color:white;}
-							.box7 { background:#e74c3c;font-size: ;color:white; flex-basis: 70%;}				
+                  ["html_5","Html 5",'https://docs.google.com/presentation/d/e/2PACX-1vQHrgHWROF9aBOBFFVIsHSAH8JEaKBTTym0SvWLFwbLY-fux7zqb9SHVodZcGgG_jSELyLfCI_57BRU/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["internet","Internet", 'https://docs.google.com/presentation/d/e/2PACX-1vT92Kk4Ia9bVM_KUDWjPZIxGK1GRfKsamNTG64hrnjzaqWuPsizgdy0BE5bfCqzi-pIvup_ZgbQaPdn/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["lenguajes_programacion","Lenguajes Programacion", 'https://docs.google.com/presentation/d/e/2PACX-1vSrG0GkskW6HR6z9hgkoQmq61UE_K81Stogr5Gwished9Sdox20PcrAhxSQOUgkB8bgsG6ZE4puXZ01/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["redes_informaticas","Redes Informaticas",'https://docs.google.com/presentation/d/e/2PACX-1vRAlK7AeyzoJK5lwLl1hWMmMEC8I5UNCqmYKEP9qVR7ouxsbCdX6b8-OxDop1m6mhO19qD3isMGcLxA/embed?start=false&loop=false&delayms=3000' ],
+                  
+                  ["seguridad_informatica","Seguridad Informatica",'https://docs.google.com/presentation/d/e/2PACX-1vTln-XIH3L6AA91-Wt06pqcIN2GRXL2zrdYEC6JGfqy84qeab7V0ncvbOWwCYuhYDi8UO2a1xvWmdBc/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["sistemas_admin_bases_datos","Sist. Admin. de Bases de Datos",'https://docs.google.com/presentation/d/e/2PACX-1vQFM-zsk_a02vf1T59ro4oyOSms2iMjAtvXqd5qsHjQ35z5jtTIUK9Jtz-ozzoBuHcMwUJ99DAN5dPy/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["sistemas_computacion","Sistemas Computacion", 'https://docs.google.com/presentation/d/e/2PACX-1vT4JQ4EusltX1FKSGTd2SHYEzEp4og2H1w0BLzDZl0dikc2KpWy9pKqtUoRDNFT3l4-ByrdHTocLDKU/embed?start=false&loop=false&delayms=3000'],    
 
+                  ["descartes", "Descartes",'https://docs.google.com/presentation/d/e/2PACX-1vTNBdAb2wgOK10TA61NemgvqSR_YY9uNiz1XSM5_xfakTRqhZ9PjztwHvUCDSJiYDLfmwYgxjwylESL/embed?start=false&loop=false&delayms=3000']
+                ];
 
-							/* We start writing out flexbox here. The above is just page setup */
-							
-					    .centro{display:flex; 
-					    		flex-flow: row wrap; 
-					    		justify-content: space-around; 
-					    		align-items: center; 
-					    		align-content: center;
-					    		padding:0;
-							  }
-					    	
-					    .open-active > .centro {color:white;background-color:rgba(245,245,245,0.25);}
-					    .open-active > .centro ul{display:flex; flex-flow: column wrap; justify-content: space-around;}
-				</style>			
-			</div>		
-				
-				
+				 		var shower = document.getElementById('pptx_shower_frame');
+		         		var shower_tit = document.getElementById('pptx_shower_tit');
 
-				<h2 style='font-size: 7vw'>Mis Albums favoritos</h2>
-			<div id='albums'>
-					
-					<style type="text/css">
-						h2{display: flex; justify-content: center; font-size: 40px; color:white; font-weight: 600; text-shadow: 2px solid black}
-
-						#albums{background-color:#aa3302; height:95vh; 
-								font-size: 14px;
-								border: 2px solid black;
-								color:white;
-								display: grid;
-								grid-gap:2px;
-								grid-template-columns: repeat(8, 1fr);
-							    grid-template-rows: repeat(4, 1fr) ;
-							    grid-template-areas:
-							        "a a c c b . d g"
-							        "a a c c n n o o" 
-							        "k l f . n n o o"
-							        "e . i m j . . h"
-							        							                     
-							    }
-							.album {display:flex; justify-content: center; align-items: center; align-content: center; border: 2.75px solid #fff; background-repeat: no-repeat; background-size:cover; background-position: center center; }
-
-							.album span{font-size:14px; transform:rotate(-45deg); font-weight: 600; text-shadow: 1px 2px black; background-color: #333c }	
-
-
-						    .album01{grid-area: a;background-image:url(albums/caiga_la_noche.png);}  
-						    .album02{grid-area: b;background-image:url(albums/revolver.png);} 
-						    .album03{grid-area: c;background-image:url(albums/frisbee.png);}  
-						    .album04{grid-area: d;background-image:url(albums/insidein.png);}  
-						    .album05{grid-area: e;background-image:url(albums/louise.png);} 
-						    .album06{grid-area: f;background-image:url(albums/franz_ferdinand.png);}  
-						    .album07{grid-area: g;background-image:url(albums/this_is_it.png);}  
-						    .album08{grid-area: h;background-image:url(albums/pure_heroine.png);} 
-						    .album09{grid-area: i;background-image:url(albums/black_parade.png);}  
-						    .album10{grid-area: j;background-image:url(albums/konk.png);}  
-						    .album11{grid-area: k;background-image:url(albums/talking_dreams.png);} 
-						    .album12{grid-area: l;background-image:url(albums/badlands.png);} 
-						    .album13{grid-area: m;background-image:url(albums/flor_de_fuego.png);} 
-						    .album14{grid-area: n;background-image:url(albums/santo_pecado.png);} 
-						    .album15{grid-area: o;background-image:url(albums/born2die.png);}
-
-						    @media only screen and (max-width: 1000px){
-							#albums {
-								height:75vh;
-								grid-gap:1px;
-								grid-template-columns: repeat(4, 1fr);
-							    grid-template-rows: repeat(3, 1fr) ;
-							    grid-template-areas:
-							        "a a b . "
-							        ". g c c " 
-							        "d e . f "
-							        }
-							.album span{font-size: 9px;}
-							.album08, .album09, .album10, .album11, .album12, .album13, .album14, .album15 {display: none}
-							
+						function shuffle(array) {
+		          			var currentIndex = array.length, temporaryValue, randomIndex;
+		          			while (0 !== currentIndex) {
+			            		randomIndex = Math.floor(Math.random() * currentIndex);
+			            		currentIndex -= 1;
+		  					    temporaryValue = array[currentIndex];
+					            array[currentIndex] = array[randomIndex];
+			            		array[randomIndex] = temporaryValue;
+								 }
+							return array;				  
 						}
-						    
-						  
-					</style>
-					
-						<div class='album album01' data-src=''>
-							<span>Caiga la noche <br/> Los Mesoneros</span>
-						</div>
-						<div class='album album02' data-src=''>
-							<span>Revolver <br/> The Beatles</span>
-						</div>
-						<div class='album album03' data-src=''>
-							<span>Frisbee <br/> Caramelos de Cianuro</span>
-						</div>
-						<div class='album album04' data-src=''>
-							<span>Inside In/ Inside Out <br/> The Kooks</span>
-						</div>
-						<div class='album album05' data-src=''>
-							<span>Louise Attaque <br/> Louise Attaque</span>
-						</div>
-						<div class='album album06' data-src='https://www.dropbox.com/s/2e83he1fmdfbvzm/ff.mp4?raw=1'>
-							<span>Franz Ferdinand  <br/> Franz Ferdinand</span> 
-						</div>
-						<div class='album album07' data-src=''>
-							<span>The Strokes <br/> This is it</span>
-						</div>
-						<div class='album album08' data-src='https://www.dropbox.com/s/8ssdkoccurj2hbh/pure_heroine.mp4?raw=1'>
-							<span>Pure Heroine <br/> Lorde</span>
-						</div>
-						<div class='album album09' data-src='https://www.dropbox.com/s/ea4jdm5i4r2ylz5/The%20Black%20Parade.mp4?raw=1'>
-							<span>Black Parade  <br/> My Chemical Romance</span>
-						</div>
-						<div class='album album10' data-src=''>
-							<span>Konk <br/> The Kooks</span>
-						</div>
-						<div class='album album11' data-src=''>
-							<span>Talking Dreams <br/> Echosmith</span>
-						</div>	
-						<div class='album album12' data-src=''>
-							<span>Badlands <br/> Halsey</span>
-						</div>							
-						<div class='album album13' data-src=''>
-							<span>Flor de Fuego <br/> CDC</span></div>		
-						<div class='album album14' data-src='https://www.dropbox.com/s/kfpl244uxm1138s/santo_pecado.mp4?raw=1'>
-							<span>Santo Pecado <br/> Arjona</span>
-						</div>
-						<div class='album album15' data-src=''>
-							<span>Born to die <br/> Lana del Rey</span>
-						</div>					
-			</div>
-
-			<div id='literatura'>
-					<style>
-						.display_books{width:; height:40vh; 
-								 display:flex; 
-								 flex-flow: row nowrap; 
-								 justify-content:space-around; 
-								 align-items: center ; 
-								 background-color: black;
-								 color:#E50914; 
-								 margin:10vh 0vh;}
-
-						.item2{height:18vw; 
-								width: 12vw; 
-								 
-								border:2px solid #191414;
-								display:flex; 
-								flex-flow: column wrap;
-								 justify-content: flex-end; 
-								 align-items: center; 
-								 align-items: center;
-								padding:20px;
-							background-repeat: no-repeat; background-size: 100% 100%;}
-							.item2:hover {width:20vw; height:28vw;transition: all 0.5s}
-							.item2:hover > .book_autor{display:flex;}
-							.item2:hover > .book_name{display:flex;}
-
-							.read{background-color: #ffffff99; border:2px solid var(--spotify); border-radius: 12px 12px; width:8vw;}
-							.read a, .see_more{text-decoration: none;color:red;font-weight: 600;}
-
-						.book_name, .book_autor{font-size: 12px; display:none; color:white; background: black; justify-content: center; align-content: center; align-items: center;}			
-
-						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center; padding:1px 1.5px;}
-						h3{font-size: 20px;color:white;font-weight: 600; margin-left: 5vw}
-						
-						 @media only screen and (max-width: 1000px){
-						 	.display_books{width:; height:90vh; 
-								 display:flex; 
-								 flex-flow: row wrap; }
-							.item2{
-								height:28vh;
-								width:22vw;
-							        }
-							.item2:hover {width:29vw; height:38vh;transition: all 0.5s}						
-						}		
-																				
-	
-
-					</style>
-				
-					
-					<div class='books_list' id="fav_books">
-						<h3 class='secTit'>Libros Favs</h3>
-						<div class='display display_books' id='mis_libros'>
-						</div>
-					</div>		
-			</div>
-
-			<script type="text/javascript">
-						var books_list= document.getElementById('mis_libros');
-
-						function book(name, autor, href, src) {
-							  this.name  = name; 
-							  this.autor = autor; 
-							  this.href = href;
-							  this.src = src;							  
-							  }
-
-							var ahz = new book("Asi Hablo Zaratustra","F. Nietzsche", "http://www.enxarxa.com/biblioteca/NIETZSCHE%20Asi%20hablo%20Zaratustra.pdf","ahz");
-							var ficciones= new book("Ficciones","JL Borges", "https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxiaWJsaWJyb3NwZGZ8Z3g6MWU1OWFiN2EwYWMwNjRiNA", 'ficciones');
-							var demian= new book("Demian","H. Hesse", "http://biblio3.url.edu.gt/Libros/2011/Demian.pdf","demian");
-							var iliada= new book("La Iliada","Homero", " https://www.biblioteca.org.ar/libros/130860.pdf","iliada");
-							var nausea= new book("La Nausea","JP Sartre", "http://imago.yolasite.com/resources/Sartre,%20Jean%20Paul%20-%20La%20nausea.pdf","nausea");
-							var existencialismo= new book("Existencialismo es un Humanismo","JP Sartre", " ","existencialismo");
-							var orestiada= new book("Orestiadaa","", "https://rossami.files.wordpress.com/2009/03/la-orestiada1.pdf","orestiada");
-							var etranger = new book('El Extranjero', 'A. Camus', 'http://www.libroteca.net/_Mas-descargados/Camus,%20Albert%20-%20El%20Extranjero.pdf', 'extranjero')
-
-							var books = [ahz, iliada, demian, nausea, ficciones, existencialismo, orestiada, etranger ]					
-
-
-							 function print_books(){
-							 
-							  for (i = 0; i < books.length; i++) 
-							    {books_list.innerHTML += 							    
-
-					        `<div class='item2 item0${i}' id='book0${i}' style='background-image:url("books/${books[i].src}.png")'>
-								<div class='btn-play-book'></div>
-								<h4 class='book_name'><center>${books[i].name}</center></h4>
-								<h4 class='book_autor'>${books[i].autor}</h4>								
-								<button class='read'>
-									<a target='_blank' href='${books[i].href}'>Leer</a>
-								</button>
-								<div class='see_more'> + </div>
-							</div>`}
-							  };
-							  print_books();
-					</script>
-
-			<div id='deportes' style="">	
-				<style type="text/css">
-					#deportes{
-					 	background-image: url(deportes/ballack.png);
-					 	background-size: 100% auto;					 	 
-					 	display: flex; 
-					 	background-repeat: no-repeat;
-					 	background-position: bottom right;
-					 	flex-flow: row nowrap; 
-					 	justify-content: space-between; 
-					 	align-items: flex-end; 
-					 	align-content: flex-end;
-					 	height:80vh;
-					 }
-
-					.sports{
-						display: inline-flex; 
-						width:14vw; 
-						height:;}
-
-					@media only screen and (max-width: 1000px){
-							.sports {width:;}
-							#deportes{height: 40vw}
 							
-						}
-					</style>
-					
-						<img title='Paolo Maldini' class='sports' src='deportes/maldini.png'/>
-						<img title='Cristiano Ronaldo' class='sports' src='deportes/cr7.png'/>
-						<img title='Zlatan Ibrahimovic' class='sports' src='deportes/zlatan.png'/>
+						function pptxs_change(){	
+							ranpptxs = shuffle(pptxs);						
+							for (i = 0; i < 15; i++) {
+							  document.getElementById(`pptx_img`+`${i}`).src='imgx/pptx/'+ pptxs[i][0] +'.png';							  
+							}
+							
+						};									
 						
-						<img title='Bastian Schweinsteiger' class='sports' src='deportes/schweini.png'/>
-						<img title='Michael Schumacher' class='sports' src='deportes/schumi.png'/>
-						<img title='Dirk Nowitski' class='sports' src='deportes/nowitski.png'/>
+						setInterval(pptxs_change, 15000)
+
+						var pptxss = document.querySelectorAll('.pptx');
+						pptxss.forEach(pptx => pptx.addEventListener('click', show))
+
+				        function show(){
+				            var j = this.dataset.pptx;           
+				            var k = pptxs[j][2];
+				            var l = pptxs[j][1];
+				            shower.src = k ;
+				            shower_tit.innerHTML = l;				            
+				          }	          
+		        		pptxs_change();          
+      				</script> 	   						
+				</section>		
 			</div>
 		</div>
-		
-		<br/>
-		<br/>
-		
+			
+		<div class="item foot"> 
+					   <center class="rrss">
+					        <a id='facebook' href="https://www.facebook.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-facebook-official"></i></div></a>
+					        <a id='instagram' href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-instagram"></i></div></a>
+					        <a id='twitter' href="https://twitter.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-twitter"></i></div></a>
+					        <a id='youtube' href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA?view_as=subscriber" target="_blank" rel="noopener"><div><i class="fa fa-youtube"></i></div></a>
+					        <a id='linkdin' href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener"><div><i class="fa fa-linkedin"></i></div></a>
+					        <a id='github' href="https://github.com/ivanguillermo" target="_blank" rel="noopener"><div><i class="fa fa-github"></i></div></a>
+				    	</center>
+				    	<div style='background-color: black; height:5.5vh'></div>
+		</div>
+			
+		<style type="text/css">
+		 		.rrss{
+							border-color: black;
+							text-align:center;
+							height:11vh;
+							color:white;
+							display: flex; flex-flow: row nowrap; justify-content: center; align-items: flex-start;
+							padding-top: 0.5vh;
+							font-size:2.5vh;
 
-		
-		<nav id='music_player' class='navbar navbar-inverse navbar-fixed-bottom'>
-			<div class='side_music-player'>						
-					<i>Now Playing</i><br/>
-					<i id='song_on'>Caiga la Noche</i><br/>					
-			</div>
-
-			<div id="audioplayer">				
-				<div id='audiocontrols'>
-					<div id='rep_shuffle-btn'>🔀</div>
-					<div id='rep_forward-btn'>⏮</div>
-					<div id='rep_play-btn' class='flex-centrado'>▶️</div>
-					<div id='rep_back-btn'>⏭</div>
-					<div id='rep_repeat-btn'>🔁</div>
-				</div>				
-				<audio id='reproductor'></audio>
-				<progress id="progress_audio" value="30" max="100" > 32% </progress>
-			</div>
-
-			<div class='side_music-player'>
-					<i></i><progress id="progress_audio2" value="30" max="100" > 32% </progress><br/>
-					<i id='song_on_band'>Los Mesoneros</i><br/>					
-			</div>
-		</nav>	
-
-			<style type="text/css">
-				#rep_play-btn{
-					border-radius: 50%;
-					border: 1px solid black;
-					width:1.6vw;
-					height:1.6vw;
-					font-weight: 800;
-					padding: 0;
-					margin:0;					
-				}
-				.side_music-player{
-					display: flex; 
-					flex-direction: column;
-					justify-content: center; 
-					align-content: center; 
-					align-items: center;
-					flex-shrink: 0.5
-					font-size: 12px;
-					width: 
-				}
-				#audioplayer{margin:0 20vw; justify-content: center; align-content: center; align-items: center;}
-			</style>
-			<script type="text/javascript">
-				var reproductor = document.getElementById('reproductor');
-				const play_centros = document.querySelectorAll('.playmusic');
-
-				var play_bot = document.getElementById('rep_play-btn');
-
-				const songOn =document.querySelector('song_on');
-			    const songOnBand =document.querySelector('song_on_band');	
-				
-				var p_s= 1;
-
-				function play_stop()
-				{
-					p_s++;
-					if ((p_s%2)==0){reproductor.play();play_bot.style.color='red';play_bot.innerHTML='||'};
-					if ((p_s%2)>0){reproductor.pause();play_bot.style.color='white';play_bot.innerHTML='▶️'};
-				}
+						}
+						.rrss *{color:white;}
+						.rrss a{text-decoration: none}
+						.rrss div{ border:3px double white; border-radius:50%; width:6vh; height: 6vh;text-align:center;
+		                  display: flex; flex-flow: row wrap; justify-content: center; align-items: center;
+		                  margin: 0px 15px;}
+		                .rrss div:hover {background: var(--color);} 
+		                .rrss div:hover > i{color:black; } 
 
 
-				function play_music(){        			      
-			      const audiosrc = this.querySelector('audio');		      		      
-
-			      play_centros.forEach(play_centro => play_centro.style.backgroundColor='var(--spotify)');
-			      reproductor.src = audiosrc.src;			      
-			      reproductor.currentTime = 0;
-			      reproductor.play();
-			      song_on.innerHTML = audiosrc.dataset.name;
-			      song_on_band.innerHTML = audiosrc.dataset.band;
-			      this.style.backgroundColor='red';
-			      play_stop();
-			    }			    
-			    play_centros.forEach(play_centro => play_centro.addEventListener('click', play_music));
-			    play_bot.addEventListener('click', play_stop);
-
-			</script>
 
 
-			<style>
-				#music_player{
-					width:100vw; 
-					height:8vh; 				 
-					
-					background-color: var(--spotify);
-					display: flex;
-					flex-flow: row wrap;
-					justify-content: space-between;
-					align-items: stretch;
-					align-content: center;
-					font-size: 15px; 
-					padding:0px 0vw; 
-					color:white; 
-					font-weight: 300; 
-					font-family: sans;
-					margin: 0;
-				}
-				#music_player div li{text-decoration: none}
-				
-				#audiocontrols{
-					display:flex; flex-flow: row wrap; justify-content: space-between;
-				}
-				#progress_audio, #progress_audio2{
-					height:3px; 
-					width:15vw;
-					background-color: #E50914; 
-					color:white;
-				}
-			</style>	
+		                @media only screen and (max-width: 800px) {
+
+		                	.rrss div{width: 30px; height:30px;}
+		                	#youtube{display:none;}
+
+
+		                	html{overflow:hidden;}
+		                }
+		</style>
+	
 	</body>
 
 
-  <script>
-	  	const panels = document.querySelectorAll('.panel');
-	  	
-
-	  	function toggleOpen(){
-	  		this.classList.toggle('open');      
-	  	}
-
-		document.getElementById('player').volume = 0.5;
-	  	function toggleActive(e){
-	  		if (e.propertyName.includes('flex')){
-	  			this.classList.toggle('open-active');
-	        }
-	  	}
-
-	  	panels.forEach(panel => panel.addEventListener('click', toggleOpen));
-	  	panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
-
-	    caja_colores = ['#ef1df3','#5ae6e6','#0ca1a1','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];
-
-	    const centros = document.querySelectorAll('.centro');
-	    const player = document.getElementById('player');
-
-	    function mine(){
-	 
-	      const colores = caja_colores[Math.floor(Math.random() * 7)];
-	     document.documentElement.style.setProperty(`--color`,colores);
-	      
-	      const audiosrc = this.querySelector('audio');
-	      
-	      if (2>1){
-	      player.src = audiosrc.src;
-	      player.currentTime = 0;}
-	      player.play();            
-	    }    
-	    centros.forEach(centro => centro.addEventListener('click', mine));      
-  </script>
-
-
-  <script type="text/javascript">
-	  
-	  var psyp_epi =[];
-	  var sel_epi=[];
-	  var dn_epi = [['',''],
-	            ['1. Renacimiento','Shinsei (新生)','Oct 03, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%201%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['2. Confrontación','Taiketsu (対决) ','Oct 10, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%202%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['3. Negociaciones ','Torihiki (取引)','Oct 14, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%203%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['4. Persecución','Tsuiseki (追跡)','Oct, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%204%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['5. Estrategia','Kakehiki (駆引)','Octubre 31, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%205%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['6. Florecer','Hokorobi (綻び) ','Nov 7, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%206%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['7. Nublado','Donten (曇天) ','Nov 14, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%207%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['8. Mirada','Mesen (目線) ','Nov 21, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%208%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['9. Contacto','Sesshoku (接触) ','Nov 28, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%209%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['10. Sospechas','Giwaku (疑惑) ','Dic 5 , 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%210%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['11. Asalto','Totsunyū (突入) ','Dic 12, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%211%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['12. Enamoramiento','Koigokoro (恋心) ','Dic 19, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%212%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['13. Confesión',' Kokuhaku (告白)','Dic 26, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%213%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['14. Amigo','Tomodachi (友達) ','Ene 2, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%214%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['15. Apuesta','Kake (賭け) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%215%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['16. Decisión','Ketsudan (決断) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%216%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['17. Ejecución','Shikkō (執行) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%217%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['18. Compañeros','Nakama (仲間) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%218%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['19. Matsuda','Matsuda (松田) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%219%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['20. Improvisación','Kosoku (姑息) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%220%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['21. Actividad','Katsuyaku (活躍) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%221%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['22. Inducción','Yūdō (誘導) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%222%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['23. Frenesí','Kyōsō (狂騒) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%223%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['24. Resurrección','Fukkatsu (復活) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%224%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['25. Silencio','Chinmoku (沈黙)','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%225%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['26. Regeneración','Saisei (再生) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%226%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['27. Secuestro','Yūkai (誘拐) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%227%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['28. Impaciencia','Shōsō (焦燥) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%228%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['29. Padre','Chichioya (父親) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%229%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['30. Justicia','Seigi (正義) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%230%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['31. Traspaso','Ijō (移譲) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%231%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['32. Selección','Sentaku (選択) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%232%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['33. Desprecio','Chōshō (嘲笑) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%233%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['34. Acecho','Koshi (虎視) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%234%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['35. Malicia','Satsui (殺意) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%235%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['36. 28 de enero','28 (1.28) ','Oct, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%236%20Sub%20Esp.mp4.mp4?raw=1'],
-	            ['37. Nuevo Mundo','Shinsekai (新世界) ','Junio 26, 2007','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%237%20Sub%20Esp.mp4.mp4?raw=1']
-	          ];
-	    var series_epi=[[psyp_epi, dn_epi, sel_epi],['Psycho_Pass','Death_Note','sel']];
-
-		var epi= document.getElementById('episodios');
-	  
-
-		function print_epi(x){
-	    var k=series_epi[0][x];
-	  for (i = 1; i < k.length; i++) 
-	    {epi.innerHTML += 
-	              `<tr>                    
-	                  <td>
-	                    <div class='preview' style="background:url('series/${series_epi[1][x]}/DN_${i}.png')">
-	                      <source src="${k[i][3]}" type="video/mp4">
-	                    </div>
-	                    <div>                       
-	                        <i data-label="epi_name">${k[i][0]} </i><br/>
-	                        <i data-label="epi_a">${k[i][1]} </i><br/>
-	                        <i data-label="epi_b">${k[i][2]}</i><br/>
-	                    </div>
-	                  </td>
-	              </tr>`;}
-	  };
-	  print_epi(1);
-  </script>
-
-  <script type="text/javascript">
-				const vplayer = document.getElementById('player_video_p');
-
-				const videov = document.querySelectorAll('.preview');				
-				function playvideos(){
-				  const videosrc = this.querySelector('source');        			      	      			      
-			      vplayer.src = videosrc.src;			      
-			      vplayer.play();		      	      	      
-			      videov.forEach(v => v.style.border='3px solid var(--spotify)');
-			      this.style.borderColor='blue';
-			    }			    
-			    videov.forEach(v => v.addEventListener('click', playvideos));
-
-
-			    const albumv = document.querySelectorAll('.album');				
-				function playalbum(){
-				  const albumsrc = this.dataset.src;		      
-			      vplayer.src = albumsrc;			      
-			      vplayer.play();		      	      			      
-			      albumv.forEach(a => a.style.border='2.75px solid white');
-			      this.style.border='4.75px solid var(--spotify)';
-			    }			    
-			    albumv.forEach(a => a.addEventListener('click', playalbum));
-
-			    const filmv= document.querySelectorAll('.moviesv');
-			    function playpelicula(){
-				  const filmsrc = this.dataset.src;		      
-			      vplayer.src = filmsrc;			      
-			      vplayer.play();		      	      			      
-			      filmv.forEach(a => a.style.border='2.75px solid white');
-			      this.style.border='4.75px solid var(--spotify)';
-			    }
-			    filmv.forEach(a => a.addEventListener('click', playpelicula));
-			</script>
-	
-  <script type="text/javascript">
-  	function album(name, band, src, img) {
-							  this.name  = name; 
-							  this.band = band; 
-							  this.src = src;
-							  this.img = img}
-
-  	var ff= new album('Franz Ferdinand', "franz_ferdinand", 'sounds/ff.mp4','ff.png')
-  	var mcr = new album ('The Black Parade', 'My Chemical Romance', 'https://www.dropbox.com/s/ddj472ajtpycaff/the_black_parade.mp4?raw=1','tbp.png')
-  	var lorde = new album ('Pure Heroine', 'Lorde', 'sounds/pure_heroine.mp4','lorde.png')
-  	var stpec = new album ('Santo Pecado', 'Arjona', 'sounds/santo_pecado.mp4', 'santo_pecado.png')
-
-  </script>
-
-
-
- <style>
-			  	:root {
-	   		 --color: rgb(200,200,200);
-	   		 --spotify:#1DB954;
-	   			}
-	  
-			    html {box-sizing: border-box;	}
-
-			    body {margin: 0;}
-			    *, *:before, *:after {box-sizing: inherit;}
-				html{overflow-x: hidden; background-color: #191414}
-				
-				.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}
-
-				@media only screen and  (max-width: 760px) {
-					#navflix{background:black;}
-					.img_nav{width: 22vw;margin:0 1.3vw;}
-					#navflix span a{font-size: 7px;color:red;font-weight: 800;width:13vw;}
-
-					#sidevideoplayer{display:none;}
-					.playero, #player, #player_video_p, .player_controls, nav{width:100vw;}
-					.player_button{font-size: 8px}
-					.fullScreen{display:none;}
-
-					#music_player {font-size: 6px; }
-					#music_player div{margin:0; padding:0;}
-					#audiocontrols{	margin: 0 5vw ;width: 30vw}
-					#progress_audio{width: 30vw}
-
-					#rep_shuffle-btn{font-size: 10px;}
-					#rep_forward-btn{font-size: 10px;}
-					#rep_play-btn {width: 20px; height: 20px; font-size: 11px;}
-					#rep_back-btn{font-size: 10px;}
-					#rep_repeat-btn{font-size: 10px;}
+		<style>
+					:root{
+						--color:#4fdb98;
+						--blue:#1AA9EC;
+						--orange:#ff9800;
+						--magenta:#D1215F;
+						--green: #a3bf34;
+					}
 					
-					.side_music-player{width:;font-size: 9px;}
-					.resetSpeed{display: none}
+					html{overflow:hidden;	scroll-behavior:;}
 
+					body {background: black;font-size: 120%;}
+					button{background-color:var(--color);}
+					section{height:92vh;}
+						.sec_tit{color:white;text-align:center;width:100%;margin-top: 20px;margin-bottom: 10px;text-shadow: 0.5px 0.5px #292929;padding:10px;}	
 
-					.display_1, .display_2, .display_3, .display_4{
-								 width:100vw; 
-								 height:15vh; }
-					input[type=range]::-moz-range-thumb { width: 5px; height: 5px}
+					a.active span{font-weight:600;font-size: 110%;color:#eee;text-shadow: -0.61px -0.9px var(--color)}
 
-					table{height: 50vw}
-				
+							.jumbotron, #quote, #yo_descripcion, #logos{z-index: 2; position: relative;}
+							
+							#translator, #programmer {position: relative;top:-20px;}
+							{position: relative;top:-20px;}
+							#matematico{position: relative;top:-10px;}
+							.body2{
+								width:50%;
+								border:0px solid yellow;
+								background: transparent;height:300;
+								z-index:;
+								position:absolute; ;
+								transform:rotate(-45deg);
+								height:400px;
+								width:250px;
+								top:-100;
+								left:30%;
+							}
+
+							
+							@-webkit-keyframes subir {
+				            0% {top:500px;}
+				            100% {top:-1300px;right:500px}
+				                      
+				          }
+				          /* Add animation (Standard syntax) */
+				          @keyframes subir {
+				            0% {top:500px;}
+				            100% {top:-1300px;}
+				              
+				          }
+				         
+				            
+							.balloon{
+								-webkit-animation-name: subir; /* Chrome, Safari, Opera */
+				            	 /* Chrome, Safari, Opera */
+				            	animation-name: subir;     	 
+				            	transform:rotate(30deg);
 						
-					.secTit{font-size: 13px;}	
-					.item:hover > .actions{
-								display:none;
-								opacity:1;
-								transition: all 0.5s}
-					.movies_2 {font-size: 8px; font-weight: 800;}
-					.box{font-size: 9.5px; height:4vh; display: flex; align-items: center; align-content: center; justify-content: center}
-					.box4{font-size: 12px;}
-					#myLikes{ height:8px}
-					.img_myLikes{height:25px;}
+									
+								font-size: 12px;	
+								border-radius: 65%;
+								display:inline-flex;
+								justify-content: center;
+								align-items: center;
+								align-content: center;
+								top:-1300px;
+								position:absolute;	
+								width: 8vw;	
+								height: 10vw;
+								font-weight: 700;
 
-					.display_books{width:; height:70vh;}
-
-					.read a{width: 8vw; font-size: 11px;}
-
-						.book_name, .book_autor{font-size: 10px;width: 18vw}
-				}
+							}		
 		</style>
+
 		<script type="text/javascript">
-  	const navs = document.querySelector('#navflix');  
-  	const topOfNav = navs.offsetTop;
+				const navs = document.querySelector('#navbarIvan');  const topOfNav = navs.offsetTop;
 
-	const myLikes = document.querySelector('#myLikes');  
-	const topOfLikes = myLikes.offsetTop  ;	
-	
-	function activeNav(){
-				    if(window.scrollY >= topOfLikes)  {
+				const yop = document.querySelector('#quote');  const topOfYop = yop.offsetTop -10  ;	
+			  	const tra = document.querySelector('#translator');  const topOfTra = tra.offsetTop-10   ;
+			  	const dev = document.querySelector('#programmer');  const topOfDev = dev.offsetTop -10 ;
+			  	const mat = document.querySelector('#matematico');  const topOfMat = mat.offsetTop -10 ;
+			  	const edu = document.querySelector('#educador');  const topOfEdu = edu.offsetTop-10 ;
+			  	const rrss = document.querySelector('.rrss');  const topOfRrss = rrss.offsetTop-10;
+
+  
+				function activeNav(){
+				    if(window.scrollY >= topOfYop && window.scrollY < topOfTra)  {
+				    	document.querySelector('#quote').classList.add('active');} 
+				    	else{document.querySelector('#quote').classList.remove('active');}
+
+				    if(window.scrollY >= topOfTra && window.scrollY < topOfDev)  {
+				    	document.querySelector('#navTra').classList.add('active');} 
+				    	else{document.querySelector('#navTra').classList.remove('active');}
+
+				    if(window.scrollY >= topOfDev && window.scrollY < topOfMat)  {
+				    	document.querySelector('#navPro').classList.add('active');} 
+				    	else{document.querySelector('#navPro').classList.remove('active');}
+
+				    if(window.scrollY >= topOfMat && window.scrollY < topOfEdu)  {
+				    	document.querySelector('#navMat').classList.add('active');} 
+				    	else{document.querySelector('#navMat').classList.remove('active');}
 				    	
-				    	document.querySelector("#navflix").style.color='green';} 
-				    					    			    
+				    if(window.scrollY >= topOfEdu)  {
+				    	document.querySelector('#navEdu').classList.add('active');} 
+				    	else{document.querySelector('#navEdu').classList.remove('active');}				    
 				  } 
   
-	window.addEventListener('scroll', activeNav);
+				window.addEventListener('scroll', activeNav);
 
-  </script>
-  <script type="text/javascript">
-  	const navs = document.querySelector('#navflix');  
-  	const topOfNav = navs.offsetTop;
+							colors=['var(--blue)', 'var(--green)', 'var(--magenta)', '#ff00ff', '#ffc600'];
+							letras=['skyblue', 'black', 'white']
+							hello=['Hola', 'Hallo', 'Translator', 'Spanish', 'Hi', 'Francais', 'Deutsch', 'Ubersetzer', 'ESPAÑOL', 'English', 'Bonjour']
+					
+									
+							function glovos() {
+							  
+							  var translator= document.querySelector('.body2');
+							  
+							  var para = document.createElement("div");
+							  var left = Math.floor(Math.random() * 100) - 100;
+							  var vel =  (Math.floor(Math.random() * 3)+25);		  	
+							  			  
+							  para.style.background = colors[Math.floor(Math.random() * 5)];;
+							  para.style.color = letras[Math.floor(Math.random() * 3)];		
 
-	const myLikes = document.querySelector('#myLikes');  
-	const topOfLikes = myLikes.offsetTop  ;	
+							  para.style.left = `${left}`+`vw`;	
+							  
+							  para.style.animationDuration = `${vel}`+'s';			  		  
+							  para.innerHTML = `
+
+							  <div style=' background: white; width:35px; height:15px;position:relative;border-radius:50%; top:-30%; opacity:0.5; margin-left:10%;transform:rotate(-45deg)'>
+							  </div>
+							  <p style='border:; width:80%; position:relative; text-align:center; left:-18%'>`+ hello[Math.floor(Math.random() * 11)] + `
+							  </p>
+							  <div style=' background: black; width:6px; height:3px;position:relative;top:49%;left:-32%; transform:rotate(-18deg)'></div>
+							  <div style=' background: ${para.style.background}; width:8px; height:6px;position:relative;top:52%;left:-35%; transform:rotate(-18deg)'></div>
+							  <div style=' background: black; width:0.5px; height:145px;position:relative;top:100%;left:-38%; transform:rotate(0deg)'></div>
+
+							  `;
+		  
+							if(window.scrollY >= topOfTra && window.scrollY <= topOfMat)  {
+						    	document.getElementById("myDIV2").appendChild(para);
+						    	para.classList.add('balloon');
+								para.classList.add('transition');	
+						    	;
+
+						    if(window.scrollY > topOfDev){document.querySelectorAll('.balloon').forEach (ball => ball.style.display='none');}
+				    	}     		  			  
+				
+				}
+				setInterval(glovos,1300)				
+		</script>		
+
+		<script type="text/javascript">
+			var sections=['#','#quote','#translator','#programmer','#matematico','#educador'];
+			var c = 0;	
+
+			function scrollNav() 
+				{			  
+				  window.open(sections[`${c}`],'_self');
+				  if(c < 5) {c++;			  }
+				  else{	c = 0;}
+			  	}
+
+			function forwardNav(e) 
+				{		
+				  
+				  console.log(e.keyCode);
+				  if((c < 5) &&  (e.keyCode == 39 || e.keyCode == 40 || e.keyCode == 13 || e.keyCode == 34) ){ c++};
+				  if((c > 0) &&  (e.keyCode == 37 || e.keyCode == 38 || e.keyCode == 8 || e.keyCode == 33) ){ c--};	
+				  window.open(sections[`${c}`],'_self');   
+			  	}
 	
-	function activeNav(){
-		console.log('s');
-			if(window.scrollY > 100)  {
-			navs.style.backgroundColor='green';
-			console.log('v')} 	    					    			    
-				  } 
-  
-	window.addEventListener('scroll', activeNav);
+			  window.addEventListener('wheel', scrollNav);
+			  window.addEventListener('keydown', forwardNav);
+		</script>
 
-  </script>
+		<script type="text/javascript">
+			function EngEsp() {
+				english=[
+					 '<p>My name is Ivan and I am a <a>Programmer</a>and Translator</p><p>I am a Math and Education student, and I love creating educational blogs</p><p>I love sport, cinema, technology, literature y philosofy</p>',
+
+					 'I am a young venezuelan men currently living in Argentina. I am passionate about learning a litttle more every day, and then I always look for a way to ut into practice what I learned, to solve real-life problems and specially to help others. I consider myself as...'
+				]
+			}
+		</script>
 </html>
