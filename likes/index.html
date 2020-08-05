@@ -355,7 +355,7 @@
 						</dir>
 
 					<div class='series_list' id="fav_series">
-						<h3 class='secTit'>Series</h3>
+						<h3 class='secTit' id='series'>Series</h3>
 						<div class='display_2' id='seriess'>
 							
 						</div>
@@ -846,16 +846,16 @@
 						<div class='album album05' data-src=''>
 							<span>Louise Attaque <br/> Louise Attaque</span>
 						</div>
-						<div class='album album06' data-src='sounds/ff.mp4'>
+						<div class='album album06' data-src='https://www.dropbox.com/s/2e83he1fmdfbvzm/ff.mp4?raw=1'>
 							<span>Franz Ferdinand  <br/> Franz Ferdinand</span> 
 						</div>
 						<div class='album album07' data-src=''>
 							<span>The Strokes <br/> This is it</span>
 						</div>
-						<div class='album album08' data-src='sounds/pure_heroine.mp4'>
+						<div class='album album08' data-src='https://www.dropbox.com/s/8ssdkoccurj2hbh/pure_heroine.mp4?raw=1'>
 							<span>Pure Heroine <br/> Lorde</span>
 						</div>
-						<div class='album album09' data-src='sounds/the_black_parade.mp4'>
+						<div class='album album09' data-src='https://www.dropbox.com/s/ea4jdm5i4r2ylz5/The%20Black%20Parade.mp4?raw=1'>
 							<span>Black Parade  <br/> My Chemical Romance</span>
 						</div>
 						<div class='album album10' data-src=''>
@@ -869,7 +869,7 @@
 						</div>							
 						<div class='album album13' data-src=''>
 							<span>Flor de Fuego <br/> CDC</span></div>		
-						<div class='album album14' data-src=''>
+						<div class='album album14' data-src='sounds/santo_pecado.mp4'>
 							<span>Santo Pecado <br/> Arjona</span>
 						</div>
 						<div class='album album15' data-src=''>
@@ -888,24 +888,29 @@
 								 color:#E50914; 
 								 margin:10vh 0vh;}
 
-						.item2{height:40vh; width: 24vw; 
-								background:white; 
+						.item2{height:18vw; 
+								width: 12vw; 
+								 
 								border:2px solid #191414;
-								display:flex; flex-flow: column wrap; justify-content: flex-end; align-items: center; align-items: center;
-								padding:20px;}
-							.item2:hover {width:32vw; height:60vh;transition: all 0.5s}
+								display:flex; 
+								flex-flow: column wrap;
+								 justify-content: flex-end; 
+								 align-items: center; 
+								 align-items: center;
+								padding:20px;
+							background-repeat: no-repeat; background-size: 100% 100%;}
+							.item2:hover {width:20vw; height:28vw;transition: all 0.5s}
 							.item2:hover > .book_autor{display:flex;}
 							.item2:hover > .book_name{display:flex;}
 
-							.read{background-color: #ffffff99; border:2px solid var(--spotify); border-radius: 12px 12px; width:11vw;}
+							.read{background-color: #ffffff99; border:2px solid var(--spotify); border-radius: 12px 12px; width:8vw;}
 							.read a, .see_more{text-decoration: none;color:red;font-weight: 600;}
 
 						.book_name, .book_autor{font-size: 12px; display:none; color:white; background: black; justify-content: center; align-content: center; align-items: center;}			
 
 						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center; padding:1px 1.5px;}
 						h3{font-size: 20px;color:white;font-weight: 600; margin-left: 5vw}
-						.item2{background-repeat: no-repeat; background-size: 100% 100%; }
-
+						
 						 @media only screen and (max-width: 1000px){
 						 	.display_books{width:; height:90vh; 
 								 display:flex; 
@@ -996,13 +1001,13 @@
 						}
 					</style>
 					
-						<img class='sports' src='deportes/maldini.png'/>
-						<img class='sports' src='deportes/cr7.png'/>
-						<img class='sports' src='deportes/zlatan.png'/>
+						<img title='Paolo Maldini' class='sports' src='deportes/maldini.png'/>
+						<img title='Cristiano Ronaldo' class='sports' src='deportes/cr7.png'/>
+						<img title='Zlatan Ibrahimovic' class='sports' src='deportes/zlatan.png'/>
 						
-						<img class='sports' src='deportes/schweini.png'/>
-						<img class='sports' src='deportes/schumi.png'/>
-						<img class='sports' src='deportes/nowitski.png'/>
+						<img title='Bastian Schweinsteiger' class='sports' src='deportes/schweini.png'/>
+						<img title='Michael Schumacher' class='sports' src='deportes/schumi.png'/>
+						<img title='Dirk Nowitski' class='sports' src='deportes/nowitski.png'/>
 			</div>
 		</div>
 		
@@ -1267,26 +1272,13 @@
 							  this.img = img}
 
   	var ff= new album('Franz Ferdinand', "franz_ferdinand", 'sounds/ff.mp4','ff.png')
-  	var mcr = new album ('The Black Parade', 'My Chemical Romance', 'https://bit.ly/3jEoLzO','tbp.png')
-  	var lorde = new album ('Pure Heroine', 'Pure Heroine', 'sounds/pure_heroine.mp4','lorde.png')
+  	var mcr = new album ('The Black Parade', 'My Chemical Romance', 'https://www.dropbox.com/s/ddj472ajtpycaff/the_black_parade.mp4?raw=1','tbp.png')
+  	var lorde = new album ('Pure Heroine', 'Lorde', 'sounds/pure_heroine.mp4','lorde.png')
+  	var stpec = new album ('Santo Pecado', 'Arjona', 'sounds/santo_pecado.mp4', 'santo_pecado.png')
 
   </script>
 
-  <script type="text/javascript">
-  	const navs = document.querySelector('navflix');  const topOfNav = navs.offsetTop;
 
-	const myLikes = document.querySelector('#myLikes');  const topOfLikes = myLikes.offsetTop  ;	
-	
-	function activeNav(){
-				    if(window.scrollY >= topOfLikes)  {
-				    	
-				    	document.querySelector("#navflix").style.color='green';} 
-				    					    			    
-				  } 
-  
-	window.addEventListener('scroll', activeNav);
-
-  </script>
 
  <style>
 			  	:root {
@@ -1353,4 +1345,38 @@
 						.book_name, .book_autor{font-size: 10px;width: 18vw}
 				}
 		</style>
+		<script type="text/javascript">
+  	const navs = document.querySelector('#navflix');  
+  	const topOfNav = navs.offsetTop;
+
+	const myLikes = document.querySelector('#myLikes');  
+	const topOfLikes = myLikes.offsetTop  ;	
+	
+	function activeNav(){
+				    if(window.scrollY >= topOfLikes)  {
+				    	
+				    	document.querySelector("#navflix").style.color='green';} 
+				    					    			    
+				  } 
+  
+	window.addEventListener('scroll', activeNav);
+
+  </script>
+  <script type="text/javascript">
+  	const navs = document.querySelector('#navflix');  
+  	const topOfNav = navs.offsetTop;
+
+	const myLikes = document.querySelector('#myLikes');  
+	const topOfLikes = myLikes.offsetTop  ;	
+	
+	function activeNav(){
+		console.log('s');
+			if(window.scrollY > 100)  {
+			navs.style.backgroundColor='green';
+			console.log('v')} 	    					    			    
+				  } 
+  
+	window.addEventListener('scroll', activeNav);
+
+  </script>
 </html>
