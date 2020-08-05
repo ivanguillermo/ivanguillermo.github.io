@@ -376,43 +376,46 @@
 						var slide3= document.getElementById('animess');
 
 
-						function film(name, seg, year, src) {
+						function film(name, seg, year, src, vsrc) {
 							  this.name  = name; 
 							  this.seg = seg; 
 							  this.year = year;
-							  this.src = src}
+							  this.src = src;
+							  this.vsrc = vsrc;}
 
-							var padrino = new film("El Padrino","F. Coppola", "1957", 'el_padrino.png');
-							var matrix = new film("Matrix","Wachowski", "1998", 'matrix.png');
-							var psycho = new film("Psycho","Hitchcock", "1950", 'psycho.png');
-							var antik = new film("antikorper","", "2004", 'antikorper.png');
-							var samurai = new film("Le Samurai",'Jean Paul', '', 'le_samurai.png');
-							var seven_s = new film("Seven Samurais","A Kurosawa", "", 'seven_samurais.png');
-							var sept = new film("Septimo Sello","Ingmar Bergman", "", 'septimo_sello.png');
+							var padrino = new film("El Padrino","F.F. Coppola", "1957", 'el_padrino.png','');
+							var matrix = new film("Matrix","The Wachowski", "1998", 'matrix.png','');
+							var psycho = new film("Psycho","Hitchcock", "1950", 'psycho.png','');
+							var antik = new film("antikorper","Christian Alvart", "2005", 'antikorper.png','');
+							var samurai = new film("Le Samurai",'Jean Pierre Meville', '1967', 'le_samurai.png','');
+							var seven_s = new film("Seven Samurais","A Kurosawa", "1954", 'seven_samurais.png','');
+							var sept = new film("Septimo Sello","Ingmar Bergman", "1957", 'septimo_sello.png','videos/septimo_sello.mp4');
 
 							var peliculas = [matrix, sept, antik, psycho, seven_s, padrino, samurai]
 
-						function serie(name, seg, src) {
+						function serie(name, seg, src, vsrc) {
 							  this.name  = name;
 							  this.seg  = seg; 							   
-							  this.src = src;};
+							  this.src = src;
+							  this.vsrc = vsrc;
+							};
 
-							var DN = new serie("Death Note","1", "death_note.png");
-							var breakB= new serie("Breacking Bad", " ", "breaking_bad.png");
-							var bojack= new serie("Bojack", " ", "bojack.png");
-							var peep_show= new serie("The Peep Show", " ", "peep_show.png");
-							var house= new serie("House MD", " ", "house.png");
-							var got= new serie("Game of Thrones", "7", "got.png");							
+							var DN = new serie("Death Note","1", "death_note.png",'');
+							var breakB= new serie("Breacking Bad", " ", "breaking_bad.png",'');
+							var bojack= new serie("Bojack", " ", "bojack.png",'');
+							var peep_show= new serie("The Peep Show", " ", "peep_show.png",'');
+							var house= new serie("House MD", " ", "house.png",'');
+							var got= new serie("Game of Thrones", "7", "got.png",'');							
 
 
 							var series = [DN, breakB, bojack, peep_show, house, got];
 
-							var deno = new serie("Death Note","1", "death_note.png");
-							var sel= new serie("Serial Experiment Lain", " ", "sel.png");
-							var codeg= new serie("Code Geass", " ", "code_geass.png");
-							var naruto= new serie("Naruto", " ", "naruto.png");
-							var psypass= new serie("Psycho Pass", " ", "psycho_pass.png");
-							var ergo= new serie("Ergo Proxy", "7", "ergo_proxy.png");
+							var deno = new serie("Death Note","1", "death_note.png",'');
+							var sel= new serie("Serial Experiment Lain", " ", "sel.png",'');
+							var codeg= new serie("Code Geass", " ", "code_geass.png",'');
+							var naruto= new serie("Naruto", " ", "naruto.png",'');
+							var psypass= new serie("Psycho Pass", " ", "psycho_pass.png",'');
+							var ergo= new serie("Ergo Proxy", "7", "ergo_proxy.png",'');
 
 							var animes = [deno, sel, ergo, codeg, psypass, naruto];
 
@@ -420,7 +423,7 @@
 							 function print_slide(x, a, b){
 							  for (i = 0; i < 4; i++) 
 							    {x.innerHTML += 
-							    `<div class='item' id='film0${i+1}' style='background-image: url(${b}/${a[i].src}) '>
+							    `<div class='item ${b}v' id='film0${i+1}' style='background-image: url(${b}/${a[i].src})' data-src=${a[i].vsrc}>
 	                                
 							        <h4 class='${b}_name'>${a[i].name}</h4>
 							        <h4 class='${b}_2'>${a[i].seg}</h4>
@@ -1262,6 +1265,16 @@
 			      this.style.border='4.75px solid var(--spotify)';
 			    }			    
 			    albumv.forEach(a => a.addEventListener('click', playalbum));
+
+			    const filmv= document.querySelectorAll('.moviesv');
+			    function playpelicula(){
+				  const filmsrc = this.dataset.src;		      
+			      vplayer.src = filmsrc;			      
+			      vplayer.play();		      	      			      
+			      filmv.forEach(a => a.style.border='2.75px solid white');
+			      this.style.border='4.75px solid var(--spotify)';
+			    }
+			    filmv.forEach(a => a.addEventListener('click', playpelicula));
 			</script>
 	
   <script type="text/javascript">
