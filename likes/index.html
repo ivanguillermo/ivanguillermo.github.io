@@ -41,22 +41,22 @@
 			<div class="playero">
 
 				<video 
-				class="player_video viewer" 
-				id='player_video_p' 
-				poster='death_note.jpeg' 
-				src="">
+					class="player_video viewer" 
+					id='player_video_p' 
+					poster='death_note.jpeg' 
+					src="">
 				</video>
 
 				<div class="player_controls">
 				    <div class="progress">
-				  	   <div class="progress_filled"></div>
+				  	   <div class="progress_filled" ></div>
 				    </div>
 
 				    <button class="player_button toggle" title="Play/Stop">►</button>
 
 				    <input title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
 
-				    <input title='Velocidad de Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
+				    <input title='Veloc. Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
 
 				    <button title='Reset velocidad' class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>
 
@@ -110,7 +110,7 @@
 
 				.playero{height:90vh; background:black;  align-items: center;}
 
-				#sidevideoplayer{width:25vw;height:100%; overflow-y:scroll;overflow-x: hidden; background: white;  align-items: center; border: 1px double #E50914; align-self: flex-end}
+				#sidevideoplayer{width:25vw;height:100%; overflow-y:scroll;overflow-x: hidden; background: white;  align-items: center; border: 3px solid var(--netflix); align-self: flex-end}
 					#sidevideoplayer table tbody tr{width:25vw; border-top:1px solid white;margin-bottom: 8px}
 					#sidevideoplayer thead, th, tbody, td {margin-top:1vh;height:4vh;width:25vw;}
 					#sidevideoplayer i{font-size: 11px;width:25vw;height:4vh;}
@@ -135,14 +135,17 @@
 				.player_slider {width:10px;height:30px;}
 				.player_controls {
 					position:absolute; 
-					display:flex; 
-					top:85vh; 
+					display:flex;
+					justify-content: center;
+					align-content: center; 
+					top:80vh; 
 					width:75vw;; 
 					transform: translateY(100%) translateY(-5px); 
 					transition:all .3s;
 				  	flex-wrap:wrap; 
 				  	background:rgba(0,0,0,0.1);
-				  	opacity:0;}
+				  	opacity:0;
+				  }
 
 				.playero:hover .player_controls {
 					transform: translateY(0);
@@ -150,9 +153,24 @@
 
 				.playero:hover .progress {height:15px;}
 				.player_controls > * {flex:1;}
-				.progress {flex:10; position: relative; display:none; flex-basis:80%; height:5px; transition:height 0.3s; background:rgba(0,0,0,0.5); cursor:pointer;}
+				.progress {
+				  flex:10;
+				  position: relative;
+				  display:flex;
+				  flex-basis:100%;
+				  height:5px;
+				  transition:height 0.3s;
+				  background:white;
+				  cursor:pointer;
+				}
 				.playero:hover > .player_controls{display:flex;}
-				.progress_filled { width:50%; background:#C600ff; flex:0; flex-basis:50%;}
+				.progress_filled {
+					  width:50%;
+					  background:var(--spotify);
+					  flex:0;
+					  flex-basis:50%;
+					}
+
 				 .fullScreen{ flex:0.3;background-color:black; border:black;font-size: 10px;color:white;}
 				 .resetSpeed { flex:0.3;background-color:black; border:black;font-size: 8px;color:white;}
 				/* unholy css to style input type="range" */
@@ -160,97 +178,82 @@
 				input[type=range]:focus { outline: none;}
 				input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
 				  background: rgba(255,255,255,0.8); border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
-				input[type=range]::-webkit-slider-thumb {  height: 15px; width: 15px; border-radius: 50px; background: #ffc600; cursor: pointer; -webkit-appearance: none;  margin-top: -3.5px; box-shadow:0 0 2px rgba(0,0,0,0.2);}
-				input[type=range]:focus::-webkit-slider-runnable-track { background: #bada55;}
+				input[type=range]::-webkit-slider-thumb {  height: 15px; width: 15px; border-radius: 50px; background: var(--netflix); cursor: pointer; -webkit-appearance: none;  margin-top: -3.5px; box-shadow:0 0 2px rgba(0,0,0,0.2);}
+				input[type=range]:focus::-webkit-slider-runnable-track { background: var(--spotify);}
 				input[type=range]::-moz-range-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0); background: #ffffff;
 				  border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
-				input[type=range]::-moz-range-thumb { box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); height: 15px; width: 15px; border-radius: 50px; background: #ffc600; cursor: pointer;}
+				input[type=range]::-moz-range-thumb { box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); height: 15px; width: 15px; border-radius: 50px; background: var(--spotify); cursor: pointer;}
 
 				
 			</style>
 				<!--playero script-->
 			<script>
-				const playero= document.querySelector('.playero');
-				const videox = playero.querySelector('.viewer');
-				const progress = playero.querySelector('.progress');
-				const progressBar = playero.querySelector('.progress_filled');
-				const toggle = playero.querySelector('.toggle');		
+				const player= document.querySelector('.playero');
+				const video = player.querySelector('.viewer');
+				const progress = player.querySelector('.progress');
+				const progressBar = player.querySelector('.progress_filled');
+				const toggle = player.querySelector('.toggle');
+				//const skipButtons = player.querySelectorAll('[data-skip]');
 				const speedBtn = document.getElementById('speed');
-				const ranges = playero.querySelectorAll('.player_slider');
-				let currentTime = videox.currentTime;
+				const ranges = player.querySelectorAll('.player_slider');
+				let currentTime = video.currentTime;
 
-				videox.volume = 0.2;
+
+				video.volume = 0.2;
 				progressBar.style.flexBasis = `0%`;
 
-				function togglePlayBtn(){
-					const method = videox.paused ? 'play' : 'pause';
-					videox[method]();
-					console.log(currentTime);
+				function togglePlay(){
+					const method = video.paused ? 'play' : 'pause';
+					video[method]();
 				}
 
-				function death_vid(){
-					videox.src = 'video.webm';
-					videox.play();
-				};
-
 				function skip(t){
-					//video.currentTime += parseFloat(this.dataset.skip);
-					videox.currentTime += t;
-					console.log(videox.currentTime);
+					video.currentTime += t;					
 				}
 
 				function handleRangeUpdate(){
-					videox[this.name] = this.value;
-					console.log(videox.currentTime);
+					video[this.name] = this.value;				
 				}
 
 				function scrub(e){
-					const scrubTime= (e.offsetX / progress.offsetWidth) * videox.duration;
-					videox.currentTime = scrubTime;
-					console.log(videox.currentTime);
+					const scrubTime= (e.offsetX / progress.offsetWidth) * video.duration;
+					video.currentTime = scrubTime;
 				}
 				function resetSpeed(){
-					videox.playbackRate = 1;
+					video.playbackRate = 1;
 					speedBtn.value = 1;
-					console.log(videox.currentTime);
 				}
 
 				function updateButton(){
 					const icon = this.paused ? '►' : '||';
 					toggle.textContent = icon;
-					console.log(videox.currentTime);
 				}
 
 				function handleProgress(){
-					const percent = (videox.currentTime / videox.duration) * 100;
+					const percent = (video.currentTime / video.duration) * 100;
 					progressBar.style.flexBasis = `${percent}%`;
 					progressBar.style.width = `${percent}%`;
-					progressBar.style.backgroundColor = '#C600ff';
-					console.log(videox.currentTime + ' handleProgress');
+					progressBar.style.backgroundColor = 'var(--netflix)';
 				}
-
 
 				function fullScreening() {
-					videox.mozRequestFullScreen();
-					videox.requestFullscreen();
-					console.log(currentTime);
+					video.mozRequestFullScreen();
+					video.requestFullscreen();
 				}
 
-				videox.addEventListener('click', togglePlayBtn);
-				videox.addEventListener('play', updateButton);
-				videox.addEventListener('pause', updateButton);
-				videox.addEventListener('timeupdate', handleProgress);
-				toggle.addEventListener('click', togglePlayBtn);
-				
+				video.addEventListener('click', togglePlay);
+				video.addEventListener('play', updateButton);
+				video.addEventListener('pause', updateButton);
+				video.addEventListener('timeupdate', handleProgress);
+				toggle.addEventListener('click', togglePlay);
 				ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-				ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-
 
 				let mousedown = false;
 				progress.addEventListener('click', scrub);
 				progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 				progress.addEventListener('mousedown', () => mousedown = true);
 				progress.addEventListener('mouseup', () => mousedown = false);
+
 			</script>
 		</div>
 
@@ -550,7 +553,7 @@
 							}
 
 							th{background-color: var(--spotify)}
-							td{padding:0% 2%;	}
+							td{padding:0% 2%; text-transform: capitalize;	}
 
 							tr::first-child{width:50vw}
 
@@ -773,7 +776,7 @@
 				
 				
 
-				<h2 style='font-size: 7vw'>Mis Albums favoritos</h2>
+				<h2 style='font-size: 5vw'>Mis Albums favoritos</h2>
 			<div id='albums'>
 					
 					<style type="text/css">
@@ -1034,11 +1037,19 @@
 					<div id='rep_repeat-btn'>🔁</div>
 				</div>				
 				<audio id='reproductor'></audio>
-				<progress id="progress_audio" value="30" max="100" > 32% </progress>
+				<span class='audio_current'>00:00</span>
+				<progress id="progress_audio" value="0" max="100" ></progress>
+				<span class='audio_duration'>00:00</spans>
+
+				
 			</div>
 
 			<div class='side_music-player'>
-					<i></i><progress id="progress_audio2" value="30" max="100" > 32% </progress><br/>
+					<div style='display: inline-flex;align-content: ; justify-content: center; align-items: baseline'>
+						<span style='font-size: 12px'>Vol.</span>
+						<input  style='height:3px' title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
+						
+					</div>
 					<i id='song_on_band'>Los Mesoneros</i><br/>					
 			</div>
 		</nav>	
@@ -1050,8 +1061,10 @@
 					width:1.6vw;
 					height:1.6vw;
 					font-weight: 800;
+					font-size: 8px;
 					padding: 0;
-					margin:0;					
+					margin:0;	
+					background-color: black;				
 				}
 				.side_music-player{
 					display: flex; 
@@ -1064,9 +1077,17 @@
 					width: 
 				}
 				#audioplayer{margin:0 20vw; justify-content: center; align-content: center; align-items: center;}
+				#audioplayer span{font-size: 11px;}
 			</style>
 			<script type="text/javascript">
 				var reproductor = document.getElementById('reproductor');
+				var audiotime= reproductor.currentTime;
+				const progress_audio = document.getElementById('progress_audio')
+				reproductor.volume = 0.5;
+
+				const current = document.querySelector('.audio_current');
+				const duration = document.querySelector('.audio_duration');
+
 				const play_centros = document.querySelectorAll('.playmusic');
 
 				var play_bot = document.getElementById('rep_play-btn');
@@ -1079,10 +1100,15 @@
 				function play_stop()
 				{
 					p_s++;
-					if ((p_s%2)==0){reproductor.play();play_bot.style.color='red';play_bot.innerHTML='||'};
-					if ((p_s%2)>0){reproductor.pause();play_bot.style.color='white';play_bot.innerHTML='▶️'};
-				}
+					if ((p_s%2)==0)
+						{reproductor.play();play_bot.style.color='var(--netflix)';
+						play_bot.innerHTML='||'};
+					if ((p_s%2)>0)
+						{reproductor.pause();play_bot.style.color='white';
+					play_bot.innerHTML='▶️'};
 
+					
+				}
 
 				function play_music(){        			      
 			      const audiosrc = this.querySelector('audio');		      		      
@@ -1095,9 +1121,21 @@
 			      song_on_band.innerHTML = audiosrc.dataset.band;
 			      this.style.backgroundColor='red';
 			      play_stop();
-			    }			    
+			    }		
+
+			    function handleaudioProgress(){
+			    	progress_audio.value = (reproductor.currentTime/reproductor.duration)*100;
+			    	current.innerHTML = Math.floor(reproductor.currentTime / 60) +":"+Math.floor(reproductor.currentTime % 60);
+					duration.innerHTML = Math.floor(reproductor.duration / 60) +":"+Math.floor(reproductor.duration % 60);
+			    }	  
+
+
 			    play_centros.forEach(play_centro => play_centro.addEventListener('click', play_music));
+
 			    play_bot.addEventListener('click', play_stop);
+
+			    reproductor.addEventListener('timeupdate', handleaudioProgress);
+
 
 			</script>
 
@@ -1123,13 +1161,19 @@
 				#music_player div li{text-decoration: none}
 				
 				#audiocontrols{
-					display:flex; flex-flow: row wrap; justify-content: space-between;
+					display:flex; 
+					flex-flow: row wrap; 
+					justify-content: space-between;
+					padding-top:2px;
 				}
 				#progress_audio, #progress_audio2{
-					height:3px; 
+					height:4px; 
 					width:15vw;
-					background-color: #E50914; 
+					background-color: white; 
 					color:white;
+					border: 0.5px solid #333a;
+				}
+				#progress_audio::after{ width:20px; background:red; content:'r'; color:red;}
 				}
 			</style>	
 	</body>
@@ -1297,6 +1341,7 @@
 			  	:root {
 	   		 --color: rgb(200,200,200);
 	   		 --spotify:#1DB954;
+	   		 --netflix:#E50914;
 	   			}
 	  
 			    html {box-sizing: border-box;	}
