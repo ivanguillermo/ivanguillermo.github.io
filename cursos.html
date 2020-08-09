@@ -52,7 +52,7 @@
     .pptx_title {display:; font-size:42px; text-align:center;  font-family: Barriecito;  text-shadow:;}
 
     button{width:23vw;} 
-      button h3{
+      .course_data{
         font-size: 15px; 
         font-weight:600; 
         text-shadow: 1px 1px #000000aa; 
@@ -60,8 +60,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        align-content: center
+        align-content: center;
       }
+      .course_data h4{display: none}
       button img {width:18vw;}
     .btn-leyenda{width:13.3vw; margin:1vh 1vw;}
 
@@ -83,7 +84,7 @@
     .other_courses button{width:45vw; border:0.81px solid #000000aa; background: white; padding:12px;margin-left:2vw; margin-top:2vh; color:black; }
     .oth_cours_btn {width:45vw; border:0.81px solid #000000aa; background: white; padding:12px;margin-left:2vw; margin-top:2vh; color:black; }
 
-    .talleres{display: flex; flex-flow: row wrap;}
+    .talleres{display: flex; flex-flow: row wrap;margin-bottom: 30px}
 
     .taller{
       display: flex; 
@@ -122,9 +123,11 @@
       display: inline-block;
       margin:1.5vw;}
 
+    .tit_img{width:180px;height: 50px;}
+
      @media only screen and (max-width: 800px) {
               button{width:88vw;text-overflow: hidden}  
-              button h3{
+              .course_data{
                 font-size: 18px; 
                 font-weight:500; 
                 text-shadow: 0.6px 0.6px #000000aa; 
@@ -134,11 +137,15 @@
                 height:;
                 margin:0 3vw;
                 white-space: nowrap;
-                overflow: scroll;
+                overflow: hidden;
                 text-overflow: ellipsis;
                 justify-content: flex-start;
+                flex-flow: column wrap;
+                align-items: flex-start;  
+                align-content: flex-start;
 
              ;}
+             .course_data h4{display:block}
 
               button img {
                 display:none;
@@ -230,35 +237,50 @@
 
       <nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
           <div class="container-fluid" id='fluid' style='display:flex; width:100%;'>
-              <div class="navbar-header" style='display:flex; height:100%'>             
+              <div class="navbar-header" style='display:flex; justify-content: center; align-items: flex-start; height:100%'>             
                   <a class="navbar-brand" 
                     href="https://ivanguillermo.github.io" 
                     style="background-color:var(--color); color:black;font-weight: 400;">
                     <b>Ivan</b>
                   </a>            
                              
-                  <a id='nav_dos' class="navbar-link" href="#cursos_certificados" style="text-decoration: none;align-self: center">                    
-                    <i>Certifieds</i>
+                  <a id='nav_dos' class="navbar-link" href="#cursos_certificados" style="text-decoration: none;align-self: center">  <i>Cursos Online</i>
                   </a>
                   <a id='nav_tres' class="navbar-link" href="#codecademy" style="text-decoration: none;align-self: center">
                     <i>Codecademy</i>                    
                   </a>
 
                   <a id='nav_cua' class="navbar-link" href="#nocertificados" style="text-decoration: none;align-self: center">
-                    <i><center>No certifieds</center></i>                    
+                    <i><center>Otros Online</center></i>                    
                   </a>
 
                   <a id='nav_cin' class="navbar-link" href="#otros" style="text-decoration: none;align-self: center">
-                    <i>Otros</i>                    
+                    <i>Presenciales</i>                    
                   </a>   
-                  <a class="navbar-link"  style="text-decoration: none;align-self: center">
-                    <i></i>                    
-                  </a>                
+                  <div class='langs'>
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/eng.png'/>
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/spa.png'/> 
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/deu.png'/> 
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/fra.png'/>               
+                  </div>
+                               
                   
-                  <button aria-controls="navbar" style='width:10vw; position:absolute; right:0px' aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
+                  <button 
+                    aria-controls="navbar" 
+                    style='width:10vw; position:absolute; right:0px' 
+                    aria-expanded="false" 
+                    class="navbar-toggle collapsed" 
+                    data-target="#navbar" data-toggle="collapse" type="button" 
+                    onclick="
+                      document.getElementById('fluid').style.display='';
+                      document.getElementById('contacto').style.position='';"
+                    >
                       <span class="sr-only">Toggle navigation</span>
                       <span class="icon-bar"></span>
-                  </button>                   
+                  </button>  
+                  
+                          
+
                 </div>
 
               <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:1.5%">
@@ -271,7 +293,7 @@
                 <ul class="nav navbar-nav">                                     
                   <li class="dropdown" >
                     <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-                    style="">Algo mas </a> 
+                    style=""><i class="fa fa-ellipsis-h"></i> </a> 
                     <ul class="dropdown-menu">
                       <li><a href="likes/index.html">Mis Gustos</a></li>
 
@@ -280,6 +302,7 @@
 
                       <li class="divider" role="separator"></li>
                       <li ><a href="https://ivanguillermo.github.io/informaticos15">Informaticos15</a></li>
+
                       <li class="divider" role="separator"></li>
                       <li id="contacto_nav">
                         <a href="contacto.html" >Contacto</a>
@@ -287,8 +310,11 @@
                     </ul>
                   </li>
                 </ul>
-             </div>                
-             </div> 
+             </div>  
+                       
+                 
+
+        </div> 
       </nav>
         <style type="text/css">
            :root{
@@ -300,12 +326,13 @@
            }
               html{font-family: 'Roboto'; font-weight: 500}
               body{overflow-x:hidden;}
+              header {background-color: white; font-size: 25px;color: black; padding:0px 10px;}
+              footer {background-color: white font-size: 20px;color: black; padding:0px 10px;}
+
               ul {list-style:none;}
 
             .flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
             .navbar{min-height:8vh;}
-
-
 
             .navbar-link{
               display:flex; 
@@ -318,94 +345,115 @@
               font-size:1vw;
             }
             .color {color:var(--color);}
-            .navbar-link {height:4vh; display:flex;}
             .navbar-link i{color:var(--color); align-self: center}
             
             .dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
             .dropdown-toggle{width:; color:white; align-self: flex-end; text-align: center} 
 
             #contacto_nav{display: none}   
-        
-           @media only screen and (max-width: 800px) {
-            .navbar{width:100vw;}
-            .container-fluid{width:100vw;position:relative;left:0px;}
-            #nav_uno{display:inline-flex;}
 
-            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700; text-shadow: -2.5px 3px var(--color); }
-            #selector option{color:white;font-size: 12px;}
 
-            .navbar-toggle {}
-            .navbar-brand{width:15vw;font-size: 2.3vw; text-align: center}
+            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700;background-color: var(--color) }
+            #selector option{color:white;font-size: 12px;background-color: red}
+
+            .langs{width: 30vw}
+
+            #otros {margin:1vw 0 10vw 4vw;display: table-flex; width: 80vw; justify-content: space-between; flex-flow:column wrap;}
+            tr {width:90vw ; display: flex; flex-flow: row wrap; justify-content: space-evenly;border:0.5px solid var(--color);}
+            td, th {width:12vw; height: 5vh; display: flex; flex-flow: column wrap; justify-content: flex-start;align-content: flex-start;;text-indent: 15px; align-items: center; justify-content: center}
+            th{}
+            tr:first-child{background-color: var(--orange)}
+            tr:nth-child(even){background-color: var(--color)}
+
+            th:first-child, td:first-child{color:;width:20vw;}
+            td:nth-child(2), th:nth-child(2){color:;width:20vw;}
+            th:nth-child(4), td:nth-child(5),th:nth-child(5), td:nth-child(4){color:;width:10vw;}
             
-            .dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
-            .dropdown{}
-            #contacto{display:none;}
-            #contacto_nav{display: flex}
+            a:link{text-decoration: none}
 
-            .btn-leyenda span{font-size: 9px;padding-left: -10; margin:-15px;}
+           @media only screen and (max-width: 800px) {
+              .navbar{width:100vw;}
+              .container-fluid{width:100vw;position:relative;left:0px;}
+              #nav_uno{display:inline-flex;}
+
+
+              
+              .navbar-brand{width:15vw;font-size: 15px; text-align: center;margin-right:5vw;position: absolute;left:0;}
+            
+              .dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
+              .dropdown{}
+              #contacto{display:none;}
+              #contacto_nav{display: flex}
+
+              .btn-leyenda span{font-size: 9px;padding-left: -10; margin:-15px;}
+
+              .navbar-link {display: none}
+              .langs{margin-left: 15vw; display: flex; flex-wrap: nowrap}
+
+              table{font-size: 10px;}
+              table *{text-indent: 0;}
+              
+            }
+
         </style>
 
   <div id="pptx" class="container">
-    <br/>
-    <br/>
-    <br/>
+    
     <h1 class="pptx_title">Mis Cursos Realizados</h1>
 
     <label for="orden">Ordenar por:</label>
 
-    <select name='orden' id='selector'>
-        <option value="escuela">Escuela</option>
-        <option value="area">Area</option>
-        <option value="anyo">Ano</option>
-        <option value="relevancia">Relevancia</option>
+    <select title='elegir orden' name='orden' id='selector' class="btn btn-default">
+        <option value="0">Escuela</option>
+        <option value="1">Area</option>
+        <option value="2">Año</option>
+        <option value="3">Relevancia</option>
     </select>
-    <input type="submit" value="Submit">
+    <input id='btn_ordenar' style='border: 1px solid #333' type="submit" value="Ordenar" class="btn btn-default">
 
     <center id='leyenda'>
       <button id='cat_0' data-cat='0' type="button" class="btn btn-info btn-leyenda"><span class='categoria' >Escuela</span></button>
       <button id='cat_1' data-cat='1' type="button" class="btn btn-success btn-leyenda"><span class='categoria' >Area</span></button>
-      <button id='cat_2' data-cat='2' type="button" class="btn btn-default btn-leyenda"><span class='categoria' >Ano</span></button>
-      <button id='cat_3' data-cat='3' type="button" class="btn btn-danger btn-leyenda"><span class='categoria' >Relevancia</span></button>
-      <button id='cat_4' data-cat='4' type="button" class="btn btn-warning btn-leyenda"><span class='categoria' >Arte</span></button>
-    </center>
-    
-
+      <button id='cat_2' data-cat='2' type="button" class="btn btn-warning btn-leyenda"><span class='categoria' >Año</span></button>
+      <button id='cat_3' data-cat='3' type="button" class="btn btn-danger btn-leyenda"><span class='categoria' >Relevancia</span></button>      
+    </center>    
+   
     <!----------------------------------------------COURSERA--------------------------------------------------->
     
 
-    <h2 id='cursos_certificados'>
-      <a id='tit_0' target="_blank" href="https://www.coursera.org/user/375131001b1b0e543d612f357dbbc8b5" >
-        <img src='imgx/cursos/coursera.svg'/>
-      </a>
-    </h2>
-    <div id='courses0' class="courses" ></div>
-    
+      <h2 id='cursos_certificados'>
+        <a id='tit_0' target="_blank" href="" >
+          <img id='tit_0_img' class='tit_img' src='imgx/cursos/coursera.svg'/>
+        </a>
+      </h2>
+      <div id='courses0' class="courses" ></div>
+      
       <!----------------------------------------------SAYLOR--------------------------------------------------->
       <h2>
-        <a id='tit_1' target='_blank' href="https://www.saylor.org" >
-          <img style='width:140px;' src='imgx/cursos/saylor.svg'/>
+        <a id='tit_1' target='_blank' href="" >
+          <img id='tit_1_img'class='tit_img' src='imgx/cursos/saylor.svg'/>
         </a>
       </h2>
         <div id='courses1' class="courses"></div>
 
-        <!----------------------------------------------UDEMY--------------------------------------------------->
+      <!----------------------------------------------UDEMY--------------------------------------------------->
         <h2>
-          <a id='tit_2' target='_blank' href="https://www.udemy.com/" >
-            <img style='width:120px;' src='imgx/cursos/udemy.png'/>
+          <a id='tit_2' target='_blank' href="" >
+            <img id='tit_2_img' class='tit_img' src='imgx/cursos/udemy.png'/>
           </a>
         </h2>
         <div id='courses2' class="courses"></div>
       <!----------------------------------------------EDX--------------------------------------------------->
         <h2>
-          <a id='tit_3' target='_blank' href="https://www.edX.org" >
-            <img id='tit_3_img' style='height:40px; width:70px;' src='imgx/cursos/edx.png'/>
+          <a id='tit_3' target='_blank' href="" >
+            <img id='tit_3_img' class='tit_img'  src='imgx/cursos/edx.png'/>
           </a>
         </h2>       
         <div id='courses3' class="courses"></div>
-        <!----------------------------------------------EDX--------------------------------------------------->
+      <!----------------------------------------------EDX--------------------------------------------------->
         <h2>
-          <a id='tit_4' target='_blank' href="https://www.edX.org" >
-            <img id='tit_4_img' alt='Otros' style='height:40px; width:70px;' src=''/>
+          <a id='tit_4' target='_blank' href="" >
+            <img id='tit_4_img' class='tit_img' alt='Otros'  src='imgx/cursos/duolingo.png'/>
           </a>
         </h2>       
         <div id='courses4' class="courses"></div>
@@ -414,7 +462,8 @@
         <center id='codecademy'>
           <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R">  
                 <h2>Codecademy</h2> 
-          </a>           
+          </a>  
+
           <div style="display:inline-block;">
             <p>Learn SQL</p>
             <p>SQL: Transformation tables</p>
@@ -432,195 +481,216 @@
         </div>
 
 
-        <div id='otros'>
-          <h2>Otros cursos:</h2>
-            <ul>
-              <li>Reparacion pc  -  INCES </li>
-              <li>Linux + Apache + PHP + MySQL  -  UNA</li>
-              <li>Carpinteria  -  INCES</li>
-              <li>Automatizacion  -  SMATA</li>
-              <li>Ajedrez  -  Peon Vuelve</li>
-            </ul>
+        <div >
+          <h2>Cursos Presenciales:</h2>
+            <table id='otros'>
+              <tr>
+                <th>Curso</th>
+                <th>Escuela</th>
+                <th>Area</th>
+                <th>Año</th>
+                <th>Duracion</th>
+              </tr>  
+
+              <tr>
+                <td>Reparacion de PC</td>                
+                <td>INCES (Venezuela)</td>
+                <td>Tecnologia</td>
+                <td>2015</td>
+                <td>3 Meses</td>
+              </tr>  
+
+              <tr>
+                <td>Carpinteria</td>
+                <td>INCES (Venezuela)</td>
+                <td>Arte</td>                
+                <td>2016</td>
+                <td>3 Meses</td>
+              </tr> 
+
+              <tr>
+                <td>Linux + Apache + PHP + MySql</td>
+                <td>UNA (Venezuela)</td>
+                <td>Programacion</td>
+                <td>2017</td>
+                <td>2 Meses</td>
+              </tr>
+
+              <tr>
+                <td>Automatizacion</td>
+                <td>SMATA (Argentina)</td>
+                <td>Programacion</td>                
+                <td>2018</td>
+                <td>4 Meses</td>
+              </tr> 
+
+              <tr>
+                <td>Ajedrez</td>
+                <td>Peon Vuelve (Argentina)</td>
+                <td>Arte</td>
+                <td>2019</td>
+                <td>2 Meses</td>
+              </tr>  
+            </table>
         </div>  
-
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-  
-
            
-            
-            <style>
-              :root{
-            --color:#4fdb98;
-            --blue:#1AA9EC;
-            --orange:#ff9800;
-            --magenta:#D1215F;
-            --green: #a3bf34;
-          }
-         
-          header {background-color: white; font-size: 25px;color: black; padding:0px 10px;}
-          footer {background-color: white font-size: 20px;color: black; padding:0px 10px;}      
-
-              </style>  
     </div>
 
     <script>         
+          var english=['Courses I made', 'order', 'area', 'school', 'relevance', 'year', 'order by', 'Other cuorses', 'online courses', 'others online', 'Presencials', 'Contact', 'Course', 'Duration'];
+          var spanish=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'año', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
+
+          var german=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'ano', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
+          var french=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'ano', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
+
+
+
+
           var botones = ['btn-danger', 'btn-info', 'btn-success', 'btn-warning', 'btn-default']; 
+
+          function curso(name, src, school, year, area, link) {
+                this.name  = name;  
+                this.src = src;
+                this.school = school;
+                this.year = year;                
+                this.area = area;
+                this.link = link;
+                              }
+          var calc1 = new curso ('Calculo 1', 'calculo1', 'coursera', '2014', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf');
+          var calc2 = new curso ('Calculo 2', 'calculo2', 'coursera', '2014', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf');
+          var game_theory = new curso ('Game Theory', 'game_theory', 'coursera', '2015', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf');
+          var math_phi = new curso ('Math Philosophy', 'mathematical_philosophy',  'coursera', '2016', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf');
+          var anc_greeks = new curso  ('Ancient Greek', 'ancient_greeks', 'coursera', '2015', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf' );
+          var vital_signs = new curso ('Vital Signs', 'vital_signs', 'coursera', '2016', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf');
+          var droits = new curso ('Derechos del Hombre', 'droit_del_homme', 'coursera', '2016','arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf');
+          var hlanguages = new curso ('Human Languages','human_languages', 'coursera', '2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf');
+          var phi_sci = new curso ('Philosophy and Science', 'philosophy_and_sciences', 'coursera','2015', 'philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf');
+          var kierkergaard = new curso ('Kierkegaard', 'kierkergaard', 'coursera','2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf');
+          var int_phi = new curso ('Introduction to Philosophy', 'introduction_to_philosophy', 'coursera', '2014', 'philosophy', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf');
+          var big_bang = new curso ('Big Bang', 'big_bang', 'coursera', '2017', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf');
+          var comp_stra = new curso ('Competitive Strategy', 'competitive_strategy', 'coursera','2015','matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf' );
+
+          var col_alg = new curso ('College Algebra', 'college_algebra', 'Saylor Academy','2016','matematica','https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc');
+          var alg = new curso ('Algebra', 'algebra', 'Saylor Academy','2020','matematica','https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg');
+          var say_eng = new curso ('Ingles', 'english', 'Saylor Academy','2020','languages','https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe');
+          var say_his = new curso ('Historia', 'historia', 'Saylor Academy','2020','arte','https://certificates.saylor.org/8ced9c4d-a63d-487e-825b-71d95b8fe876#gs.a3xcpt');
+          var say_precalc = new curso ('Precalculo', 'precalculo', 'Saylor Academy','2016','matematica','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c');
+
+          var linux  = new curso ('Linux Command Line', 'linux_cl', 'Udemy', '2017','matematica','https://www.udemy.com/certificate/UC-9YTEXXY8/');
+          var ude_py = new curso ('Python', 'pythonU', 'Udemy', '2018','programacion','https://www.udemy.com/certificate/UC-6G3AAQR5/');
+          var ccoder = new curso ('C Coder', 'c_coder', 'Udemy', '2016','programacion','https://www.udemy.com/certificate/UC-DQ152DHG/');
+          var paul   = new curso ('Paul and his letter to Philemon', 'philemon', 'Udemy', '2017','arte','philemon','https://www.udemy.com/certificate/UC-DD84E92J/');
+          var greek_rel  = new curso (' Greek Religion', 'greek_religion', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-YL9EMCDC');
+          var est_mas  = new curso ('Estudiar Mas', 'estudiar_mas', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-FL12KOPT/');
+
+          var edx_lin = new curso ('Intro to Linux', 'intro_linux', 'edx', '2016', 'programacion', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/c9e4a91e1d7a438ebb67fe1cbe1e84f4 ');
+          var prim_num = new curso ('Prime Numbers', 'prime_numbers', 'edx', '2017', 'matematica ', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5');
+          var ap_french = new curso ('AP French', 'french', 'edx', '2016', 'languages', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6');
+          var hero = new curso ('Ancient Greek Hero', 'greek_hero', 'edx', '2014', 'arte', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf ');
+
+
+
+          var html = new curso ('HTML','html_w3', 'w3 School', '2016', 'programacion', '');
+          var css = new curso ('CSS','css', 'w3 School', '2017', 'programacion', '');
+          var duo_deu = new curso ('Trayecto Aleman','german', 'Duolingo', '2017', 'languages', '');
+          var duo_ing = new curso ('ingles','ingles', 'Duolingo', '2016', 'languages', '');
+
+          var coursera= [calc1, calc2, game_theory, math_phi, anc_greeks, vital_signs, droits, hlanguages, phi_sci, kierkergaard, int_phi, big_bang, comp_stra];
+          var saylor  = [col_alg, alg, say_eng, say_his, say_precalc];
+          var udemy   = [linux, ude_py, ccoder, paul, greek_rel, est_mas];
+          var w3      = [duo_ing, duo_deu, css, html];
+          var edx     = [edx_lin, prim_num, ap_french, hero];
+
+          var programacion = [edx_lin, linux, ude_py, ccoder, html, css];
+          var matematica = [calc1, calc2, game_theory,math_phi,comp_stra, col_alg,alg, say_precalc,prim_num];
+          var ciencia = [vital_signs,  phi_sci, big_bang];   
+          var arte = [anc_greeks, droits, hlanguages, kierkergaard, int_phi, paul, greek_rel, est_mas, hero];
+          var idiomas = [duo_deu, duo_ing, ap_french, say_eng];          
+
+          var y1415 = [];
+          var y16   = [];
+          var y17   = [];
+          var y18   = [];
+          var y1920 = [];
+
+          var lvl1 = [];
+          var lvl2 = [];
+          var lvl3 = [];
+          var lvl4 = [];
+          var lvl5 = [];         
+
           
-          const coursera=[
-                    ['Calculo I', 'calculo1', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf'],
-                    ['Calculo2', 'calculo2','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf' ],
-                    ['Game Theory', 'game_theory','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf' ],
-                    ['Math Philosophy', 'mathematical_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf' ],
-                    ['Ancient Greek', 'ancient_greeks','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf' ],
-                    ['Vital Signs', 'vital_signs','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf' ],
-                    ['Derechos del Hombre','droit_del_homme','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf' ],                    
-                    ['Languages', 'human_languages','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf' ],   
-                    ['Philosophy and Science', 'philosophy_and_sciences','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf' ],                    
-                    ['Kierkegaard', 'kierkergaard','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf' ],     
-                    ['Introduction to Philosophy', 'introduction_to_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf' ],                    
-                    ['Big Bang', 'big_bang','hhttps://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf' ],          
-                    ['Competitive Strategy', 'competitive_strategy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf' ]                                                            
-                ];
-
-          const saylor=[
-                    ['College Algebra', 'college_algebra', 'https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc'],
-                    ['Algebra', 'algebra', 'https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg'],
-                    ['Ingles', 'english', 'https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe'],
-                    ['Historia', 'historia', 'https://certificates.saylor.org/8ced9c4d-a63d-487e-825b-71d95b8fe876#gs.a3xcpt'],                    
-                    ['Precalculo', 'precalculo','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c' ]
-                  ];
-
-          const udemy=[
-                    ['Linux Command Line', 'linux_cl', 'https://www.udemy.com/certificate/UC-9YTEXXY8/'],
-                    ['Python', 'pythonU','https://www.udemy.com/certificate/UC-6G3AAQR5/' ],
-                    ['C Coder', 'c_coder','https://www.udemy.com/certificate/UC-DQ152DHG/' ],
-                    ['Paul and his letter to Philemon', 'philemon','https://www.udemy.com/certificate/UC-DD84E92J/' ],
-                    ['Greek Religion', 'greek_religion','https://www.udemy.com/certificate/UC-YL9EMCDC' ],
-                    ['Estudiar Mas', 'estudiar_mas','https://www.udemy.com/certificate/UC-FL12KOPT/' ]                    
-                ];
-
-          const edx=[
-                ['Intro to Linux', 'intro_linux', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/c9e4a91e1d7a438ebb67fe1cbe1e84f4'],
-                ['Prime Numbers', 'prime_numbers','https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5' ],
-                ['AP French', 'french','https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6' ],
-                ['Ancient Greek Hero', 'greek_hero','https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf' ]
-            ]; 
-
-          const w3=[
-                ['html','html_w3',''],
-                ['css','css',''],
-                ['Aleman','german',''],
-                ['ingles','ingles','']
-          ];
-
-          var programacion=[
-                  ['Intro to Linux', 'intro_linux', 'c9e4a91e1d7a438ebb67fe1cbe1e84f4'],
-                  ['Linux Command Line', 'linux_cl', 'https://www.udemy.com/certificate/UC-9YTEXXY8/'],
-                  ['Python', 'pythonU', "https://www.udemy.com/certificate/UC-6G3AAQR5/"],
-                  ['C Coder', 'c_coder', 'https://www.udemy.com/certificate/UC-DQ152DHG/'],
-                  ['html','html_w3',''],
-                  ['css','css','']
-          ];
-          var matematica=[
-                  ['Calculo I', 'calculo1', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf'],
-                    ['Calculo2', 'calculo2','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf' ],
-                    ['Game Theory', 'game_theory','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf' ],
-                    ['Math Philosophy', 'mathematical_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf' ],                              
-                    ['Competitive Strategy', 'competitive_strategy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf' ],
-                    ['College Algebra', 'college_algebra', 'https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc'],
-                    ['Algebra', 'algebra', 'https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg'],                   
-                    ['Precalculo', 'precalculo','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c' ],
-                    ['Prime Numbers', 'prime_numbers','https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5' ]
-          ];
-          var ciencia=[
-                    
-                    ['Vital Signs', 'vital_signs','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf' ],    
-                    ['Philosophy and Science', 'philosophy_and_sciences','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf' ],                                                           
-                    ['Big Bang', 'big_bang','hhttps://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf' ]       
-                ];
-          const arte=[                    
-                    ['Ancient Greek', 'ancient_greeks','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf' ],
-                    
-                    ['Derechos del Hombre','droit_del_homme','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf' ],                    
-                    ['Languages', 'human_languages','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf' ],                                           
-                    ['Kierkegaard', 'kierkergaard','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf' ],     
-                    ['Introduction to Philosophy', 'introduction_to_philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf' ],
-                    ['Paul and his letter to Philemon', 'philemon','https://www.udemy.com/certificate/UC-DD84E92J/' ],
-                    ['Greek Religion', 'greek_religion','https://www.udemy.com/certificate/UC-YL9EMCDC' ],
-                    ['Estudiar Mas', 'estudiar_mas','https://www.udemy.com/certificate/UC-FL12KOPT/' ],
-                    ['Ancient Greek Hero', 'greek_hero','https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf' ]                                                           
-                ];
-          var idiomas=[
-                    ['Aleman','german',''],
-                    ['ingles','ingles',''],
-                    ['AP French', 'french','https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6' ],
-                    ['Ingles', 'english', 'https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe']       
-                ];            
-          
-          const t0 = [ [coursera,saylor,udemy,edx,w3], ['cou','say','ude','edx','w3'] ];
-          const t1 = [ [saylor,coursera,edx,udemy,w3], ['say','cou','edx','ude','w3'] ];
-          const t2 = [ [programacion,matematica,ciencia,arte,idiomas], ['pro','mat','cie','art','idio'] ];
-          const t3 = [ [saylor,coursera,edx,udemy,w3], ['5','4','3','2','1'] ];
+          const t0 = [ [coursera,saylor,udemy,edx,w3], ['cou','say','ude','edx','w3'], ['coursera.svg', 'saylor.svg', 'udemy.png', 'edx.png','duolingo.png' ]];
+          const t1 = [ [programacion,matematica,ciencia,arte,idiomas], ['pro','mat','cie','art','idio'], ['', '', '', '','' ]];
+          const t2 = [ [y1415,y16,y17,y18,y1920], ['y1415','y16','y17','y18','y1920'], ['coursera.svg', 'saylor.svg', 'udemy.png', 'edx.png','duolingo.png' ]];   
+          const t3 = [ [lvl1,lvl2,lvl3,lvl4,lvl5],['1','2','3','4','5'],['','','','','']];  
 
           var k = 0; //lo que debe cambiar el selector//
           const cats=[t0,t1,t2,t3];
 
           var btnls = document.querySelectorAll('.btn-leyenda');
+          var selector = document.querySelector('#selector');
+          var btn_ordenar = document.querySelector('#btn_ordenar');
 
-          function print1(b){
+          function create(b){
           var a=cats[k][0][b].length;
           var z=cats[k][1][b];
           for (i = 0; i < a; i++) 
             {document.getElementById(`courses${b}`).innerHTML ='';}
 
           for (i = 0; i < a; i++) 
-            {document.getElementById(`courses${b}`).innerHTML += 
-                `<button id='${z}${i}' type="button" class="btn ${botones[i]} btn-lg curso_btn" data-name='' data-dir=''>
+            {document.getElementById(
+              `courses${b}`).innerHTML += 
+                `<button id='${z}${i}' type="button" class="btn ${botones[i%5]} btn-lg curso_btn" data-name='' data-dir=''>
                     <a id='${z}${i}_a' href="#id01" >  
                       <img id='${z}${i}_img' class="img_pptx"  src=""/>
                     </a>
-                    <br/>            
-                    <h3 id='${z}${i}_h3' ></h3>
+                    <br/>  
+                    <div class='course_data'>          
+                      <h3 id='${z}${i}_h3' ></h3>
+                      <h4 id='${z}${i}_sch' ></h4>                                        
+                      <h4 id='${z}${i}_year' ></h4>
+                      <h4 id='${z}${i}_area' ></h4>   
+                    </div>
                 </button>
                 </br>`;}
-          };                 
+          };      
+
                        
-          function print2(y){
+          function assign(y){
             var x = cats[k][0][y];
             var n = x.length;
-            print1(y);            
+            create(y); 
+
+            for (var i = 0; i < 5; i++) {
+              document.getElementById(`tit_${i}_img`).src= `imgx/cursos/${cats[k][2][i]}`;
+            }           
 
             for (i = 0; i < n; i++)
               {
-                  document.getElementById(`${cats[k][1][y]}${i}`+'_h3').innerHTML = x[i][0];
-                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.name = x[i][0];
-                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.dir = x[i][2];        
-                  document.getElementById(`${cats[k][1][y]}${i}`+'_img').src= 'imgx/cursos/' + x[i][1] + '.png';                  
-              }
-            }
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_h3').innerHTML =`${x[i].name}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_year').innerHTML =`${x[i].year}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_sch').innerHTML =`${x[i].school}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_area').innerHTML =`${x[i].area}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.name = `${x[i].name}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.dir = `${x[i].link}`;        
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_img').src= 'imgx/cursos/' + `${x[i].src}` + '.png'; 
+                                  
+              }             
+            }      
+            
+            
 
-          function ordenar(){
-              k= this.dataset.cat;
+          function printC(){assign(0); assign(1); assign(2); assign(3); assign(4); }
 
-              print2(0);
-              print2(1);
-              print2(2);
-              print2(3);
-              print2(4);
+          function ordenar(){k= this.dataset.cat;printC();};
 
-            };
-          btnls.forEach(btnl => btnl.addEventListener('click', ordenar));      
+          function print4(){ k= selector.value; printC(); };
+                   
+          btn_ordenar.addEventListener('click', print4);
+          btnls.forEach(btnl => btnl.addEventListener('click', ordenar)); 
 
-          print2(0);
-          print2(1);
-          print2(2);
-          print2(3);
-          print2(4);          
+          printC();                   
       </script>  
   </body>
     
@@ -628,7 +698,7 @@
       function Talleres(props){
       return(
         <div>
-          <h2 className="workshop_tit" > Otros Cursos </h2>
+          <h2 className="workshop_tit" > Otros Cursos online</h2>
           <Otroscursos/>
         </div>
         )
@@ -722,7 +792,6 @@
                 cert_shower_go.href=this.dataset.dir;
                 
                 }
-
               kursos.forEach(btn => btn.addEventListener('click', show_kert));
             </script>
 </html>
