@@ -10,32 +10,55 @@
 
 	<script> 
 	$(document).ready(function(){     
-	           	           
-	           $("h3").click(function(){
-				  $(this).siblings('.toggler').slideToggle();
+	           $('.tog0').click(function(){
+				  $('.toggler0').slideToggle();
 				});	
-			   $("h2").click(function(){
-				  $(this).siblings('.toggler').slideToggle();
-				}); 
-
+	           $('.tog1').click(function(){
+				  $('.toggler1').slideToggle();
+				});	
+	           $('.tog2').click(function(){
+				  $('.toggler2').slideToggle();
+				});	
+	           $('.tog3').click(function(){
+				  $('.toggler3').slideToggle();
+				});	
+	           $('.tog4').click(function(){
+				  $('.toggler4').slideToggle();
+				});	
+	           $('.tog5').click(function(){
+				  $('.toggler5').slideToggle();
+				});	
+	           $('.tog6').click(function(){
+				  $('.toggler6').slideToggle();
+				});	
+	           $('.tog7').click(function(){
+				  $('.toggler7').slideToggle();
+				});	
+	           $('.tog8').click(function(){
+				  $('.toggler8').slideToggle();
+				});	
+	           $('.tog9').click(function(){
+				  $('.toggler9').slideToggle();
+				});	
+	           $('.tog10').click(function(){
+				  $('.toggler10').slideToggle();
+				});
+			   $('.tog11').click(function(){
+				  $('.toggler11').slideToggle();
+				});	
+				$('.tog12').click(function(){
+				  $('.toggler12').slideToggle();
+				});	
+				$('.tog13').click(function(){
+				  $('.toggler13').slideToggle();
+				});		
+			        
+			    $('.tog14').click(function(){
+				  $('.toggler14').slideToggle();
+				});	  
 	           
 	           
 	           
-	           $("#fadeinner").click(function(){ 
-	           	$("#fade1").fadeIn();  
-	           	$("#fade2").fadeIn("slow"); 
-	           	$("#fade3").fadeIn(4000); 
-	           });
-
-	           $("#fadeouter").click(function(){ 
-	           	$("#fade1").fadeOut("slow");  
-	           	$("#fade2").fadeOut("fast"); 
-	           	$("#fade3").fadeOut(4000); 
-	           });
-
-	           $("#animator").click(function(){
-	           	$("#animable").animate({left: '80%'}); 
-	           });
 	                             });
 	</script>	
 </head>
@@ -118,6 +141,9 @@
 				background-image: url('wikilogo.png'); 
 				background-size:150px 150px;
 			}
+
+			li{margin: 8px 0px}
+			a:link{text-decoration: none}
 		</style>
 		<div class="portal" role="navigation" id="bio-side-nav" aria-labelledby="p-lang-label">
 			<a title="Visitar la página principal" class="mw-wiki-logo" href="https://ivanguillermo.github.io">
@@ -137,8 +163,7 @@
 						</ul>
 					</li>
 					<li>My Likes</li>
-					<li></li>
-					<li></li>					
+					<li>Cursos</li>			
 				</ul>
 				<hr/>
 
@@ -147,18 +172,20 @@
 						<ul>
 							<li>Informaticos15</li>
 							<li>LiteraturaMagna</li>
-							<li>Maxemas</li>
+							<li>equistrece</li>
 							<li>Mi Blog</li>							
 						</ul>
 					</li>
 					<li>Perfil en Freelancer</li>
 					<li>Perfil en LinkedIn</li>
+					<li>Perfil en Github</li>
 					<li>Redes Sociales
 						<ul>
 							<li>Twitter</li>
 							<li>Facebook</li>
 							<li>Instagram</li>
-							<li>Youtube</li>							
+							<li>Youtube</li>
+
 						</ul>
 					</li>					
 				</ul>
@@ -182,6 +209,9 @@
 		
 		<!--TABLA RESUMEN-->
 		<style>
+			:root{
+				--goldish:#CCCC88;
+			}
 			.vcard{	
 				grid-area: c; 
 				line-height: 1.2em; 				
@@ -208,11 +238,8 @@
 
 			<tbody>
 					<tr>
-						<td colspan="4" style="text-align:center; background-image: url('imgx/background.jpg'); background-size:cover;">
-							<a href="ivan192.png" class="image">
-								<img id="foto_yo" alt="yo" src="ivan192.png"/>
-							</a>
-							<div>Programador, Matematico y Traductor</div>
+						<td colspan="4" style="width:400px; height: 400px;margin:0; padding: 0;text-align:center; background-image: url('imgx/yo_bio_1.jpg'); background-size:cover;display: ; justify-content: flex-end">
+							<div style="position: relative;top: 45%; font-weight: 600; font-size: 15px;color:var(--goldish);text-shadow: 1px 1px #111">Programador, Matematico y Traductor</div>
 						</td>
 					</tr>
 					<tr>
@@ -235,7 +262,7 @@
 					<tr>
 						<th scope="row" class='nwrap-bline-l'>Nacionalidad</th>
 						<td colspan="3" class="nwrap-bline">
-							<span class="nacionalidad">Venezolano</span>
+							<span class="nacionalidad">🇻🇪Venezolano</span>
 						</td>
 					</tr>
 					<tr>
@@ -254,7 +281,8 @@
 					<tr>
 						<th scope="row" class='nwrap-bline-l'>Profesion</th>
 						<td colspan="3" class="nwrap-bline">
-							<span class="profesion">Programador</span>
+							<span class="profesion">Programador</span> y 
+							<span class="profesion">Traductor</span>
 						</td>
 					</tr>
 					
@@ -338,6 +366,17 @@
 								</th>
 					</tr>
 					<tr>
+						<th scope="row" class='nwrap-bline-l'>Inicio</th>
+						<td class="nwrap-bline">
+							<b>empresa
+							</b>
+						</td>
+						<td class="nwrap-bline">
+							<b>Meses</b>
+						</td>
+						
+					</tr>
+					<tr>
 									<th scope="row" class='nwrap-bline-l'>
 										<span style="font-weight:normal">2016-</span>
 									</th>
@@ -345,7 +384,6 @@
 										<a href="https://es.wikipedia.org/wiki/Germany_national_under-21_football_team" title="Germany national under-21 football team">Traductor Freelancer</a>
 									</td>
 									<td class='nwrap-bline-l'>19</td>
-									<td class="nwrap-bline-r">(7)</td>
 					</tr>
 
 					<tr>
@@ -356,7 +394,6 @@
 										<a href="#Escritor" title="">Escritor Freelacer</a>
 									</td>
 									<td class='nwrap-bline'>98</td>
-									<td class="nwrap-bline-r">(42)</td>
 					</tr>
 
 					<tr>
@@ -367,9 +404,8 @@
 										<a href="#Repartidor" title="Repartidor">Delivery</a>
 									</td>
 									<td class='nwrap-bline'>98</td>
-									<td class="nwrap-bline-r">(42)</td>
 					</tr>
-					<tr style='display:'>
+					<tr style='display:none'>
 						<th colspan="4" style="text-align:center;background-color: #CCCC88; line-height: 1.5em">
 							<div class="NavFrame collapsed" style="border: none; padding: 0;">
 								<div class="NavHead" style="font-size:105%; text-align: center; background-color: transparent;">
@@ -460,12 +496,12 @@
 			.mostrar{padding-left: 5px; font-weight: normal; text-align: right; width: 6em;}
 		</style>
 		<div id='Intro'>
-			<h1 id="firstHeading" class="firstHeading" lang="es">Ivan Guillermo Lopez</h1>
+			<h1 id="firstHeading" class="firstHeading" lang="es">Ivan Guillermo Lopez Pedreañez</h1>
 			<hr></hr>
 			
 			<div class="toggler">
 				<p>
-					<b>Ivan Guillermo Lopez Pedreañez</b>  (Maracaibo, 24 de Febrero de 1991) Es un programador front-end. Además estudió Matemática y Educación y trabajo como
+					<b>Ivan Guillermo Lopez Pedreañez</b>  (Maracaibo, 24 de Febrero de 1991) Es un programador front-end. Además estudió Matemática y Educación y trabajó como
 					 <a href="https://es.wikipedia.org/wiki/traductor" title="traductor">traductor</a> freelancer.
 					Ivan maneja con diferentes niveles de dominio y experiencia, diversos lenguajes de programación como 
 					<a href="https://es.wikipedia.org/wiki/programador" title="traductor">Programador</a> 
@@ -481,9 +517,9 @@
 				</p>
 
 				<p>	Ivan comenzo su interes por la programacion en la pagina web
-					<a href="https://es.wikipedia.org/wiki/Codecademy" title="Codecademy">Codecademy</a>, donde empezo a hacer pequenos proyectos en Javascript en 2014.
-					En 2015, Ivan realizo un curso de programcion de videojuegos usando Python en 
-					<a href="https://es.wikipedia.org/wiki/Coursera" title="Coursera">Coursera</a>. Aunque no profundizo en sus proyectos en Python, el concepto de Algoritmos y logica estaba ya bien desrrolldo en su mente, y fue utilizado en sus estudios de Programacion en la 
+					<a href="https://es.wikipedia.org/wiki/Codecademy" title="Codecademy">Codecademy</a>, donde empezó a hacer pequeños proyectos en Javascript en 2014.
+					En 2015, Ivan realizo un curso de programacion de videojuegos usando Python en 
+					<a href="https://es.wikipedia.org/wiki/Coursera" title="Coursera">Coursera</a>. Aunque no profundizo en sus proyectos en Python, el concepto de Algoritmos y logica estaba ya bien desrrollado en su mente, y fue utilizado en sus estudios de Programacion en la 
 					<a href="https://www.wikidata.org/wiki/Q16644491" title="UNA">Universidad Nacional Abierta</a> en el segundo semestre de 2015. Luego cuando comenzo a estudiar Educacion Informatica en la 
 					<a href="https://es.wikipedia.org/wiki/Universidad_Pedag%C3%B3gica_Experimental_Libertador" title="UPEL">Universidad Pedagogica Experimental Libertador</a> 
 					Alli descubrio su pasion por la programacion de paginas web a traves del uso de HTML y PHP. Fue entonces que empezo a poner en practica sus conocimientos en la administracion de un blog educativo sobre su carrera de Educacion 
@@ -491,7 +527,7 @@
 				</p>
 
 				<p>En Julio de 2018, Ivan se fue a vivir a 
-					<a href="https://es.wikipedia.org/wiki/Buenos_Aires" title="Buenos Aires">Buenos Aires</a> con la idea de tener un mejor futuro al que le ofrecia Venezuela, con la primera intencion de desempenarse como programador. Entonces realizo diversos trabajos como profesor particular de matematicas, de programacion mientras afinaba sus conocimientos para las necesidades del mercado labolar. Y entonces se involucro con grupos de programadores con quienes descubrio la importancia de manejar 
+					<a href="https://es.wikipedia.org/wiki/Buenos_Aires" title="Buenos Aires">Buenos Aires</a> con la idea de tener un mejor futuro al que le ofrecia Venezuela, con la primera intencion de desempeñarse como programador. Entonces realizo diversos trabajos como profesor particular de matematicas, de programacion mientras afinaba sus conocimientos para las necesidades del mercado labolar. Y entonces se involucro con grupos de programadores con quienes descubrio la importancia de manejar 
 					<a href="https://es.wikipedia.org/wiki/framework" title="Frameworks">Frameworks</a> tales como Jquery, Bootstrap, React, entre otros. Ademas de la valia que tiene en el mercado actual  
 					<a href="https://es.wikipedia.org/wiki/Javascript" title="Javascript">Javascript</a> por lo que comenzo a expander los conocimientos que ya poseia de dicho Lenguaje de Programacion. 
 					A su vez decidio comenzar un curso de programacion ofrecido por el Gobierno de la Ciudad llamado
@@ -677,11 +713,11 @@
 				
 		<!--BIOGRAFIA-->
 		<div id='biografia'>
-			<h2 id="juventud">
+			<h2 id="juventud" class='tog2'>
 				<span class="mw-headline" >Juventud</span>
 				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>				
 			</h2>
-			<div class="toggler">
+			<div class="toggler toggler2">
 				<p id='juventud_text'>
 					Ivan Guillermo Lopez nació el 24 de Febrero 1991 en 
 					<a href="https://es.wikipedia.org/wiki/Maracaibo" title="Maracaibo">Maracaibo</a>, la capital del estado 
@@ -698,15 +734,11 @@
 				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
 
-				<h3 id="UCV">
-					<span class="mw-headline" ><a href='http://www.ucv.ve/'>Universidad Central de Venezuela</a></span>
+				<h3 id="UCV" class='tog1'>
+					<span class="mw-headline" ><a >Universidad Central de Venezuela</a></span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
-				</h3>				<div class="thumbcaption">
-								<center>La Universidad mas importante de Venezuela 
-									<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" title="UCV">UCV</a> 
-								</center>
-							</div>
-				<div class="toggler" id='ucv_txt'>
+				</h3>				
+				<div class="toggler toggler1" id='ucv_txt'>
 					<div class="thumb tright">
 						<div class="thumbinner" style="width:172px;">
 							<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" class="image">
@@ -720,38 +752,32 @@
 						</div>
 					</div>
 					<p>
-						Un mes antes de graduarme como Bachiller presente la prueba interna para en entrar en la Universidad Central de Venezuela a estudiar Fisica en la <a href="http://www.ucv.ve/organizacion/facultades/facultad-de-ciencias.html" target='_blanck' title="Facultad de Ciencias UCV"> Facultad de Ciencias</a>  Mi padre tambien estudio alli y se gradui de Ingeniero Civil. Profesion que ejercio por mas de 30 anyos. La prueba fue presentada por mas de 400 aspirantes de los cuales yo termine conla mayor calificacion, lo que me permitio asegurar mi cupo para empezar a estudiar apenas saliera del Colegio.
+						Un mes antes de graduarse de Bachiller, presento la prueba interna para en entrar en la Universidad Central de Venezuela a estudiar Fisica en la <a href="http://www.ucv.ve/organizacion/facultades/facultad-de-ciencias.html" target='_blanck' title="Facultad de Ciencias UCV"> Facultad de Ciencias</a>  Su padre tambien estudio alli y se graduo de Ingeniero Civil. Profesion que ejercio por mas de 30 anyos. La prueba fue presentada por mas de 400 aspirantes de los cuales Ivan termino con la mayor calificacion, lo que le permitio asegurar su cupo para empezar a estudiar apenas saliera del Colegio.
 						<br/>
-						En la UCV descubri mi amor a la matematica y la logica. Estuve ahi dos anyos hasta mediados de 2010. La adaptacion a vivir solo en un ciudad grande fue dificil pero realmente obtuve buenas notas en varias materias y sobre todo mucho conocimiento, pero el deseo de continuar en la carrera se fue diluyende semestre a semestre hasta que decidi regresar a mi casa y replantearme que haria.
+						En la UCV descubrio su amor a la matematica y la logica. Estuvo ahi dos años hasta mediados de 2010. La adaptacion a vivir solo en un ciudad grande fue dificil pero realmente obtuvo buenas notas en varias materias y sobre todo mucho conocimiento; pero el deseo de continuar en la carrera se fue diluyendo semestre a semestre hasta que decidio regresar a mi casa y replantearse que haria.
 					</p>
 				</div>
 
-				<h3 id="Autoaprendizaje">
+				<h3 id="Autoaprendizaje" class='tog3'>
 					<span class="mw-headline" >Autoaprendizaje</span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>
-				<div class='toggler'>
+				<div class='toggler toggler3'>
 					<p>
-						Al regresar a Yaracuy decidi replantearme mi futuro y comence a estudiar por mi cuenta cobre diversos temas y areas, realizando diversos cursos online en las plataformas de e-learning que estaban surgiendo por ese entonces como Coursera, edX, Udemy, Khan Academy, Codecademy, etc. Viendo tutoriales y leyendo libros. Tambien comence a prancticar y aprender idiomas, en particular Aleman y Frances, y a perfeccionar mi Ingles, con diversos cursos, softwares y paginas web como Duolingo
-						<a href="https://es.wikipedia.org/wiki/Captain_(association_football)" title="Captain (association football)">captained</a> the Chelsea team in the absence of captain John Terry and vice-captain Frank Lampard in a 2–1 win over 
-						<a href="https://es.wikipedia.org/wiki/Newcastle_United_F.C." title="Newcastle United F.C.">Newcastle United</a> on 29 December 2007. Ballack then played his 50th game in a Chelsea shirt in a 2–1 win against 
-						<a href="https://es.wikipedia.org/wiki/Fulham_F.C." title="Fulham F.C.">Fulham</a> in which he scored the winning goal for Chelsea. He also scored the only goal that won the match for Chelsea against 
-						<a href="https://es.wikipedia.org/wiki/Reading_F.C." title="Reading F.C.">Reading</a> to extend the blues' winning streak to a record of nine. And, on 5 March 2007, he scored again, this time against 
-						<a href="https://es.wikipedia.org/wiki/Olympiacos_F.C." title="Olympiacos F.C.">Olympiacos</a> in the Champions League round of 16 in a 3–0 win. He scored the winning goal in the 2–0 win in the second leg of the quarter-finals against 
-						<a href="https://es.wikipedia.org/wiki/Fenerbah%C3%A7e_S.K._(football)" title="Fenerbahçe S.K. (football)">Fenerbahçe</a>, a victory that secured Chelsea a place in the semi-finals.
+						Al regresar a Yaracuy decidio replantearse su futuro y comenzo a estudiar por su cuenta sobre diversos temas y areas, realizando diversos cursos online en las plataformas de e-learning que estaban surgiendo por ese entonces como Coursera, edX, Udemy, Khan Academy, Codecademy, etc. Viendo tutoriales y leyendo libros. Tambien comenzo a practicar y aprender idiomas, en particular Aleman y Frances; y a perfeccionar su Ingles, con diversos cursos, softwares y paginas web como Duolingo
 					</p>
 
 					<p>
-						Una pasion que descubrio fue su amor por todo lo realcionado a la tecnologia. Tanto software como hardware. Primeramente se involucro en el mundo del Software Libre y desde 2013 es usuario de Linux. Desde 2014 utilizo como Sistema Operativo principal y casi exclusivo alguna distro de Linux (Ubuntu, Linux Mint, Lubuntu, Puppy Linux, Tails) y comenzo a descubrir el mundo de la programacion a traves de la linea de comandos y un curso de Javascript que realizo en Codecademy
+						Una pasion que descubrio fue su amor por todo lo relacionado a la tecnologia. Tanto software como hardware. Primeramente se involucro en el mundo del Software Libre y desde 2013 es usuario de Linux. Desde 2014 utilizo como Sistema Operativo principal y casi exclusivo alguna distro de Linux (Ubuntu, Linux Mint, Lubuntu, Puppy Linux, Tails) y comenzo a descubrir el mundo de la programacion a traves de la linea de comandos y un curso de Javascript que realizo en Codecademy
 						
 					</p>					
 				</div>		
 
-				<h3>
-					<span class="mw-headline" id="UNA">Universidad Nacional Abierta</span>
+				<h3 class='tog0'>
+					<span class="mw-headline" id="UNA" >Universidad Nacional Abierta</span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>			
-				<div class='toggler'>
+				<div class='toggler toggler0'>
 					<div class="thumb tleft">
 						<div class="thumbinner" style="width:222px;">
 							<a href="https://es.wikipedia.org/wiki/Universidad_Nacional_Abierta" class="image">
@@ -766,8 +792,8 @@
 						</div>
 					</div>
 					<p>	
-						Luego de un tiempo en Yaracuy, Ivan se dio cuenta que preferia continuar ss estudios cerca de su hogar, pero dado que no habian opciones cercanas para estudiar Fisica decidio cambiar de carrera a Matematicas. Asi que optopor ingresar a la 
-						<a href="https://es.wikipedia.org/wiki/Universidad_Centroccidental_Lisandro_Alvarado" title="UCLA">Universidad Central Lisandro Alvarado</a>, ubicada en Barquisimeto, a una hora de su casa. Sin embargo por aun poseer cupo en la UCV le fue negado el ingreso, perouna vez que ya habia decidido cambiar de carrera comenzo a buscar opciones para estudiar Matematicas y eligio la 
+						Luego de un tiempo en Yaracuy, Ivan se dio cuenta que preferia continuar sus estudios cerca de su hogar, pero dado que no habian opciones cercanas para estudiar Fisica decidio cambiar de carrera a Matematicas. Asi que optopor ingresar a la 
+						<a href="https://es.wikipedia.org/wiki/Universidad_Centroccidental_Lisandro_Alvarado" title="UCLA">Universidad Central Lisandro Alvarado</a>, ubicada en Barquisimeto, a una hora de su casa. Sin embargo por aun poseer cupo en la UCV le fue negado el ingreso, pero y una vez que ya habia decidido cambiar de carrera comenzo a buscar opciones para estudiar Matematicas y eligio la 
 						<a href="https://es.wikipedia.org/wiki/Universidad_Nacional_Abierta" title="unayaracuy">Universidad Nacional Abierta</a> con sede en su estado a solo 20 minutos de viaje
 					</p>
 					<p> 
@@ -775,26 +801,24 @@
 					</p>					
 				</div>			
 
-				<h3>
-					<span class="mw-headline" id="UPEL">Universidad Pedagogica Experimental Libertador</span>
+				<h3 class='tog4'>
+					<span class="mw-headline" id="UPEL" >Universidad Pedagogica Experimental Libertador</span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>
-				<div class='toggler'>
+				<div class='toggler toggler4'>
 					<p>
-						Between June 2005 and Ballack's retirement, Germany never lost a game when Ballack scored. He scored four goals in the 
-						<a href="https://es.wikipedia.org/wiki/2010_FIFA_World_Cup_qualification_(UEFA)" title="2010 FIFA World Cup qualification (UEFA)">2010 World Cup qualifiers</a>. Ballack, however, missed the 
-						<a href="https://es.wikipedia.org/wiki/2010_FIFA_World_Cup" title="2010 FIFA World Cup">2010 World Cup</a> following a foul by Portsmouth's Kevin-Prince Boateng in the 2010 FA Cup final that caused an ankle injury. Boateng is a former Germany under-21 player and half-brother of current German international 
-						<a href="https://es.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng" title="Jérôme Boateng">Jérôme Boateng</a>. Kevin-Prince Boateng went on to play for 
-						<a href="https://es.wikipedia.org/wiki/Ghana_national_football_team" title="Ghana national football team">Ghana</a> against the German team in the World Cup group stages.<sup id="cite_ref-WC2010-Ankle_44-0" class="reference">
-							<a href="#cite_note-WC2010-Ankle-44">&#91;44&#93;</a></sup> Ballack did travel to South Africa to provide moral support for the national team but he departed after 
-						<a href="https://es.wikipedia.org/wiki/Philipp_Lahm" title="Philipp Lahm">Philipp Lahm</a>, who was appointed team captain due to Ballack's injury, commented after the quarter-finals that he would not relinquish the captaincy back to Ballack. Team manager 
-						<a href="https://es.wikipedia.org/wiki/Oliver_Bierhoff" title="Oliver Bierhoff">Oliver Bierhoff</a> criticized Lahm's comments and clarified the situation, saying, "Philipp Lahm is the World Cup captain and Michael Ballack is still the captain."
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 					</p>
-					<div class="thumb tright">
-						<div class="thumbinner" style="width:222px">
+					<div class="thumb tleft">
+						<div class="thumbinner" style="width:400px">
 							<a href="https://es.wikipedia.org/wiki/Universidad_Pedag%C3%B3gica_Experimental_Libertador" class="image">
 								<center>
-									<img src="https://i2.wp.com/lanacionweb.com//fotoedicion/2019/07/upell-1.jpg?fit=215%2C183&ssl=1" class="thumbimage"/>
+									<img src="imgx/yo_informaticos.jpg" style='width: 400px' class="thumbimage"/>
 								</center>						
 							</a>  
 							<div class="thumbcaption">										
@@ -803,82 +827,161 @@
 						</div>
 					</div>			
 					<p>
-						Germany played strongly in the tournament despite Ballack's absence, including a 4–1 win over 
-						<a href="https://es.wikipedia.org/wiki/England_national_football_team" title="England national football team">England</a> and a 4–0 win over Argentina en route to finishing third, thanks to emerging midfield talents such as 
-					 	<a href="https://es.wikipedia.org/wiki/Sami_Khedira" title="Sami Khedira">Sami Khedira</a>, 
-					 	<a href="https://es.wikipedia.org/wiki/Thomas_M%C3%BCller" title="Thomas Müller">Thomas Müller</a>, and 
-					 	<a href="https://es.wikipedia.org/wiki/Mesut_%C3%96zil" title="Mesut Özil">Mesut Özil</a>. Former German captain Lothar Matthäus suggested that Ballack's absence had allowed these young players to blossom.	
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 					</p>
 					<p>
-						Since the 2010 World Cup qualifiers, Ballack had not been called up for any international matches. It was reported that Germany coach Joachim Löw was waiting for Ballack to retire from international football after the 2010 World Cup, however Ballack refused to give up despite a rash of injuries suffered in 2010–11 with Bayer Leverkusen. On 16 June 2011, it was announced that Ballack would no longer be a part of the national team. The 
-						<a href="https://es.wikipedia.org/wiki/German_Football_Association" title="German Football Association">German Football Association</a>(DFB) offered him two 
-					 	<a href="https://es.wikipedia.org/wiki/Exhibition_game" title="Exhibition game">friendlies</a> to reach 100 matches for Germany, which he refused, accusing Löw of disrespecting him ever since his injury dating back to March 2010 and calling the invitation to compete in another two games for Germany a "farce".		  
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.		  
 					</p>
 				</div>
 
-				<h3>
+				<h3 class='tog5'>
 					<span class="mw-headline" id="cursos_presenciales">Cursos Presenciales</span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>
-				<div class='toggler'>
+				<div class='toggler toggler5'>
 					<h4>
 						<span class="mw-headline" id="inces">Reparacion de Computadoras: INCES</span>
 						<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 					</h4>
 					<div class='toggler'>
 						<p>
-							
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
 					</div>
 
-					<h4>
+					<h4 class='tog6'>
 						<span class="mw-headline" id="lamp">LAMP (Linux+Apache+PHP+MySQL)</span>
 						<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 					</h4>
-					<div class='toggler'>
+					<div class='toggler toggler6'>
 						<p>
-							
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
 					</div>
 
-					<h4>
+					<h4 class='tog7'>
 						<span class="mw-headline" id="smata">Automtizacion: SMATA</span>
 						<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 					</h4>
-					<div class='toggler'>
+					<div class='toggler toggler7'>
 						<p>
-							
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
 					</div>
 				</div>
 
-			<h2>
+			<h2 class='tog8'>
 				<span class="mw-headline" id="emigracion">Migracion a Argentina</span>
 				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
-			<div class='toggler'>
+			<div class='toggler toggler8'>
 				<p>
-					
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<div class="thumb tleft">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<div class="thumbinner" style="width:172px;">
+							<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" class="image">
+								<img alt="" style='width: 200px' src="imgx/yo_obelisco.png" class="thumbimage"/>
+							</a> 
+							<div class="thumbcaption">
+								<center>En el Obelisco, en Buenos Aires 
+									 
+								</center>
+							</div>
+						</div>
+					</div>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>				
 			</div>
 
-			<h2>
+			<h2 class='tog9'>
 				<span class="mw-headline" id="trabajo">Desempeno Profesional</span>
 				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
-			<div class='toggler'>
-				<h3>
+			<div class='toggler toggler9'>
+				<h3 >
 					<span class="mw-headline" id="freelancer">Freelancer </span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>
 				<div class='toggler'>
-					
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</div>
 
 				<h3>
 					<span class="mw-headline" id='repartidor'>Repartidor </span>
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>
+				<div class="thumb tright">
+						<div class="thumbinner" style="width:172px;">
+							<a href="https://es.wikipedia.org/wiki/Universidad_Central_de_Venezuela" class="image">
+								<img alt="" src="yo_repartidor.png" class="thumbimage"/>
+							</a> 
+							<div class="thumbcaption">
+								<center>Como delivery en Buenos Aires 
+									
+								</center>
+							</div>
+						</div>
+					</div>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				<div class='toggler'>
 					
 				</div>
@@ -888,33 +991,24 @@
 					<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 				</h3>
 				<div class='toggler'>
-					
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</div>				
 			</div>
 
-			<h2>
+			<h2 class='tog10'>
 				<span class="mw-headline" id="estilo_de_trabajo">Estilo de Trabajo</span>
 				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
-			<div class='toggler'>
-				<p>Ballack is considered to be one of the most complete and versatile 
-					<a href="https://es.wikipedia.org/wiki/Midfielder" title="Midfielder">midfielders</a> of his generation;
-					<sup id="cite_ref-51" class="reference">
-						<a href="#cite_note-51">&#91;51&#93;</a>
-					</sup> he played in several midfield positions during his career, and was noted for his powerful shot with both feet.
-					<sup id="cite_ref-Ballack_retires_3-1" class="reference">
-						<a href="#cite_note-Ballack_retires-3">&#91;3&#93;</a>
-					</sup>
+			<div class='toggler toggler10'>
+				
 				</p>
 				<p>
-					On a technical level, he was a commanding, physically strong and aggressive player, with excellent passing range, who moved the ball efficiently.
-					<sup id="cite_ref-Ballack_retires_3-2" class="reference">
-						<a href="#cite_note-Ballack_retires-3">&#91;3&#93;</a>
-					</sup> The technicality and intelligence of his game was extremely high. He started his football career as a <a href="https://es.wikipedia.org/wiki/Sweeper_(association_football)" class="mw-redirect" title="Sweeper (association football)">sweeper</a>,
-					<sup id="cite_ref-52" class="reference">
-						<a href="#cite_note-52">&#91;52&#93;</a>
-					</sup> 
-					but when he moved to Leverkusen in 1999, then-coach Christoph Daum moved him to midfield. He adapted to a deeper role during his spell at Chelsea.
+					
 				</p>
 				<p>
 					In 2011, Ballack's international coach at the time, Joachim Löw, praised him, describing him as a player who "exudes authority and calm on the pitch".
@@ -1029,45 +1123,65 @@
 				</table>
 			</div>
 
-			<h2>
+			<h2 class=''>
 				<span class="mw-headline" id="vida_personal">Vida Personal</span>
-				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				<span class='mostrar tog11'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
-			<div class='toggler'>
+			<div class='toggler toggler11'>
 				<p>
-					
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>				
 			</div>
 
-			<h2>
+			<h2 > 
 				<span class="mw-headline" id="logros">Logros</span>
-				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				<span class='mostrar tog12'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
-			<div class='toggler'>
+			<div class='toggler toggler12'>
 				<p>
-					
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>				
 			</div>						
 		</div>
 
 		<div id='otros' style="background:'red'; height:15vh;">
-			<h2>
+			<h2 class=''>
 				<span class="mw-headline" id="referencias">Referencias</span>
-				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+				<span class='mostrar tog13'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
-			<div class='toggler'>
+			<div class='toggler toggler13'>
 				<p>
-					
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>				
 			</div>	
 
-			<h2>
-				<span class="mw-headline" id="otros_links">otros_links</span>
-				<span class='mostrar'>[<a id="collapseButton0">mostrar</a>]</span>
+			<h2 >
+				<span class="mw-headline" id="otros_links">Otros links</span>
+				<span class='mostrar tog14'>[<a id="collapseButton0">mostrar</a>]</span>
 			</h2>
-			<div class='toggler'>
+			<div class='toggler toggler14'>
 				<p>
-					
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>				
 			</div>	
 		</div>
