@@ -7,7 +7,7 @@
 	      
 	      
 	      <meta content='Website personal sobre los gustos de Ivan Lopez Pedreanez' name='description'/>
-	      <title>Koreraga Suki</title>
+	      <title>Spotiflix</title>
 	    
 		  <link async="async" href="" rel="stylesheet" />
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -15,6 +15,7 @@
 		  <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
 		  <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		  <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.min.css">
 
 		  <link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Proxima+Nova|Roboto|Monserrat" rel="stylesheet" />
 
@@ -22,11 +23,12 @@
 		  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
 
+		  
 		
   	</head>
 
 	<body>	
-		<nav id='navflix' class='flex-centrado'>
+		<nav id='navflix' class='flex-centrado' style='background-color:'>
 					<a href=''><img class='img_nav' src='ivan_guillermo.png'/></a>
 					<span><a href='#films'>Films</a></span>
 					<span><a href='#series'>Series</a></span>
@@ -54,9 +56,14 @@
 
 				    <button class="player_button toggle" title="Play/Stop">►</button>
 
+				    <button class="player_button"><i class="fa fa-volume-off"></i></button>
+				   
+				    <button class="player_button"><i class="fa fa-volume-up"></i></button>
+				    0%
 				    <input title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
+				    100%
 
-				    <input title='Veloc. Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
+				    0.5x<input title='Veloc. Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">2x
 
 				    <button title='Reset velocidad' class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>
 
@@ -64,14 +71,23 @@
 
 				    <button title='adelantar 25s' onclick='skip(25)' data-skip="25" class="player_button">25s »</button>
 
-				    <button title='Pantalla completa' class="fullScreen" onclick="fullScreening()">[ ]</button>
+				    
+
+				    <button title='Modo Cine' class="fullScreen" id='modo_cine' style="word-spacing: 14px">[      ]</button>
+				    <button title='Modo Cine' class="fullScreen" id='modo_cine2' style="word-spacing: 14px">[  ][]</button>
+
+				    <button title='Pantalla completa' class="fullScreen" onclick="fullScreening()">
+				    	<i class="fa fa-expand"></i></button>
 				</div>				    
 			</div>
 
 			<div id='sidevideoplayer' style='z-index:4'>
 				<table id='youtable'>
-		            <thead style='height:11vh;position:absolute;width:100%'>		              
-		                <th style='height:11vh;position: relative; top:-6px;'>Episodes</th>		              
+		            <thead style='height:11vh;position:absolute;width:100%'>
+		                <th class='flex-centrado' style='height:11vh;position: relative; top:-12px;'>
+		                	Episodes: 
+		                	<span id='epi_ser_name'>Death Note</span> 
+		                </th>		              
 		            </thead>
 		            <tbody id='episodios'>               		              
 		            </tbody>
@@ -85,7 +101,7 @@
 					height: 11vh;
 					color:white;
 					font-size: 12px;
-					background-color: #111a;
+					background-color: rgba(30,30,30,0.3);
 					
 					justify-content: space-between;
 					align-items: center;
@@ -110,7 +126,16 @@
 
 				.playero{height:90vh; background:black;  align-items: center;}
 
-				#sidevideoplayer{width:25vw;height:100%; overflow-y:scroll;overflow-x: hidden; background: white;  align-items: center; border: 3px solid var(--netflix); align-self: flex-end}
+				#sidevideoplayer{
+					width:25vw;
+					height:100%; 
+					overflow-y:scroll;
+					overflow-x: hidden;
+					background: white;  
+					align-items: center; 
+					border: 3px solid var(--netflix); 
+					align-self: flex-end}
+
 					#sidevideoplayer table tbody tr{width:25vw; border-top:1px solid white;margin-bottom: 8px}
 					#sidevideoplayer thead, th, tbody, td {margin-top:1vh;height:4vh;width:25vw;}
 					#sidevideoplayer i{font-size: 11px;width:25vw;height:4vh;}
@@ -121,18 +146,18 @@
 				.playero {width:75vw; border:0px solid rgba(0,0,0,0.2); box-shadow:0 0 20px rgba(0,0,0,0.2);}
 				.player_video {width:75vw; height:90vh;}
 				.player_button {
-					background:none;
+					background:;
 					border:0;
 					line-height:1;
-					color:white;
+					color:;
 					text-align: center;
 					outline:0;
 					padding: 0;
 					cursor:pointer;
 					max-width:50px;
 					font-size: 10px;}
-				.player_button:focus { border-color: #00c6ff;}
-				.player_slider {width:10px;height:30px;}
+				.player_button:hover { color:var(--spotify) ;background: white;font-weight: 600;font-size: 105%;}
+				.player_slider {width:5px;height:30px;}
 				.player_controls {
 					position:absolute; 
 					display:flex;
@@ -172,17 +197,36 @@
 					}
 
 				 .fullScreen{ flex:0.3;background-color:black; border:black;font-size: 10px;color:white;}
-				 .resetSpeed { flex:0.3;background-color:black; border:black;font-size: 8px;color:white;}
-				/* unholy css to style input type="range" */
+				 .resetSpeed { flex:0.3;background-color:black; border:black;font-size: 10px;color:white;}
+
 				input[type=range] { -webkit-appearance: none; background:transparent; width: 100%; margin: 0 5px;}
+
 				input[type=range]:focus { outline: none;}
-				input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-				  background: rgba(255,255,255,0.8); border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
-				input[type=range]::-webkit-slider-thumb {  height: 15px; width: 15px; border-radius: 50px; background: var(--netflix); cursor: pointer; -webkit-appearance: none;  margin-top: -3.5px; box-shadow:0 0 2px rgba(0,0,0,0.2);}
+
+				input[type=range]::-webkit-slider-runnable-track { 
+					width: 100%; height: 6.4px; cursor: pointer; 
+					box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+				    background: rgba(255,255,255,0.8); border-radius: 1.3px;
+				    border: 0.2px solid rgba(1, 1, 1, 0);}
+
+				input[type=range]::-webkit-slider-thumb {  
+					height: 12px; width: 12px; border-radius: 50px; 
+					background: var(--netflix); cursor: pointer; -webkit-appearance: none;  
+					margin-top: -3.5px; box-shadow:0 0 2px rgba(0,0,0,0.2);}
+
 				input[type=range]:focus::-webkit-slider-runnable-track { background: var(--spotify);}
-				input[type=range]::-moz-range-track { width: 100%; height: 8.4px; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0); background: #ffffff;
-				  border-radius: 1.3px; border: 0.2px solid rgba(1, 1, 1, 0);}
-				input[type=range]::-moz-range-thumb { box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); height: 15px; width: 15px; border-radius: 50px; background: var(--spotify); cursor: pointer;}
+
+				input[type=range]::-moz-range-track { 
+					width: 100%; height: 6.4px; cursor: pointer; 
+					box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0); 
+					background: #ffffff; border-radius: 1.3px; 
+					border: 0.2px solid rgba(1, 1, 1, 0);}
+
+				input[type=range]::-moz-range-thumb { 
+					box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); 
+					height: 12px; width: 12px; border-radius: 50px; 
+					background: var(--spotify); cursor: pointer;
+				}
 
 				
 			</style>
@@ -294,7 +338,7 @@
 								transition: all 0.5s}
 							
 
-						.movies_name, .series_name{font-size: 2.8vw; display:none; color:white; text-shadow: 1px 2px var(--spotify); font-weight: 400;}
+						.movies_name, .series_name{font-size: 1.8vw; display:none; color:white; text-shadow: 1px 2px var(--netflix); font-weight: 400;}
 							
 
 						.actions{
@@ -334,8 +378,8 @@
 							align-items: center; 
 							align-content: center}
 
-						.movies_2{font-size: 14px; display:none; color:white; font-weight: 300;}
-						.series_2{font-size: 14px; display:none; color:white; font-weight: 300;}
+						.movies_2, .series_2{font-size: 14px; display:none; color:white; font-weight: 600;text-shadow: 1px 1px black}
+						
 
 						#myLikes{background-color: #191414; height:10px}
 
@@ -350,24 +394,19 @@
 				<div id='films'>							
 					<!--peliculas favoritas-->					
 						<div class='films_list' id="fav_movies">
-						 	<h3 class='secTit'>Peliculas Favs</h3>
-						 									
-								<div class='display_1' id='filmes'></div>
-								
-							
+						 	<h3 class='secTit'>Peliculas Favs</h3>						 									
+								<div class='display_1' id='filmes'></div>	
 						</dir>
 
 					<div class='series_list' id="fav_series">
 						<h3 class='secTit' id='series'>Series</h3>
 						<div class='display_2' id='seriess'>
-							
 						</div>
 					</div>
 
 					<div class='series_list' id="fav_animes">
 						<h3 class='secTit'>Animes</h3>
-						<div class='display_3' id='animess'>											
-
+						<div class='display_3' id='animess'>
 						</div>
 					</div>
 				</div>
@@ -405,7 +444,7 @@
 
 							var DN = new serie("Death Note","1", "death_note.png",'');
 							var breakB= new serie("Breacking Bad", " ", "breaking_bad.png",'');
-							var bojack= new serie("Bojack", " ", "bojack.png",'');
+							var bojack= new serie("Bojack Horseman", " ", "bojack.png",'');
 							var peep_show= new serie("The Peep Show", " ", "peep_show.png",'');
 							var house= new serie("House MD", " ", "house.png",'');
 							var got= new serie("Game of Thrones", "7", "got.png",'');							
@@ -476,28 +515,44 @@
 							  this.album = album;
 							  }
 
-							var riesgo = new song("riesgo ","los_mesoneros ", "caiga_la_noche ");
-							var cln = new song("caiga_la_noche ","los_mesoneros ", "caiga_la_noche ");							
-							var flor_de_fuego= new song("flor_de_fuego ","cdc ", "flor_de_fuego");
-							var slts= new song("smells_like_teen_spirit ","nirvana ", "in utero");
-							var a_guerra_lenta= new song("a_guerra_lenta ","cdc ", "flor_de_fuego ");
-							var my_hero= new song("my_hero ","foo_fighters ", " The Colour and the Shape");
+							var riesgo = new song("riesgo","los_mesoneros", "caiga_la_noche");
+							var cln = new song("caiga_la_noche","los_mesoneros", "caiga_la_noche");							
+							var flor_de_fuego= new song("flor_de_fuego ","caramelos_de_cianuro", "flor_de_fuego");
+							var slts= new song("smells_like_teen_spirit","nirvana", "in utero");
+							var a_guerra_lenta= new song("a_guerra_lenta","caramelos_de_cianuro", "flor_de_fuego ");
+							var my_hero= new song("my_hero","foo_fighters", "The Colour and the Shape");
 							var metalingus = new song('metalingus', 'alter_bridge', 'One Day Remain');
 							var sown = new song ('somewhere_only_we_know', 'keane', 'Hopes and Fears');
 							var ebic = new song ('everybodys_changing','keane', 'Hopes and Fears');
-							var terraza = new song ('la_terraza', 'cdc', 'Frisbee');
-							var otherside = new song ('otherside', 'rhcp', 'Californication');
+							var terraza = new song ('la_terraza', 'caramelos_de_cianuro', 'Frisbee');
+							var otherside = new song ('otherside', 'red_hot_chili_peppers', 'Californication');
 							var nopa = new song ('number_1_party_anthem', 'arctic_monkeys', 'AM');
 							var awin2b = new song ('always_where_I_need_to_be', 'the_kooks', 'Konk');
+							var likeastone = new song ('like_a_stone', 'audioslave', 'Audioslave');
+							var ruby = new song ('ruby', 'kaiser_chiefs', 'Yours Truly, Angry Mob');
+							var bliss = new song ('bliss', 'muse', 'Origin of Symmetry');
 
 
-							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa, awin2b ]					
 
+
+							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa, awin2b, likeastone, ruby, bliss ]	;
+
+						function noline(x){
+							for (var i = 0; i < x.length; i++) {
+								x = x.replace("_"," ");
+							}						
+							return x;}
+							
 
 						function print_songs(){
 						 
 						  for (i = 0; i < songs.length; i++) 
-						   {song_list.innerHTML += 
+						   {
+						   	var s_name= noline(songs[i].name);					   							   							   					  
+						   	var s_band =  noline(songs[i].grupo);
+						   	var s_album =  noline(songs[i].album);					   	
+
+						   	song_list.innerHTML += 
 						    `<tr class=''>
 					           	<td style='width:2vw' data-label="More" class='more_music'>+</td>
 					            <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
@@ -508,9 +563,9 @@
 										data-band='${songs[i].grupo}'
 									  >
 					               	  </audio>
-					               	  <td data-label="Nombre"><a>${songs[i].name} </a></td>
-							          <td data-label="Artista">${songs[i].grupo}</td>
-							          <td data-label="Album">${songs[i].album}</td>
+					               	  <td data-label="Nombre"><a>${s_name} </a></td>
+							          <td data-label="Artista">${s_band}</td>
+							          <td data-label="Album">${s_album}</td>
 					               	</p>
 					            </td>
 					                				                
@@ -1022,35 +1077,59 @@
 		
 
 		
-		<nav id='music_player' class='navbar navbar-inverse navbar-fixed-bottom'>
-			<div class='side_music-player'>						
+		<nav id='music_player' class='navbar navbar-inverse navbar-fixed-bottom'>			
+			<div class="navbar-collapse collapse" id="navbar">				
+			          <ul class="nav navbar-nav">		         		          	         	
+			          	<li class="dropdown" >
+			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
+			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'><i class="fa fa-ellipsis-h"></i></span> </a> 
+			            	<ul class="dropdown-menu">
+			            		<li>Mis Gustos</a></li>			            		
+			            		<li>Cursos</a></li>			            		
+			            		<li>Viografia</a></li>
+			            		<li>Biografia</a></li>
+			            		<li>Biografia</a></li>
+			            		<li>biografia</a></li>
+			            		<li>Biografia</a></li>       				            					            		
+			            	</ul>
+			            </li>
+			          </ul>
+			       </div>
+
+			       <div class='side_music-player'>						
 					<i>Now Playing</i><br/>
-					<i id='song_on'>Caiga la Noche</i><br/>					
+					<i id='song_on'>---</i><br/>					
 			</div>
 
 			<div id="audioplayer">				
 				<div id='audiocontrols'>
-					<div id='rep_shuffle-btn'>🔀</div>
+					<div id='rep_shuffle-btn'><i class="fa fa-random"></i></div>
 					<div id='rep_forward-btn'>⏮</div>
-					<div id='rep_play-btn' class='flex-centrado'>▶️</div>
+					<div title='play/stop music' id='rep_play-btn' class='flex-centrado'>▶️</div>
 					<div id='rep_back-btn'>⏭</div>
-					<div id='rep_repeat-btn'>🔁</div>
+					<div id='rep_repeat-btn'><i class="fa fa-circle-o-notch"></i>
+				</div>
 				</div>				
 				<audio id='reproductor'></audio>
 				<span class='audio_current'>00:00</span>
 				<progress id="progress_audio" value="0" max="100" ></progress>
 				<span class='audio_duration'>00:00</spans>
-
-				
 			</div>
 
+			
+			<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+			</button>
+
 			<div class='side_music-player'>
+
 					<div style='display: inline-flex;align-content: ; justify-content: center; align-items: baseline'>
-						<span style='font-size: 12px'>Vol.</span>
-						<input  style='height:3px' title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">
+						<span style='font-size: 12px'><i class="fa fa-volume-up"></i></span>
+						<progress id="progress_audio2" value="0" max="100" ></progress>
 						
 					</div>
-					<i id='song_on_band'>Los Mesoneros</i><br/>					
+					<i id='song_on_band'>---</i><br/>					
 			</div>
 		</nav>	
 
@@ -1073,8 +1152,8 @@
 					align-content: center; 
 					align-items: center;
 					flex-shrink: 0.5
-					font-size: 12px;
-					width: 
+					font-size: 10px;
+					text-transform: capitalize;
 				}
 				#audioplayer{margin:0 20vw; justify-content: center; align-content: center; align-items: center;}
 				#audioplayer span{font-size: 11px;}
@@ -1117,8 +1196,8 @@
 			      reproductor.src = audiosrc.src;			      
 			      reproductor.currentTime = 0;
 			      reproductor.play();
-			      song_on.innerHTML = audiosrc.dataset.name;
-			      song_on_band.innerHTML = audiosrc.dataset.band;
+			      song_on.innerHTML = noline(audiosrc.dataset.name);
+			      song_on_band.innerHTML = noline(audiosrc.dataset.band);
 			      this.style.backgroundColor='red';
 			      play_stop();
 			    }		
@@ -1166,12 +1245,21 @@
 					justify-content: space-between;
 					padding-top:2px;
 				}
-				#progress_audio, #progress_audio2{
+				#progress_audio{
 					height:4px; 
 					width:15vw;
 					background-color: white; 
 					color:white;
 					border: 0.5px solid #333a;
+				}
+				#progress_audio2{
+					height:3px; 
+					width:12vw;
+					background-color: white; 
+					color:white;
+					border: 0.5px solid #333a;
+					margin:0 4px;
+
 				}
 				#progress_audio::after{ width:20px; background:red; content:'r'; color:red;}
 				}
@@ -1222,7 +1310,7 @@
 	  
 	  var psyp_epi =[];
 	  var sel_epi=[];
-	  var dn_epi = [['',''],
+	  var dn_epi = [['Desth Note','DN_'],
 	            ['1. Renacimiento','Shinsei (新生)','Oct 03, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%201%20Sub%20Esp.mp4.mp4?raw=1'],
 	            ['2. Confrontación','Taiketsu (対决) ','Oct 10, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%202%20Sub%20Esp.mp4.mp4?raw=1'],
 	            ['3. Negociaciones ','Torihiki (取引)','Oct 14, 2006','https://www.dropbox.com/s/xy14s0i0zpm95jy/Death%20Note%203%20Sub%20Esp.mp4.mp4?raw=1'],
@@ -1263,16 +1351,19 @@
 	          ];
 	    var series_epi=[[psyp_epi, dn_epi, sel_epi],['Psycho_Pass','Death_Note','sel']];
 
+	    var epi_tit = document.getElementById('epi_ser_name');
 		var epi= document.getElementById('episodios');
 	  
 
-		function print_epi(x){
+		function print_epi(x){		
+
 	    var k=series_epi[0][x];
+	    epi_tit.innerHTML=k[0][0];
 	  for (i = 1; i < k.length; i++) 
 	    {epi.innerHTML += 
 	              `<tr>                    
 	                  <td>
-	                    <div class='preview' style="background:url('series/${series_epi[1][x]}/DN_${i}.png')">
+	                    <div class='preview' style="background:url('series/${series_epi[1][x]}/${k[0][1]}${i}.png')">
 	                      <source src="${k[i][3]}" type="video/mp4">
 	                    </div>
 	                    <div>                       
@@ -1400,41 +1491,47 @@
 
 					.read a{width: 8vw; font-size: 11px;}
 
-						.book_name, .book_autor{font-size: 10px;width: 18vw}
+					.book_name, .book_autor{font-size: 10px;width: 18vw}
 				}
 		</style>
-		<script type="text/javascript">
-  	const navs = document.querySelector('#navflix');  
-  	const topOfNav = navs.offsetTop;
+		
+		  <script type="text/javascript">
+		  	const navs = document.querySelector('#navflix');  
+		  	const topOfNav = navs.offsetTop;
+		  	var alpha = 0.3;
 
-	const myLikes = document.querySelector('#myLikes');  
-	const topOfLikes = myLikes.offsetTop  ;	
-	
-	function activeNav(){
-				    if(window.scrollY >= topOfLikes)  {
-				    	
-				    	document.querySelector("#navflix").style.color='green';} 
-				    					    			    
-				  } 
-  
-	window.addEventListener('scroll', activeNav);
+			const myLikes = document.querySelector('#myLikes'); 
+			const bandas = document.querySelector('#bandas'); 			
+			const sports  = document.querySelector('#deportes');  
 
-  </script>
-  <script type="text/javascript">
-  	const navs = document.querySelector('#navflix');  
-  	const topOfNav = navs.offsetTop;
+			const topOfLikes = myLikes.offsetTop  ;	
+			const topOfBandas = bandas.offsetTop  ;	
 
-	const myLikes = document.querySelector('#myLikes');  
-	const topOfLikes = myLikes.offsetTop  ;	
-	
-	function activeNav(){
-		console.log('s');
-			if(window.scrollY > 100)  {
-			navs.style.backgroundColor='green';
-			console.log('v')} 	    					    			    
-				  } 
-  
-	window.addEventListener('scroll', activeNav);
+			const topOfSports = sports.offsetTop  ;	
 
-  </script>
+			
+			function activeNav(){
+					navs.style.backgroundColor=`rgba(30,30,30,${alpha})`;				
+					if(window.scrollY > topOfLikes)  
+						{alpha = window.scrollY/topOfBandas;} 
+					else if(window.scrollY > topOfBandas)  
+						{alpha = 1;} 
+					else  {alpha = 0.3;}   					    			    
+						  } 
+			window.addEventListener('scroll', activeNav);
+
+		  </script>
+
+		  <script type="text/javascript">
+		  	$("#modo_cine").click(function () {
+		  		  $('.playero, #player, #player_video_p, .player_controls ').animate({width:'100vw'},660);		  		  
+		          $('#sidevideoplayer, #youtable, #episodios').animate({width:'0px'},660);;
+		    });
+		    $("#modo_cine2").click(function () {
+		  		  $('.playero, #player, #player_video_p, .player_controls ').animate({width:'75vw'},660);		  		  
+		          $('#sidevideoplayer, table, #episodios').animate({width:'25vw'}, 660);;
+		    });
+		   
+
+		  </script>
 </html>
