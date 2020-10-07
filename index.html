@@ -19,7 +19,7 @@
 
 		<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Roboto|Raleway|Satisfy" rel="stylesheet" />
+		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Roboto|Raleway|Satisfy|Lobster" rel="stylesheet" />
 
 		<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
         <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
@@ -33,14 +33,14 @@
 					<div class="media">
 						<div class="media-left media-middle">
 							<img alt="ivanlopezpedreanez" class="media-object" src="yo2019.png" />
-							<button class="btn btn-lg" href="#" role="button" id="about_btn" style='font-family: satisfy;'>	Mi Historia
-						</div>
+							<a href="bio.html"><button class="btn btn-lg"  role="button" id="about_btn" style='font-family:lobster;'>Mi Historia 
+						</div></a>
 						<div class="media-body">
-							<h1 class="media-heading" style='font-size:8.5vh;font-family: satisfy;'>Ivan Lopez Pedreañez</h1>
+							<h1 class="media-heading" style='font-size:8.5vh;font-family: Satisfy;'>Ivan Lopez Pedreañez</h1>
 							<div id='resume' class="resume" >
 								<p>Me llamo Ivan y soy<a>Programador Web</a> y traductor freelance</p>
-								<p>Estudio Matemática y Educación Informática, y amo crear blogs educativos</p>
-								<p>Me encantan los deportes, el cine, la tecnología y la literatura</p>
+								<p>Actualmente estudio Matemática y Educación Informática</p>
+								<p>Soy fan de crear proyectos y aprender cosas nuevas cada dia</p>
 							</div>
 						</div>					
 					</div>
@@ -91,18 +91,17 @@
 						.media-heading{font-size:45%; }
 						
 						.resume p{color:white;text-shadow: 1px 1px black; font-weight: 800;}
-					}						
-					
+					}				
 					a:link{text-decoration:none }
 			</style>
-								
-
 
 			<nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
 		          <div class="container-fluid" id='fluid' style='display:flex;'>
 		            <div class="navbar-header" style='display:flex; height:100%'>
 		              
-		              <a class="navbar-brand" href="#" style="background-color:var(--color); color:black;font-weight: 500;"><i style='font-family: satisfy; color:; letter-spacing: 2px;'>Hola!</i></a>
+		              <a class="navbar-brand" href="#" style="height: 8vh;background-color:var(--color); color:black;font-weight: 500;">
+		              	<b style='font-family: lobster; letter-spacing: 2px;'>Hola!</b>
+		              </a>
 					
 				      <a id='navYo' class="navbar-link" href="#quote" style="text-decoration: none;align-self: center">
 				      	<b>	<i style="color:white;">Ivanguillermo</i> </b>
@@ -125,35 +124,38 @@
 
 		              <a id='navEdu' class="navbar-link" href="#educador" style="text-decoration: none;align-self: center">
 		              	<span>EDUCADOR</span>
-		              	<img alt='educador' src="yo2019.png"/>
+		              	<img alt='educador' src="imgx/teaching.png"/>
 		              </a>
 
-		              
-		              
-		              <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';document.getElementById('contacto').style.position='';">
+		              <button id='' aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='block';">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar">
 						</span>
-					  </button>
+				  	  </button>
+
+		              <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:0.5%">
+				        <li>
+				            <a href="contacto.html" style="height: 8vh;background-color:var(--color);color:white"><b>Contacto</b></a>
+				        </li>
+			      	  </ul>
 		            </div>
 
-		          <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:1.5%">
-			        <li>
-			            <a href="contacto.html" style="background-color:var(--color);color:white"><b>Contacto</b></a>
-			        </li>
-			      </ul>
-
-		          <div class="navbar-collapse collapse" id="navbar">
+					<div class="navbar-collapse collapse" id="navbar">
 			          <ul class="nav navbar-nav">		         		          	         	
 			          	<li class="dropdown" >
 			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
-			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'><i class="fa fa-ellipsis-v"></i></span> </a> 
+			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'>
+			              		<i class="fa fa-ellipsis-v"></i>
+			              	</span> 
+			              </a> 
 			            	<ul class="dropdown-menu">
-			            		<li><a href="likes/index.html">Mis Gustos</a></li>
+			            		<li><a href="likes/index.html">Hobbies</a></li>
 			            		<li class="divider" role="separator"></li>
 			            		<li><a href="cursos.html">Cursos</a></li>
 			            		<li class="divider" role="separator"></li>
 			            		<li><a href="bio.html">Biografia</a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li><a href="https://ivanguillermo.github.io/informaticos15">informaticos15</a></li>
 			            		<li class="divider" role="separator"></li>
 			            		<li id="contacto_nav">
 					              <a href="contacto.html" >Contacto</a>
@@ -168,10 +170,7 @@
 
 		    <style type="text/css">
 
-		    	.navbar{min-height:8vh;}
-
-		    	.navbar-header{}
-		    	.navbar-brand{;}
+		    	.navbar{height:8vh;}		    	
 				.navbar-link{display:flex; flex-flow: row wrap; justify-content: center; align-content: center; align-content: center;height:4vh; width:10vw; padding:1.5vw;font-size:1vw;}
 				.color {color:var(--color);}
 				.navbar-link {height:4vh; display:flex;}
@@ -182,10 +181,6 @@
 				.dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
 				.dropdown-toggle{width:190%; color:white; align-self: flex-end; text-align: center}
 				#contacto_nav{display: none}
-
-
-
-				
 				
 				@media only screen and (max-width: 800px) {
 					.navbar{width:100vw;}
@@ -208,11 +203,8 @@
 				<p>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas
 				</br>
 				<em>Friedrich Nietzsche</em>
-				</p>				
-				
-			</div>
-
-			
+				</p>
+			</div>			
 
 			<style>
 					#quote{
@@ -227,7 +219,7 @@
 					}
 					#quote p{padding-top:1vh; font-size: 120%;}
 					#yo_descripcion {background:transparent;}
-					#mi_nombre {text-align:center; padding-top:; color:#ddd; text-shadow: 2px 1px 2px #4fdb98  ; }
+					#mi_nombre {font-family:lobster; text-align:center; padding-top:; color:white; text-shadow: 2px 1px 2px black;letter-spacing: 2.4px; word-spacing: 6px; }
 					#descripcion {text-align:center; color:#fff; font-weight: 500; text-shadow: 0.5px 0.5px #292929; padding:0% 15%;}
 					@media only screen and (max-width: 800px) {
 						section {height:150px;}
@@ -241,7 +233,7 @@
 				<div id='yo_descripcion'>
 				<h3 id="mi_nombre" >Ivan Guillermo</h3>
 				<p id="descripcion">
-					Soy un joven venezolano actualmente viviendo en Argentina. Apasionado por estudiar y aprender cada d&iacute;a un poco m&aacute;s. y luego siempre busco poner en pr&aacute;ctica lo que aprendo, para resolver problemas de la vida real y sobre todo ayudar a los dem&aacute;s con los suyos. Me considero a mi mismo como...
+					Soy un joven venezolano actualmente viviendo en Argentina. Apasionado por estudiar y aprender cada d&iacute;a un poco m&aacute;s. y luego siempre busco poner en pr&aacute;ctica lo que aprendo, para resolver problemas de la vida real. Me considero a mi mismo como...
 				</p>
 				</div>								
 				<div class='logos_profs'>
@@ -335,11 +327,11 @@
 					</div>
 
 					<div id="langs_p">
-						<p style='color:black'>Por un tiempo me dedique a realizar traducciones como freelancer. Principalmente de Ingles a Espanol y viceversa. Pero tambien realice otras traducciones que me ayudaron a crear una cultura de responsabilidad y compromiso</p>
+						<p style='color:black'>He trabajado como traductor freelance. Principalmente INGLES/ESPAÑOL, pero tambien realizo otras traducciones que me ayudaron a desarrollar responsabilidad y compromiso para entregar un producto de calidad en corto tiempo</p>
 						<span id="tr_txt" style="color:#eee; text-shadow: 1px 1px black; font-weight: 600;">							
-							Puedo traducir entre varios idiomas. Soy un hablante nativo de ESPAÑOL y altamente competente en INGLÉS.
+							Puedo traducir entre cinco idiomas. Soy un hablante nativo de ESPAÑOL y altamente competente en INGLÉS.
 							<br />Y además soy capaz de traducir a esos 2 idiomas desde:
-							<br />ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  ITALIANO 🇮🇹 PORTUGUES 
+							<br />ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  PORTUGUES 🇧🇷
 						</span>
 					</div>
 
@@ -350,27 +342,23 @@
 						<a class='aflag' data-lang='1'>	<img id='de-flag' alt="germany-flag" class="flagies" src="imgx/langs/deu.png" /></a> 
 						<!--fra-->
 						<a class='aflag' data-lang='2'>	<img id='fr-flag' alt="france-flag" class="flagies" src="imgx/langs/fra.png" /></a> 
-						<!--ita-->
-						<a class='aflag' data-lang='3'>	<img id='it-flag' alt="italy-flag" class="flagies" src="imgx/langs/ita.png" /></a> 
 						<!--spa-->
-						<a class='aflag big_flag' data-lang='4'>	<img id='sp-flag' alt="spain-flag" class="flagies" src="imgx/langs/spa.png" /></a> 
+						<a class='aflag big_flag' data-lang='3'>	<img id='sp-flag' alt="spain-flag" class="flagies" src="imgx/langs/spa.png" /></a> 
 						<!--eng-->
-						<a class='aflag' data-lang='5'>	<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="imgx/langs/eng.png" /></a>
+						<a class='aflag' data-lang='4'>	<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="imgx/langs/eng.png" /></a>
 					</div>
 
 					<script>
 						const idiomas=[
-							'Eu posso traduzir entre vários idiomas. Eu sou um falante nativo de ESPANHOL e sou altamente proficiente em INGLÊS.<br/> Eu também posso traduzir para esses 2 idiomas de:<br/> ALEMAO 🇩🇪 FRANCÈS 🇫🇷 ITALIANO 🇮🇹 PORTUGES',
+							'Eu posso traduzir entre vários idiomas. Eu sou um falante nativo de ESPANHOL e sou altamente proficiente em INGLÊS.<br/> Eu também posso traduzir para esses 2 idiomas de:<br/> ALEMAO 🇩🇪 FRANCÈS 🇫🇷  PORTUGES 🇧🇷',
 
-							'Ich kann zwischen mehreren Sprachen übersetzen. Ich bin ein Muttersprachler von SPANISCH und ich bin sehr gut in ENGLISCH.<br/> Ich kann auch in diese 2 Sprachen übersetzen von:<br/> DEUTSCH🇩🇪   FRANZöSISCH 🇫🇷 ITALIENISCH 🇮🇹 PORTUGES', 
+							'Ich kann zwischen funf Sprachen übersetzen. Ich bin ein Muttersprachler von SPANISCH und ich bin sehr gut in ENGLISCH.<br/> Ich kann auch in diese 2 Sprachen übersetzen von:<br/> DEUTSCH🇩🇪   FRANZöSISCH 🇫🇷 PORTUGES 🇧🇷', 
 
-							'Je peux traduire entre plusieurs langues. Je suis un locuteur natif de L`ESPAGNOL et je suis très compétent en ANGLAIS . <br/>Je peux aussi traduire vers ces 2 langues depuis:<br/> ALLEMAN 🇩🇪  FRANÇAIS 🇫🇷    ITALIAN 🇮🇹 PORTUGAIS',
+							'Je peux traduire entre cinq langues. Je suis un locuteur natif de L`ESPAGNOL et je suis très compétent en ANGLAIS . <br/>Je peux aussi traduire vers ces 2 langues depuis:<br/> ALLEMAN 🇩🇪  FRANÇAIS 🇫🇷  PORTUGAIS 🇧🇷',							
 
-							'Posso tradurre tra più lingue. Sono un madrelingua SPAGNOLO e sono molto bravo in INGLESE. <br/>E posso anche tradurre in quelle 2 lingue da:<br/> TEDESCO 🇩🇪   FRANCESE 🇫🇷  ITALIANO 🇮🇹 PORTOGHESE',	
+							'Puedo traducir entre cinco idiomas. Soy un hablante nativo de ESPAÑOL y soy altamente competente en INGLÉS. <br/>Y además puedo traducir a esos 2 idiomas desde:<br/> ALEMÁN 🇩🇪  FRANCÉS 🇫🇷   PORTUGUÉS 🇧🇷',	 
 
-							'Puedo traducir entre varios idiomas. Soy un hablante nativo de ESPAÑOL y soy altamente competente en INGLÉS. <br/>Y además puedo traducir a esos 2 idiomas desde:<br/> ALEMÁN 🇩🇪  FRANCÉS 🇫🇷  ITALIANO 🇮🇹 PORTUGUÉS',	 
-
-							'I can translate between several languages. I am a native speaker of SPANISH and I am highly proficient in ENGLISH.  <br/>And I can also translate to those 2 languages from:<br/> GERMAN 🇩🇪  FRENCH 🇫🇷  ITALIAN 🇮🇹 PORTUGES'];
+							'I can translate between five languages. I am a native speaker of SPANISH and I am highly proficient in ENGLISH.  <br/>And I can also translate to those 2 languages from:<br/> GERMAN 🇩🇪  FRENCH 🇫🇷  PORTUGES 🇧🇷'];
 
 						const langs = document.getElementById('langs');
 						const flagies = Array.from(langs.querySelectorAll('.aflag'));
@@ -621,6 +609,7 @@
 									z-index:2;
 									font-family: roboto;
 									font-size: 11px;
+									display: none;
 															
 								}	
 											
@@ -918,6 +907,8 @@
 			            </div>
 			        </div>
 
+			       
+
 			        <style>
 			        	.modal { 
 			            display:none; 
@@ -1057,12 +1048,16 @@
                   
                   ["seguridad_informatica","Seguridad Informatica",'https://docs.google.com/presentation/d/e/2PACX-1vTln-XIH3L6AA91-Wt06pqcIN2GRXL2zrdYEC6JGfqy84qeab7V0ncvbOWwCYuhYDi8UO2a1xvWmdBc/embed?start=false&loop=false&delayms=3000'],
                   
-                  ["sistemas_admin_bases_datos","Sist. Admin. de Bases de Datos",'https://docs.google.com/presentation/d/e/2PACX-1vQFM-zsk_a02vf1T59ro4oyOSms2iMjAtvXqd5qsHjQ35z5jtTIUK9Jtz-ozzoBuHcMwUJ99DAN5dPy/embed?start=false&loop=false&delayms=3000'],
+                  ["sistemas_admin_bases_datos","Sistemas Administracion de Bases de Datos",'https://docs.google.com/presentation/d/e/2PACX-1vQFM-zsk_a02vf1T59ro4oyOSms2iMjAtvXqd5qsHjQ35z5jtTIUK9Jtz-ozzoBuHcMwUJ99DAN5dPy/embed?start=false&loop=false&delayms=3000'],
                   
-                  ["sistemas_computacion","Sistemas Computacion", 'https://docs.google.com/presentation/d/e/2PACX-1vT4JQ4EusltX1FKSGTd2SHYEzEp4og2H1w0BLzDZl0dikc2KpWy9pKqtUoRDNFT3l4-ByrdHTocLDKU/embed?start=false&loop=false&delayms=3000'],    
+                  ["sistemas_computacion","Sistemas Computacion", 'https://docs.google.com/presentation/d/e/2PACX-1vT4JQ4EusltX1FKSGTd2SHYEzEp4og2H1w0BLzDZl0dikc2KpWy9pKqtUoRDNFT3l4-ByrdHTocLDKU/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["algebra_lineal","Algebra Lineal",'https://docs.google.com/presentation/d/e/2PACX-1vQigbVB0nQvCYmtF98IFbdtMBvPW_dXVKOyUSL5JSm-BHBV3_aWVDAFfFJnZ97N7OfPAztX8bDoa8gS/embed?start=false&loop=false&delayms=3000'],
+                  
+                  ["analisis_real","Analisis Real",'https://docs.google.com/presentation/d/e/2PACX-1vSQlqtbpmqs8zowSuKU5soFBENDuOmN3Xhg_PzfD2Y0EI403KlXVVaGhL9Nv-EMx8zTKHWQmMXxr-Uc/embed?start=false&loop=false&delayms=3000'],
 
                   ["descartes", "Descartes",'https://docs.google.com/presentation/d/e/2PACX-1vTNBdAb2wgOK10TA61NemgvqSR_YY9uNiz1XSM5_xfakTRqhZ9PjztwHvUCDSJiYDLfmwYgxjwylESL/embed?start=false&loop=false&delayms=3000']
-                ];
+                ];;
 
 				 		var shower = document.getElementById('pptx_shower_frame');
 		         		var shower_tit = document.getElementById('pptx_shower_tit');
@@ -1081,7 +1076,7 @@
 							
 						function pptxs_change(){	
 							ranpptxs = shuffle(pptxs);						
-							for (i = 0; i < 15; i++) {
+							for (i = 0; i < 17; i++) {
 							  document.getElementById(`pptx_img`+`${i}`).src='imgx/pptx/'+ pptxs[i][0] +'.png';							  
 							}
 							
@@ -1107,7 +1102,7 @@
 			
 		<div class="item foot"> 
 					   <center class="rrss">
-					        <a id='facebook' href="https://www.facebook.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-facebook-official"></i></div></a>
+					        <a id='facebook' href="https://www.facebook.com/ivanguillermolopezp" target="_blank" rel="noopener"><div><i class="fa fa-facebook-official"></i></div></a>
 					        <a id='instagram' href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-instagram"></i></div></a>
 					        <a id='twitter' href="https://twitter.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-twitter"></i></div></a>
 					        <a id='youtube' href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA?view_as=subscriber" target="_blank" rel="noopener"><div><i class="fa fa-youtube"></i></div></a>
@@ -1140,11 +1135,8 @@
 
 
 		                @media only screen and (max-width: 800px) {
-
 		                	.rrss div{width: 30px; height:30px;}
 		                	#youtube{display:none;}
-
-
 		                	html{overflow:hidden;}
 		                }
 		</style>
@@ -1161,7 +1153,7 @@
 						--green: #a3bf34;
 					}
 					
-					html{overflow:hidden;	scroll-behavior:;}
+					html{overflow:hidden;scroll-behavior:;}
 
 					body {background: black;font-size: 120%;}
 					button{background-color:var(--color);}
@@ -1207,8 +1199,6 @@
 				            	 /* Chrome, Safari, Opera */
 				            	animation-name: subir;     	 
 				            	transform:rotate(30deg);
-						
-									
 								font-size: 12px;	
 								border-radius: 65%;
 								display:inline-flex;
@@ -1220,18 +1210,17 @@
 								width: 8vw;	
 								height: 10vw;
 								font-weight: 700;
-
 							}		
 		</style>
 
 		<script type="text/javascript">
 				const navs = document.querySelector('#navbarIvan');  const topOfNav = navs.offsetTop;
 
-				const yop = document.querySelector('#quote');  const topOfYop = yop.offsetTop -10  ;	
-			  	const tra = document.querySelector('#translator');  const topOfTra = tra.offsetTop-10   ;
-			  	const dev = document.querySelector('#programmer');  const topOfDev = dev.offsetTop -10 ;
-			  	const mat = document.querySelector('#matematico');  const topOfMat = mat.offsetTop -10 ;
-			  	const edu = document.querySelector('#educador');  const topOfEdu = edu.offsetTop-10 ;
+				const  yop = document.querySelector('#quote');  const topOfYop = yop.offsetTop -10  ;	
+			  	const  tra = document.querySelector('#translator');  const topOfTra = tra.offsetTop-10   ;
+			  	const  dev = document.querySelector('#programmer');  const topOfDev = dev.offsetTop -10 ;
+			  	const  mat = document.querySelector('#matematico');  const topOfMat = mat.offsetTop -10 ;
+			  	const  edu = document.querySelector('#educador');  const topOfEdu = edu.offsetTop-10 ;
 			  	const rrss = document.querySelector('.rrss');  const topOfRrss = rrss.offsetTop-10;
 
   
