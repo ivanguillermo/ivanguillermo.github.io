@@ -56,15 +56,15 @@
 
 				    <button class="player_button toggle" title="Play/Stop">►</button>
 
-				    <button class="player_button"><i class="fa fa-volume-off"></i></button>
+				    <button title='mute' class="player_button"><i class="fa fa-volume-off"></i></button>
 				   
 				    <button class="player_button"><i class="fa fa-volume-up"></i></button>
 				    
 				    <input style='' title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">				    
 
-				    <!--<input title='Veloc. Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">-->
+				    <!--<input title='Veloc. Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
 
-				    <button title='Reset velocidad' class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>
+				    <button title='Reset velocidad' class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>-->
 
 				    <button title='retrasar 10s' onclick='skip(-10)' data-skip="-10" class="player_button">« 10s</button>
 
@@ -72,7 +72,7 @@
 				    			    
 
 				    <button title='Modo Cine' class="fullScreen" id='modo_cine' style="word-spacing: 14px"><i class="fa fa-arrows-alt"></i></button>
-				    <button title='Modo Cine' class="fullScreen" id='modo_cine2' style="word-spacing: 14px"><i class="fa fa-chevron-left"></i></button>
+				    <button title='Show Sideview' class="fullScreen" id='modo_cine2' style="word-spacing: 14px">[---]</button>
 
 				    <button title='Pantalla completa' class="fullScreen" onclick="fullScreening()">
 				    	<i class="fa fa-expand"></i></button>
@@ -241,7 +241,7 @@
 				let currentTime = video.currentTime;
 
 
-				video.volume = 0.2;
+				video.volume = 0.5;
 				progressBar.style.flexBasis = `0%`;
 
 				function togglePlay(){
@@ -301,9 +301,9 @@
 
 				<!--lists films style-->
 		<style>
-						.display_1, .display_2, .display_3, .display_4{
-								 width:120vw; 
-								 height:25vh; 
+						.displayer{
+								 width:110vw; 
+								 height:23vh; 
 								 display:flex; 
 								 flex-flow: row nowrap; 
 								 justify-content:space-around; 
@@ -313,8 +313,12 @@
 								 font-size: 2.3vw;
 								 margin-bottom:4vw ;
 								 position:relative;
-								 right:-5vw;
+								 right:-3vw;
 								 }
+						.displayer::before{
+							content: url(backmove.png);
+							color: ;
+							background: transparent;						}
 
 						.item{height:13vw; 
 							width: 23vw; 
@@ -386,35 +390,46 @@
 				
 		<div id='myLikes'>
 		</br>
-			<h2><img class='img_myLikes' src='my_likes.png'/></h2>
+			<h2><img class='img_myLikes' id='img_myLikes' src='my_likes.png'/></h2>
 
 			<div id='cinema'>
 				<div id='films'>							
 					<!--peliculas favoritas-->					
 						<div class='films_list' id="fav_movies">
-						 	<h3 class='secTit'>Peliculas Favs</h3>						 									
-								<div class='display_1' id='filmes'></div>	
+							<button type="button" onclick="first2last( peliculas, slide1,'movies')"><</button>
+						 	<h3 class='secTit'>Peliculas Favs</h3>
+
+								<div class='displayer display_1' id='filmes'></div>	
 						</dir>
 
 					<div class='series_list' id="fav_series">
+						<button type="button" onclick="first2last( series, slide2,'series')"><</button>
 						<h3 class='secTit' id='series'>Series</h3>
-						<div class='display_2' id='seriess'>
+						<div class='displayer display_2' id='seriess'>
 						</div>
 					</div>
 
 					<div class='series_list' id="fav_animes">
+						<button type="button" onclick="first2last( animes, slide3,'series')"><</button>
 						<h3 class='secTit'>Animes</h3>
-						<div class='display_3' id='animess'>
+						<div class='displayer display_3' id='animess'>
 						</div>
 					</div>
 				</div>
 			</div>
 
 					<script type="text/javascript">
+
 						var slide1= document.getElementById('filmes');
 						var slide2= document.getElementById('seriess');
 						var slide3= document.getElementById('animess');
 
+						function first2last(x,y,z){
+							a = x.shift();	
+							x.splice(x.length,0,a);
+							y.innerHTML='';
+							print_slide(y, x, z);
+						}
 
 						function film(name, seg, year, src, vsrc) {
 							  this.name  = name; 
@@ -431,7 +446,7 @@
 							var seven_s = new film("Seven Samurais","A Kurosawa", "1954", 'seven_samurais.png','videos/seven_samurais.mp4');
 							var sept = new film("Septimo Sello","Ingmar Bergman", "1957", 'septimo_sello.png','videos/septimo_sello.mp4');
 
-							var peliculas = [matrix, sept, antik, psycho, seven_s, padrino, samurai]
+							var peliculas = [samurai, matrix, sept, antik, psycho, seven_s, padrino]
 
 						function serie(name, seg, src, vsrc) {
 							  this.name  = name;
@@ -449,7 +464,7 @@
 							var friends= new serie("Friends", "", "friends.png",'');							
 
 
-							var series = [DN, house, friends, breakB, bojack, peep_show,  got];
+							var series = [DN, breakB, house, friends, bojack, peep_show,  got];
 
 							var deno = new serie("Death Note","1", "death_note.png",'');
 							var sel= new serie("Serial Experiment Lain", " ", "sel.png",'');
@@ -667,7 +682,7 @@
 				     		<p>Kooks</p>
 				     	</div>
 					    <div class="panel panel2">
-					      	<p>Caramelos</p>
+					      	<p>ℂ𝕒𝕣𝕒𝕞𝕖𝕝𝕠𝕤</p>
 					      	<div class="centro">
 						      	<div class="box box1">La Terraza</div>
 							    <div class="box box7">Flor de Fuego</div>
@@ -679,16 +694,22 @@
 							    <div class="box box3">La Llama</div>
 							    <div class="box box5">El mar</div>							
 					      	</div>
-					     	<p>Cianuro</p>
+					     	<p>ℂ𝕚𝕒𝕟𝕦𝕣𝕠</p>
 					    </div>
-					    <div class="panel panel3 open">
+					    <div class="panel panel3">
 					      <p>Keane</p>
 					      <div class="centro">
+					      	<div class="box box6">Hamburg Song</div>
+							<div class="box box5">Bedshaped</div>
+							<div class="box box3">Silenced by the Night</div>
 					      	<div class="box box4"> De
 					      		<audio src="sounds/keane-nothing_in_my_way.mp3"></audio>
 					      	</div>
+					      	<div class="box box1">Everybody's Changing</div>
+							<div class="box box2">Nothing in my Way</div>
+							<div class="box box6">She has no time</div>
 					      </div>
-					      <p>ǝuɐǝ>[</p>
+					      <p>ǝnɐǝ>[</p>
 					    </div>
 					    <div class="panel panel4">
 					      <p >𝔸𝕣𝕔𝕥𝕚𝕔</p>
@@ -706,7 +727,7 @@
 					      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
 					    </div>
 					    <div class="panel panel5 ">
-					      <p class="centro">Muse</p>
+					      <p>Muse</p>
 					      <div class="centro">
 					      		<div class="box box1">Unintended</div>
 							    <div class="box box3">Bliss</div>
@@ -715,12 +736,13 @@
 							    	<audio src="sounds/rhcp-otherside.mp3"></audio>
 							    </div>
 							    <div class="box box2">Starlight</div>
-							    <div class="box box6">Resistance</div>
+							    <div class="box box5">Resistance</div>
 							    <div class="box box7">Uprising</div>
 					      </div>
 					      <p>ǝs𝕟W</p>
 					    </div>
 				</div>
+
 
 				<style type="text/css">
 					.panels {
@@ -824,11 +846,9 @@
 					    	
 					    .open-active > .centro {color:white;background-color:rgba(245,245,245,0.25);}
 					    .open-active > .centro ul{display:flex; flex-flow: column wrap; justify-content: space-around;}
-				</style>			
-			</div>		
-				
-				
+				</style>
 
+			</div>			
 				<h2 style='font-size: 5vw'>Mis Albums favs</h2>
 			<div id='albums'>
 					
@@ -890,8 +910,8 @@
 						  
 					</style>
 					
-						<div class='album album01' data-src=''>
-							<span>Caiga la noche <br/> Los Mesoneros</span>
+						<div class='album album01' data-src='sounds/caiga_la_noche.mp4'>
+							<span>Caiga la noche <br/> Los Mesoneros <br/> 37:42</span>
 						</div>
 						<div class='album album02' data-src=''>
 							<span>Revolver <br/> The Beatles</span>
@@ -906,16 +926,16 @@
 							<span>Louise Attaque <br/> Louise Attaque</span>
 						</div>
 						<div class='album album06' data-src='https://www.dropbox.com/s/2e83he1fmdfbvzm/ff.mp4?raw=1'>
-							<span>Franz Ferdinand  <br/> Franz Ferdinand</span> 
+							<span>Franz Ferdinand  <br/> Franz Ferdinand <br/> 38:50</span> 
 						</div>
-						<div class='album album07' data-src=''>
-							<span>The Strokes <br/> This is it</span>
+						<div class='album album07' data-src='sounds/isthisit.mp4'>
+							<span>The Strokes <br/> This is it <br/> 35:50 </span>
 						</div>
 						<div class='album album08' data-src='https://www.dropbox.com/s/8ssdkoccurj2hbh/pure_heroine.mp4?raw=1'>
-							<span>Pure Heroine <br/> Lorde</span>
+							<span>Pure Heroine <br/> Lorde <br/> 37:12 </span>
 						</div>
 						<div class='album album09' data-src='https://www.dropbox.com/s/ea4jdm5i4r2ylz5/The%20Black%20Parade.mp4?raw=1'>
-							<span>Black Parade  <br/> My Chemical Romance</span>
+							<span>Black Parade  <br/> My Chemical Romance <br/> 53:57 </span>
 						</div>
 						<div class='album album10' data-src=''>
 							<span>Konk <br/> The Kooks</span>
@@ -927,12 +947,13 @@
 							<span>Badlands <br/> Halsey</span>
 						</div>							
 						<div class='album album13' data-src=''>
-							<span>Flor de Fuego <br/> CDC</span></div>		
+							<span>Flor de Fuego <br/> CDC</span></div>	
+
 						<div class='album album14' data-src='https://www.dropbox.com/s/kfpl244uxm1138s/santo_pecado.mp4?raw=1'>
-							<span>Santo Pecado <br/> Arjona</span>
+							<span>Santo Pecado <br/> Arjona <br/> 1:04:29</span>
 						</div>
-						<div class='album album15' data-src=''>
-							<span>Born to die <br/> Lana del Rey</span>
+						<div class='album album15' data-src='sounds/born_to_die.mp4'>
+							<span>Born to die <br/> Lana del Rey <br/> 41:13</span>
 						</div>					
 			</div>
 
@@ -1082,13 +1103,10 @@
 			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
 			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'><i class="fa fa-ellipsis-h"></i></span> </a> 
 			            	<ul class="dropdown-menu">
-			            		<li>Mis Gustos</a></li>			            		
-			            		<li>Cursos</a></li>			            		
-			            		<li>Viografia</a></li>
-			            		<li>Biografia</a></li>
-			            		<li>Biografia</a></li>
-			            		<li>biografia</a></li>
-			            		<li>Biografia</a></li>       				            					            		
+			            		<li><a href="https://ivanguillermo.github.io/">Home</a></li>			            		
+			            		<li><a href="https://ivanguillermo.github.io/cursos.html">Cursos</a></li>			            		
+			            		<li><a href="https://ivanguillermo.github.io/bio.html">Biografia</a></li>
+			            		<li><a href="https://ivanguillermo.github.io/informaticos15/">Informaticos15</a></li>		            					            		
 			            	</ul>
 			            </li>
 			          </ul>
@@ -1119,6 +1137,8 @@
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 			</button>
+
+			
 
 			<div class='side_music-player'>
 
@@ -1155,6 +1175,11 @@
 				}
 				#audioplayer{margin:0 20vw; justify-content: center; align-content: center; align-items: center;}
 				#audioplayer span{font-size: 11px;}
+
+				.dropdown-menu {text-indent: 15px;background: var(--spotify)}
+				.dropdown-menu li {border-left: solid var(--spotify) 4.5px; }
+				.dropdown-menu li a { font-weight: 800;color:white}
+
 			</style>
 			<script type="text/javascript">
 				var reproductor = document.getElementById('reproductor');
@@ -1266,34 +1291,44 @@
 
 
   <script>
-	  	const panels = document.querySelectorAll('.panel');
+	  	const paneletes = document.querySelectorAll('.panel');
 	  	
 	  	function abrirpanel(){
-	  		this.classList.add('open');      
-	  	}
+	  		this.classList.toggle('open');
+	  	}	    
+	    paneletes.forEach(panele => panele.addEventListener('click', abrirpanel));
 
-		document.getElementById('player').volume = 0.5;
 
 	  	function toggleActive(e){
+	  		
 	  		if (e.propertyName.includes('flex')){
 	  			this.classList.toggle('open-active');
-	        }
+	        
+	  		}
 	  	}
-	  	
+	  	paneletes.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
-	    caja_colores = ['#ef1df3','#5ae6e6','#0ca1a1','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];
+
+	    caja_colores = ['#ef1df3','#5ae6e6','#0c2121','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];	
 
 	    const centros = document.querySelectorAll('.centro');
-	    const player = document.getElementById('player');
-
 	    function mine(){
-	      const colores = caja_colores[Math.floor(Math.random() * 7)];
-	      document.documentElement.style.setProperty(`--color`,colores);         
-	    }    
-	    panels.forEach(panele => panele.addEventListener('click', abrirpanel));
-	  	panels.forEach(panele => panele.addEventListener('transitionend', toggleActive));
-	    centros.forEach(centro => centro.addEventListener('click', mine));      
+     
+      		const colores = caja_colores[Math.floor(Math.random() * 6)];
+      		document.documentElement.style.setProperty(`--color`,colores);
+      
+      		const audiosrc = this.querySelector('audio');
+      
+		      if (this.style.color !== '#3439dc'){
+		      player.src = audiosrc.src;
+		      player.currentTime = 0;}
+		      player.play();      
+   		 }
+    
+   		 centros.forEach(centro => centro.addEventListener('click', mine));  	
+	         
   </script>
+
 
   <script language="javascript"> 
 
@@ -1317,6 +1352,7 @@
 		const fgh = series_epi[1][x].toLowerCase();
 				
 		player.poster= 'series/'+ fgh + '.png';
+		epi.innerHTML='';
 
 	    var k=series_epi[0][x];
 	    epi_tit.innerHTML=k[0][0];
@@ -1335,7 +1371,7 @@
 	                  </td>
 	              </tr>`;}
 	  };
-	  print_epi(4);
+	  print_epi(1);
   </script>
 
  
@@ -1352,6 +1388,10 @@
   	var mcr = new album ('The Black Parade', 'My Chemical Romance', 'https://www.dropbox.com/s/ddj472ajtpycaff/the_black_parade.mp4?raw=1','tbp.png')
   	var lorde = new album ('Pure Heroine', 'Lorde', 'sounds/pure_heroine.mp4','lorde.png')
   	var stpec = new album ('Santo Pecado', 'Arjona', 'sounds/santo_pecado.mp4', 'santo_pecado.png')
+  	var isthis = new album ('Is this it', 'The Strokes', 'sounds/isthisit.mp4', 'this_is_it.png')
+  	var born2die = new album ('Born to dia', 'Lana del Rey', 'sounds/born_to_die.mp4', 'born2die.png')
+  	var cln = new album ('Caiga la noche', 'Los Mesoneros', 'sounds/caiga_la_noche.mp4', 'caiga_la_noche.png')
+
 
   </script>
 
@@ -1398,7 +1438,7 @@
 					.resetSpeed{display: none}
 
 
-					.display_1, .display_2, .display_3, .display_4{
+					.displayer{
 								 width:100vw; 
 								 height:15vh; }
 					input[type=range]::-moz-range-thumb { width: 5px; height: 5px}
