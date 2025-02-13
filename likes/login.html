@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link href="/manifest.json" rel="manifest" />
+    <link href="likes/spotiflix_logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="likes/spotiflix_logo.png" rel="icon" type="image/x-icon" />
+    <meta name="msapplication-TileColor" content="#4fdb98">
+    <meta name="msapplication-TileImage" content="likes/spotiflix_logo.png">
+    <meta name="theme-color" content="#4fdb98">
+    <meta class='swiftype' name='image' data-type='enum' content='likes/spotiflix_logo.png' />
+    <meta name="image" content="imgx/ivanlopezpedreanez.jpg">
+    <meta name="keywords" content="Ivan Lopez Pedreanez, Ivan Guillermo Lopez, Ivan Guillermo Lopez Pedreanez, Programador web, frontend developer, frontend, matematico">
+    <meta name="author" content="ivan lopez pedreanez">
+    <meta property="og:title" content="Ivan Lopez Pedreanez">
+    <meta property="og:image" content="likes/spotiflix_logo.png">
+    <meta property="og:description" content="Website personal de Ivan Lopez Pedreanez">
+    <meta property="og:url" content="http://ivanlopezpedreanez.net.ve">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@ivanlopezped" />
+    <meta name="twitter:title" content="Ivan Lopez Pedreanez" />
+    <meta name="twitter:description" content="Website personal de Ivan Lopez Pedreanez" />
+    <meta name="twitter:image" content="likes/spotiflix_logo.png" />
+    <meta name="twitter:image:alt" content="Ivan Lopez Pedreanez" />
+    <meta content='Login Spotiflix' name='description'/><!--<meta content='3000' http-equiv='refresh'/>-->
+    <title>Spotiflix: Login</title>
+    <!-- GOOGLE FONTS-->
+    <link async="async" href="https://fonts.googleapis.com/css?family=Macondo|Vollkorn|Roboto" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+    <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+    <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!--jQuery-->
+
+<body>
+<h1>
+</h1> 
+
+<div class="wrapper"> 
+ 
+      <style>
+  html{overflow: hidden}
+.wrapper {margin: 10px auto;max-width:50vw;font-family:Roboto;height:90vh;}
+
+#formularioontacto {text-shadow:0 1px 0 #FFF;border-radius:4px;-webkit-border-radius:4px;
+ -moz-border-radius:4px;background:#F9F9F9;padding:200px;}
+
+#ff label {cursor:pointer;margin:4px 0;color:#4fdb98;display:block;font-weight:800;}
+
+input, textarea{
+ display:block;width:50%;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;background-color:#f4f4f4;color:#000;border:20% solid #5f5f5f;padding:4px 8px;margin:0px 10% 4px 10%;
+}
+
+.sendButton {
+ cursor:pointer;
+ -moz-box-shadow:inset 0px 1px 0px 0px #4fdb98;
+ -webkit-box-shadow:inset 0px 1px 0px 0px #4fdb98;
+ box-shadow:inset 0px 1px 0px 0px #fce2c1;
+ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4fdb98) );
+ background:-moz-linear-gradient( center top, #4fdb98 5%, #4fdb98 100% );
+ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4fdb98', endColorstr='#4fdb98');
+ background-color:#4fdb98;
+ -webkit-border-radius:16px;
+ -moz-border-radius:16px;
+ border-radius:16px;
+ border:1px solid var(--color);
+ color:#fff;
+ font-family:;
+ font-size:14px;
+ width:34%;
+ font-weight:bold;
+ text-shadow:1px 1px 0px #777;
+
+}
+.sendButton:hover {
+ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4fdb98), color-stop(1, #4fdb98) );
+ background:-moz-linear-gradient( center top, #4fdb98 5%, #4fdb98 100% );
+ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4fdb98', endColorstr='#4fdb98');
+ background-color:#4fdb98;
+}
+.boton{
+
+}
+
+
+</style>
+<h1>Ingresa tus Datos</h1><p>A través del siguiente formulario.</p> 
+</center>
+ 
+ <div id="formulariocontacto"> 
+
+ <form name="login" id="ff" method="post" action="envio.php" target="_blank">
+ 
+ </br>
+ </br>
+ 
+ <label>
+    <span>Usuario:</span> 
+    <span class="cnt"> 
+      <input name="usuario" id="name" placeholder="Por favor escribe tu nombrede usuario" class="Input" value="" size="20" /> 
+    </span>
+ </label>
+
+ </br>
+ </br>
+ 
+ <label>
+     <span>Clave:</span> 
+     <span class="cnt"> 
+       <input name="password" id="pass" placeholder="Por favor escribe tu clave" type="password" class="Input" value="" size="20" /> 
+     </span>
+ </label>
+
+ </br>
+ </br>
+ 
+  <span> 
+    <input value="Enviar" target="_parent" onclick="Login()" type="button" class="sendButton"/> 
+  </span>
+  
+ </br>
+ </br>
+ 
+ 
+
+</form> 
+</div></div>
+
+<script language="JavaScript"> 
+function Login(){ 
+    var done=0; 
+    var usuario=document.login.usuario.value; 
+    var password=document.login.password.value; 
+    if (usuario=="Ivan" && password=="Suiza1329")
+       { 
+          window.location="likes/index.html"; 
+        } 
+    if (usuario=="Ixo" && password=="Oxivan") 
+        { 
+          window.location="likes/user/ixocautela.html"; 
+        }   
+    if (usuario=="" && password=="") 
+        { 
+          window.location="errorpopup.html"; 
+        } 
+} 
+        </script> 
+</center> 
+<script language="Javascript"> 
+<!-- Begin 
+document.oncontextmenu = function(){return false} 
+// End --> 
+</script>
+</body>
+</html>
