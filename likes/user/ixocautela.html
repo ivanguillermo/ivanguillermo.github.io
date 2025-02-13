@@ -1,1 +1,1560 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head> 
+	      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	          
+	      
+	      <link rel="shortcut icon" href="spotiflix_logo.png" type="image/x-icon" />
+	      <meta content='Website personal sobre los gustos de Ixomar Cautela' name='description'/>
+	      <title>Spotiflix</title>
+	    
+		  <link async="async" href="" rel="stylesheet" />
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		  <link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+		  <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
+		  <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		  <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.min.css">
+
+		  <link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Proxima+Nova|Roboto|Monserrat" rel="stylesheet" />
+
+		  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+		  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+
+		  
+		
+  	</head>
+
+	<body>	
+		<nav id='navflix' class='flex-centrado' style='background-color:'>
+					<a href=''><img class='img_nav' src='ixocautela.png'/></a>
+					<span><a href='#films'>Films</a></span>
+					<span><a href='#series'>Series</a></span>
+					<span><a href='#musica'>Musica</a></span>
+					<span><a href='#literatura'>Literatura</a></span>				
+					<span><a href='#deportes'>Deportes</a></span>
+					<span><a href='#player'>Player</a></span>
+					<span><a href=''>Redes</a></span>
+		</nav>
+
+		<div id='player'>
+			<div class="playero">
+
+				<video 
+					class="player_video viewer" 
+					id='player_video_p' 
+					poster='' 
+					src="">
+				</video>
+
+				<div class="player_controls">
+				    <div class="progress">
+				  	   <div class="progress_filled" ></div>
+				    </div>
+
+				    <button class="player_button toggle" title="Play/Stop">►</button>
+
+				    <button title='mute' class="player_button"><i class="fa fa-volume-off"></i></button>
+				   
+				    <button class="player_button"><i class="fa fa-volume-up"></i></button>
+				    
+				    <input style='' title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">				    
+
+				    <!--<input title='Veloc. Reproduccion' id="speed" type="range" name="playbackRate" class="player_slider" min="0.5" max='2' step="0.1" value="1">
+
+				    <button title='Reset velocidad' class="resetSpeed" onclick="resetSpeed()">vel: 1x</button>-->
+
+				    <button title='retrasar 10s' onclick='skip(-10)' data-skip="-10" class="player_button">« 10s</button>
+
+				    <button title='adelantar 25s' onclick='skip(25)' data-skip="25" class="player_button">25s »</button>
+				    			    
+
+				    <button title='Modo Cine' class="fullScreen" id='modo_cine' style="word-spacing: 14px"><i class="fa fa-arrows-alt"></i></button>
+				    <button title='Show Sideview' class="fullScreen" id='modo_cine2' style="word-spacing: 14px">[---]</button>
+
+				    <button title='Pantalla completa' class="fullScreen" onclick="fullScreening()">
+				    	<i class="fa fa-expand"></i></button>
+				</div>				    
+			</div>
+
+			<div id='sidevideoplayer' style='z-index:4;background:var(--spotify):tra'>
+				<table id='youtable' style=' '>
+		            <thead style='height:11vh;position:;width:100%'>
+		                <th class='flex-centrado' style='height:11vh;background: transparent;'>
+		                	Partes: # 
+		                	<span id='epi_ser_name'>Crepusculo</span> 
+		                </th>		              
+		            </thead>
+		            <tbody id='episodios' style='' >               		              
+		            </tbody>
+          		</table>
+			</div>
+
+			<style>
+				#navflix{
+					position: fixed;
+					width:100vw;
+					height: 11vh;
+					color:white;
+					font-size: 12px;
+					background-color: rgba(30,30,30,0.3);
+					
+					justify-content: space-between;
+					align-items: center;
+					align-content: center;
+					flex-shrink: 
+					padding:2%;
+					z-index:3;}
+
+				.img_nav{width:15vw; margin: 0 1vw;}
+				#navflix span{
+					flex-shrink: 0.4;
+					font-size: 15px;}
+					#navflix span {width: 12vw}
+				#navflix span a:link{text-decoration: none}
+
+				.active{background-color: #333333ff;}
+
+				#player{width:100vw; height:90vh;
+						display:flex; flex-flow: row nowrap; 
+						background: black;  
+						align-items: space-between;}
+
+				.playero{height:90vh; background:black;  align-items: center;}
+
+				#sidevideoplayer{
+					width:25vw;
+					height:100%; 
+					overflow-y:scroll;
+					overflow-x: hidden;
+					background: white;  
+					align-items: center; 
+					border: 3px solid var(--netflix); 
+					align-self: flex-end}
+
+					#sidevideoplayer table tbody tr{width:25vw; border-top:1px solid white;margin-bottom: 8px}
+					#sidevideoplayer thead, th, tbody, td {margin-top:1vh;height:4vh;width:25vw;}
+					#sidevideoplayer i{font-size: 11px;width:25vw;height:4vh;}
+
+				#youtable tbody tr div{display:inline-block;;}	
+				.preview{display:inline-block; width:45px;height:45px; background:blue;}
+
+				.playero {width:75vw; border:0px solid rgba(0,0,0,0.2); box-shadow:0 0 20px rgba(0,0,0,0.2);}
+				.player_video {width:75vw; height:90vh;}
+				.player_button {
+					background:;
+					border:0;
+					line-height:1;
+					color:;
+					text-align: center;
+					outline:0;
+					padding: 0;
+					cursor:pointer;
+					max-width:50px;
+					font-size: 10px;}
+				.player_button:hover { color:var(--spotify) ;background: white;font-weight: 600;font-size: 105%;}
+				.player_slider {width:5px;height:30px;}
+				.player_controls {
+					position:absolute; 
+					display:flex;
+					justify-content: center;
+					align-content: center; 
+					top:80vh; 
+					width:75vw;; 
+					transform: translateY(100%) translateY(-5px); 
+					transition:all .3s;
+				  	flex-wrap:wrap; 
+				  	background:rgba(0,0,0,0.1);
+				  	opacity:0;
+				  }
+
+				.playero:hover .player_controls {
+					transform: translateY(0);
+					opacity:1;}
+
+				.playero:hover .progress {height:15px;}
+				.player_controls > * {flex:1;}
+				.progress {
+				  flex:10;
+				  position: relative;
+				  display:flex;
+				  flex-basis:100%;
+				  height:5px;
+				  transition:height 0.3s;
+				  background:white;
+				  cursor:pointer;
+				}
+				.playero:hover > .player_controls{display:flex;}
+				.progress_filled {
+					  width:50%;
+					  background:var(--spotify);
+					  flex:0;
+					  flex-basis:50%;
+					}
+
+				 .fullScreen{ flex:0.3;background-color:black; border:black;font-size: 10px;color:white;}
+				 .resetSpeed { flex:0.3;background-color:black; border:black;font-size: 10px;color:white;}
+
+				input[type=range] { -webkit-appearance: none; background:transparent; width: 100%; margin: 0 5px;}
+
+				input[type=range]:focus { outline: none;}
+
+				input[type=range]::-webkit-slider-runnable-track { 
+					width: 100%; height: 6.4px; cursor: pointer; 
+					box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+				    background: rgba(255,255,255,0.8); border-radius: 1.3px;
+				    border: 0.2px solid rgba(1, 1, 1, 0);}
+
+				input[type=range]::-webkit-slider-thumb {  
+					height: 12px; width: 12px; border-radius: 50px; 
+					background: var(--netflix); cursor: pointer; -webkit-appearance: none;  
+					margin-top: -3.5px; box-shadow:0 0 2px rgba(0,0,0,0.2);}
+
+				input[type=range]:focus::-webkit-slider-runnable-track { background: var(--spotify);}
+
+				input[type=range]::-moz-range-track { 
+					width: 100%; height: 6.4px; cursor: pointer; 
+					box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0); 
+					background: #ffffff; border-radius: 1.3px; 
+					border: 0.2px solid rgba(1, 1, 1, 0);}
+
+				input[type=range]::-moz-range-thumb { 
+					box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0); 
+					height: 12px; width: 12px; border-radius: 50px; 
+					background: var(--spotify); cursor: pointer;
+				}
+
+				
+			</style>
+				<!--playero script-->
+			<script>
+				const player= document.querySelector('.playero');
+				const video = player.querySelector('.viewer');
+				const progress = player.querySelector('.progress');
+				const progressBar = player.querySelector('.progress_filled');
+				const toggle = player.querySelector('.toggle');
+				//const skipButtons = player.querySelectorAll('[data-skip]');
+				const speedBtn = document.getElementById('speed');
+				const ranges = player.querySelectorAll('.player_slider');
+				let currentTime = video.currentTime;
+
+
+				video.volume = 0.5;
+				progressBar.style.flexBasis = `0%`;
+
+				function togglePlay(){
+					const method = video.paused ? 'play' : 'pause';
+					video[method]();
+				}
+
+				function skip(t){
+					video.currentTime += t;					
+				}
+
+				function handleRangeUpdate(){
+					video[this.name] = this.value;				
+				}
+
+				function scrub(e){
+					const scrubTime= (e.offsetX / progress.offsetWidth) * video.duration;
+					video.currentTime = scrubTime;
+				}
+				function resetSpeed(){
+					video.playbackRate = 1;
+					speedBtn.value = 1;
+				}
+
+				function updateButton(){
+					const icon = this.paused ? '►' : '||';
+					toggle.textContent = icon;
+				}
+
+				function handleProgress(){
+					const percent = (video.currentTime / video.duration) * 100;
+					progressBar.style.flexBasis = `${percent}%`;
+					progressBar.style.width = `${percent}%`;
+					progressBar.style.backgroundColor = 'var(--netflix)';
+				}
+
+				function fullScreening() {
+					video.mozRequestFullScreen();
+					video.requestFullscreen();
+				}
+
+				video.addEventListener('click', togglePlay);
+				video.addEventListener('play', updateButton);
+				video.addEventListener('pause', updateButton);
+				video.addEventListener('timeupdate', handleProgress);
+				toggle.addEventListener('click', togglePlay);
+				ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+
+				let mousedown = false;
+				progress.addEventListener('click', scrub);
+				progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+				progress.addEventListener('mousedown', () => mousedown = true);
+				progress.addEventListener('mouseup', () => mousedown = false);
+
+			</script>
+		</div>
+
+				<!--lists films style-->
+		<style>
+						.displayer{
+								 width:110vw; 
+								 height:23vh; 
+								 display:flex; 
+								 flex-flow: row nowrap; 
+								 justify-content:space-around; 
+								 align-items: center ; 
+								 background-color: black;
+								 color:white;				 								 
+								 font-size: 2.3vw;
+								 margin-bottom:4vw ;
+								 position:relative;
+								 right:-3vw;
+								 }
+						.displayer::before{
+							content: url(backmove.png);
+							color: ;
+							background: transparent;						}
+
+						.item{height:13vw; 
+							width: 23vw; 
+							background:white; 
+							border:2px solid #191414;
+							background-repeat: no-repeat; 
+							background-size: 100% 100%; 
+							position: relative;}
+
+							.item:hover {height:18vw; width:31vw; transition: all 0.5s}
+
+							.item:hover > .movies_name{display:flex;}
+							.item:hover > .series_name{display:flex;}
+							.item:hover > .series_2{display:flex;}
+							.item:hover > .movies_2{display:flex;}																																			
+							.item:hover > .actions{
+								display:flex;
+								opacity:1;
+								transition: all 0.5s}
+							
+
+						.movies_name, .series_name{font-size: 1.8vw; display:none; color:white; text-shadow: 1px 2px var(--netflix); font-weight: 400;}
+							
+
+						.actions{
+							display: none; 
+							flex-flow: column wrap; 
+							justify-content: center; 
+							align-items: center; 
+							align-content: center; 
+							width: 20%; 
+							height:100%;
+							position: relative; 
+							top:-10vh;
+							left:80%; 
+							opacity:0;
+							color:white;}
+
+							.actions div{
+								display:flex; 
+								justify-content: center; 
+								align-items: center; 
+								align-content:center;  
+								width:5vh; 
+								height: 5vh; 
+								font-size: 12px;
+								border: 1px solid white; 
+								background-color: 
+								white;border-radius: 50%; 
+								margin:;
+								background-color: #000a;}
+
+						.song_data {
+							width:25vw; 
+							display: flex; 
+							font-size: 12px; 
+							flex-flow: row wrap; 
+							justify-content: space-around; 
+							align-items: center; 
+							align-content: center}
+
+						.movies_2, .series_2{font-size: 14px; display:none; color:white; font-weight: 600;text-shadow: 1px 1px black}
+						
+
+						#myLikes{background-color: #191414; height:10px}
+
+						
+		</style>
+				
+		<div id='myLikes'>
+		</br>
+			<h2><img class='img_myLikes' id='img_myLikes' src='my_likes.png'/></h2>
+
+			<div id='cinema'>
+				<div id='films'>							
+					<!--peliculas favoritas-->					
+						<div class='films_list' id="fav_movies">
+							<button type="button" onclick="first2last( peliculas, slide1,'movies')"><</button>
+						 	<h3 class='secTit'>Peliculas Favs</h3>
+
+								<div class='displayer display_1' id='filmes'></div>	
+						</dir>
+
+					<div class='series_list' id="fav_series">
+						<button type="button" onclick="first2last( series, slide2,'series')"><</button>
+						<h3 class='secTit' id='series'>Series</h3>
+						<div class='displayer display_2' id='seriess'>
+						</div>
+					</div>
+
+					<div class='series_list' id="fav_animes">
+						<button type="button" onclick="first2last( animes, slide3,'series')"><</button>
+						<h3 class='secTit'>Novelas</h3>
+						<div class='displayer display_3' id='animess'>
+						</div>
+					</div>
+				</div>
+			</div>
+
+					<script type="text/javascript">
+
+						var slide1= document.getElementById('filmes');
+						var slide2= document.getElementById('seriess');
+						var slide3= document.getElementById('animess');
+
+						function first2last(x,y,z){
+							a = x.shift();	
+							x.splice(x.length,0,a);
+							y.innerHTML='';
+							print_slide(y, x, z);
+						}
+
+						function film(name, seg, year, src, vsrc) {
+							  this.name  = name; 
+							  this.seg = seg; 
+							  this.year = year;
+							  this.src = src;
+							  this.vsrc = vsrc;}
+
+							var padrino = new film("Crepusculo"," Catherine Hardwicke", "2008", 'crepusculo.png','');
+							var matrix = new film("Luna Nueva","Chris Weltz", "2009", 'new_moon.png','');
+							var psycho = new film("Eclipse","David Slade", "2010", 'eclipse.png','');
+							var antik = new film("Son como ninos","Denis Dugan", "2010", 'son_como.png','');
+							var samurai = new film("Alicia en el pais de las Maravillas",'Tim Burton', '2012', 'alicia.png','');
+							var seven_s = new film("Seven Samurais","A Kurosawa", "1954", 'seven_samurais.png','videos/seven_samurais.mp4');
+							var sept = new film("Septimo Sello","Ingmar Bergman", "1957", 'septimo_sello.png','videos/septimo_sello.mp4');
+
+							var peliculas = [samurai, matrix, sept, antik, psycho, seven_s, padrino]
+
+						function serie(name, seg, src, vsrc) {
+							  this.name  = name;
+							  this.seg  = seg; 							   
+							  this.src = src;
+							  this.vsrc = vsrc;
+							};
+
+							var DN = new serie("Death Note","1", "death_note.png",'');
+							var breakB= new serie("Miraculous Ladybug","1", "ladybug.png",'');
+							var bojack= new serie("Malcolm in the Middle", " ", "malcolm.png",'');
+							var peep_show= new serie("The Peep Show", " ", "peep_show.png",'');
+							var house= new serie("House MD", " ", "house.png",'');
+							var got= new serie("Game of Thrones", "7", "got.png",'');
+							var friends= new serie("Friends", "", "friends.png",'');							
+
+
+							var series = [DN, breakB, house, friends, bojack, peep_show,  got];
+
+							
+							var sel= new serie("Ruby","1", "ruby.png",'');
+							var codeg= new serie("Teresa", " ", "teresa.png",'');
+							var naruto= new serie("El Sultan", " ", "sultan.png",'');
+							var psypass= new serie("Psycho Pass", " ", "psycho_pass.png",'');
+							var ergo= new serie("Ergo Proxy", "7", "ergo_proxy.png",'');
+							var hellb= new serie("Helluva Boss", "6", "helluva_boss.png",'');
+							
+
+							var animes = [ sel, ergo, hellb, codeg, psypass, naruto];
+
+
+							 function print_slide(x, a, b){
+							  for (i = 0; i <6; i++) 
+							    {x.innerHTML += 
+							    `<div class='item ${b}v' id='film0${i+1}' style='background-image: url(${b}/${a[i].src})' data-src=${a[i].vsrc}>
+	                                
+							        <h4 class='${b}_name'>${a[i].name}</h4>
+							        <h4 class='${b}_2'>${a[i].seg}</h4>
+							        <div class='actions'>
+							        	<div class='btn-play-movie'><i class="fa fa-play-circle"></i></div>
+							            <div class='btn-sound'><i class="fa fa-volume-up"></i></div>
+							            <div class='btn-like'><i class="fa fa-thumbs-up"></i></div>
+							            <div class='btn-dislike'><i class="fa fa-thumbs-down"></i></div>
+							        </div>							        						          
+							     </div>`;}
+							  };
+							  print_slide(slide1, peliculas, 'movies');
+							  print_slide(slide2, series, 'series');
+							  print_slide(slide3, animes, 'series');
+
+					</script>
+					
+					
+
+			<div id='musica'>
+				<h2><img style='width:40vw' src='mis_canciones.png'/></h2>
+				<table class='song_table'>
+					<thead>
+				    	    <tr>
+				    	       <th style='width:4vw'></th>
+				               <th style='width:4vw'>Play</th>
+				               <th>Nombre</th>
+				               <th>Artista</th>
+				               <th>Album</th>
+				            </tr>
+				    </thead>
+				</table>
+				 
+				<div id='canciones' >					
+					<table>				        
+				        <tbody id='mis_canciones'>			              
+				              			              
+				        </tbody>
+				    </table>
+
+				    <script type="text/javascript">
+						var song_list= document.getElementById('mis_canciones');
+
+						function song(name, grupo, album) {
+							  this.name  = name; 
+							  this.grupo = grupo; 
+							  this.album = album;
+							  }
+
+							
+							var rude = new song("rude","magic!", "dont_kill_the_magic");
+							var creo = new song("creo_en_ti","reik", "peligro");
+							var fly_me = new song("fly_me_to_the_moon","frank_sinatra", "");						
+							var flowers = new song ('flowers', 'miley_cyrus', 'Endless_Summer_Vacation');
+							var mon_dnc = new song ('monkey_dance', 'tones_and_i', 'the_kids_are_coming');		
+							var dueles = new song ('dueles', 'jesse_&_joy', 'un_besito_mas');
+							var enemy = new song ('enemy', 'imagine_dragons', '');		
+							var deniere = new song ('deniere_dance', 'indila', '');	
+							var fairy = new song ('fairy_tail', 'alexander_rybak', '');	
+
+
+							var songs = [rude, creo, fly_me, flowers, dueles, enemy, deniere, fairy]	;
+
+							
+
+						function noline(x){
+							for (var i = 0; i < x.length; i++) {
+								x = x.replace("_"," ");
+							}						
+							return x;}
+							
+
+						function print_songs(){
+						 
+						  for (i = 0; i < songs.length; i++) 
+						   {
+						   	var s_name = noline(songs[i].name);					   							   					  
+						   	var s_band  =  noline(songs[i].grupo);
+						   	var s_album  =  noline(songs[i].album);					   	
+
+						   	song_list.innerHTML += 
+						    `<tr class=''>
+					           	<td style='width:2vw' data-label="More" class='more_music'>+</td>
+					            <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
+					               	<p class="playmusic fa fa-play-circle">
+					               	  <audio 
+					               		src="sounds/${songs[i].grupo}-${songs[i].name}.mp3"
+										data-name='${songs[i].name}'
+										data-band='${songs[i].grupo}'
+									  >
+					               	  </audio>
+					               	  <td data-label="Nombre"><a>${s_name} </a></td>
+							          <td data-label="Artista">${s_band}</td>
+							          <td data-label="Album">${s_album}</td>
+					               	</p>
+					            </td>
+					                				                
+					        </tr>`}
+							};
+						print_songs();
+					</script>
+
+					<style>	
+							#canciones{
+								overflow-y: scroll;
+								overflow-x: hidden;
+								height:50vh;
+								position: relative;
+								left:1vw;
+								font-family: "Proxima Nova";
+							}
+							table
+							{
+								width:100vw;
+								height:70vh;								
+								background-color: black;		
+								color:white;
+								text-align: justify;
+								border:0px;
+
+							}
+							.song_table{
+								height:40px;
+								position: relative;
+								left:1vw;
+								font-family: "Monserrat";
+							}
+
+							.playmusic{
+								background:var(--spotify);
+								border-radius: 40%;
+								font-weight: 800;
+								border-top:4px solid black;
+							}
+
+							th{background-color: var(--spotify)}
+							td{padding:0% 2%; text-transform: capitalize;	}
+
+							tr::first-child{width:50vw}
+
+							@media only screen and  (max-width: 760px) {
+								td, tr { display: block; width:100vw; }
+								.more_music, .play_music_but{display:none;}
+								table{width:100vw;} 
+
+								thead tr {
+								  position: absolute;
+								  top: -9999px;
+								  left: -9999px;
+								}
+
+								tr { border: 1px solid #E74C3C; }
+								tr + tr { margin-top: 1.5em; }
+								td {
+								  border: none;
+								  border-bottom: 1px solid #eee;
+								  position: relative;
+								  padding-left: 5%;
+								  background-color: #333;
+								  text-align: ;
+								}
+
+								td:before {
+								  content: attr(data-label);
+								  display: inline-block;
+								  line-height: 1.5;
+								  margin-left: -100%;
+								  width: 100%;
+								  white-space: nowrap;
+								}
+							}
+
+							
+					</style>
+       			</div>  
+				
+				<div id='bandas' style='overflow: hidden; height:70vh'>
+					<div class="panels">
+				        <div class="panel panel1">
+					      	<p>Don</p>
+					      	<div class="centro">
+						      	<div class="box box1">Dile</div>
+							    <div class="box box2">Diva Virtual</div>
+							    <div class="box box3">Dutty Love</div>
+							    <div class="box box4">Mis 
+							       <audio src='sounds/the_kooks-always_where_I_need_to_be.mp3'></audio>
+							    </div>
+							    <div class="box box5">Blue Zone</div>
+							    <div class="box box6">Danza Kuduro</div>
+							    <div class="box box7">Ayer la vi</div>				      	
+					      	</div>
+				     		<p>Omar</p>
+				     	</div>
+					    <div class="panel panel2">
+					      	<p>Michael</p>
+					      	<div class="centro">
+						      	<div class="box box1">Bad</div>
+							    <div class="box box7">hriller</div>
+							    <div class="box box6">Billy Jean</div>
+							    <div class="box box4">Bandas  
+							    	<audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
+							    </div>
+							    <div class="box box2">Smooth Criminal</div>
+							    <div class="box box3">Beat it</div>
+							    <div class="box box5">They dont care about us</div>							
+					      	</div>
+					     	<p>Jackson</p>
+					    </div>
+					    <div class="panel panel3">
+					      <p>Reik</p>
+					      	<div class="centro">
+						      	<div class="box box1">Creo en ti</div>
+							    <div class="box box7">Noviembre sin ti</div>
+							    <div class="box box6">Yo quisiera</div>
+							    <div class="box box4">Bandas  
+							    	<audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
+							    </div>
+							    <div class="box box2">Pero te conoci</div>
+							    <div class="box box3">Sabes</div>
+							    <div class="box box5">Me niego</div>							
+					      	</div>
+					     	<p>Reik</p>
+					    </div>
+					    <div class="panel panel4">
+					      <p >𝔸𝕣𝕔𝕥𝕚𝕔</p>
+					      <div class="centro">
+					      	<div class="box box7">R U Mine</div>
+						    <div class="box box3">Mardy Bum</div>
+						    <div class="box box6">4 out of 5</div>
+						    <div class="box box4">Rock   
+						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
+						    </div>
+						    <div class="box box5">505</div>
+						    <div class="box box2">Balaclava</div>
+						    <div class="box box1">The Bakery</div>
+					      </div>
+					      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
+					    </div>
+					    <div class="panel panel5 ">
+					      <p>Muse</p>
+					      <div class="centro">
+					      		<div class="box box1">Unintended</div>
+							    <div class="box box3">Bliss</div>
+							    <div class="box box6">Hysteria</div>
+							    <div class="box box4">Fav 
+							    	<audio src="sounds/rhcp-otherside.mp3"></audio>
+							    </div>
+							    <div class="box box2">Starlight</div>
+							    <div class="box box5">Resistance</div>
+							    <div class="box box7">Uprising</div>
+					      </div>
+					      <p>ǝs𝕟W</p>
+					    </div>
+				</div>
+
+
+				<style type="text/css">
+					.panels {
+					      height:70vh;
+					      width:100vw;
+					      overflow: hidden;
+					      display:flex;
+					      margin: 2vh 0px;
+					    }
+
+					    .panel {
+					      background:#6B0F9C;
+					      box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
+					      color: var(--color);
+					      text-align: center;
+					      align-items:center;
+					      align-content: center;
+					      /* Safari transitionend event.propertyName === flex */
+					      /* Chrome + FF transitionend event.propertyName === flex-grow */
+					      transition:
+					        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+					        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+					        background 0.2s;
+					      font-size: 30px;
+					      background-size:cover;
+					      background-position:center;
+					      flex:1;
+					      justify-content:center;	      
+					      display: flex;
+					      flex-direction:column;
+					    }
+
+					    .panel1 {background-image:url(don_omar.png); }
+					    .panel3 {background-image:url(reik.png); }
+					    .panel2 {background-image:url(michael_jackson.png); }
+					    .panel4 {background-image:url(arctic_monkeys.jpg); }
+					    .panel5 {background-image:url(muse.jpg); }
+
+					    .panel > * {
+					      margin:0;
+					      width: 100%;
+					      transition:transform 0.5s;
+					      display:flex;
+					      flex: 1 0 auto;
+					      justify-content: center;  
+					      align-items: center;
+					    }
+
+					    .panel > *:first-child {transform: translateY(-100%);} 
+					    
+					    .panel.open-active > *:first-child {transform: translateY(0);} 
+
+					    .panel > *:last-child {transform: translateY(100%);}
+					    
+					    .panel.open-active > *:last-child { transform: translateY(0); }
+
+					    .panel p {
+					      text-transform: uppercase;
+					      font-family: 'Amatic SC', cursive;
+					      text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+					      font-size: 2.5vw;;
+					    }
+					    .panel p:nth-child(2) {
+					      font-size: 2.5vw;
+					    }
+
+					    .panel.open {
+					      font-size:2vw;
+					      flex: 9;
+					      transition: 1s all;
+					    }
+					    .panel.open p{
+					      transform: rotate(3deg);					      
+					    }
+					    .box {
+							  text-align: center;
+							  text-shadow:4px 4px 0 rgba(0,0,0,0.1);
+							  padding:;
+							  flex-basis:18vw;
+							  flex-grow:1;
+							  font-size: 11px;}
+							/* Colours for each box */
+							.box1 { background:#1abc9c;font-size: ;color:white;}
+							.box2 { background:#3498db;font-size: ;color:white;}
+							.box3 { background:#9b59b6;font-size: ;color:white; flex-grow:5;}
+							.box4 { font-weight: 800; font-size: 18px; flex-basis:100%;}
+							.box5 { background:#f1c40f;font-size: ;color:white;}
+							.box6 { background:#e67e22;font-size: ;color:white;}
+							.box7 { background:#e74c3c;font-size: ;color:white; flex-basis: 70%;}				
+
+
+							/* We start writing out flexbox here. The above is just page setup */
+							
+					    .centro{display:flex; 
+					    		flex-flow: row wrap; 
+					    		justify-content: space-around; 
+					    		align-items: center; 
+					    		align-content: center;
+					    		padding:0;
+							  }
+					    	
+					    .open-active > .centro {color:white;background-color:rgba(245,245,245,0.25);}
+					    .open-active > .centro ul{display:flex; flex-flow: column wrap; justify-content: space-around;}
+				</style>
+
+			</div>			
+				<h2 style='font-size: 5vw'>Mis Albums favs</h2>
+			<div id='albums'>
+					
+					<style type="text/css">
+						h2{display: flex; justify-content: center; font-size: 40px; color:white; font-weight: 600; text-shadow: 2px solid black}
+
+						#albums{background-color:#aa3302; height:95vh; 
+								font-size: 14px;
+								border: 2px solid black;
+								color:white;
+								display: grid;
+								grid-gap:2px;
+								grid-template-columns: repeat(8, 1fr);
+							    grid-template-rows: repeat(4, 1fr) ;
+							    grid-template-areas:
+							        "a a c c b . d g"
+							        "a a c c n n o o" 
+							        "k l f . n n o o"
+							        "e . i m j . . h"
+							        							                     
+							    }
+							.album {display:flex; justify-content: center; align-items: center; align-content: center; border: 2.75px solid #fff; background-repeat: no-repeat; background-size:cover; background-position: center center; }
+
+							.album span{font-size:14px; transform:rotate(-45deg); font-weight: 600; text-shadow: 1px 2px black; background-color: #333c }	
+
+
+						    .album01{grid-area: a;background-image:url(albums/caiga_la_noche.png);}  
+						    .album02{grid-area: b;background-image:url(albums/revolver.png);} 
+						    .album03{grid-area: c;background-image:url(albums/frisbee.png);}  
+						    .album04{grid-area: d;background-image:url(albums/insidein.png);}  
+						    .album05{grid-area: e;background-image:url(albums/louise.png);} 
+						    .album06{grid-area: f;background-image:url(albums/franz_ferdinand.png);}  
+						    .album07{grid-area: g;background-image:url(albums/this_is_it.png);}  
+						    .album08{grid-area: h;background-image:url(albums/pure_heroine.png);} 
+						    .album09{grid-area: i;background-image:url(albums/black_parade.png);}  
+						    .album10{grid-area: j;background-image:url(albums/konk.png);}  
+						    .album11{grid-area: k;background-image:url(albums/talking_dreams.png);} 
+						    .album12{grid-area: l;background-image:url(albums/badlands.png);} 
+						    .album13{grid-area: m;background-image:url(albums/flor_de_fuego.png);} 
+						    .album14{grid-area: n;background-image:url(albums/santo_pecado.png);} 
+						    .album15{grid-area: o;background-image:url(albums/born2die.png);}
+
+						    @media only screen and (max-width: 1000px){
+							#albums {
+								height:75vh;
+								grid-gap:1px;
+								grid-template-columns: repeat(4, 1fr);
+							    grid-template-rows: repeat(3, 1fr) ;
+							    grid-template-areas:
+							        "a a b . "
+							        ". g c c " 
+							        "d e . f "
+							        }
+							.album span{font-size: 9px;}
+							.album08, .album09, .album10, .album11, .album12, .album13, .album14, .album15 {display: none}
+							
+						}
+						    
+						  
+					</style>
+					
+						<div class='album album01' data-src='sounds/caiga_la_noche.mp4'>
+							<span>Caiga la noche <br/> Los Mesoneros <br/> 37:42</span>
+						</div>
+						<div class='album album02' data-src=''>
+							<span>Revolver <br/> The Beatles</span>
+						</div>
+						<div class='album album03' data-src=''>
+							<span>Frisbee <br/> Caramelos de Cianuro</span>
+						</div>
+						<div class='album album04' data-src=''>
+							<span>Inside In/ Inside Out <br/> The Kooks</span>
+						</div>
+						<div class='album album05' data-src=''>
+							<span>Louise Attaque <br/> Louise Attaque</span>
+						</div>
+						<div class='album album06' data-src='https://www.dropbox.com/s/2e83he1fmdfbvzm/ff.mp4?raw=1'>
+							<span>Franz Ferdinand  <br/> Franz Ferdinand <br/> 38:50</span> 
+						</div>
+						<div class='album album07' data-src='sounds/isthisit.mp4'>
+							<span>The Strokes <br/> This is it <br/> 35:50 </span>
+						</div>
+						<div class='album album08' data-src='https://www.dropbox.com/s/8ssdkoccurj2hbh/pure_heroine.mp4?raw=1'>
+							<span>Pure Heroine <br/> Lorde <br/> 37:12 </span>
+						</div>
+						<div class='album album09' data-src='https://www.dropbox.com/s/ea4jdm5i4r2ylz5/The%20Black%20Parade.mp4?raw=1'>
+							<span>Black Parade  <br/> My Chemical Romance <br/> 53:57 </span>
+						</div>
+						<div class='album album10' data-src=''>
+							<span>Konk <br/> The Kooks</span>
+						</div>
+						<div class='album album11' data-src=''>
+							<span>Talking Dreams <br/> Echosmith</span>
+						</div>	
+						<div class='album album12' data-src=''>
+							<span>Badlands <br/> Halsey</span>
+						</div>							
+						<div class='album album13' data-src=''>
+							<span>Flor de Fuego <br/> CDC</span></div>	
+
+						<div class='album album14' data-src='https://www.dropbox.com/s/kfpl244uxm1138s/santo_pecado.mp4?raw=1'>
+							<span>Santo Pecado <br/> Arjona <br/> 1:04:29</span>
+						</div>
+						<div class='album album15' data-src='sounds/born_to_die.mp4'>
+							<span>Born to die <br/> Lana del Rey <br/> 41:13</span>
+						</div>					
+			</div>
+
+			<div id='literatura'>
+					<style>
+						.display_books{width:; height:40vh; 
+								 display:flex; 
+								 flex-flow: row nowrap; 
+								 justify-content:space-around; 
+								 align-items: center ; 
+								 background-color: black;
+								 color:#E50914; 
+								 margin:10vh 0vh;}
+
+						.item2{height:18vw; 
+								width: 12vw; 
+								 
+								border:2px solid #191414;
+								display:flex; 
+								flex-flow: column wrap;
+								 justify-content: flex-end; 
+								 align-items: center; 
+								 align-items: center;
+								padding:20px;
+							background-repeat: no-repeat; background-size: 100% 100%;}
+							.item2:hover {width:20vw; height:28vw;transition: all 0.5s}
+							.item2:hover > .book_autor{display:flex;}
+							.item2:hover > .book_name{display:flex;}
+
+							.read{background-color: #ffffff99; border:2px solid var(--spotify); border-radius: 12px 12px; width:8vw;}
+							.read a, .see_more{text-decoration: none;color:red;font-weight: 600;}
+
+						.book_name, .book_autor{font-size: 12px; display:none; color:white; background: black; justify-content: center; align-content: center; align-items: center;}			
+
+						.book_data {width:25vw; display: flex; font-size: 12px; flex-flow: row wrap; justify-content: space-around; align-items: center; align-content: center; padding:1px 1.5px;}
+						h3{font-size: 20px;color:white;font-weight: 600; margin-left: 5vw}
+						
+						 @media only screen and (max-width: 1000px){
+						 	.display_books{width:; height:90vh; 
+								 display:flex; 
+								 flex-flow: row wrap; }
+							.item2{
+								height:28vh;
+								width:22vw;
+							        }
+							.item2:hover {width:29vw; height:38vh;transition: all 0.5s}						
+						}		
+																				
+	
+
+					</style>
+				
+					
+					<div class='books_list' id="fav_books">
+						<h3 class='secTit'>Libros Favs</h3>
+						<div class='display display_books' id='mis_libros'>
+						</div>
+					</div>		
+			</div>
+
+			<script type="text/javascript">
+						var books_list= document.getElementById('mis_libros');
+
+						function book(name, autor, href, src) {
+							  this.name  = name; 
+							  this.autor = autor; 
+							  this.href = href;
+							  this.src = src;							  
+							  }
+
+							
+							var crepu_book = new book("Crepusculo","S. Meyer", "https://www.secst.cl/upfiles/documentos/04042016_845pm_570326d2114b3.pdf","crepu_book");
+							var ficciones= new book("Ficciones","JL Borges", "https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxiaWJsaWJyb3NwZGZ8Z3g6MWU1OWFiN2EwYWMwNjRiNA", 'ficciones');
+							var demian= new book("Demian","H. Hesse", "http://biblio3.url.edu.gt/Libros/2011/Demian.pdf","demian");
+							var iliada= new book("La Iliada","Homero", " https://www.biblioteca.org.ar/libros/130860.pdf","iliada");
+							var nausea= new book("La Nausea","JP Sartre", "http://imago.yolasite.com/resources/Sartre,%20Jean%20Paul%20-%20La%20nausea.pdf","nausea");
+							var existencialismo= new book("Existencialismo es un Humanismo","JP Sartre", "https://www.ucm.es/data/cont/docs/241-2015-06-16-Sartre%20%20El_existencialismo_es_un_humanismo.pdf ","existencialismo");
+							var orestiada= new book("Orestiadaa","", "https://rossami.files.wordpress.com/2009/03/la-orestiada1.pdf","orestiada");
+							var etranger = new book('El Extranjero', 'A. Camus', 'http://www.libroteca.net/_Mas-descargados/Camus,%20Albert%20-%20El%20Extranjero.pdf', 'extranjero')
+
+							var books = [crepu_book, iliada, demian, nausea, ficciones, existencialismo, orestiada, etranger ]					
+
+
+							 function print_books(){
+							 
+							  for (i = 0; i < books.length; i++) 
+							    {books_list.innerHTML += 							    
+
+					        `<div class='item2 item0${i}' id='book0${i}' style='background-image:url("books/${books[i].src}.png")'>
+								<div class='btn-play-book'></div>
+								<h4 class='book_name'><center>${books[i].name}</center></h4>
+								<h4 class='book_autor'>${books[i].autor}</h4>								
+								<button class='read'>
+									<a target='_blank' href='${books[i].href}'>Leer</a>
+								</button>
+								<div class='see_more'> + </div>
+							</div>`}
+							  };
+							  print_books();
+					</script>
+
+			<div id='deportes' style="">	
+				<style type="text/css">
+					#deportes{
+					 	background-image: url(deportes/ballack.png);
+					 	background-size: 100% auto;					 	 
+					 	display: flex; 
+					 	background-repeat: no-repeat;
+					 	background-position: bottom right;
+					 	flex-flow: row nowrap; 
+					 	justify-content: space-between; 
+					 	align-items: flex-end; 
+					 	align-content: flex-end;
+					 	height:80vh;
+					 }
+
+					.sports{
+						display: inline-flex; 
+						width:14vw; 
+						height:;}
+
+					@media only screen and (max-width: 1000px){
+							.sports {width:;}
+							#deportes{height: 40vw}
+							
+						}
+					</style>
+					
+						<img title='Paolo Maldini' class='sports' src='deportes/maldini.png'/>
+						<img title='Cristiano Ronaldo' class='sports' src='deportes/cr7.png'/>
+						<img title='Selena Quintanilla' class='sports' src='deportes/selena.png'/>
+						
+						<img title='Bastian Schweinsteiger' class='sports' src='deportes/schweini.png'/>
+						<img title='Michael Schumacher' class='sports' src='deportes/schumi.png'/>
+						<img title='Dirk Nowitski' class='sports' src='deportes/nowitski.png'/>
+			</div>
+		</div>
+		
+		<br/>
+		<br/>
+		
+
+		
+		<nav id='music_player' class='navbar navbar-inverse navbar-fixed-bottom'>			
+			<div class="navbar-collapse collapse" id="navbar">				
+			          <ul class="nav navbar-nav">		         		          	         	
+			          	<li class="dropdown" >
+			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
+			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'><i class="fa fa-ellipsis-h"></i></span> </a> 
+			            	<ul class="dropdown-menu">
+			            		<li><a href="">Home</a></li>			            		
+			            		<li><a href="">Ajustes</a></li>			            		
+			            		<li><a href="">Conectar</a></li>
+			            		<li><a href="">Premium</a></li>		            					            		
+			            	</ul>
+			            </li>
+			          </ul>
+			       </div>
+
+			       <div class='side_music-player'>						
+					<i>Now Playing</i><br/>
+					<i id='song_on'>---</i><br/>					
+			</div>
+
+			<div id="audioplayer">				
+				<div id='audiocontrols'>
+					<div id='rep_shuffle-btn'><i class="fa fa-random"></i></div>
+					<div id='rep_forward-btn'><i class="fa fa-backward"></i></div>
+					<div title='play/stop music' id='rep_play-btn' class='flex-centrado'><i class="fa fa-play-circle"></i></div>			
+					<div id='rep_back-btn'><i class="fa fa-forward"></i></div>
+					<div id='rep_repeat-btn'><i class="fa fa-circle-o-notch"></i>
+				</div>
+				</div>				
+				<audio id='reproductor'></audio>
+				<span class='audio_current'>00:00</span>
+				<progress id="progress_audio" value="0" max="100" ></progress>
+				<span class='audio_duration'>00:00</spans>
+			</div>
+
+			
+			<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+			</button>
+
+			
+
+			<div class='side_music-player'>
+
+					<div style='display: inline-flex;align-content: ; justify-content: center; align-items: baseline'>
+						<span style='font-size: 12px'><i class="fa fa-volume-up"></i></span>
+						<progress id="progress_audio2" value="0" max="100" ></progress>
+						
+					</div>
+					<i id='song_on_band'>---</i><br/>					
+			</div>
+		</nav>	
+
+			<style type="text/css">
+				#rep_play-btn{
+					border-radius: 50%;
+					border: 1px solid black;
+					width:1.6vw;
+					height:1.6vw;
+					font-weight: 800;
+					font-size: 8px;
+					padding: 0;
+					margin:0;	
+					background-color: black;				
+				}
+				.side_music-player{
+					display: flex; 
+					flex-direction: column;
+					justify-content: center; 
+					align-content: center; 
+					align-items: center;
+					flex-shrink: 0.5
+					font-size: 10px;
+					text-transform: capitalize;
+				}
+				#audioplayer{margin:0 20vw; justify-content: center; align-content: center; align-items: center;}
+				#audioplayer span{font-size: 11px;}
+
+				.dropdown-menu {text-indent: 15px;background: var(--spotify)}
+				.dropdown-menu li {border-left: solid var(--spotify) 4.5px; }
+				.dropdown-menu li a { font-weight: 800;color:white}
+
+			</style>
+			<script type="text/javascript">
+				var reproductor = document.getElementById('reproductor');
+				var audiotime= reproductor.currentTime;
+				const progress_audio = document.getElementById('progress_audio')
+				reproductor.volume = 0.5;
+
+				const current = document.querySelector('.audio_current');
+				const duration = document.querySelector('.audio_duration');
+
+				const play_centros = document.querySelectorAll('.playmusic');
+
+				var play_bot = document.getElementById('rep_play-btn');
+
+				const songOn =document.querySelector('song_on');
+			    const songOnBand =document.querySelector('song_on_band');	
+				
+				var p_s= 1;
+
+				function play_stop()
+				{
+					p_s++;
+					if ((p_s%2)==0)
+						{reproductor.play();play_bot.style.color='var(--netflix)';
+						play_bot.innerHTML='||'};
+					if ((p_s%2)>0)
+						{reproductor.pause();play_bot.style.color='white';
+					play_bot.innerHTML='<i class="fa fa-play-circle"></i>'};
+
+					
+				}
+
+				function play_music(){        			      
+			      const audiosrc = this.querySelector('audio');		      		      
+
+			      play_centros.forEach(play_centro => play_centro.style.backgroundColor='var(--spotify)');
+			      reproductor.src = audiosrc.src;			      
+			      reproductor.currentTime = 0;
+			      reproductor.play();
+			      song_on.innerHTML = noline(audiosrc.dataset.name);
+			      song_on_band.innerHTML = noline(audiosrc.dataset.band);
+			      this.style.backgroundColor='red';
+			      play_stop();
+			    }		
+
+			    function handleaudioProgress(){
+			    	progress_audio.value = (reproductor.currentTime/reproductor.duration)*100;
+			    	current.innerHTML = Math.floor(reproductor.currentTime / 60) +":"+Math.floor(reproductor.currentTime % 60);
+					duration.innerHTML = Math.floor(reproductor.duration / 60) +":"+Math.floor(reproductor.duration % 60);
+			    }	  
+
+
+			    play_centros.forEach(play_centro => play_centro.addEventListener('click', play_music));
+
+			    play_bot.addEventListener('click', play_stop);
+
+			    reproductor.addEventListener('timeupdate', handleaudioProgress);
+
+
+			</script>
+
+
+			<style>
+				#music_player{
+					width:100vw; 
+					height:8vh; 				 
+					
+					background-color: var(--spotify);
+					display: flex;
+					flex-flow: row wrap;
+					justify-content: space-between;
+					align-items: stretch;
+					align-content: center;
+					font-size: 15px; 
+					padding:0px 0vw; 
+					color:white; 
+					font-weight: 300; 
+					font-family: sans;
+					margin: 0;
+				}
+				#music_player div li{text-decoration: none}
+				
+				#audiocontrols{
+					display:flex; 
+					flex-flow: row wrap; 
+					justify-content: space-between;
+					padding-top:2px;
+				}
+				#progress_audio{
+					height:4px; 
+					width:15vw;
+					background-color: white; 
+					color:white;
+					border: 0.5px solid #333a;
+				}
+				#progress_audio2{
+					height:3px; 
+					width:12vw;
+					background-color: white; 
+					color:white;
+					border: 0.5px solid #333a;
+					margin:0 4px;
+
+				}
+				#progress_audio::after{ width:20px; background:red; content:'r'; color:red;}
+				}
+			</style>	
+	</body>
+
+
+  <script>
+	  	const paneletes = document.querySelectorAll('.panel');
+	  	
+	  	function abrirpanel(){
+	  		this.classList.toggle('open');
+	  	}	    
+	    paneletes.forEach(panele => panele.addEventListener('click', abrirpanel));
+
+
+	  	function toggleActive(e){
+	  		
+	  		if (e.propertyName.includes('flex')){
+	  			this.classList.toggle('open-active');
+	        
+	  		}
+	  	}
+	  	paneletes.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+
+	    caja_colores = ['#ef1df3','#5ae6e6','#0c2121','#f6f9e7','#f99a0d','#f9186b', '#42e25d'];	
+
+	    const centros = document.querySelectorAll('.centro');
+	    function mine(){
+     
+      		const colores = caja_colores[Math.floor(Math.random() * 6)];
+      		document.documentElement.style.setProperty(`--color`,colores);
+      
+      		const audiosrc = this.querySelector('audio');
+      
+		      if (this.style.color !== '#3439dc'){
+		      player.src = audiosrc.src;
+		      player.currentTime = 0;}
+		      player.play();      
+   		 }
+    
+   		 centros.forEach(centro => centro.addEventListener('click', mine));  	
+	         
+  </script>
+
+
+  <script language="javascript"> 
+
+    document.write("<script src='test.js'><\/script>"); 
+
+  </script>
+
+  <script type="text/javascript">
+  	var series_epi=[
+	    [psyp_epi, dn_epi, sel_epi, fri_epi, hb_epi],
+	    ['Psycho_Pass','Death_Note','SEL','friends','Helluva_Boss']
+	    ];
+
+	    var epi_tit = document.getElementById('epi_ser_name');
+		var epi= document.getElementById('episodios');
+	  
+
+		function print_epi(x){		
+
+		const player = document.getElementById('player_video_p');
+		const fgh = series_epi[1][x].toLowerCase();
+				
+		player.poster= 'series/'+ fgh + '.png';
+		epi.innerHTML='';
+
+	    var k=series_epi[0][x];
+	    epi_tit.innerHTML=k[0][0];
+	  	for (i = 1; i < k.length; i++) 
+	    {epi.innerHTML += 
+	              `<tr>                    
+	                  <td>
+	                    <div class='preview' style="background:url('series/${series_epi[1][x]}/${k[0][1]}${i}.png')">
+	                      <source src="${k[i][3]}" type="video/mp4">
+	                    </div>
+	                    <div>                       
+	                        <i data-label="epi_name">${k[i][0]} </i><br/>
+	                        <i data-label="epi_a">${k[i][1]} </i><br/>
+	                        <i data-label="epi_b">${k[i][2]}</i><br/>
+	                    </div>
+	                  </td>
+	              </tr>`;}
+	  };
+	  print_epi(1);
+  </script>
+
+ 
+  
+	
+  <script type="text/javascript">
+  	function album(name, band, src, img) {
+							  this.name  = name; 
+							  this.band = band; 
+							  this.src = src;
+							  this.img = img}
+
+  	var ff= new album('Franz Ferdinand', "franz_ferdinand", 'sounds/ff.mp4','ff.png')
+  	var mcr = new album ('The Black Parade', 'My Chemical Romance', 'https://www.dropbox.com/s/ddj472ajtpycaff/the_black_parade.mp4?raw=1','tbp.png')
+  	var lorde = new album ('Pure Heroine', 'Lorde', 'sounds/pure_heroine.mp4','lorde.png')
+  	var stpec = new album ('Santo Pecado', 'Arjona', 'sounds/santo_pecado.mp4', 'santo_pecado.png')
+  	var isthis = new album ('Is this it', 'The Strokes', 'sounds/isthisit.mp4', 'this_is_it.png')
+  	var born2die = new album ('Born to dia', 'Lana del Rey', 'sounds/born_to_die.mp4', 'born2die.png')
+  	var cln = new album ('Caiga la noche', 'Los Mesoneros', 'sounds/caiga_la_noche.mp4', 'caiga_la_noche.png')
+
+
+  </script>
+
+
+
+ <style>
+			  	:root {
+	   		 --color: rgb(200,200,200);
+	   		 --spotify:#1DB954;
+	   		 --spotify2:#1DB95433;
+	   		 --netflix:#E50914;
+	   			}
+	  
+			    html {box-sizing: border-box;	}
+
+			    body {margin: 0;}
+			    *, *:before, *:after {box-sizing: inherit;}
+				html{overflow-x: hidden; background-color: #191414}
+				
+				.flex-centrado{display:flex; justify-content: center; align-content: center; align-items: center}
+
+				@media only screen and  (max-width: 760px) {
+					#navflix{background:black;}
+					.img_nav{width: 22vw;margin:0 1.3vw;}
+					#navflix span a{font-size: 7px;color:red;font-weight: 800;width:13vw;}
+
+					#sidevideoplayer{display:none;}
+					.playero, #player, #player_video_p, .player_controls, nav{width:100vw;}
+					.player_button{font-size: 8px}
+					.fullScreen{display:none;}
+
+					#music_player {font-size: 6px; }
+					#music_player div{margin:0; padding:0;}
+					#audiocontrols{	margin: 0 5vw ;width: 30vw}
+					#progress_audio{width: 30vw}
+
+					#rep_shuffle-btn{font-size: 10px;}
+					#rep_forward-btn{font-size: 10px;}
+					#rep_play-btn {width: 20px; height: 20px; font-size: 11px;}
+					#rep_back-btn{font-size: 10px;}
+					#rep_repeat-btn{font-size: 10px;}
+					
+					.side_music-player{width:;font-size: 9px;}
+					.resetSpeed{display: none}
+
+
+					.displayer{
+								 width:100vw; 
+								 height:15vh; }
+					input[type=range]::-moz-range-thumb { width: 5px; height: 5px}
+
+					table{height: 50vw}
+				
+						
+					.secTit{font-size: 13px;}	
+					.item:hover > .actions{
+								display:none;
+								opacity:1;
+								transition: all 0.5s}
+					.movies_2 {font-size: 8px; font-weight: 800;}
+					.box{font-size: 9.5px; height:4vh; display: flex; align-items: center; align-content: center; justify-content: center}
+					.box4{font-size: 12px;}
+					#myLikes{ height:8px}
+					.img_myLikes{height:25px;}
+
+					.display_books{width:; height:70vh;}
+
+					.read a{width: 8vw; font-size: 11px;}
+
+					.book_name, .book_autor{font-size: 10px;width: 18vw}
+				}
+		</style>
+		
+		  <script type="text/javascript">
+		  	const navs = document.querySelector('#navflix');  
+		  	const topOfNav = navs.offsetTop;
+		  	var alpha = 0.3;
+
+			const myLikes = document.querySelector('#myLikes'); 
+			const bandas = document.querySelector('#bandas'); 			
+			const sports  = document.querySelector('#deportes');  
+
+			const topOfLikes = myLikes.offsetTop  ;	
+			const topOfBandas = bandas.offsetTop  ;	
+
+			const topOfSports = sports.offsetTop  ;	
+
+			
+			function activeNav(){
+					navs.style.backgroundColor=`rgba(30,30,30,${alpha})`;				
+					if(window.scrollY > topOfLikes)  
+						{alpha = window.scrollY/topOfBandas;} 
+					else if(window.scrollY > topOfBandas)  
+						{alpha = 1;} 
+					else  {alpha = 0.3;}   					    			    
+						  } 
+			window.addEventListener('scroll', activeNav);
+
+		  </script>
+
+		  <script type="text/javascript">
+		  	$("#modo_cine").click(function () {
+		  		  $('.playero, #player, #player_video_p, .player_controls ').animate({width:'100vw'},660);		  		  
+		          $('#sidevideoplayer, #youtable, #episodios').animate({width:'0px'},660);;
+		    });
+		    $("#modo_cine2").click(function () {
+		  		  $('.playero, #player, #player_video_p, .player_controls ').animate({width:'75vw'},660);		  		  
+		          $('#sidevideoplayer, table, #episodios').animate({width:'25vw'}, 660);;		          
+		    });
+		   
+
+		  </script>
+
+		  <script type="text/javascript">
+				const vplayer = document.getElementById('player_video_p');
+
+			    const albumv = document.querySelectorAll('.album');				
+				function playalbum(){
+				  const albumsrc = this.dataset.src;		      
+			      vplayer.src = albumsrc;			      
+			      vplayer.play();		      	      			      
+			      albumv.forEach(a => a.style.border='2.75px solid white');
+			      this.style.border='4.75px solid var(--spotify)';
+			    }			    
+			    albumv.forEach(a => a.addEventListener('click', playalbum));
+
+			    const filmv= document.querySelectorAll('.moviesv');
+			    function playpelicula(){
+				  const filmsrc = this.dataset.src;		      
+			      vplayer.src = filmsrc;			      
+			      vplayer.play();		      	      			      
+			      filmv.forEach(a => a.style.border='2.75px solid white');
+			      seriesv.forEach(a => a.style.border='2.75px solid white');
+			      this.style.border='4.75px solid var(--spotify)';
+			      epi.innerHTML = "";
+			      
+			    }
+			    filmv.forEach(a => a.addEventListener('click', playpelicula));
+
+			    const seriesv= document.querySelectorAll('.seriesv');
+			    function cargar_episodios(x){
+			    	x=this.id.substr(-1);
+			    	console.log(this.id.substr(-1));
+			    	
+			    	epi.innerHTML = "";
+			    	print_epi(x);
+			    	vplayer.pause();
+			    			    				    
+			    	vplayer.poster = this.style.backgroundImage.substr(5,).replace('")'," ");
+			    	filmv.forEach(a => a.style.border='2.75px solid white');
+			    	seriesv.forEach(a => a.style.border='2.75px solid white');
+			        this.style.border='4.75px solid var(--spotify)';
+
+			        const videov = document.querySelectorAll('.preview');
+			        videov.forEach(v => v.style.border='3px solid var(--spotify)');
+			      	this.style.borderColor='blue';
+			    	videov.forEach(v => v.addEventListener('click', playvideos));
+			    }
+			    seriesv.forEach(a => a.addEventListener('click', cargar_episodios));
+
+			    const videov = document.querySelectorAll('.preview');				
+				function playvideos(){
+				  const videosrc = this.querySelector('source');        			      	      			      
+			      vplayer.src = videosrc.src;			      
+			      vplayer.play();		      	      	      
+			      videov.forEach(v => v.style.border='3px solid var(--spotify)');
+			      this.style.borderColor='blue';
+			    }			    
+			    videov.forEach(v => v.addEventListener('click', playvideos));
+			</script>
+</html>
