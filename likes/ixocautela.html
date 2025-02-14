@@ -396,22 +396,34 @@
 				<div id='films'>							
 					<!--peliculas favoritas-->					
 						<div class='films_list' id="fav_movies">
-							<button type="button" onclick="first2last( peliculas, slide1,'movies')"><</button>
-						 	<h3 class='secTit'>Peliculas Favs</h3>
+							<h3 class='secTit'>
+							<button type="button" onclick="first2last( peliculas, slide1,'movies')"> <-] </button>
+							Peliculas
+							<button type="button" onclick="last2first( peliculas, slide1,'movies')"> [-> </button>
+						 	</h3>
+						</div>
 
 								<div class='displayer display_1' id='filmes'></div>	
+
 						</dir>
 
-					<div class='series_list' id="fav_series">
-						<button type="button" onclick="first2last( series, slide2,'series')"><</button>
-						<h3 class='secTit' id='series'>Series</h3>
+					<div class='series_list' id="fav_series">						
+						<h3 class='secTit' id='series'>
+							<button type="button" onclick="first2last( series, slide2,'series')"><-]</button>
+							Series
+							<button type="button" onclick="last2first( series, slide2,'series')">[-></button>
+						</h3>
+						
 						<div class='displayer display_2' id='seriess'>
 						</div>
 					</div>
 
 					<div class='series_list' id="fav_animes">
-						<button type="button" onclick="first2last( animes, slide3,'series')"><</button>
-						<h3 class='secTit'>Novelas</h3>
+						<h3 class='secTit'>
+							<button type="button" onclick="first2last( animes, slide3,'series')"><-]</button>
+								Novelas
+							<button type="button" onclick="last2first( animes, slide3,'series')">[-></button>
+						</h3>
 						<div class='displayer display_3' id='animess'>
 						</div>
 					</div>
@@ -427,6 +439,12 @@
 						function first2last(x,y,z){
 							a = x.shift();	
 							x.splice(x.length,0,a);
+							y.innerHTML='';
+							print_slide(y, x, z);
+						}
+						function last2first(x,y,z){
+							a = x.pop();	
+							x.splice(0,0,a);
 							y.innerHTML='';
 							print_slide(y, x, z);
 						}
@@ -696,7 +714,7 @@
 						      	<div class="box box1">Creo en ti</div>
 							    <div class="box box7">Noviembre sin ti</div>
 							    <div class="box box6">Yo quisiera</div>
-							    <div class="box box4">Bandas  
+							    <div class="box box4">y  
 							    	<audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
 							    </div>
 							    <div class="box box2">Pero te conoci</div>
@@ -706,19 +724,19 @@
 					     	<p>Reik</p>
 					    </div>
 					    <div class="panel panel4">
-					      <p >𝔸𝕣𝕔𝕥𝕚𝕔</p>
+					      <p >Selena</p>
 					      <div class="centro">
-					      	<div class="box box7">R U Mine</div>
-						    <div class="box box3">Mardy Bum</div>
-						    <div class="box box6">4 out of 5</div>
-						    <div class="box box4">Rock   
+					      	<div class="box box7">Como la flor</div>
+						    <div class="box box3">Biri bam bam</div>
+						    <div class="box box6">Amor prohibido</div>
+						    <div class="box box4">Cantantes  
 						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
 						    </div>
-						    <div class="box box5">505</div>
-						    <div class="box box2">Balaclava</div>
-						    <div class="box box1">The Bakery</div>
+						    <div class="box box5">Si una vez</div>
+						    <div class="box box2">El chico del apartamento 512</div>
+						    <div class="box box1">La llamada</div>
 					      </div>
-					      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
+					      <p>Selena</p>
 					    </div>
 					    <div class="panel panel5 ">
 					      <p>Muse</p>
@@ -769,11 +787,11 @@
 					      flex-direction:column;
 					    }
 
-					    .panel1 {background-image:url(don_omar.png); }
-					    .panel3 {background-image:url(reik.png); }
-					    .panel2 {background-image:url(michael_jackson.png); }
-					    .panel4 {background-image:url(arctic_monkeys.jpg); }
-					    .panel5 {background-image:url(muse.jpg); }
+					    .panel1 {background-image:url(bandas/don_omar.png); }
+					    .panel3 {background-image:url(bandas/reik.png); }
+					    .panel2 {background-image:url(bandas/michael_jackson.png); }
+					    .panel4 {background-image:url(bandas/selena.png); }
+					    .panel5 {background-image:url(bandas/muse.jpg); }
 
 					    .panel > * {
 					      margin:0;
