@@ -316,7 +316,7 @@
 								 right:-3vw;
 								 }
 						.displayer::before{
-							content: url(backmove.png);
+							content: url(backmov.png);
 							color: ;
 							background: transparent;						}
 
@@ -461,10 +461,10 @@
 							var psycho = new film("Eclipse","David Slade", "2010", 'eclipse.png','');
 							var antik = new film("Son como ninos","Denis Dugan", "2010", 'son_como.png','');
 							var samurai = new film("Alicia en el pais de las Maravillas",'Tim Burton', '2012', 'alicia.png','');
-							var seven_s = new film("Seven Samurais","A Kurosawa", "1954", 'seven_samurais.png','videos/seven_samurais.mp4');
-							var sept = new film("Septimo Sello","Ingmar Bergman", "1957", 'septimo_sello.png','videos/septimo_sello.mp4');
+							var seven_s = new film("Ralph el demoledor","Rich Moore", "2012", 'ralph.png','');
+							var sept = new film("Barbie: La princesa y la plebeya","William Lau", "2004", 'barbie_plebeya.png','');
 
-							var peliculas = [samurai, matrix, sept, antik, psycho, seven_s, padrino]
+							var peliculas = [padrino, matrix, psycho, samurai, sept, antik, seven_s]
 
 						function serie(name, seg, src, vsrc) {
 							  this.name  = name;
@@ -473,27 +473,28 @@
 							  this.vsrc = vsrc;
 							};
 
-							var DN = new serie("Death Note","1", "death_note.png",'');
+							
 							var breakB= new serie("Miraculous Ladybug","1", "ladybug.png",'');
 							var bojack= new serie("Malcolm in the Middle", " ", "malcolm.png",'');
-							var peep_show= new serie("The Peep Show", " ", "peep_show.png",'');
-							var house= new serie("House MD", " ", "house.png",'');
+							var peep_show= new serie("Gravity Falls", " ", "gravity.png",'');
+							var house= new serie("King the Land", " ", "king_the_land.png",'');
 							var got= new serie("Game of Thrones", "7", "got.png",'');
-							var friends= new serie("Friends", "", "friends.png",'');							
+							var friends= new serie("La casa de papel", "", "casa_papel.png",'');
+							var DN = new serie("bridgerton","1", "bridgerton.png",'');							
 
 
-							var series = [DN, breakB, house, friends, bojack, peep_show,  got];
+							var series = [breakB, house, friends, bojack, peep_show,  got, DN];
 
 							
 							var sel= new serie("Ruby","1", "ruby.png",'');
 							var codeg= new serie("Teresa", " ", "teresa.png",'');
 							var naruto= new serie("El Sultan", " ", "sultan.png",'');
-							var psypass= new serie("Psycho Pass", " ", "psycho_pass.png",'');
-							var ergo= new serie("Ergo Proxy", "7", "ergo_proxy.png",'');
-							var hellb= new serie("Helluva Boss", "6", "helluva_boss.png",'');
+							var psypass= new serie("Infiel", " ", "infiel.png",'');
+							var ergo= new serie("W", "", "w.png",'');
+							var hellb= new serie("silo", "6", "silo.png",'');
 							
 
-							var animes = [ sel, ergo, hellb, codeg, psypass, naruto];
+							var animes = [ codeg, sel, ergo, hellb, psypass, naruto];
 
 
 							 function print_slide(x, a, b){
@@ -724,21 +725,6 @@
 					     	<p>Reik</p>
 					    </div>
 					    <div class="panel panel4">
-					      <p >Selena</p>
-					      <div class="centro">
-					      	<div class="box box7">Como la flor</div>
-						    <div class="box box3">Biri bam bam</div>
-						    <div class="box box6">Amor prohibido</div>
-						    <div class="box box4">Cantantes  
-						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
-						    </div>
-						    <div class="box box5">Si una vez</div>
-						    <div class="box box2">El chico del apartamento 512</div>
-						    <div class="box box1">La llamada</div>
-					      </div>
-					      <p>Selena</p>
-					    </div>
-					    <div class="panel panel5 ">
 					      <p>Muse</p>
 					      <div class="centro">
 					      		<div class="box box1">Unintended</div>
@@ -752,6 +738,21 @@
 							    <div class="box box7">Uprising</div>
 					      </div>
 					      <p>ǝs𝕟W</p>
+					    </div>
+					    <div class="panel panel5 ">					      
+					      <p >Selena</p>
+					      <div class="centro">
+					      	<div class="box box7">Como la flor</div>
+						    <div class="box box3">Biri bam bam</div>
+						    <div class="box box6">Amor prohibido</div>
+						    <div class="box box4">Cantantes  
+						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
+						    </div>
+						    <div class="box box5">Si una vez</div>
+						    <div class="box box2">El chico del apartamento 512</div>
+						    <div class="box box1">La llamada</div>
+					      </div>
+					      <p>Selena</p>
 					    </div>
 				</div>
 
@@ -790,8 +791,8 @@
 					    .panel1 {background-image:url(bandas/don_omar.png); }
 					    .panel3 {background-image:url(bandas/reik.png); }
 					    .panel2 {background-image:url(bandas/michael_jackson.png); }
-					    .panel4 {background-image:url(bandas/selena.png); }
-					    .panel5 {background-image:url(bandas/muse.jpg); }
+					    .panel4 {background-image:url(bandas/muse.png); }
+					    .panel5 {background-image:url(bandas/selena.png); }
 
 					    .panel > * {
 					      margin:0;
@@ -887,21 +888,21 @@
 							.album span{font-size:14px; transform:rotate(-45deg); font-weight: 600; text-shadow: 1px 2px black; background-color: #333c }	
 
 
-						    .album01{grid-area: a;background-image:url(albums/caiga_la_noche.png);}  
-						    .album02{grid-area: b;background-image:url(albums/revolver.png);} 
-						    .album03{grid-area: c;background-image:url(albums/frisbee.png);}  
-						    .album04{grid-area: d;background-image:url(albums/insidein.png);}  
-						    .album05{grid-area: e;background-image:url(albums/louise.png);} 
-						    .album06{grid-area: f;background-image:url(albums/franz_ferdinand.png);}  
-						    .album07{grid-area: g;background-image:url(albums/this_is_it.png);}  
-						    .album08{grid-area: h;background-image:url(albums/pure_heroine.png);} 
-						    .album09{grid-area: i;background-image:url(albums/black_parade.png);}  
-						    .album10{grid-area: j;background-image:url(albums/konk.png);}  
-						    .album11{grid-area: k;background-image:url(albums/talking_dreams.png);} 
-						    .album12{grid-area: l;background-image:url(albums/badlands.png);} 
-						    .album13{grid-area: m;background-image:url(albums/flor_de_fuego.png);} 
-						    .album14{grid-area: n;background-image:url(albums/santo_pecado.png);} 
-						    .album15{grid-area: o;background-image:url(albums/born2die.png);}
+						    .album01{grid-area: a;background-image:url(albums/mcdonalds.png);}  
+						    .album02{grid-area: b;background-image:url(albums/.png);} 
+						    .album03{grid-area: c;background-image:url(albums/girasoles.png);}  
+						    .album04{grid-area: d;background-image:url(albums/papitas.png);}  
+						    .album05{grid-area: e;background-image:url(albums/.png);} 
+						    .album06{grid-area: f;background-image:url(albums/.png);}  
+						    .album07{grid-area: g;background-image:url(albums/.png);}  
+						    .album08{grid-area: h;background-image:url(albums/.png);} 
+						    .album09{grid-area: i;background-image:url(albums/.png);}  
+						    .album10{grid-area: j;background-image:url(albums/hamburguesa.png);}  
+						    .album11{grid-area: k;background-image:url(albums/.png);} 
+						    .album12{grid-area: l;background-image:url(albums/.png);} 
+						    .album13{grid-area: m;background-image:url(albums/.png);} 
+						    .album14{grid-area: n;background-image:url(albums/noche_estrellada.png);} 
+						    .album15{grid-area: o;background-image:url(albums/.png);}
 
 						    @media only screen and (max-width: 1000px){
 							#albums {
@@ -923,49 +924,49 @@
 					</style>
 					
 						<div class='album album01' data-src='sounds/caiga_la_noche.mp4'>
-							<span>Caiga la noche <br/> Los Mesoneros <br/> 37:42</span>
+							<span></span>
 						</div>
 						<div class='album album02' data-src=''>
-							<span>Revolver <br/> The Beatles</span>
+							<span></span>
 						</div>
 						<div class='album album03' data-src=''>
-							<span>Frisbee <br/> Caramelos de Cianuro</span>
+							<span></span>
 						</div>
 						<div class='album album04' data-src=''>
-							<span>Inside In/ Inside Out <br/> The Kooks</span>
+							<span></span>
 						</div>
 						<div class='album album05' data-src=''>
-							<span>Louise Attaque <br/> Louise Attaque</span>
+							<span></span>
 						</div>
 						<div class='album album06' data-src='https://www.dropbox.com/s/2e83he1fmdfbvzm/ff.mp4?raw=1'>
-							<span>Franz Ferdinand  <br/> Franz Ferdinand <br/> 38:50</span> 
+							<span></span> 
 						</div>
 						<div class='album album07' data-src='sounds/isthisit.mp4'>
-							<span>The Strokes <br/> This is it <br/> 35:50 </span>
+							<span> </span>
 						</div>
 						<div class='album album08' data-src='https://www.dropbox.com/s/8ssdkoccurj2hbh/pure_heroine.mp4?raw=1'>
-							<span>Pure Heroine <br/> Lorde <br/> 37:12 </span>
+							<span> </span>
 						</div>
 						<div class='album album09' data-src='https://www.dropbox.com/s/ea4jdm5i4r2ylz5/The%20Black%20Parade.mp4?raw=1'>
-							<span>Black Parade  <br/> My Chemical Romance <br/> 53:57 </span>
+							<span>  <br/>  <br/>  </span>
 						</div>
 						<div class='album album10' data-src=''>
-							<span>Konk <br/> The Kooks</span>
+							<span> <br/> </span>
 						</div>
 						<div class='album album11' data-src=''>
-							<span>Talking Dreams <br/> Echosmith</span>
+							<span> <br/> </span>
 						</div>	
 						<div class='album album12' data-src=''>
-							<span>Badlands <br/> Halsey</span>
+							<span> <br/> </span>
 						</div>							
 						<div class='album album13' data-src=''>
-							<span>Flor de Fuego <br/> CDC</span></div>	
+							<span> <br/> </span></div>	
 
 						<div class='album album14' data-src='https://www.dropbox.com/s/kfpl244uxm1138s/santo_pecado.mp4?raw=1'>
-							<span>Santo Pecado <br/> Arjona <br/> 1:04:29</span>
+							<span> <br/> <br/> </span>
 						</div>
 						<div class='album album15' data-src='sounds/born_to_die.mp4'>
-							<span>Born to die <br/> Lana del Rey <br/> 41:13</span>
+							<span> <br/>  <br/> </span>
 						</div>					
 			</div>
 
@@ -1070,7 +1071,7 @@
 			<div id='deportes' style="">	
 				<style type="text/css">
 					#deportes{
-					 	background-image: url(deportes/ballack.png);
+					 	background-image: url(deportes/ixo_jacket.png);
 					 	background-size: 100% auto;					 	 
 					 	display: flex; 
 					 	background-repeat: no-repeat;
@@ -1094,13 +1095,15 @@
 						}
 					</style>
 					
-						<img title='Paolo Maldini' class='sports' src='deportes/maldini.png'/>
+						
 						<img title='Cristiano Ronaldo' class='sports' src='deportes/cr7.png'/>
+						<img title='Raven' class='sports' src='deportes/raven.png'/>
 						<img title='Selena Quintanilla' class='sports' src='deportes/selena.png'/>
 						
-						<img title='Bastian Schweinsteiger' class='sports' src='deportes/schweini.png'/>
+						
 						<img title='Michael Schumacher' class='sports' src='deportes/schumi.png'/>
 						<img title='Dirk Nowitski' class='sports' src='deportes/nowitski.png'/>
+						<img title='Raven' class='sports' src='deportes/raven.png'/>
 			</div>
 		</div>
 		
@@ -1364,7 +1367,7 @@
 		const player = document.getElementById('player_video_p');
 		const fgh = series_epi[1][x].toLowerCase();
 				
-		player.poster= 'series/'+ fgh + '.png';
+		player.poster= 'ixomar.png';
 		epi.innerHTML='';
 
 	    var k=series_epi[0][x];
@@ -1400,9 +1403,9 @@
   	var ff= new album('Franz Ferdinand', "franz_ferdinand", 'sounds/ff.mp4','ff.png')
   	var mcr = new album ('The Black Parade', 'My Chemical Romance', 'https://www.dropbox.com/s/ddj472ajtpycaff/the_black_parade.mp4?raw=1','tbp.png')
   	var lorde = new album ('Pure Heroine', 'Lorde', 'sounds/pure_heroine.mp4','lorde.png')
-  	var stpec = new album ('Santo Pecado', 'Arjona', 'sounds/santo_pecado.mp4', 'santo_pecado.png')
+  	var stpec = new album ('', 'Van Gogh', '', 'noche_estrellada.png')
   	var isthis = new album ('Is this it', 'The Strokes', 'sounds/isthisit.mp4', 'this_is_it.png')
-  	var born2die = new album ('Born to dia', 'Lana del Rey', 'sounds/born_to_die.mp4', 'born2die.png')
+  	var born2die = new album ('', '', '', 'papitas.png')
   	var cln = new album ('Caiga la noche', 'Los Mesoneros', 'sounds/caiga_la_noche.mp4', 'caiga_la_noche.png')
 
 
