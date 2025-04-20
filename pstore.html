@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    
+     
+
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="/manifest.json" rel="manifest" />
+
+      <link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+      <link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
+
+      <meta name="msapplication-TileColor" content="#4fdb98">
+      <meta name="msapplication-TileImage" content="imgx/favicon.ico">
+      <meta name="theme-color" content="#4fdb98">
+      <meta class='swiftype' name='image' data-type='enum' content='imgx/pstore.jpg' />
+      <meta name="image" content="imgx/pstore.jpg">
+      <meta name="keywords" content="Ivan Lopez Pedreanez, Ivan Guillermo Lopez, Ivan Guillermo Lopez Pedreanez, Programador web, frontend developer, frontend, matematico">
+      <meta name="author" content="ivan lopez pedreanez">
+      
+      
+      <meta content='Cursos realizados por Ivan Lopez Pedreanez' name='description'/>
+      <title>Mis Cursos</title>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+    <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+    <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Barriecito|Roboto|Lora" rel="stylesheet" />
+
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+  </head>
+<script>
+
+</script>
+<style>
+    
+    #pptx {background-color:white;width:100%}
+    .courses{
+      display:flex; 
+      flex-flow: row wrap; 
+      justify-content:flex-start; 
+      align-content: flex-start; 
+      align-items: center}
+    .pptx_title {display:; font-size:42px; text-align:center;  font-family: Barriecito;  text-shadow:;}
+
+    button{width:23vw;} 
+      .course_data{
+        font-size: 15px; 
+        font-weight:600; 
+        text-shadow: 1px 1px #000000aa; 
+        color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+      }
+      .course_data h4{display: none}
+      button img {width:18vw;}
+    .btn-leyenda{width:13.3vw; margin:1vh 1vw;}
+
+    #leyenda{margin: 2vh 1vw;}
+    .categoria cat_1{font-size: 0.94vw; font-weight: 600;}
+    .img_pptx {width:90%;display:flex;flex-flow:column wrap }
+    .img_pptx:hover {opacity:0.5;}
+
+    .img_codecademy{display:inline-block; width:800px; height: 380px;margin:2%}
+
+    .curso_btn {display:flex; flex-direction: column; margin:0.5%;}
+
+    h3{font-size: 14px;}
+    img{width: 20vw; height:;padding:0px;}
+    i{font-size: 8px;}
+    .navbar-link i{font-size: 12px;}
+    p{font-size: 14px;}
+
+    .other_courses button{width:45vw; border:0.81px solid #000000aa; background: white; padding:12px;margin-left:2vw; margin-top:2vh; color:black; }
+    .oth_cours_btn {width:45vw; border:0.81px solid #000000aa; background: white; padding:12px;margin-left:2vw; margin-top:2vh; color:black; }
+
+    .talleres{display: flex; flex-flow: row wrap;margin-bottom: 30px}
+
+    .taller{
+      display: flex; 
+      flex-flow: row wrap; 
+      justify-content:flex-start; 
+      align-content: space-between; 
+      align-items: center; 
+      background: #eee; 
+      border-radius: ;
+      border: 2px solid var(--color); 
+    }
+    
+    .taller img{
+      height:100px;
+      width:120px;
+      border: 1px solid #777;
+    }
+        
+    .partes{
+      display: flex; 
+      justify-content: flex-start; 
+      flex-flow: column wrap;  
+      align-content: space-between; 
+      align-items: flex-start;
+      width:25vw;
+      white-space: wrap;
+      overflow: hidden;
+      text-overflow: fade;
+      line-break:auto;}
+
+    .partes i{font-size: 10px;}
+
+    .vop{
+      width:40px;
+      height: 40px; 
+      display: inline-block;
+      margin:1.5vw;}
+
+    .tit_img{width:180px;height: 50px;}
+
+     @media only screen and (max-width: 800px) {
+              button{width:88vw;text-overflow: hidden}  
+              .course_data{
+                font-size: 18px; 
+                font-weight:500; 
+                text-shadow: 0.6px 0.6px #000000aa; 
+                color: #eee; 
+                background: transparent;
+                width:;
+                height:;
+                margin:0 3vw;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                justify-content: flex-start;
+                flex-flow: column wrap;
+                align-items: flex-start;  
+                align-content: flex-start;
+
+             ;}
+             .course_data h4{display:block}
+
+              button img {
+                display:none;
+                width:65vw;
+                ;
+                display:inline-block;
+                margin:0; 
+                padding:0;} 
+              .img_codecademy{width:60%; height:60%;}
+
+              .taller{
+                width:42vw; 
+                display: flex; 
+                flex-flow: column nowrap; 
+                justify-content:center; 
+                align-content: space-between; 
+                align-items: center; }
+              .taller img{display:flex; height:50%;width:50%;} 
+
+              
+
+              .curso_btn {display:flex; flex-direction: row;}
+              .img_pptx{width:20vw;height: 90%;}
+      }
+</style>
+</head>
+
+
+<body>
+  <!-- Modales -->
+            <div id="id01" class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <header class="containerheader">
+                    <a href="#pptxs" class="closebtn">×</a>
+                    <h2 id='cert_shower_t'>ssss</h2>
+                  </header>
+                  <center class="containercontainer">
+                    <img id='cert_shower' 
+                            src="imgx/figura_neji_1.jpg" 
+                            width="100%" height="400px">
+                    </img>
+                  </center>
+                  <footer class="containerfooter">
+                    <a target='_blank' href='' id='cert_shower_go'><p>Ir al sitio</p></a>
+                    <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
+                    </div>
+                  </footer>
+                </div>
+              </div>
+            </div>
+            <!-- Fin Modales -->
+
+            <style type="text/css">
+                 .modal { 
+            display:none; 
+            position: absolute; 
+            top:0vh;
+            padding-top:0.5vh; 
+            left: 0px;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: #000; 
+            z-index:180;
+          }
+
+          #cert_shower_t{color:black;}
+
+          /* Display the modal when targeted */
+          .modal:target {display: block;position: absolute;}
+          /* The modal box */
+          .modal-dialog {display: block;vertical-align: middle;margin-top:30px;}
+          /* The modal's content */
+          .modal-dialog .modal-content {
+            background-color: #232323;  border: 1px #777 solid; width: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 12px 12px;            
+          }
+    
+          /* The button used to close the modal */
+          .closebtn {text-decoration: none;float: right;font-size: 25px;font-weight: bold;color: black;}
+          .closebtn:hover, .closebtn:focus {color: var(--rojo);text-decoration: none;cursor: pointer;}
+          .containercontainer {padding: 2px 16px;}
+            </style>
+
+            
+
+
+      <nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
+          <div class="container-fluid" id='fluid' style='display:flex; width:100%;'>
+              <div class="navbar-header" style='display:flex; justify-content: center; align-items: flex-start; height:100%'>             
+                  <a class="navbar-brand" 
+                    href="https://ivanguillermo.github.io" 
+                    style="background-color:var(--color); color:black;font-weight: 400;">
+                    <b>PStore</b>
+                  </a>            
+                             
+                  <a id='nav_dos' class="navbar-link" href="#cursos_certificados" style="text-decoration: none;align-self: center">  <i>Cursos Online</i>
+                  </a>
+                  <a id='nav_tres' class="navbar-link" href="#codecademy" style="text-decoration: none;align-self: center">
+                    <i>Codecademy</i>                    
+                  </a>
+
+                  <a id='nav_cua' class="navbar-link" href="#nocertificados" style="text-decoration: none;align-self: center">
+                    <i><center>Otros Online</center></i>                    
+                  </a>
+
+                  <a id='nav_cin' class="navbar-link" href="#otros" style="text-decoration: none;align-self: center">
+                    <i>Presenciales</i>                    
+                  </a>   
+                  <div class='langs'>
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/eng.jpg'/>
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/spa.jpg'/> 
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/deu.jpg'/> 
+                      <img class='lang' style='width:28px;height: 28px; margin:10px 5px' src='imgx/langs/fra.jpg'/>               
+                  </div>
+                               
+                  
+                  <button 
+                    aria-controls="navbar" 
+                    style='width:10vw; position:absolute; right:0px' 
+                    aria-expanded="false" 
+                    class="navbar-toggle collapsed" 
+                    data-target="#navbar" data-toggle="collapse" type="button" 
+                    onclick="
+                      document.getElementById('fluid').style.display='';
+                      document.getElementById('contacto').style.position='';"
+                    >
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                  </button>  
+                  
+                          
+
+                </div>
+
+              <ul class="nav navbar-nav navbar-right" id='contacto' style="position: absolute; right:1.5%">
+                <li>
+                    <a href="contacto.html" style="background-color:var(--color);color:white"><b>Contacto</b></a>
+                </li>
+              </ul>
+
+              <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-nav">                                     
+                  <li class="dropdown" >
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                    style=""><i class="fa fa-ellipsis-h"></i> </a> 
+                    <ul class="dropdown-menu">
+                      <li><a href="likes/index.html">Mis Gustos</a></li>
+
+                      <li class="divider" role="separator"></li>
+                      <li ><a href="bio.html">Biografia</a></li>
+
+                      <li class="divider" role="separator"></li>
+                      <li ><a href="https://ivanguillermo.github.io/informaticos15">Informaticos15</a></li>
+
+                      <li class="divider" role="separator"></li>
+                      <li id="contacto_nav">
+                        <a href="contacto.html" >Contacto</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+             </div>  
+                       
+                 
+
+        </div> 
+      </nav>
+        <style type="text/css">
+           :root{
+            --color:#4fdb98;
+            --blue:#1AA9EC;
+            --orange:#ff9800;
+            --magenta:#0d0d0c;
+            --green: #29302d;
+           }
+              html{font-family: 'Roboto'; font-weight: 500}
+              body{overflow-x:hidden;}
+              header {background-color: white; font-size: 25px;color: black; padding:0px 10px;}
+              footer {background-color: white font-size: 20px;color: black; padding:0px 10px;}
+
+              ul {list-style:none;}
+
+            .flex-centrado{ display:flex;  justify-content: center; align-items: center; align-content: center; }
+            .navbar{min-height:8vh;}
+
+            .navbar-link{
+              display:flex; 
+              flex-flow: row wrap; 
+              justify-content: center; 
+              align-content: center; 
+              align-content: center; 
+              width:25%; 
+              padding:0vw 2.5vw;
+              font-size:1vw;
+            }Ivan
+            .color {color:var(--color);}
+            .navbar-link i{color:var(--color); align-self: center}
+            
+            .dropdown-menu li a:hover {background-color: var(--color); color:white; font-weight: 600}
+            .dropdown-toggle{width:; color:white; align-self: flex-end; text-align: center} 
+
+            #contacto_nav{display: none}   
+
+
+            #selector{text-align:center; color:rgba(255,255,255,0.85); font-weight: 700;background-color: var(--color) }
+            #selector option{color:white;font-size: 12px;background-color: red}
+
+            .langs{width: 30vw}
+
+            #otros {margin:1vw 0 10vw 4vw;display: table-flex; width: 80vw; justify-content: space-between; flex-flow:column wrap;}
+            tr {width:90vw ; display: flex; flex-flow: row wrap; justify-content: space-evenly;border:0.5px solid var(--color);}
+            td, th {width:12vw; height: 5vh; display: flex; flex-flow: column wrap; justify-content: flex-start;align-content: flex-start;;text-indent: 15px; align-items: center; justify-content: center}
+            th{}
+            tr:first-child{background-color: var(--orange)}
+            tr:nth-child(even){background-color: var(--color)}
+
+            th:first-child, td:first-child{color:;width:20vw;}
+            td:nth-child(2), th:nth-child(2){color:;width:20vw;}
+            th:nth-child(4), td:nth-child(5),th:nth-child(5), td:nth-child(4){color:;width:10vw;}
+            
+            a:link{text-decoration: none}
+
+           @media only screen and (max-width: 800px) {
+              .navbar{width:100vw;}
+              .container-fluid{width:100vw;position:relative;left:0px;}
+              #nav_uno{display:inline-flex;}
+
+
+              
+              .navbar-brand{width:15vw;font-size: 15px; text-align: center;margin-right:5vw;position: absolute;left:0;}
+            
+              .dropdown-toggle{width:100%; color:white; align-self: flex-end; text-align: center}
+              .dropdown{}
+              #contacto{display:none;}
+              #contacto_nav{display: flex}
+
+              .btn-leyenda span{font-size: 9px;padding-left: -10; margin:-15px;}
+              .btn-success{background-color:black}
+
+              .navbar-link {display: none}
+              .langs{margin-left: 15vw; display: flex; flex-wrap: nowrap}
+
+              table{font-size: 10px;}
+              table *{text-indent: 0;}
+              
+            }
+
+        </style>
+
+  <div id="pptx" class="container">
+    
+    <h1 class="pptx_title">PStore Vzla</h1>
+
+    <label for="orden">Ordenar por:</label>
+
+    <select title='elegir orden' name='orden' id='selector' class="btn btn-default">
+        <option value="0">Peluches</option>
+        <option value="1">Llaveros</option>
+        <option value="2">Sabanas</option>
+        <option value="3">Figuras</option>
+    </select>
+    <input id='btn_ordenar' style='border: 1px solid #333' type="submit" value="Ordenar" class="btn btn-default">
+
+    <center id='leyenda'>
+      <button id='cat_0' data-cat='0' type="button" class="btn btn-info btn-leyenda"><span class='categoria' >Peluches</span></button>
+      <button id='cat_1' data-cat='1' type="button" class="btn btn-success btn-leyenda"><span class='categoria' >Llaveros</span></button>
+      <button id='cat_2' data-cat='2' type="button" class="btn btn-warning btn-leyenda"><span class='categoria' >Sabanas</span></button>
+      <button id='cat_3' data-cat='3' type="button" class="btn btn-danger btn-leyenda"><span class='categoria' >Figuras</span></button>      
+    </center>    
+   
+    <!----------------------------------------------COURSERA--------------------------------------------------->
+    
+
+      <h2 id='cursos_certificados'>
+        <a id='tit_0' target="_blank" href="" >
+          <img id='tit_0_img' class='tit_img' src='imgx/cursos/coursera.svg'/>
+        </a>
+      </h2>
+      <div id='courses0' class="courses" ></div>
+      
+      <!----------------------------------------------SAYLOR--------------------------------------------------->
+      <h2>
+        <a id='tit_1' target='_blank' href="" >
+          <img id='tit_1_img'class='tit_img' src='imgx/cursos/saylor.svg'/>
+        </a>
+      </h2>
+        <div id='courses1' class="courses"></div>
+
+      <!----------------------------------------------UDEMY--------------------------------------------------->
+        <h2>
+          <a id='tit_2' target='_blank' href="" >
+            <img id='tit_2_img' class='tit_img' src='imgx/cursos/udemy.jpg'/>
+          </a>
+        </h2>
+        <div id='courses2' class="courses"></div>
+      <!----------------------------------------------EDX--------------------------------------------------->
+        <h2>
+          <a id='tit_3' target='_blank' href="" >
+            <img id='tit_3_img' class='tit_img'  src='imgx/cursos/edx.jpg'/>
+          </a>
+        </h2>       
+        <div id='courses3' class="courses"></div>
+      <!----------------------------------------------EDX--------------------------------------------------->
+        <h2>
+          <a id='tit_4' target='_blank' href="" >
+            <img id='tit_4_img' class='tit_img' alt='Otros'  src='imgx/cursos/duolingo.png'/>
+          </a>
+        </h2>       
+        <div id='courses4' class="courses"></div>
+        
+      
+        <center id='codecademy'>
+          <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R">  
+                <h2>Codecademy</h2> 
+          </a>  
+
+          <div style="display:inline-block;">
+            <p>Learn SQL</p>
+            <p>SQL: Transformation tables</p>
+            <p>Learn Java</p>
+          </div>
+            
+          <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R">  
+            <img class="img_codecademy" src="imgx/cursos/codecademy.png"/>
+          </a>       
+        </center>
+        
+        <hr id='nocertificados'>
+        <hr>
+        <div class="item workshops flex-centrado" id='talleres'>
+        </div>
+
+
+        <div >
+          <h2>Cursos Presenciales:</h2>
+            <table id='otros'>
+              <tr>
+                <th>Curso</th>
+                <th>Escuela</th>
+                <th>Area</th>
+                <th>Año</th>
+                <th>Duracion</th>
+              </tr>  
+
+              <tr>
+                <td>Reparacion de PC</td>                
+                <td>INCES (Venezuela)</td>
+                <td>Tecnologia</td>
+                <td>2015</td>
+                <td>3 Meses</td>
+              </tr>  
+
+              <tr>
+                <td>Carpinteria</td>
+                <td>INCES (Venezuela)</td>
+                <td>Arte</td>                
+                <td>2016</td>
+                <td>3 Meses</td>
+              </tr> 
+
+              <tr>
+                <td>Linux + Apache + PHP + MySql</td>
+                <td>UNA (Venezuela)</td>
+                <td>Programacion</td>
+                <td>2017</td>
+                <td>2 Meses</td>
+              </tr>
+
+              <tr>
+                <td>Automatizacion</td>
+                <td>SMATA (Argentina)</td>
+                <td>Programacion</td>                
+                <td>2018</td>
+                <td>4 Meses</td>
+              </tr> 
+
+              <tr>
+                <td>Ajedrez</td>
+                <td>Peon Vuelve (Argentina)</td>
+                <td>Arte</td>
+                <td>2019</td>
+                <td>2 Meses</td>
+              </tr>  
+            </table>
+        </div>  
+           
+    </div>
+
+    <script>         
+          var english=['Courses I made', 'order', 'area', 'school', 'relevance', 'year', 'order by', 'Other cuorses', 'online courses', 'others online', 'Presencials', 'Contact', 'Course', 'Duration'];
+          var spanish=['PStore Vzla', 'ordenar', 'peluches', 'llaveros', 'figuras', 'sabanas', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
+
+          var german=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'ano', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
+          var french=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'ano', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
+
+
+
+
+          var botones = ['btn-danger', 'btn-info', 'btn-success', 'btn-warning', 'btn-default']; 
+
+          function curso(name, src, school, year, area, link) {
+                this.name  = name;  
+                this.src = src;
+                this.school = school;
+                this.year = year;                
+                this.area = area;
+                this.link = link;
+                              }
+          var calc1 = new curso ('Peluche Kuromi 1', 'peluche_kuromi_5', 'coursera', '225 VEF', 'matematica', 'peluche_kuromi_5.jpg');
+          var calc2 = new curso ('Peluche Kuromi 2', 'peluche_kuromi_6', 'coursera', '240VEF', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf');
+          var game_theory = new curso ('Peluche Kuromi 3', 'peluche_kuromi_7', 'coursera', '200VEF', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf');
+          var math_phi = new curso ('Peluche Kuromi 4', 'peluche_kuromi_8',  'coursera', '216VEF', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf');
+          var anc_greeks = new curso  ('Ancient Greek', 'ancient_greeks', 'coursera', '2015', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf' );
+          var vital_signs = new curso ('Vital Signs', 'vital_signs', 'coursera', '2016', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf');
+          var droits = new curso ('Derechos del Hombre', 'droit_del_homme', 'coursera', '2016','arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf');
+          var hlanguages = new curso ('Human Languages','human_languages', 'coursera', '2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf');
+          var phi_sci = new curso ('Philosophy and Science', 'philosophy_and_sciences', 'coursera','2015', 'philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf');
+          var kierkergaard = new curso ('Kierkegaard', 'kierkergaard', 'coursera','2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf');
+          var int_phi = new curso ('Introduction to Philosophy', 'introduction_to_philosophy', 'coursera', '2014', 'philosophy', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf');
+          var big_bang = new curso ('Big Bang', 'big_bang', 'coursera', '2017', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf');
+          var comp_stra = new curso ('Competitive Strategy', 'competitive_strategy', 'coursera','2015','matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf' );
+
+          var col_alg = new curso ('College Algebra', 'college_algebra', 'Saylor Academy','2016','matematica','https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc');
+          var alg = new curso ('Algebra', 'algebra', 'Saylor Academy','2020','matematica','https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg');
+          var say_eng = new curso ('Ingles', 'english', 'Saylor Academy','2020','languages','https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe');
+          var say_his = new curso ('Historia', 'historia', 'Saylor Academy','2020','arte','https://certificates.saylor.org/8ced9c4d-a63d-487e-825b-71d95b8fe876#gs.a3xcpt');
+          var say_precalc = new curso ('Precalculo', 'precalculo', 'Saylor Academy','2016','matematica','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c');
+
+          var linux  = new curso ('Linux Command Line', 'linux_cl', 'Udemy', '2017','matematica','https://www.udemy.com/certificate/UC-9YTEXXY8/');
+          var ude_py = new curso ('Python', 'pythonU', 'Udemy', '2018','programacion','https://www.udemy.com/certificate/UC-6G3AAQR5/');
+          var ccoder = new curso ('C Coder', 'c_coder', 'Udemy', '2016','programacion','https://www.udemy.com/certificate/UC-DQ152DHG/');
+          var paul   = new curso ('Paul and his letter to Philemon', 'philemon', 'Udemy', '2017','arte','philemon','https://www.udemy.com/certificate/UC-DD84E92J/');
+          var greek_rel  = new curso (' Greek Religion', 'greek_religion', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-YL9EMCDC');
+          var est_mas  = new curso ('Estudiar Mas', 'estudiar_mas', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-FL12KOPT/');
+
+          var edx_lin = new curso ('Intro to Linux', 'intro_linux', 'edx', '2016', 'programacion', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/c9e4a91e1d7a438ebb67fe1cbe1e84f4 ');
+          var prim_num = new curso ('Prime Numbers', 'prime_numbers', 'edx', '2017', 'matematica ', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5');
+          var ap_french = new curso ('AP French', 'french', 'edx', '2016', 'languages', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6');
+          var hero = new curso ('Ancient Greek Hero', 'greek_hero', 'edx', '2014', 'arte', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf ');
+
+
+
+          var html = new curso ('HTML','html_w3', 'w3 School', '2016', 'programacion', '');
+          var css = new curso ('CSS','css', 'w3 School', '2017', 'programacion', '');
+          var duo_deu = new curso ('Trayecto Aleman','german', 'Duolingo', '2017', 'languages', '');
+          var duo_ing = new curso ('ingles','ingles', 'Duolingo', '2016', 'languages', '');
+
+          var coursera= [calc1, calc2, game_theory, math_phi, anc_greeks, vital_signs, droits, hlanguages, phi_sci, kierkergaard, int_phi, big_bang, comp_stra];
+          var saylor  = [col_alg, alg, say_eng, say_his, say_precalc];
+          var udemy   = [linux, ude_py, ccoder, paul, greek_rel, est_mas];
+          var w3      = [duo_ing, duo_deu, css, html];
+          var edx     = [edx_lin, prim_num, ap_french, hero];
+
+          var programacion = [edx_lin, linux, ude_py, ccoder, html, css];
+          var matematica = [calc1, calc2, game_theory,math_phi,comp_stra, col_alg,alg, say_precalc,prim_num];
+          var ciencia = [vital_signs,  phi_sci, big_bang];   
+          var arte = [anc_greeks, droits, hlanguages, kierkergaard, int_phi, paul, greek_rel, est_mas, hero];
+          var idiomas = [duo_deu, duo_ing, ap_french, say_eng];          
+
+          var y1415 = [];
+          var y16   = [];
+          var y17   = [];
+          var y18   = [];
+          var y1920 = [];
+
+          var lvl1 = [];
+          var lvl2 = [];
+          var lvl3 = [];
+          var lvl4 = [];
+          var lvl5 = [];         
+
+          
+          const t0 = [ [coursera,saylor,udemy,edx,w3], ['cou','say','ude','edx','w3'], ['coursera.svg', 'saylor.svg', 'udemy.png', 'edx.png','duolingo.png' ]];
+          const t1 = [ [programacion,matematica,ciencia,arte,idiomas], ['pro','mat','cie','art','idio'], ['', '', '', '','' ]];
+          const t2 = [ [y1415,y16,y17,y18,y1920], ['y1415','y16','y17','y18','y1920'], ['coursera.svg', 'saylor.svg', 'udemy.png', 'edx.png','duolingo.png' ]];   
+          const t3 = [ [lvl1,lvl2,lvl3,lvl4,lvl5],['1','2','3','4','5'],['','','','','']];  
+
+          var k = 0; //lo que debe cambiar el selector//
+          const cats=[t0,t1,t2,t3];
+
+          var btnls = document.querySelectorAll('.btn-leyenda');
+          var selector = document.querySelector('#selector');
+          var btn_ordenar = document.querySelector('#btn_ordenar');
+
+          function create(b){
+          var a=cats[k][0][b].length;
+          var z=cats[k][1][b];
+          for (i = 0; i < a; i++) 
+            {document.getElementById(`courses${b}`).innerHTML ='';}
+
+          for (i = 0; i < a; i++) 
+            {document.getElementById(
+              `courses${b}`).innerHTML += 
+                `<button id='${z}${i}' type="button" class="btn ${botones[i%5]} btn-lg curso_btn" data-name='' data-dir=''>
+                    <a id='${z}${i}_a' href="#id01" >  
+                      <img id='${z}${i}_img' class="img_pptx"  src=""/>
+                    </a>
+                    <br/>  
+                    <div class='course_data'>          
+                      <h3 id='${z}${i}_h3' ></h3>
+                      <h4 id='${z}${i}_sch' ></h4>                                        
+                      <h4 id='${z}${i}_year' ></h4>
+                      <h4 id='${z}${i}_area' ></h4>   
+                    </div>
+                </button>
+                </br>`;}
+          };      
+
+                       
+          function assign(y){
+            var x = cats[k][0][y];
+            var n = x.length;
+            create(y); 
+
+            for (var i = 0; i < 5; i++) {
+              document.getElementById(`tit_${i}_img`).src= `imgx/${cats[k][2][i]}`;
+            }           
+
+            for (i = 0; i < n; i++)
+              {
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_h3').innerHTML =`${x[i].name}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_year').innerHTML =`${x[i].year}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_sch').innerHTML =`${x[i].school}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_area').innerHTML =`${x[i].area}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.name = `${x[i].name}`;
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.dir = `${x[i].link}`;        
+                  document.getElementById(`${cats[k][1][y]}${i}`+'_img').src= 'imgx/' + `${x[i].src}` + '.jpg'; 
+                                  
+              }             
+            }      
+            
+            
+
+          function printC(){assign(0); assign(1); assign(2); assign(3); assign(4); }
+
+          function ordenar(){k= this.dataset.cat;printC();};
+
+          function print4(){ k= selector.value; printC(); };
+                   
+          btn_ordenar.addEventListener('click', print4);
+          btnls.forEach(btnl => btnl.addEventListener('click', ordenar)); 
+
+          printC();                   
+      </script>  
+  </body>
+    
+  <script type="text/babel">
+      function Talleres(props){
+      return(
+        <div>
+          <h2 className="workshop_tit" > Otros Cursos online</h2>
+          <Otroscursos/>
+        </div>
+        )
+    }
+
+      function Otroscursos (props){
+       var etapas = [ 
+          [' Thinking Through Three Dialogues By Plato', ' National University of Singapore', '2014'],
+          [' Introd to Mathem Thinking', 'Stanford University', ' 2015'],
+          [' Soul Beliefs', 'Rutgers the State University of New Jersey', '2015'],
+          [' Shakespeare in Community', 'University of Wisconsin–Madison', '2016'],               
+          [' The French Revolution', 'The University of Melbourne', '2015'],
+          [' Animal Behaviour and Welfare', 'The University of Edinburgh', '2015'],
+          [' Do you have what it takes to be a veterinarian?', 'The University of Edinburgh', '2015'],
+          [' Interactive Programming in Python', 'Rice University', '2014'],
+          [' Plato & His Predecessors', 'University of Pennsylvania', '2014'],
+          [' Was Alexander Great?', 'Wellesley', '2014'],
+          [' Quantum Mech. and Quantum Comp.', ' Berkeley', '2013'],
+          [' Egiptologia', ' Universitat Autònoma de Barcelona', '2015']   
+        ]
+
+        return(
+        
+        <div className="talleres" >                  
+          <Taller title='Reason and Persuasion' src='imgx/plato.jpg' e={etapas[0]} />
+          <Taller title='Mathematical Thinking' src='imgx/math_thinking.png' e={etapas[1]}/>
+          <Taller title='Soul Beliefs' src='imgx/soul_beliefs.jpg' e={etapas[2]}/>
+          <Taller title='Shakespeare in Community' src='imgx/shakespeare.png' e={etapas[3]}/>
+          <Taller title='French Revolution' src='imgx/FrenchRev.jpg' e={etapas[4]}/>
+          <Taller title='Animal Behaviour and Welfare' src='imgx/animal_beh.jpg' e={etapas[5]}/>
+          <Taller title='to be a veterinarian' src='imgx/edivet.jpg' e={etapas[6]}/>
+          <Taller title='Interactive Programming in Python' src='imgx/python.png' e={etapas[7]}/>
+          <Taller title='Plato & His Predecessors' src='imgx/raffael-plato.jpg' e={etapas[8]}/>
+          <Taller title='Alexander the Great' src='imgx/alexander.jpg' e={etapas[9]}/>
+          <Taller title='Quantum Mechanics and Quantum Computation' src='imgx/quantum.jpg' e={etapas[10]}/>
+          <Taller title='Egiptoligia' src='imgx/Egiptologia.jpg' e={etapas[11]}/>
+        </div>
+        )
+      }        
+
+      function Taller(props){
+      
+        return (<button className="taller btn oth_cours_btn btn-warning"> 
+                  <img src= {props.src} className="vop"/>
+                  <Partes txt={props.e}/>
+                  
+                </button>)
+      };
+      
+
+      function Partes(props){     
+         ;         
+        return(
+               <div className="partes" >
+                <b><Etapa  p={props.txt[0]}/></b>
+                <b><Etapa  p={props.txt[1]}/></b>
+                <b><Etapa  p={props.txt[2]}/> </b>                                 
+               </div>
+        )
+      };
+
+      function Etapa(props){  
+       
+        var a = 2;
+        return (
+        <p className='partes'> 
+          <i className=""></i>  
+          <i>{props.p}</i>
+        </p> )
+      };
+      
+
+      ReactDOM.render(
+          <Talleres/> ,
+          document.getElementById("talleres")
+      );
+    </script>
+
+    <script type="text/javascript">
+              var kursos = document.querySelectorAll('.curso_btn');
+              
+
+              const cert_shower_t= document.getElementById('cert_shower_t');
+              const cert_shower= document.getElementById('cert_shower');
+              const cert_shower_go= document.getElementById('cert_shower_go');
+              const cert_shower_img= document.getElementById('cert_shower_img');              
+
+              function show_kert(){
+                b= this.dataset.name;
+                cert_shower_t.innerHTML=b ;
+                cert_shower_go.href=this.dataset.dir;
+                
+                }
+              kursos.forEach(btn => btn.addEventListener('click', show_kert));
+            </script>
+</html>
+
