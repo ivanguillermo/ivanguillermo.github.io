@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link async="async" href="" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+    <script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+    <link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Roboto|Raleway|Satisfy|Lobster" rel="stylesheet" />
+  <title>Operaciones Matematicas</title>
+  <style>
+    #progressBarContainer {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    #progressBar {
+      width: 0%;
+      height: 20px;
+      background-color: #4CAF50;
+      text-align: center;
+      color: white;
+      border-radius: 5px;
+    }
+  </style>
+  <style>
+            :root{
+            --color:#4fdb98;
+          }
+         body{margin:30 20}  
+
+         .btn{
+          background-color: transparent;
+          border-color: var(--color);
+          color:var(--color);}
+                
+         .btn:hover
+         {
+            background-color:var(--color);
+            color:white;
+         } 
+         #num1, #num2{font-size: 50px; color:var(--color)}  
+
+            @media only screen and (max-width: 800px) {
+              #translator{background: var(--color)}  
+            }
+          img{height: 100px}
+          input{width: 150px;height: 80px;font-size: 60px}
+          </style>     
+        
+
+  
+</head>
+<body>
+   <div id="progressBarContainer">
+      <div id="progressBar">0 / 5</div>
+    </div>
+  <center>
+  <h2>Para comenzar a jugar, selecciona un nivel y haz click en el boton de "Iniciar"</h2>
+    <select id="nivelSelect">
+      <option value="1">1.Principiante</option>
+      <option value="2">2.Basico</option>
+      <option value="3">3.Pro</option>
+      <option value="4">4.Estrella</option>
+      <option value="5">5.Genio</option>
+      <option value="6">6.Leyenda</option>
+      <option value="7">7.Nivel Dios</option>
+    </select>
+  <button class="btn" onclick="cambiarNivel()">Iniciar</button>
+
+  <div id="juego">
+    <h3>Nivel <span id="nivel"></span></h3>
+    <p id="cosa"> <span id="num1"></span> <span id="num2"><span id="signoigual"></span></span>    <input type="number" id="respuesta" placeholder=""></p>
+ 
+    <button class="btn" onclick="verificar()">Verificar</button>
+    <button class="btn" onclick="cambiarOperacion()">Nueva operación</button>
+    <p id="resultado"></p>
+
+    <p>✅ Aciertos: <span id="aciertos">0</span> | ❌ Intentos: <span id="intentos">0</span> | 🎯 Porcentaje: <span id="porcentaje">0%</span></p>
+    <p id="calificacion"></p>
+    <button class="btn" onclick="reiniciarContadores()">Nuevo Juego</button>
+    <p id="temporizador"></p> 
+    <img id="imagen" src="matboy.png"/>
+</center>
+   
+     
+
+
+  </div>
+   
+
+
+  <script>
+    let nivelActual = 1;
+    let num1, num2;
+    let aciertos = 0;
+    let intentos = 0;
+    let racha = 0;
+
+    window.onload = function() {
+      document.getElementById('nivelSelect').value = "1";
+      document.getElementById('nivel').textContent = nivelActual;
+      generarSuma();
+    };
+    function generarOperacionPorNivel(nivel) {
+  let n1, n2, n3, operador, operadores, expresion, respuesta;
+
+  switch(nivel) {
+    case 1:
+      // Nivel 1: suma de dos dígitos
+      n1 = rand(10, 99);
+      n2 = rand(10, 99);
+      respuesta = n1 + n2;
+      expresion = `${n1} + ${n2}`;
+      break;
+
+    case 2:
+      // Nivel 2: suma o resta (resultado siempre positivo)
+      n1 = rand(10, 99);
+      n2 = rand(10, 99);
+      operador = Math.random() < 0.5 ? '+' : '-';
+      if (operador === '-' && n1 < n2) [n1, n2] = [n2, n1]; // evitar negativos
+      respuesta = operador === '+' ? n1 + n2 : n1 - n2;
+      expresion = `${n1} ${operador} ${n2}`;
+      break;
+
+    case 3:
+      // Nivel 3: suma o resta de tres números de dos dígitos (resultado > 0)
+      const nums = [rand(10, 99), rand(10, 99), rand(10, 99)];
+      operadores = [Math.random() < 0.5 ? '+' : '-', Math.random() < 0.5 ? '+' : '-'];
+      expresion = `${nums[0]} ${operadores[0]} ${nums[1]} ${operadores[1]} ${nums[2]}`;
+      respuesta = evalExpresionSeguro(expresion);
+      if (respuesta <= 0) return generarOperacionPorNivel(nivel); // intentar de nuevo si es negativa
+      break;
+
+    case 4:
+      // Nivel 4: multiplicación sencilla
+      const opciones = [
+        () => [rand(2, 9), rand(2, 9)],
+        () => [rand(10, 99), rand(2, 9)]
+      ];
+      [n1, n2] = opciones[Math.floor(Math.random() * opciones.length)]();
+      respuesta = n1 * n2;
+      expresion = `${n1} × ${n2}`;
+      break;
+
+    case 5:
+      // Nivel 5: tres números, suma o resta, resultado > 0 + temporizador
+      const a = rand(10, 99), b = rand(10, 99), c = rand(10, 99);
+      operadores = [Math.random() < 0.5 ? '+' : '-', Math.random() < 0.5 ? '+' : '-'];
+      expresion = `${a} ${operadores[0]} ${b} ${operadores[1]} ${c}`;
+      respuesta = evalExpresionSeguro(expresion);
+      if (respuesta <= 0) return generarOperacionPorNivel(nivel);
+      break;
+
+    case 6:
+      // Nivel 6: multiplicación con uno de 2 dígitos × uno de 1 dígito + temporizador
+      n1 = rand(10, 99);
+      n2 = rand(2, 9);
+      respuesta = n1 * n2;
+      expresion = `${n1} × ${n2}`;
+      break;
+
+    case 7:
+      // Nivel 7: combinación respetando orden de operaciones, sin temporizador
+      const ops = ['+', '-', 'x'];
+      const op1 = ops[rand(0, 2)];
+      const op2 = ops[rand(0, 2)];
+      n1 = rand(10, 99);
+      n2 = rand(2, 9);
+      n3 = rand(2, 9);
+      expresion = `${n1} ${op1} ${n2} ${op2} ${n3}`;
+      respuesta = evalExpresionSeguro(expresion);
+      break;
+
+    default:
+      return null;
+  }
+
+  return { expresion, respuesta };
+}
+
+function rand(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function evalExpresionSeguro(expr) {
+  try {
+    return Math.round(eval(expr.replace(/×/g, '*')));
+  } catch {
+    return -1;
+  }
+}
+
+    function cambiarNivel() {
+  nivelActual = parseInt(document.getElementById('nivelSelect').value);
+  racha = 0;
+  actualizarRacha();
+  document.getElementById('nivel').textContent = nivelActual;
+  document.getElementById('signoigual').textContent = "=";
+  generarEjercicio();
+}
+
+
+   let operacionActual = { expresion: "", respuesta: 0 };
+let tiempoRestante = 0;
+let temporizadorActivo = false;
+let cuentaAtras;
+
+function generarEjercicio() {
+  operacionActual = generarOperacionPorNivel(nivelActual);
+  document.getElementById('num1').textContent = operacionActual.expresion;
+  document.getElementById('respuesta').value = "";
+  document.getElementById('resultado').textContent = "";
+
+  if (nivelActual === 5 || nivelActual === 6) {
+    iniciarTemporizador(20);
+  } else {
+    detenerTemporizador();
+  }
+}
+
+
+   function verificar() {
+  if (temporizadorActivo) detenerTemporizador();
+
+  const respuestaUsuario = parseInt(document.getElementById('respuesta').value);
+  const resultado = document.getElementById('resultado');
+  const imagen = document.getElementById('imagen');
+  intentos++;
+
+  if (respuestaUsuario === operacionActual.respuesta) {
+    aciertos++;
+    racha++;
+    resultado.textContent = "✅ ¡Correcto!";
+    resultado.style.color = "green";
+    imagen.src="boyhappy.png";
+
+    if (racha === 5 && nivelActual < 7) {
+      nivelActual++;
+      document.getElementById('nivelSelect').value = nivelActual;
+      document.getElementById('nivel').textContent = nivelActual;
+      racha = 0;
+      alert(`🎉 ¡Subiste al nivel ${nivelActual}!`);
+    }
+  } else {
+    resultado.textContent = `❌ Incorrecto. Era ${operacionActual.respuesta}`;
+    resultado.style.color = "red";
+    racha = Math.max(racha - 1, 0);
+    imagen.src="boytriste.png";
+;
+  }
+
+  actualizarContadores();
+  actualizarRacha();
+  setTimeout(generarEjercicio, 800);
+}
+
+function iniciarTemporizador(segundos) {
+  detenerTemporizador();
+  tiempoRestante = segundos;
+  temporizadorActivo = true;
+  document.getElementById('temporizador').textContent = `⏳ Tiempo: ${tiempoRestante}s`;
+
+  cuentaAtras = setInterval(() => {
+    tiempoRestante--;
+    if (tiempoRestante <= 0) {
+      clearInterval(cuentaAtras);
+      temporizadorActivo = false;
+      document.getElementById('resultado').textContent = "⏰ ¡Tiempo agotado!";
+      document.getElementById('resultado').style.color = "red";
+      intentos++;
+      racha = 0;
+      actualizarContadores();
+      actualizarRacha();
+      setTimeout(generarEjercicio, 800);
+    }
+  }, 1000);
+}
+
+function detenerTemporizador() {
+  clearInterval(cuentaAtras);
+  temporizadorActivo = false;
+}
+
+    function actualizarContadores() {
+      const porcentaje = intentos > 0 ? Math.round((aciertos / intentos) * 100) : 0;
+      document.getElementById('aciertos').textContent = aciertos;
+      document.getElementById('intentos').textContent = intentos;
+      document.getElementById('porcentaje').textContent = `${porcentaje}%`;
+
+      let mensaje = "";
+      if (intentos === 0) mensaje = "Empecemos";
+      else if (porcentaje <= 20) mensaje = "😕 Tienes mucho que mejorar";
+      else if (porcentaje <= 40) mensaje = "💪 Sigue adelante";
+      else if (porcentaje <= 60) mensaje = "🙂 Puedes hacerlo mejor";
+      else if (porcentaje <= 80) mensaje = "👌 Muy bien";
+      else if (porcentaje <= 90) mensaje = "🌟 Excelente";
+      else mensaje = "🚀 ¡La NASA quiere saber tu ubicación!";
+
+      document.getElementById('calificacion').textContent = mensaje;
+    }
+
+    function actualizarRacha() {
+      const porcentaje = Math.min((racha / 5) * 100, 100);
+      const barra = document.getElementById('progressBar');
+      barra.style.width = porcentaje + "%";
+      barra.textContent = `${racha} / 5`;
+    }
+
+    function reiniciarContadores() {
+      aciertos = 0;
+      intentos = 0;
+      racha = 0;
+      actualizarContadores();
+      actualizarRacha();
+    }
+
+    function cambiarOperacion() {
+      generarSuma();
+    }
+  </script>
+</body>
+</html>
