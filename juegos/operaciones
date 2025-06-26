@@ -49,7 +49,7 @@
               #translator{background: var(--color)}  
             }
           img{height: 100px}
-          input{width: 150px;height: 80px;font-size: 60px}
+          input{width: 150px;height: 80px;font-size: 56px}
           </style>     
         
 
