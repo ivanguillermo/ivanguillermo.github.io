@@ -1,0 +1,101 @@
+/* Tipografía y colores */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fdfdfd;
+}
+
+/* Enlaces */
+a {
+  text-decoration: none;
+  color: #0d6efd;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #084298;
+  font-weight: bold;
+  font-size: 102%;
+}
+
+/* Encabezados */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+/* Secciones */
+section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Hero (header principal) */
+header {
+  background: linear-gradient(-142deg, #4fdb98, #1DB954);
+  color: white;
+  text-shadow: 1px 1px 2px #333;
+}
+
+/* Lista de habilidades */
+.list-group-item {
+  border: none;
+  border-left: 5px solid #4fdb98;
+  background-color: #f8f9fa;
+}
+
+/* Footer */
+footer {
+  background-color: #212529;
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+/* Responsivo extra */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+/* Animaciones suaves de entrada */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Botones animados */
+.btn-custom {
+  background-color: #4fdb98;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.btn-custom:hover {
+  background-color: #4fdb98;
+  transform: scale(1.05);
+}
+
+/* Íconos sociales */
+a i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+a:hover i {
+  transform: scale(1.2);
+  color: #0d6efd;
+}
