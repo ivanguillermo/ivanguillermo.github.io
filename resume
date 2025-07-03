@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iván López Pedreañez | Desarrollador Web</title>
+  <meta name="description" content="Portafolio de Iván López Pedreañez - Desarrollador web y programador autodidacta.">
+  <meta name="keywords" content="HTML, CSS, JavaScript, PHP, Java, programación, portafolio, desarrollador web">
+  <meta name="author" content="Iván López Pedreañez">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="resume.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; z-index:100; width:100vw">
+    <div class="container">
+      <a class="navbar-brand" href="#">Iván Guillermo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-primary text-white text-center py-5" style="padding-top: 40%">
+    <div class="container">
+      <h1 class="display-4" style="padding-top: 5%">¡Hola! Soy Iván López Pedreañez</h1>
+      <p class="lead">Desarrollador web autodidacta con pasión por aprender y crear soluciones digitales</p>
+    </div>
+  </header>
+
+  <!-- Sobre mí -->
+  <section id="sobre-mi" class="py-5 fade-in">
+    <div class="container">
+      <h2 class="mb-4">Sobre mí</h2>
+      <p>Comencé mi camino en la programación con cursos en línea y luego lo reforcé durante mi carrera en Educación Informática. Me encanta trabajar con HTML, PHP y Java, y estoy en constante aprendizaje para mejorar mis habilidades como desarrollador full-stack junior.</p>
+      <p>Estudio Licenciatura en Matematica y Licenciatura en Educacion mencion Informatica y estoy a punto de graduarme de ambas</p>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="bg-light py-5 fade-in">
+    <div class="container">
+      <h2 class="mb-4">Proyectos destacados</h2>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <h5><a href="https://https://informaticos15.github.io/" target="_blank" class="btn btn-custom">Blog Informático</a></h5>
+          <p>Blog educativo sobre informática. HTML/CSS.</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h5><a href="https://ivanguillermo.github.io/literaturamagna/" target="_blank" class="btn btn-custom">Literatura Magna</a></h5>
+          <p>Página literaria con diseño limpio. HTML.</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h5><a href="https://github.com/ivanguillermo/PrettyHorribleProjects" target="_blank" class="btn btn-custom">PrettyHorribleProjects</a></h5>
+          <p>Proyectos backend simples en PHP.</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h5><a href="https://github.com/ivanguillermo/java" target="_blank" class="btn btn-custom"> Java Projects</a></h5>
+          <p>Programas orientados a objetos y estructuras básicas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Habilidades -->
+  <section id="habilidades" class="py-5 fade-in">
+    <div class="container">
+      <h2 class="mb-4">Habilidades técnicas</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>HTML/CSS:</strong> Intermedio</li>
+        <li class="list-group-item"><strong>JavaScript:</strong> En proceso de aprendizaje</li>
+        <li class="list-group-item"><strong>PHP:</strong> Básico</li>
+        <li class="list-group-item"><strong>Java:</strong> Básico</li>
+        <li class="list-group-item"><strong>Git/GitHub:</strong> Intermedio</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="bg-light py-5 fade-in">
+    <div class="container">
+      <h2 class="mb-4">Contacto</h2>
+      <p>¿Te interesa trabajar conmigo? Escríbeme a: <strong>ivanglopezp@gmail.com</strong></p>
+      <p>También puedes visitar mi <a href="https://github.com/ivanguillermo" target="_blank" class="btn btn-custom">GitHub</a> para ver más proyectos.</p>
+    </div>
+    
+    <div class="d-flex gap-3 mt-3">
+  <a href="mailto:ivanglopezp@gmail.com" class="text-dark fs-4" target="_blank">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="https://github.com/ivanguillermo" class="text-dark fs-4" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/ivanguillermolp" class="text-dark fs-4" target="_blank">
+    <i class="fab fa-linkedin"></i>
+  </a>
+</div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">© 2025 Iván López Pedreañez</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+  // Detecta cuando las secciones están visibles en pantalla
+  const faders = document.querySelectorAll('.fade-in');
+  const options = { threshold: 0.1 };
+
+  const observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  faders.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+</html>
