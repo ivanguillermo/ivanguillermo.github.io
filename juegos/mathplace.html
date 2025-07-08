@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<link href="/manifest.json" rel="manifest" />
+
+			<link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+			<link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
+
+			<meta content='Aprende y Practica las operaciones basicas' name='description'/>
+			<title>Operaciones Matematicas</title>
+
+			<!-- Bootstrap y JQuery -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+			<script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+			<!-- Font-Awesome -->
+			<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<!-- Google Font-->
+			<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Roboto|Raleway|Lobster" rel="stylesheet" />
+			<!-- React-->
+			<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+	        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+			<!-- CSS -->
+			<link rel="stylesheet" href="css/root.css" />
+	        <link rel="stylesheet" href="css/jumbotron.css" />
+	        <link rel="stylesheet" href="css/navbar.css" />
+	        <link rel="stylesheet" href="css/ivanguillermo.css" />
+	        <link rel="stylesheet" href="css/traductor.css" />
+	        <link rel="stylesheet" href="css/programador.css" />
+	        <link rel="stylesheet" href="css/matematico.css" />
+	        <link rel="stylesheet" href="css/educador.css" />	
+	        <link rel="stylesheet" href="desafio.css" />	        
+	</head>
+	<body>
+		<!-- Main -->
+		<div>
+			<div class="jumbotron" id='jumbo_ivan'>
+				<div class="container">
+					<div class="media">
+						<div class="media-left media-middle">
+							<img alt="mathplace" class="media-object" src="mathplace.png" />
+							<a href="bio.html"><button class="btn btn-lg"  role="button" id="about_btn" style='font-family:lobster;'>Aprendamos
+						</div></a>
+						<div class="media-body">
+							<h1 class="media-heading" style='font-size:8.5vh;font-family: Satisfy;color:var(--color)'>Operaciones Matematicas</h1>
+							<div id='resume' class="resume" >
+								<p>Bienvenido a este juego didactico para aprender y mejorar  </p>
+								<p>tus habilidades con las operaciones matematicas basicas</p>
+								<p>es decir: Suma, Resta y Multiplicacion</p>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+			<!-- NavBar-->		
+			<nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
+		          <div class="container-fluid" id='fluid'>
+		            <div class="navbar-header">
+
+		              <a class="navbar-brand" href="#" 
+		              style="height: 8vh;background-color:var(--color);color:black;font-weight: 500;">
+		              	<b id="hola">Hola!</b>
+		              </a>
+					
+				      <a id='navYo' class="navbar-link" href="#quote" >
+				      	<b>	<i style="color:white;">Ivanguillermo</i> </b>
+		              	<img alt='yo' src="yo2025.png"/>
+		              </a>				  
+		              
+		              <a id='navPro' class="navbar-link" href="#programmer">
+		              	<img alt='programador' src="imgx/prog.gif"/>
+		              	<span>Tablas</span>
+		              </a>
+		              <a id='navMat' class="navbar-link" href="#matematico">
+		              	<span>Desafio</span>
+		              	<img alt='matematico' src="imgx/icono_mat.png"/>
+		              </a>
+
+		              <a id='navTra' class="navbar-link" href="#translator">
+		              	<span>Casillas</span>
+		              	<img alt='traductor' src="imgx/trans.gif"/>
+		              </a>
+
+		              <a id='navEdu' class="navbar-link" href="#educador">
+		              	<span>Reglas</span>
+		              	<img alt='educador' src="imgx/teaching.png"/>
+		              </a>
+
+		              <button id='' aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" 
+		              onclick="document.getElementById('fluid').style.display='block';">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar">
+						</span>
+				  	  </button>
+
+		              <ul class="nav navbar-nav navbar-right" id='contacto'>
+				        <li>
+				            <a href="contacto.html" style="height: 8vh;background-color:var(--color);color:white"><b>Contacto</b></a>
+				        </li>
+			      	  </ul>
+		            </div>
+
+					<div class="navbar-collapse collapse" id="navbar" style="display: none">
+			          <ul class="nav navbar-nav">		         		          	         	
+			          	<li class="dropdown" >
+			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
+			              	<span class="mas flex-centrado" style=''>
+			              		<i class="fa fa-ellipsis-v"></i>
+			              	</span> 
+			              </a> 
+			            	<ul class="dropdown-menu">
+			            		<li><a href="spotiflix/ivanguillermo.html"></a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li><a href="cursos.html"></a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li><a href="bio.html"></a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li><a href="https://informaticos15.github.io"></a></li>
+			            		<li class="divider" role="separator"></li>
+			            		<li id="contacto_nav">
+					              <a href="contacto.html"></a>
+					            </li>
+			            	</ul>
+			            </li>
+			          </ul>
+			       </div>
+			          
+			       </div> 
+		    </nav>
+
+			<!-- Ivan Guillermo-->		   
+
+			<div id="quote">				
+				<p><q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q>
+				<p><em>Friedrich Nietzsche</em></p>
+			</div>			
+
+			<div id="logos">
+				<div id='yo_descripcion'>
+					<h3 id="mi_nombre" >Ivan Guillermo</h3>
+					<p id="descripcion">
+						
+					</p>
+				</div>								
+				<div class='logos_profs'>
+					<div class='icon'>
+						<img class='logo_prof' src='imgx/trans.gif' id="transl_ico" alt='traductor'/>
+						<div>
+							<h2 class='tit_prof' ></h2>
+							<p class="prof_txt" >
+								
+							</p>
+						</div>			
+					</div>
+					<div id='adasda' class='icon'>
+						<img class='logo_prof' src='imgx/prog.gif' id="programmr_ico" alt='programador'/>
+						<div>
+							<h2 class='tit_prof'></h2>
+							<p class="prof_txt" >
+								
+							</p>
+						</div>
+					</div>
+					<div class='icon'>
+						<img class='logo_prof' src='imgx/icono_mat.png' id="matemat_ico"  alt='matematico'/>
+						<div>
+							<h2 class='tit_prof'></h2>
+							<p class="prof_txt" >
+							</p>
+						</div>			
+					</div>
+				</div>
+			</div>
+
+			<div id="sections">
+				<!-- TRADUCTOR-->
+				<section class="job" id="translator" style="height: 100vh">
+					<h2 class='sec_tit' style="color:white">Casillas</h2>
+					<center>
+						<h2 id="titulo" style="color:white">Selecciona <span style="">5</span> operaciones que den como resultado:</h2>
+						<div id="numero"></div>
+
+						<div>
+						  <label for="modo"></label><b>Modo:</b></label>
+						  <select id="modo">
+						    <option value="clasico">🎯 Clásico</option>
+						    <option value="aventura">🗺️ Aventura</option>
+						  </select>
+
+						  <select id="nivelC" >
+						    <option value="1">Nivel 1</option>
+						    <option value="2">Nivel 2</option>
+						    <option value="3">Nivel 3</option>
+						    <option value="4">Nivel 4</option>
+						    <option value="5">Nivel 5</option>
+						    <option value="6">Nivel 6</option>
+						    <option value="7">Nivel 7</option>
+						  </select>
+						  <button class="btn" onclick="iniciarJuego()">Iniciar</button>
+						</div>
+
+						<div class="grid" id="tablero"></div>
+
+						<div id="marcador">
+						  ✅ Aciertos: <span id="aciertosC">0</span> |
+						  ❌ Errores: <span id="erroresC">0</span> |
+						  🎯 Intentos: <span id="intentosC">0</span>|
+						</div>
+
+						<div id="tiempo">⏱ Tiempo restante: <span id="reloj">60</span>s</div>
+
+						<div id="total">
+						  🏅 Puntos acumulados (modo aventura): <span id="puntosTotales">0</span>
+						  <span id="record">📈 Récord: <span id="recordValor">0</span></span>
+						</div>
+					</center>
+
+					<link rel="stylesheet" href="casillas.css">
+					<script src="casillas.js"></script>												
+				</section>
+
+				<!-- PROGRAMADOR-->
+				<section class="job" id="programmer" style="height: 100vh; ">
+					<h2 class='sec_tit'>Tablas</h2>										
+				</section>
+
+				<!-- DESAFIO-->
+				<section class="job" id="matematico" style="height: 100vh; background-color: white">					
+				   <div id="progressBarContainer">
+				      <div id="progressBar">
+				        0 / 5
+				      </div>
+				  </div>
+				  <center>
+				  	<h2 class='sec_tit'>Desafio: Operaciones Matematicas</h2>
+				    <h2>Para comenzar a jugar, selecciona un nivel y haz click en el boton de "Iniciar"</h2>
+				    <select id="nivelSelect">
+				      <option value="1">1.Principiante</option>
+				      <option value="2">2.Basico</option>
+				      <option value="3">3.Pro</option>
+				      <option value="4">4.Estrella</option>
+				      <option value="5">5.Genio</option>
+				      <option value="6">6.Leyenda</option>
+				      <option value="7">7.Nivel Dios</option>
+				    </select>
+				    <button class="btn-des" onclick="cambiarNivel()">Iniciar</button>
+
+				    <center>
+				      <div id="juego">
+				        <h3>Nivel <span id="nivelD"></span></h3>
+				        <p id="cosa"> <span id="num1"></span> <span id="num2"><span id="signoigual"></span></span>    
+				        	<input type="number" id="respuesta" placeholder=""></p>
+				     
+				        <button class="btn btn-des" onclick="verificar()">Verificar</button>
+				        <button class="btn btn-des" onclick="cambiarOperacion()">Nueva operación</button>
+				        <p id="resultadoD"></p>
+
+				        <p>✅ Aciertos: <span id="aciertosD">0</span> | ❌ Intentos: <span id="intentosD">0</span> | 🎯 Porcentaje: <span id="porcentajeD">0%</span></p>
+				        <p id="calificacion"></p>
+				        <button class="btn btn-des" onclick="reiniciarContadores()">Nuevo Juego</button>
+				        <p id="temporizador"></p> 
+				        <img id="imagen-des" src="matboy.png"/>
+				      </div>
+				    </center>
+				  </center>  					
+					<script src="desafio.js"></script>
+				</section>
+
+				<!-- ORDEN OPERACIONES-->
+				<section class="job" id="educador" style="height: 100vh">
+					<h2  class="pptx pptx21 sec_tit">Orden de las Operaciones</h2>
+					
+															
+				</section>		
+			</div>
+		</div>		
+			
+	</body>
+	
+	<script src="js/navbar.js"></script>
+</html>

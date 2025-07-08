@@ -1,0 +1,45 @@
+
+  #progressBarContainer {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    #progressBar {
+      width: 0%;
+      height: 20px;
+      background-color: #4CAF50;
+      text-align: center;
+      color: white;
+      border-radius: 5px;
+    }
+   
+         #matematico{margin:30 20; background: url("fondo_numeros.png") no-repeat fixed right bottom;
+          background-size: 47%;
+          }   
+          #nivelSelect{height: 40px;
+            width: 150px;
+            background-color: var(--color);
+            color: white;
+            border: 2px black; 
+            border-radius: 5px;
+            font-size:17px}   
+
+         .btn {
+          background-color: transparent;
+          border-color: var(--color);
+          color:var(--color);}
+                
+         .btn:hover
+         {
+            background-color:var(--color);
+            color:white;
+         } 
+         #num1, #num2{background-color: ; font-size: 70px; color:var(--color)}  
+
+            @media only screen and (max-width: 800px) {
+             
+          
+          input{width: 150px;height: 80px;font-size: 56px}
+
+  
