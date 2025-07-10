@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clases de Inglés Personalizadas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --azul: #4285F4;
+      --rojo: #FF0000;
+      --azul-claro: #A4C2F4;
+      --blanco: #ffffff;
+      --negro: #333;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--blanco);
+      color: var(--negro);
+    }
+
+    .hero {
+      background: var(--azul);
+      padding: 3em 1em;
+      text-align: center;
+      color: var(--blanco);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.3em;
+      color: var(--blanco);
+    }
+
+    .menu-icon {
+      font-size: 1.5em;
+      cursor: pointer;
+      color: var(--blanco);
+      display: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.2em;
+    }
+
+    .nav-menu a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-menu a:hover {
+      color: orange;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--azul);
+        flex-direction: column;
+        display: none;
+        padding: 1em;
+        z-index: 10;
+      }
+
+      .nav-menu.show {
+        display: flex;
+      }
+    }
+
+    .btn {
+      background: var(--rojo);
+      color: var(--blanco);
+      padding: 0.8em 1.3em;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #cc0000;
+    }
+
+    section {
+      padding: 3em 1em;
+      max-width: 900px;
+      margin: auto;
+      margin-bottom: 2em;
+    }
+
+    section h2 {
+      color: var(--azul);
+      margin-bottom: 1em;
+      font-weight: 600;
+    }
+
+    ul li {
+      margin-bottom: 1em;
+    }
+
+    .galeria {
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .galeria img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .contacto form,
+    .examen form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    input,
+    textarea {
+      padding: 0.8em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    button {
+      background: var(--azul);
+      color: var(--blanco);
+      border: none;
+      padding: 1em;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #2a6adf;
+    }
+
+    footer {
+      background: #eee;
+      padding: 2em;
+      text-align: center;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="nav-container">
+      <div class="logo">🗣️ Inglés Pro</div>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <nav id="nav-menu" class="nav-menu">
+        <a href="#curso">Curso</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#examen">Examen</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <h1>Clases de Inglés Personalizadas</h1>
+    <p>Online y presencial · adaptadas a tu ritmo</p>
+    <a href="#contacto" class="btn">Reserva tu clase de prueba</a>
+  </header>
+
+  <section id="curso">
+    <h2>¿Qué incluye el curso?</h2>
+    <ul>
+      <li>🕒 Horarios flexibles</li>
+      <li>👩‍🏫 Atención personalizada</li>
+      <li>🌍 Modalidad online y presencial</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Estilo Visual Moderno</h2>
+    <p>Ejemplos de presentaciones:</p>
+    <div class="galeria">
+      <img src="presentacion1.png" alt="Slide 1" />
+      <img src="presentacion2.png" alt="Slide 2" />
+    </div>
+  </section>
+
+  <section id="beneficios">
+    <h2>¿Por qué elegir este curso?</h2>
+    <ul>
+      <li>✅ Metodología comunicativa</li>
+      <li>✅ Recursos visuales y prácticos</li>
+      <li>✅ Seguimiento real de tu progreso</li>
+    </ul>
+  </section>
+
+  <section id="examen" class="examen">
+    <h2>Examen Introductorio</h2>
+    <p>Completa este test rápido para identificar tu nivel:</p>
+    <form id="examen-form">
+      <label>1. Traduce: "I am learning English"</label>
+      <input type="text" name="q1" required />
+      <label>2. ¿Cuál es el pasado de "go"?</label>
+      <input type="text" name="q2" required />
+      <label>3. Traduce: "She doesn't like coffee"</label>
+      <input type="text" name="q3" required />
+      <button type="submit">Enviar respuestas</button>
+    </form>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <h2>¿Listo para empezar?</h2>
+    <form id="formulario">
+      <input type="text" placeholder="Tu nombre" required />
+      <input type="email" placeholder="Tu correo" required />
+      <textarea placeholder="Mensaje o consulta" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p>O contáctame por <a href="https://wa.me/584126216661" target="_blank">WhatsApp</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Curso de Inglés · Guama, Yaracuy · Métodos de pago: efectivo, transferencia, Zelle</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    }
+
+    document.getElementById('formulario').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias! Te contactaré pronto ✉️');
+    });
+
+    document.getElementById('examen-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Examen enviado! Lo revisaré y te diré tu nivel 📊');
+    });
+  </script>
+</body>
+</html>
