@@ -62,6 +62,33 @@
     .nav-menu a:hover {
       color: orange;
     }
+
+    .lasventajas {
+		        display:flex;
+		        flex-flow: row wrap;
+						justify-content: space-between;
+						align-items: flex-start;
+						align-content: center;
+						height: 40vh;
+						width: 100%;
+						background-color: white;
+		            }
+
+		     .ventaja{
+		       		display:flex;	
+		          flex-flow: column wrap;	              		
+							justify-content: center;
+							align-items: center;
+							align-content: center;
+		          border-radius:50%; 
+		          border:4px solid var(--azul-claro); 
+		          width:40vh; 
+		          height:40vh;
+		          color:white;
+		          font-size:17px;
+		          background:var(--azul);  
+		          text-shadow:4px 2px 6px black;
+		            }
    
     @media (max-width: 768px) {
       .menu-icon {
@@ -173,7 +200,7 @@
 
   <header class="hero">
     <div class="nav-container">
-      <div class="logo">🗣️ Inglés Pro</div>
+      <div class="logo"> Inglés Pro</div>
       <div class="menu-icon" onclick="toggleMenu()">☰</div>
       <nav id="nav-menu" class="nav-menu">
         <a href="#curso">Curso</a>
@@ -189,10 +216,10 @@
 
   <section id="curso">
     <h2>¿Qué incluye el curso?</h2>
-    <ul>
-      <li>🕒 Horarios flexibles</li>
-      <li>👩‍🏫 Atención personalizada</li>
-      <li>🌍 Modalidad online y presencial</li>
+    <ul class="lasventajas">
+      <li class="ventaja"> Horarios flexibles</li>
+      <li class="ventaja"> Atención personalizada</li>
+      <li class="ventaja"> Online y presencial</li>
     </ul>
   </section>
 
