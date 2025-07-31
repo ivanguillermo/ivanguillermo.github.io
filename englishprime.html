@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Clases de Inglés Personalizadas</title>
+  <title>EnglishPrime: Clases de Inglés Personalizadas</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
     :root {
       --azul: #4285F4;
@@ -67,31 +69,33 @@
 						margin:  0px auto;
   					}
     .lasventajas {
-		        display:flex;
-		        flex-flow: row wrap;
-						justify-content: space-between;
-						align-items: flex-start;
-						align-content: center;
-						height: 40vh;
-						width: 100%;
-						background-color: white;
-		            }
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	height: ;
+	width: 100%;
+	background-color: white;
+	padding-bottom: 0px;
+	margin-bottom:  0px;
+	}
 
-		     .ventaja{
-		       		display:flex;	
-		          flex-flow: column wrap;	              		
-							justify-content: center;
-							align-items: center;
-							align-content: center;
-		          border-radius:50%; 
-		          border:4px solid var(--azul-claro); 
-		          width:40vh; 
-		          height:40vh;
-		          color:white;
-		          font-size:17px;
-		          background:var(--azul);  
-		          text-shadow:4px 2px 6px black;
-		            }
+     .ventaja{
+	display:flex;	
+	flex-flow: column wrap;	              		
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border-radius:50%; 
+	border:4px solid var(--azul-claro); 
+	width:20vw; 
+	height:20vw;
+	color:white;
+	font-size:17px;
+        font-family: 'Bebas Neue';              		 
+	text-shadow:4px 2px 6px black;
+	}
    
     @media (max-width: 768px) {
       .menu-icon {
@@ -146,11 +150,12 @@
       margin-bottom: 1em;
     }
 
-    .galeria {
+  .galeria {
       display: flex;
       gap: 1em;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 5vh;
     }
 
     .galeria img {
@@ -159,6 +164,34 @@
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
+
+ 	.beneficio{
+		  display:flex;
+		  flex-flow: row wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			align-content: center;
+			height: 7.5vh;
+			padding: 0px 2vw;
+			background-color: var(--azul);
+      margin:2px;
+      color:white;
+      border-top-right-radius:15px;
+		            }
+.beneficio::before {content:'► ' ;color:white;text-shadow: 1px 0.5px 0.5px white: margin-right:2px;}
+.losbeneficios {
+   display:none;	
+   flex-flow: column wrap;	              		
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+   width:; 
+   height:10vh;
+   color:black;
+   font-size: 18px;
+   background:transparent;
+   padding: 0vh 6vh;
+}
 
     .contacto form,
     .examen form {
@@ -203,7 +236,7 @@
 
   <header class="hero">
     <div class="nav-container">
-      <div class="logo"> Inglés Pro</div>
+      <div class="logo" style="font-family:'Bebas Neue'; font-size: 40px;text-shadow: -2px -2px red; color:white">ENGLISH PRIME</div>
       <div class="menu-icon" onclick="toggleMenu()">☰</div>
       <nav id="nav-menu" class="nav-menu">
         <a href="#curso">Curso</a>
@@ -245,11 +278,25 @@
 
   <section id="beneficios">
     <h2>¿Por qué elegir este curso?</h2>
-    <ul>
-      <li>✅ Metodología comunicativa</li>
-      <li>✅ Recursos visuales y prácticos</li>
-      <li>✅ Seguimiento real de tu progreso</li>
-    </ul>
+    
+      <div class="beneficio" id="ben1">Metodología comunicativa</div>
+      <div class="losbeneficios" id="ben1_cont"><p>Atencion personalizada y constante. Contaras con un coach o englishBro que te acompana en tu camino a conseguir tu prime</p></div>
+      <div class="beneficio" id="ben2">Recursos visuales y prácticos</div>
+      <div class="losbeneficios" id="ben2_cont"><p>A tus disposion habran guias, presentaciones individuales para cada clase y videos e infografias</p></div>
+      <div class="beneficio" id="ben3">Seguimiento real de tu progreso</div>
+      <div class="losbeneficios" id="ben3_cont"><p>Contaras con un plan real de seguimiento personalizado pero basado en la ciencia que avala el estudio, la memorizacion y el descanso</p></div>
+<script> 
+$(document).ready(function(){             
+           $("#ben1").click(function(){ $("#ben1_cont").slideToggle("fast"); });  
+           $("#ben2").click(function(){ $("#ben2_cont").slideToggle("fast"); });                   
+           $("#ben3").click(function(){ $("#ben3_cont").slideToggle("fast"); });
+});
+</script> 
+     <div class="galeria" >
+      <img src="English.png" alt="Slide 4" />    
+      <img src="English.png" alt="Slide 3" />      
+
+    </div>
   </section>
 
   <section id="examen" class="examen">
