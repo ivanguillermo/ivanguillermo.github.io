@@ -181,13 +181,14 @@
                 <div class="modal-content">
                   <header class="containerheader">
                     <a href="#pptxs" class="closebtn">×</a>
-                    <h2 id='cert_shower_t'>ssss</h2>
+                    <h2 id='cert_shower_t'>asdasdas</h2>
                   </header>
-                  <center class="containercontainer">
-                    <img id='cert_shower' 
-                            src="imgx/cursos/calculo1.png" 
-                            width="100%" height="400px">
-                    </img>
+                  <center class="containercontainer">                    
+                    <img id='cert_shower' src="imgx/cursos/" />
+                    <div style="margin: 15px; background: red; padding: 6px; height: 200%; width: 300px">
+                      <p>ajidbifubiowebisbcoasdasauhbduvwyqvwidqwe
+                      </p>
+                    </div>
                   </center>
                   <footer class="containerfooter">
                     <a target='_blank' href='' id='cert_shower_go'><p>Ir al sitio</p></a>
@@ -198,6 +199,7 @@
               </div>
             </div>
             <!-- Fin Modales -->
+           
 
             <style type="text/css">
                  .modal { 
@@ -229,7 +231,13 @@
           /* The button used to close the modal */
           .closebtn {text-decoration: none;float: right;font-size: 25px;font-weight: bold;color: black;}
           .closebtn:hover, .closebtn:focus {color: var(--rojo);text-decoration: none;cursor: pointer;}
-          .containercontainer {padding: 2px 16px;}
+          .containercontainer {
+            display: inline-flex;
+            flex-direction: row;
+            justify-content:space-around ;
+            align-content: ;           
+            padding: 2px 16px;
+            color:white;}
             </style>
 
             
@@ -450,13 +458,20 @@
           </a>
         </h2>       
         <div id='courses3' class="courses"></div>
-      <!----------------------------------------------EDX--------------------------------------------------->
+      <!----------------------------------------------DUO--------------------------------------------------->
         <h2>
           <a id='tit_4' target='_blank' href="" >
             <img id='tit_4_img' class='tit_img' alt='Otros'  src='imgx/cursos/duolingo.png'/>
           </a>
         </h2>       
         <div id='courses4' class="courses"></div>
+       <!----------------------------------------------LinkedIn--------------------------------------------------->
+        <h2>
+          <a id='tit_5' target='_blank' href="" >
+            <img id='tit_5_img' class='tit_img' alt='Otros'  src='imgx/cursos/linkedin.png'/>
+          </a>
+        </h2>       
+        <div id='courses5' class="courses"></div>
         
       
         <center id='codecademy'>
@@ -509,7 +524,8 @@
               </tr> 
 
               <tr>
-                <td>Linux + Apache + PHP + MySql</td>
+                <td> <button type="button" class="curso_btn" data-img='imgx/cursos/una_php.jpeg' data-name='LAMP' data-dir='f'>
+                  <a id='dfdfd' href="#id01" class="img_pptx_a"  > Linux + Apache + PHP + MySql</a></button></td>
                 <td>UNA (Venezuela)</td>
                 <td>Programacion</td>
                 <td>2017</td>
@@ -525,7 +541,8 @@
               </tr> 
 
               <tr>
-                <td>Ajedrez</td>
+                <td> <button type="button" class="curso_btn" data-img='imgx/cursos/peon_vuelve.jpeg' data-name='Ajedrez' data-dir='f'>
+                  <a id='dfdfd' href="#id01" class="img_pptx_a"  > Ajedrez</a></button></td>
                 <td>Peon Vuelve (Argentina)</td>
                 <td>Arte</td>
                 <td>2019</td>
@@ -539,11 +556,8 @@
     <script>         
           var english=['Courses I made', 'order', 'area', 'school', 'relevance', 'year', 'order by', 'Other cuorses', 'online courses', 'others online', 'Presencials', 'Contact', 'Course', 'Duration'];
           var spanish=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'año', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
-
-          var german=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'ano', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
-          var french=['Mis cursos realizados', 'ordenar', 'area', 'escuela', 'relevancia', 'ano', 'ordenar por', 'Otros cursos', 'cursos online', 'otros online', 'Presenciales', 'Contacto', 'Curso', 'Duracion'];
-
-
+          var german=['Meine belegten Kurse', 'Sortieren', 'Bereich', 'Schule', 'Relevanz', 'Jahre', 'Sortieren nach', 'Andere Kurse', 'Online-Kurse', 'Sonstige Online', 'Persönlich', 'Kontakt', 'Kurs', 'Dauer'];
+          var french=['Mes cours suivis', 'trier', 'domaine ', 'école ', 'pertinence', 'an', 'trier par', 'Autres cours', 'cours en ligne', 'autres en ligne ', 'En personne', 'Contact', 'Cours', 'Durée'];
 
 
           var botones = ['btn-danger', 'btn-info', 'btn-success', 'btn-warning', 'btn-default']; 
@@ -594,36 +608,44 @@
           var css = new curso ('CSS','css', 'w3 School', '2017', 'programacion', '');
           var duo_deu = new curso ('Trayecto Aleman','german', 'Duolingo', '2017', 'languages', '');
           var duo_ing = new curso ('ingles','ingles', 'Duolingo', '2016', 'languages', '');
+          var gst_tmp = new curso ('Gestion Tiempo','gest_tmp', 'LinkedIn', '2020', 'languages', '');
+
+
 
           var coursera= [calc1, calc2, game_theory, math_phi, anc_greeks, vital_signs, droits, hlanguages, phi_sci, kierkergaard, int_phi, big_bang, comp_stra];
           var saylor  = [col_alg, alg, say_eng, say_his, say_precalc];
           var udemy   = [linux, ude_py, ccoder, paul, greek_rel, est_mas];
           var w3      = [duo_ing, duo_deu, css, html];
           var edx     = [edx_lin, prim_num, ap_french, hero];
+          var linkedin = [gst_tmp];
 
           var programacion = [edx_lin, linux, ude_py, ccoder, html, css];
           var matematica = [calc1, calc2, game_theory,math_phi,comp_stra, col_alg,alg, say_precalc,prim_num];
           var ciencia = [vital_signs,  phi_sci, big_bang];   
-          var arte = [anc_greeks, droits, hlanguages, kierkergaard, int_phi, paul, greek_rel, est_mas, hero];
-          var idiomas = [duo_deu, duo_ing, ap_french, say_eng];          
+          var arte = [anc_greeks, droits, hlanguages, kierkergaard, int_phi, paul, greek_rel, est_mas, hero, gst_tmp];
+          var idiomas = [duo_deu, duo_ing, ap_french, say_eng];   
+          var otros=[];       
 
-          var y1415 = [];
-          var y16   = [];
-          var y17   = [];
-          var y18   = [];
-          var y1920 = [];
+          var y13 = [calc1, int_phi, hero, game_theory,comp_stra, big_bang, anc_greeks];
+          var y14   = [calc2, ccoder, greek_rel, linux, math_phi];
+          var y15   = [alg, droits, est_mas, ap_french, hlanguages, edx_lin, kierkergaard, phi_sci, say_precalc];
+          var y16171819   = [prim_num, paul, html, css, ude_py];
+          var y20 = [col_alg, say_eng, gst_tmp, duo_deu, duo_ing];
+          var y25= []; 
 
-          var lvl1 = [];
-          var lvl2 = [];
-          var lvl3 = [];
-          var lvl4 = [];
-          var lvl5 = [];         
+          var lvl1 = [calc1, int_phi, hero, game_theory,comp_stra, big_bang, anc_greeks];
+          var lvl2 = [calc2, ccoder, greek_rel, linux, math_phi];
+          var lvl3 = [alg, droits, est_mas, ap_french, hlanguages, edx_lin, kierkergaard, phi_sci, say_precalc];
+          var lvl4 = [prim_num, paul, html, css, ude_py];
+          var lvl5 = [col_alg, say_eng, gst_tmp, duo_deu, duo_ing];   
+          var lvl6 = [];
+
 
           
-          const t0 = [ [coursera,saylor,udemy,edx,w3], ['cou','say','ude','edx','w3'], ['coursera.svg', 'saylor.svg', 'udemy.png', 'edx.png','duolingo.png' ]];
-          const t1 = [ [programacion,matematica,ciencia,arte,idiomas], ['pro','mat','cie','art','idio'], ['', '', '', '','' ]];
-          const t2 = [ [y1415,y16,y17,y18,y1920], ['y1415','y16','y17','y18','y1920'], ['coursera.svg', 'saylor.svg', 'udemy.png', 'edx.png','duolingo.png' ]];   
-          const t3 = [ [lvl1,lvl2,lvl3,lvl4,lvl5],['1','2','3','4','5'],['','','','','']];  
+          const t0 = [ [coursera,saylor,udemy,edx,w3,linkedin], ['cou','say','ude','edx','w3','lkd'], ['coursera.svg', 'saylor.svg', 'udemy.png', 'edx.png','duolingo.png','linkedin.png' ]];
+          const t1 = [ [programacion,matematica,ciencia,arte,idiomas,otros], ['pro','mat','cie','art','idio','otros'], ['', '', '', '','','' ]];
+          const t2 = [ [y13,y14,y15,y16171819,y20, y25], ['y3','y14','y15','y16171819','y20', 'y25'], ['', '', '', '','','' ]];   
+          const t3 = [ [lvl1,lvl2,lvl3,lvl4,lvl5,lvl6],['1','2','3','4','5','6'],['','','','','',''] ];  
 
           var k = 0; //lo que debe cambiar el selector//
           const cats=[t0,t1,t2,t3];
@@ -641,8 +663,8 @@
           for (i = 0; i < a; i++) 
             {document.getElementById(
               `courses${b}`).innerHTML += 
-                `<button id='${z}${i}' type="button" class="btn ${botones[i%5]} btn-lg curso_btn" data-name='' data-dir=''>
-                    <a id='${z}${i}_a' href="#id01" >  
+                `<button id='${z}${i}' type="button" class="btn ${botones[i%5]} btn-lg curso_btn" data-img='' data-name='' data-dir=''>
+                    <a id='${z}${i}_a' href="#id01" class="img_pptx_a"  >  
                       <img id='${z}${i}_img' class="img_pptx"  src=""/>
                     </a>
                     <br/>  
@@ -664,6 +686,7 @@
 
             for (var i = 0; i < 5; i++) {
               document.getElementById(`tit_${i}_img`).src= `imgx/cursos/${cats[k][2][i]}`;
+
             }           
 
             for (i = 0; i < n; i++)
@@ -673,7 +696,8 @@
                   document.getElementById(`${cats[k][1][y]}${i}`+'_sch').innerHTML =`${x[i].school}`;
                   document.getElementById(`${cats[k][1][y]}${i}`+'_area').innerHTML =`${x[i].area}`;
                   document.getElementById(`${cats[k][1][y]}${i}`).dataset.name = `${x[i].name}`;
-                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.dir = `${x[i].link}`;        
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.dir = `${x[i].link}`;   
+                  document.getElementById(`${cats[k][1][y]}${i}`).dataset.img = 'imgx/cursos/' + `${x[i].src}` + '.png';  
                   document.getElementById(`${cats[k][1][y]}${i}`+'_img').src= 'imgx/cursos/' + `${x[i].src}` + '.png'; 
                                   
               }             
@@ -681,7 +705,7 @@
             
             
 
-          function printC(){assign(0); assign(1); assign(2); assign(3); assign(4); }
+          function printC(){assign(0); assign(1); assign(2); assign(3); assign(4); assign(5)}
 
           function ordenar(){k= this.dataset.cat;printC();};
 
@@ -690,8 +714,9 @@
           btn_ordenar.addEventListener('click', print4);
           btnls.forEach(btnl => btnl.addEventListener('click', ordenar)); 
 
-          printC();                   
-      </script>  
+          printC();           
+              
+      </script>
   </body>
     
   <script type="text/babel">
@@ -778,21 +803,20 @@
     </script>
 
     <script type="text/javascript">
-              var kursos = document.querySelectorAll('.curso_btn');
-              
+              var kursos = document.querySelectorAll('.curso_btn');              
 
               const cert_shower_t= document.getElementById('cert_shower_t');
               const cert_shower= document.getElementById('cert_shower');
               const cert_shower_go= document.getElementById('cert_shower_go');
-              const cert_shower_img= document.getElementById('cert_shower_img');              
+                           
 
               function show_kert(){
                 b= this.dataset.name;
                 cert_shower_t.innerHTML=b ;
                 cert_shower_go.href=this.dataset.dir;
-                
+                cert_shower.src=this.dataset.img;
                 }
               kursos.forEach(btn => btn.addEventListener('click', show_kert));
-            </script>
+    </script>
 </html>
 
