@@ -1,555 +1,360 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<link href="/manifest.json" rel="manifest" />
+	<head> 
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	          
+	      
+	    <link rel="shortcut icon" href="spotiflix_logo.png" type="image/x-icon" />
+	    <meta content='Website personal sobre los gustos de Ivan Lopez Pedreanez' name='description'/>
+	    <title>Spotiflix</title>	    
+		 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+		<script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
-			<link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-			<link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
+		<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.min.css">
 
-			<meta content='Website personal de Ivan Lopez Pedreanez' name='description'/>
-			<title>Ivan Lopez Pedreanez</title>
+		<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Proxima+Nova|Roboto|Monserrat" rel="stylesheet" />
 
-			<!-- Bootstrap y JQuery -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-			<link async="async" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
-			<script async='async' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-			<!-- Font-Awesome -->
-			<link async="async" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-			<!-- Google Font-->
-			<link async="async" href="https://fonts.googleapis.com/css?family=Nova+Square|Roboto|Raleway|Lobster" rel="stylesheet" />
-			<!-- React-->
-			<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
-	        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
-	        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
-			<!-- CSS -->
-			<link rel="stylesheet" href="css/root.css" />
-	        <link rel="stylesheet" href="css/jumbotron.css" />
-	        <link rel="stylesheet" href="css/navbar.css" />
-	        <link rel="stylesheet" href="css/ivanguillermo.css" />
-	        <link rel="stylesheet" href="css/traductor.css" />
-	        <link rel="stylesheet" href="css/programador.css" />
-	        <link rel="stylesheet" href="css/matematico.css" />
-	        <link rel="stylesheet" href="css/educador.css" />	        
-	</head>
-	<body>
-		<!-- Main -->
-		<div>
-			<div class="jumbotron" id='jumbo_ivan'>
-				<div class="container">
-					<div class="media">
-						<div class="media-left media-middle">
-							<img alt="ivanlopezpedreanez" class="media-object" src="yo2025.png" />
-							<a href="bio.html"><button class="btn btn-lg"  role="button" id="about_btn" style='font-family:lobster;'>About me 
-						</div></a>
-						<div class="media-body">
-							<h1 class="media-heading">Ivan Lopez Pedreañez</h1>
-							<div id='resume' class="resume" >
-								<p>Me llamo Ivan y soy<a>Programador Web</a> y traductor freelance</p>
-								<p>Actualmente estudio Licenciatura en Matemática y licenciatura en Educación mencion Informática</p>
-								<p>Soy fan de crear proyectos y aprender cosas nuevas cada dia</p>
-							</div>
-						</div>					
+		<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+		<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>	
+
+		<link rel="stylesheet" href="spotiflix.css" />	
+  	</head>
+
+	<body>	
+		<script language="javascript"> 
+    	document.write("<script src='test.js'><\/script>"); 
+		</script>
+		<nav id='navflix' class='flex-centrado'>
+					<a href=''><img class='img_nav' src='ivan_guillermo.png'/></a>
+					<span><a href='#films'>Films</a></span>
+					<span><a href='#series'>Series</a></span>
+					<span><a href='#musica'>Musica</a></span>
+					<span><a href='#literatura'>Literatura</a></span>				
+					<span><a href='#deportes'>Deportes</a></span>
+					<span><a href='#player'>Player</a></span>
+					<span><a href=''>Redes</a></span>
+		</nav>
+
+		<div id='player'>
+			<div class="playero">
+				<video class="player_video viewer" id='player_video_p'>	</video>
+
+				<div class="player_controls">
+				    <div class="progress">
+				  	   <div class="progress_filled"></div>
+				    </div>
+
+				    <button class="player_button toggle" title="Play/Stop">►</button>
+
+				    <button title='mute' class="player_button"><i class="fa fa-volume-off"></i></button>
+				   
+				    <button class="player_button"><i class="fa fa-volume-up"></i></button>
+				    
+				    <input style='' title='volumen' type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="0.2">	
+				    <button title='retrasar 10s' onclick='skip(-10)' data-skip="-10" class="player_button">« 10s</button>
+
+				    <button title='adelantar 25s' onclick='skip(25)' data-skip="25" class="player_button">25s »</button>
+				    		  
+
+				    <button title='Modo Cine' class="fullScreen" id='modo_cine' style="word-spacing: 14px"><i class="fa fa-arrows-alt"></i></button>
+				    <button title='Show Sideview' class="fullScreen" id='modo_cine2' style="word-spacing: 14px">[---]</button>
+
+				    <button title='Pantalla completa' class="fullScreen" onclick="fullScreening()"><i class="fa fa-expand"></i></button>
+				</div>				    
+			</div>
+
+			<div id='sidevideoplayer'>
+				<table id='youtable'>
+		            <thead style='height:11vh;position:;width:100%'>
+		                <th class='flex-centrado' style='height:11vh;background: transparent;'>
+		                	Episodes:<span id='epi_ser_name'>Death Note</span> 
+		                </th>		              
+		            </thead>
+		            <tbody id='episodios'> </tbody>
+          		</table>
+			</div>		
+		</div>
+	
+		<div id='myLikes'>
+			</br>
+			<h2><img class='img_myLikes' id='img_myLikes' src='my_likes.png'/></h2>
+
+			<div id='cinema'>
+				<div id='films'>							
+					<!--peliculas favoritas-->					
+						<div class='films_list' id="fav_movies">
+							<h3 class='secTit'>
+							<button class="f2l-btn" type="button" onclick="first2last( peliculas, slide1,'movies')"><i class="fa fa-backward"></i></button>
+							Peliculas
+							<button class="f2l-btn" type="button" onclick="last2first( peliculas, slide1,'movies')"><i class="fa fa-forward"></i></button>
+						 	</h3>
+						</div>
+
+								<div class='displayer display_1' id='filmes'></div>	
+
+						</dir>
+
+					<div class='series_list' id="fav_series">						
+						<h3 class='secTit' id='series'>
+							<button class="f2l-btn" type="button" onclick="first2last( series, slide2,'series')"><i class="fa fa-backward"></i></button>
+							Series
+							<button class="f2l-btn" type="button" onclick="last2first( series, slide2,'series')"><i class="fa fa-forward"></i></button>
+						</h3>
+						
+						<div class='displayer display_2' id='seriess'>
+						</div>
+					</div>
+
+					<div class='series_list' id="fav_animes">
+						<h3 class='secTit'>
+							<button class="f2l-btn" type="button" onclick="first2last( animes, slide3,'series')"><i class="fa fa-backward"></i></button>
+								Animes
+							<button class="f2l-btn" type="button" onclick="last2first( animes, slide3,'series')"><i class="fa fa-forward"></i></button>
+						</h3>
+						<div class='displayer display_3' id='animess'>
+						</div>
 					</div>
 				</div>
 			</div>
-			<!-- NavBar-->		
-			<nav id='navbarIvan' class="navbar navbar-inverse navbar-fixed-bottom ">
-		          <div class="container-fluid" id='fluid'>
-		            <div class="navbar-header">
 
-		              <a class="navbar-brand" href="#" 
-		              style="height: 8vh;background-color:var(--color);color:black;font-weight: 500;">
-		              	<b id="hola">Hola!</b>
-		              </a>
-					
-				      <a id='navYo' class="navbar-link" href="#quote" >
-				      	<b>	<i style="color:white;">Ivanguillermo</i> </b>
-		              	<img alt='yo' src="yo2025.png"/>
-		              </a>				  
-		              
-		              <a id='navPro' class="navbar-link" href="#programmer">
-		              	<img alt='programador' src="imgx/prog.gif"/>
-		              	<span>PROGRAMADOR</span>
-		              </a>
-		              <a id='navMat' class="navbar-link" href="#matematico">
-		              	<span>MATEMATICO</span>
-		              	<img alt='matematico' src="imgx/icono_mat.png"/>
-		              </a>
+			<div id='musica'>
+				<h2><img style='width:40vw' src='mis_canciones.png'/></h2>
+				<table class='song_table'>
+					<thead>
+				    	    <tr>
+				    	       <th style='width:4vw'></th>
+				               <th style='width:4vw'>Play</th>
+				               <th>Nombre</th>
+				               <th>Artista</th>
+				               <th>Album</th>
+				            </tr>
+				    </thead>
+				</table>
+				 
+				<div id='canciones' >					
+					<table>				        
+				        <tbody id='mis_canciones'>			              
+				              			              
+				        </tbody>
+				    </table>
+       			</div>  
+				
+				<div id='bandas' style='overflow: hidden; height:70vh'>
+					<div class="panels">
+				        <div class="panel panel1">
+					      	<p>The</p>
+					      	<div class="centro">
+						      	<div class="box box1">Naive</div>
+							    <div class="box box2">Sofa Song</div>
+							    <div class="box box3">Sway</div>
+							    <div class="box box4">Mis 
+							       <audio src='sounds/the_kooks-always_where_I_need_to_be.mp3'></audio>
+							    </div>
+							    <div class="box box5">Happy</div>
+							    <div class="box box6">Ooh la</div>
+							    <div class="box box7">Young Folks</div>				      	
+					      	</div>
+				     		<p>Kooks</p>
+				     	</div>
+					    <div class="panel panel2">
+					      	<p>ℂ𝕒𝕣𝕒𝕞𝕖𝕝𝕠𝕤</p>
+					      	<div class="centro">
+						      	<div class="box box1">La Terraza</div>
+							    <div class="box box7">Flor de Fuego</div>
+							    <div class="box box6">Verano</div>
+							    <div class="box box4">Bandas  
+							    	<audio src="sounds/cdc-a_guerra_lenta.mp3"></audio>
+							    </div>
+							    <div class="box box2">Veronica</div>
+							    <div class="box box3">La Llama</div>
+							    <div class="box box5">El mar</div>							
+					      	</div>
+					     	<p>ℂ𝕚𝕒𝕟𝕦𝕣𝕠</p>
+					    </div>
+					    <div class="panel panel3">
+					      <p>Keane</p>
+					      <div class="centro">
+					      	<div class="box box6">Hamburg Song</div>
+							<div class="box box5">Bedshaped</div>
+							<div class="box box3">Silenced by the Night</div>
+					      	<div class="box box4"> De
+					      		<audio src="sounds/keane-nothing_in_my_way.mp3"></audio>
+					      	</div>
+					      	<div class="box box1">Everybody's Changing</div>
+							<div class="box box2">Nothing in my Way</div>
+							<div class="box box6">She has no time</div>
+					      </div>
+					      <p>ǝnɐǝ>[</p>
+					    </div>
+					    <div class="panel panel4">
+					      <p >𝔸𝕣𝕔𝕥𝕚𝕔</p>
+					      <div class="centro">
+					      	<div class="box box7">R U Mine</div>
+						    <div class="box box3">Mardy Bum</div>
+						    <div class="box box6">4 out of 5</div>
+						    <div class="box box4">Rock   
+						    	<audio src="sounds/arctic_monkeys-number_1_party_anthem.mp3"></audio>
+						    </div>
+						    <div class="box box5">505</div>
+						    <div class="box box2">Balaclava</div>
+						    <div class="box box1">The Bakery</div>
+					      </div>
+					      <p>𝕄𝕠𝕟𝕜𝕖𝕪𝕤</p>
+					    </div>
+					    <div class="panel panel5 ">
+					      <p>Muse</p>
+					      <div class="centro">
+					      		<div class="box box1">Unintended</div>
+							    <div class="box box3">Bliss</div>
+							    <div class="box box6">Hysteria</div>
+							    <div class="box box4">Fav 
+							    	<audio src="sounds/rhcp-otherside.mp3"></audio>
+							    </div>
+							    <div class="box box2">Starlight</div>
+							    <div class="box box5">Resistance</div>
+							    <div class="box box7">Uprising</div>
+					      </div>
+					      <p>ǝs𝕟W</p>
+					    </div>
+				</div>
+			</div>			
+				<h2 style='font-size: 5vw'>Mis Albums favs</h2>
+			<div id='albums'>				
+						<div class='album album01' data-src='sounds/caiga_la_noche.mp4'>
+							<span>Caiga la noche <br/> Los Mesoneros <br/> 37:42</span>
+						</div>
+						<div class='album album02' data-src=''>
+							<span>Revolver <br/> The Beatles</span>
+						</div>
+						<div class='album album03' data-src=''>
+							<span>Frisbee <br/> Caramelos de Cianuro</span>
+						</div>
+						<div class='album album04' data-src=''>
+							<span>Inside In/ Inside Out <br/> The Kooks</span>
+						</div>
+						<div class='album album05' data-src=''>
+							<span>Louise Attaque <br/> Louise Attaque</span>
+						</div>
+						<div class='album album06' data-src='https://www.dropbox.com/s/2e83he1fmdfbvzm/ff.mp4?raw=1'>
+							<span>Franz Ferdinand  <br/> Franz Ferdinand <br/> 38:50</span> 
+						</div>
+						<div class='album album07' data-src='sounds/isthisit.mp4'>
+							<span>The Strokes <br/> This is it <br/> 35:50 </span>
+						</div>
+						<div class='album album08' data-src='https://www.dropbox.com/s/8ssdkoccurj2hbh/pure_heroine.mp4?raw=1'>
+							<span>Pure Heroine <br/> Lorde <br/> 37:12 </span>
+						</div>
+						<div class='album album09' data-src='https://www.dropbox.com/s/ea4jdm5i4r2ylz5/The%20Black%20Parade.mp4?raw=1'>
+							<span>Black Parade  <br/> My Chemical Romance <br/> 53:57 </span>
+						</div>
+						<div class='album album10' data-src=''>
+							<span>Konk <br/> The Kooks</span>
+						</div>
+						<div class='album album11' data-src=''>
+							<span>Talking Dreams <br/> Echosmith</span>
+						</div>	
+						<div class='album album12' data-src=''>
+							<span>Badlands <br/> Halsey</span>
+						</div>							
+						<div class='album album13' data-src=''>
+							<span>Flor de Fuego <br/> CDC</span></div>	
 
-		              <a id='navTra' class="navbar-link" href="#translator">
-		              	<span>TRADUCTOR</span>
-		              	<img alt='traductor' src="imgx/trans.gif"/>
-		              </a>
+						<div class='album album14' data-src='https://www.dropbox.com/s/kfpl244uxm1138s/santo_pecado.mp4?raw=1'>
+							<span>Santo Pecado <br/> Arjona <br/> 1:04:29</span>
+						</div>
+						<div class='album album15' data-src='sounds/born_to_die.mp4'>
+							<span>Born to die <br/> Lana del Rey <br/> 41:13</span>
+						</div>					
+			</div>
 
-		              <a id='navEdu' class="navbar-link" href="#educador">
-		              	<span>EDUCADOR</span>
-		              	<img alt='educador' src="imgx/teaching.png"/>
-		              </a>
+			<div id='literatura'>					
+					<div class='books_list' id="fav_books">
+						<h3 class='secTit'>Libros Favs</h3>
+						<div class='display display_books' id='mis_libros'>
+						</div>
+					</div>		
+			</div>
 
-		              <button id='' aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" 
-		              onclick="document.getElementById('fluid').style.display='block';">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar">
-						</span>
-				  	  </button>
-
-		              <ul class="nav navbar-nav navbar-right" id='contacto'>
-				        <li>
-				            <a href="contacto.html" style="height: 8vh;background-color:var(--color);color:white"><b>Contacto</b></a>
-				        </li>
-			      	  </ul>
-		            </div>
-
-					<div class="navbar-collapse collapse" id="navbar">
+			<div id='deportes'>						
+						<img title='Paolo Maldini' class='sports' src='deportes/maldini.png'/>
+						<img title='Cristiano Ronaldo' class='sports' src='deportes/cr7.png'/>
+						<img title='Zlatan Ibrahimovic' class='sports' src='deportes/zlatan.png'/>
+						
+						<img title='Bastian Schweinsteiger' class='sports' src='deportes/schweini.png'/>
+						<img title='Michael Schumacher' class='sports' src='deportes/schumi.png'/>
+						<img title='Dirk Nowitski' class='sports' src='deportes/nowitski.png'/>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		
+		<nav id='music_player' class='navbar navbar-inverse navbar-fixed-bottom'>			
+			<div class="navbar-collapse collapse" id="navbar">				
 			          <ul class="nav navbar-nav">		         		          	         	
 			          	<li class="dropdown" >
 			              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" role="button" >
-			              	<span class="mas flex-centrado" style=''>
-			              		<i class="fa fa-ellipsis-v"></i>
-			              	</span> 
-			              </a> 
+			              	<span class="mas flex-centrado" style='width:1.8vw; height:1.8vw; font-size: 120%; color:var(--color)'><i class="fa fa-ellipsis-h"></i></span> </a> 
 			            	<ul class="dropdown-menu">
-			            		<li><a href="spotiflix/ivanguillermo.html">Spotiflix</a></li>
-			            		<li class="divider" role="separator"></li>
-			            		<li><a href="cursos.html">Cursos</a></li>
-			            		<li class="divider" role="separator"></li>
-			            		<li><a href="bio.html">Biografia</a></li>
-			            		<li class="divider" role="separator"></li>
-			            		<li><a href="https://informaticos15.github.io">informaticos15</a></li>
-			            		<li class="divider" role="separator"></li>
-			            		<li id="contacto_nav">
-					              <a href="contacto.html" >Contacto</a>
-					            </li>
+			            		<li><a href="https://ivanguillermo.github.io/">Home</a></li>			            		
+			            		<li><a href="https://ivanguillermo.github.io/cursos.html">Cursos</a></li>			            		
+			            		<li><a href="https://ivanguillermo.github.io/bio.html">Biografia</a></li>
+			            		<li><a href="https://ivanguillermo.github.io/informaticos15/">Informaticos15</a></li>           		
 			            	</ul>
 			            </li>
 			          </ul>
 			       </div>
-			          
-			       </div> 
-		    </nav>
 
-			<!-- Ivan Guillermo-->		   
+			       <div class='side_music-player'>						
+					<i>Now Playing</i><br/>
+					<i id='song_on'>---</i><br/>					
+			</div>
 
-			<div id="quote">				
-				<p><q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q>
-				<p><em>Friedrich Nietzsche</em></p>
-			</div>			
-
-			<div id="logos">
-				<div id='yo_descripcion'>
-				<h3 id="mi_nombre" >Ivan Guillermo</h3>
-				<p id="descripcion">
-					Soy un joven venezolano apasionado por estudiar y aprender cada día un poco mas. y luego siempre busco poner en practica lo que aprendo, para resolver problemas de la vida real. Me considero a mí mismo como...
-				</p>
-				</div>								
-				<div class='logos_profs'>
-					<div class='icon'>
-						<img class='logo_prof' src='imgx/trans.gif' id="transl_ico" alt='traductor'/>
-						<div>
-							<h2 class='tit_prof' >TRADUCTOR</h2>
-							<p class="prof_txt" >
-								Buscando nuevas perspectivas, descubrí que debo tomar las fuentes en su idioma original
-								Revisa mi perfil en <a style='color:var(--green) ' href="https://www.freelancer.com/u/IvanD413R" rel="noopener" target="_blank"> Freelancer.com</a>
-								y los trabajos que he realizado allí;
-							</p>
-						</div>			
-					</div>
-					<div id='adasda' class='icon'>
-						<img class='logo_prof' src='imgx/prog.gif' id="programmr_ico" alt='programador'/>
-						<div>
-							<h2 class='tit_prof'>PROGRAMADOR</h2>
-							<p class="prof_txt" >
-								Disfruto buscar soluciones a los problemas, y la programación me ofrece la posibilidad de alcanzar
-								<a href="https://github.com/ivanguillermo" rel="noopener" target="_blank">soluciones óptimas</a> 
-								mirando las cosas desde perspectivas nuevas
-							</p>
-						</div>
-					</div>
-					<div class='icon'>
-						<img class='logo_prof' src='imgx/icono_mat.png' id="matemat_ico"  alt='matematico'/>
-						<div>
-							<h2 class='tit_prof'>MATEMÁTICO</h2>
-							<p class="prof_txt" >Actualmente curso el último año de Licenciatura en Matemáticas en la 
-								<a href="https://www.unasec.com" rel="noopener" target="_blank">Universidad Nacional Abierta</a> (UNA). Particularmente amo la estadísticas y la optimización
-							</p>
-						</div>			
-					</div>
+			<div id="audioplayer">				
+				<div id='audiocontrols'>
+					<div id='rep_shuffle-btn'><i class="fa fa-random"></i></div>
+					<div id='rep_forward-btn'><i class="fa fa-backward"></i></div>
+					<div title='play/stop music' id='rep_play-btn' class='flex-centrado'><i class="fa fa-play-circle"></i></div>			
+					<div id='rep_back-btn'><i class="fa fa-forward"></i></div>
+					<div id='rep_repeat-btn'><i class="fa fa-circle-o-notch"></i>
 				</div>
+				</div>				
+				<audio id='reproductor'></audio>
+				<span class='audio_current'>00:00</span>
+				<progress id="progress_audio" value="0" max="100" ></progress>
+				<span class='audio_duration'>00:00</spans>
 			</div>
 
-			<div id="sections">
-				<!-- TRADUCTOR-->
-				<section class="job" id="translator">
-					<h2 class='sec_tit'>TRADUCTOR</h2>
-
-					<div class='body2' id="myDIV2">
-					</div>
-
-					<div id="langs_p">
-						<p style='color:black'>He trabajado como traductor freelance. Principalmente INGLES/ESPAÑOL, pero tambien realizo otras traducciones que me ayudaron a desarrollar responsabilidad y compromiso para entregar un producto de calidad en corto tiempo</p>
-						<span id="tr_txt" style="color:#eee; text-shadow: 1px 1px black; font-weight: 600;">							
-							Puedo traducir entre cinco idiomas. Soy un hablante nativo de ESPAÑOL y altamente competente en INGLÉS.
-							<br />Y además soy capaz de traducir a esos 2 idiomas desde:
-							<br /><span style="color:#000;"> ALEMÁN || FRANCÉS || PORTUGUES </span>
-						</span>
-					</div>
-
-					<div id="langs">
-						<!--por-->
-						<a class='aflag' data-lang='0'> 
-							<img id='br-flag' alt="brazil-flag" class="flagies" src="imgx/langs/bra.png" /></a> 
-						<!--ger-->
-						<a class='aflag' data-lang='1'>	
-							<img id='de-flag' alt="germany-flag" class="flagies" src="imgx/langs/deu.png" /></a> 
-						<!--fra-->
-						<a class='aflag' data-lang='2'>	
-							<img id='fr-flag' alt="france-flag" class="flagies" src="imgx/langs/fra.png" /></a> 
-						<!--spa-->
-						<a class='aflag big_flag' data-lang='3'>	
-							<img id='sp-flag' alt="spain-flag" class="flagies" src="imgx/langs/spa.png" /></a> 
-						<!--eng-->
-						<a class='aflag' data-lang='4'>	
-							<img id='us-flag' alt="usa-flag" style='width:34px' class="flagies" src="imgx/langs/eng.png" /></a>
-					</div>							
-				</section>
-				<!-- PROGRAMADOR-->
-				<section class="job" id="programmer">
-					<h2 class='sec_tit'>PROGRAMADOR</h2>
-					<div>		
-						<p>
-							Comence a interesarme por la programacion en <span style='font-size:150%'>2014</span>. 
-						</p>
-						<p>
-							El primer curso que hice fue de Javascript en la plataforma 
-							<a href='Codecademy.com'>Codecademy.com</a>,
-							 donde tambien realice cursos de Python y Java. Para mis estudios de matematica aprender a programar en Pascal y Octave. Sin embargo, fue cuando en mi carrera de Educacion Informatica tuve la necesidad de aprender 
-							<span class='att_pls'><i class="fa fa-html5">HTML</i></span> y 
-							<span class='att_pls'><i class="fa fa-php">PHP</i></span> 
-							que descubri mi verdadera pasion: 
-							<span ><i id='frontend_subt'>La programacion Frontend</i></span>
-						</p>
-						<p>
-							Desde entonces me he especializado por mi cuenta en 
-							<b><i><i class="fa fa-html5">HTML</i>, 
-								<i class="fa fa-css3">CSS</i> y 
-								<i class="fa-brands fa-js">JavaScript</i></i></b>. 
-							Utilizo tambien herramientas como GIT. Estoy familiarizado con 
-							<i class="fa fa-node-js">Node.js</i> y 
-							<i class="fa fa-sass">SASS</i>, y regularmente utilizo 
-							<i class="fa fa-bootstrap">Bootstrap</i>, React.JS y JQuery.
-						</p>
-					</div>
-
-					<div id="progr_langs">
-						<div class='p_langs' id="python" >
-							<a target="_blank" href='https://github.com/ivanguillermo/python'>
-								<img class='p_langs_img' alt="python" src='imgx/devs/python.png'/>
-							</a>
-							<div class="projects">
-								<ul>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/python/blob/master/Lagrange.py'>
-											Lagrange
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href='http://www.codeskulptor.org/#user40_iEe4UkyObGItgSa_6.py'>
-											Dibujar un circulo
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/python/blob/master/Integral_doble_metodo_de_Simpson.py'>Integral Langrange
-										</a>
-									</li>
-																
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="html"> 
-							<img class='p_langs_img' alt='html5' src='imgx/devs/html.png'/>
-							<div class="projects">
-								<ul>
-									<li><a target='_blank' href='https://github.com/ivanguillermo/30dayJSchallenge/blob/master/30%20-%20Whack%20A%20Mole/index-START.html'>MaduroCTM</a></li>
-									<li><a target='_blank' href=''>.</a></li>
-									<li><a target='_blank' href='https://github.com/ivanguillermo/30dayJSchallenge/blob/master/12%20-%20Key%20Sequence%20Detection/index-START.html'>Piano</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="css"> 
-							<img class='p_langs_img' alt='css' src='imgx/devs/css.png'/>
-							<div class="projects">
-								<ul>									
-									<li><a  target='_blank' href=''></a>.</li>
-									<li><a  target='_blank' href=''>Gatanimation</a></li>
-									<li><a  target='_blank' href=''></a>.</li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="js"> 
-							<img class='p_langs_img' alt="javascript" src='imgx/devs/js.png'/>
-							<div class="projects">
-								<ul>
-									<li><a target='_blank' href=''></a>.</li>
-									<li><a target='_blank' href=''>Multichange</a></li>									
-									<li><a target='_blank' href=''></a>.</li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="php">
-							<a target="_blank" href='https://github.com/ivanguillermo/PrettyHorribleProjects'> 
-							<img class='p_langs_img' alt="php" src='imgx/devs/php2.png'/>
-							<div class="projects">
-								<ul>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/caja_registradora.php'>
-											Caja Registradora
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/cajero_2.php'>
-											Cajero
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href='https://github.com/ivanguillermo/PrettyHorribleProjects/blob/master/prom_notas.php'>
-											Prom. Notas
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class='p_langs' id="mysql">  
-							<a  target='_blank' href='https://github.com/ivanguillermo/mySQL_databases'>
-								<img class='p_langs_img' alt="mysql" src='imgx/devs/mysql.png' style="background: white"/>
-							</a>
-							<div class="projects ">
-								<ul>
-									<li>
-										<a target='_blank' href=''>
-											
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href=''>
-											
-										</a>
-									</li>
-									<li>
-										<a target='_blank' href=''>
-											
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>					
-
-					<button class='github_btn' style='position:relative;top:-10vh;'> 
-						<a style='color:white; text-decoration-style: none' href='https://github.com/ivanguillermo'>mi GitHub 
-							<i class="fa fa-github"></i>
-						</a>
-					</button>					
-				</section>
-				<!-- MATEMATICO-->
-				<section class="job" id="matematico">
-					<h2 class='sec_tit'>MATEMATICO</h2>
-					<div class="carousel slide" data-ride="carousel" id="myCarousel">
-							<!-- Indicators -->
-							<ol class="carousel-indicators">
-								<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
-								<li data-slide-to="1" data-target="#myCarousel"></li>
-								<li data-slide-to="2" data-target="#myCarousel"></li>
-							</ol>
-							<!-- Wrapper for slides -->
-							<div class="carousel-inner">
-								<div class="item ">
-									<img alt="Estadistica" id='mat_img0' src="imgx/estadistica.png" />
-									
-									<div class="carousel-caption">
-										<div class="mat_art">
-											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vRndRh69UxkKMdnXo-8NJuSvBFVhPO-vALoLAyaacHHZVURx8OxoYz-jZB30PoLCX65PiN6oJyoqfo3/pub?start=false&loop=false&delayms=3000'> 
-												<div id="est_pptx_1" class="est_pptx mat_arts" alt='Datos no Agrupados'></div>
-											</a>
-
-											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vQ8euIkKrum8Us_pAYqfVeceGPcNuJ444mnR2W5u06Vae6dMXjVJr4EYEi43IBVAHishGzwFCF4zhll/pub?start=false&loop=false&delayms=3000'> 
-												<div id="est_pptx_2" class="est_pptx mat_arts" alt='Probabilidad'></div>
-											</a>
-
-											<a target='_blank' href='https://docs.google.com/presentation/d/e/2PACX-1vQUNevSzp9rmdiU0mIPO2FuzAuadkPzzfpbKYPKUDaECiSISXvEDIVgUc4Qag3bIdGbR2_uFx1-LLQh/pub?start=false&loop=false&delayms=3000'> 
-												<div id="est_pptx_3" class="est_pptx mat_arts" alt='Algebra de Conjuntos'></div>
-											</a>  
-										</div>
-										<div>
-											<h3>ESTADÍSTICAS</h3>
-										<p>Describir al conjunto de datos obtenidos para la toma de decisiones</p>
-											
-										</div>
-									</div>
-								</div>
-
-								<div class="item">
-									<img alt="Calculo" id='mat_img1' src="imgx/calculo.png" />
-									
-
-									<div class="carousel-caption">												
-										<div class="mat_art">
-											<div class="mat_arts">
-												<a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vQWri_NNj0CwWdnBT1TGx6T_diQFyZ5WEOp1Rrz1GzahfzktMhIqLKL5y3dIkEm-3N9yjR5WarkQkhB/pub'> Integracion Imaginaria</a>
-											</div>
-											<div class="mat_arts">
-												<a target='_blank'  href='https://docs.google.com/presentation/d/e/2PACX-1vQrWrRbGcxRPtw9ZoMiwevnYa9r33CHRGjXaUZmh2ASk5PXFUO-juHLfegCYvVP0pBNQDKqJRHRDUJz/pub?start=false&loop=false&delayms=3000'>Raiz cuadrada de una recta</a>
-											</div>
-											<div class="mat_arts">
-												<a target='_blank'  href='https://docs.google.com/document/d/e/2PACX-1vTGWhOqoDkZWZ7o30ViC4UsPv2QrWeoDXF9eDWMVYq-7ho_GW7Wrt13oThJl4bmt8Yl-rWqJeSichTU/pub'>Todos los limites son Uno</a>
-											</div>  
-										</div>	
-										<h3>CÁLCULO</h3>
-										<p>Determinar las consecuencias cuantificables de eventos y circunstacias de las que tenemos informacion relevante</p>
-									</div>
-								</div>
-
-
-								<div class="item active">
-									<img alt="Optimizacion" id='mat_img2' src="imgx/optimizacion.png"/>									
-										
-									<div id='optimizacion'class="carousel-caption">
-										<h3 >OPTIMIZACIÓN</h3>
-											<p>Selección del mejor elemento de un conjunto de elementos disponibles</p>
-											<p>Son técnicas de modelización matemática</p>
-											<p>que permiten dar respuesta a problemas de planificación</p>
-											<p>y apoyar de una forma eficiente el proceso de toma de decisiones</p>
-											<br/>
-											<br/>
-									</div>
-								</div>
-							</div>
-							<!-- Left and right controls -->
-    
-							<a class="left carousel-control" data-slide="prev" href="#myCarousel">
-								<span class='glyphicon glyphicon-chevron-left'/>
-								<span class="sr-only">Previous</span> 
-							</a>
-							<a class="right carousel-control" data-slide="next" href="#myCarousel">
-								<span class='glyphicon glyphicon-chevron-right'/>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-				</section>
-				<!-- EDUCADOR-->
-				<section class="job" id="educador">
-					<h2  class="pptx pptx21 sec_tit">EDUCADOR</h2>
-					<div class="pptx pptx0" data-pptx='0'>
-						<a href='#id01' id='pptx_link0'><img id='pptx_img0' alt='pptx0' src='imgx/pptx/datos_no_agrupados.png'/></a>
-					</div>
-					<div class="pptx pptx1" data-pptx='1'>
-						<a href='#id01' id='pptx_link1'><img id='pptx_img1' alt='pptx1' src='imgx/pptx/electronica_digital.png'/></a>
-					</div>
-					<div class="pptx pptx2" data-pptx='2'>
-						<a href='#id01' id='pptx_link2'><img id='pptx_img2' alt='pptx2' src='imgx/pptx/funciones.png'/></a>
-					</div>
-					<div class="pptx pptx3" data-pptx='3'>
-						<a href='#id01' id='pptx_link3'><img id='pptx_img3' alt='pptx3' src="imgx/pptx/datos_no_agrupados.png"/></a>
-					</div>
-					<div class="pptx pptx4" data-pptx='4'>
-						<a href='#id01' id='pptx_link4'><img id='pptx_img4' alt='pptx4' src="imgx/pptx/derivada.png"/></a>
-					</div>
-					<div class="pptx pptx5" data-pptx='5'>
-						<a href='#id01' id='pptx_link5'><img id='pptx_img5' alt='pptx5' src="imgx/pptx/didactica.png"/></a>
-					</div>
-					<div class="pptx pptx6" data-pptx='6'>
-						<a href='#id01' id='pptx_link6'><img id='pptx_img6' alt='pptx6' src="imgx/pptx/electronica_digital.png"/></a>
-					</div>
-					<div class="pptx pptx7" data-pptx='7'>
-						<a href='#id01' id='pptx_link7'><img id='pptx_img7' alt='pptx7' src="imgx/pptx/estructura_datos_2.png"/></a>
-					</div>
-					<div class="pptx pptx8" data-pptx='8'>
-						<a href='#id01' id='pptx_link8'><img id='pptx_img8' alt='pptx8' src="imgx/pptx/estructura_datos_3.png"/></a>
-					</div>
-					<div class="pptx pptx9" data-pptx='9'>
-						<a href='#id01' id='pptx_link9'><img id='pptx_img9' alt='pptx9' src="imgx/pptx/funciones.png"/></a>
-					</div>
-					<div class="pptx pptx10" data-pptx='10'>
-						<a href='#id01' id='pptx_link10'><img id='pptx_img10' alt='pptx10' src="imgx/pptx/historia_internet_memes.png"/></a>
-					</div>
-					<div class="pptx pptx11" data-pptx='11'>
-						<a href='#id01' id='pptx_link11'><img id='pptx_img11' alt='pptx11' src="imgx/pptx/html_5.png"/></a>
-					</div>
-					<div class="pptx pptx12" data-pptx='12'>
-						<a href='#id01' id='pptx_link12'><img id='pptx_img12' alt='pptx12' src="imgx/pptx/internet.png"/></a>
-					</div>
-					<div class="pptx pptx13" data-pptx='13'>
-						<a href='#id01' id='pptx_link13'><img id='pptx_img13' alt='pptx13' src="imgx/pptx/lenguajes_programacion.png"/></a>
-					</div>
-					<div class="pptx pptx14" data-pptx='14'>
-						<a href='#id01' id='pptx_link14'><img id='pptx_img14' alt='pptx14' src="imgx/pptx/redes_informaticas.png"/></a>
-					</div>
-					<div class="pptx pptx15" data-pptx='15'>
-						<a href='#id01' id='pptx_link15'><img id='pptx_img15' alt='pptx15' src="imgx/pptx/seguridad_informatica.png"/></a>
-					</div>
-					<div class="pptx pptx16" data-pptx='16'>
-						<a href='#id01' id='pptx_link16'><img id='pptx_img16' alt='pptx16' src="imgx/pptx/sistemas_admin_bases_datos.png"/></a>
-					</div>
-					<div class="pptx pptx17" data-pptx='17'>
-						<a href='#id01' id='pptx_link17'><img id='pptx_img17' alt='pptx17' src="imgx/pptx/teaching.png"/></a>					
-					</div>	
-					
-					<div class="pptx pptx19">
-						<p>A pasionado por la educación. Lo que más amo en la vida es aprender. Cada día sin aprender algo es un día perdido.</p> 
-					</div>
-					<div class="pptx pptx22">
-						<p> Ese principio lo intento poner en práctica lo segundo que más amo: Compartir lo que he aprendido, lo que me parece interesante y útil, todo aquello que creo que puede ayudar a alguien </p> 
-					</div>
-					<div class="pptx pptx20">
-						<p>y que me encantó cuando alguien más me guió a ello. Enseñar es una pasión y un sueño para mí, y además un medio efectivo para reforzar mis conocimientos</p>
-					</div>
-					<div class="pptx pptx23">
-							<br/>
-							Haz click en la imagen para visitar mi blog educativo de informatica						
-							<a target="_blank" href="https://ivanguillermo.github.io/informaticos15/">
-								<img style='padding: 2% 18% 21% 19%; border:0;' src="informaticos15.png"/>
-							</a>
-					</div>
-					
-					<div id="id01" class="modal">
-			            <div class="modal-dialog">
-			              <div class="modal-content">
-			                <header class="containerheader">
-			                  <a href="#pptxs" class="closebtn">×</a>
-			                  <h2 id='pptx_shower_tit'>Didactica</h2>
-			                </header>
-			                <div class="containercontainer">
-			                  <iframe id='pptx_shower_frame' 
-			                          src="" 
-			                          frameborder="0" width="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-			                  </iframe>
-			                </div>
-			                <footer class="containerfooter">
-			                  <p style='color:white'>by Ivan Guillermo Lopez</p>
-			                  <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
-			                  </div>
-			                </footer>
-			              </div>
-			            </div>
-			        </div>	   						
-				</section>		
-			</div>
-		</div>
 			
-		<footer class="item foot"> 
-					   <center class="rrss">
-					        <a id='facebook' href="https://www.facebook.com/ivanguillermolopezp" target="_blank" rel="noopener"><div><i class="fa fa-facebook-official"></i></div></a>
-					        <a id='instagram' href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-instagram"></i></div></a>
-					        <!--<a id='twitter' href="https://x.com/ivanguillermolp" target="_blank" rel="noopener"><div><i class="fa fa-twitter"></i></div></a>-->
-					        <a id='youtube' href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA?view_as=subscriber" target="_blank" rel="noopener"><div><i class="fa fa-youtube"></i></div></a>
-					        <a id='linkdin' href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener"><div><i class="fa fa-linkedin"></i></div></a>
-					        <a id='github' href="https://github.com/ivanguillermo" target="_blank" rel="noopener"><div><i class="fa fa-github"></i></div></a>
-				    	</center>
-				    	<div style='background-color: black; height:5.5vh'></div>
-		</footer>	
+			<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button" onclick="document.getElementById('fluid').style.display='';">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+			</button>
+
+			
+
+			<div class='side_music-player'>
+					<div style='display: inline-flex;align-content: ; justify-content: center; align-items: baseline'>
+						<span style='font-size: 12px'><i class="fa fa-volume-up"></i></span>
+						<progress id="progress_audio2" value="0" max="100" ></progress>
+						
+					</div>
+					<i id='song_on_band'>---</i><br/>					
+			</div>
+		</nav>		
 	</body>
-	<script src="js/traductor.js"></script>
-	<script src="js/educador.js"></script>
+	 
 	<script src="js/navbar.js"></script>
+	<script src="js/playero.js"></script>
+	<script src="js/displayer.js"></script>
+	<script src="js/series.js"></script>
+	<script src="js/books.js"></script>
+	<script src="js/albums.js"></script>
+	<script src="js/paneletes.js"></script>	
+	<script src="js/reproductor.js"></script>	
+	
 </html>
