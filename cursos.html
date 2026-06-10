@@ -562,54 +562,56 @@
 
           var botones = ['btn-danger', 'btn-info', 'btn-success', 'btn-warning', 'btn-default']; 
 
-          function curso(name, src, school, year, area, link) {
+          function curso(name, src, school, year, area, link, resume) {
                 this.name  = name;  
                 this.src = src;
                 this.school = school;
                 this.year = year;                
                 this.area = area;
                 this.link = link;
+                this.resume = resume;
+              
 
                               }
-          var calc1 = new curso ('Calculo 1', 'calculo1', 'coursera', '2014', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf');
-          var calc2 = new curso ('Calculo 2', 'calculo2', 'coursera', '2014', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf');
-          var game_theory = new curso ('Game Theory', 'game_theory', 'coursera', '2015', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf');
-          var math_phi = new curso ('Math Philosophy', 'mathematical_philosophy',  'coursera', '2016', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf');
-          var anc_greeks = new curso  ('Ancient Greek', 'ancient_greeks', 'coursera', '2015', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf' );
-          var vital_signs = new curso ('Vital Signs', 'vital_signs', 'coursera', '2016', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf');
-          var droits = new curso ('Derechos del Hombre', 'droit_del_homme', 'coursera', '2016','arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf');
-          var hlanguages = new curso ('Human Languages','human_languages', 'coursera', '2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf');
-          var phi_sci = new curso ('Philosophy and Science', 'philosophy_and_sciences', 'coursera','2015', 'philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf');
-          var kierkergaard = new curso ('Kierkegaard', 'kierkergaard', 'coursera','2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf');
-          var int_phi = new curso ('Introduction to Philosophy', 'introduction_to_philosophy', 'coursera', '2014', 'philosophy', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf');
-          var big_bang = new curso ('Big Bang', 'big_bang', 'coursera', '2017', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf');
-          var comp_stra = new curso ('Competitive Strategy', 'competitive_strategy', 'coursera','2015','matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf' );
+          var calc1 = new curso ('Calculo 1', 'calculo1', 'coursera', '2014', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf', '');
+          var calc2 = new curso ('Calculo 2', 'calculo2', 'coursera', '2014', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf', '');
+          var game_theory = new curso ('Game Theory', 'game_theory', 'coursera', '2015', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf', '');
+          var math_phi = new curso ('Math Philosophy', 'mathematical_philosophy',  'coursera', '2016', 'matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf', '');
+          var anc_greeks = new curso  ('Ancient Greek', 'ancient_greeks', 'coursera', '2015', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf', '' );
+          var vital_signs = new curso ('Vital Signs', 'vital_signs', 'coursera', '2016', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf', '');
+          var droits = new curso ('Derechos del Hombre', 'droit_del_homme', 'coursera', '2016','arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf', '');
+          var hlanguages = new curso ('Human Languages','human_languages', 'coursera', '2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf', '');
+          var phi_sci = new curso ('Philosophy and Science', 'philosophy_and_sciences', 'coursera','2015', 'philosophy','https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf', '');
+          var kierkergaard = new curso ('Kierkegaard', 'kierkergaard', 'coursera','2016', 'arte', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf', '');
+          var int_phi = new curso ('Introduction to Philosophy', 'introduction_to_philosophy', 'coursera', '2014', 'philosophy', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf', '');
+          var big_bang = new curso ('Big Bang', 'big_bang', 'coursera', '2017', 'science', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf', '');
+          var comp_stra = new curso ('Competitive Strategy', 'competitive_strategy', 'coursera','2015','matematica', 'https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf', '' );
 
-          var col_alg = new curso ('College Algebra', 'college_algebra', 'Saylor Academy','2016','matematica','https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc');
-          var alg = new curso ('Algebra', 'algebra', 'Saylor Academy','2020','matematica','https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg');
-          var say_eng = new curso ('Ingles', 'english', 'Saylor Academy','2020','languages','https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe');
-          var say_his = new curso ('Historia', 'historia', 'Saylor Academy','2020','arte','https://certificates.saylor.org/8ced9c4d-a63d-487e-825b-71d95b8fe876#gs.a3xcpt');
-          var say_precalc = new curso ('Precalculo', 'precalculo', 'Saylor Academy','2016','matematica','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c');
+          var col_alg = new curso ('College Algebra', 'college_algebra', 'Saylor Academy','2016','matematica','https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc', '');
+          var alg = new curso ('Algebra', 'algebra', 'Saylor Academy','2020','matematica','https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg', '');
+          var say_eng = new curso ('Ingles', 'english', 'Saylor Academy','2020','languages','https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe', '');
+          var say_his = new curso ('Historia', 'historia', 'Saylor Academy','2020','arte','https://certificates.saylor.org/8ced9c4d-a63d-487e-825b-71d95b8fe876#gs.a3xcpt', '');
+          var say_precalc = new curso ('Precalculo', 'precalculo', 'Saylor Academy','2016','matematica','https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c', '');
 
-          var linux  = new curso ('Linux Command Line', 'linux_cl', 'Udemy', '2017','matematica','https://www.udemy.com/certificate/UC-9YTEXXY8/');
-          var ude_py = new curso ('Python', 'pythonU', 'Udemy', '2018','programacion','https://www.udemy.com/certificate/UC-6G3AAQR5/');
-          var ccoder = new curso ('C Coder', 'c_coder', 'Udemy', '2016','programacion','https://www.udemy.com/certificate/UC-DQ152DHG/');
-          var paul   = new curso ('Paul and his letter to Philemon', 'philemon', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-DD84E92J/');
-          var greek_rel  = new curso (' Greek Religion', 'greek_religion', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-YL9EMCDC');
-          var est_mas  = new curso ('Estudiar Mas', 'estudiar_mas', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-FL12KOPT/');
+          var linux  = new curso ('Linux Command Line', 'linux_cl', 'Udemy', '2017','matematica','https://www.udemy.com/certificate/UC-9YTEXXY8/', '');
+          var ude_py = new curso ('Python', 'pythonU', 'Udemy', '2018','programacion','https://www.udemy.com/certificate/UC-6G3AAQR5/', '');
+          var ccoder = new curso ('C Coder', 'c_coder', 'Udemy', '2016','programacion','https://www.udemy.com/certificate/UC-DQ152DHG/', '');
+          var paul   = new curso ('Paul and his letter to Philemon', 'philemon', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-DD84E92J/', '');
+          var greek_rel  = new curso (' Greek Religion', 'greek_religion', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-YL9EMCDC', '');
+          var est_mas  = new curso ('Estudiar Mas', 'estudiar_mas', 'Udemy', '2017','arte','https://www.udemy.com/certificate/UC-FL12KOPT/', '');
 
-          var edx_lin = new curso ('Intro to Linux', 'intro_linux', 'edx', '2016', 'programacion', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/c9e4a91e1d7a438ebb67fe1cbe1e84f4 ');
-          var prim_num = new curso ('Prime Numbers', 'prime_numbers', 'edx', '2017', 'matematica ', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5');
-          var ap_french = new curso ('AP French', 'french', 'edx', '2016', 'languages', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6');
-          var hero = new curso ('Ancient Greek Hero', 'greek_hero', 'edx', '2014', 'arte', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf ');
+          var edx_lin = new curso ('Intro to Linux', 'intro_linux', 'edx', '2016', 'programacion', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/c9e4a91e1d7a438ebb67fe1cbe1e84f4 ', '');
+          var prim_num = new curso ('Prime Numbers', 'prime_numbers', 'edx', '2017', 'matematica ', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5', '');
+          var ap_french = new curso ('AP French', 'french', 'edx', '2016', 'languages', ' https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6', '');
+          var hero = new curso ('Ancient Greek Hero', 'greek_hero', 'edx', '2014', 'arte', 'https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf ', '');
 
 
 
-          var html = new curso ('HTML','html_w3', 'w3 School', '2016', 'programacion', '');
-          var css = new curso ('CSS','css', 'w3 School', '2017', 'programacion', '');
-          var duo_deu = new curso ('Trayecto Aleman','german', 'Duolingo', '2017', 'languages', '');
-          var duo_ing = new curso ('ingles','ingles', 'Duolingo', '2016', 'languages', '');
-          var gst_tmp = new curso ('Gestion Tiempo','gest_tmp', 'LinkedIn', '2020', 'languages', '');
+          var html = new curso ('HTML','html_w3', 'w3 School', '2016', 'programacion', '', '');
+          var css = new curso ('CSS','css', 'w3 School', '2017', 'programacion', '', '');
+          var duo_deu = new curso ('Trayecto Aleman','german', 'Duolingo', '2017', 'languages', '', '');
+          var duo_ing = new curso ('ingles','ingles', 'Duolingo', '2016', 'languages', '', '');
+          var gst_tmp = new curso ('Gestion Tiempo','gest_tmp', 'LinkedIn', '2020', 'languages', '', '');
 
 
 
@@ -814,7 +816,7 @@
               function show_kert(){
                 b= this.dataset.name;
                 cert_shower_t.innerHTML=b ;
-                cert_txt_shower_t.innerHTML=b ;
+                cert_txt_shower.innerHTML=b ;
                 cert_shower_go.href=this.dataset.dir;
                 cert_shower.src=this.dataset.img;
                 }
