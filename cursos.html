@@ -185,8 +185,8 @@
                   </header>
                   <center class="containercontainer">                    
                     <img id='cert_shower' src="imgx/cursos/" />
-                    <div style="margin: 15px; background: red; padding: 6px; height: 200%; width: 300px">
-                      <p>ajidbifubiowebisbcoasdasauhbduvwyqvwidqwe
+                    <div style="margin: 15px; background: red; padding: 6px; height: 200%; width: 250px">
+                      <p id='cert_txt_shower'>ajidbifubiowebisbcoasdasauhbduvwyqvwidqwe
                       </p>
                     </div>
                   </center>
@@ -808,11 +808,12 @@
               const cert_shower_t= document.getElementById('cert_shower_t');
               const cert_shower= document.getElementById('cert_shower');
               const cert_shower_go= document.getElementById('cert_shower_go');
-                           
+              const cert_txt_shower= document.getElementById('cert_txt_shower');            
 
               function show_kert(){
                 b= this.dataset.name;
                 cert_shower_t.innerHTML=b ;
+                cert_txt_shower_t.innerHTML=b ;
                 cert_shower_go.href=this.dataset.dir;
                 cert_shower.src=this.dataset.img;
                 }
