@@ -191,7 +191,7 @@
                     </div>
                   </center>
                   <footer class="containerfooter">
-                    <a target='_blank' href='' id='cert_shower_go'><p>Ir al sitio</p></a>
+                    <a target='_blank' href='' id='cert_shower_go' rel="noopener noreferrer"><p>Ir al sitio</p></a>
                     <div id="percent-loaded" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">                    
                     </div>
                   </footer>
@@ -816,7 +816,7 @@
               function show_kert(){
                 b= this.dataset.name;
                 cert_shower_t.innerHTML=b ;
-                cert_txt_shower.innerHTML=b ;
+                cert_txt_shower.innerHTML=this.dataset.resume;
                 cert_shower_go.href=this.dataset.dir;
                 cert_shower.src=this.dataset.img;
                 }
