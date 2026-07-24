@@ -10,8 +10,11 @@ var reproductor = document.getElementById('reproductor');
 
 				var play_bot = document.getElementById('rep_play-btn');
 
-				const songOn =document.querySelector('song_on');
-			    const songOnBand =document.querySelector('song_on_band');	
+				const songOn = document.querySelector('#song_on'); // Falta el #
+const songOnBand = document.querySelector('#song_on_band'); // Falta el #
+
+// Dentro de play_music():
+
 				
 				var p_s= 1;
 
@@ -34,10 +37,11 @@ var reproductor = document.getElementById('reproductor');
 			      reproductor.src = audiosrc.src;			      
 			      reproductor.currentTime = 0;
 			      reproductor.play();
-			      song_on.innerHTML = noline(audiosrc.dataset.name);
-			      song_on_band.innerHTML = noline(audiosrc.dataset.band);
+			      songOn.innerHTML = noline(audiosrc.dataset.name);
+				songOnBand.innerHTML = noline(audiosrc.dataset.band);
+				
 			      this.style.backgroundColor='red';
-			      console.log(eproductor.src);
+			      console.log(reproductor.src);
 			      ;
 			    }		
 

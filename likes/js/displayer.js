@@ -112,11 +112,10 @@ var song_list= document.getElementById('mis_canciones');
 
 							var songs = [cln, otherside, terraza, riesgo, flor_de_fuego, slts, a_guerra_lenta, my_hero, metalingus, sown, ebic, nopa, awin2b, likeastone, ruby, bliss ]	;
 
-						function noline(x){
-							for (var i = 0; i < x.length; i++) {
-								x = x.replace("_"," ");
-							}						
-							return x;}
+						function noline(str) {
+    return str ? str.replace(/_/g, " ") : "";
+}
+						
 							
 
 						function print_songs(){
@@ -129,22 +128,17 @@ var song_list= document.getElementById('mis_canciones');
 
 						   	song_list.innerHTML += 
 						    `<tr class=''>
-					           	<td style='width:2vw' data-label="More" class='more_music'>+</td>
-					            <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
-					               	<p class="playmusic fa fa-play-circle">
-					               	  <audio 
-					               		src="sounds/${songs[i].grupo}-${songs[i].name}.mp3"
-										data-name='${songs[i].name}'
-										data-band='${songs[i].grupo}'
-									  >
-					               	  </audio>
-					               	  <td data-label="Nombre"><a>${s_name} </a></td>
-							          <td data-label="Artista">${s_band}</td>
-							          <td data-label="Album">${s_album}</td>
-					               	</p>
-					            </td>
-					                				                
-					        </tr>`}
+    <td style='width:2vw' data-label="More" class='more_music'>+</td>
+    <td style='width:4vw' data-label="playmusic_bot" class='play_music_but'>
+        <p class="playmusic fa fa-play-circle">
+            <audio src="sounds/${songs[i].grupo}-${songs[i].name}.mp3" data-name='${songs[i].name}' data-band='${songs[i].grupo}'></audio>
+            <td data-label="Nombre"><a>${s_name} </a></td>
+            <td data-label="Artista">${s_band}</td>
+            <td data-label="Album">${s_album}</td>
+        </p>
+    </td>
+</tr>`}
 							};
 						print_songs();
+
 //
