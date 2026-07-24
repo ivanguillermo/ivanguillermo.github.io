@@ -1,1 +1,29 @@
-
+name,src,school,year,area,link,resume,relevance
+Calculo 1,calculo1,coursera,2014,matematica,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970360~2254513/pdf,","This undergraduate course is a one semester introduction to thedifferential and integral calculus, covering the definition, techniques, and applications of limits, derivatives, and integrals",1
+Calculo 2,calculo2,coursera,2014,matematica,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971893~2254513/pdf,","This second course in calculus covers sequences and series, including convergence tests, alternating series, power series, and Taylor series",1
+Game Theory,game_theory,coursera,2015,matematica,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970437~2254513/pdf,",,2
+Math Philosophy,mathematical_philosophy,coursera,2016,matematica,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/972061~2254513/pdf,",,3
+Ancient Greek,ancient_greeks,coursera,2015,arte,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/971057~2254513/pdf,",,4
+Vital Signs,vital_signs,coursera,2016,science,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974609~2254513/pdf,",,4
+Derechos del Hombre,droit_del_homme,coursera,2016,arte,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/973088~2254513/pdf,",,5
+Human Languages,human_languages,coursera,2016,arte,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974258~2254513/pdf,",,5
+Philosophy and Science,philosophy_and_sciences,coursera,2015,philosophy,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974288~2254513/pdf,",,3
+Kierkegaard,kierkergaard,coursera,2016,arte,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/974298~2254513/pdf,",,5
+Introduction to Philosophy,introduction_to_philosophy,coursera,2014,philosophy,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/366~2254513/pdf,",,3
+Big Bang,big_bang,coursera,2017,science,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970706~2254513/pdf,",,3
+Competitive Strategy,competitive_strategy,coursera,2015,matematica,"https://www.coursera.org/api/legacyCertificates.v1/spark/statementOfAccomplishment/970594~2254513/pdf,",,2
+College Algebra,college_algebra,Saylor Academy,2016,matematica,"https://www.credential.net/ce471213-1e9a-4633-859d-68cb9e413bbc,",,1
+Algebra,algebra,Saylor Academy,2020,matematica,"https://certificates.saylor.org/d175350b-30f9-4cea-a38a-0b8e2982ad3b#gs.a3xbzg,",,1
+Ingles,english,Saylor Academy,2020,languages,"https://certificates.saylor.org/0872679a-194d-4cf0-b247-b3b065e4c9e9#gs.a3xcxe,",,1
+Historia,historia,Saylor Academy,2020,arte,"https://certificates.saylor.org/8ced9c4d-a63d-487e-825b-71d95b8fe876#gs.a3xcpt,",,4
+Precalculo,precalculo,Saylor Academy,2016,matematica,"https://www.credential.net/3713bef1-23ce-4fab-a28a-4a5659392d0c,",,1
+Linux Command Line,linux_cl,Udemy,2017,matematica,"https://www.udemy.com/certificate/UC-9YTEXXY8/,",,1
+Python,pythonU,Udemy,2018,programacion,"https://www.udemy.com/certificate/UC-6G3AAQR5/,",,1
+C Coder,c_coder,Udemy,2016,programacion,"https://www.udemy.com/certificate/UC-DQ152DHG/,",,1
+Paul and his letter to Philemon,philemon,Udemy,2017,arte,"https://www.udemy.com/certificate/UC-DD84E92J/,",,5
+Greek Religion,greek_religion,Udemy,2017,arte,"https://www.udemy.com/certificate/UC-YL9EMCDC,",,5
+Estudiar Mas,estudiar_mas,Udemy,2017,arte,"https://www.udemy.com/certificate/UC-FL12KOPT/,",,3
+Intro to Linux,intro_linux,edx,2016,programacion,"https://s3.amazonaws.com/verify.courses3_.org/downloads/c9e4a91e1d7a438ebb67fe1cbe1e84f4,",,1
+Prime Numbers,prime_numbers,edx,2017,matematica,"https://s3.amazonaws.com/verify.courses3_.org/downloads/897083f36fc345e597477a60aa028bf5,",,2
+AP French,french,edx,2016,languages,"https://s3.amazonaws.com/verify.courses3_.org/downloads/f234fbb0f3744549955007cad284dbe6,",,1
+Ancient Greek Hero,greek_hero,edx,2014,arte,"https://s3.amazonaws.com/verify.courses3_.org/downloads/4186e2075e2b496d920a45561841be88/Certificate.pdf,",,5
