@@ -2,10 +2,10 @@
    1. VARIABLES Y CONFIGURACIÓN GENERAL
    ========================================================================== */
 :root {
-  --color-primary: #4fdb98;
-  --blue: #1AA9EC;
-  --orange: #ff9800;
-  --magenta: #D1215F;
+  --color-primary:#4fdb98;
+  --blue:#1AA9EC;
+  --orange:#ff9800;
+  --magenta:#D1215F;
   --green: #a3bf34;
   
   --bg-dark: #121212;
@@ -82,11 +82,11 @@ a:hover {
 }
 
 /* Recuperamos la identidad cromática de cada faceta */
-#jumbo_ivan.active  { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("imgx/background.jpg") center/cover; }
-#translator.active  { background-color: #12291d; border-top: 5px solid var(--green); }   /* Verde Traductor */
-#programmer.active  { background-color: #101c24; border-top: 5px solid var(--blue); }    /* Azul Programador */
-#matematico.active  { background-color: #1a162b; border-top: 5px solid #8e44ad; }   /* Morado/Oscuro Matemático */
-#educador.active    { background-color: #2b121e; border-top: 5px solid var(--magenta); } /* Magenta Educador */
+#jumbo_ivan.active  { background: var(--color-primary), url("imgx/background.jpg") center/cover; }
+#translator.active  { background-color: var(--green); border-top: 5px solid #12291d; }   /* Verde Traductor */
+#programmer.active  { background-color: var(--orange); border-top: 5px solid #101c24; }    /* Naranja Programador */
+#matematico.active  { background-color: var(--blue); border-top: 5px solid #1a162b; }   /* Azul Matemático */
+#educador.active    { background-color: var(--magenta); border-top: 5px solid #2b121e; } /* Magenta Educador */
 
 section.job,
 section#logos {
@@ -331,24 +331,71 @@ section#logos {
 /* Animación Globos */
 .balloon {
   position: absolute;
-  bottom: -100px;
-  width: 60px;
-  height: 75px;
+  bottom: -120px;
+  
+  /* 1. Dimensiones más gruesas y espaciosas */
+  width: 90px;             /* Aumentamos de 60px a 90px */
+  min-height: 105px;       /* Un poco más alto para guardar la proporción */
+  padding: 10px 8px;       /* Espacio interno para que no pegue el texto a los bordes */
+  
+  /* 2. Forma de globo realista */
   border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  
+  /* 3. Centrado del texto interno */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #000;
+  text-align: center;
+  font-size: 0.75rem;      /* Tamaño legible para palabras largas */
+  font-weight: 700;
+  line-height: 1.1;
+  color: #111;
+  word-break: break-word;  /* Evita que palabras muy largas salgan del globo */
+  
+  /* 4. Sombra ligera para dar volumen 3D */
+  box-shadow: inset -8px -8px 15px rgba(0, 0, 0, 0.15),
+              2px 5px 15px rgba(0, 0, 0, 0.2);
+              
   animation: floatUp 15s linear forwards;
-  opacity: 0.85;
+  opacity: 0.9;
   z-index: 1;
 }
 
+/* El nudo del globo */
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 6px;
+  background-color: inherit; /* Hereda el color del globo */
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); /* Forma trapezoidal de nudo */
+}
+
+/* La cuerdita colgante del globo */
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -64px;            /* Cuelga debajo del nudo */
+  left: 47%;
+  width: 2px;
+  height: 58px;             /* Largo de la cuerda */
+  background-color: rgba(255, 255, 255, 0.6); /* Cuerdita clara, o usa #333 si prefieres oscura */
+  border-radius: 50%;       /* Ligera curvatura orgánica */
+  transform: translateX(-50%) rotate(5deg);
+}
+
 @keyframes floatUp {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0.85; }
-  100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+  0% { 
+    transform: translateY(0) rotate(0deg); 
+    opacity: 0.9; 
+  }
+  100% { 
+    transform: translateY(-125vh) rotate(15deg); 
+    opacity: 0; 
+  }
 }
 
 /* ==========================================================================
