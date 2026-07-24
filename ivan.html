@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sitio web personal y portafolio de Ivan Lopez Pedreanez - Profesor, Programador Web y Matemático">
+  <title>Ivan Lopez Pedreañez</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="shortcut icon" href="imgx/favicon.ico" type="image/x-icon">
+
+  <!-- Fuentes e Iconos optimizados -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Encabezado Principal / Hero -->
+  <header class="jumbotron" id="jumbo_ivan">
+    <div class="container media">
+      <div class="media-left">
+        <img alt="Foto de Ivan Lopez Pedreañez" class="media-object" src="yo2019.png" />
+        <a href="bio.html" id="about_btn" class="btn">Mi Historia</a>
+      </div>
+      <div class="media-body">
+        <h1 class="media-heading">Ivan Lopez Pedreañez</h1>
+        <div id="resume" class="resume">
+          <p>Me llamo Ivan y soy Profesor de Informática y Programador Web</p>
+          <p>Actualmente estoy culminando mis estudios de Licenciatura en Matemática</p>
+          <p>Soy fan de crear proyectos y aprender cosas nuevas cada día</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Cita -->
+    <section id="quote">
+      <p>
+        <q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q><br>
+        <em>— Friedrich Nietzsche</em>
+      </p>
+    </section>
+
+    <!-- Resumen y Perfiles -->
+    <section id="logos">
+      <div id="yo_descripcion">
+        <h2 id="mi_nombre">Ivan Guillermo</h2>
+        <p id="descripcion">
+          Soy un apasionado por estudiar y aprender cada día un poco más, y luego busco poner en práctica lo que aprendo para resolver problemas de la vida real. Además de Docente, me considero a mí mismo...
+        </p>
+      </div>
+
+      <div class="logos_profs">
+        <article class="icon">
+          <img class="logo_prof" src="imgx/trans.gif" alt="Traductor" />
+          <div>
+            <h3 class="tit_prof">TRADUCTOR</h3>
+            <p class="prof_txt">
+              Buscando nuevas perspectivas, descubrí que debo tomar las fuentes en su idioma original.
+              Revisa mi perfil en <a href="https://www.freelancer.com/u/IvanD413R" rel="noopener" target="_blank">Freelancer.com</a>.
+            </p>
+          </div>
+        </article>
+
+        <article class="icon">
+          <img class="logo_prof" src="imgx/prog.gif" alt="Programador" />
+          <div>
+            <h3 class="tit_prof">PROGRAMADOR</h3>
+            <p class="prof_txt">
+              Disfruto buscar soluciones a los problemas, y la programación me da la posibilidad de alcanzar 
+              <a href="https://github.com/ivanguillermo" rel="noopener" target="_blank">soluciones óptimas</a> mirando las cosas desde perspectivas nuevas.
+            </p>
+          </div>
+        </article>
+
+        <article class="icon">
+          <img class="logo_prof" src="imgx/icono_mat.png" alt="Matemático" />
+          <div>
+            <h3 class="tit_prof">MATEMÁTICO</h3>
+            <p class="prof_txt">
+              Estudiante de Licenciatura en Matemáticas en la <a href="https://unaeduve.wordpress.com/" rel="noopener" target="_blank">Universidad Nacional Abierta</a> (UNA). Amo la estadística y la optimización.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección Traductor -->
+    <section class="job" id="translator">
+      <h2 class="sec_tit">TRADUCTOR</h2>
+      <div class="body2" id="myDIV2"></div>
+
+      <div id="langs_p">
+        <p>He trabajado como traductor freelance y profesor de Inglés con mi propia <a href="https://englishprime.github.io/" target="_blank" rel="noopener">plataforma de enseñanza</a>.</p>
+        <span id="tr_txt">
+          Puedo traducir entre cinco idiomas. Soy hablante nativo de ESPAÑOL y altamente competente en INGLÉS.<br>
+          Traducciones disponibles desde: ALEMÁN 🇩🇪, FRANCÉS 🇫🇷, PORTUGUÉS 🇧🇷 / 🇵🇹.
+        </span>
+      </div>
+
+      <div id="langs">
+        <button class="aflag" data-lang="0" aria-label="Portugués"><img alt="Brasil" class="flagies" src="imgx/langs/bra.png" /></button>
+        <button class="aflag" data-lang="1" aria-label="Alemán"><img alt="Alemania" class="flagies" src="imgx/langs/deu.png" /></button>
+        <button class="aflag" data-lang="2" aria-label="Francés"><img alt="Francia" class="flagies" src="imgx/langs/fra.png" /></button>
+        <button class="aflag big_flag" data-lang="3" aria-label="Español"><img alt="España" class="flagies" src="imgx/langs/spa.png" /></button>
+        <button class="aflag" data-lang="4" aria-label="Inglés"><img alt="EEUU" class="flagies" src="imgx/langs/eng.png" /></button>
+      </div>
+    </section>
+
+    <!-- Sección Programador -->
+    <section class="job" id="programmer">
+      <h2 class="sec_tit">PROGRAMADOR</h2>
+      <div class="progr_info">
+        <p>
+          Inicié en JavaScript, Python y Java. Para matemática aprendí Pascal y Octave. Durante mi carrera en Educación Informática descubrí mi pasión por el <strong>Desarrollo Frontend</strong>.
+        </p>
+        <p>
+          Especializado en <strong>HTML, CSS y JavaScript</strong>. Manejo Git, Node.js, Bootstrap y React.js.
+        </p>
+      </div>
+
+      <div id="progr_langs">
+        <div class="p_langs" id="python">
+          <a target="_blank" rel="noopener" href="https://github.com/ivanguillermo/python"><img class="p_langs_img" alt="python" src="imgx/devs/python.png"/></a>
+        </div>
+        <div class="p_langs" id="html">
+          <img class="p_langs_img" alt="html5" src="imgx/devs/html.png"/>
+        </div>
+        <div class="p_langs" id="css">
+          <img class="p_langs_img" alt="css" src="imgx/devs/css.png"/>
+        </div>
+        <div class="p_langs" id="js">
+          <img class="p_langs_img" alt="javascript" src="imgx/devs/js.png"/>
+        </div>
+        <div class="p_langs" id="php">
+          <a target="_blank" rel="noopener" href="https://github.com/ivanguillermo/PrettyHorribleProjects"><img class="p_langs_img" alt="php" src="imgx/devs/php2.png"/></a>
+        </div>
+        <div class="p_langs" id="mysql">
+          <a target="_blank" rel="noopener" href="https://github.com/ivanguillermo/mySQL_databases"><img class="p_langs_img" alt="mysql" src="imgx/devs/mysql.png"/></a>
+        </div>
+      </div>
+
+      <a class="github_btn" href="https://github.com/ivanguillermo" target="_blank" rel="noopener">Mi GitHub <i class="fa fa-github"></i></a>
+    </section>
+
+    <!-- Sección Matemático -->
+    <section class="job" id="matematico">
+      <h2 class="sec_tit">MATEMÁTICO</h2>
+      <div class="mat_cards">
+        <article class="mat_card">
+          <h3>ESTADÍSTICA</h3>
+          <p>Análisis y descripción de datos para la toma de decisiones.</p>
+        </article>
+        <article class="mat_card">
+          <h3>CÁLCULO</h3>
+          <p>Análisis de variaciones y consecuencias cuantificables de eventos.</p>
+        </article>
+        <article class="mat_card">
+          <h3>OPTIMIZACIÓN</h3>
+          <p>Técnicas de modelación matemática para planificación y toma eficiente de decisiones.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección Educador -->
+    <section class="job" id="educador">
+      <h2 class="sec_tit">EDUCADOR</h2>
+      <div class="educador_grid" id="pptx_container">
+        <!-- Las miniaturas se cargan dinámicamente vía JS -->
+      </div>
+
+      <div class="educador_txt">
+        <p>Apasionado por la educación y compartir conocimientos. Enseñar es el mejor medio para reforzar lo aprendido.</p>
+        <p>
+          Visita mi blog educativo: 
+          <a target="_blank" rel="noopener" href="https://ivanguillermo.github.io/informaticos15/">Informáticos 15</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Diapositivas -->
+  <dialog id="pptx_modal" class="modal">
+    <div class="modal-content">
+      <header class="containerheader">
+        <h3 id="pptx_shower_tit">Presentación</h3>
+        <button id="close_modal" class="closebtn">&times;</button>
+      </header>
+      <div class="containercontainer">
+        <iframe id="pptx_shower_frame" src="" frameborder="0" width="100%" allowfullscreen="true"></iframe>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Navegación Fija -->
+  <nav id="navbarIvan" class="navbar-fixed-bottom">
+    <div class="nav-links">
+      <a class="navbar-brand" href="#jumbo_ivan"><b>Hola!</b></a>
+      <a id="navYo" href="#quote">Ivanguillermo</a>
+      <a id="navTra" href="#translator">TRADUCTOR</a>
+      <a id="navPro" href="#programmer">PROGRAMADOR</a>
+      <a id="navMat" href="#matematico">MATEMÁTICO</a>
+      <a id="navEdu" href="#educador">EDUCADOR</a>
+      <a href="contacto.html" class="nav-contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- Pie de página / RRSS -->
+  <footer class="foot">
+    <div class="rrss">
+      <a href="https://www.facebook.com/ivanguillermolopezp" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook-official"></i></a>
+      <a href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+      <a href="https://x.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
+      <a href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/ivanguillermo" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github"></i></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
