@@ -1,0 +1,578 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
+:root {
+  --color-primary: #4fdb98;
+  --blue: #1AA9EC;
+  --orange: #ff9800;
+  --magenta: #D1215F;
+  --green: #a3bf34;
+  
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --text-light: #ffffff;
+  --text-muted: #cccccc;
+  
+  --font-main: 'Roboto', sans-serif;
+  --font-heading: 'Lobster', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-bottom: 70px; /* Espacio para la navbar fija inferior */
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+section.job,
+section#logos {
+  padding: 4rem 1.5rem;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sec_tit {
+  font-size: 2.2rem;
+  font-family: var(--font-main);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   2. HERO / JUMBOTRON (#jumbo_ivan)
+   ========================================================================== */
+.jumbotron {
+  min-height: 90vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+              url("imgx/background.jpg") center/cover no-repeat fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.container.media {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.media-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.media-object {
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border: 4px solid var(--color-primary);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.btn {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-light);
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--color-primary);
+  color: var(--bg-dark);
+}
+
+.media-body {
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+}
+
+.media-heading {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.resume p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   3. CITA Y RESUMEN (#quote & #logos)
+   ========================================================================== */
+#quote {
+  background-color: #1a1a1a;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-y: 1px solid #333;
+}
+
+#quote q {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #fff;
+}
+
+#quote em {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--color-primary);
+}
+
+#logos {
+  background-color: var(--bg-dark);
+}
+
+#yo_descripcion {
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+#mi_nombre {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+#descripcion {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.logos_profs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.icon {
+  background-color: var(--bg-card);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: translateY(-5px);
+}
+
+.logo_prof {
+  height: 100px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.tit_prof {
+  font-size: 1.3rem;
+  color: var(--orange);
+  margin-bottom: 0.8rem;
+}
+
+.icon:first-child .tit_prof { color: var(--green); }
+.icon:last-child .tit_prof { color: var(--blue); }
+
+.prof_txt {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   4. SECCIÓN TRADUCTOR (#translator)
+   ========================================================================== */
+#translator {
+  background-color: #182820;
+  position: relative;
+  overflow: hidden;
+}
+
+#langs_p {
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+#tr_txt {
+  display: block;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+}
+
+#langs {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.aflag {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.flagies {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.aflag.big_flag {
+  transform: scale(1.3);
+  border: 2px solid var(--orange);
+}
+
+/* Animación Globos */
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 60px;
+  height: 75px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #000;
+  animation: floatUp 15s linear forwards;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.85; }
+  100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+}
+
+/* ==========================================================================
+   5. SECCIÓN PROGRAMADOR (#programmer)
+   ========================================================================== */
+#programmer {
+  background-color: #1a232a;
+}
+
+.progr_info {
+  max-width: 750px;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+#progr_langs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.p_langs_img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  padding: 10px;
+  background: var(--bg-card);
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  transition: transform 0.3s ease;
+}
+
+.p_langs_img:hover {
+  transform: scale(1.15);
+  border-color: var(--color-primary);
+}
+
+.github_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-weight: bold;
+  border: 1px solid #333;
+}
+
+.github_btn:hover {
+  background-color: var(--color-primary);
+  color: #000;
+}
+
+/* ==========================================================================
+   6. SECCIÓN MATEMÁTICO (#matematico)
+   ========================================================================== */
+#matematico {
+  background-color: #121c24;
+}
+
+.mat_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.mat_card {
+  background-color: var(--bg-card);
+  padding: 2.5rem 1.5rem;
+  border-radius: 12px;
+  border-top: 4px solid var(--blue);
+  text-align: center;
+}
+
+.mat_card h3 {
+  font-size: 1.4rem;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+.mat_card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   7. SECCIÓN EDUCADOR (#educador) Y MODAL
+   ========================================================================== */
+#educador {
+  background-color: #2a1520;
+}
+
+.educador_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2.5rem;
+}
+
+.pptx_item {
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.pptx_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pptx_item:hover {
+  border-color: var(--magenta);
+  transform: scale(1.05);
+}
+
+.educador_txt {
+  text-align: center;
+  max-width: 600px;
+  color: var(--text-muted);
+}
+
+/* Modal HTML5 <dialog> */
+.modal {
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: #fff;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.containerheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #282828;
+}
+
+.closebtn {
+  background: none;
+  border: none;
+  color: var(--magenta);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.containercontainer {
+  padding: 1rem;
+}
+
+#pptx_shower_frame {
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   8. NAVEGACIÓN FIJA Y FOOTER
+   ========================================================================== */
+.navbar-fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid #333;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.nav-links a.navbar-brand {
+  color: var(--bg-dark);
+  background-color: var(--color-primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+footer.foot {
+  padding: 2rem 1rem;
+  background-color: #0a0a0a;
+  text-align: center;
+}
+
+.rrss {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.rrss a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.rrss a:hover {
+  background-color: var(--color-primary);
+  color: var(--bg-dark);
+  border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   9. MEDIA QUERIES (RESPONSIVE DESIGN)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .media-heading {
+    font-size: 2.5rem;
+  }
+  
+  .container.media {
+    text-align: center;
+  }
+  
+  .media-body {
+    text-align: center;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+  }
+
+  .sec_tit {
+    font-size: 1.8rem;
+  }
+}
