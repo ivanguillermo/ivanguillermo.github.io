@@ -59,7 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ["didactica", "Didáctica", "https://docs.google.com/presentation/d/e/2PACX-1vSrG0GkskW6HR6z9hgkoQmq61UE_K81Stogr5Gwished9Sdox20PcrAhxSQOUgkB8bgsG6ZE4puXZ01/embed?start=false&loop=false&delayms=3000"],
     ["electronica_digital", "Electrónica Digital", "https://docs.google.com/presentation/d/e/2PACX-1vRCdEw85JiDkLsdGDjVVrpFDcH6LuojqAz1mFoUstDeq6tGMqHmp-FPmtmEsxrKz2eDYLChZzOK40h2/embed?start=false&loop=false&delayms=3000"],
     ["estructura_datos_2", "Estructura Datos 2", "https://docs.google.com/presentation/d/e/2PACX-1vTvtZBStPW16UbZ9pm_eiW4ClMdjDyuINHmPNSrfpEHMUQeFfozknVf_f0HMbaPiHwxsTBayHZFo2NU/embed?start=false&loop=false&delayms=3000"]
-  ];
+    ["derivada", "Derivadas", "https://docs.google.com/presentation/d/e/2PACX-1vSyWsf67g0hTONcUMN-tlXjAzHyoatA-u-C7agtV6wQFEuLCA4tvK-6cTSDPDXPebKOsZMGQjvIryZk/embed?start=false&loop=false&delayms=3000"],
+    ["didactica", "Didáctica", "https://docs.google.com/presentation/d/e/2PACX-1vSrG0GkskW6HR6z9hgkoQmq61UE_K81Stogr5Gwished9Sdox20PcrAhxSQOUgkB8bgsG6ZE4puXZ01/embed?start=false&loop=false&delayms=3000"],
+    ["electronica_digital", "Electrónica Digital", "https://docs.google.com/presentation/d/e/2PACX-1vRCdEw85JiDkLsdGDjVVrpFDcH6LuojqAz1mFoUstDeq6tGMqHmp-FPmtmEsxrKz2eDYLChZzOK40h2/embed?start=false&loop=false&delayms=3000"]
+        ];
 
   const pptxGrid = document.getElementById('pptx_container');
   const modal = document.getElementById('pptx_modal');
@@ -130,4 +133,28 @@ document.addEventListener('keydown', (e) => {
     const prevBtn = activeBtn.previousElementSibling;
     if (prevBtn && prevBtn.classList.contains('nav-tab')) prevBtn.click();
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.querySelector('.navbar-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const tabButtons = document.querySelectorAll('.nav-tab');
+
+  // Alternar apertura / cierre del menú colapsable
+  if (toggleBtn && navLinks) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = navLinks.classList.toggle('show');
+      toggleBtn.setAttribute('aria-expanded', isExpanded);
+    });
+  }
+
+  // Cerrar el menú desplegable al hacer clic en cualquier pestaña
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 });

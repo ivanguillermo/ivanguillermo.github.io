@@ -460,7 +460,14 @@ section#logos {
 #matematico {
   background-color: #121c24;
 }
+#mat_estad{background: url(imgx/estadistica.png)}
+#mat_calc{background: url(imgx/calculo.png)}
+#mat_optim{background: url(imgx/optimizacion.png)}
 
+.mat_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 210, 211, 0.2); /* Usa tu color de acento */
+}
 .mat_cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -475,6 +482,7 @@ section#logos {
   border-radius: 12px;
   border-top: 4px solid var(--blue);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mat_card h3 {
@@ -574,9 +582,6 @@ section#logos {
 
 /* ==========================================================================
    8. NAVEGACIÓN FIJA Y FOOTER
-   ========================================================================== */
-/* ==========================================================================
-   NAVBAR INFERIOR ESTILO APP
    ========================================================================== */
 
 /* 1. El contenedor fijo abajo */
@@ -696,5 +701,70 @@ section#logos {
 
   .sec_tit {
     font-size: 1.8rem;
+  }
+}
+/* ==========================================================================
+   MENÚ DESPLEGABLE / COLLAPSE
+   ========================================================================== */
+
+/* Oculto por defecto en pantallas grandes */
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  width: 30px;
+}
+
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Adaptación para pantallas pequeñas (Mobile) */
+@media (max-width: 768px) {
+  .navbar-fixed-bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .navbar-toggle {
+    display: flex; /* Muestra el botón en móviles */
+  }
+
+  .nav-links {
+    position: absolute;
+    bottom: 60px; /* Despliega el menú hacia arriba de la navbar */
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.4);
+    
+    /* Estado colapsado oculto */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  /* Estado desplegado al presionar el botón */
+  .nav-links.show {
+    max-height: 300px; /* Alto suficiente para mostrar los 5 botones */
+  }
+
+  .nav-tab {
+    height: 48px; /* Altura ideal para toque táctil */
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
