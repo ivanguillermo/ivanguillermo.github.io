@@ -98,3 +98,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// LÓGICA DE NAVEGACIÓN POR PESTAÑAS (TABS)
+const tabButtons = document.querySelectorAll('.nav-tab');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const targetTabId = button.dataset.tab;
+
+    // 1. Quitar la clase .active de todos los botones y secciones
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    tabContents.forEach(content => content.classList.remove('active'));
+
+    // 2. Activar el botón presionado y la sección correspondiente
+    button.classList.add('active');
+    document.getElementById(targetTabId).classList.add('active');
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  const activeBtn = document.querySelector('.nav-tab.active');
+  if (!activeBtn) return;
+
+  if (e.key === 'ArrowRight') {
+    // Ir a la siguiente pestaña
+    const nextBtn = activeBtn.nextElementSibling;
+    if (nextBtn && nextBtn.classList.contains('nav-tab')) nextBtn.click();
+  } else if (e.key === 'ArrowLeft') {
+    // Ir a la pestaña anterior
+    const prevBtn = activeBtn.previousElementSibling;
+    if (prevBtn && prevBtn.classList.contains('nav-tab')) prevBtn.click();
+  }
+});

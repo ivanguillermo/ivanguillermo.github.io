@@ -23,6 +23,7 @@
   padding: 0;
 }
 
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -33,8 +34,41 @@ body {
   color: var(--text-light);
   font-family: var(--font-main);
   line-height: 1.6;
-  overflow-x: hidden;
-  padding-bottom: 70px; /* Espacio para la navbar fija inferior */
+  
+  
+}
+/* 1. Bloqueamos el scroll global de la ventana */
+html, body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Nada de barras de scroll externas */
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Todas las secciones ocupan pantalla completa, pero están ocultas por defecto */
+main section.tab-content {
+  display: none; /* Oculta la pestaña */
+  width: 100vw;
+  height: calc(100vh - 60px); /* 100% de alto menos la altura de la navbar inferior */
+  box-sizing: border-box;
+  padding: 2rem;
+  overflow-y: auto; /* Si el contenido de una sección es muy grande en un móvil, solo ESA sección tiene scroll interno */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3. La sección que tenga la clase .active se muestra */
+main section.tab-content.active {
+  display: flex;
+  animation: fadeIn 0.4s ease-in-out; /* Transición suave al cambiar de pestaña */
+}
+
+/* Animación de entrada estilo App */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 a {
@@ -47,10 +81,16 @@ a:hover {
   color: #ffffff;
 }
 
+/* Recuperamos la identidad cromática de cada faceta */
+#jumbo_ivan.active  { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("imgx/background.jpg") center/cover; }
+#translator.active  { background-color: #12291d; border-top: 5px solid var(--green); }   /* Verde Traductor */
+#programmer.active  { background-color: #101c24; border-top: 5px solid var(--blue); }    /* Azul Programador */
+#matematico.active  { background-color: #1a162b; border-top: 5px solid #8e44ad; }   /* Morado/Oscuro Matemático */
+#educador.active    { background-color: #2b121e; border-top: 5px solid var(--magenta); } /* Magenta Educador */
+
 section.job,
 section#logos {
   padding: 4rem 1.5rem;
-  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,7 +111,6 @@ section#logos {
    2. HERO / JUMBOTRON (#jumbo_ivan)
    ========================================================================== */
 .jumbotron {
-  min-height: 90vh;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
               url("imgx/background.jpg") center/cover no-repeat fixed;
   display: flex;
@@ -283,6 +322,12 @@ section#logos {
   border: 2px solid var(--orange);
 }
 
+.aflag.big_flag .flagies {
+  border: 3px solid var(--orange);
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.6);
+  transform: scale(1.1);
+}
+
 /* Animación Globos */
 .balloon {
   position: absolute;
@@ -483,6 +528,11 @@ section#logos {
 /* ==========================================================================
    8. NAVEGACIÓN FIJA Y FOOTER
    ========================================================================== */
+.nav-tab.active {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
+
 .navbar-fixed-bottom {
   position: fixed;
   bottom: 0;

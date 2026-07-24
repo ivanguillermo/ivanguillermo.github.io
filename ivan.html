@@ -19,86 +19,53 @@
 </head>
 <body>
 
-  <!-- Encabezado Principal / Hero -->
-  <header class="jumbotron" id="jumbo_ivan">
-    <div class="container media">
-      <div class="media-left">
-        <img alt="Foto de Ivan Lopez Pedreañez" class="media-object" src="yo2019.png" />
-        <a href="bio.html" id="about_btn" class="btn">Mi Historia</a>
-      </div>
-      <div class="media-body">
-        <h1 class="media-heading">Ivan Lopez Pedreañez</h1>
-        <div id="resume" class="resume">
-          <p>Me llamo Ivan y soy Profesor de Informática y Programador Web</p>
-          <p>Actualmente estoy culminando mis estudios de Licenciatura en Matemática</p>
-          <p>Soy fan de crear proyectos y aprender cosas nuevas cada día</p>
+  <main>
+    <!-- 1. PESTAÑA: INICIO / HERO -->
+    <section class="tab-content active" id="jumbo_ivan">
+      <div class="container media">
+        <div class="media-left">
+          <img alt="Foto de Ivan Lopez Pedreañez" class="media-object" src="yo2019.png" />
+          <a href="bio.html" id="about_btn" class="btn">Mi Historia</a>
+        </div>
+        <div class="media-body">
+          <h1 class="media-heading">Ivan Lopez Pedreañez</h1>
+          <div id="resume" class="resume">
+            <p>Me llamo Ivan y soy Profesor de Informática y Programador Web</p>
+            <p>Actualmente estudio Licenciatura en Matemática</p>
+            <p>Soy fan de crear proyectos y aprender cosas nuevas cada día</p>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+     </section>
 
-  <main>
-    <!-- Cita -->
-    <section id="quote">
-      <p>
-        <q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q><br>
-        <em>— Friedrich Nietzsche</em>
-      </p>
-    </section>
-
-    <!-- Resumen y Perfiles -->
-    <section id="logos">
-      <div id="yo_descripcion">
-        <h2 id="mi_nombre">Ivan Guillermo</h2>
-        <p id="descripcion">
-          Soy un apasionado por estudiar y aprender cada día un poco más, y luego busco poner en práctica lo que aprendo para resolver problemas de la vida real. Además de Docente, me considero a mí mismo...
+      <!-- Cita integrada dentro de Inicio -->
+      <section class="tab-content" id="quote">
+        <p>
+          <q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q><br>
+          <em>— Friedrich Nietzsche</em>
         </p>
-      </div>
+      
 
-      <div class="logos_profs">
-        <article class="icon">
-          <img class="logo_prof" src="imgx/trans.gif" alt="Traductor" />
-          <div>
-            <h3 class="tit_prof">TRADUCTOR</h3>
-            <p class="prof_txt">
-              Buscando nuevas perspectivas, descubrí que debo tomar las fuentes en su idioma original.
-              Revisa mi perfil en <a href="https://www.freelancer.com/u/IvanD413R" rel="noopener" target="_blank">Freelancer.com</a>.
-            </p>
-          </div>
-        </article>
-
-        <article class="icon">
-          <img class="logo_prof" src="imgx/prog.gif" alt="Programador" />
-          <div>
-            <h3 class="tit_prof">PROGRAMADOR</h3>
-            <p class="prof_txt">
-              Disfruto buscar soluciones a los problemas, y la programación me da la posibilidad de alcanzar 
-              <a href="https://github.com/ivanguillermo" rel="noopener" target="_blank">soluciones óptimas</a> mirando las cosas desde perspectivas nuevas.
-            </p>
-          </div>
-        </article>
-
-        <article class="icon">
-          <img class="logo_prof" src="imgx/icono_mat.png" alt="Matemático" />
-          <div>
-            <h3 class="tit_prof">MATEMÁTICO</h3>
-            <p class="prof_txt">
-              Estudiante de Licenciatura en Matemáticas en la <a href="https://unaeduve.wordpress.com/" rel="noopener" target="_blank">Universidad Nacional Abierta</a> (UNA). Amo la estadística y la optimización.
-            </p>
-          </div>
-        </article>
+      <!-- Redes Sociales integradas en la vista principal -->
+      <div class="rrss">
+        <a href="https://www.facebook.com/ivanguillermolopezp" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook-official"></i></a>
+        <a href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+        <a href="https://x.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+        <a href="https://github.com/ivanguillermo" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github"></i></a>
       </div>
     </section>
 
-    <!-- Sección Traductor -->
-    <section class="job" id="translator">
+    <!-- 2. PESTAÑA: TRADUCTOR -->
+    <section class="tab-content job" id="translator">
       <h2 class="sec_tit">TRADUCTOR</h2>
       <div class="body2" id="myDIV2"></div>
 
       <div id="langs_p">
         <p>He trabajado como traductor freelance y profesor de Inglés con mi propia <a href="https://englishprime.github.io/" target="_blank" rel="noopener">plataforma de enseñanza</a>.</p>
         <span id="tr_txt">
-          Puedo traducir entre cinco idiomas. Soy hablante nativo de ESPAÑOL y altamente competente en INGLÉS.<br>
+          Puedo traducir entre cinco idiomas. Hablo ESPAÑOL e INGLÉS con alta fluidez.<br>
           Traducciones disponibles desde: ALEMÁN 🇩🇪, FRANCÉS 🇫🇷, PORTUGUÉS 🇧🇷 / 🇵🇹.
         </span>
       </div>
@@ -112,8 +79,8 @@
       </div>
     </section>
 
-    <!-- Sección Programador -->
-    <section class="job" id="programmer">
+    <!-- 3. PESTAÑA: PROGRAMADOR -->
+    <section class="tab-content job" id="programmer">
       <h2 class="sec_tit">PROGRAMADOR</h2>
       <div class="progr_info">
         <p>
@@ -148,8 +115,8 @@
       <a class="github_btn" href="https://github.com/ivanguillermo" target="_blank" rel="noopener">Mi GitHub <i class="fa fa-github"></i></a>
     </section>
 
-    <!-- Sección Matemático -->
-    <section class="job" id="matematico">
+    <!-- 4. PESTAÑA: MATEMÁTICO -->
+    <section class="tab-content job" id="matematico">
       <h2 class="sec_tit">MATEMÁTICO</h2>
       <div class="mat_cards">
         <article class="mat_card">
@@ -167,8 +134,8 @@
       </div>
     </section>
 
-    <!-- Sección Educador -->
-    <section class="job" id="educador">
+    <!-- 5. PESTAÑA: EDUCADOR -->
+    <section class="tab-content job" id="educador">
       <h2 class="sec_tit">EDUCADOR</h2>
       <div class="educador_grid" id="pptx_container">
         <!-- Las miniaturas se cargan dinámicamente vía JS -->
@@ -197,30 +164,17 @@
     </div>
   </dialog>
 
-  <!-- Navegación Fija -->
+  <!-- Navbar fija inferior -->
   <nav id="navbarIvan" class="navbar-fixed-bottom">
     <div class="nav-links">
-      <a class="navbar-brand" href="#jumbo_ivan"><b>Hola!</b></a>
-      <a id="navYo" href="#quote">Ivanguillermo</a>
-      <a id="navTra" href="#translator">TRADUCTOR</a>
-      <a id="navPro" href="#programmer">PROGRAMADOR</a>
-      <a id="navMat" href="#matematico">MATEMÁTICO</a>
-      <a id="navEdu" href="#educador">EDUCADOR</a>
-      <a href="contacto.html" class="nav-contacto">Contacto</a>
+      <button class="nav-tab active" data-tab="jumbo_ivan">Hola!</button>
+      <button class="nav-tab" data-tab="quote">Ivan</button>
+      <button class="nav-tab" data-tab="translator">TRADUCTOR</button>
+      <button class="nav-tab" data-tab="programmer">PROGRAMADOR</button>
+      <button class="nav-tab" data-tab="matematico">MATEMÁTICO</button>
+      <button class="nav-tab" data-tab="educador">EDUCADOR</button>
     </div>
   </nav>
-
-  <!-- Pie de página / RRSS -->
-  <footer class="foot">
-    <div class="rrss">
-      <a href="https://www.facebook.com/ivanguillermolopezp" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook-official"></i></a>
-      <a href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-      <a href="https://x.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
-      <a href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-      <a href="https://github.com/ivanguillermo" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github"></i></a>
-    </div>
-  </footer>
 
   <script src="ivan.js"></script>
 </body>
