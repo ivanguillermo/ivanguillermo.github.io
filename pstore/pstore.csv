@@ -1,4 +1,4 @@
-id,nombre,categoria,categoria,precio,imagen,descripcion
+id,nombre,categoria,categoria_secundaria,precio,imagen,descripcion
 a000001,bolso HK1,accesorios,hello kitty,15,assets/bolso_hk.jpg,un bolsito bello de Hello Kitty
 a000002,bolso HK2,accesorios,hello kitty,12,assets/bolso_hk.jpg,un bolsito bello de Hello Kitty
 a000003,zarcillos,accesorios,null,5,assets/zarcillos_000001.png,hermosos zarcillos
