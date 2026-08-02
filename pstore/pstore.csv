@@ -1,5 +1,5 @@
 id,nombre,categoria,precio,imagen,descripcion
-a000001,bolso HK1,accesorios,15,bolso_hk.jpg,"un bolsito bello de Hello Kitty"
+a000001,bolso HK1,accesorios,15,assets/bolso_hk.jpg,"un bolsito bello de Hello Kitty"
 a000002,bolso HK2,accesorios,12,bolso_hk.jpg,"3r"
 a000003,zarcillos,accesorios,5,bolso_hk.jpg,"asdasd"
 b000001,sabana Spiderman,telas,5,sabana_spiderman.jfif,"12jeb0qdj"
