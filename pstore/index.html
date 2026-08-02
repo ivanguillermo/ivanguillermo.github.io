@@ -3,77 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Productos</title>
+  <title>Pstore | Catálogo Online</title>
   
-  <!-- CSS básico para maquetar el catálogo en cuadrícula (Grid) -->
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
-    body { background-color: #f4f4f9; padding: 2rem; color: #333; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: #f8fafc; color: #0f172a; min-height: 100vh; display: flex; flex-direction: column; }
     
-    header { text-align: center; margin-bottom: 2rem; }
-    
-    .catalogo {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
+    /* Header & Navegación */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .header-container {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    /* Logo / Nombre de Marca */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: #0f172a;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: #2563eb;
+      color: white;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .brand-title span { color: #2563eb; }
+
+    /* Barra de Búsqueda y Filtros */
+    .filter-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .filter-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .select-category {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background-color: #ffffff;
+      color: #334155;
+      font-size: 0.9rem;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .select-category:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    /* Layout Principal */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
 
     .tarjeta {
       background: white;
-      border-radius: 8px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
       overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .tarjeta:hover { transform: translateY(-4px); }
+    .tarjeta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
     .tarjeta img { width: 100%; height: 200px; object-fit: cover; }
-    .contenido { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .categoria { font-size: 0.8rem; color: #888; text-transform: uppercase; font-weight: bold; }
-    .nombre { font-size: 1.1rem; margin: 0.3rem 0; }
-    .descripcion { font-size: 0.9rem; color: #666; margin-bottom: 1rem; flex-grow: 1; }
-    .precio { font-size: 1.25rem; font-weight: bold; color: #2a7a4c; }
+    .contenido { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .categoria { font-size: 0.75rem; color: #2563eb; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
+    .nombre { font-size: 1.1rem; font-weight: 600; margin: 0.4rem 0; color: #1e293b; }
+    .descripcion { font-size: 0.875rem; color: #64748b; margin-bottom: 1.25rem; flex-grow: 1; line-height: 1.4; }
+    .precio { font-size: 1.3rem; font-weight: 700; color: #0f172a; }
   </style>
 
-  <!-- Librería PapaParse para leer archivos CSV -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
 <body>
 
   <header>
-    <h1>Catálogo de Productos</h1>
+    <div class="header-container">
+      <!-- Branding / Logo -->
+      <a href="#" class="brand">
+        <div class="brand-logo">P</div>
+        <div class="brand-title">P<span>store</span></div>
+      </a>
+
+      <!-- Selector por Categoría -->
+      <div class="filter-container">
+        <label for="select-categoria" class="filter-label">Categoría:</label>
+        <select id="select-categoria" class="select-category">
+          <option value="todas">Todas las categorías</option>
+        </select>
+      </div>
+    </div>
   </header>
 
-  <main id="catalogo" class="catalogo">
-    <!-- Aquí JavaScript insertará las tarjetas automáticamente -->
+  <main>
+    <div id="catalogo" class="catalogo">
+      <!-- Tarjetas insertadas mediante JS -->
+    </div>
   </main>
 
   <script>
-    // 1. Cargar el archivo CSV local
+    let todosLosProductos = [];
+
+    // 1. Cargar el CSV
     Papa.parse("pstore.csv", {
       download: true,
-      header: true, // Interpreta la primera fila como nombres de columna
+      header: true,
       skipEmptyLines: true,
       complete: function(results) {
-        renderizarCatalogo(results.data);
-      },
-      error: function(err) {
-        console.error("Error al leer el archivo CSV:", err);
+        todosLosProductos = results.data;
+        poblarCategorias(todosLosProductos);
+        renderizarCatalogo(todosLosProductos);
       }
     });
 
-    // 2. Dibujar las tarjetas en el HTML
+    // 2. Extraer categorías únicas para el <select>
+    function poblarCategorias(productos) {
+      const select = document.getElementById("select-categoria");
+      
+      // Extrae categorías sin duplicados
+      const categorias = [...new Set(productos.map(p => p.categoria.trim()))];
+
+      categorias.forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat;
+        option.textContent = cat;
+        select.appendChild(option);
+      });
+
+      // Escuchar el cambio en el selector
+      select.addEventListener("change", (e) => {
+        filtrarPorCategoria(e.target.value);
+      });
+    }
+
+    // 3. Filtrar catálogo según la selección
+    function filtrarPorCategoria(categoriaSeleccionada) {
+      if (categoriaSeleccionada === "todas") {
+        renderizarCatalogo(todosLosProductos);
+      } else {
+        const filtrados = todosLosProductos.filter(
+          p => p.categoria.trim() === categoriaSeleccionada
+        );
+        renderizarCatalogo(filtrados);
+      }
+    }
+
+    // 4. Renderizar tarjetas
     function renderizarCatalogo(productos) {
       const contenedor = document.getElementById("catalogo");
-      
+      contenedor.innerHTML = ""; // Limpiar antes de redibujar
+
+      if (productos.length === 0) {
+        contenedor.innerHTML = "<p>No hay productos en esta categoría.</p>";
+        return;
+      }
+
       productos.forEach(prod => {
         const tarjeta = document.createElement("article");
         tarjeta.className = "tarjeta";
-
         tarjeta.innerHTML = `
           <img src="${prod.imagen}" alt="${prod.nombre}">
           <div class="contenido">
@@ -83,7 +224,6 @@
             <span class="precio">$${parseFloat(prod.precio).toFixed(2)}</span>
           </div>
         `;
-
         contenedor.appendChild(tarjeta);
       });
     }
