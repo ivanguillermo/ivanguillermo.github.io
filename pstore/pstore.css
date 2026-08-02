@@ -440,35 +440,42 @@ footer {
 }
 
 /* ==========================================
-   SECCIÓN ZONAS DE COBERTURA Y REDES
+   ESTILOS DE ÍCONOS SOCIALES (SVG)
    ========================================== */
-.cobertura-footer {
-  margin-top: 1rem;
-  padding-top: 0.75rem;
-  border-top: 1px dashed #333333;
-}
-
-.cobertura-footer h4 {
-  color: var(--accent-gold);
-  font-size: 0.85rem;
-  margin-bottom: 0.4rem;
-  text-transform: uppercase;
-}
-
-.cobertura-footer p {
-  font-size: 0.82rem;
-  color: #cccccc;
-  line-height: 1.4;
+.redes-sociales {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .redes-sociales li a {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
+  gap: 0.65rem;
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
+/* Tamaño y color por defecto del SVG */
+.icon-social {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent-gold); /* Toma el dorado del root */
+  transition: stroke 0.2s ease, transform 0.2s ease;
+}
+
+/* Efecto al pasar el cursor */
 .redes-sociales li a:hover {
-  color: var(--accent-gold);
+  color: #ffffff;
+  transform: translateX(3px);
 }
 
+.redes-sociales li a:hover .icon-social {
+  stroke: var(--accent-gold-hover);
+  transform: scale(1.1);
+}
