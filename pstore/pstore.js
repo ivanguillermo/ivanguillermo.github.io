@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Elementos del DOM
   const selectCategoria = document.getElementById("select-categoria");
+  const selectCategoriaSec = document.getElementById("select-categoria-sec");
   const inputBusqueda = document.getElementById("input-busqueda");
-  
+
   // Elementos del Modal
   const modal = document.getElementById("modal-producto");
   const cerrarModalBtn = document.getElementById("cerrar-modal");
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPrecio = document.getElementById("modal-precio");
 
   // 1. Cargar el CSV con PapaParse
-  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=0&single=true&output=csv", {
+  Papa.parse("pstore.csv", {
     download: true,
     header: true,
     skipEmptyLines: true,
@@ -23,13 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (results.errors && results.errors.length > 0) {
         console.warn("Advertencias al leer el CSV:", results.errors);
       }
-      
+
       todosLosProductos = results.data.filter(
         (p) => p.nombre && p.categoria && p.precio
       );
 
       poblarCategorias(todosLosProductos);
-      aplicarFiltros(); // Renderiza por primera vez
+      aplicarFiltros();
       configurarEventosBuscador();
       configurarEventosModal();
     },
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Helper: Convertir links de Drive si existen
+  // Helper: Convertir links de Drive a imagen directa
   function obtenerUrlDirectaDrive(url) {
     if (!url) return 'assets/placeholder.jpg';
     const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return url;
   }
 
-  // Helper: Normalizar texto (elimina tildes, diacríticos y pasa a minúsculas)
+  // Helper: Normalizar texto (sin acentos, en minúsculas)
   function normalizarTexto(texto) {
     if (!texto) return "";
     return texto
@@ -58,74 +59,104 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/[\u0300-\u036f]/g, "");
   }
 
-  // 2. Poblar <select> y Footer
+  // 2. Poblar ambos <select> (Principal y Secundario) y el Footer
   function poblarCategorias(productos) {
     const footerUl = document.getElementById("footer-categorias");
-    if (!selectCategoria || !footerUl) return;
 
+    // Categorías Principales
     const categorias = [
       ...new Set(productos.map((p) => (p.categoria ? p.categoria.trim() : "")))
     ].filter(Boolean);
 
-    categorias.forEach((cat) => {
-      const option = document.createElement("option");
-      option.value = cat;
-      option.textContent = cat;
-      selectCategoria.appendChild(option);
+    // Categorías Secundarias (Personajes / Temáticas)
+    const categoriasSec = [
+      ...new Set(
+        productos.map((p) => (p.categoria_secundaria ? p.categoria_secundaria.trim() : ""))
+      )
+    ].filter(Boolean);
 
-      const li = document.createElement("li");
-      li.innerHTML = `<a data-cat="${cat}">${cat}</a>`;
-      footerUl.appendChild(li);
-    });
+    // Llenar <select> de Categoría Principal
+    if (selectCategoria) {
+      categorias.forEach((cat) => {
+        const option = document.createElement("option");
+        option.value = cat;
+        option.textContent = cat;
+        selectCategoria.appendChild(option);
+      });
 
-    selectCategoria.addEventListener("change", () => {
-      aplicarFiltros();
-    });
+      selectCategoria.addEventListener("change", aplicarFiltros);
+    }
 
-    footerUl.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") {
-        const cat = e.target.getAttribute("data-cat");
-        selectCategoria.value = cat;
-        if (inputBusqueda) inputBusqueda.value = ""; // Limpiar búsqueda
-        aplicarFiltros();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    });
+    // Llenar <select> de Categoría Secundaria
+    if (selectCategoriaSec) {
+      categoriasSec.forEach((catSec) => {
+        const option = document.createElement("option");
+        option.value = catSec;
+        option.textContent = catSec;
+        selectCategoriaSec.appendChild(option);
+      });
+
+      selectCategoriaSec.addEventListener("change", aplicarFiltros);
+    }
+
+    // Llenar Footer (Categorías Principales)
+    if (footerUl) {
+      categorias.forEach((cat) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a data-cat="${cat}">${cat}</a>`;
+        footerUl.appendChild(li);
+      });
+
+      footerUl.addEventListener("click", (e) => {
+        if (e.target.tagName === "A") {
+          const cat = e.target.getAttribute("data-cat");
+          if (selectCategoria) selectCategoria.value = cat;
+          if (selectCategoriaSec) selectCategoriaSec.value = "todas";
+          if (inputBusqueda) inputBusqueda.value = "";
+          aplicarFiltros();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    }
   }
 
   // 3. Configurar eventos del Buscador
   function configurarEventosBuscador() {
     if (!inputBusqueda) return;
-
-    // Evento 'input' detecta cada tecla, borrado o pegado en tiempo real
-    inputBusqueda.addEventListener("input", () => {
-      aplicarFiltros();
-    });
+    inputBusqueda.addEventListener("input", aplicarFiltros);
   }
 
-  // 4. Aplicar Filtro de Categoría + Búsqueda por Texto
+  // 4. Aplicar Filtro Combinado (Categoría Principal + Categoría Secundaria + Búsqueda)
   function aplicarFiltros() {
-    const categoriaSeleccionada = selectCategoria ? selectCategoria.value : "todas";
+    const catSel = selectCategoria ? selectCategoria.value : "todas";
+    const catSecSel = selectCategoriaSec ? selectCategoriaSec.value : "todas";
     const query = inputBusqueda ? normalizarTexto(inputBusqueda.value) : "";
 
     const productosFiltrados = todosLosProductos.filter((prod) => {
-      // Filtro por Categoría
-      const coincideCategoria =
-        categoriaSeleccionada === "todas" ||
-        (prod.categoria && prod.categoria.trim() === categoriaSeleccionada);
+      // Filtro Categoría Principal
+      const coincideCat =
+        catSel === "todas" ||
+        (prod.categoria && prod.categoria.trim() === catSel);
 
-      // Búsqueda aproximada en Nombre, Categoría y Descripción
+      // Filtro Categoría Secundaria
+      const coincideCatSec =
+        catSecSel === "todas" ||
+        (prod.categoria_secundaria && prod.categoria_secundaria.trim() === catSecSel);
+
+      // Búsqueda por Texto (Nombre, Categorías, Descripción)
       const nombreNorm = normalizarTexto(prod.nombre);
       const catNorm = normalizarTexto(prod.categoria);
+      const catSecNorm = normalizarTexto(prod.categoria_secundaria);
       const descNorm = normalizarTexto(prod.descripcion);
 
       const coincideTexto =
         query === "" ||
         nombreNorm.includes(query) ||
         catNorm.includes(query) ||
+        catSecNorm.includes(query) ||
         descNorm.includes(query);
 
-      return coincideCategoria && coincideTexto;
+      return coincideCat && coincideCatSec && coincideTexto;
     });
 
     renderizarCatalogo(productosFiltrados);
@@ -155,10 +186,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
 
+      // Etiqueta de categoría secundaria (si existe)
+      const tagSecundaria = prod.categoria_secundaria
+        ? `<span class="categoria-sec"> • ${prod.categoria_secundaria}</span>`
+        : "";
+
       tarjeta.innerHTML = `
         <img src="${srcImagen}" alt="${prod.nombre}">
         <div class="contenido">
-          <span class="categoria">${prod.categoria || ''}</span>
+          <span class="categoria">${prod.categoria || ''}${tagSecundaria}</span>
           <h2 class="nombre">${prod.nombre || ''}</h2>
           <p class="descripcion">${prod.descripcion || ''}</p>
           <span class="precio">$${precioFormateado}</span>
@@ -182,9 +218,13 @@ document.addEventListener("DOMContentLoaded", () => {
       ? producto.precio
       : precioNum.toFixed(2);
 
+    const tagSecundaria = producto.categoria_secundaria
+      ? ` (${producto.categoria_secundaria})`
+      : "";
+
     modalImg.src = obtenerUrlDirectaDrive(producto.imagen);
     modalImg.alt = producto.nombre || "Producto";
-    modalCategoria.textContent = producto.categoria || "";
+    modalCategoria.textContent = (producto.categoria || "") + tagSecundaria;
     modalNombre.textContent = producto.nombre || "";
     modalDescripcion.textContent = producto.descripcion || "";
     modalPrecio.textContent = `$${precioFormateado}`;
