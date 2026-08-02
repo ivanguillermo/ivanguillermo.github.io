@@ -1,4 +1,4 @@
-<script>
+
     let todosLosProductos = [];
 
     // 1. Cargar el CSV
@@ -86,4 +86,4 @@
         contenedor.appendChild(tarjeta);
       });
     }
-  </script>
+
