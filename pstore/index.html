@@ -7,6 +7,7 @@
   
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    html { scroll-behavior: smooth; }
     body { background-color: #f8fafc; color: #0f172a; min-height: 100vh; display: flex; flex-direction: column; }
     
     /* Header & Navegación */
@@ -58,6 +59,22 @@
     }
 
     .brand-title span { color: #2563eb; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #2563eb; }
 
     /* Barra de Búsqueda y Filtros */
     .filter-container {
@@ -125,6 +142,65 @@
     .nombre { font-size: 1.1rem; font-weight: 600; margin: 0.4rem 0; color: #1e293b; }
     .descripcion { font-size: 0.875rem; color: #64748b; margin-bottom: 1.25rem; flex-grow: 1; line-height: 1.4; }
     .precio { font-size: 1.3rem; font-weight: 700; color: #0f172a; }
+
+    /* Footer */
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .footer-col h3 {
+      color: #f8fafc;
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+
+    .footer-col p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-col ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .footer-col ul li a:hover {
+      color: #38bdf8;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 1.5rem auto 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
   </style>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -138,6 +214,12 @@
         <div class="brand-logo">P</div>
         <div class="brand-title">P<span>store</span></div>
       </a>
+
+      <!-- Navegación básica -->
+      <nav class="nav-links">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
 
       <!-- Selector por Categoría -->
       <div class="filter-container">
@@ -155,6 +237,42 @@
     </div>
   </main>
 
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      
+      <!-- Columna 1: Info Marca -->
+      <div class="footer-col">
+        <h3>Pstore</h3>
+        <p>Tu tienda en línea con el catálogo de productos más actualizado. Calidad y variedad al mejor precio.</p>
+      </div>
+
+      <!-- Columna 2: Búsquedas Rápida (Categorías Automáticas) -->
+      <div class="footer-col">
+        <h3>Búsqueda Rápida</h3>
+        <ul id="footer-categorias">
+          <li><a data-cat="todas">Ver todo el catálogo</a></li>
+          <!-- Se llenan automáticamente desde el JS -->
+        </ul>
+      </div>
+
+      <!-- Columna 3: Navegación -->
+      <div class="footer-col">
+        <h3>Navegación</h3>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#contacto">Contacto y Soporte</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pstore. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
   <script>
     let todosLosProductos = [];
 
@@ -170,23 +288,39 @@
       }
     });
 
-    // 2. Extraer categorías únicas para el <select>
+    // 2. Extraer categorías únicas para el <select> y el Footer
     function poblarCategorias(productos) {
       const select = document.getElementById("select-categoria");
+      const footerUl = document.getElementById("footer-categorias");
       
-      // Extrae categorías sin duplicados
       const categorias = [...new Set(productos.map(p => p.categoria.trim()))];
 
       categorias.forEach(cat => {
+        // Llenar <select> del Header
         const option = document.createElement("option");
         option.value = cat;
         option.textContent = cat;
         select.appendChild(option);
+
+        // Llenar Lista del Footer
+        const li = document.createElement("li");
+        li.innerHTML = `<a data-cat="${cat}">${cat}</a>`;
+        footerUl.appendChild(li);
       });
 
-      // Escuchar el cambio en el selector
+      // Escuchar el cambio en el selector del Header
       select.addEventListener("change", (e) => {
         filtrarPorCategoria(e.target.value);
+      });
+
+      // Escuchar clics en los enlaces de Búsqueda Rápida del Footer
+      footerUl.addEventListener("click", (e) => {
+        if (e.target.tagName === "A") {
+          const cat = e.target.getAttribute("data-cat");
+          select.value = cat; // Sincronizar el <select>
+          filtrarPorCategoria(cat);
+          window.scrollTo({ top: 0, behavior: 'smooth' }); // Subir al catálogo
+        }
       });
     }
 
@@ -205,7 +339,7 @@
     // 4. Renderizar tarjetas
     function renderizarCatalogo(productos) {
       const contenedor = document.getElementById("catalogo");
-      contenedor.innerHTML = ""; // Limpiar antes de redibujar
+      contenedor.innerHTML = "";
 
       if (productos.length === 0) {
         contenedor.innerHTML = "<p>No hay productos en esta categoría.</p>";
