@@ -1,9 +1,13 @@
 id,nombre,categoria,precio,imagen,descripcion
-a000001,bolso HK1,accesorios,15,bolso_hk.jpg,un bolsito bello de Hello Kitty
-a000002,bolso HK2,accesorios,12,bolso_hk.jpg,3r
-a000003,zarcillos,accesorios,5,bolso_hk.jpg,asdasd
-b000001,sabana Spiderman,telas,5,bolso_hk.jpg,12jeb0qdj
-b000002,sabana HK,telas,7,bolso_hk.jpg,a
-b000003,Paño,telas,12,bolso_hk.jpg,sda
-a000004,gorra,accesorios,10,bolso_hk.jpg,oq'0we'q
-c000001,pendrive,electronico,"14,5",bolso_hk.jpg,r12qiii
+a000001,bolso HK1,accesorios,15,bolso_hk.jpg,"un bolsito bello de Hello Kitty"
+a000002,bolso HK2,accesorios,12,bolso_hk.jpg,"3r"
+a000003,zarcillos,accesorios,5,bolso_hk.jpg,"asdasd"
+b000001,sabana Spiderman,telas,5,bolso_hk.jpg,"12jeb0qdj"
+b000002,sabana HK,telas,7,bolso_hk.jpg,"a"
+b000003,Paño,telas,12,bolso_hk.jpg,"sda"
+a000004,gorra,accesorios,10,bolso_hk.jpg,"oq0weq"
+c000001,pendrive,electronico,"14,5",bolso_hk.jpg,"r12qiii"
+d000001,zapatos,ropa,7,bolso_hk.jpg,"zapatos rotos zapatos rotos"
+b000004,almohada,telas,12,bolso_hk.jpg,"sda"
+a000005,gorra,accesorios,10,bolso_hk.jpg,"oq0weq"
+c000002,lampara,electronico,"14,5",bolso_hk.jpg,"r12qiii"
