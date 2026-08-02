@@ -264,4 +264,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+let carrito = JSON.parse(localStorage.getItem("pstore_carrito")) || [];
 
+// Agregar producto al carrito
+function agregarAlCarrito(producto) {
+  const existe = carrito.find(p => p.nombre === producto.nombre);
+  if (existe) {
+    existe.cantidad++;
+  } else {
+    carrito.push({ ...producto, cantidad: 1 });
+  }
+  actualizarCarritoStorage();
+}
+
+// Generar el mensaje y abrir WhatsApp
+function enviarPedidoWhatsApp() {
+  if (carrito.length === 0) return alert("Tu carrito está vacío.");
+
+  const nombre = document.getElementById("cliente-nombre").value.trim() || "Cliente";
+  const ciudad = document.getElementById("cliente-ciudad").value;
+  const pago = document.getElementById("cliente-pago").value;
+
+  let mensaje = `🛒 *¡Hola Pstore! Quisiera realizar el siguiente pedido:*\n\n`;
+
+  let total = 0;
+  carrito.forEach(prod => {
+    const subtotal = parseFloat(prod.precio) * prod.cantidad;
+    total += subtotal;
+    mensaje += `• ${prod.cantidad}x ${prod.nombre} - $${subtotal.toFixed(2)}\n`;
+  });
+
+  mensaje += `\n💰 *Total Estimado:* $${total.toFixed(2)}\n`;
+  mensaje += `-----------------------------\n`;
+  mensaje += `👤 *Cliente:* ${nombre}\n`;
+  mensaje += `📍 *Ubicación:* ${ciudad}\n`;
+  mensaje += `💳 *Método de Pago:* ${pago}\n\n`;
+  mensaje += `¿Me confirman disponibilidad para acordar la entrega?`;
+
+  // Número de WhatsApp de Pstore (formato internacional sin signos: 58412...)
+  const telefonoPstore = "584120000000"; 
+  
+  // Construcción de la URL codificada
+  const urlWA = `https://wa.me/${telefonoPstore}?text=${encodeURIComponent(mensaje)}`;
+
+  // Abrir en pestaña nueva
+  window.open(urlWA, "_blank");
+}
