@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   let todosLosProductos = [];
 
+  // Elementos del DOM
+  const selectCategoria = document.getElementById("select-categoria");
+  const inputBusqueda = document.getElementById("input-busqueda");
+  
   // Elementos del Modal
   const modal = document.getElementById("modal-producto");
   const cerrarModalBtn = document.getElementById("cerrar-modal");
@@ -11,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPrecio = document.getElementById("modal-precio");
 
   // 1. Cargar el CSV con PapaParse
-  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=0&single=true&output=csv", {
+  Papa.parse("pstore.csv", {
     download: true,
     header: true,
     skipEmptyLines: true,
@@ -25,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       poblarCategorias(todosLosProductos);
-      renderizarCatalogo(todosLosProductos);
+      aplicarFiltros(); // Renderiza por primera vez
+      configurarEventosBuscador();
       configurarEventosModal();
     },
     error: function (err) {
@@ -33,12 +38,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2. Extraer categorías únicas para el <select> y el Footer
-  function poblarCategorias(productos) {
-    const select = document.getElementById("select-categoria");
-    const footerUl = document.getElementById("footer-categorias");
+  // Helper: Convertir links de Drive si existen
+  function obtenerUrlDirectaDrive(url) {
+    if (!url) return 'assets/placeholder.jpg';
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      return `https://lh3.googleusercontent.com/d/${match[1]}`;
+    }
+    return url;
+  }
 
-    if (!select || !footerUl) return;
+  // Helper: Normalizar texto (elimina tildes, diacríticos y pasa a minúsculas)
+  function normalizarTexto(texto) {
+    if (!texto) return "";
+    return texto
+      .toString()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  // 2. Poblar <select> y Footer
+  function poblarCategorias(productos) {
+    const footerUl = document.getElementById("footer-categorias");
+    if (!selectCategoria || !footerUl) return;
 
     const categorias = [
       ...new Set(productos.map((p) => (p.categoria ? p.categoria.trim() : "")))
@@ -48,40 +71,67 @@ document.addEventListener("DOMContentLoaded", () => {
       const option = document.createElement("option");
       option.value = cat;
       option.textContent = cat;
-      select.appendChild(option);
+      selectCategoria.appendChild(option);
 
       const li = document.createElement("li");
       li.innerHTML = `<a data-cat="${cat}">${cat}</a>`;
       footerUl.appendChild(li);
     });
 
-    select.addEventListener("change", (e) => {
-      filtrarPorCategoria(e.target.value);
+    selectCategoria.addEventListener("change", () => {
+      aplicarFiltros();
     });
 
     footerUl.addEventListener("click", (e) => {
       if (e.target.tagName === "A") {
         const cat = e.target.getAttribute("data-cat");
-        select.value = cat;
-        filtrarPorCategoria(cat);
+        selectCategoria.value = cat;
+        if (inputBusqueda) inputBusqueda.value = ""; // Limpiar búsqueda
+        aplicarFiltros();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
   }
 
-  // 3. Filtrar catálogo según la selección
-  function filtrarPorCategoria(categoriaSeleccionada) {
-    if (categoriaSeleccionada === "todas") {
-      renderizarCatalogo(todosLosProductos);
-    } else {
-      const filtrados = todosLosProductos.filter(
-        (p) => p.categoria && p.categoria.trim() === categoriaSeleccionada
-      );
-      renderizarCatalogo(filtrados);
-    }
+  // 3. Configurar eventos del Buscador
+  function configurarEventosBuscador() {
+    if (!inputBusqueda) return;
+
+    // Evento 'input' detecta cada tecla, borrado o pegado en tiempo real
+    inputBusqueda.addEventListener("input", () => {
+      aplicarFiltros();
+    });
   }
 
-  // 4. Renderizar tarjetas en el DOM
+  // 4. Aplicar Filtro de Categoría + Búsqueda por Texto
+  function aplicarFiltros() {
+    const categoriaSeleccionada = selectCategoria ? selectCategoria.value : "todas";
+    const query = inputBusqueda ? normalizarTexto(inputBusqueda.value) : "";
+
+    const productosFiltrados = todosLosProductos.filter((prod) => {
+      // Filtro por Categoría
+      const coincideCategoria =
+        categoriaSeleccionada === "todas" ||
+        (prod.categoria && prod.categoria.trim() === categoriaSeleccionada);
+
+      // Búsqueda aproximada en Nombre, Categoría y Descripción
+      const nombreNorm = normalizarTexto(prod.nombre);
+      const catNorm = normalizarTexto(prod.categoria);
+      const descNorm = normalizarTexto(prod.descripcion);
+
+      const coincideTexto =
+        query === "" ||
+        nombreNorm.includes(query) ||
+        catNorm.includes(query) ||
+        descNorm.includes(query);
+
+      return coincideCategoria && coincideTexto;
+    });
+
+    renderizarCatalogo(productosFiltrados);
+  }
+
+  // 5. Renderizar tarjetas
   function renderizarCatalogo(productos) {
     const contenedor = document.getElementById("catalogo");
     if (!contenedor) return;
@@ -90,11 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (productos.length === 0) {
       contenedor.innerHTML =
-        "<p>No hay productos disponibles en esta categoría.</p>";
+        "<p style='grid-column: 1/-1; text-align: center; color: #64748b; padding: 2rem;'>No se encontraron productos que coincidan con la búsqueda.</p>";
       return;
     }
 
-    productos.forEach((prod, index) => {
+    productos.forEach((prod) => {
       const tarjeta = document.createElement("article");
       tarjeta.className = "tarjeta";
 
@@ -103,8 +153,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ? prod.precio
         : precioNum.toFixed(2);
 
+      const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
+
       tarjeta.innerHTML = `
-        <img src="${prod.imagen || 'assets/placeholder.jpg'}" alt="${prod.nombre}">
+        <img src="${srcImagen}" alt="${prod.nombre}">
         <div class="contenido">
           <span class="categoria">${prod.categoria || ''}</span>
           <h2 class="nombre">${prod.nombre || ''}</h2>
@@ -113,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      // Evento de clic para abrir el modal con este producto
       tarjeta.addEventListener("click", () => {
         abrirModal(prod);
       });
@@ -122,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 5. Funciones del Modal
+  // 6. Lógica del Modal
   function abrirModal(producto) {
     if (!modal) return;
 
@@ -131,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ? producto.precio
       : precioNum.toFixed(2);
 
-    modalImg.src = producto.imagen || "assets/placeholder.jpg";
+    modalImg.src = obtenerUrlDirectaDrive(producto.imagen);
     modalImg.alt = producto.nombre || "Producto";
     modalCategoria.textContent = producto.categoria || "";
     modalNombre.textContent = producto.nombre || "";
@@ -148,21 +199,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function configurarEventosModal() {
-    // Cerrar con el botón X
     if (cerrarModalBtn) {
       cerrarModalBtn.addEventListener("click", cerrarModal);
     }
 
-    // Cerrar haciendo clic en el fondo oscuro
     if (modal) {
       modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          cerrarModal();
-        }
+        if (e.target === modal) cerrarModal();
       });
     }
 
-    // Cerrar presionando la tecla Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && modal && modal.classList.contains("activo")) {
         cerrarModal();
