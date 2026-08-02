@@ -1,13 +1,32 @@
-id,nombre,categoria,precio,imagen,descripcion
-a000001,bolso HK1,accesorios,15,assets/bolso_hk.jpg,"un bolsito bello de Hello Kitty"
-a000002,bolso HK2,accesorios,12,assets/bolso_hk.jpg,"3r"
-a000003,zarcillos,accesorios,5,assets/bolso_hk.jpg,"asdasd"
-b000001,sabana Spiderman,telas,5,assets/sabana_spiderman.jfif,"12jeb0qdj"
-b000002,sabana HK,telas,7,assets/bolso_hk.jpg,"a"
-b000003,Paño,telas,12,assets/bolso_hk.jpg,"sda"
-a000004,gorra,accesorios,10,assets/gorra_marron.jpg,"oq0weq"
-c000001,pendrive,electronico,"14,5",assets/bolso_hk.jpg,"r12qiii"
-d000001,zapatos,ropa,7,assets/bolso_hk.jpg,"zapatos rotos zapatos rotos"
-b000004,almohada,telas,12,assets/bolso_hk.jpg,"sda"
-a000005,gorra,accesorios,10,assets/bolso_hk.jpg,"oq0weq"
-c000002,lampara,electronico,"14,5",bolso_hk.jpg,"r12qiii"
+id,nombre,categoria,categoria,precio,imagen,descripcion
+a000001,bolso HK1,accesorios,hello kitty,15,assets/bolso_hk.jpg,un bolsito bello de Hello Kitty
+a000002,bolso HK2,accesorios,hello kitty,12,assets/bolso_hk.jpg,un bolsito bello de Hello Kitty
+a000003,zarcillos,accesorios,null,5,assets/zarcillos_000001.png,hermosos zarcillos
+a000004,gorra,accesorios,null,10,assets/bolso_hk.jpg,gorra pepona
+a000005,gorra,accesorios,null,10,assets/bolso_hk.jpg,oq0weq
+a000006,gorra negra,ropa,null,43,assets/gorra_negra.jfif,gorra negra pepona
+a000007,bolso HK1,accesorios,hello kitty,15,assets/bolso_hk.jpg,un bolsito bello de Hello Kitty
+a000008,bolso HK2,accesorios,hello kitty,12,assets/bolso_hk.jpg,3r
+a000009,zarcillos,accesorios,null,5,assets/zarcillos_000001.png,hermosos zarcillos
+a000010,gorra,accesorios,null,10,assets/bolso_hk.jpg,gorra pepona
+a000011,gorra,accesorios,null,10,assets/bolso_hk.jpg,oq0weq
+a000012,gorra negra,ropa,null,43,assets/gorra_negra.jfif,gorra negra pepona
+b000001,sabana Spiderman,telas,spiderman,5,assets/sabana_spiderman.jfif,sabanas de spidy
+b000002,sabana HK,telas,hello kitty,7,assets/bolso_hk.jpg,a
+b000003,sabana HK,telas,hello kitty,7,assets/bolso_hk.jpg,a
+b000004,Paño,telas,null,12,assets/bolso_hk.jpg,sda
+b000005,Paño,telas,null,12,assets/bolso_hk.jpg,sda
+b000006,almohada,telas,null,12,assets/bolso_hk.jpg,sda
+b000007,almohadota,telas,null,12,assets/bolso_hk.jpg,sda
+b000008,almohada grande,telas,null,16,assets/bolso_hk.jpg,sda
+b000009,sabana Spiderman,telas,null,5,assets/sabana_spiderman.jfif,sabanas de spidy
+b000010,almohada grande,telas,null,16,assets/bolso_hk.jpg,sda
+c000001,pendrive,electronico,null,"14,5",assets/bolso_hk.jpg,r12qiii
+c000002,pendrive,electronico,null,"14,5",assets/sabana_spiderman.jfif,r12qiii
+c000003,lampara,electronico,null,"14,5",assets/bolso_hk.jpg,r12qiii
+c000004,lampara Hello Kittty,electronico,null,"14,5",https://i.ebayimg.com/images/g/HwIAAeSw1edosbk5/s-l1200.webp,lamparita linda
+d000001,zapatos naruto,ropa,Naruto,7,assets/bolso_hk.jpg,zapatos rotos zapatos rotos
+d000002,zapatos rojos,ropa,null,7,assets/bolso_hk.jpg,zapatos rotos zapatos rotos
+d000003,zapatos niño verdes,ropa,null,30,assets/zapatos_verdes.jpg,"zapatos verdes, zapatos verdes"
+d000004,zapatos niño verdes,ropa,null,30,assets/zapatos_verdes.jpg,"zapatos verdes, zapatos verdes"
+d000005,gorra de ruben,ropa,null,1200,https://m.media-amazon.com/images/I/51nwwGwjyDL._AC_UY1000_.jpg,la gorra del pendejo
