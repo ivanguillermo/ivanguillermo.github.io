@@ -77,6 +77,49 @@
           <option value="todas">Todos</option>
         </select>
       </div>
+      <!-- Agrega esto en el header-container o flotante -->
+<button id="btn-carrito" class="btn-carrito-header">
+  🛒 Carrito (<span id="cant-carrito">0</span>)
+</button>
+
+<!-- Modal del Carrito -->
+<div id="modal-carrito" class="modal-overlay">
+  <div class="modal-content modal-carrito-content">
+    <button id="cerrar-carrito" class="modal-close">&times;</button>
+    <h2>Tu Pedido</h2>
+    
+    <!-- Lista de productos agregados -->
+    <div id="lista-carrito" class="lista-carrito">
+      <!-- Se llena dinámicamente desde JS -->
+    </div>
+
+    <div class="total-carrito">
+      <span>Total:</span>
+      <strong id="total-monto">$0.00</strong>
+    </div>
+
+    <!-- Datos rápidos para el vendedor -->
+    <div class="form-datos-pedido">
+      <input type="text" id="cliente-nombre" placeholder="Tu Nombre y Apellido" required>
+      <select id="cliente-ciudad">
+        <option value="Barquisimeto">Barquisimeto</option>
+        <option value="Cabudare">Cabudare</option>
+        <option value="Acarigua">Acarigua</option>
+        <option value="Yaracuy">Yaracuy (San Felipe / Guama / Otro)</option>
+        <option value="Otra Ciudad">Envío Nacional (MRW/Zoom/Tealca)</option>
+      </select>
+      <select id="cliente-pago">
+        <option value="Pago Móvil">Pago Móvil</option>
+        <option value="Efectivo / Divisas">Efectivo ($ / €)</option>
+        <option value="Zelle / Binance">Zelle / Binance</option>
+      </select>
+    </div>
+
+    <button id="btn-enviar-whatsapp" class="btn-whatsapp-final">
+      💬 Enviar Pedido por WhatsApp
+    </button>
+  </div>
+</div>
       
     </div>
   </header>
