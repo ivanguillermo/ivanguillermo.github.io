@@ -42,7 +42,23 @@
       <!-- Tarjetas insertadas mediante JS -->
     </div>
   </main>
-
+  
+<!-- Modal para ver detalle del producto -->
+  <div id="modal-producto" class="modal-overlay">
+    <div class="modal-content">
+      <button id="cerrar-modal" class="modal-close" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-body">
+        <img id="modal-img" src="" alt="" class="modal-img">
+        <div class="modal-info">
+          <span id="modal-categoria" class="categoria"></span>
+          <h2 id="modal-nombre" class="nombre"></h2>
+          <p id="modal-descripcion" class="descripcion"></p>
+          <span id="modal-precio" class="precio"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <!-- Footer -->
   <footer>
     <div class="footer-container">
