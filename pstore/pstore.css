@@ -364,3 +364,8 @@ footer {
     width: 100%;
   }
 }
+.categoria-sec {
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.72rem;
+}
