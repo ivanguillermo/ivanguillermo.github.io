@@ -28,6 +28,7 @@
       </nav>
 
       <!-- Buscador y Selector por Categoría -->
+      <!-- Buscador y Filtros -->
       <div class="filter-container">
         <input 
           type="search" 
@@ -37,11 +38,19 @@
           aria-label="Buscar producto"
         >
 
+        <!-- Categoría Principal -->
         <label for="select-categoria" class="filter-label">Categoría:</label>
         <select id="select-categoria" class="select-category">
           <option value="todas">Todas las categorías</option>
         </select>
+
+        <!-- Categoría Secundaria / Personaje -->
+        <label for="select-categoria-sec" class="filter-label">Personaje / Colección:</label>
+        <select id="select-categoria-sec" class="select-category">
+          <option value="todas">Todos</option>
+        </select>
       </div>
+      
     </div>
   </header>
 
