@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   let todosLosProductos = [];
 
+  // Elementos del Modal
+  const modal = document.getElementById("modal-producto");
+  const cerrarModalBtn = document.getElementById("cerrar-modal");
+  const modalImg = document.getElementById("modal-img");
+  const modalCategoria = document.getElementById("modal-categoria");
+  const modalNombre = document.getElementById("modal-nombre");
+  const modalDescripcion = document.getElementById("modal-descripcion");
+  const modalPrecio = document.getElementById("modal-precio");
+
   // 1. Cargar el CSV con PapaParse
   Papa.parse("pstore.csv", {
     download: true,
@@ -11,21 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("Advertencias al leer el CSV:", results.errors);
       }
       
-      // Filtrar filas inválidas que no tengan los campos clave
       todosLosProductos = results.data.filter(
         (p) => p.nombre && p.categoria && p.precio
       );
 
       poblarCategorias(todosLosProductos);
       renderizarCatalogo(todosLosProductos);
+      configurarEventosModal();
     },
     error: function (err) {
       console.error("Error al cargar el archivo CSV:", err);
-      const contenedor = document.getElementById("catalogo");
-      if (contenedor) {
-        contenedor.innerHTML =
-          "<p style='color:red;'>Error al cargar el catálogo de productos. Asegúrate de ejecutar la página en un servidor local (Live Server).</p>";
-      }
     }
   });
 
@@ -36,30 +40,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!select || !footerUl) return;
 
-    // Obtener categorías únicas limpiando espacios
     const categorias = [
       ...new Set(productos.map((p) => (p.categoria ? p.categoria.trim() : "")))
     ].filter(Boolean);
 
     categorias.forEach((cat) => {
-      // Llenar <select> del Header
       const option = document.createElement("option");
       option.value = cat;
       option.textContent = cat;
       select.appendChild(option);
 
-      // Llenar Lista del Footer
       const li = document.createElement("li");
       li.innerHTML = `<a data-cat="${cat}">${cat}</a>`;
       footerUl.appendChild(li);
     });
 
-    // Escuchar el cambio en el selector del Header
     select.addEventListener("change", (e) => {
       filtrarPorCategoria(e.target.value);
     });
 
-    // Escuchar clics en los enlaces de Búsqueda Rápida del Footer
     footerUl.addEventListener("click", (e) => {
       if (e.target.tagName === "A") {
         const cat = e.target.getAttribute("data-cat");
@@ -95,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    productos.forEach((prod) => {
+    productos.forEach((prod, index) => {
       const tarjeta = document.createElement("article");
       tarjeta.className = "tarjeta";
 
@@ -113,7 +112,61 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="precio">$${precioFormateado}</span>
         </div>
       `;
+
+      // Evento de clic para abrir el modal con este producto
+      tarjeta.addEventListener("click", () => {
+        abrirModal(prod);
+      });
+
       contenedor.appendChild(tarjeta);
+    });
+  }
+
+  // 5. Funciones del Modal
+  function abrirModal(producto) {
+    if (!modal) return;
+
+    const precioNum = parseFloat(producto.precio);
+    const precioFormateado = isNaN(precioNum)
+      ? producto.precio
+      : precioNum.toFixed(2);
+
+    modalImg.src = producto.imagen || "assets/placeholder.jpg";
+    modalImg.alt = producto.nombre || "Producto";
+    modalCategoria.textContent = producto.categoria || "";
+    modalNombre.textContent = producto.nombre || "";
+    modalDescripcion.textContent = producto.descripcion || "";
+    modalPrecio.textContent = `$${precioFormateado}`;
+
+    modal.classList.add("activo");
+  }
+
+  function cerrarModal() {
+    if (modal) {
+      modal.classList.remove("activo");
+    }
+  }
+
+  function configurarEventosModal() {
+    // Cerrar con el botón X
+    if (cerrarModalBtn) {
+      cerrarModalBtn.addEventListener("click", cerrarModal);
+    }
+
+    // Cerrar haciendo clic en el fondo oscuro
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          cerrarModal();
+        }
+      });
+    }
+
+    // Cerrar presionando la tecla Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal && modal.classList.contains("activo")) {
+        cerrarModal();
+      }
     });
   }
 });
