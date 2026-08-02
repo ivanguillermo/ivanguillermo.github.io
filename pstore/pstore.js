@@ -171,13 +171,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (productos.length === 0) {
       contenedor.innerHTML =
-        "<p style='grid-column: 1/-1; text-align: center; color: #64748b; padding: 2rem;'>No se encontraron productos que coincidan con la búsqueda.</p>";
+        "<p style='grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 2rem;'>No se encontraron productos que coincidan con la búsqueda.</p>";
       return;
     }
 
     productos.forEach((prod) => {
       const tarjeta = document.createElement("article");
-      tarjeta.className = "tarjeta";
+      
+      // Comprobar si está en oferta/promo (insensible a mayúsculas/espacios)
+      const estadoNorm = normalizarTexto(prod.estado);
+      const esPromo = estadoNorm.includes("en promo") || estadoNorm.includes("promo") || estadoNorm.includes("oferta");
+      
+      // Agregar clases CSS dinámicas
+      tarjeta.className = esPromo ? "tarjeta en-promo" : "tarjeta";
 
       const precioNum = parseFloat(prod.precio);
       const precioFormateado = isNaN(precioNum)
@@ -186,12 +192,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
 
-      // Etiqueta de categoría secundaria (si existe)
       const tagSecundaria = prod.categoria_secundaria
         ? `<span class="categoria-sec"> • ${prod.categoria_secundaria}</span>`
         : "";
 
+      // Si está en promo, agregamos el Badge dorado flotante
+      const badgeHtml = esPromo ? `<span class="badge-promo">¡En Promo!</span>` : "";
+
       tarjeta.innerHTML = `
+        ${badgeHtml}
         <img src="${srcImagen}" alt="${prod.nombre}">
         <div class="contenido">
           <span class="categoria">${prod.categoria || ''}${tagSecundaria}</span>
@@ -208,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
       contenedor.appendChild(tarjeta);
     });
   }
-
   // 6. Lógica del Modal
   function abrirModal(producto) {
     if (!modal) return;
