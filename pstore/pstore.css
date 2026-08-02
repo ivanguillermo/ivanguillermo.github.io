@@ -1,3 +1,34 @@
+/* ==========================================
+   VARIABLES DE TEMA (Fácilmente modificables)
+   ========================================== */
+:root {
+  /* Paleta Principal: Elegante (Negro, Dorado y Blanco) */
+  --bg-main: #fcfcfc;              /* Fondo general de la página */
+  --bg-card: #ffffff;              /* Fondo de las tarjetas y modal */
+  --text-primary: #111111;         /* Texto principal / Títulos */
+  --text-secondary: #555555;       /* Texto secundario / Descripciones */
+  --accent-gold: #d4af37;          /* Dorado principal (Branding, detalles) */
+  --accent-gold-hover: #b89628;    /* Dorado oscuro para hovers */
+  --dark-header: #0d0d0d;          /* Fondo del header y footer */
+  --border-color: #e5e5e5;         /* Bordes tenues */
+
+  /* Estilos para Productos EN PROMO */
+  --promo-bg: #fffdf5;             /* Fondo sutilmente dorado/cálido */
+  --promo-border: #d4af37;         /* Borde dorado destacado */
+  --promo-badge-bg: #111111;       /* Fondo de la etiqueta de promo */
+  --promo-badge-text: #d4af37;     /* Texto de la etiqueta de promo */
+  --promo-shadow: rgba(212, 175, 55, 0.25); /* Sombra dorada brillante */
+}
+
+/* 
+  Ejemplo para cambiar el tema en el futuro (ej. Promo Rosa):
+  :root {
+    --accent-gold: #ec4899;
+    --promo-border: #ec4899;
+    --promo-badge-text: #ec4899;
+  }
+*/
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,27 +41,29 @@ html {
 }
 
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Header & Navegación */
+/* ==========================================
+   HEADER & NAVEGACIÓN
+   ========================================== */
 header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
+  background-color: var(--dark-header);
+  border-bottom: 2px solid var(--accent-gold);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -38,29 +71,29 @@ header {
   gap: 1rem;
 }
 
-/* Branding & Logo Image */
 .brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  color: #0f172a;
+  color: #ffffff;
 }
 
 .brand-logo-img {
-  height: 40px;
+  height: 42px;
   width: auto;
   object-fit: contain;
 }
 
 .brand-title {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.025em;
+  color: #ffffff;
 }
 
 .brand-title span {
-  color: #2563eb;
+  color: var(--accent-gold);
 }
 
 .nav-links {
@@ -71,47 +104,55 @@ header {
 
 .nav-links a {
   text-decoration: none;
-  color: #475569;
+  color: #cccccc;
   font-weight: 500;
   font-size: 0.95rem;
   transition: color 0.2s;
 }
 
 .nav-links a:hover {
-  color: #2563eb;
+  color: var(--accent-gold);
 }
 
-/* Barra de Búsqueda y Filtros */
+/* Buscador y Controles */
 .filter-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
 }
 
 .filter-label {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #64748b;
+  color: #aaaaaa;
 }
 
+.input-search,
 .select-category {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.85rem;
   border-radius: 6px;
-  border: 1px solid #cbd5e1;
-  background-color: #ffffff;
-  color: #334155;
+  border: 1px solid #333333;
+  background-color: #1a1a1a;
+  color: #ffffff;
   font-size: 0.9rem;
   outline: none;
-  cursor: pointer;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.input-search {
+  width: 170px;
+}
+
+.input-search:focus,
 .select-category:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
 }
 
-/* Layout Principal */
+/* ==========================================
+   LAYOUT PRINCIPAL Y TARJETAS
+   ========================================== */
 main {
   flex: 1;
   max-width: 1200px;
@@ -123,27 +164,31 @@ main {
 .catalogo {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
+/* Tarjeta Regular */
 .tarjeta {
-  background: white;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .tarjeta:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-gold);
 }
 
 .tarjeta img {
   width: 100%;
-  height: 200px;
+  height: 210px;
   object-fit: cover;
 }
 
@@ -156,101 +201,86 @@ main {
 
 .categoria {
   font-size: 0.75rem;
-  color: #2563eb;
+  color: var(--accent-gold-hover);
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.05em;
 }
 
+.categoria-sec {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.72rem;
+}
+
 .nombre {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0.4rem 0;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .descripcion {
   font-size: 0.875rem;
-  color: #64748b;
+  color: var(--text-secondary);
   margin-bottom: 1.25rem;
   flex-grow: 1;
   line-height: 1.4;
 }
 
 .precio {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
 }
 
-/* Footer */
-footer {
-  background-color: #0f172a;
-  color: #94a3b8;
-  padding: 3rem 1.5rem 1.5rem;
-  margin-top: 4rem;
-  border-top: 1px solid #1e293b;
+/* ==========================================
+   ESTILOS ESPECIALES: PRODUCTOS EN PROMO
+   ========================================== */
+.tarjeta.en-promo {
+  background-color: var(--promo-bg);
+  border: 2px solid var(--promo-border);
+  box-shadow: 0 4px 15px var(--promo-shadow);
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid #1e293b;
+.tarjeta.en-promo:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 25px var(--promo-shadow);
 }
 
-.footer-col h3 {
-  color: #f8fafc;
-  font-size: 1.05rem;
-  margin-bottom: 1.2rem;
-  font-weight: 600;
+.tarjeta.en-promo .precio {
+  color: #b89628;
 }
 
-.footer-col p {
-  font-size: 0.9rem;
-  line-height: 1.5;
+/* Insignia / Badge "EN PROMO" sobre la imagen */
+.badge-promo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--promo-badge-bg);
+  color: var(--promo-badge-text);
+  border: 1px solid var(--accent-gold);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 50px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 5;
 }
 
-.footer-col ul {
-  list-style: none;
-}
-
-.footer-col ul li {
-  margin-bottom: 0.6rem;
-}
-
-.footer-col ul li a {
-  color: #94a3b8;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.2s;
-  cursor: pointer;
-}
-
-.footer-col ul li a:hover {
-  color: #38bdf8;
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 1.5rem auto 0;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #64748b;
-}
-
-/* Modal Estilos Base */
+/* ==========================================
+   MODAL DE PRODUCTO
+   ========================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,13 +297,14 @@ footer {
 }
 
 .modal-content {
-  background: #ffffff;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-gold);
+  border-radius: 14px;
   max-width: 700px;
   width: 100%;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.4);
   transform: translateY(20px);
   transition: transform 0.3s ease;
 }
@@ -288,23 +319,22 @@ footer {
   right: 15px;
   background: transparent;
   border: none;
-  font-size: 2rem;
-  color: #64748b;
+  font-size: 2.2rem;
+  color: var(--text-secondary);
   cursor: pointer;
-  line-height: 1;
   z-index: 10;
   transition: color 0.2s;
 }
 
 .modal-close:hover {
-  color: #0f172a;
+  color: var(--accent-gold);
 }
 
 .modal-body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  padding: 1.5rem;
+  padding: 1.75rem;
 }
 
 @media (min-width: 600px) {
@@ -317,7 +347,8 @@ footer {
   width: 100%;
   max-height: 350px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
 }
 
 .modal-info {
@@ -326,46 +357,68 @@ footer {
   justify-content: center;
 }
 
-/* Cursor de puntero en las tarjetas */
-.tarjeta {
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+  background-color: var(--dark-header);
+  color: #aaaaaa;
+  padding: 3rem 1.5rem 1.5rem;
+  margin-top: 4rem;
+  border-top: 2px solid var(--accent-gold);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #222222;
+}
+
+.footer-col h3 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col ul li a {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
   cursor: pointer;
 }
 
-/* Estilos del Buscador */
-.input-search {
-  padding: 0.5rem 0.85rem;
-  border-radius: 6px;
-  border: 1px solid #cbd5e1;
-  background-color: #ffffff;
-  color: #334155;
-  font-size: 0.9rem;
-  outline: none;
-  width: 180px;
-  transition: border-color 0.2s, box-shadow 0.2s, width 0.2s;
+.footer-col ul li a:hover {
+  color: var(--accent-gold);
 }
 
-.input-search:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  width: 220px;
+.footer-bottom {
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666666;
 }
 
-/* Ajuste responsivo para pantallas pequeñas */
+/* Responsivo */
 @media (max-width: 640px) {
   .filter-container {
     width: 100%;
-    justify-content: space-between;
   }
   .input-search {
     width: 100%;
-    flex: 1;
   }
-  .input-search:focus {
-    width: 100%;
-  }
-}
-.categoria-sec {
-  color: #64748b;
-  font-weight: 500;
-  font-size: 0.72rem;
 }
