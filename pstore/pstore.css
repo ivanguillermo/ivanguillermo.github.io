@@ -671,3 +671,24 @@ footer {
     border-radius: 6px !important;
   }
 }
+.modal-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.btn-consultar-wa {
+  background-color: var(--accent-green);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-consultar-wa:hover {
+  background-color: var(--accent-green-hover);
+}
