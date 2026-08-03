@@ -1,25 +1,32 @@
 /* ==========================================
-   1. VARIABLES GLOBALES Y RESET
+   1. VARIABLES GLOBALES Y RESET (PSTORE BRAND)
    ========================================== */
 :root {
-  --bg-primary: #0d0d0d;
-  --bg-secondary: #1a1a1a;
-  --bg-card: #242424;
-  --bg-modal: #1e1e1e;
+  /* Fondos */
+  --bg-primary: #ffffff;        /* Blanco principal */
+  --bg-secondary: #f8f9fa;      /* Gris extra claro para cabecera/footer */
+  --bg-card: #fdfdfd;           /* Tarjetas */
+  --bg-modal: #ffffff;          /* Modales */
   
-  --text-primary: #f5f5f5;
-  --text-secondary: #a0a0a0;
+  /* Textos */
+  --text-primary: #111111;      /* Negro principal para texto legible */
+  --text-secondary: #555555;    /* Gris oscuro secundario */
   
-  --accent-color: #ff3e3e;
-  --accent-hover: #e03232;
-  --accent-green: #25d366;
+  /* Color de Marca y Acentos */
+  --brand-gold: #d4af37;        /* Dorado principal */
+  --brand-gold-hover: #b89428;  /* Dorado más oscuro para hover */
+  --brand-black: #111111;       /* Negro de contraste */
+  
+  --accent-color: var(--brand-gold);
+  --accent-hover: var(--brand-gold-hover);
+  --accent-green: #25d366;      /* WhatsApp */
   --accent-green-hover: #1eaa53;
   
-  --border-color: #333333;
+  --border-color: #e0e0e0;      /* Bordes suaves */
   --border-radius: 8px;
   --transition-fast: 0.2s ease;
   
-  --shadow-main: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-main: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -37,15 +44,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-main {
-  flex: 1;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
-}
-
 /* ==========================================
    2. HEADER Y NAVEGACIÓN
    ========================================== */
@@ -117,10 +115,11 @@ select:focus {
 }
 
 /* Botón Carrito Header */
+/* Botón de Carrito del Header con estilo Negro + Dorado */
 .btn-carrito {
-  background-color: var(--accent-color);
-  color: #fff;
-  border: none;
+  background-color: var(--brand-black);
+  color: var(--brand-gold);
+  border: 1px solid var(--brand-gold);
   padding: 0.6rem 1rem;
   border-radius: var(--border-radius);
   font-weight: 600;
@@ -129,13 +128,13 @@ select:focus {
   align-items: center;
   gap: 0.3rem;
   white-space: nowrap;
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .btn-carrito:hover {
-  background-color: var(--accent-hover);
+  background-color: var(--brand-gold);
+  color: #ffffff;
 }
-
 /* ==========================================
    3. CATÁLOGO Y TARJETAS DE PRODUCTO
    ========================================== */
@@ -215,27 +214,31 @@ select:focus {
   margin-top: auto;
 }
 
-/* Badges / Etiquetas de Promoción */
 .badge-promo {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: var(--accent-color);
-  color: #fff;
-  font-size: 0.7rem;
+  top: 10px;
+  left: 10px;
+  background-color: var(--brand-gold); /* Oferta: Dorado */
+  color: #ffffff;
+  font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.25rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   z-index: 2;
+  letter-spacing: 0.3px;
 }
 
+/* Nuevo: Rojo elegante */
 .badge-nuevo {
-  background-color: #007bff;
+  background-color: #c0392b; 
+  color: #ffffff;
 }
 
+/* Pocas Unidades: Intermedio entre Dorado y Rojo (Cobre / Ámbar Cálido) */
 .badge-pocas {
-  background-color: #ff9800;
+  background-color: #d35400; 
+  color: #ffffff;
 }
 
 /* ==========================================
