@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mensaje += `¿Me confirman disponibilidad para acordar la entrega?`;
 
     // Reemplaza por tu número real de WhatsApp Business (Código país 58)
-    const telefonoPstore = "584120000000"; 
+    const telefonoPstore = "584126216661"; 
     const urlWA = `https://wa.me/${telefonoPstore}?text=${encodeURIComponent(mensaje)}`;
 
     window.open(urlWA, "_blank");
