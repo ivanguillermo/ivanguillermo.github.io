@@ -372,3 +372,66 @@ document.addEventListener("DOMContentLoaded", () => {
     window.open(urlWA, "_blank");
   }
 });
+
+// Variable global para almacenar la lista de clientes conocidos
+let clientesConocidos = [];
+let clienteActual = null;
+
+// URL de la pestaña "Clientes" en CSV (Reemplaza con tu URL publicada de la pestaña Clientes)
+const URL_CSV_CLIENTES = "https://docs.google.com/spreadsheets/d/e/TU_LINK_PUBLICADO_CLIENTES/pub?gid=TU_GID&single=true&output=csv";
+
+// Cargar la lista de clientes al iniciar
+Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=1777061918&single=true&output=csv", {
+  download: true,
+  header: true,
+  skipEmptyLines: true,
+  transformHeader: h => h.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "_"),
+  complete: function (results) {
+    clientesConocidos = results.data;
+    console.log("Clientes cargados con éxito:", clientesConocidos.length);
+  }
+});
+
+// Función para identificar al cliente
+function identificarCliente(correoOCodigo) {
+  const query = correoOCodigo.trim().toLowerCase();
+  
+  // Buscar coincidencia por correo o código
+  const encontrado = clientesConocidos.find(c => 
+    (c.correo___codigo && c.correo___codigo.trim().toLowerCase() === query)
+  );
+
+  if (encontrado) {
+    clienteActual = {
+      nombre: encontrado.nombre_cliente,
+      descuento: parseFloat(encontrado.descuento____) || 0,
+      permiteCredito: (encontrado.permite_credito || "").trim().toUpperCase() === "SI"
+    };
+    alert(`¡Bienvenido/a ${clienteActual.nombre}! Se ha aplicado tu descuento de cliente especial (${clienteActual.descuento}%).`);
+  } else {
+    clienteActual = null;
+    alert("Código o correo no registrado. Continuarás con precios regulares.");
+  }
+
+  actualizarOpcionesCheckout();
+  renderizarCarrito(); // Re-renderiza para aplicar descuentos si los hay
+}
+
+// Mostrar/Ocultar la opción de pago "A Crédito" según el perfil
+function actualizarOpcionesCheckout() {
+  const selectPago = document.getElementById("cliente-pago");
+  let opcionCredito = selectPago.querySelector("option[value='A Crédito']");
+
+  if (clienteActual && clienteActual.permiteCredito) {
+    if (!opcionCredito) {
+      opcionCredito = document.createElement("option");
+      opcionCredito.value = "A Crédito / Cuenta Corriente";
+      opcionCredito.textContent = "💳 Pago a Crédito (Cliente VIP)";
+      selectPago.appendChild(opcionCredito);
+    }
+  } else {
+    if (opcionCredito) {
+      opcionCredito.remove();
+    }
+  }
+}
