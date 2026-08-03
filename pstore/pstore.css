@@ -633,5 +633,20 @@ footer {
   background-color: var(--accent-gold);
   color: var(--dark-header);
 }
+.btn-carrito-header {
+  background-color: var(--accent-gold);
+  color: #000000;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
+.btn-carrito-header:hover {
+  background-color: var(--accent-gold-hover);
+  transform: scale(1.03);
+}
 
