@@ -682,3 +682,97 @@ footer {
   letter-spacing: 0.05em;
   z-index: 5;
 }
+
+/* ==========================================
+   OPTIMIZACIÓN EXCLUSIVA PARA MÓVILES
+   ========================================== */
+@media (max-width: 768px) {
+  /* 1. Hacer el Banner Superior súper compacto */
+  .banner-top, .top-bar {
+    font-size: 0.72rem;
+    padding: 4px 8px;
+    text-align: center;
+  }
+
+  /* 2. Reducir drásticamente el espacio del Header */
+  header, .main-header {
+    padding: 8px 12px !important;
+  }
+
+  /* 3. Logo y Carrito en una sola fila compacta */
+  .header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  /* Reducir tamaño del logo Pstore */
+  .logo img, .logo-img {
+    height: 32px !important;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem !important;
+  }
+
+  /* Botón de Carrito más discreto */
+  .btn-carrito, #btn-carrito {
+    padding: 5px 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* 4. Buscador y Filtros en línea compacta */
+  .busqueda-container, .filtros-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Reducir alto de inputs y selects */
+  input#input-busqueda, 
+  select#select-categoria, 
+  select#select-personaje {
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+    height: 36px;
+  }
+
+  /* Si los selectores están juntos, ponerlos lado a lado */
+  .selects-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  /* Ocultar etiquetas/labels repetitivas para ahorrar altura */
+  .filtro-label, label[for="select-categoria"], label[for="select-personaje"] {
+    display: none; 
+  }
+
+  /* 5. Catálogo en Móvil: Mostrar 2 columnas de tarjetas pequeñas */
+  #catalogo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 productos por fila */
+    gap: 10px !important;
+    padding: 10px !important;
+  }
+
+  .tarjeta {
+    padding: 8px;
+  }
+
+  .tarjeta img {
+    height: 140px !important; /* Ajusta la imagen para que sea compacta */
+    object-fit: contain;
+  }
+
+  .tarjeta .nombre {
+    font-size: 0.85rem !important;
+    line-height: 1.1;
+  }
+
+  .tarjeta .precio {
+    font-size: 0.95rem !important;
+  }
+}
