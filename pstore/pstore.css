@@ -776,3 +776,70 @@ footer {
     font-size: 0.95rem !important;
   }
 }
+/* ==========================================
+   OPTIMIZACIÓN DEL FOOTER PARA MÓVILES
+   ========================================== */
+@media (max-width: 768px) {
+
+  /* 1. Reducir relleno vertical general del footer */
+  footer, .footer {
+    padding: 1.5rem 1rem 1rem 1rem !important;
+    text-align: center;
+  }
+
+  /* 2. Ocultar textos descriptivos largos del footer */
+  .footer-descripcion, 
+  .footer-info p {
+    display: none; /* Oculta textos largos que recargan la vista */
+  }
+
+  /* 3. Redes Sociales en una sola fila compacta (solo íconos) */
+  .footer-redes, .social-links {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 15px !important;
+    margin: 1rem 0 !important;
+  }
+
+  /* Convertir enlaces de redes sociales en botones circulares tipo ícono */
+  .footer-redes a, .social-links a {
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    color: var(--accent-gold, #d4af37);
+    border: 1px solid #333;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  /* Ocultar el texto de la red social y dejar SOLO el ícono/emoji */
+  .footer-redes a span, 
+  .social-links a span:not(.icon) {
+    display: none !important; 
+  }
+
+  /* 4. Enlaces secundarios en una sola línea horizontal */
+  .footer-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    font-size: 0.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .footer-copyright {
+    font-size: 0.75rem;
+    color: #666;
+    border-top: 1px solid #222;
+    padding-top: 0.8rem;
+    margin-top: 0.8rem;
+  }
+}
