@@ -442,5 +442,9 @@ function actualizarOpcionesCheckout() {
 }
 document.getElementById("btn-validar-cliente").addEventListener("click", () => {
   const input = document.getElementById("input-codigo-cliente").value;
-  if (input) identificarCliente(input);
+  if (input) {
+    identificarCliente(input);
+  } else {
+    alert("Por favor ingresa un correo o código válido.");
+  }
 });
