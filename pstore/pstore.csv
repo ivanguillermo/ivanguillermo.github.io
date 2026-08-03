@@ -1,0 +1,35 @@
+Marca temporal,nombre,categoria,categoria_secundaria,proveedor,precio,estado,imagen,descripcion,imagen2,a,ID
+3/8/2026 7:13:50,bolso HK1,Accesorios,Hombre,Bruja,15,promo,assets/bolso_hk.jpg,un bolsito bello de Hello Kitty,,,AL-W-0001
+3/8/2026 7:13:50,bolso HK2,Accesorios,Mujer,Chinos1,12,promo,https://m.media-amazon.com/images/I/71Z5IxIVwwL._AC_UY1000_.jpg,un bolsito bello de Hello Kitty,,,AM-X-0001
+3/8/2026 7:13:50,zarcillos,Accesorios,Mujer,Bruja,5,promo,assets/zarcillos_000001.png,hermosos zarcillos,,,AM-W-0001
+3/8/2026 7:13:50,Gorra Naruto,Accesorios,Hombre,Chinos1,10,regular,https://m.media-amazon.com/images/I/51Z86Kpv4FL._AC_UY1000_.jpg,gorra pepona del Dios Itachi,,,AL-X-0001
+3/8/2026 7:13:50,Gorra Edge,Accesorios,Hombre,Bruja,10,regular,https://http2.mlstatic.com/D_NQ_NP_3052-MLM3895546064_022013-O.webp,Gorra de la Superestrella Categoria R,,,AL-W-0002
+3/8/2026 7:13:50,gorra negra,Ropa,Hombre,Bruja,43,regular,assets/gorra_negra.jfif,gorra negra pepona,,,DL-W-0001
+3/8/2026 7:13:50,bolso HK1,Accesorios,Hombre,Bruja,15,regular,https://http2.mlstatic.com/D_NQ_NP_2X_915849-MLV92597314401_092025-T.webp,un bolsito bello de Hello Kitty,,,AL-W-0003
+3/8/2026 7:13:50,bolso HK2,Accesorios,Hombre,Chinos2,12,promo,assets/bolso_hk.jpg,3r,,,AL-Y-0001
+3/8/2026 7:13:50,zarcillos,Accesorios,Hombre,Bruja,5,regular,assets/zarcillos_000001.png,hermosos zarcillos,,,AL-W-0004
+3/8/2026 7:13:50,gorra,Accesorios,Hombre,Chinos1,10,regular,assets/bolso_hk.jpg,gorra pepona,,,AL-X-0002
+3/8/2026 7:13:50,gorra Sanrio,Accesorios,Niños,Bruja,10,regular,https://http2.mlstatic.com/D_NQ_NP_745461-MLV86907674410_072025-O.webp,Gorrita de Kuromi #Sanrio #Kuromi #Rosa,,,AN-W-0001
+3/8/2026 7:13:50,gorra negra,Ropa,Hombre,Chinos2,43,regular,assets/gorra_negra.jfif,gorra negra pepona,,,DL-Y-0001
+3/8/2026 7:13:50,sabana Spiderman,Telas,Niños,Bruja,5,regular,assets/sabana_spiderman.jfif,sabanas de spidy,,,BN-W-0001
+3/8/2026 7:13:50,sabana Hello Kitty,Telas,Hombre,Chinos2,7,regular,https://ae01.alicdn.com/kf/S1789dcf45615431b93533c4e81b37d8ag/Sanrio-Kuromi-My-melody-Cinnamoroll-Hello-Kitty-winter-cartoon-print-milk-velvet-thickened-bed-sheet-quilt.jpg,Hermosas sabanas de Hello Kitty #Sanrio #HelloKitty,,,BL-Y-0001
+3/8/2026 7:13:50,sabana Kuromi,Telas,Hombre,Bruja,7,regular,https://texttexhogar.com.co/wp-content/uploads/2025/05/4963117740739112372-600x900.jpg,Sabana hermosa de Kuromi #Sanrio,,,BL-W-0001
+3/8/2026 7:13:50,Paño Naruto,Telas,Niños,Bruja,12,regular,https://http2.mlstatic.com/D_NQ_NP_944164-MLM97565392864_112025-O.webp,Toallas de Naruto #Anime #Naruto #Akatsuki #Sasuke,,,BN-W-0002
+3/8/2026 7:13:50,Paño Demon Slayer,Telas,Hombre,Bruja,15,regular,https://m.media-amazon.com/images/I/81wT6K0TrxL.jpg,Toallas Anime,,,BL-W-0002
+3/8/2026 7:13:50,almohadas Naruto,Telas,Hombre,Chinos2,12,regular,https://ae-pic-a1.aliexpress-media.com/kf/S4c1b6f267be04af6a3c0e1ff264cf996P.jpg,Almohadas comodas y hermosas de Naruto Shippuden #Anime #Naruto,,,BL-Y-0002
+3/8/2026 7:13:50,almohadota,Telas,Unisex,Chinos1,12,regular,assets/bolso_hk.jpg,sda,,,BO-X-0001
+3/8/2026 7:13:50,almohada grande,Telas,Unisex,Chinos1,16,regular,assets/bolso_hk.jpg,sda,,,BO-X-0002
+3/8/2026 7:13:50,sabana Spiderman,Telas,Hombre,Bruja,5,regular,assets/sabana_spiderman.jfif,sabanas de spidy,,,BL-W-0003
+3/8/2026 7:13:50,almohada grande,Telas,Hombre,Chinos1,16,regular,assets/bolso_hk.jpg,sda,,,BL-X-0001
+3/8/2026 7:13:50,pendrive,Electronico,Hombre,Bruja,"14,5",regular,assets/bolso_hk.jpg,r12qiii,,,CL-W-0001
+3/8/2026 7:13:50,pendrive,Electronico,Unisex,Otros,"14,5",regular,assets/sabana_spiderman.jfif,r12qiii,,,CO-Z-0001
+3/8/2026 7:13:50,lampara,Electronico,Unisex,Bruja,"14,5",regular,assets/bolso_hk.jpg,r12qiii,,,CO-W-0001
+3/8/2026 7:13:50,lampara Hello Kittty,Electronico,Hombre,Bruja,"14,5",regular,https://i.ebayimg.com/images/g/HwIAAeSw1edosbk5/s-l1200.webp,lamparita linda,,,CL-W-0002
+3/8/2026 7:13:50,zapatos naruto,Ropa,Hombre,Bruja,7,regular,assets/bolso_hk.jpg,zapatos rotos zapatos rotos,,,DL-W-0002
+3/8/2026 7:13:50,zapatos rojos,Ropa,Hombre,Bruja,7,regular,https://image.made-in-china.com/202f0j00DOeiBabtEVcJ/Fashion-Women-Shoes-White-Students-Shoes-Board-Skate-Casual-Shoes-Sport-Shoes-Lady-Shoes.jpg,zapatos rotos zapatos rotos,,,DL-W-0003
+3/8/2026 7:13:50,zapatos niño verdes,Ropa,Hombre,Otros,30,regular,assets/zapatos_verdes.jpg,"zapatos verdes, zapatos verdes",,,DL-Z-0001
+3/8/2026 7:13:50,Patines,Juguetes,Niños,Bruja,30,regular,https://m.media-amazon.com/images/I/71zvITrgElS.jpg,patines hermosos para niña. Talla 22-30,,,EN-W-0001
+3/8/2026 7:13:50,gorra de ruben,Ropa,Hombre,Bruja,1200,regular,https://m.media-amazon.com/images/I/51nwwGwjyDL._AC_UY1000_.jpg,la gorra del pendejo,,,DL-W-0004
+3/8/2026 7:15:57,telefono samsung,Electronico,Unisex,Otros,125,regular,https://cdn.prod.website-files.com/632e1b3fb161a903129c733e/67337afd611ad0005fdf08d1_51d00nS-ufL._AC_.jpeg,telefonito es una necesidad,,,CO-Z-0002
+3/8/2026 7:18:22,cartuchera de kuromi,Accesorios,Niños,Chinos2,5,promo,https://images.fravega.com/f1000/09c504bd8f364b19123a73e153267f87.jpg,Cartuchera de Kuromi 2 cierres #Sanrio #kuromi #Carteluo,,,AN-Y-0001
+3/8/2026 7:55:23,un mamba cadena,Accesorios,Mascotas,Chinos2,15,promo,https://drive.google.com/open?id=1GZZZgJoaljPHCOMGa1ER0mpkpO3ohSMj,Una mamba cadena #mamba #cadenita,,,AP-Y-0001
