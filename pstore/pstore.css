@@ -649,4 +649,36 @@ footer {
   background-color: var(--accent-gold-hover);
   transform: scale(1.03);
 }
+/* ==========================================
+   INSIGNIAS Y ETIQUETAS ESPECIALES
+   ========================================== */
 
+/* Etiqueta NUEVO (Rojo Carmesí Elegante) */
+.tarjeta.es-nuevo .badge-promo.badge-nuevo {
+  background-color: #0d0d0d;
+  color: #ef4444;
+  border: 1px solid #dc2626;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+/* Etiqueta POCAS UNIDADES (Ámbar Tostado) */
+.tarjeta.pocas-unidades .badge-promo.badge-pocas {
+  background-color: #0d0d0d;
+  color: #f59e0b;
+  border: 1px solid #d97706;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+}
+
+/* Ajuste para cuando una tarjeta tiene múltiples etiquetas o posición de la insignia */
+.badge-promo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 50px;
+  letter-spacing: 0.05em;
+  z-index: 5;
+}
