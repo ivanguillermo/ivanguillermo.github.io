@@ -342,36 +342,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function enviarPedidoWhatsApp() {
-    if (carrito.length === 0) return alert("Tu carrito está vacío.");
+ function enviarPedidoWhatsApp() {
+  if (carrito.length === 0) return alert("Tu carrito está vacío.");
 
-    const nombre = document.getElementById("cliente-nombre").value.trim() || "Cliente";
-    const ciudad = document.getElementById("cliente-ciudad").value;
-    const pago = document.getElementById("cliente-pago").value;
+  const nombreInput = document.getElementById("cliente-nombre").value.trim();
+  const nombre = clienteActual ? clienteActual.nombre : (nombreInput || "Cliente");
+  const ciudad = document.getElementById("cliente-ciudad").value;
+  const pago = document.getElementById("cliente-pago").value;
 
-    let mensaje = `🛒 *¡Hola Pstore! Quisiera realizar el siguiente pedido:*\n\n`;
+  let mensaje = `🛒 *¡Hola Pstore! Quisiera realizar el siguiente pedido:*\n\n`;
 
-    let total = 0;
-    carrito.forEach((prod) => {
-      const subtotal = prod.precio * prod.cantidad;
-      total += subtotal;
-      mensaje += `• ${prod.cantidad}x ${prod.nombre} - $${subtotal.toFixed(2)}\n`;
-    });
+  let total = 0;
+  carrito.forEach((prod) => {
+    const subtotal = prod.precio * prod.cantidad;
+    total += subtotal;
+    mensaje += `• ${prod.cantidad}x ${prod.nombre} - $${subtotal.toFixed(2)}\n`;
+  });
 
-    mensaje += `\n💰 *Total Estimado:* $${total.toFixed(2)}\n`;
-    mensaje += `-----------------------------\n`;
-    mensaje += `👤 *Cliente:* ${nombre}\n`;
-    mensaje += `📍 *Ubicación:* ${ciudad}\n`;
-    mensaje += `💳 *Método de Pago:* ${pago}\n\n`;
-    mensaje += `¿Me confirman disponibilidad para acordar la entrega?`;
-
-    // Reemplaza por tu número real de WhatsApp Business (Código país 58)
-    const telefonoPstore = "584126216661"; 
-    const urlWA = `https://wa.me/${telefonoPstore}?text=${encodeURIComponent(mensaje)}`;
-
-    window.open(urlWA, "_blank");
+  // Aplicar descuento si el cliente está validado
+  let totalFinal = total;
+  if (clienteActual && clienteActual.descuento > 0) {
+    const montoDescuento = (total * clienteActual.descuento) / 100;
+    totalFinal = total - montoDescuento;
+    mensaje += `\n🏷️ *Descuento VIP (${clienteActual.descuento}%):* -$${montoDescuento.toFixed(2)}\n`;
   }
-});
+
+  mensaje += `💰 *Total a Pagar:* $${totalFinal.toFixed(2)}\n`;
+  mensaje += `-----------------------------\n`;
+  mensaje += `👤 *Cliente:* ${nombre} ${clienteActual ? '⭐ [Cliente Registrado]' : ''}\n`;
+  mensaje += `📍 *Ubicación:* ${ciudad}\n`;
+  mensaje += `💳 *Método de Pago:* ${pago}\n\n`;
+  mensaje += `¿Me confirman disponibilidad para acordar la entrega?`;
+
+  const telefonoPstore = "584126216661"; // Tu número real
+  window.open(`https://wa.me/${telefonoPstore}?text=${encodeURIComponent(mensaje)}`, "_blank");
+}
 
 // Variable global para almacenar la lista de clientes conocidos
 let clientesConocidos = [];
