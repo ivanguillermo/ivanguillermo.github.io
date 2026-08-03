@@ -39,55 +39,44 @@
 </head>
 <body>
 
-  <header>
-    <!-- Barra de Zonas de Cobertura -->
-    <div class="top-bar">
-      📍 Envíos y entregas en <strong>Barquisimeto, Cabudare, Acarigua y Yaracuy</strong>
+  <header class="main-header">
+  
+  <!-- FILA 1: Logo (Izq) + Buscador (Der) -->
+  <div class="header-fila-1">
+    <a href="#" class="logo">
+      <img src="assets/pstore.jpg" alt="Pstore">
+      <span class="logo-text">Pstore</span> <!-- Oculto en móvil -->
+    </a>
+    <div class="busqueda-container">
+      <input type="text" id="input-busqueda" placeholder="Buscar producto..." onkeyup="filtrarProductos()">
     </div>
-      
-    <div class="header-container">
-      <!-- Branding / Logo -->
-      <a href="#" class="brand">
-        <img src="assets/pstore.jpg" alt="Pstore Logo" class="brand-logo-img">
-        <div class="brand-title">P<span>store</span></div>
-      </a>
+  </div>
 
-      <!-- Navegación básica -->
-      <nav class="nav-links">
-        <a href="#catalogo">Catálogo</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+  <!-- FILA 2: Categoría Principal (Izq, 50%) + Carrito (Der) -->
+  <div class="header-fila-2">
+    <select id="select-categoria" onchange="filtrarProductos()">
+      <option value="">Todas las categorías</option>
+      <!-- Se llena dinámicamente -->
+    </select>
 
-      <!-- Buscador y Filtros -->
-      <div class="filter-container">
-        <input 
-          type="search" 
-          id="input-busqueda" 
-          class="input-search" 
-          placeholder="Buscar producto..." 
-          aria-label="Buscar producto"
-        >
+    <button id="btn-carrito" class="btn-carrito" onclick="abrirModalCarrito()">
+      🛒 <span class="texto-btn-carrito">Carrito </span>(<span id="contador-carrito">0</span>)
+    </button>
+  </div>
 
-        <!-- Categoría Principal -->
-        <label for="select-categoria" class="filter-label">Categoría:</label>
-        <select id="select-categoria" class="select-category">
-          <option value="todas">Todas las categorías</option>
-        </select>
+  <!-- FILA 3: Público / Segunda Categoría (Línea completa) -->
+  <div class="header-fila-3">
+    <select id="select-personaje" onchange="filtrarProductos()">
+      <option value="">Todo el público</option>
+      <option value="Hombre">Hombre</option>
+      <option value="Mujer">Mujer</option>
+      <option value="Unisex">Unisex</option>
+      <option value="Niños">Niños</option>
+      <option value="Mascotas">Mascotas</option>
+    </select>
+  </div>
 
-        <!-- Categoría Secundaria / Personaje -->
-        <label for="select-categoria-sec" class="filter-label">Personaje / Colección:</label>
-        <select id="select-categoria-sec" class="select-category">
-          <option value="todas">Todos</option>
-        </select>
-      </div>
-
-      <!-- Botón del Carrito en Header -->
-      <button id="btn-carrito" onclick="abrirModalCarrito()">
-        🛒 <span class="texto-btn-carrito">Carrito </span>(<span id="contador-carrito">0</span>)
-      </button>
-    </div>
-  </header>
-
+</header>
   <main>
     <div id="catalogo" class="catalogo">
       <!-- Tarjetas insertadas mediante JS -->
