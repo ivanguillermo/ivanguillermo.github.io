@@ -597,3 +597,38 @@ footer {
 .btn-whatsapp-final:hover {
   background-color: #1ebc57;
 }
+/* Campo de Cliente VIP en Carrito */
+.campo-cliente-vip {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.campo-cliente-vip input {
+  flex: 1;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.campo-cliente-vip input:focus {
+  border-color: var(--accent-gold);
+}
+
+.campo-cliente-vip button {
+  padding: 0.5rem 1rem;
+  background-color: var(--dark-header);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.campo-cliente-vip button:hover {
+  background-color: var(--accent-gold);
+  color: var(--dark-header);
+}
