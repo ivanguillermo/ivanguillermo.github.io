@@ -18,7 +18,7 @@
   <link rel="icon" type="image/jpeg" href="assets/pstore.jpg">
   <link rel="apple-touch-icon" href="assets/pstore.jpg">
 
-  <!-- Open Graph (Redes Sociales / WhatsApp) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Pstore | Catálogo Online con Envíos Locales">
   <meta property="og:description" content="Explora nuestro catálogo con entregas en Barquisimeto, Cabudare, Acarigua y Yaracuy.">
@@ -40,50 +40,48 @@
 <body>
 
   <header class="main-header">
-  
-  <!-- FILA 1: Logo (Izq) + Buscador (Der) -->
-  <div class="header-fila-1">
-    <a href="#" class="logo">
-      <img src="assets/pstore.jpg" alt="Pstore">
-      <span class="logo-text">Pstore</span> <!-- Oculto en móvil -->
-    </a>
-    <div class="busqueda-container">
-      <input type="text" id="input-busqueda" placeholder="Buscar producto..." onkeyup="filtrarProductos()">
+    <!-- FILA 1: Logo + Buscador -->
+    <div class="header-fila-1">
+      <a href="#" class="logo">
+        <img src="assets/pstore.jpg" alt="Pstore">
+        <span class="logo-text">Pstore</span>
+      </a>
+      <div class="busqueda-container">
+        <input type="text" id="input-busqueda" placeholder="Buscar producto...">
+      </div>
     </div>
-  </div>
 
-  <!-- FILA 2: Categoría Principal (Izq, 50%) + Carrito (Der) -->
-  <div class="header-fila-2">
-    <select id="select-categoria" onchange="filtrarProductos()">
-      <option value="">Todas las categorías</option>
-      <!-- Se llena dinámicamente -->
-    </select>
+    <!-- FILA 2: Categoría Principal + Carrito -->
+    <div class="header-fila-2">
+      <select id="select-categoria">
+        <option value="todas">Todas las categorías</option>
+      </select>
 
-    <button id="btn-carrito" class="btn-carrito" onclick="abrirModalCarrito()">
-      🛒 <span class="texto-btn-carrito">Carrito </span>(<span id="contador-carrito">0</span>)
-    </button>
-  </div>
+      <button id="btn-carrito" class="btn-carrito">
+        🛒 <span class="texto-btn-carrito">Carrito </span>(<span id="cant-carrito">0</span>)
+      </button>
+    </div>
 
-  <!-- FILA 3: Público / Segunda Categoría (Línea completa) -->
-  <div class="header-fila-3">
-    <select id="select-personaje" onchange="filtrarProductos()">
-      <option value="">Todo el público</option>
-      <option value="Hombre">Hombre</option>
-      <option value="Mujer">Mujer</option>
-      <option value="Unisex">Unisex</option>
-      <option value="Niños">Niños</option>
-      <option value="Mascotas">Mascotas</option>
-    </select>
-  </div>
+    <!-- FILA 3: Segunda Categoría / Público -->
+    <div class="header-fila-3">
+      <select id="select-personaje">
+        <option value="todas">Todo el público</option>
+        <option value="Hombre">Hombre</option>
+        <option value="Mujer">Mujer</option>
+        <option value="Unisex">Unisex</option>
+        <option value="Niños">Niños</option>
+        <option value="Mascotas">Mascotas</option>
+      </select>
+    </div>
+  </header>
 
-</header>
   <main>
     <div id="catalogo" class="catalogo">
       <!-- Tarjetas insertadas mediante JS -->
     </div>
   </main>
   
-  <!-- Modal para ver detalle del producto -->
+  <!-- Modal Detalle del Producto -->
   <div id="modal-producto" class="modal-overlay">
     <div class="modal-content">
       <button id="cerrar-modal" class="modal-close" aria-label="Cerrar modal">&times;</button>
@@ -95,7 +93,6 @@
           <p id="modal-descripcion" class="descripcion"></p>
           <span id="modal-precio" class="precio"></span>
           
-          <!-- Botón de Agregar al Carrito en el Detalle -->
           <button id="btn-agregar-carrito" class="btn-agregar">
             🛒 Agregar al Carrito
           </button>
@@ -110,7 +107,6 @@
       <button id="cerrar-carrito" class="modal-close" aria-label="Cerrar carrito">&times;</button>
       <h2 class="modal-titulo">Tu Pedido</h2>
       
-      <!-- Lista de productos agregados dinámicamente -->
       <div id="lista-carrito" class="lista-carrito"></div>
 
       <div class="total-carrito">
@@ -118,7 +114,6 @@
         <strong id="total-monto">$0.00</strong>
       </div>
 
-      <!-- Datos para agilizar la atención -->
       <div class="form-datos-pedido">
         <input type="text" id="cliente-nombre" placeholder="Tu Nombre y Apellido" required>
         <select id="cliente-ciudad">
@@ -134,7 +129,7 @@
           <option value="Zelle / Binance">Zelle / Binance</option>
         </select>
       </div>
-      <!-- Dentro de .form-datos-pedido en el modal-carrito -->
+
       <div class="campo-cliente-vip">
         <input type="text" id="input-codigo-cliente" placeholder="¿Eres cliente registrado? Ingresa tu correo o código">
         <button type="button" id="btn-validar-cliente">Validar</button>
@@ -149,12 +144,9 @@
   <!-- Footer -->
   <footer>
     <div class="footer-container">
-      
-      <!-- Columna 1: Info Marca -->
       <div class="footer-col">
         <h3>Pstore</h3>
         <p>Tu tienda en línea con el catálogo de productos más actualizado.</p>
-        
         <div class="cobertura-footer">
           <h4>Zonas de Cobertura:</h4>
           <p>📍 Lara (Barquisimeto, Cabudare)</p>
@@ -163,7 +155,6 @@
         </div>
       </div>
 
-      <!-- Columna 2: Búsqueda Rápida -->
       <div class="footer-col">
         <h3>Búsqueda Rápida</h3>
         <ul id="footer-categorias">
@@ -171,7 +162,6 @@
         </ul>
       </div>
 
-      <!-- Columna 3: Redes Sociales -->
       <div class="footer-col" id="contacto">
         <h3>Síguenos y Contacto</h3>
         <ul class="redes-sociales">
@@ -201,16 +191,14 @@
           </li>
         </ul>
       </div>
-
     </div>
 
     <div class="footer-bottom">
       <p>&copy; 2026 Pstore. Todos los derechos reservados.</p>
     </div>
   </footer>
-  
+
   <script src="pstore.js"></script>
-  <!-- Registro de Service Worker para PWA -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -220,6 +208,5 @@
       });
     }
   </script>
-</body>
 </body>
 </html>
