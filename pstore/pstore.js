@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalDescripcion = document.getElementById("modal-descripcion");
   const modalPrecio = document.getElementById("modal-precio");
   const btnAgregarCarrito = document.getElementById("btn-agregar-carrito");
+  const btnConsultarWA = document.getElementById("btn-consultar-whatsapp");
 
   // Elementos Modal Carrito
   const btnCarritoHeader = document.getElementById("btn-carrito");
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       todosLosProductos = results.data
         .map(p => ({
           ...p,
+          id: p.id ? p.id.trim() : "",
           categoria_secundaria: p.categoria_secundaria || p.personaje || p.coleccion || ""
         }))
         .filter((p) => p.nombre && p.categoria && p.precio);
@@ -52,6 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
       configurarEventosBuscador();
       configurarEventosModal();
       configurarEventosCarrito();
+
+      // Verificar si la URL trae un hash directo (#ID) al cargar
+      verificarHashURL();
     }
   });
 
@@ -78,7 +83,86 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- FUNCIONES Y LÓGICA DE INTERFAZ ---
+  // --- LÓGICA DE RUTA Y MODAL DE PRODUCTO ---
+
+  function verificarHashURL() {
+    const hash = window.location.hash.replace("#", "").trim();
+    if (hash) {
+      const productoEncontrado = todosLosProductos.find(p => p.id === hash);
+      if (productoEncontrado) {
+        abrirModal(productoEncontrado);
+      }
+    }
+  }
+
+  function abrirModal(producto) {
+    if (!modal) return;
+    productoActualModal = producto;
+
+    const precioNum = parseFloat(producto.precio);
+    const precioFormateado = isNaN(precioNum) ? producto.precio : precioNum.toFixed(2);
+    const tagSecundaria = producto.categoria_secundaria ? ` (${producto.categoria_secundaria})` : "";
+
+    modalImg.src = obtenerUrlDirectaDrive(producto.imagen);
+    modalImg.alt = producto.nombre || "Producto";
+    modalCategoria.textContent = (producto.categoria || "") + tagSecundaria;
+    modalNombre.textContent = producto.nombre || "";
+    modalDescripcion.textContent = producto.descripcion || "";
+    modalPrecio.textContent = `$${precioFormateado}`;
+
+    // Actualizar URL con el hash del ID del producto sin recargar la página
+    if (producto.id) {
+      history.replaceState(null, null, `#${producto.id}`);
+    }
+
+    modal.classList.add("activo");
+  }
+
+  function cerrarModal() {
+    if (modal) {
+      modal.classList.remove("activo");
+      // Limpiar el hash de la URL al cerrar el modal
+      history.replaceState(null, null, window.location.pathname);
+    }
+  }
+
+  function configurarEventosModal() {
+    if (cerrarModalBtn) cerrarModalBtn.addEventListener("click", cerrarModal);
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) cerrarModal();
+      });
+    }
+
+    if (btnAgregarCarrito) {
+      btnAgregarCarrito.addEventListener("click", () => {
+        if (productoActualModal) {
+          agregarAlCarrito(productoActualModal);
+          cerrarModal();
+        }
+      });
+    }
+
+    if (btnConsultarWA) {
+      btnConsultarWA.addEventListener("click", () => {
+        if (!productoActualModal) return;
+
+        const telefonoPstore = "584126216661";
+        const urlProducto = `${window.location.origin}${window.location.pathname}#${productoActualModal.id}`;
+        
+        let mensaje = `👋 ¡Hola Pstore! Quisiera consultar sobre este producto:\n\n`;
+        mensaje += `📌 *${productoActualModal.nombre}*\n`;
+        mensaje += `💰 *Precio:* $${parseFloat(productoActualModal.precio).toFixed(2)}\n`;
+        if (productoActualModal.id) mensaje += `🆔 *ID:* ${productoActualModal.id}\n`;
+        mensaje += `🔗 *Link:* ${urlProducto}\n\n`;
+        mensaje += `¿Tienen disponibilidad para envío/entrega?`;
+
+        window.open(`https://wa.me/${telefonoPstore}?text=${encodeURIComponent(mensaje)}`, "_blank");
+      });
+    }
+  }
+
+  // --- FUNCIONES AUXILIARES DE INTERFAZ Y FILTROS ---
 
   function obtenerUrlDirectaDrive(url) {
     if (!url) return 'assets/pstore.jpg';
@@ -96,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const categorias = [...new Set(productos.map((p) => (p.categoria ? p.categoria.trim() : "")))].filter(Boolean);
 
     if (selectCategoria) {
-      // Limpiar opciones manteniendo la inicial
       selectCategoria.innerHTML = '<option value="todas">Todas las categorías</option>';
       categorias.forEach((cat) => {
         const option = document.createElement("option");
@@ -210,46 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tarjeta.addEventListener("click", () => abrirModal(prod));
       contenedor.appendChild(tarjeta);
     });
-  }
-
-  function abrirModal(producto) {
-    if (!modal) return;
-    productoActualModal = producto;
-
-    const precioNum = parseFloat(producto.precio);
-    const precioFormateado = isNaN(precioNum) ? producto.precio : precioNum.toFixed(2);
-    const tagSecundaria = producto.categoria_secundaria ? ` (${producto.categoria_secundaria})` : "";
-
-    modalImg.src = obtenerUrlDirectaDrive(producto.imagen);
-    modalImg.alt = producto.nombre || "Producto";
-    modalCategoria.textContent = (producto.categoria || "") + tagSecundaria;
-    modalNombre.textContent = producto.nombre || "";
-    modalDescripcion.textContent = producto.descripcion || "";
-    modalPrecio.textContent = `$${precioFormateado}`;
-
-    modal.classList.add("activo");
-  }
-
-  function cerrarModal() {
-    if (modal) modal.classList.remove("activo");
-  }
-
-  function configurarEventosModal() {
-    if (cerrarModalBtn) cerrarModalBtn.addEventListener("click", cerrarModal);
-    if (modal) {
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) cerrarModal();
-      });
-    }
-
-    if (btnAgregarCarrito) {
-      btnAgregarCarrito.addEventListener("click", () => {
-        if (productoActualModal) {
-          agregarAlCarrito(productoActualModal);
-          cerrarModal();
-        }
-      });
-    }
   }
 
   // --- LÓGICA DEL CARRITO ---
