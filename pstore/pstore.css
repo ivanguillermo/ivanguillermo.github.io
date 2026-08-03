@@ -843,3 +843,28 @@ footer {
     margin-top: 0.8rem;
   }
 }
+@media (max-width: 768px) {
+  /* Ocultar enlaces de navegación inútiles en móvil */
+  .nav-links, 
+  header nav a, 
+  .btn-contacto {
+    display: none !important;
+  }
+
+  /* Ajustar el botón de carrito para que sea compacto (solo ícono + número) */
+  #btn-carrito, .btn-carrito {
+    padding: 6px 12px !important;
+    font-size: 1rem !important;
+    font-weight: bold;
+  }
+
+  /* Ocultar texto "Carrito" en el botón en pantallas pequeñas */
+  #btn-carrito .texto-btn-carrito {
+    display: none !important;
+  }
+
+  /* Clase para ocultar el selector de subcategoría cuando no se necesite */
+  .oculto-movil {
+    display: none !important;
+  }
+}
