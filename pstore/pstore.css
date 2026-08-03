@@ -1,277 +1,245 @@
 /* ==========================================
-   VARIABLES DE TEMA (Fácilmente modificables)
+   1. VARIABLES GLOBALES Y RESET
    ========================================== */
 :root {
-  /* Paleta Principal: Elegante (Negro, Dorado y Blanco) */
-  --bg-main: #fcfcfc;              /* Fondo general de la página */
-  --bg-card: #ffffff;              /* Fondo de las tarjetas y modal */
-  --text-primary: #111111;         /* Texto principal / Títulos */
-  --text-secondary: #555555;       /* Texto secundario / Descripciones */
-  --accent-gold: #d4af37;          /* Dorado principal (Branding, detalles) */
-  --accent-gold-hover: #b89628;    /* Dorado oscuro para hovers */
-  --dark-header: #0d0d0d;          /* Fondo del header y footer */
-  --border-color: #e5e5e5;         /* Bordes tenues */
-
-  /* Estilos para Productos EN PROMO */
-  --promo-bg: #fffdf5;             /* Fondo sutilmente dorado/cálido */
-  --promo-border: #d4af37;         /* Borde dorado destacado */
-  --promo-badge-bg: #111111;       /* Fondo de la etiqueta de promo */
-  --promo-badge-text: #d4af37;     /* Texto de la etiqueta de promo */
-  --promo-shadow: rgba(212, 175, 55, 0.25); /* Sombra dorada brillante */
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #242424;
+  --bg-modal: #1e1e1e;
+  
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
+  
+  --accent-color: #ff3e3e;
+  --accent-hover: #e03232;
+  --accent-green: #25d366;
+  --accent-green-hover: #1eaa53;
+  
+  --border-color: #333333;
+  --border-radius: 8px;
+  --transition-fast: 0.2s ease;
+  
+  --shadow-main: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
-
-/* 
-  Ejemplo para cambiar el tema en el futuro (ej. Promo Rosa):
-  :root {
-    --accent-gold: #ec4899;
-    --promo-border: #ec4899;
-    --promo-badge-text: #ec4899;
-  }
-*/
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
   color: var(--text-primary);
-  min-height: 100vh;
+  line-height: 1.5;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-/* ==========================================
-   HEADER & NAVEGACIÓN
-   ========================================== */
-header {
-  background-color: var(--dark-header);
-  border-bottom: 2px solid var(--accent-gold);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.85rem 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.brand-logo-img {
-  height: 42px;
-  width: auto;
-  object-fit: contain;
-}
-
-.brand-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-}
-
-.brand-title span {
-  color: var(--accent-gold);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #cccccc;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: var(--accent-gold);
-}
-
-/* Buscador y Controles */
-.filter-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.filter-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #aaaaaa;
-}
-
-.input-search,
-.select-category {
-  padding: 0.5rem 0.85rem;
-  border-radius: 6px;
-  border: 1px solid #333333;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.input-search {
-  width: 170px;
-}
-
-.input-search:focus,
-.select-category:focus {
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
-}
-
-/* ==========================================
-   LAYOUT PRINCIPAL Y TARJETAS
-   ========================================== */
 main {
   flex: 1;
   max-width: 1200px;
   width: 100%;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
 }
 
+/* ==========================================
+   2. HEADER Y NAVEGACIÓN
+   ========================================== */
+.main-header {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 100%;
+}
+
+.header-fila-1,
+.header-fila-2,
+.header-fila-3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.logo img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Buscador */
+.busqueda-container {
+  flex: 1;
+  max-width: 500px;
+}
+
+.busqueda-container input,
+select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.busqueda-container input:focus,
+select:focus {
+  border-color: var(--accent-color);
+}
+
+/* Botón Carrito Header */
+.btn-carrito {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-carrito:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ==========================================
+   3. CATÁLOGO Y TARJETAS DE PRODUCTO
+   ========================================== */
 .catalogo {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
 }
 
-/* Tarjeta Regular */
 .tarjeta {
-  background: var(--bg-card);
-  border-radius: 12px;
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  position: relative;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .tarjeta:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
-  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+  border-color: #444;
+  box-shadow: var(--shadow-main);
 }
 
 .tarjeta img {
   width: 100%;
-  height: 210px;
+  height: 200px;
   object-fit: cover;
+  background-color: var(--bg-card);
 }
 
-.contenido {
-  padding: 1.25rem;
-  flex-grow: 1;
+.tarjeta .contenido {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
-.categoria {
+.tarjeta .categoria {
   font-size: 0.75rem;
-  color: var(--accent-gold-hover);
+  color: var(--text-secondary);
   text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
 }
 
-.categoria-sec {
+.tarjeta .categoria-sec {
+  color: var(--accent-color);
+}
+
+.tarjeta .nombre {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.tarjeta .descripcion {
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  font-weight: 500;
-  font-size: 0.72rem;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
 }
 
-.nombre {
-  font-size: 1.1rem;
+.tarjeta .precio {
+  font-size: 1.15rem;
   font-weight: 700;
-  margin: 0.4rem 0;
-  color: var(--text-primary);
+  color: #fff;
+  margin-top: auto;
 }
 
-.descripcion {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.25rem;
-  flex-grow: 1;
-  line-height: 1.4;
-}
-
-.precio {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-/* ==========================================
-   ESTILOS ESPECIALES: PRODUCTOS EN PROMO
-   ========================================== */
-.tarjeta.en-promo {
-  background-color: var(--promo-bg);
-  border: 2px solid var(--promo-border);
-  box-shadow: 0 4px 15px var(--promo-shadow);
-}
-
-.tarjeta.en-promo:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 25px var(--promo-shadow);
-}
-
-.tarjeta.en-promo .precio {
-  color: #b89628;
-}
-
-/* Insignia / Badge "EN PROMO" sobre la imagen */
+/* Badges / Etiquetas de Promoción */
 .badge-promo {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: var(--promo-badge-bg);
-  color: var(--promo-badge-text);
-  border: 1px solid var(--accent-gold);
+  top: 8px;
+  left: 8px;
+  background-color: var(--accent-color);
+  color: #fff;
   font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0.3rem 0.65rem;
-  border-radius: 50px;
-  letter-spacing: 0.05em;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  z-index: 5;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.badge-nuevo {
+  background-color: #007bff;
+}
+
+.badge-pocas {
+  background-color: #ff9800;
 }
 
 /* ==========================================
-   MODAL DE PRODUCTO
+   4. MODALES (Detalle de Producto y Carrito)
    ========================================== */
 .modal-overlay {
   position: fixed;
@@ -280,266 +248,144 @@ main {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 1000;
   padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 1000;
 }
 
 .modal-overlay.activo {
   opacity: 1;
-  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal-content {
-  background: var(--bg-card);
-  border: 1px solid var(--accent-gold);
-  border-radius: 14px;
-  max-width: 700px;
+  background-color: var(--bg-modal);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  max-width: 600px;
   width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.4);
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
-}
-
-.modal-overlay.activo .modal-content {
-  transform: translateY(0);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-main);
 }
 
 .modal-close {
   position: absolute;
   top: 10px;
   right: 15px;
-  background: transparent;
+  background: none;
   border: none;
-  font-size: 2.2rem;
   color: var(--text-secondary);
+  font-size: 1.8rem;
   cursor: pointer;
-  z-index: 10;
-  transition: color 0.2s;
+  line-height: 1;
 }
 
 .modal-close:hover {
-  color: var(--accent-gold);
+  color: var(--text-primary);
 }
 
+/* Contenido Modal Producto */
 .modal-body {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  padding: 1.75rem;
-}
-
-@media (min-width: 600px) {
-  .modal-body {
-    grid-template-columns: 1fr 1fr;
-  }
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
 }
 
 .modal-img {
   width: 100%;
-  max-height: 350px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
 }
 
 .modal-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-/* ==========================================
-   FOOTER
-   ========================================== */
-footer {
-  background-color: var(--dark-header);
-  color: #aaaaaa;
-  padding: 3rem 1.5rem 1.5rem;
-  margin-top: 4rem;
-  border-top: 2px solid var(--accent-gold);
+.modal-info .categoria {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid #222222;
+.modal-info .nombre {
+  font-size: 1.3rem;
+  margin: 0.25rem 0 0.5rem 0;
 }
 
-.footer-col h3 {
-  color: #ffffff;
-  font-size: 1.05rem;
-  margin-bottom: 1.2rem;
-  font-weight: 700;
-}
-
-.footer-col ul {
-  list-style: none;
-}
-
-.footer-col ul li {
-  margin-bottom: 0.6rem;
-}
-
-.footer-col ul li a {
-  color: #aaaaaa;
-  text-decoration: none;
+.modal-info .descripcion {
   font-size: 0.9rem;
-  transition: color 0.2s;
-  cursor: pointer;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  flex: 1;
 }
 
-.footer-col ul li a:hover {
-  color: var(--accent-gold);
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 1.5rem auto 0;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #666666;
-}
-
-/* Responsivo */
-@media (max-width: 640px) {
-  .filter-container {
-    width: 100%;
-  }
-  .input-search {
-    width: 100%;
-  }
-}
-/* ==========================================
-   BARRA SUPERIOR (Cinta de envíos SEO)
-   ========================================== */
-.top-bar {
-  background-color: var(--accent-gold);
-  color: #000000;
-  text-align: center;
-  padding: 0.4rem 1rem;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-.top-bar strong {
+.modal-info .precio {
+  font-size: 1.4rem;
   font-weight: 700;
-}
-
-/* ==========================================
-   ESTILOS DE ÍCONOS SOCIALES (SVG)
-   ========================================== */
-.redes-sociales {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.redes-sociales li a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: #aaaaaa;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-/* Tamaño y color por defecto del SVG */
-.icon-social {
-  width: 18px;
-  height: 18px;
-  stroke: var(--accent-gold); /* Toma el dorado del root */
-  transition: stroke 0.2s ease, transform 0.2s ease;
-}
-
-/* Efecto al pasar el cursor */
-.redes-sociales li a:hover {
-  color: #ffffff;
-  transform: translateX(3px);
-}
-
-.redes-sociales li a:hover .icon-social {
-  stroke: var(--accent-gold-hover);
-  transform: scale(1.1);
-}
-/* ==========================================
-   ESTILOS DE CARRITO Y CONTROLES
-   ========================================== */
-.btn-carrito-header {
-  background-color: var(--accent-gold);
-  color: #000;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.btn-carrito-header:hover {
-  background-color: var(--accent-gold-hover);
+  margin-bottom: 1rem;
 }
 
 .btn-agregar {
-  margin-top: 1.25rem;
-  background-color: var(--accent-gold);
-  color: #000;
+  background-color: var(--accent-color);
+  color: #fff;
   border: none;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
+  transition: background-color var(--transition-fast);
 }
 
 .btn-agregar:hover {
-  background-color: var(--accent-gold-hover);
-  transform: translateY(-2px);
+  background-color: var(--accent-hover);
 }
+
+/* Estilos Específicos del Carrito */
 .modal-carrito-content {
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 1.75rem;
+  max-width: 480px;
 }
+
+.modal-titulo {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
 .lista-carrito {
-  max-height: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 220px;
   overflow-y: auto;
-  margin: 1rem 0;
-   margin-bottom: 1rem;
-  border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  padding: 0.5rem 0;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .item-carrito {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 0;
-  border-bottom: 1px dashed var(--border-color);
+  background-color: var(--bg-card);
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--border-radius);
+}
+
+.info-item-carrito {
+  display: flex;
+  flex-direction: column;
 }
 
 .info-item-carrito span {
-  display: block;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
@@ -550,306 +396,169 @@ footer {
 }
 
 .btn-cant {
-  background-color: var(--dark-header);
-  color: var(--accent-gold);
-  border: 1px solid var(--accent-gold);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   width: 26px;
   height: 26px;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .total-carrito {
   display: flex;
   justify-content: space-between;
-  font-size: 1.15rem;
+  align-items: center;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
 }
 
-.form-datos-pedido {
+.form-datos-pedido,
+.campo-cliente-vip {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   margin-bottom: 1rem;
 }
 
-.form-datos-pedido input,
-.form-datos-pedido select {
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-  font-size: 0.9rem;
-}
-
-.btn-whatsapp-final {
-  width: 100%;
-  background-color: #25d366;
-  color: #fff;
-  border: none;
-  padding: 0.85rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.btn-whatsapp-final:hover {
-  background-color: #1ebc57;
-}
-/* Campo de Cliente VIP en Carrito */
 .campo-cliente-vip {
-  display: flex;
-  gap: 0.5rem;
-  margin: 1rem 0;
+  flex-direction: row;
 }
 
 .campo-cliente-vip input {
   flex: 1;
-  padding: 0.5rem 0.85rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-  font-size: 0.85rem;
-  outline: none;
-}
-
-.campo-cliente-vip input:focus {
-  border-color: var(--accent-gold);
 }
 
 .campo-cliente-vip button {
-  padding: 0.5rem 1rem;
-  background-color: var(--dark-header);
-  color: var(--accent-gold);
-  border: 1px solid var(--accent-gold);
-  border-radius: 6px;
-  font-weight: 600;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0 1rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.campo-cliente-vip button:hover {
-  background-color: var(--accent-gold);
-  color: var(--dark-header);
-}
-.btn-carrito-header {
-  background-color: var(--accent-gold);
-  color: #000000;
+.btn-whatsapp-final {
+  width: 100%;
+  background-color: var(--accent-green);
+  color: #fff;
   border: none;
-  padding: 0.55rem 1.1rem;
-  border-radius: 6px;
+  padding: 0.85rem;
+  border-radius: var(--border-radius);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color var(--transition-fast);
 }
 
-.btn-carrito-header:hover {
-  background-color: var(--accent-gold-hover);
-  transform: scale(1.03);
-}
-/* ==========================================
-   INSIGNIAS Y ETIQUETAS ESPECIALES
-   ========================================== */
-
-/* Etiqueta NUEVO (Rojo Carmesí Elegante) */
-.tarjeta.es-nuevo .badge-promo.badge-nuevo {
-  background-color: #0d0d0d;
-  color: #ef4444;
-  border: 1px solid #dc2626;
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
-}
-
-/* Etiqueta POCAS UNIDADES (Ámbar Tostado) */
-.tarjeta.pocas-unidades .badge-promo.badge-pocas {
-  background-color: #0d0d0d;
-  color: #f59e0b;
-  border: 1px solid #d97706;
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
-}
-
-/* Ajuste para cuando una tarjeta tiene múltiples etiquetas o posición de la insignia */
-.badge-promo {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0.3rem 0.65rem;
-  border-radius: 50px;
-  letter-spacing: 0.05em;
-  z-index: 5;
+.btn-whatsapp-final:hover {
+  background-color: var(--accent-green-hover);
 }
 
 /* ==========================================
-   OPTIMIZACIÓN EXCLUSIVA PARA MÓVILES
+   5. FOOTER
    ========================================== */
-@media (max-width: 768px) {
-  /* 1. Hacer el Banner Superior súper compacto */
-  .banner-top, .top-bar {
-    font-size: 0.72rem;
-    padding: 4px 8px;
-    text-align: center;
-  }
-
-  /* 2. Reducir drásticamente el espacio del Header */
-  header, .main-header {
-    padding: 8px 12px !important;
-  }
-
-  /* 3. Logo y Carrito en una sola fila compacta */
-  .header-top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6px;
-  }
-
-  /* Reducir tamaño del logo Pstore */
-  .logo img, .logo-img {
-    height: 32px !important;
-  }
-  
-  .logo-text {
-    font-size: 1.1rem !important;
-  }
-
-  /* Botón de Carrito más discreto */
-  .btn-carrito, #btn-carrito {
-    padding: 5px 10px !important;
-    font-size: 0.8rem !important;
-  }
-
-  /* 4. Buscador y Filtros en línea compacta */
-  .busqueda-container, .filtros-container {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  /* Reducir alto de inputs y selects */
-  input#input-busqueda, 
-  select#select-categoria, 
-  select#select-personaje {
-    padding: 6px 10px !important;
-    font-size: 0.85rem !important;
-    height: 36px;
-  }
-
-  /* Si los selectores están juntos, ponerlos lado a lado */
-  .selects-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-  }
-
-  /* Ocultar etiquetas/labels repetitivas para ahorrar altura */
-  .filtro-label, label[for="select-categoria"], label[for="select-personaje"] {
-    display: none; 
-  }
-
-  /* 5. Catálogo en Móvil: Mostrar 2 columnas de tarjetas pequeñas */
-  #catalogo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) !important; /* 2 productos por fila */
-    gap: 10px !important;
-    padding: 10px !important;
-  }
-
-  .tarjeta {
-    padding: 8px;
-  }
-
-  .tarjeta img {
-    height: 140px !important; /* Ajusta la imagen para que sea compacta */
-    object-fit: contain;
-  }
-
-  .tarjeta .nombre {
-    font-size: 0.85rem !important;
-    line-height: 1.1;
-  }
-
-  .tarjeta .precio {
-    font-size: 0.95rem !important;
-  }
+footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+  padding: 2rem 1rem 1rem 1rem;
 }
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-col h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-col p, 
+.footer-col ul {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-col a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--text-primary);
+}
+
+.cobertura-footer {
+  margin-top: 0.75rem;
+}
+
+.cobertura-footer h4 {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.redes-sociales a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-social {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-secondary);
+}
+
+.redes-sociales a:hover .icon-social {
+  stroke: var(--text-primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
 /* ==========================================
-   OPTIMIZACIÓN DEL FOOTER PARA MÓVILES
+   6. RESPONSIVE / MEDIA QUERIES
    ========================================== */
-@media (max-width: 768px) {
-
-  /* 1. Reducir relleno vertical general del footer */
-  footer, .footer {
-    padding: 1.5rem 1rem 1rem 1rem !important;
-    text-align: center;
+@media (max-width: 600px) {
+  .header-fila-2 {
+    flex-direction: row;
   }
 
-  /* 2. Ocultar textos descriptivos largos del footer */
-  .footer-descripcion, 
-  .footer-info p {
-    display: none; /* Oculta textos largos que recargan la vista */
+  .modal-body {
+    grid-template-columns: 1fr;
   }
 
-  /* 3. Redes Sociales en una sola fila compacta (solo íconos) */
-  .footer-redes, .social-links {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 15px !important;
-    margin: 1rem 0 !important;
+  .modal-img {
+    height: 180px;
   }
 
-  /* Convertir enlaces de redes sociales en botones circulares tipo ícono */
-  .footer-redes a, .social-links a {
-    display: inline-flex !important;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #1a1a1a;
-    color: var(--accent-gold, #d4af37);
-    border: 1px solid #333;
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-  }
-
-  /* Ocultar el texto de la red social y dejar SOLO el ícono/emoji */
-  .footer-redes a span, 
-  .social-links a span:not(.icon) {
-    display: none !important; 
-  }
-
-  /* 4. Enlaces secundarios en una sola línea horizontal */
-  .footer-links {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    font-size: 0.8rem !important;
-    margin-bottom: 1rem !important;
-  }
-
-  .footer-copyright {
-    font-size: 0.75rem;
-    color: #666;
-    border-top: 1px solid #222;
-    padding-top: 0.8rem;
-    margin-top: 0.8rem;
+  .texto-btn-carrito {
+    display: none; /* Oculta el texto "Carrito" en pantallas pequeñas, deja solo el ícono y contador */
   }
 }
-@media (max-width: 768px) {
-  /* Ocultar enlaces de navegación inútiles en móvil */
-  .nav-links, 
-  header nav a, 
-  .btn-contacto {
-    display: none !important;
-  }
 
   /* Ajustar el botón de carrito para que sea compacto (solo ícono + número) */
   #btn-carrito, .btn-carrito {
