@@ -456,3 +456,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+// Listener para cuando el usuario cambia la Categoría Principal
+document.getElementById("select-categoria").addEventListener("change", (e) => {
+  const categoriaSeleccionada = e.target.value;
+  const selectPersonaje = document.getElementById("select-personaje");
+
+  if (!selectPersonaje) return;
+
+  // Si selecciona "todas" o una categoría sin subcategorías, ocultamos el selector secundario
+  if (categoriaSeleccionada === "" || categoriaSeleccionada === "todas") {
+    selectPersonaje.classList.add("oculto-movil");
+    selectPersonaje.value = ""; // Resetea la subcategoría
+  } else {
+    // Si la categoría tiene subcategorías, lo volvemos a mostrar
+    poblarSubcategorias(categoriaSeleccionada);
+    selectPersonaje.classList.remove("oculto-movil");
+  }
+
+  aplicarFiltros();
+});
