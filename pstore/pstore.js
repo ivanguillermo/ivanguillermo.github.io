@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   actualizarContadorCarrito();
 
   // 1. Cargar el CSV con PapaParse
-  Papa.parse("pstore.csv", {
+  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pubhtml?gid=51076819&single=true", {
     download: true,
     header: true,
     skipEmptyLines: true,
