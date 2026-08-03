@@ -435,3 +435,7 @@ function actualizarOpcionesCheckout() {
     }
   }
 }
+document.getElementById("btn-validar-cliente").addEventListener("click", () => {
+  const input = document.getElementById("input-codigo-cliente").value;
+  if (input) identificarCliente(input);
+});
