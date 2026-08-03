@@ -164,43 +164,61 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderizarCatalogo(productos) {
-    const contenedor = document.getElementById("catalogo");
-    if (!contenedor) return;
+  const contenedor = document.getElementById("catalogo");
+  if (!contenedor) return;
 
-    contenedor.innerHTML = "";
-    if (productos.length === 0) {
-      contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 2rem;'>No se encontraron productos.</p>";
-      return;
+  contenedor.innerHTML = "";
+  if (productos.length === 0) {
+    contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 2rem;'>No se encontraron productos.</p>";
+    return;
+  }
+
+  productos.forEach((prod) => {
+    const tarjeta = document.createElement("article");
+    const estadoNorm = normalizarTexto(prod.estado);
+
+    // Detección de etiquetas
+    const esPromo = estadoNorm.includes("promo") || estadoNorm.includes("oferta");
+    const esNuevo = estadoNorm.includes("nuevo");
+    const pocasUnidades = estadoNorm.includes("pocas") || estadoNorm.includes("agotando");
+
+    // Asignación de clases dinámicas
+    let clasesTarjeta = "tarjeta";
+    let badgeHtml = "";
+
+    if (esNuevo) {
+      clasesTarjeta += " es-nuevo";
+      badgeHtml = `<span class="badge-promo badge-nuevo">🔥 ¡Nuevo!</span>`;
+    } else if (pocasUnidades) {
+      clasesTarjeta += " pocas-unidades";
+      badgeHtml = `<span class="badge-promo badge-pocas">⚡ Pocas Unidades</span>`;
+    } else if (esPromo) {
+      clasesTarjeta += " en-promo";
+      badgeHtml = `<span class="badge-promo">🏷️ ¡En Promo!</span>`;
     }
 
-    productos.forEach((prod) => {
-      const tarjeta = document.createElement("article");
-      const estadoNorm = normalizarTexto(prod.estado);
-      const esPromo = estadoNorm.includes("promo") || estadoNorm.includes("oferta");
+    tarjeta.className = clasesTarjeta;
 
-      tarjeta.className = esPromo ? "tarjeta en-promo" : "tarjeta";
+    const precioNum = parseFloat(prod.precio);
+    const precioFormateado = isNaN(precioNum) ? prod.precio : precioNum.toFixed(2);
+    const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
+    const tagSecundaria = prod.categoria_secundaria ? `<span class="categoria-sec"> • ${prod.categoria_secundaria}</span>` : "";
 
-      const precioNum = parseFloat(prod.precio);
-      const precioFormateado = isNaN(precioNum) ? prod.precio : precioNum.toFixed(2);
-      const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
-      const tagSecundaria = prod.categoria_secundaria ? `<span class="categoria-sec"> • ${prod.categoria_secundaria}</span>` : "";
-      const badgeHtml = esPromo ? `<span class="badge-promo">¡En Promo!</span>` : "";
+    tarjeta.innerHTML = `
+      ${badgeHtml}
+      <img src="${srcImagen}" alt="${prod.nombre}">
+      <div class="contenido">
+        <span class="categoria">${prod.categoria || ''}${tagSecundaria}</span>
+        <h2 class="nombre">${prod.nombre || ''}</h2>
+        <p class="descripcion">${prod.descripcion || ''}</p>
+        <span class="precio">$${precioFormateado}</span>
+      </div>
+    `;
 
-      tarjeta.innerHTML = `
-        ${badgeHtml}
-        <img src="${srcImagen}" alt="${prod.nombre}">
-        <div class="contenido">
-          <span class="categoria">${prod.categoria || ''}${tagSecundaria}</span>
-          <h2 class="nombre">${prod.nombre || ''}</h2>
-          <p class="descripcion">${prod.descripcion || ''}</p>
-          <span class="precio">$${precioFormateado}</span>
-        </div>
-      `;
-
-      tarjeta.addEventListener("click", () => abrirModal(prod));
-      contenedor.appendChild(tarjeta);
-    });
-  }
+    tarjeta.addEventListener("click", () => abrirModal(prod));
+    contenedor.appendChild(tarjeta);
+  });
+}
 
   function abrirModal(producto) {
     if (!modal) return;
