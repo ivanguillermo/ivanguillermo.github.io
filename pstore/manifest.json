@@ -1,0 +1,21 @@
+{
+  "short_name": "Pstore",
+  "name": "Pstore | Catálogo Online",
+  "icons": [
+    {
+      "src": "assets/pstore.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/pstore.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#0d0d0d",
+  "theme_color": "#d4af37",
+  "display": "standalone",
+  "orientation": "portrait"
+}
