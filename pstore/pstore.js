@@ -1,8 +1,10 @@
+// Variable global para clientes
+let clientesConocidos = [];
+let clienteActual = null;
+
 document.addEventListener("DOMContentLoaded", () => {
   let todosLosProductos = [];
   let productoActualModal = null;
-
-  // Carrito persistente en el navegador
   let carrito = JSON.parse(localStorage.getItem("pstore_carrito")) || [];
 
   // Elementos DOM Filtros
@@ -28,28 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const listaCarrito = document.getElementById("lista-carrito");
   const totalMonto = document.getElementById("total-monto");
   const btnEnviarWhatsApp = document.getElementById("btn-enviar-whatsapp");
+  const btnValidarCliente = document.getElementById("btn-validar-cliente");
 
-  // Inicializar contador del carrito en el header
   actualizarContadorCarrito();
 
-  // 1. Cargar el CSV con PapaParse
-  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pubhtml?gid=51076819&single=true", {
+  // 1. CARGAR CATÁLOGO DE PRODUCTOS (CSV)
+  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=51076819&single=true&output=csv", {
     download: true,
     header: true,
     skipEmptyLines: true,
-    transformHeader: function(header) {
-      return header
-        .toLowerCase()
-        .trim()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]/g, "_");
-    },
+    transformHeader: h => h.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "_"),
     complete: function (results) {
-      if (results.errors && results.errors.length > 0) {
-        console.warn("Advertencias CSV:", results.errors);
-      }
-
       todosLosProductos = results.data
         .map(p => ({
           ...p,
@@ -62,13 +53,35 @@ document.addEventListener("DOMContentLoaded", () => {
       configurarEventosBuscador();
       configurarEventosModal();
       configurarEventosCarrito();
-    },
-    error: function (err) {
-      console.error("Error al cargar el CSV:", err);
     }
   });
 
-  // Helpers
+  // 2. CARGAR CLIENTES CONOCIDOS (CSV)
+  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=1777061918&single=true&output=csv", {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    transformHeader: h => h.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "_"),
+    complete: function (results) {
+      clientesConocidos = results.data;
+      console.log("Clientes cargados con éxito:", clientesConocidos.length);
+    }
+  });
+
+  // Evento Validar Cliente VIP
+  if (btnValidarCliente) {
+    btnValidarCliente.addEventListener("click", () => {
+      const input = document.getElementById("input-codigo-cliente").value;
+      if (input) {
+        identificarCliente(input);
+      } else {
+        alert("Por favor ingresa un correo o código válido.");
+      }
+    });
+  }
+
+  // --- FUNCIONES Y LÓGICA DE INTERFAZ ---
+
   function obtenerUrlDirectaDrive(url) {
     if (!url) return 'assets/placeholder.jpg';
     const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
@@ -80,10 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return texto.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 
-  // Poblar Filtros y Footer
   function poblarCategorias(productos) {
     const footerUl = document.getElementById("footer-categorias");
-
     const categorias = [...new Set(productos.map((p) => (p.categoria ? p.categoria.trim() : "")))].filter(Boolean);
     const categoriasSec = [...new Set(productos.map((p) => (p.categoria_secundaria ? p.categoria_secundaria.trim() : "")))].filter(Boolean);
 
@@ -131,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (inputBusqueda) inputBusqueda.addEventListener("input", aplicarFiltros);
   }
 
-  // Filtro
   function aplicarFiltros() {
     const catSel = selectCategoria ? selectCategoria.value : "todas";
     const catSecSel = selectCategoriaSec ? selectCategoriaSec.value : "todas";
@@ -153,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarCatalogo(productosFiltrados);
   }
 
-  // Renderizar Tarjetas
   function renderizarCatalogo(productos) {
     const contenedor = document.getElementById("catalogo");
     if (!contenedor) return;
@@ -193,7 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Modal de Detalle
   function abrirModal(producto) {
     if (!modal) return;
     productoActualModal = producto;
@@ -218,7 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function configurarEventosModal() {
     if (cerrarModalBtn) cerrarModalBtn.addEventListener("click", cerrarModal);
-    
     if (modal) {
       modal.addEventListener("click", (e) => {
         if (e.target === modal) cerrarModal();
@@ -235,9 +242,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ==========================================
-  // LÓGICA COMPLETA DEL CARRITO DE COMPRAS
-  // ==========================================
+  // --- LÓGICA DEL CARRITO DE COMPRAS ---
+
   function agregarAlCarrito(prod) {
     const existe = carrito.find((p) => p.nombre === prod.nombre);
     if (existe) {
@@ -305,9 +311,15 @@ document.addEventListener("DOMContentLoaded", () => {
       listaCarrito.appendChild(item);
     });
 
-    totalMonto.textContent = `$${total.toFixed(2)}`;
+    let totalFinal = total;
+    if (clienteActual && clienteActual.descuento > 0) {
+      const montoDescuento = (total * clienteActual.descuento) / 100;
+      totalFinal = total - montoDescuento;
+      totalMonto.innerHTML = `<span style="font-size:0.85rem; text-decoration:line-through; color:#888;">$${total.toFixed(2)}</span> $${totalFinal.toFixed(2)} (${clienteActual.descuento}% desc.)`;
+    } else {
+      totalMonto.textContent = `$${total.toFixed(2)}`;
+    }
 
-    // Asignar clicks a botones + y -
     listaCarrito.querySelectorAll(".btn-cant").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const nombre = e.target.getAttribute("data-nombre");
@@ -342,109 +354,87 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
- function enviarPedidoWhatsApp() {
-  if (carrito.length === 0) return alert("Tu carrito está vacío.");
+  function enviarPedidoWhatsApp() {
+    if (carrito.length === 0) return alert("Tu carrito está vacío.");
 
-  const nombreInput = document.getElementById("cliente-nombre").value.trim();
-  const nombre = clienteActual ? clienteActual.nombre : (nombreInput || "Cliente");
-  const ciudad = document.getElementById("cliente-ciudad").value;
-  const pago = document.getElementById("cliente-pago").value;
+    const nombreInput = document.getElementById("cliente-nombre").value.trim();
+    const nombre = clienteActual ? clienteActual.nombre : (nombreInput || "Cliente");
+    const ciudad = document.getElementById("cliente-ciudad").value;
+    const pago = document.getElementById("cliente-pago").value;
 
-  let mensaje = `🛒 *¡Hola Pstore! Quisiera realizar el siguiente pedido:*\n\n`;
+    let mensaje = `🛒 *¡Hola Pstore! Quisiera realizar el siguiente pedido:*\n\n`;
 
-  let total = 0;
-  carrito.forEach((prod) => {
-    const subtotal = prod.precio * prod.cantidad;
-    total += subtotal;
-    mensaje += `• ${prod.cantidad}x ${prod.nombre} - $${subtotal.toFixed(2)}\n`;
-  });
+    let total = 0;
+    carrito.forEach((prod) => {
+      const subtotal = prod.precio * prod.cantidad;
+      total += subtotal;
+      mensaje += `• ${prod.cantidad}x ${prod.nombre} - $${subtotal.toFixed(2)}\n`;
+    });
 
-  // Aplicar descuento si el cliente está validado
-  let totalFinal = total;
-  if (clienteActual && clienteActual.descuento > 0) {
-    const montoDescuento = (total * clienteActual.descuento) / 100;
-    totalFinal = total - montoDescuento;
-    mensaje += `\n🏷️ *Descuento VIP (${clienteActual.descuento}%):* -$${montoDescuento.toFixed(2)}\n`;
-  }
-
-  mensaje += `💰 *Total a Pagar:* $${totalFinal.toFixed(2)}\n`;
-  mensaje += `-----------------------------\n`;
-  mensaje += `👤 *Cliente:* ${nombre} ${clienteActual ? '⭐ [Cliente Registrado]' : ''}\n`;
-  mensaje += `📍 *Ubicación:* ${ciudad}\n`;
-  mensaje += `💳 *Método de Pago:* ${pago}\n\n`;
-  mensaje += `¿Me confirman disponibilidad para acordar la entrega?`;
-
-  const telefonoPstore = "584126216661"; // Tu número real
-  window.open(`https://wa.me/${telefonoPstore}?text=${encodeURIComponent(mensaje)}`, "_blank");
-}
-
-// Variable global para almacenar la lista de clientes conocidos
-let clientesConocidos = [];
-let clienteActual = null;
-
-// URL de la pestaña "Clientes" en CSV (Reemplaza con tu URL publicada de la pestaña Clientes)
-const URL_CSV_CLIENTES = "https://docs.google.com/spreadsheets/d/e/TU_LINK_PUBLICADO_CLIENTES/pub?gid=TU_GID&single=true&output=csv";
-
-// Cargar la lista de clientes al iniciar
-Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=1777061918&single=true&output=csv", {
-  download: true,
-  header: true,
-  skipEmptyLines: true,
-  transformHeader: h => h.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "_"),
-  complete: function (results) {
-    clientesConocidos = results.data;
-    console.log("Clientes cargados con éxito:", clientesConocidos.length);
-  }
-});
-
-// Función para identificar al cliente
-function identificarCliente(correoOCodigo) {
-  const query = correoOCodigo.trim().toLowerCase();
-  
-  // Buscar coincidencia por correo o código
-  const encontrado = clientesConocidos.find(c => 
-    (c.correo___codigo && c.correo___codigo.trim().toLowerCase() === query)
-  );
-
-  if (encontrado) {
-    clienteActual = {
-      nombre: encontrado.nombre_cliente,
-      descuento: parseFloat(encontrado.descuento____) || 0,
-      permiteCredito: (encontrado.permite_credito || "").trim().toUpperCase() === "SI"
-    };
-    alert(`¡Bienvenido/a ${clienteActual.nombre}! Se ha aplicado tu descuento de cliente especial (${clienteActual.descuento}%).`);
-  } else {
-    clienteActual = null;
-    alert("Código o correo no registrado. Continuarás con precios regulares.");
-  }
-
-  actualizarOpcionesCheckout();
-  renderizarCarrito(); // Re-renderiza para aplicar descuentos si los hay
-}
-
-// Mostrar/Ocultar la opción de pago "A Crédito" según el perfil
-function actualizarOpcionesCheckout() {
-  const selectPago = document.getElementById("cliente-pago");
-  let opcionCredito = selectPago.querySelector("option[value='A Crédito']");
-
-  if (clienteActual && clienteActual.permiteCredito) {
-    if (!opcionCredito) {
-      opcionCredito = document.createElement("option");
-      opcionCredito.value = "A Crédito / Cuenta Corriente";
-      opcionCredito.textContent = "💳 Pago a Crédito (Cliente VIP)";
-      selectPago.appendChild(opcionCredito);
+    let totalFinal = total;
+    if (clienteActual && clienteActual.descuento > 0) {
+      const montoDescuento = (total * clienteActual.descuento) / 100;
+      totalFinal = total - montoDescuento;
+      mensaje += `\n🏷️ *Descuento VIP (${clienteActual.descuento}%):* -$${montoDescuento.toFixed(2)}\n`;
     }
-  } else {
-    if (opcionCredito) {
-      opcionCredito.remove();
-    }
+
+    mensaje += `💰 *Total a Pagar:* $${totalFinal.toFixed(2)}\n`;
+    mensaje += `-----------------------------\n`;
+    mensaje += `👤 *Cliente:* ${nombre} ${clienteActual ? '⭐ [Cliente Registrado]' : ''}\n`;
+    mensaje += `📍 *Ubicación:* ${ciudad}\n`;
+    mensaje += `💳 *Método de Pago:* ${pago}\n\n`;
+    mensaje += `¿Me confirman disponibilidad para acordar la entrega?`;
+
+    const telefonoPstore = "584126216661";
+    window.open(`https://wa.me/${telefonoPstore}?text=${encodeURIComponent(mensaje)}`, "_blank");
   }
-}
-document.getElementById("btn-validar-cliente").addEventListener("click", () => {
-  const input = document.getElementById("input-codigo-cliente").value;
-  if (input) {
-    identificarCliente(input);
-  } else {
-    alert("Por favor ingresa un correo o código válido.");
+
+  function identificarCliente(correoOCodigo) {
+    const query = correoOCodigo.trim().toLowerCase();
+    
+    // Buscar coincidencia en cualquiera de las propiedades del objeto cliente
+    const encontrado = clientesConocidos.find(c => {
+      const valorCodigo = Object.keys(c).find(k => k.includes("correo") || k.includes("codigo"));
+      return c[valorCodigo] && c[valorCodigo].trim().toLowerCase() === query;
+    });
+
+    if (encontrado) {
+      const keyNombre = Object.keys(encontrado).find(k => k.includes("nombre")) || "nombre_cliente";
+      const keyDescuento = Object.keys(encontrado).find(k => k.includes("descuento")) || "descuento";
+      const keyCredito = Object.keys(encontrado).find(k => k.includes("credito")) || "permite_credito";
+
+      clienteActual = {
+        nombre: encontrado[keyNombre] || "Cliente Registrado",
+        descuento: parseFloat(encontrado[keyDescuento]) || 0,
+        permiteCredito: (encontrado[keyCredito] || "").trim().toUpperCase() === "SI"
+      };
+      alert(`¡Bienvenido/a ${clienteActual.nombre}! Se ha aplicado tu descuento de cliente especial (${clienteActual.descuento}%).`);
+    } else {
+      clienteActual = null;
+      alert("Código o correo no registrado. Continuarás con precios regulares.");
+    }
+
+    actualizarOpcionesCheckout();
+    renderizarCarrito();
+  }
+
+  function actualizarOpcionesCheckout() {
+    const selectPago = document.getElementById("cliente-pago");
+    if (!selectPago) return;
+
+    let opcionCredito = selectPago.querySelector("option[value='A Crédito / Cuenta Corriente']");
+
+    if (clienteActual && clienteActual.permiteCredito) {
+      if (!opcionCredito) {
+        opcionCredito = document.createElement("option");
+        opcionCredito.value = "A Crédito / Cuenta Corriente";
+        opcionCredito.textContent = "💳 Pago a Crédito (Cliente VIP)";
+        selectPago.appendChild(opcionCredito);
+      }
+    } else {
+      if (opcionCredito) {
+        opcionCredito.remove();
+      }
+    }
   }
 });
