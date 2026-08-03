@@ -479,3 +479,121 @@ footer {
   stroke: var(--accent-gold-hover);
   transform: scale(1.1);
 }
+/* ==========================================
+   ESTILOS DE CARRITO Y CONTROLES
+   ========================================== */
+.btn-carrito-header {
+  background-color: var(--accent-gold);
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-carrito-header:hover {
+  background-color: var(--accent-gold-hover);
+}
+
+.btn-agregar {
+  margin-top: 1.25rem;
+  background-color: var(--accent-gold);
+  color: #000;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-agregar:hover {
+  background-color: var(--accent-gold-hover);
+  transform: translateY(-2px);
+}
+
+.modal-carrito-content {
+  padding: 1.75rem;
+}
+
+.lista-carrito {
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 1rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 0;
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.info-item-carrito span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.controles-item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-cant {
+  background-color: var(--dark-header);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.total-carrito {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.form-datos-pedido {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.form-datos-pedido input,
+.form-datos-pedido select {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.btn-whatsapp-final {
+  width: 100%;
+  background-color: #25d366;
+  color: #fff;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-whatsapp-final:hover {
+  background-color: #1ebc57;
+}
