@@ -1,4 +1,3 @@
-// Variable global para clientes
 let clientesConocidos = [];
 let clienteActual = null;
 
@@ -9,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Elementos DOM Filtros
   const selectCategoria = document.getElementById("select-categoria");
-  const selectCategoriaSec = document.getElementById("select-categoria-sec");
+  const selectPersonaje = document.getElementById("select-personaje");
   const inputBusqueda = document.getElementById("input-busqueda");
 
   // Elementos Modal Producto
@@ -64,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
     transformHeader: h => h.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "_"),
     complete: function (results) {
       clientesConocidos = results.data;
-      console.log("Clientes cargados con éxito:", clientesConocidos.length);
     }
   });
 
@@ -83,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- FUNCIONES Y LÓGICA DE INTERFAZ ---
 
   function obtenerUrlDirectaDrive(url) {
-    if (!url) return 'assets/placeholder.jpg';
+    if (!url) return 'assets/pstore.jpg';
     const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
     return match && match[1] ? `https://lh3.googleusercontent.com/d/${match[1]}` : url;
   }
@@ -96,9 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function poblarCategorias(productos) {
     const footerUl = document.getElementById("footer-categorias");
     const categorias = [...new Set(productos.map((p) => (p.categoria ? p.categoria.trim() : "")))].filter(Boolean);
-    const categoriasSec = [...new Set(productos.map((p) => (p.categoria_secundaria ? p.categoria_secundaria.trim() : "")))].filter(Boolean);
 
     if (selectCategoria) {
+      // Limpiar opciones manteniendo la inicial
+      selectCategoria.innerHTML = '<option value="todas">Todas las categorías</option>';
       categorias.forEach((cat) => {
         const option = document.createElement("option");
         option.value = cat;
@@ -108,14 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
       selectCategoria.addEventListener("change", aplicarFiltros);
     }
 
-    if (selectCategoriaSec) {
-      categoriasSec.forEach((catSec) => {
-        const option = document.createElement("option");
-        option.value = catSec;
-        option.textContent = catSec;
-        selectCategoriaSec.appendChild(option);
-      });
-      selectCategoriaSec.addEventListener("change", aplicarFiltros);
+    if (selectPersonaje) {
+      selectPersonaje.addEventListener("change", aplicarFiltros);
     }
 
     if (footerUl) {
@@ -129,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target.tagName === "A") {
           const cat = e.target.getAttribute("data-cat");
           if (selectCategoria) selectCategoria.value = cat;
-          if (selectCategoriaSec) selectCategoriaSec.value = "todas";
+          if (selectPersonaje) selectPersonaje.value = "todas";
           if (inputBusqueda) inputBusqueda.value = "";
           aplicarFiltros();
           window.scrollTo({ top: 0, behavior: "smooth" });
@@ -144,12 +137,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function aplicarFiltros() {
     const catSel = selectCategoria ? selectCategoria.value : "todas";
-    const catSecSel = selectCategoriaSec ? selectCategoriaSec.value : "todas";
+    const catSecSel = selectPersonaje ? selectPersonaje.value : "todas";
     const query = inputBusqueda ? normalizarTexto(inputBusqueda.value) : "";
 
     const productosFiltrados = todosLosProductos.filter((prod) => {
       const coincideCat = catSel === "todas" || (prod.categoria && prod.categoria.trim() === catSel);
-      const coincideCatSec = catSecSel === "todas" || (prod.categoria_secundaria && prod.categoria_secundaria.trim() === catSecSel);
+      const coincideCatSec = catSecSel === "todas" || 
+        (prod.categoria_secundaria && prod.categoria_secundaria.trim().toLowerCase() === catSecSel.toLowerCase());
 
       const coincideTexto = query === "" ||
         normalizarTexto(prod.nombre).includes(query) ||
@@ -164,61 +158,59 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderizarCatalogo(productos) {
-  const contenedor = document.getElementById("catalogo");
-  if (!contenedor) return;
+    const contenedor = document.getElementById("catalogo");
+    if (!contenedor) return;
 
-  contenedor.innerHTML = "";
-  if (productos.length === 0) {
-    contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 2rem;'>No se encontraron productos.</p>";
-    return;
-  }
-
-  productos.forEach((prod) => {
-    const tarjeta = document.createElement("article");
-    const estadoNorm = normalizarTexto(prod.estado);
-
-    // Detección de etiquetas
-    const esPromo = estadoNorm.includes("promo") || estadoNorm.includes("oferta");
-    const esNuevo = estadoNorm.includes("nuevo");
-    const pocasUnidades = estadoNorm.includes("pocas") || estadoNorm.includes("agotando");
-
-    // Asignación de clases dinámicas
-    let clasesTarjeta = "tarjeta";
-    let badgeHtml = "";
-
-    if (esNuevo) {
-      clasesTarjeta += " es-nuevo";
-      badgeHtml = `<span class="badge-promo badge-nuevo">🔥 ¡Nuevo!</span>`;
-    } else if (pocasUnidades) {
-      clasesTarjeta += " pocas-unidades";
-      badgeHtml = `<span class="badge-promo badge-pocas">⚡ Pocas Unidades</span>`;
-    } else if (esPromo) {
-      clasesTarjeta += " en-promo";
-      badgeHtml = `<span class="badge-promo">🏷️ ¡En Promo!</span>`;
+    contenedor.innerHTML = "";
+    if (productos.length === 0) {
+      contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 2rem;'>No se encontraron productos.</p>";
+      return;
     }
 
-    tarjeta.className = clasesTarjeta;
+    productos.forEach((prod) => {
+      const tarjeta = document.createElement("article");
+      const estadoNorm = normalizarTexto(prod.estado);
 
-    const precioNum = parseFloat(prod.precio);
-    const precioFormateado = isNaN(precioNum) ? prod.precio : precioNum.toFixed(2);
-    const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
-    const tagSecundaria = prod.categoria_secundaria ? `<span class="categoria-sec"> • ${prod.categoria_secundaria}</span>` : "";
+      const esPromo = estadoNorm.includes("promo") || estadoNorm.includes("oferta");
+      const esNuevo = estadoNorm.includes("nuevo");
+      const pocasUnidades = estadoNorm.includes("pocas") || estadoNorm.includes("agotando");
 
-    tarjeta.innerHTML = `
-      ${badgeHtml}
-      <img src="${srcImagen}" alt="${prod.nombre}">
-      <div class="contenido">
-        <span class="categoria">${prod.categoria || ''}${tagSecundaria}</span>
-        <h2 class="nombre">${prod.nombre || ''}</h2>
-        <p class="descripcion">${prod.descripcion || ''}</p>
-        <span class="precio">$${precioFormateado}</span>
-      </div>
-    `;
+      let clasesTarjeta = "tarjeta";
+      let badgeHtml = "";
 
-    tarjeta.addEventListener("click", () => abrirModal(prod));
-    contenedor.appendChild(tarjeta);
-  });
-}
+      if (esNuevo) {
+        clasesTarjeta += " es-nuevo";
+        badgeHtml = `<span class="badge-promo badge-nuevo">🔥 ¡Nuevo!</span>`;
+      } else if (pocasUnidades) {
+        clasesTarjeta += " pocas-unidades";
+        badgeHtml = `<span class="badge-promo badge-pocas">⚡ Pocas Unidades</span>`;
+      } else if (esPromo) {
+        clasesTarjeta += " en-promo";
+        badgeHtml = `<span class="badge-promo">🏷️ ¡En Promo!</span>`;
+      }
+
+      tarjeta.className = clasesTarjeta;
+
+      const precioNum = parseFloat(prod.precio);
+      const precioFormateado = isNaN(precioNum) ? prod.precio : precioNum.toFixed(2);
+      const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
+      const tagSecundaria = prod.categoria_secundaria ? `<span class="categoria-sec"> • ${prod.categoria_secundaria}</span>` : "";
+
+      tarjeta.innerHTML = `
+        ${badgeHtml}
+        <img src="${srcImagen}" alt="${prod.nombre}">
+        <div class="contenido">
+          <span class="categoria">${prod.categoria || ''}${tagSecundaria}</span>
+          <h2 class="nombre">${prod.nombre || ''}</h2>
+          <p class="descripcion">${prod.descripcion || ''}</p>
+          <span class="precio">$${precioFormateado}</span>
+        </div>
+      `;
+
+      tarjeta.addEventListener("click", () => abrirModal(prod));
+      contenedor.appendChild(tarjeta);
+    });
+  }
 
   function abrirModal(producto) {
     if (!modal) return;
@@ -260,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- LÓGICA DEL CARRITO DE COMPRAS ---
+  // --- LÓGICA DEL CARRITO ---
 
   function agregarAlCarrito(prod) {
     const existe = carrito.find((p) => p.nombre === prod.nombre);
@@ -410,7 +402,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function identificarCliente(correoOCodigo) {
     const query = correoOCodigo.trim().toLowerCase();
     
-    // Buscar coincidencia en cualquiera de las propiedades del objeto cliente
     const encontrado = clientesConocidos.find(c => {
       const valorCodigo = Object.keys(c).find(k => k.includes("correo") || k.includes("codigo"));
       return c[valorCodigo] && c[valorCodigo].trim().toLowerCase() === query;
@@ -455,23 +446,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
-});
-// Listener para cuando el usuario cambia la Categoría Principal
-document.getElementById("select-categoria").addEventListener("change", (e) => {
-  const categoriaSeleccionada = e.target.value;
-  const selectPersonaje = document.getElementById("select-personaje");
-
-  if (!selectPersonaje) return;
-
-  // Si selecciona "todas" o una categoría sin subcategorías, ocultamos el selector secundario
-  if (categoriaSeleccionada === "" || categoriaSeleccionada === "todas") {
-    selectPersonaje.classList.add("oculto-movil");
-    selectPersonaje.value = ""; // Resetea la subcategoría
-  } else {
-    // Si la categoría tiene subcategorías, lo volvemos a mostrar
-    poblarSubcategorias(categoriaSeleccionada);
-    selectPersonaje.classList.remove("oculto-movil");
-  }
-
-  aplicarFiltros();
 });
