@@ -9,12 +9,12 @@
   --bg-modal: #ffffff;          /* Modales */
   
   /* Textos */
-  --text-primary: #111111;      /* Negro principal para texto legible */
+  --text-primary: #111111;      /* Negro principal */
   --text-secondary: #555555;    /* Gris oscuro secundario */
   
   /* Color de Marca y Acentos */
   --brand-gold: #d4af37;        /* Dorado principal */
-  --brand-gold-hover: #b89428;  /* Dorado más oscuro para hover */
+  --brand-gold-hover: #b89428;  /* Dorado oscuro */
   --brand-black: #111111;       /* Negro de contraste */
   
   --accent-color: var(--brand-gold);
@@ -44,6 +44,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
 /* ==========================================
    2. HEADER Y NAVEGACIÓN
    ========================================== */
@@ -115,7 +116,6 @@ select:focus {
 }
 
 /* Botón Carrito Header */
-/* Botón de Carrito del Header con estilo Negro + Dorado */
 .btn-carrito {
   background-color: var(--brand-black);
   color: var(--brand-gold);
@@ -135,6 +135,7 @@ select:focus {
   background-color: var(--brand-gold);
   color: #ffffff;
 }
+
 /* ==========================================
    3. CATÁLOGO Y TARJETAS DE PRODUCTO
    ========================================== */
@@ -142,6 +143,10 @@ select:focus {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.25rem;
+  padding: 1.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .tarjeta {
@@ -210,15 +215,16 @@ select:focus {
 .tarjeta .precio {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--brand-black);
   margin-top: auto;
 }
 
+/* Badges de Estado */
 .badge-promo {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: var(--brand-gold); /* Oferta: Dorado */
+  background-color: var(--brand-gold);
   color: #ffffff;
   font-size: 0.75rem;
   font-weight: 700;
@@ -229,13 +235,11 @@ select:focus {
   letter-spacing: 0.3px;
 }
 
-/* Nuevo: Rojo elegante */
 .badge-nuevo {
   background-color: #c0392b; 
   color: #ffffff;
 }
 
-/* Pocas Unidades: Intermedio entre Dorado y Rojo (Cobre / Ámbar Cálido) */
 .badge-pocas {
   background-color: #d35400; 
   color: #ffffff;
@@ -295,18 +299,48 @@ select:focus {
   color: var(--text-primary);
 }
 
-/* Contenido Modal Producto */
 .modal-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
 }
 
-.modal-img {
+.modal-galeria {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.modal-galeria img#modal-img {
   width: 100%;
   height: 250px;
   object-fit: cover;
   border-radius: var(--border-radius);
+}
+
+.modal-thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+}
+
+.thumb-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.7;
+  transition: all var(--transition-fast);
+}
+
+.thumb-img:hover,
+.thumb-img.activa {
+  border-color: var(--brand-gold);
+  opacity: 1;
 }
 
 .modal-info {
@@ -337,6 +371,13 @@ select:focus {
   margin-bottom: 1rem;
 }
 
+.modal-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
 .btn-agregar {
   background-color: var(--accent-color);
   color: #fff;
@@ -350,6 +391,21 @@ select:focus {
 
 .btn-agregar:hover {
   background-color: var(--accent-hover);
+}
+
+.btn-consultar-wa {
+  background-color: var(--accent-green);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-consultar-wa:hover {
+  background-color: var(--accent-green-hover);
 }
 
 /* Estilos Específicos del Carrito */
@@ -545,58 +601,15 @@ footer {
 /* ==========================================
    6. RESPONSIVE / MEDIA QUERIES
    ========================================== */
-@media (max-width: 600px) {
-  .header-fila-2 {
-    flex-direction: row;
-  }
-
-  .modal-body {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-img {
-    height: 180px;
-  }
-
-  .texto-btn-carrito {
-    display: none; /* Oculta el texto "Carrito" en pantallas pequeñas, deja solo el ícono y contador */
-  }
-}
-
-  /* Ajustar el botón de carrito para que sea compacto (solo ícono + número) */
-  #btn-carrito, .btn-carrito {
-    padding: 6px 12px !important;
-    font-size: 1rem !important;
-    font-weight: bold;
-  }
-
-  /* Ocultar texto "Carrito" en el botón en pantallas pequeñas */
-  #btn-carrito .texto-btn-carrito {
-    display: none !important;
-  }
-
-  /* Clase para ocultar el selector de subcategoría cuando no se necesite */
-  .oculto-movil {
-    display: none !important;
-  }
-}
 @media (max-width: 768px) {
-  /* Ocultar el texto Pstore en móvil (dejar solo el logo) */
-  .logo-text, 
-  .brand-name, 
-  .nav-links,
-  label[for="select-categoria"], 
-  label[for="select-personaje"],
-  .filtro-label {
+  .logo-text {
     display: none !important;
   }
 
-  /* Header general compacto */
-  header, .main-header {
+  .main-header {
     padding: 8px 10px !important;
   }
 
-  /* --- FILA 1: Logo + Buscador --- */
   .header-fila-1 {
     display: flex !important;
     align-items: center !important;
@@ -605,21 +618,18 @@ footer {
     width: 100%;
   }
 
-  .logo img, .logo-img {
+  .logo img {
     height: 32px !important;
-    width: auto;
+    width: 32px !important;
     flex-shrink: 0;
   }
 
-  /* El buscador ocupa todo el espacio restante en Fila 1 */
-  .busqueda-container, 
-  .header-fila-1 input {
+  .busqueda-container {
     flex: 1 !important;
     width: 100% !important;
     margin: 0 !important;
   }
 
-  /* --- FILA 2: Categoría Principal (izq) + Carrito (der) --- */
   .header-fila-2 {
     display: flex !important;
     align-items: center !important;
@@ -629,15 +639,13 @@ footer {
     width: 100%;
   }
 
-  /* Categoria ocupa ~50% a la izquierda */
   .header-fila-2 select {
     flex: 1 !important;
     height: 36px !important;
     font-size: 0.82rem !important;
   }
 
-  /* Botón de Carrito a la derecha */
-  #btn-carrito, .btn-carrito {
+  .btn-carrito {
     height: 36px !important;
     padding: 0 12px !important;
     display: inline-flex !important;
@@ -649,12 +657,10 @@ footer {
     flex-shrink: 0;
   }
 
-  /* Ocultar texto "Carrito" en móvil, dejando solo 🛒 (X) */
-  #btn-carrito .texto-btn-carrito {
+  .btn-carrito .texto-btn-carrito {
     display: none !important;
   }
 
-  /* --- FILA 3: Público / Segunda Categoría --- */
   .header-fila-3 {
     width: 100% !important;
   }
@@ -665,60 +671,16 @@ footer {
     font-size: 0.82rem !important;
   }
 
-  /* Ajustes globales para inputs y selects en móvil */
   input, select {
     padding: 4px 8px !important;
     border-radius: 6px !important;
   }
-}
-.modal-acciones {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 1rem;
-}
 
-.btn-consultar-wa {
-  background-color: var(--accent-green);
-  color: #ffffff;
-  border: none;
-  padding: 0.75rem;
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color var(--transition-fast);
-}
+  .modal-body {
+    grid-template-columns: 1fr;
+  }
 
-.btn-consultar-wa:hover {
-  background-color: var(--accent-green-hover);
-}
-.modal-galeria {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  width: 100%;
-}
-
-.modal-thumbnails {
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding-bottom: 0.3rem;
-}
-
-.thumb-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 6px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  opacity: 0.7;
-  transition: all var(--transition-fast);
-}
-
-.thumb-img:hover,
-.thumb-img.activa {
-  border-color: var(--brand-gold); /* Marca en dorado la foto activa */
-  opacity: 1;
+  .modal-galeria img#modal-img {
+    height: 180px;
+  }
 }
