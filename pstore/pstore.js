@@ -96,27 +96,54 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function abrirModal(producto) {
-    if (!modal) return;
-    productoActualModal = producto;
+  if (!modal) return;
+  productoActualModal = producto;
 
-    const precioNum = parseFloat(producto.precio);
-    const precioFormateado = isNaN(precioNum) ? producto.precio : precioNum.toFixed(2);
-    const tagSecundaria = producto.categoria_secundaria ? ` (${producto.categoria_secundaria})` : "";
+  const containerThumbnails = document.getElementById("modal-thumbnails");
+  containerThumbnails.innerHTML = ""; // Limpiar miniaturas anteriores
 
-    modalImg.src = obtenerUrlDirectaDrive(producto.imagen);
-    modalImg.alt = producto.nombre || "Producto";
-    modalCategoria.textContent = (producto.categoria || "") + tagSecundaria;
-    modalNombre.textContent = producto.nombre || "";
-    modalDescripcion.textContent = producto.descripcion || "";
-    modalPrecio.textContent = `$${precioFormateado}`;
+  // 1. Separar URLs por coma
+  const fotosRaw = producto.imagen ? producto.imagen.split(",") : [];
+  const fotos = fotosRaw.map(url => obtenerUrlDirectaDrive(url.trim())).filter(Boolean);
 
-    // Actualizar URL con el hash del ID del producto sin recargar la página
-    if (producto.id) {
-      history.replaceState(null, null, `#${producto.id}`);
-    }
+  // 2. Asignar la primera foto como principal
+  const fotoPrincipal = fotos.length > 0 ? fotos[0] : 'assets/pstore.jpg';
+  modalImg.src = fotoPrincipal;
+  modalImg.alt = producto.nombre || "Producto";
 
-    modal.classList.add("activo");
+  // 3. Generar las miniaturas solo si hay más de 1 foto
+  if (fotos.length > 1) {
+    containerThumbnails.style.display = "flex";
+    fotos.forEach((fotoUrl, index) => {
+      const imgThumb = document.createElement("img");
+      imgThumb.src = fotoUrl;
+      imgThumb.className = index === 0 ? "thumb-img activa" : "thumb-img";
+
+      // Al hacer clic en la miniatura, cambia la foto grande
+      imgThumb.addEventListener("click", () => {
+        modalImg.src = fotoUrl;
+        document.querySelectorAll(".thumb-img").forEach(t => t.classList.remove("activa"));
+        imgThumb.classList.add("activa");
+      });
+
+      containerThumbnails.appendChild(imgThumb);
+    });
+  } else {
+    containerThumbnails.style.display = "none"; // Ocultar si solo hay una foto
   }
+
+  // Cargar datos de texto (Categoría, Nombre, Precio, etc.)
+  modalCategoria.textContent = producto.categoria || "";
+  modalNombre.textContent = producto.nombre || "";
+  modalDescripcion.textContent = producto.descripcion || "";
+  modalPrecio.textContent = `$${parseFloat(producto.precio).toFixed(2)}`;
+
+  if (producto.id) {
+    history.replaceState(null, null, `#${producto.id}`);
+  }
+
+  modal.classList.add("activo");
+}
 
   function cerrarModal() {
     if (modal) {
