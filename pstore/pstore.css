@@ -684,3 +684,23 @@ footer {
     height: 180px;
   }
 }
+.btn-catalogo-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #111111;
+  color: #d4af37; /* Dorado corporativo */
+  border: 2px solid #d4af37;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-catalogo-pdf:hover {
+  background-color: #d4af37;
+  color: #111111;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
