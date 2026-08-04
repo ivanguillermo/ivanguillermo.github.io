@@ -692,3 +692,33 @@ footer {
 .btn-consultar-wa:hover {
   background-color: var(--accent-green-hover);
 }
+.modal-galeria {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.modal-thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+}
+
+.thumb-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.7;
+  transition: all var(--transition-fast);
+}
+
+.thumb-img:hover,
+.thumb-img.activa {
+  border-color: var(--brand-gold); /* Marca en dorado la foto activa */
+  opacity: 1;
+}
