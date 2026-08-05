@@ -704,3 +704,82 @@ footer {
   color: #111111;
   box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
+/* ==========================================
+   7. ESTILOS DE BOTONES COMPARTIR MODAL
+   ========================================== */
+.modal-compartir {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.titulo-compartir {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.share-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-share:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--brand-black);
+}
+
+/* Colores específicos por red */
+.btn-share.main {
+  grid-column: 1 / -1;
+  background-color: var(--brand-black);
+  color: var(--brand-gold);
+  border-color: var(--brand-gold);
+}
+
+.btn-share.main:hover {
+  background-color: var(--brand-gold);
+  color: #ffffff;
+}
+
+.btn-share.wa {
+  color: #25d366;
+  border-color: #25d366;
+}
+
+.btn-share.wa:hover {
+  background-color: #25d366;
+  color: #ffffff;
+}
+
+.btn-share.fb {
+  color: #1877f2;
+  border-color: #1877f2;
+}
+
+.btn-share.fb:hover {
+  background-color: #1877f2;
+  color: #ffffff;
+}
+
+.btn-share.copy {
+  color: var(--text-primary);
+}
