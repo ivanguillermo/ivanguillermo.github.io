@@ -1004,6 +1004,51 @@ footer {
 }
 
 /* Sidebar de Filtros Facetados */
+/* ==========================================
+   ESTILO PARA EL BOTÓN LIMPIAR FILTROS
+   ========================================== */
+#btn-limpiar-filtros {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 16px;
+  margin-top: 12px;
+  
+  /* Colores y bordes estilo moderno */
+  background-color: transparent;
+  color: #666666;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  
+  /* Tipografía y cursor */
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  
+  /* Transición suave al interactuar */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estado Hover (al pasar el ratón por encima) */
+#btn-limpiar-filtros:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-color: #9ca3af;
+}
+
+/* Estado Active (al presionar el botón) */
+#btn-limpiar-filtros:active {
+  transform: scale(0.98);
+  background-color: #e5e7eb;
+}
+
+/* Icono dentro del botón (opcional) */
+#btn-limpiar-filtros::before {
+  content: "🗑️";
+  font-size: 0.85rem;
+}
 .sidebar-filtros {
   background: var(--bg-card, #1e1e1e);
   border: 1px solid var(--border-color, #333);
