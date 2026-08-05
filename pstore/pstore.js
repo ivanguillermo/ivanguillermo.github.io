@@ -1,8 +1,95 @@
+// ==========================================
+// CONFIGURACIÓN Y SINCRONIZACIÓN REMOTA (FALLBACK)
+// ==========================================
+
+// Aplicar estilos y vista de cuadrícula
+function aplicarConfiguracion(config) {
+  if (config.estilosCSS) {
+    Object.entries(config.estilosCSS).forEach(([prop, val]) => {
+      if (val) document.documentElement.style.setProperty(prop, val);
+    });
+  }
+
+  const catalogo = document.getElementById("catalogo");
+  const selectCol = document.getElementById("select-columnas");
+  const vistaGuardada = localStorage.getItem("pstore_vista_grid");
+
+  // Si el usuario no ha elegido una vista manualmente, aplicar la por defecto
+  if (!vistaGuardada && catalogo && config.columnasMovilDefecto) {
+    catalogo.classList.remove("grid-1", "grid-2", "grid-4");
+    catalogo.classList.add(config.columnasMovilDefecto);
+    if (selectCol) selectCol.value = config.columnasMovilDefecto;
+  }
+}
+
+// Consultar Google Sheets en segundo plano
+async function sincronizarConGoogleSheets() {
+  if (typeof CONFIG_PSTORE === "undefined" || !CONFIG_PSTORE.urlSheetConfig) return;
+
+  try {
+    const res = await fetch(CONFIG_PSTORE.urlSheetConfig);
+    if (!res.ok) throw new Error("Error al obtener datos de Google Sheets");
+
+    const csvText = await res.text();
+    const lineas = csvText.split("\n");
+
+    lineas.forEach(linea => {
+      const [param, valor] = linea.split(",").map(item => item?.trim());
+      if (!param || !valor) return;
+
+      if (param.startsWith("--")) {
+        CONFIG_PSTORE.estilosCSS[param] = valor;
+      }
+      
+      if (param === "columnas_movil_defecto") {
+        CONFIG_PSTORE.columnasMovilDefecto = `grid-${valor}`;
+      }
+    });
+
+    aplicarConfiguracion(CONFIG_PSTORE);
+  } catch (error) {
+    console.warn("Usando configuración local de config.js:", error);
+  }
+}
+
 let clientesConocidos = [];
 let clienteActual = null;
 let productoActualModal = null; // Variable global para compartir
 
 document.addEventListener("DOMContentLoaded", () => {
+    // 1. Cargar configuración inicial inmediata de config.js
+    if (typeof CONFIG_PSTORE !== "undefined") {
+      aplicarConfiguracion(CONFIG_PSTORE);
+      sincronizarConGoogleSheets(); // Actualizar desde Sheets si hay red
+    }
+  
+    // 2. Escuchador de cambios para el Selector de Vista (Columnas)
+    const selectColumnas = document.getElementById("select-columnas");
+    const contenedorCatalogo = document.getElementById("catalogo");
+  
+    if (selectColumnas && contenedorCatalogo) {
+      // Restaurar si el usuario ya había guardado una opción previamente
+      const vistaGuardada = localStorage.getItem("pstore_vista_grid");
+      if (vistaGuardada) {
+        selectColumnas.value = vistaGuardada;
+        contenedorCatalogo.classList.remove("grid-1", "grid-2", "grid-4");
+        if (vistaGuardada !== "grid-auto") {
+          contenedorCatalogo.classList.add(vistaGuardada);
+        }
+      }
+  
+      selectColumnas.addEventListener("change", (e) => {
+        const valor = e.target.value;
+        contenedorCatalogo.classList.remove("grid-1", "grid-2", "grid-4");
+        
+        if (valor !== "grid-auto") {
+          contenedorCatalogo.classList.add(valor);
+        }
+        
+        localStorage.setItem("pstore_vista_grid", valor);
+      });
+    }
+  
   let todosLosProductos = [];
   let carrito = JSON.parse(localStorage.getItem("pstore_carrito")) || [];
 
