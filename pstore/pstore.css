@@ -795,7 +795,7 @@ footer {
 }
 
 .btn-share-circle.main {
-  background-color: var(--brand-black);
+  background-color: var(--text-secondary);
   color: var(--brand-gold);
   border-color: var(--brand-gold);
 }
