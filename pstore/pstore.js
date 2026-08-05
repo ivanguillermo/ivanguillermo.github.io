@@ -33,7 +33,84 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnValidarCliente = document.getElementById("btn-validar-cliente");
 
   actualizarContadorCarrito();
-
+  // --- LÓGICA DE INSTALACIÓN PWA Y MENÚ LATERAL ---
+  let deferredPrompt = null;
+  
+  const btnInstalarPWA = document.getElementById("btn-instalar-pwa");
+  const btnHamburguesa = document.getElementById("btn-menu-hamburguesa");
+  const btnCerrarMenu = document.getElementById("btn-cerrar-menu");
+  const menuLateral = document.getElementById("menu-lateral");
+  const menuOverlay = document.getElementById("menu-overlay");
+  
+  // 1. Interceptar el evento de instalación del navegador
+  window.addEventListener("beforeinstallprompt", (e) => {
+    // Prevenir que Chrome/Edge muestre el mini-infobar automático
+    e.preventDefault();
+    // Guardar el evento para dispararlo cuando el usuario presione el botón
+    deferredPrompt = e;
+    
+    // Mostrar el botón en el menú lateral
+    if (btnInstalarPWA) {
+      btnInstalarPWA.style.display = "block";
+    }
+  });
+  
+  // Acción al hacer clic en "Instalar App Pstore"
+  if (btnInstalarPWA) {
+    btnInstalarPWA.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      
+      // Mostrar el prompt de instalación nativo
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('El usuario instaló la PWA');
+      }
+      deferredPrompt = null;
+      btnInstalarPWA.style.display = "none";
+      cerrarMenu();
+    });
+  }
+  
+  // Ocultar botón si la app ya está instalada e iniciada como App
+  window.addEventListener("appinstalled", () => {
+    if (btnInstalarPWA) btnInstalarPWA.style.display = "none";
+    deferredPrompt = null;
+  });
+  
+  // 2. Control Apertura / Cierre del Menú Lateral
+  function abrirMenu() {
+    if (menuLateral && menuOverlay) {
+      menuLateral.classList.add("activo");
+      menuOverlay.classList.add("activo");
+    }
+  }
+  
+  function cerrarMenu() {
+    if (menuLateral && menuOverlay) {
+      menuLateral.classList.remove("activo");
+      menuOverlay.classList.remove("activo");
+    }
+  }
+  
+  if (btnHamburguesa) btnHamburguesa.addEventListener("click", abrirMenu);
+  if (btnCerrarMenu) btnCerrarMenu.addEventListener("click", cerrarMenu);
+  if (menuOverlay) menuOverlay.addEventListener("click", cerrarMenu);
+  
+  // Conectar Validación VIP dentro del Menú Lateral
+  const btnValidarSide = document.getElementById("btn-validar-cliente-side");
+  if (btnValidarSide) {
+    btnValidarSide.addEventListener("click", () => {
+      const input = document.getElementById("input-codigo-cliente-side").value;
+      if (input) {
+        identificarCliente(input);
+        cerrarMenu();
+      } else {
+        alert("Por favor ingresa un correo o código válido.");
+      }
+    });
+  }
   // 1. CARGAR CATÁLOGO DE PRODUCTOS (CSV)
   Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=51076819&single=true&output=csv", {
     download: true,
@@ -564,5 +641,23 @@ function copiarEnlaceProducto() {
     alert("¡Enlace del producto copiado al portapapeles!");
   }).catch(() => {
     prompt("Copia el enlace manualmente:", urlProducto);
+  });
+}
+
+const logo = document.querySelector(".logo");
+if (logo) {
+  logo.style.cursor = "pointer";
+  logo.addEventListener("click", () => {
+    // Resetear filtros y búsqueda
+    if (selectCategoria) selectCategoria.value = "todas";
+    if (selectPersonaje) selectPersonaje.value = "todas";
+    if (inputBusqueda) inputBusqueda.value = "";
+    
+    // Limpiar hash de la URL si había un producto abierto
+    history.replaceState(null, null, window.location.pathname);
+    
+    // Reaplicar filtros para mostrar todo y volver arriba
+    aplicarFiltros();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
