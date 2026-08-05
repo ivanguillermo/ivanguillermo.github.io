@@ -104,7 +104,7 @@ select {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  color: var(--text-primary);
+  color: var(--brand-gold);
   font-size: 0.9rem;
   outline: none;
   transition: border-color var(--transition-fast);
