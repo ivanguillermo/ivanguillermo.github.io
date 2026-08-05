@@ -951,8 +951,8 @@ function actualizarContadorWishlist() {
 function obtenerFiltrosSeleccionados() {
   const checkboxes = document.querySelectorAll(".filter-check:checked");
   const filtros = {
-    catPrincipal: [],
-    publico: [],
+    categoria: [],
+    categoria_secundaria: [],
     coleccion: [],
     tallas: [],
     estado: []
@@ -988,13 +988,13 @@ function filtrarProductos() {
     if (precio < precioMin || precio > precioMax) return false;
 
     // 3. Categoría Principal
-    if (filtros.catPrincipal.length > 0) {
-      if (!filtros.catPrincipal.includes(prod.catPrincipal?.toLowerCase())) return false;
+    if (filtros.categoria.length > 0) {
+      if (!filtros.categoria.includes(prod.categoria?.toLowerCase())) return false;
     }
 
     // 4. Público Target (H, M, U, N, Mascotas)
-    if (filtros.publico.length > 0) {
-      if (!filtros.publico.includes(prod.publico?.toLowerCase())) return false;
+    if (filtros.categoria_secundaria.length > 0) {
+      if (!filtros.categoria_secundaria.includes(prod.categoria_secundaria?.toLowerCase())) return false;
     }
 
     // 5. Colección (Sanrio, Anime, Disney, Marvel)
@@ -1155,8 +1155,8 @@ function obtenerValoresUnicos(listaProductos, propiedad) {
 // Generar dinámicamente el HTML de los checkboxes
 function construirFiltrosDinamicos() {
   const atributos = [
-    { idContenedor: "grupo-catPrincipal", claveCSV: "catPrincipal" },
-    { idContenedor: "grupo-publico", claveCSV: "publico" },
+    { idContenedor: "grupo-categoria", claveCSV: "categoria" },
+    { idContenedor: "grupo-categoria_secundaria", claveCSV: "categoria_secundaria" },
     { idContenedor: "grupo-coleccion", claveCSV: "coleccion" },
     { idContenedor: "grupo-tallas", claveCSV: "tallas" },
     { idContenedor: "grupo-estado", claveCSV: "estado" }
