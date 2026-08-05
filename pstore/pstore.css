@@ -49,7 +49,7 @@ body {
    2. HEADER Y NAVEGACIÓN
    ========================================== */
 .main-header {
-  background-color: var(--bg-secondary);
+  background-color: var(--brand-black);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
@@ -554,7 +554,7 @@ footer {
 }
 
 .footer-col a {
-  color: var(--text-secondary);
+  color: var(--brand-gold);
   text-decoration: none;
   cursor: pointer;
   transition: color var(--transition-fast);
@@ -743,7 +743,7 @@ footer {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: var(--text-primary);
+  color: var(--brand-gold);
   cursor: pointer;
   padding: 0 0.3rem;
   display: flex;
