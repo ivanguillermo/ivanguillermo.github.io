@@ -1,9 +1,9 @@
 let clientesConocidos = [];
 let clienteActual = null;
+let productoActualModal = null; // Variable global para compartir
 
 document.addEventListener("DOMContentLoaded", () => {
   let todosLosProductos = [];
-  let productoActualModal = null;
   let carrito = JSON.parse(localStorage.getItem("pstore_carrito")) || [];
 
   // Elementos DOM Filtros
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
       configurarEventosModal();
       configurarEventosCarrito();
 
-      // Verificar si la URL trae un hash directo (#ID) al cargar
-      verificarHashURL();
+      // Verificar si la URL trae un hash (#ID) o parámetro (?id=ID) al cargar
+      verificarURLCompartida(todosLosProductos);
     }
   });
 
@@ -85,10 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- LÓGICA DE RUTA Y MODAL DE PRODUCTO ---
 
-  function verificarHashURL() {
+  function verificarURLCompartida(productos) {
     const hash = window.location.hash.replace("#", "").trim();
-    if (hash) {
-      const productoEncontrado = todosLosProductos.find(p => p.id === hash);
+    const urlParams = new URLSearchParams(window.location.search);
+    const idParam = urlParams.get('id');
+
+    const targetId = hash || idParam;
+
+    if (targetId) {
+      const productoEncontrado = productos.find(p => p.id === targetId);
       if (productoEncontrado) {
         abrirModal(productoEncontrado);
       }
@@ -97,21 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function abrirModal(producto) {
     if (!modal) return;
-    productoActualModal = producto;
+    productoActualModal = producto; // Guardar referencia global
 
     const containerThumbnails = document.getElementById("modal-thumbnails");
-    containerThumbnails.innerHTML = ""; // Limpiar miniaturas anteriores
+    containerThumbnails.innerHTML = ""; 
 
-    // 1. Separar URLs por coma
+    // 1. Separar URLs
     const fotosRaw = producto.imagen ? producto.imagen.split(",") : [];
     const fotos = fotosRaw.map(url => obtenerUrlDirectaDrive(url.trim())).filter(Boolean);
 
-    // 2. Asignar la primera foto como principal
+    // 2. Asignar foto principal
     const fotoPrincipal = fotos.length > 0 ? fotos[0] : 'assets/pstore.jpg';
     modalImg.src = fotoPrincipal;
     modalImg.alt = producto.nombre || "Producto";
 
-    // 3. Generar las miniaturas solo si hay más de 1 foto
+    // 3. Miniaturas
     if (fotos.length > 1) {
       containerThumbnails.style.display = "flex";
       fotos.forEach((fotoUrl, index) => {
@@ -119,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
         imgThumb.src = fotoUrl;
         imgThumb.className = index === 0 ? "thumb-img activa" : "thumb-img";
 
-        // Al hacer clic en la miniatura, cambia la foto grande
         imgThumb.addEventListener("click", () => {
           modalImg.src = fotoUrl;
           document.querySelectorAll(".thumb-img").forEach(t => t.classList.remove("activa"));
@@ -129,20 +133,38 @@ document.addEventListener("DOMContentLoaded", () => {
         containerThumbnails.appendChild(imgThumb);
       });
     } else {
-      containerThumbnails.style.display = "none"; // Ocultar si solo hay una foto
+      containerThumbnails.style.display = "none";
     }
 
-    // Cargar datos de texto
+    // Cargar datos
     modalCategoria.textContent = producto.categoria || "";
     modalNombre.textContent = producto.nombre || "";
     modalDescripcion.textContent = producto.descripcion || "";
     modalPrecio.textContent = `$${parseFloat(producto.precio).toFixed(2)}`;
+
+    // Configurar enlaces de compartir
+    actualizarEnlacesCompartir(producto);
 
     if (producto.id) {
       history.replaceState(null, null, `#${producto.id}`);
     }
 
     modal.classList.add("activo");
+  }
+
+  function actualizarEnlacesCompartir(producto) {
+    const urlProducto = `${window.location.origin}${window.location.pathname}#${producto.id}`;
+    const textoMensaje = `¡Mira este producto en Pstore! ${producto.nombre} - $${parseFloat(producto.precio).toFixed(2)}`;
+
+    const btnWa = document.getElementById("share-wa");
+    const btnFb = document.getElementById("share-fb");
+
+    if (btnWa) {
+      btnWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje + " " + urlProducto)}`;
+    }
+    if (btnFb) {
+      btnFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlProducto)}`;
+    }
   }
 
   function cerrarModal() {
@@ -188,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- FUNCIONES AUXILIARES DE INTERFAZ Y FILTROS ---
+  // --- FUNCIONES AUXILIARES ---
 
   function obtenerUrlDirectaDrive(url) {
     if (!url) return 'assets/pstore.jpg';
@@ -517,65 +539,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Variable global para almacenar el producto actual que está en el modal
-var productoActualModal = null;
+// --- FUNCIONES GLOBALES PARA BOTONES DE COMPARTIR ---
 
-function abrirModalProducto(producto) {
-  productoActualModal = producto; // Guardar datos del producto
-  
-  // URL base de tu página web (ejemplo: https://ivanguillermo.github.io/)
-  // Para enlazar directamente al producto, usamos un parámetro id o hash
-  var urlProducto = window.location.origin + window.location.pathname + "?id=" + producto.id;
-  var textoMensaje = `¡Mira este producto en Pstore! ${producto.nombre} - $${producto.precio}`;
-
-  // 1. Configurar enlace para WhatsApp
-  var urlWA = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje + " " + urlProducto)}`;
-  document.getElementById("share-wa").href = urlWA;
-
-  // 2. Configurar enlace para Facebook
-  var urlFB = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlProducto)}`;
-  document.getElementById("share-fb").href = urlFB;
-
-  // Mostrar el modal...
-  document.getElementById("miModal").style.display = "block";
-}
-
-// Función para el botón nativo (Móvil)
 function compartirNativo() {
-  if (navigator.share && productoActualModal) {
-    var urlProducto = window.location.origin + window.location.pathname + "?id=" + productoActualModal.id;
-    
+  if (!productoActualModal) return;
+  const urlProducto = `${window.location.origin}${window.location.pathname}#${productoActualModal.id}`;
+  
+  if (navigator.share) {
     navigator.share({
       title: productoActualModal.nombre,
-      text: `¡Mira este producto en Pstore! ${productoActualModal.nombre} - $${productoActualModal.precio}`,
+      text: `¡Mira este producto en Pstore! ${productoActualModal.nombre} - $${parseFloat(productoActualModal.precio).toFixed(2)}`,
       url: urlProducto
     }).catch(console.error);
   } else {
-    // Si está en PC y no soporta Web Share, copia el enlace al portapapeles
     copiarEnlaceProducto();
   }
 }
 
-// Función rápida para copiar el enlace
 function copiarEnlaceProducto() {
   if (!productoActualModal) return;
-  var urlProducto = window.location.origin + window.location.pathname + "?id=" + productoActualModal.id;
+  const urlProducto = `${window.location.origin}${window.location.pathname}#${productoActualModal.id}`;
   
-  navigator.clipboard.writeText(urlProducto).then(function() {
+  navigator.clipboard.writeText(urlProducto).then(() => {
     alert("¡Enlace del producto copiado al portapapeles!");
+  }).catch(() => {
+    prompt("Copia el enlace manualmente:", urlProducto);
   });
 }
-
-window.addEventListener('DOMContentLoaded', function() {
-  // Leer los parámetros de la URL
-  var urlParams = new URLSearchParams(window.location.search);
-  var idProducto = urlParams.get('id');
-
-  if (idProducto) {
-    // Buscar el producto en tu lista de productos por su ID
-    var productoEncontrado = listaDeProductos.find(p => p.id === idProducto);
-    if (productoEncontrado) {
-      abrirModalProducto(productoEncontrado);
-    }
-  }
-});
