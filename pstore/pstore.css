@@ -595,7 +595,7 @@ footer {
   border-top: 1px solid var(--border-color);
   padding-top: 1rem;
   font-size: 0.8rem;
-  color: var(--text-secondary);
+  color: var(--brand-black);
 }
 
 /* ==========================================
