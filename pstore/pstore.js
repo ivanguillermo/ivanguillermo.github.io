@@ -421,6 +421,11 @@ function filtrarProductos() {
   const { filtros, textoBusqueda, precioMin, precioMax } = obtenerFiltrosSeleccionados();
 
   return listaProductosCompleta.filter(prod => {
+    // Si la opción "Ver Favoritos" está activa, solo deja pasar los IDs guardados
+    if (mostrandoSoloFavoritos && !wishlistIDs.includes(prod.id)) {
+      return false;
+    }
+
     if (textoBusqueda) {
       const enNombre = prod.nombre?.toLowerCase().includes(textoBusqueda);
       const enDesc = prod.descripcion?.toLowerCase().includes(textoBusqueda);
@@ -547,6 +552,8 @@ function renderizarControlesPaginacion(totalProductos) {
 }
 
 function resetearFiltros() {
+  mostrandoSoloFavoritos = false;
+  document.getElementById("btn-ver-favoritos-side")?.classList.remove("activo");
   document.querySelectorAll(".filter-check").forEach(cb => cb.checked = false);
   if (document.getElementById("input-busqueda")) document.getElementById("input-busqueda").value = "";
   if (document.getElementById("precio-min")) document.getElementById("precio-min").value = "";
@@ -654,22 +661,9 @@ function actualizarEnlacesCompartir(producto) {
 // CARRITO Y WISHLIST
 // ==========================================
 
-function toggleFavorito(id) {
-  const index = wishlistIDs.indexOf(id);
-  if (index === -1) {
-    wishlistIDs.push(id);
-  } else {
-    wishlistIDs.splice(index, 1);
-  }
-  localStorage.setItem("pstore_wishlist", JSON.stringify(wishlistIDs));
-  actualizarContadorWishlist();
-  actualizarCatalogoConPaginacion();
-}
 
-function actualizarContadorWishlist() {
-  const badge = document.getElementById("wishlist-count");
-  if (badge) badge.textContent = wishlistIDs.length;
-}
+
+
 
 function agregarAlCarrito(prod) {
   const existe = carrito.find((p) => p.nombre === prod.nombre);
@@ -786,7 +780,11 @@ function enviarPedidoWhatsApp() {
   const telefono = CONFIG_PSTORE.numeroWhatsapp || "584126216661";
   window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, "_blank");
 }
-// --- MÓDULO DE WISHLIST Y FAVORITOS PERSISTENTES ---
+// ==========================================
+// MÓDULO DE WISHLIST Y FAVORITOS
+// ==========================================
+
+let mostrandoSoloFavoritos = false;
 
 function toggleFavorito(id) {
   const index = wishlistIDs.indexOf(id);
@@ -797,49 +795,33 @@ function toggleFavorito(id) {
   }
   localStorage.setItem("pstore_wishlist", JSON.stringify(wishlistIDs));
   actualizarContadorWishlist();
-  actualizarCatalogoConPaginacion();
+  aplicarFiltrosYPaginacion(); // Llamada a la función real de tu catálogo
 }
 
 function actualizarContadorWishlist() {
-  const badge = document.getElementById("badge-wishlist");
-  if (badge) badge.textContent = wishlistIDs.length;
+  const badgeHeader = document.getElementById("wishlist-count");
+  const badgeSide = document.getElementById("wishlist-count-side");
+  if (badgeHeader) badgeHeader.textContent = wishlistIDs.length;
+  if (badgeSide) badgeSide.textContent = wishlistIDs.length;
 }
 
-function abrirModalWishlist() {
-  const modal = document.getElementById("modal-wishlist");
-  const contenedor = document.getElementById("lista-wishlist");
-  if (!modal || !contenedor) return;
-
-  contenedor.innerHTML = "";
-  const favoriteados = productosGlobal.filter(p => wishlistIDs.includes(p.id));
-
-  if (favoriteados.length === 0) {
-    contenedor.innerHTML = "<p style='text-align:center; padding:1.5rem;'>No tienes productos en tu lista de deseos.</p>";
-  } else {
-    favoriteados.forEach(prod => {
-      const item = document.createElement("div");
-      item.className = "item-wishlist";
-      item.innerHTML = `
-        <img src="${obtenerUrlDirectaDrive(prod.imagen)}" width="50" style="border-radius:6px;">
-        <div style="flex:1; margin-left:10px;">
-          <strong>${prod.nombre}</strong><br>
-          <small>$${parseFloat(prod.precio).toFixed(2)}</small>
-        </div>
-        <button onclick="agregarAlCarritoDesdeWishlist('${prod.id}')" class="btn-agregar-cart">🛒</button>
-        <button onclick="toggleFavorito('${prod.id}'); abrirModalWishlist();" class="btn-eliminar-fav">❌</button>
-      `;
-      contenedor.appendChild(item);
-    });
+// Filtro integrado en la grilla principal para ver solo Favoritos
+function alternarVerFavoritos() {
+  mostrandoSoloFavoritos = !mostrandoSoloFavoritos;
+  paginaActual = 1;
+  
+  const btnFavMenu = document.getElementById("btn-ver-favoritos-side");
+  if (btnFavMenu) {
+    btnFavMenu.classList.toggle("activo", mostrandoSoloFavoritos);
   }
-  modal.classList.add("activo");
-}
-
-function agregarAlCarritoDesdeWishlist(id) {
-  const prod = productosGlobal.find(p => p.id === id);
-  if (prod) {
-    agregarAlCarrito(prod);
-    alert(`${prod.nombre} agregado al carrito.`);
-  }
+  
+  aplicarFiltrosYPaginacion();
+  
+  // Cerrar el menú lateral en móviles al hacer clic
+  const menuLateral = document.getElementById("menu-lateral");
+  const menuOverlay = document.getElementById("menu-overlay");
+  menuLateral?.classList.remove("activo");
+  menuOverlay?.classList.remove("activo");
 }
 // ==========================================
 // UTILIDADES AUXILIARES
