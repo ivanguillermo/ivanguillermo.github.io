@@ -57,24 +57,13 @@
   gtag('config', 'G-4N3BEFRW5Z');
 </script>
 <body>
-  <!-- Botón Hamburguesa en el Header -->
-  <header class="header-pstore">
-    <button id="btn-menu-hamburguesa" class="btn-icon" aria-label="Abrir menú">
-      ☰
-    </button>
-    <h1 class="logo">Pstore</h1>
-    <button id="btn-carrito" class="btn-icon">
-      🛒 <span id="cant-carrito">0</span>
-    </button>
-  </header>
-  
-  <!-- Overlay para oscurecer el fondo al abrir el menú -->
+  <!-- Overlay para el Menú Lateral -->
   <div id="menu-overlay" class="menu-overlay"></div>
   
   <!-- Menú Lateral (Sidebar) -->
   <aside id="menu-lateral" class="menu-lateral">
     <div class="header-menu">
-      <h2>Menú</h2>
+      <h2>Menú Pstore</h2>
       <button id="btn-cerrar-menu" class="btn-cerrar">&times;</button>
     </div>
   
@@ -95,18 +84,19 @@
   
       <hr class="separador-menu" />
   
-      <!-- Links / Categorías -->
+      <!-- Categorías -->
       <div class="links-menu">
         <h3>Categorías</h3>
-        <ul id="menu-categorias-list">
-          <!-- Se puebla dinámicamente o puedes poner enlaces estáticos -->
-        </ul>
+        <ul id="menu-categorias-list"></ul>
       </div>
     </nav>
   </aside>
+
+  <!-- Header Único Principal -->
   <header class="main-header">
-    <!-- FILA 1: Logo + Buscador -->
+    <!-- FILA 1: Menú Hamburguesa + Logo + Buscador + PDF -->
     <div class="header-fila-1">
+      <button id="btn-menu-hamburguesa" class="btn-icon-hamburguesa" aria-label="Abrir menú">☰</button>
       <a href="#" class="logo">
         <img src="assets/pstore.jpg" alt="Pstore">
         <span class="logo-text">Pstore</span>
@@ -114,7 +104,6 @@
       <div class="busqueda-container">
         <input type="text" id="input-busqueda" placeholder="Buscar producto...">
       </div>
-      <!-- Botón de descarga del Catálogo PDF -->
       <a href="https://drive.google.com/file/d/1-nmOf4b58Y3ioW4Cnym-uev9I5j8h72C/view" 
          target="_blank" 
          rel="noopener noreferrer" 
@@ -122,7 +111,6 @@
         📄 Descargar Catálogo PDF
       </a>
     </div>
-    
 
     <!-- FILA 2: Categoría Principal + Carrito -->
     <div class="header-fila-2">
