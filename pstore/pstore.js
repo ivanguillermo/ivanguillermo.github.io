@@ -761,4 +761,72 @@ function copiarEnlaceProducto() {
   });
 }
 
+// Estado global de moneda (Sin tasa por defecto)
+let tasaBcvActual = null;
+let mostrandoBolivares = false;
+
+// Función para formatear el monto en bolívares
+function formatearBs(montoUSD, tasa) {
+  const totalBs = montoUSD * tasa;
+  return totalBs.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+// Alternar la vista de moneda al hacer clic en el botón
+function alternarMoneda() {
+  if (!tasaBcvActual) return; // Si no hay tasa disponible, no realiza ninguna acción
+  
+  mostrandoBolivares = !mostrandoBolivares;
+  const btnToggle = document.getElementById("btn-toggle-moneda");
+  
+  if (btnToggle) {
+    btnToggle.classList.toggle("activo", mostrandoBolivares);
+  }
+
+  // Refrescar tarjetas de productos
+  if (typeof renderizarProductos === "function") {
+    renderizarProductos();
+  }
+}
+
+// Sincronización con Google Sheets
+async function sincronizarConGoogleSheets() {
+  if (typeof CONFIG_PSTORE === "undefined" || !CONFIG_PSTORE.urlSheetConfig) return;
+
+  try {
+    const res = await fetch(CONFIG_PSTORE.urlSheetConfig);
+    if (!res.ok) throw new Error("Error al obtener datos");
+
+    const csvText = await res.text();
+    const lineas = csvText.split("\n");
+
+    lineas.forEach(linea => {
+      const [param, valor] = linea.split(",").map(item => item?.trim());
+      if (!param || !valor) return;
+
+      // Leer la tasa únicamente si viene de la hoja
+      if (param === "tasa_bcv") {
+        const tasaParsed = parseFloat(valor.replace(",", "."));
+        if (!isNaN(tasaParsed) && tasaParsed > 0) {
+          tasaBcvActual = tasaParsed;
+        }
+      }
+
+      if (param.startsWith("--")) {
+        CONFIG_PSTORE.estilosCSS[param] = valor;
+      }
+    });
+
+    // Habilitar el botón solo si se obtuvo una tasa válida
+    const btnToggle = document.getElementById("btn-toggle-moneda");
+    if (btnToggle && tasaBcvActual) {
+      btnToggle.style.display = "inline-flex";
+      btnToggle.addEventListener("click", alternarMoneda);
+    }
+
+    aplicarConfiguracion(CONFIG_PSTORE);
+
+  } catch (error) {
+    console.warn("No se pudo obtener la tasa BCV remota. La tienda se mantendrá en USD.", error);
+  }
+}
 
