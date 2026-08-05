@@ -379,7 +379,7 @@ select:focus {
 }
 
 .btn-agregar {
-  background-color: var(--accent-color);
+  background-color: var(--brand-gold);
   color: #fff;
   border: none;
   padding: 0.75rem;
