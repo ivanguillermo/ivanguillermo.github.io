@@ -794,10 +794,10 @@ footer {
   transform: scale(0.92);
 }
 
-.btn-share-circle.main {
-  background-color: var(--text-secondary);
-  color: var(--brand-gold);
-  border-color: var(--brand-gold);
+.btn-share-circle.copy, .btn-share-circle.main  {
+  background-color: #f0f0f0;
+  color: #333333;
+  border-color: #ccc;
 }
 
 .btn-share-circle.wa {
@@ -811,13 +811,6 @@ footer {
   color: #ffffff;
   border-color: #1877f2;
 }
-
-.btn-share-circle.copy {
-  background-color: #f0f0f0;
-  color: #333333;
-  border-color: #ccc;
-}
-
 /* ==========================================
    MENÚ LATERAL CORREGIDO
    ========================================== */
