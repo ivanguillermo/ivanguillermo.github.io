@@ -519,8 +519,8 @@ select:focus {
    5. FOOTER
    ========================================== */
 footer {
-  background-color: var(--brand-black);
-  border-top: 1px solid var(--border-color);
+  background-color: var(--border-color);
+  border-top: 1px solid var(--brand-gold);
   margin-top: auto;
   padding: 2rem 1rem 1rem 1rem;
 }
