@@ -335,7 +335,13 @@ document.addEventListener("DOMContentLoaded", () => {
     modalNombre.textContent = producto.nombre || "";
     modalDescripcion.textContent = producto.descripcion || "";
     modalPrecio.textContent = `$${parseFloat(producto.precio).toFixed(2)}`;
-
+    if (mostrandoBolivares && tasaBcvActual) {
+    const montoBs = (producto.precio * tasaBcvActual).toLocaleString("es-VE", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+    textoPrecio += ` <small style="font-size: 0.8em; color: #aaa;">(Bs. ${montoBs})</small>`;
+  }
     // Configurar enlaces de compartir
     actualizarEnlacesCompartir(producto);
 
