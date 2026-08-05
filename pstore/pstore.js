@@ -213,7 +213,82 @@ document.addEventListener("DOMContentLoaded", () => {
       clientesConocidos = results.data;
     }
   });
+// --- MÓDULO DE PAGINACIÓN Y FILTRADO ---
+let paginaActual = 1;
+const productosPorPagina = 12;
 
+function obtenerProductosFiltrados() {
+  const busqueda = (document.getElementById("input-busqueda")?.value || "").toLowerCase().trim();
+  const categoria = document.getElementById("select-categoria")?.value || "todas";
+  const orden = document.getElementById("select-orden")?.value || "defecto";
+
+  return productosGlobal.filter((prod) => {
+    const coincideNombre = (prod.nombre || "").toLowerCase().includes(busqueda);
+    const coincideDesc = (prod.descripcion || "").toLowerCase().includes(busqueda);
+    const coincideCat = categoria === "todas" || (prod.categoria || "").toLowerCase() === categoria.toLowerCase();
+    
+    return (coincideNombre || coincideDesc) && coincideCat;
+  }).sort((a, b) => {
+    const precioA = parseFloat(a.precio) || 0;
+    const precioB = parseFloat(b.precio) || 0;
+    if (orden === "precio-asc") return precioA - precioB;
+    if (orden === "precio-desc") return precioB - precioA;
+    if (orden === "nombre-asc") return (a.nombre || "").localeCompare(b.nombre || "");
+    return 0;
+  });
+}
+
+function renderizarPaginacion(totalItems) {
+  const contenedorPaginacion = document.getElementById("paginacion");
+  if (!contenedorPaginacion) return;
+
+  contenedorPaginacion.innerHTML = "";
+  const totalPaginas = Math.ceil(totalItems / productosPorPagina);
+  if (totalPaginas <= 1) return;
+
+  const btnAnt = document.createElement("button");
+  btnAnt.textContent = "« Ant";
+  btnAnt.disabled = paginaActual === 1;
+  btnAnt.addEventListener("click", () => {
+    if (paginaActual > 1) {
+      paginaActual--;
+      actualizarCatalogoConPaginacion();
+    }
+  });
+  contenedorPaginacion.appendChild(btnAnt);
+
+  for (let i = 1; i <= totalPaginas; i++) {
+    const btnPagina = document.createElement("button");
+    btnPagina.textContent = i;
+    if (i === paginaActual) btnPagina.classList.add("activa");
+    btnPagina.addEventListener("click", () => {
+      paginaActual = i;
+      actualizarCatalogoConPaginacion();
+    });
+    contenedorPaginacion.appendChild(btnPagina);
+  }
+
+  const btnSig = document.createElement("button");
+  btnSig.textContent = "Sig »";
+  btnSig.disabled = paginaActual === totalPaginas;
+  btnSig.addEventListener("click", () => {
+    if (paginaActual < totalPaginas) {
+      paginaActual++;
+      actualizarCatalogoConPaginacion();
+    }
+  });
+  contenedorPaginacion.appendChild(btnSig);
+}
+
+function actualizarCatalogoConPaginacion() {
+  const filtrados = obtenerProductosFiltrados();
+  const inicio = (paginaActual - 1) * productosPorPagina;
+  const fin = inicio + productosPorPagina;
+  const paginados = filtrados.slice(inicio, fin);
+
+  renderizarTarjetas(paginados);
+  renderizarPaginacion(filtrados.length);
+}
   // Eventos de interfaz
   actualizarContadorWishlist();
   actualizarContadorCarrito();
