@@ -13,6 +13,32 @@ let mostrandoBolivares = false;
 let paginaActual = 1;
 const productosPorPagina = 20;
 
+// --- OBTENCIÓN AUTOMÁTICA DE TASA BCV ---
+async function obtenerTasaBCV() {
+  try {
+    const res = await fetch("https://pstore-bcv-api.vercel.app/api/bcv"); // o tu endpoint de preferencia
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.tasa) {
+        tasaBcvActual = parseFloat(data.tasa);
+        actualizarIndicadorTasa();
+        return;
+      }
+    }
+    throw new Error("Respuesta de API BCV inválida");
+  } catch (e) {
+    console.warn("No se pudo obtener la tasa BCV en vivo, utilizando tasa de respaldo configurada:", CONFIG_PSTORE.tasaBcvRespaldo);
+    tasaBcvActual = CONFIG_PSTORE.tasaBcvRespaldo || 0;
+    actualizarIndicadorTasa();
+  }
+}
+
+function actualizarIndicadorTasa() {
+  const elTasa = document.getElementById("tasa-bcv-valor");
+  if (elTasa && tasaBcvActual) {
+    elTasa.textContent = `Bs. ${tasaBcvActual.toFixed(2)}`;
+  }
+}
 // Aplicar estilos y vista inicial de cuadrícula
 function aplicarConfiguracion(config) {
   if (config.estilosCSS) {
@@ -79,7 +105,79 @@ document.addEventListener("DOMContentLoaded", () => {
     aplicarConfiguracion(CONFIG_PSTORE);
     sincronizarConGoogleSheets();
   }
+  // --- RESTAURACIÓN: SELECTOR DE CUADRÍCULA / GRID ---
+  const selectColumnas = document.getElementById("select-columnas");
+  const contenedorCatalogo = document.getElementById("catalogo");
 
+  if (selectColumnas && contenedorCatalogo) {
+    const vistaGuardada = localStorage.getItem("pstore_vista_grid");
+    if (vistaGuardada) {
+      selectColumnas.value = vistaGuardada;
+      contenedorCatalogo.classList.remove("grid-1", "grid-2", "grid-4");
+      if (vistaGuardada !== "grid-auto") contenedorCatalogo.classList.add(vistaGuardada);
+    }
+
+    selectColumnas.addEventListener("change", (e) => {
+      const valor = e.target.value;
+      contenedorCatalogo.classList.remove("grid-1", "grid-2", "grid-4");
+      if (valor !== "grid-auto") contenedorCatalogo.classList.add(valor);
+      localStorage.setItem("pstore_vista_grid", valor);
+    });
+  }
+
+  // --- RESTAURACIÓN: PWA Y MENÚ LATERAL ---
+  let deferredPrompt = null;
+  const btnInstalarPWA = document.getElementById("btn-instalar-pwa");
+  const btnHamburguesa = document.getElementById("btn-menu-hamburguesa");
+  const btnCerrarMenu = document.getElementById("btn-cerrar-menu");
+  const menuLateral = document.getElementById("menu-lateral");
+  const menuOverlay = document.getElementById("menu-overlay");
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (btnInstalarPWA) btnInstalarPWA.style.display = "block";
+  });
+
+  if (btnInstalarPWA) {
+    btnInstalarPWA.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      btnInstalarPWA.style.display = "none";
+      cerrarMenu();
+    });
+  }
+
+  function cerrarMenu() {
+    if (menuLateral && menuOverlay) {
+      menuLateral.classList.remove("activo");
+      menuOverlay.classList.remove("activo");
+    }
+  }
+
+  if (btnHamburguesa) btnHamburguesa.addEventListener("click", () => {
+    menuLateral?.classList.add("activo");
+    menuOverlay?.classList.add("activo");
+  });
+  if (btnCerrarMenu) btnCerrarMenu.addEventListener("click", cerrarMenu);
+  if (menuOverlay) menuOverlay.addEventListener("click", cerrarMenu);
+
+  // Validación VIP Menú Lateral
+  document.getElementById("btn-validar-cliente-side")?.addEventListener("click", () => {
+    const input = document.getElementById("input-codigo-cliente-side")?.value;
+    if (input) {
+      identificarCliente(input);
+      cerrarMenu();
+    }
+  });
+
+  // Validación VIP Carrito / Principal
+  document.getElementById("btn-validar-cliente")?.addEventListener("click", () => {
+    const input = document.getElementById("input-codigo-cliente")?.value;
+    if (input) identificarCliente(input);
+  });
   // 1. Cargar Productos desde Google Sheets
   Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=51076819&single=true&output=csv", {
     download: true,
@@ -214,7 +312,36 @@ function obtenerFiltrosSeleccionados() {
 
   return { filtros, textoBusqueda, precioMin, precioMax };
 }
+// --- NORMALIZADOR AVANZADO DE HOJA DE CÁLCULO ---
+function normalizarLlave(llave) {
+  return llave
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
 
+function normalizarProductos(filas) {
+  return filas.map((f, idx) => {
+    const objetoNormalizado = {};
+    Object.keys(f).forEach((llaveOriginal) => {
+      const limpia = normalizarLlave(llaveOriginal);
+      if (limpia.includes("id") || limpia.includes("codigo")) objetoNormalizado.id = f[llaveOriginal];
+      else if (limpia.includes("nombre") || limpia.includes("titulo") || limpia.includes("producto")) objetoNormalizado.nombre = f[llaveOriginal];
+      else if (limpia.includes("precio") || limpia.includes("costo")) objetoNormalizado.precio = f[llaveOriginal];
+      else if (limpia.includes("categoria") || limpia.includes("rubro")) objetoNormalizado.categoria = f[llaveOriginal];
+      else if (limpia.includes("descripcion") || limpia.includes("detalle")) objetoNormalizado.descripcion = f[llaveOriginal];
+      else if (limpia.includes("imagen") || limpia.includes("foto") || limpia.includes("url")) objetoNormalizado.imagen = f[llaveOriginal];
+      else if (limpia.includes("estado") || limpia.includes("badge") || limpia.includes("promo")) objetoNormalizado.estado = f[llaveOriginal];
+    });
+
+    if (!objetoNormalizado.id) objetoNormalizado.id = `prod-${idx + 1}`;
+    if (!objetoNormalizado.nombre) objetoNormalizado.nombre = "Producto sin nombre";
+    if (!objetoNormalizado.precio) objetoNormalizado.precio = "0.00";
+
+    return objetoNormalizado;
+  });
+}
 function filtrarProductos() {
   const { filtros, textoBusqueda, precioMin, precioMax } = obtenerFiltrosSeleccionados();
 
@@ -265,7 +392,28 @@ function renderizarTarjetas(productos) {
   productos.forEach((prod) => {
     const esFav = wishlistIDs.includes(prod.id);
     const tarjeta = document.createElement("article");
-    tarjeta.className = "tarjeta";
+
+    // Lógica de Badges/Promos
+    const estadoNorm = (prod.estado || "").toLowerCase();
+    const esPromo = estadoNorm.includes("promo") || estadoNorm.includes("oferta");
+    const esNuevo = estadoNorm.includes("nuevo");
+    const pocasUnidades = estadoNorm.includes("pocas") || estadoNorm.includes("agotando");
+
+    let clasesTarjeta = "tarjeta";
+    let badgeHtml = "";
+
+    if (esNuevo) {
+      clasesTarjeta += " es-nuevo";
+      badgeHtml = `<span class="badge-promo badge-nuevo">🔥 ¡Nuevo!</span>`;
+    } else if (pocasUnidades) {
+      clasesTarjeta += " pocas-unidades";
+      badgeHtml = `<span class="badge-promo badge-pocas">⚡ Pocas Unidades</span>`;
+    } else if (esPromo) {
+      clasesTarjeta += " en-promo";
+      badgeHtml = `<span class="badge-promo">🏷️ ¡En Promo!</span>`;
+    }
+
+    tarjeta.className = clasesTarjeta;
 
     const precioNum = parseFloat(prod.precio);
     const precioFormateado = isNaN(precioNum) ? prod.precio : precioNum.toFixed(2);
@@ -279,6 +427,7 @@ function renderizarTarjetas(productos) {
     const srcImagen = obtenerUrlDirectaDrive(prod.imagen);
 
     tarjeta.innerHTML = `
+      ${badgeHtml}
       <button class="btn-fav ${esFav ? 'activo' : ''}" onclick="event.stopPropagation(); toggleFavorito('${prod.id}')">
         ${esFav ? '❤️' : '🤍'}
       </button>
@@ -508,7 +657,13 @@ function renderizarCarrito() {
     listaCarrito.appendChild(item);
   });
 
-  totalMonto.textContent = `$${total.toFixed(2)}`;
+  if (clienteActual && clienteActual.descuento > 0) {
+    const montoDescuento = (total * clienteActual.descuento) / 100;
+    const totalFinal = total - montoDescuento;
+    totalMonto.innerHTML = `<span style="font-size:0.85rem; text-decoration:line-through; color:#888;">$${total.toFixed(2)}</span> $${totalFinal.toFixed(2)} (${clienteActual.descuento}% desc.)`;
+  } else {
+    totalMonto.textContent = `$${total.toFixed(2)}`;
+  }
 }
 
 function configurarEventosCarrito() {
@@ -525,9 +680,10 @@ function configurarEventosCarrito() {
 function enviarPedidoWhatsApp() {
   if (carrito.length === 0) return alert("Tu carrito está vacío.");
 
-  const nombreInput = document.getElementById("cliente-nombre").value.trim();
-  const ciudad = document.getElementById("cliente-ciudad").value;
-  const pago = document.getElementById("cliente-pago").value;
+  const nombreInput = document.getElementById("cliente-nombre")?.value.trim();
+  const nombre = clienteActual ? clienteActual.nombre : (nombreInput || "Cliente");
+  const ciudad = document.getElementById("cliente-ciudad")?.value || "";
+  const pago = document.getElementById("cliente-pago")?.value || "";
 
   let mensaje = `🛒 *¡Hola Pstore! Quisiera realizar el siguiente pedido:*\n\n`;
   let total = 0;
@@ -538,12 +694,78 @@ function enviarPedidoWhatsApp() {
     mensaje += `• ${prod.cantidad}x ${prod.nombre} - $${subtotal.toFixed(2)}\n`;
   });
 
-  mensaje += `\n💰 *Total:* $${total.toFixed(2)}\n👤 *Cliente:* ${nombreInput || 'Cliente'}\n📍 *Ubicación:* ${ciudad}\n💳 *Pago:* ${pago}`;
+  let totalFinal = total;
+  if (clienteActual && clienteActual.descuento > 0) {
+    const montoDescuento = (total * clienteActual.descuento) / 100;
+    totalFinal = total - montoDescuento;
+    mensaje += `\n🏷️ *Descuento VIP (${clienteActual.descuento}%):* -$${montoDescuento.toFixed(2)}\n`;
+  }
+
+  mensaje += `💰 *Total a Pagar:* $${totalFinal.toFixed(2)}\n`;
+  mensaje += `-----------------------------\n`;
+  mensaje += `👤 *Cliente:* ${nombre} ${clienteActual ? '⭐ [Cliente Registrado]' : ''}\n`;
+  mensaje += `📍 *Ubicación:* ${ciudad}\n`;
+  mensaje += `💳 *Método de Pago:* ${pago}`;
 
   const telefono = CONFIG_PSTORE.numeroWhatsapp || "584126216661";
   window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, "_blank");
 }
+// --- MÓDULO DE WISHLIST Y FAVORITOS PERSISTENTES ---
+let wishlistIDs = JSON.parse(localStorage.getItem("pstore_wishlist") || "[]");
 
+function toggleFavorito(id) {
+  const index = wishlistIDs.indexOf(id);
+  if (index === -1) {
+    wishlistIDs.push(id);
+  } else {
+    wishlistIDs.splice(index, 1);
+  }
+  localStorage.setItem("pstore_wishlist", JSON.stringify(wishlistIDs));
+  actualizarContadorWishlist();
+  actualizarCatalogoConPaginacion();
+}
+
+function actualizarContadorWishlist() {
+  const badge = document.getElementById("badge-wishlist");
+  if (badge) badge.textContent = wishlistIDs.length;
+}
+
+function abrirModalWishlist() {
+  const modal = document.getElementById("modal-wishlist");
+  const contenedor = document.getElementById("lista-wishlist");
+  if (!modal || !contenedor) return;
+
+  contenedor.innerHTML = "";
+  const favoriteados = productosGlobal.filter(p => wishlistIDs.includes(p.id));
+
+  if (favoriteados.length === 0) {
+    contenedor.innerHTML = "<p style='text-align:center; padding:1.5rem;'>No tienes productos en tu lista de deseos.</p>";
+  } else {
+    favoriteados.forEach(prod => {
+      const item = document.createElement("div");
+      item.className = "item-wishlist";
+      item.innerHTML = `
+        <img src="${obtenerUrlDirectaDrive(prod.imagen)}" width="50" style="border-radius:6px;">
+        <div style="flex:1; margin-left:10px;">
+          <strong>${prod.nombre}</strong><br>
+          <small>$${parseFloat(prod.precio).toFixed(2)}</small>
+        </div>
+        <button onclick="agregarAlCarritoDesdeWishlist('${prod.id}')" class="btn-agregar-cart">🛒</button>
+        <button onclick="toggleFavorito('${prod.id}'); abrirModalWishlist();" class="btn-eliminar-fav">❌</button>
+      `;
+      contenedor.appendChild(item);
+    });
+  }
+  modal.classList.add("activo");
+}
+
+function agregarAlCarritoDesdeWishlist(id) {
+  const prod = productosGlobal.find(p => p.id === id);
+  if (prod) {
+    agregarAlCarrito(prod);
+    alert(`${prod.nombre} agregado al carrito.`);
+  }
+}
 // ==========================================
 // UTILIDADES AUXILIARES
 // ==========================================
@@ -618,4 +840,49 @@ function copiarEnlaceProducto() {
   if (!productoActualModal) return;
   const urlProducto = `${window.location.origin}${window.location.pathname}#${productoActualModal.id}`;
   navigator.clipboard.writeText(urlProducto).then(() => alert("¡Enlace copiado al portapapeles!"));
+}
+function identificarCliente(correoOCodigo) {
+  const query = correoOCodigo.trim().toLowerCase();
+  
+  const encontrado = clientesConocidos.find(c => {
+    const valorCodigo = Object.keys(c).find(k => k.includes("correo") || k.includes("codigo"));
+    return c[valorCodigo] && c[valorCodigo].trim().toLowerCase() === query;
+  });
+
+  if (encontrado) {
+    const keyNombre = Object.keys(encontrado).find(k => k.includes("nombre")) || "nombre_cliente";
+    const keyDescuento = Object.keys(encontrado).find(k => k.includes("descuento")) || "descuento";
+    const keyCredito = Object.keys(encontrado).find(k => k.includes("credito")) || "permite_credito";
+
+    clienteActual = {
+      nombre: encontrado[keyNombre] || "Cliente Registrado",
+      descuento: parseFloat(encontrado[keyDescuento]) || 0,
+      permiteCredito: (encontrado[keyCredito] || "").trim().toUpperCase() === "SI"
+    };
+    alert(`¡Bienvenido/a ${clienteActual.nombre}! Se ha aplicado tu descuento especial (${clienteActual.descuento}%).`);
+  } else {
+    clienteActual = null;
+    alert("Código o correo no registrado. Continuarás con precios regulares.");
+  }
+
+  actualizarOpcionesCheckout();
+  renderizarCarrito();
+}
+
+function actualizarOpcionesCheckout() {
+  const selectPago = document.getElementById("cliente-pago");
+  if (!selectPago) return;
+
+  let opcionCredito = selectPago.querySelector("option[value='A Crédito / Cuenta Corriente']");
+
+  if (clienteActual && clienteActual.permiteCredito) {
+    if (!opcionCredito) {
+      opcionCredito = document.createElement("option");
+      opcionCredito.value = "A Crédito / Cuenta Corriente";
+      opcionCredito.textContent = "💳 Pago a Crédito (Cliente VIP)";
+      selectPago.appendChild(opcionCredito);
+    }
+  } else if (opcionCredito) {
+    opcionCredito.remove();
+  }
 }
