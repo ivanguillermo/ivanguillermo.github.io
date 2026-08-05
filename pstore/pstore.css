@@ -783,3 +783,129 @@ footer {
 .btn-share.copy {
   color: var(--text-primary);
 }
+
+/* ==========================================
+   MENÚ LATERAL (SIDEBAR / HAMBURGUESA)
+   ========================================== */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.activo {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: -280px; /* Oculto a la izquierda */
+  width: 280px;
+  height: 100vh;
+  background-color: var(--bg-card, #121212);
+  color: var(--text-primary, #ffffff);
+  z-index: 999;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-lateral.activo {
+  left: 0; /* Deslizar hacia adentro */
+}
+
+.header-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  border-bottom: 1px solid var(--border-color, #222);
+}
+
+.header-menu h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--brand-gold, #d4af37);
+}
+
+.btn-cerrar {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-primary, #fff);
+  cursor: pointer;
+}
+
+.contenido-menu {
+  padding: 1.2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Botón de Instalación PWA destacado */
+.btn-pwa {
+  background: var(--brand-gold, #d4af37);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.btn-pwa:active {
+  transform: scale(0.98);
+}
+
+.separador-menu {
+  border: 0;
+  height: 1px;
+  background: var(--border-color, #222);
+  margin: 0.5rem 0;
+}
+
+.seccion-vip h3, .links-menu h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary, #888);
+  margin-bottom: 0.5rem;
+}
+
+.seccion-vip input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #333);
+  background: var(--bg-secondary, #1a1a1a);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.btn-secundario {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--brand-gold, #d4af37);
+  background: transparent;
+  color: var(--brand-gold, #d4af37);
+  cursor: pointer;
+}
