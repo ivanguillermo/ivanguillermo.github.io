@@ -583,11 +583,11 @@ footer {
 .icon-social {
   width: 18px;
   height: 18px;
-  stroke: var(--text-secondary);
+  stroke: var(--brand-gold);
 }
 
 .redes-sociales a:hover .icon-social {
-  stroke: var(--text-primary);
+  stroke: var(--text-secundary);
 }
 
 .footer-bottom {
