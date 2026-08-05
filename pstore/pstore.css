@@ -683,6 +683,40 @@ footer {
   .modal-galeria img#modal-img {
     height: 180px;
   }
+   @media (max-width: 768px) {
+  /* Ocultar el texto del botón PDF y convertirlo en icono circular */
+  .btn-catalogo-pdf .texto-pdf {
+    display: none !important;
+  }
+
+  .btn-catalogo-pdf {
+    padding: 0 !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.1rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .btn-icon-hamburguesa {
+    font-size: 1.4rem;
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+
+  /* Asegurar que la barra de búsqueda tome el espacio libre ganado */
+  .busqueda-container {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .busqueda-container input {
+    width: 100% !important;
+  }
+}
 }
 .btn-catalogo-pdf {
   display: inline-flex;
