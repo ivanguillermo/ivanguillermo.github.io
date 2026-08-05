@@ -912,3 +912,299 @@ async function sincronizarConGoogleSheets() {
     console.warn("Usando configuración local de config.js:", error);
   }
 }
+
+// ==========================================
+// ESTADO GLOBAL DE APLICACIÓN
+// ==========================================
+let listaProductosCompleta = []; // Carga desde Sheets o respaldo
+let wishlistIDs = JSON.parse(localStorage.getItem("pstore_wishlist")) || [];
+let paginaActual = 1;
+const productosPorPagina = 20;
+
+// ==========================================
+// GESTIÓN DE WISHLIST (FAVORITOS)
+// ==========================================
+function toggleFavorito(idProducto) {
+  const index = wishlistIDs.indexOf(idProducto);
+  if (index === -1) {
+    wishlistIDs.push(idProducto);
+  } else {
+    wishlistIDs.splice(index, 1);
+  }
+  
+  // Guardar en localStorage
+  localStorage.setItem("pstore_wishlist", JSON.stringify(wishlistIDs));
+  actualizarContadorWishlist();
+  
+  // Refrescar tarjetas activas
+  aplicarFiltrosYPaginacion();
+}
+
+function actualizarContadorWishlist() {
+  const badge = document.getElementById("wishlist-count");
+  if (badge) badge.textContent = wishlistIDs.length;
+}
+
+// ==========================================
+// SISTEMA DE FILTRADO COMBINADO
+// ==========================================
+function obtenerFiltrosSeleccionados() {
+  const checkboxes = document.querySelectorAll(".filter-check:checked");
+  const filtros = {
+    catPrincipal: [],
+    publico: [],
+    coleccion: [],
+    tallas: [],
+    estado: []
+  };
+
+  checkboxes.forEach(cb => {
+    const grupo = cb.dataset.grupo;
+    if (filtros[grupo]) {
+      filtros[grupo].push(cb.value.toLowerCase());
+    }
+  });
+
+  const textoBusqueda = document.getElementById("input-busqueda")?.value.toLowerCase().trim() || "";
+  const precioMin = parseFloat(document.getElementById("precio-min")?.value) || 0;
+  const precioMax = parseFloat(document.getElementById("precio-max")?.value) || Infinity;
+
+  return { filtros, textoBusqueda, precioMin, precioMax };
+}
+
+function filtrarProductos() {
+  const { filtros, textoBusqueda, precioMin, precioMax } = obtenerFiltrosSeleccionados();
+
+  return listaProductosCompleta.filter(prod => {
+    // 1. Buscador por texto (nombre, id, descripción)
+    if (textoBusqueda) {
+      const enNombre = prod.nombre?.toLowerCase().includes(textoBusqueda);
+      const enId = prod.id?.toString().toLowerCase().includes(textoBusqueda);
+      if (!enNombre && !enId) return false;
+    }
+
+    // 2. Rango de precio
+    const precio = parseFloat(prod.precio) || 0;
+    if (precio < precioMin || precio > precioMax) return false;
+
+    // 3. Categoría Principal
+    if (filtros.catPrincipal.length > 0) {
+      if (!filtros.catPrincipal.includes(prod.catPrincipal?.toLowerCase())) return false;
+    }
+
+    // 4. Público Target (H, M, U, N, Mascotas)
+    if (filtros.publico.length > 0) {
+      if (!filtros.publico.includes(prod.publico?.toLowerCase())) return false;
+    }
+
+    // 5. Colección (Sanrio, Anime, Disney, Marvel)
+    if (filtros.coleccion.length > 0) {
+      if (!filtros.coleccion.includes(prod.coleccion?.toLowerCase())) return false;
+    }
+
+    // 6. Tallas (S, M, L, XL)
+    if (filtros.tallas.length > 0) {
+      const tallasProd = Array.isArray(prod.tallas) 
+        ? prod.tallas.map(t => t.toLowerCase())
+        : (prod.tallas || "").toLowerCase().split(",");
+      
+      const coincideTalla = filtros.tallas.some(t => tallasProd.includes(t.trim()));
+      if (!coincideTalla) return false;
+    }
+
+    // 7. Estado (Oferta, Nuevo, MasVendido)
+    if (filtros.estado.length > 0) {
+      if (!filtros.estado.includes(prod.estado?.toLowerCase())) return false;
+    }
+
+    return true;
+  });
+}
+
+// ==========================================
+// RENDERIZADO Y PAGINACIÓN
+// ==========================================
+function aplicarFiltrosYPaginacion() {
+  const filtrados = filtrarProductos();
+  const total = filtrados.length;
+
+  // Calcular sublista de 20 ítems para la página activa
+  const inicio = (paginaActual - 1) * productosPorPagina;
+  const fin = inicio + productosPorPagina;
+  const productosPagina = filtrados.slice(inicio, fin);
+
+  renderizarTarjetas(productosPagina);
+  renderizarControlesPaginacion(total);
+}
+
+function renderizarTarjetas(productos) {
+  const catalogo = document.getElementById("catalogo");
+  const msgSinResultados = document.getElementById("sin-resultados");
+  if (!catalogo) return;
+
+  catalogo.innerHTML = "";
+
+  if (productos.length === 0) {
+    if (msgSinResultados) msgSinResultados.style.display = "block";
+    return;
+  }
+
+  if (msgSinResultados) msgSinResultados.style.display = "none";
+
+  productos.forEach(prod => {
+    const esFav = wishlistIDs.includes(prod.id);
+    
+    // Cálculo condicional de precio en Bs.
+    let HTMLPrecio = `<span class="precio-usd">$${parseFloat(prod.precio).toFixed(2)}</span>`;
+    if (window.mostrandoBolivares && window.tasaBcvActual) {
+      const montoBs = (prod.precio * window.tasaBcvActual).toLocaleString("es-VE", { minimumFractionDigits: 2 });
+      HTMLPrecio += ` <span class="precio-bs">(Bs. ${montoBs})</span>`;
+    }
+
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "tarjeta-producto";
+    tarjeta.innerHTML = `
+      <button class="btn-fav ${esFav ? 'activo' : ''}" onclick="toggleFavorito('${prod.id}')">
+        ${esFav ? '❤️' : '🤍'}
+      </button>
+      <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy">
+      <div class="tarjeta-info">
+        <h3>${prod.nombre}</h3>
+        <div class="precios">${HTMLPrecio}</div>
+        <button class="btn-agregar" onclick="agregarAlCarrito('${prod.id}')">Agregar</button>
+      </div>
+    `;
+    catalogo.appendChild(tarjeta);
+  });
+}
+
+function renderizarControlesPaginacion(totalProductos) {
+  const container = document.getElementById("paginacion-container");
+  if (!container) return;
+  container.innerHTML = "";
+
+  const totalPaginas = Math.ceil(totalProductos / productosPorPagina);
+  if (totalPaginas <= 1) return;
+
+  for (let i = 1; i <= totalPaginas; i++) {
+    const btn = document.createElement("button");
+    btn.className = `btn-pagina ${i === paginaActual ? "activa" : ""}`;
+    btn.textContent = i;
+    btn.onclick = () => {
+      paginaActual = i;
+      aplicarFiltrosYPaginacion();
+      document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth" });
+    };
+    container.appendChild(btn);
+  }
+}
+
+// ==========================================
+// EVENT LISTENERS E INICIALIZACIÓN
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarContadorWishlist();
+
+  // Escuchar cambios en checkboxes de filtro
+  document.querySelectorAll(".filter-check").forEach(cb => {
+    cb.addEventListener("change", () => {
+      paginaActual = 1; // Reiniciar a pag 1 al filtrar
+      aplicarFiltrosYPaginacion();
+    });
+  });
+
+  // Escuchar inputs de texto y precio
+  ["input-busqueda", "precio-min", "precio-max"].forEach(id => {
+    document.getElementById(id)?.addEventListener("input", () => {
+      paginaActual = 1;
+      aplicarFiltrosYPaginacion();
+    });
+  });
+
+  // Botón Limpiar Filtros
+  document.getElementById("btn-limpiar-filtros")?.addEventListener("click", () => {
+    document.querySelectorAll(".filter-check").forEach(cb => cb.checked = false);
+    if (document.getElementById("input-busqueda")) document.getElementById("input-busqueda").value = "";
+    if (document.getElementById("precio-min")) document.getElementById("precio-min").value = "";
+    if (document.getElementById("precio-max")) document.getElementById("precio-max").value = "";
+    paginaActual = 1;
+    aplicarFiltrosYPaginacion();
+  });
+});
+
+// Función para extraer valores únicos de una propiedad del CSV
+function obtenerValoresUnicos(listaProductos, propiedad) {
+  const valoresSet = new Set();
+
+  listaProductos.forEach(producto => {
+    const valor = producto[propiedad];
+    if (!valor) return;
+
+    // Si es el campo de tallas (ej. "S,M,L"), dividimos por coma
+    if (propiedad === "tallas") {
+      valor.split(",").forEach(t => valoresSet.add(t.trim().toUpperCase()));
+    } else {
+      valoresSet.add(valor.trim());
+    }
+  });
+
+  // Retorna un array ordenado alfabéticamente (o en orden personalizado)
+  return Array.from(valoresSet).sort();
+}
+
+// Generar dinámicamente el HTML de los checkboxes
+function construirFiltrosDinamicos() {
+  const atributos = [
+    { idContenedor: "grupo-catPrincipal", claveCSV: "catPrincipal" },
+    { idContenedor: "grupo-publico", claveCSV: "publico" },
+    { idContenedor: "grupo-coleccion", claveCSV: "coleccion" },
+    { idContenedor: "grupo-tallas", claveCSV: "tallas" },
+    { idContenedor: "grupo-estado", claveCSV: "estado" }
+  ];
+
+  atributos.forEach(({ idContenedor, claveCSV }) => {
+    const contenedor = document.getElementById(idContenedor);
+    if (!contenedor) return;
+
+    const valoresUnicos = obtenerValoresUnicos(listaProductosCompleta, claveCSV);
+    contenedor.innerHTML = ""; // Limpiar contenedor
+
+    valoresUnicos.forEach(valor => {
+      const label = document.createElement("label");
+      
+      // Estilo especial tipo "etiqueta" para las tallas
+      if (claveCSV === "tallas") {
+        label.className = "tag-check";
+        label.innerHTML = `
+          <input type="checkbox" class="filter-check" data-grupo="${claveCSV}" value="${valor}" />
+          ${valor}
+        `;
+      } else {
+        label.innerHTML = `
+          <input type="checkbox" class="filter-check" data-grupo="${claveCSV}" value="${valor}" />
+          ${valor}
+        `;
+      }
+
+      contenedor.appendChild(label);
+    });
+  });
+
+  // Escuchar eventos en los nuevos checkboxes creados
+  document.querySelectorAll(".filter-check").forEach(cb => {
+    cb.addEventListener("change", () => {
+      paginaActual = 1; // Reiniciar paginación al cambiar un filtro
+      aplicarFiltrosYPaginacion();
+    });
+  });
+}
+// Cuando se reciben los productos desde Google Sheets o config local:
+function inicializarTienda(productosRecibidos) {
+  listaProductosCompleta = productosRecibidos;
+
+  // 1. Crear los filtros basados en los productos reales del CSV
+  construirFiltrosDinamicos();
+
+  // 2. Renderizar la primera página de productos
+  aplicarFiltrosYPaginacion();
+}
