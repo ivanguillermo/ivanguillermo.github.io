@@ -587,7 +587,7 @@ footer {
 }
 
 .redes-sociales a:hover .icon-social {
-  stroke: var(--text-secundary);
+  stroke: var(--brand-gold);
 }
 
 .footer-bottom {
