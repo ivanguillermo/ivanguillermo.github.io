@@ -57,7 +57,53 @@
   gtag('config', 'G-4N3BEFRW5Z');
 </script>
 <body>
-
+  <!-- Botón Hamburguesa en el Header -->
+  <header class="header-pstore">
+    <button id="btn-menu-hamburguesa" class="btn-icon" aria-label="Abrir menú">
+      ☰
+    </button>
+    <h1 class="logo">Pstore</h1>
+    <button id="btn-carrito" class="btn-icon">
+      🛒 <span id="cant-carrito">0</span>
+    </button>
+  </header>
+  
+  <!-- Overlay para oscurecer el fondo al abrir el menú -->
+  <div id="menu-overlay" class="menu-overlay"></div>
+  
+  <!-- Menú Lateral (Sidebar) -->
+  <aside id="menu-lateral" class="menu-lateral">
+    <div class="header-menu">
+      <h2>Menú</h2>
+      <button id="btn-cerrar-menu" class="btn-cerrar">&times;</button>
+    </div>
+  
+    <nav class="contenido-menu">
+      <!-- Opción para Instalar App PWA -->
+      <button id="btn-instalar-pwa" class="btn-menu-item btn-pwa" style="display: none;">
+        📲 Instalar App Pstore
+      </button>
+  
+      <hr class="separador-menu" />
+  
+      <!-- Cliente VIP -->
+      <div class="seccion-vip">
+        <h3>Acceso VIP</h3>
+        <input type="text" id="input-codigo-cliente-side" placeholder="Correo o Código VIP" />
+        <button id="btn-validar-cliente-side" class="btn-secundario">Validar Código</button>
+      </div>
+  
+      <hr class="separador-menu" />
+  
+      <!-- Links / Categorías -->
+      <div class="links-menu">
+        <h3>Categorías</h3>
+        <ul id="menu-categorias-list">
+          <!-- Se puebla dinámicamente o puedes poner enlaces estáticos -->
+        </ul>
+      </div>
+    </nav>
+  </aside>
   <header class="main-header">
     <!-- FILA 1: Logo + Buscador -->
     <div class="header-fila-1">
