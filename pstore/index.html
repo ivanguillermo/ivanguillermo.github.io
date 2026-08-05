@@ -126,19 +126,19 @@
           <p id="modal-descripcion" class="descripcion"></p>
           <span id="modal-precio" class="precio"></span>
 
-          <!-- Sección de Compartir dentro del Modal de Producto -->
+          <!-- Sección de Compartir dentro del Modal de Producto -->    
           <div class="modal-compartir">
-            <p><strong>Compartir este producto:</strong></p>
+            <p class="titulo-compartir">Compartir este producto:</p>
             
-            <!-- Botón Principal Nativo (Móvil) -->
-            <button id="btn-share-native" onclick="compartirNativo()" class="btn-share main">
-              📲 Compartir
-            </button>
-          
-            <!-- Botones Directos de Redes -->
-            <div class="share-buttons">
-              <a id="share-wa" target="_blank" class="btn-share wa">WhatsApp</a>
-              <a id="share-fb" target="_blank" class="btn-share fb">Facebook</a>
+            <div class="share-buttons-grid">
+              <!-- Botón Móvil Nativo -->
+              <button id="btn-share-native" onclick="compartirNativo()" class="btn-share main">
+                📲 Compartir
+              </button>
+            
+              <!-- Botones Redes Directas -->
+              <a id="share-wa" target="_blank" rel="noopener" class="btn-share wa">WhatsApp</a>
+              <a id="share-fb" target="_blank" rel="noopener" class="btn-share fb">Facebook</a>
               <button onclick="copiarEnlaceProducto()" class="btn-share copy">Copiar Link</button>
             </div>
           </div>
