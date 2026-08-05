@@ -32,6 +32,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnEnviarWhatsApp = document.getElementById("btn-enviar-whatsapp");
   const btnValidarCliente = document.getElementById("btn-validar-cliente");
 
+  // Lógica de reset del logo (Colocar dentro de DOMContentLoaded)
+  const logo = document.querySelector(".logo");
+  if (logo) {
+    logo.style.cursor = "pointer";
+    logo.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (selectCategoria) selectCategoria.value = "todas";
+      if (selectPersonaje) selectPersonaje.value = "todas";
+      if (inputBusqueda) inputBusqueda.value = "";
+      
+      history.replaceState(null, null, window.location.pathname);
+      aplicarFiltros();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
   actualizarContadorCarrito();
   // --- LÓGICA DE INSTALACIÓN PWA Y MENÚ LATERAL ---
   let deferredPrompt = null;
@@ -52,6 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mostrar el botón en el menú lateral
     if (btnInstalarPWA) {
       btnInstalarPWA.style.display = "block";
+    }
+    // Lógica de reset del logo (Colocar dentro de DOMContentLoaded)
+    const logo = document.querySelector(".logo");
+    if (logo) {
+      logo.style.cursor = "pointer";
+      logo.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (selectCategoria) selectCategoria.value = "todas";
+        if (selectPersonaje) selectPersonaje.value = "todas";
+        if (inputBusqueda) inputBusqueda.value = "";
+        
+        history.replaceState(null, null, window.location.pathname);
+        aplicarFiltros();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     }
   });
   
@@ -644,20 +674,4 @@ function copiarEnlaceProducto() {
   });
 }
 
-const logo = document.querySelector(".logo");
-if (logo) {
-  logo.style.cursor = "pointer";
-  logo.addEventListener("click", () => {
-    // Resetear filtros y búsqueda
-    if (selectCategoria) selectCategoria.value = "todas";
-    if (selectPersonaje) selectPersonaje.value = "todas";
-    if (inputBusqueda) inputBusqueda.value = "";
-    
-    // Limpiar hash de la URL si había un producto abierto
-    history.replaceState(null, null, window.location.pathname);
-    
-    // Reaplicar filtros para mostrar todo y volver arriba
-    aplicarFiltros();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
+
