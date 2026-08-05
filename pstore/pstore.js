@@ -516,3 +516,66 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// Variable global para almacenar el producto actual que está en el modal
+var productoActualModal = null;
+
+function abrirModalProducto(producto) {
+  productoActualModal = producto; // Guardar datos del producto
+  
+  // URL base de tu página web (ejemplo: https://ivanguillermo.github.io/)
+  // Para enlazar directamente al producto, usamos un parámetro id o hash
+  var urlProducto = window.location.origin + window.location.pathname + "?id=" + producto.id;
+  var textoMensaje = `¡Mira este producto en Pstore! ${producto.nombre} - $${producto.precio}`;
+
+  // 1. Configurar enlace para WhatsApp
+  var urlWA = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje + " " + urlProducto)}`;
+  document.getElementById("share-wa").href = urlWA;
+
+  // 2. Configurar enlace para Facebook
+  var urlFB = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlProducto)}`;
+  document.getElementById("share-fb").href = urlFB;
+
+  // Mostrar el modal...
+  document.getElementById("miModal").style.display = "block";
+}
+
+// Función para el botón nativo (Móvil)
+function compartirNativo() {
+  if (navigator.share && productoActualModal) {
+    var urlProducto = window.location.origin + window.location.pathname + "?id=" + productoActualModal.id;
+    
+    navigator.share({
+      title: productoActualModal.nombre,
+      text: `¡Mira este producto en Pstore! ${productoActualModal.nombre} - $${productoActualModal.precio}`,
+      url: urlProducto
+    }).catch(console.error);
+  } else {
+    // Si está en PC y no soporta Web Share, copia el enlace al portapapeles
+    copiarEnlaceProducto();
+  }
+}
+
+// Función rápida para copiar el enlace
+function copiarEnlaceProducto() {
+  if (!productoActualModal) return;
+  var urlProducto = window.location.origin + window.location.pathname + "?id=" + productoActualModal.id;
+  
+  navigator.clipboard.writeText(urlProducto).then(function() {
+    alert("¡Enlace del producto copiado al portapapeles!");
+  });
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  // Leer los parámetros de la URL
+  var urlParams = new URLSearchParams(window.location.search);
+  var idProducto = urlParams.get('id');
+
+  if (idProducto) {
+    // Buscar el producto en tu lista de productos por su ID
+    var productoEncontrado = listaDeProductos.find(p => p.id === idProducto);
+    if (productoEncontrado) {
+      abrirModalProducto(productoEncontrado);
+    }
+  }
+});
