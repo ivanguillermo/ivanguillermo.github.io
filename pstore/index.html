@@ -17,7 +17,7 @@
   <meta property="og:description" content="Explora nuestro catálogo exclusivo, ofertas y novedades con entregas rápidas.">
   <meta property="og:url" content="https://ivanguillermo.github.io/pstore/">
 
-  <!-- IMAGEN DE VISTA PREVIA (LOGO / BANNER DE LA TIENDA) -->
+  <!-- IMAGEN DE VISTA PREVIA -->
   <meta property="og:image" content="https://ivanguillermo.github.io/pstore/assets/pstore.jpg">
   <meta property="og:image:secure_url" content="https://ivanguillermo.github.io/pstore/assets/pstore.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -26,8 +26,8 @@
   <meta property="og:image:alt" content="Logo de Pstore">
   
   <!-- Geolocalización explícita para SEO de Google -->
-  <meta name="geo.region" content="VE-L;VE-Y;VE-I" />
-  <meta name="geo.placename" content="Barquisimeto, Cabudare, Acarigua, Yaracuy" />
+  <meta name="geo.region" content="VE-L;VE-Y;VE-I">
+  <meta name="geo.placename" content="Barquisimeto, Cabudare, Acarigua, Yaracuy">
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="assets/pstore.jpg">
@@ -44,27 +44,30 @@
   <link rel="stylesheet" href="css/pstore.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
-  <!-- Script Crisp Chat -->
-  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="eaa962b6-854e-4780-afc8-d1dff6bca29a";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-</head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4N3BEFRW5Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N3BEFRW5Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4N3BEFRW5Z');
+  </script>
 
-  gtag('config', 'G-4N3BEFRW5Z');
-</script>
+  <!-- Script Crisp Chat -->
+  <script type="text/javascript">
+    window.$crisp=[];window.CRISP_WEBSITE_ID="eaa962b6-854e-4780-afc8-d1dff6bca29a";
+    (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+  </script>
+</head>
 <body>
   <!-- Overlay para el Menú Lateral -->
   <div id="menu-overlay" class="menu-overlay"></div>
   
-  <!-- Menú Lateral (Sidebar) -->
+  <!-- Menú Lateral (Sidebar de Navegación) -->
   <aside id="menu-lateral" class="menu-lateral">
     <div class="header-menu">
       <h2>Menú Pstore</h2>
-      <button id="btn-cerrar-menu" class="btn-cerrar">&times;</button>
+      <button id="btn-cerrar-menu" class="btn-cerrar" aria-label="Cerrar menú">&times;</button>
     </div>
   
     <nav class="contenido-menu">
@@ -84,61 +87,13 @@
   
       <hr class="separador-menu" />
   
-      <!-- Categorías -->
+      <!-- Categorías del Menú -->
       <div class="links-menu">
         <h3>Categorías</h3>
         <ul id="menu-categorias-list"></ul>
       </div>
     </nav>
-  
-  <!-- Panel Lateral de Filtros -->
-<aside id="sidebar-filtros" class="sidebar-filtros">
-  <div class="filtros-header">
-    <h3>Filtrar por</h3>
-    <button id="btn-limpiar-filtros" class="btn-link">Limpiar todo</button>
-  </div>
-
-  <!-- 1. Categoría Principal -->
-  <div class="filtro-grupo">
-    <h4>Categoría Principal</h4>
-    <div id="grupo-categoria" class="grupo-checkboxes"></div>
-  </div>
-
-  <!-- 2. Público Target -->
-  <div class="filtro-grupo">
-    <h4>Público</h4>
-    <div id="grupo-categoria_secundaria" class="grupo-checkboxes"></div>
-  </div>
-
-  <!-- 3. Colección -->
-  <div class="filtro-grupo">
-    <h4>Colección / Franquicia</h4>
-    <div id="grupo-coleccion" class="grupo-checkboxes"></div>
-  </div>
-
-  <!-- 4. Tallas -->
-  <div class="filtro-grupo">
-    <h4>Talla</h4>
-    <div id="grupo-tallas" class="tallas-grid"></div>
-  </div>
-
-  <!-- 5. Estado / Destacados -->
-  <div class="filtro-grupo">
-    <h4>Estado</h4>
-    <div id="grupo-estado" class="grupo-checkboxes"></div>
-  </div>
-
-  <!-- 6. Rango de Precio -->
-  <div class="filtro-grupo">
-    <h4>Rango de Precio ($)</h4>
-    <div class="precio-inputs">
-      <input type="number" id="precio-min" placeholder="Mín" min="0" />
-      <span>-</span>
-      <input type="number" id="precio-max" placeholder="Máx" min="0" />
-    </div>
-  </div>
-</aside>
-   </aside> 
+  </aside>
 
   <!-- Header Único Principal -->
   <header class="main-header">
@@ -150,7 +105,7 @@
         <span class="logo-text">Pstore</span>
       </a>
       <div class="busqueda-container">
-        <input type="text" id="input-busqueda" placeholder="Buscar producto...">
+        <input type="text" id="input-busqueda" placeholder="Buscar producto por nombre o ID...">
       </div>
       <a href="https://drive.google.com/file/d/1-nmOf4b58Y3ioW4Cnym-uev9I5j8h72C/view" 
          target="_blank" 
@@ -158,18 +113,29 @@
          class="btn-catalogo-pdf"
          title="Descargar Catálogo PDF">
         <span class="icono-pdf">📄</span>
-        <span class="texto-pdf">Descargar Catálogo PDF</span>
+        <span class="texto-pdf">Catálogo PDF</span>
       </a>
     </div>
 
-    <!-- FILA 2: Categoría Principal + Carrito -->
+    <!-- FILA 2: Categoría Principal + Vista + Moneda + Favoritos + Carrito -->
     <div class="header-fila-2">
       <select id="select-categoria">
         <option value="todas">Todas las categorías</option>
       </select>
+
+      <select id="select-columnas" title="Vista de cuadrícula">
+        <option value="grid-auto">Columnas: Auto</option>
+        <option value="grid-1">1 Columna</option>
+        <option value="grid-2">2 Columnas</option>
+        <option value="grid-4">4 Columnas</option>
+      </select>
       
       <button id="btn-toggle-moneda" class="btn-toggle-moneda" style="display: none;" title="Ver en Bolívares">
         USD / <span id="label-moneda-alt">Bs.</span>
+      </button>
+
+      <button id="btn-wishlist" class="btn-wishlist" title="Ver Favoritos">
+        ❤️ <span id="wishlist-count">0</span>
       </button>
       
       <button id="btn-carrito" class="btn-carrito">
@@ -190,10 +156,70 @@
     </div>
   </header>
 
-  <main>
-    <div id="catalogo" class="catalogo">
-      <!-- Tarjetas insertadas mediante JS -->
-    </div>
+  <!-- Contenido Principal con Layout de Tienda -->
+  <main class="layout-tienda">
+    <!-- Panel Lateral de Filtros Facetados -->
+    <aside id="sidebar-filtros" class="sidebar-filtros">
+      <div class="filtros-header">
+        <h3>Filtrar por</h3>
+        <button id="btn-limpiar-filtros" class="btn-link">Limpiar todo</button>
+      </div>
+
+      <!-- 1. Categoría Principal -->
+      <div class="filtro-grupo">
+        <h4>Categoría Principal</h4>
+        <div id="grupo-categoria" class="grupo-checkboxes"></div>
+      </div>
+
+      <!-- 2. Público Target -->
+      <div class="filtro-grupo">
+        <h4>Público</h4>
+        <div id="grupo-categoria_secundaria" class="grupo-checkboxes"></div>
+      </div>
+
+      <!-- 3. Colección -->
+      <div class="filtro-grupo">
+        <h4>Colección / Franquicia</h4>
+        <div id="grupo-coleccion" class="grupo-checkboxes"></div>
+      </div>
+
+      <!-- 4. Tallas -->
+      <div class="filtro-grupo">
+        <h4>Talla</h4>
+        <div id="grupo-tallas" class="tallas-grid"></div>
+      </div>
+
+      <!-- 5. Estado / Destacados -->
+      <div class="filtro-grupo">
+        <h4>Estado</h4>
+        <div id="grupo-estado" class="grupo-checkboxes"></div>
+      </div>
+
+      <!-- 6. Rango de Precio -->
+      <div class="filtro-grupo">
+        <h4>Rango de Precio ($)</h4>
+        <div class="precio-inputs">
+          <input type="number" id="precio-min" placeholder="Mín" min="0" />
+          <span>-</span>
+          <input type="number" id="precio-max" placeholder="Máx" min="0" />
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sección de Productos y Paginación -->
+    <section id="seccion-catalogo" class="seccion-catalogo">
+      <div id="catalogo" class="catalogo">
+        <!-- Tarjetas insertadas mediante JS -->
+      </div>
+
+      <div id="sin-resultados" class="sin-resultados" style="display: none;">
+        <p>No se encontraron productos que coincidan con los filtros seleccionados.</p>
+      </div>
+
+      <div id="paginacion-container" class="paginacion-container">
+        <!-- Botones de paginación insertados mediante JS -->
+      </div>
+    </section>
   </main>
   
   <!-- Modal Detalle del Producto -->
@@ -202,10 +228,7 @@
       <button id="cerrar-modal" class="modal-close" aria-label="Cerrar modal">&times;</button>
       <div class="modal-body">
         <div class="modal-galeria">
-          <!-- Foto Principal Grande -->
           <img id="modal-img" src="" alt="Producto">
-          
-          <!-- Contenedor para Miniaturas -->
           <div id="modal-thumbnails" class="modal-thumbnails"></div>
         </div>
         <div class="modal-info">
@@ -214,30 +237,23 @@
           <p id="modal-descripcion" class="descripcion"></p>
           <span id="modal-precio" class="precio"></span>
     
-          <!-- Sección de Compartir dentro del Modal de Producto -->    
+          <!-- Sección de Compartir -->    
           <div class="modal-compartir">
             <span class="titulo-compartir">Compartir:</span>
             <div class="share-row">
-              <!-- Botón Móvil Nativo -->
               <button id="btn-share-native" onclick="compartirNativo()" class="btn-share-circle main" title="Compartir">
                 📲
               </button>
-          
-              <!-- WhatsApp -->
               <a id="share-wa" target="_blank" rel="noopener" class="btn-share-circle wa" title="WhatsApp">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                   <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.764.459 3.487 1.333 5.005L2 22l5.122-1.34A9.957 9.957 0 0012.01 22c5.508 0 9.99-4.479 9.99-9.986 0-5.507-4.482-9.986-9.988-9.986zm0 18.313c-1.597 0-3.158-.429-4.526-1.241l-.325-.194-3.362.88.897-3.275-.213-.339A8.307 8.307 0 013.68 11.98c0-4.594 3.738-8.332 8.332-8.332 4.593 0 8.331 3.738 8.331 8.332 0 4.595-3.738 8.333-8.331 8.333z"/>
                 </svg>
               </a>
-          
-              <!-- Facebook -->
               <a id="share-fb" target="_blank" rel="noopener" class="btn-share-circle fb" title="Facebook">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
               </a>
-          
-              <!-- Copiar Link -->
               <button onclick="copiarEnlaceProducto()" class="btn-share-circle copy" title="Copiar Enlace">
                 📋
               </button>
@@ -360,8 +376,8 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('Service Worker de Pstore registrado con éxito:', reg.scope))
-          .catch(err => console.error('Error registrando Service Worker:', err));
+          .then(reg => console.log('Service Worker de Pstore registrado:', reg.scope))
+          .catch(err => console.error('Error Service Worker:', err));
       });
     }
   </script>
