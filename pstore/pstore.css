@@ -962,3 +962,36 @@ footer {
   color: var(--brand-gold, #d4af37);
   cursor: pointer;
 }
+/* Botón de cambio de moneda */
+.btn-toggle-moneda {
+  background-color: var(--bg-card, #1a1a1a);
+  color: var(--brand-gold, #d4af37);
+  border: 1px solid var(--brand-gold, #d4af37);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-toggle-moneda:hover {
+  background-color: var(--brand-gold, #d4af37);
+  color: var(--brand-black, #111111);
+}
+
+.btn-toggle-moneda.activo {
+  background-color: var(--brand-gold, #d4af37);
+  color: #000;
+}
+
+/* Indicador secundario en la tarjeta de producto */
+.precio-bs-tarjeta {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #aaa);
+  display: block;
+  margin-top: 0.2rem;
+}
