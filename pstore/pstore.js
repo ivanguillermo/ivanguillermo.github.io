@@ -653,16 +653,17 @@ function actualizarEnlacesCompartir(producto) {
 // ==========================================
 // CARRITO Y WISHLIST
 // ==========================================
-function toggleFavorito(idProducto) {
-  const index = wishlistIDs.indexOf(idProducto);
+
+function toggleFavorito(id) {
+  const index = wishlistIDs.indexOf(id);
   if (index === -1) {
-    wishlistIDs.push(idProducto);
+    wishlistIDs.push(id);
   } else {
     wishlistIDs.splice(index, 1);
   }
   localStorage.setItem("pstore_wishlist", JSON.stringify(wishlistIDs));
   actualizarContadorWishlist();
-  aplicarFiltrosYPaginacion();
+  actualizarCatalogoConPaginacion();
 }
 
 function actualizarContadorWishlist() {
@@ -786,7 +787,6 @@ function enviarPedidoWhatsApp() {
   window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, "_blank");
 }
 // --- MÓDULO DE WISHLIST Y FAVORITOS PERSISTENTES ---
-let wishlistIDs = JSON.parse(localStorage.getItem("pstore_wishlist") || "[]");
 
 function toggleFavorito(id) {
   const index = wishlistIDs.indexOf(id);
