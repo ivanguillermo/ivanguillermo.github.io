@@ -835,4 +835,80 @@ async function sincronizarConGoogleSheets() {
     console.warn("No se pudo obtener la tasa BCV remota. La tienda se mantendrá en USD.", error);
   }
 }
+// Variable global para controlar la moneda activa
+let monedaActual = "USD"; // "USD" o "VES"
 
+// Función para formatear el precio en Bolívares
+function calcularPrecioBs(precioUSD, tasa) {
+  const montoBs = precioUSD * tasa;
+  return montoBs.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+// Actualizar los elementos HTML de la interfaz desde la configuración
+function aplicarDatosContactoYMarca(config) {
+  // 1. Tasa BCV y Conversión
+  if (config.tasaBcv) {
+    window.tasaBcvActual = parseFloat(config.tasaBcv);
+  }
+
+  // 2. Logo
+  const imgLogo = document.querySelector(".logo img");
+  if (imgLogo && config.urlLogo) imgLogo.src = config.urlLogo;
+
+  // 3. Nombre de la tienda
+  const txtLogo = document.querySelector(".logo-text");
+  if (txtLogo && config.nombreTienda) txtLogo.textContent = config.nombreTienda;
+
+  // 4. Enlace del Catálogo PDF
+  const btnPdf = document.querySelector(".btn-catalogo-pdf");
+  if (btnPdf && config.urlPdfCatalogo) btnPdf.href = config.urlPdfCatalogo;
+
+  // 5. WhatsApp (Actualizar los botones de pedido del carrito o producto)
+  if (config.numeroWhatsapp) {
+    window.numeroWhatsappTienda = config.numeroWhatsapp.replace(/[^\d+]/g, '');
+  }
+}
+
+// Modificar la función que sincroniza con Google Sheets para capturar los nuevos campos
+async function sincronizarConGoogleSheets() {
+  if (typeof CONFIG_PSTORE === "undefined" || !CONFIG_PSTORE.urlSheetConfig) return;
+
+  try {
+    const res = await fetch(CONFIG_PSTORE.urlSheetConfig);
+    if (!res.ok) throw new Error("Error al obtener datos de Google Sheets");
+
+    const csvText = await res.text();
+    const lineas = csvText.split("\n");
+
+    lineas.forEach(linea => {
+      const [param, valor] = linea.split(",").map(item => item?.trim());
+      if (!param || !valor) return;
+
+      if (param.startsWith("--")) {
+        CONFIG_PSTORE.estilosCSS[param] = valor;
+      } else {
+        // Mapeo dinámico de variables
+        if (param === "tasa_bcv") CONFIG_PSTORE.tasaBcv = parseFloat(valor);
+        if (param === "mostrar_bolivares") CONFIG_PSTORE.mostrarBolivares = (valor.toLowerCase() === "true");
+        if (param === "simbolo_moneda_alt") CONFIG_PSTORE.simboloMonedaAlt = valor;
+        if (param === "numero_whatsapp") CONFIG_PSTORE.numeroWhatsapp = valor;
+        if (param === "nombre_tienda") CONFIG_PSTORE.nombreTienda = valor;
+        if (param === "url_logo") CONFIG_PSTORE.urlLogo = valor;
+        if (param === "url_pdf_catalogo") CONFIG_PSTORE.urlPdfCatalogo = valor;
+        if (param === "mensaje_bienvenida") CONFIG_PSTORE.mensajeBienvenida = valor;
+      }
+    });
+
+    // Re-aplicar configuración y actualizar vista
+    aplicarConfiguracion(CONFIG_PSTORE);
+    aplicarDatosContactoYMarca(CONFIG_PSTORE);
+    
+    // Si la función renderizarProductos existe, refrescar para mostrar precios actualizados
+    if (typeof renderizarProductos === "function") {
+      renderizarProductos();
+    }
+
+  } catch (error) {
+    console.warn("Usando configuración local de config.js:", error);
+  }
+}
