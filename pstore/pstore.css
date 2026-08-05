@@ -704,10 +704,25 @@ footer {
   color: #111111;
   box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
+/* Botón Hamburguesa */
+.btn-icon-hamburguesa {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0 0.3rem;
+  display: flex;
+  align-items: center;
+}
+
 /* ==========================================
    7. ESTILOS DE BOTONES COMPARTIR MODAL
    ========================================== */
 .modal-compartir {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   margin-top: 1rem;
   padding-top: 0.8rem;
   border-top: 1px solid var(--border-color);
@@ -717,71 +732,75 @@ footer {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-secondary);
-  margin-bottom: 0.5rem;
 }
 
-.share-buttons-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-}
-
-.btn-share {
-  display: inline-flex;
+.share-row {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--border-radius);
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-decoration: none;
+  gap: 0.6rem;
+}
+
+.btn-share-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   border: 1px solid var(--border-color);
   background-color: var(--bg-card);
-  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  padding: 0;
+  font-size: 1rem;
 }
 
-.btn-share:hover {
-  background-color: var(--bg-secondary);
-  border-color: var(--brand-black);
+.btn-share-circle:active {
+  transform: scale(0.92);
 }
 
-/* Colores específicos por red */
-.btn-share.main {
-  grid-column: 1 / -1;
+.btn-share-circle.main {
   background-color: var(--brand-black);
   color: var(--brand-gold);
   border-color: var(--brand-gold);
 }
 
-.btn-share.main:hover {
-  background-color: var(--brand-gold);
+.btn-share-circle.wa {
+  background-color: #25d366;
   color: #ffffff;
-}
-
-.btn-share.wa {
-  color: #25d366;
   border-color: #25d366;
 }
 
-.btn-share.wa:hover {
-  background-color: #25d366;
+.btn-share-circle.fb {
+  background-color: #1877f2;
   color: #ffffff;
-}
-
-.btn-share.fb {
-  color: #1877f2;
   border-color: #1877f2;
 }
 
-.btn-share.fb:hover {
-  background-color: #1877f2;
-  color: #ffffff;
+.btn-share-circle.copy {
+  background-color: #f0f0f0;
+  color: #333333;
+  border-color: #ccc;
 }
 
-.btn-share.copy {
-  color: var(--text-primary);
+/* ==========================================
+   MENÚ LATERAL CORREGIDO
+   ========================================== */
+.seccion-vip input#input-codigo-cliente-side {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #ffffff !important; /* Fondo blanco */
+  color: #000000 !important;             /* Letra negra visible */
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.seccion-vip input#input-codigo-cliente-side::placeholder {
+  color: #777777;
 }
 
 /* ==========================================
