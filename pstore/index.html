@@ -91,6 +91,53 @@
       </div>
     </nav>
   </aside>
+  <!-- Panel Lateral de Filtros -->
+<aside id="sidebar-filtros" class="sidebar-filtros">
+  <div class="filtros-header">
+    <h3>Filtrar por</h3>
+    <button id="btn-limpiar-filtros" class="btn-link">Limpiar todo</button>
+  </div>
+
+  <!-- 1. Categoría Principal -->
+  <div class="filtro-grupo">
+    <h4>Categoría Principal</h4>
+    <div id="grupo-catPrincipal" class="grupo-checkboxes"></div>
+  </div>
+
+  <!-- 2. Público Target -->
+  <div class="filtro-grupo">
+    <h4>Público</h4>
+    <div id="grupo-publico" class="grupo-checkboxes"></div>
+  </div>
+
+  <!-- 3. Colección -->
+  <div class="filtro-grupo">
+    <h4>Colección / Franquicia</h4>
+    <div id="grupo-coleccion" class="grupo-checkboxes"></div>
+  </div>
+
+  <!-- 4. Tallas -->
+  <div class="filtro-grupo">
+    <h4>Talla</h4>
+    <div id="grupo-tallas" class="tallas-grid"></div>
+  </div>
+
+  <!-- 5. Estado / Destacados -->
+  <div class="filtro-grupo">
+    <h4>Estado</h4>
+    <div id="grupo-estado" class="grupo-checkboxes"></div>
+  </div>
+
+  <!-- 6. Rango de Precio -->
+  <div class="filtro-grupo">
+    <h4>Rango de Precio ($)</h4>
+    <div class="precio-inputs">
+      <input type="number" id="precio-min" placeholder="Mín" min="0" />
+      <span>-</span>
+      <input type="number" id="precio-max" placeholder="Máx" min="0" />
+    </div>
+  </div>
+</aside>
 
   <!-- Header Único Principal -->
   <header class="main-header">
