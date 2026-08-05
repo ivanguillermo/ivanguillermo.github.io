@@ -1,37 +1,52 @@
-// ==========================================
-// CONFIGURACIÓN BASE LOCAL Y DE RESPALDO
-// ==========================================
+/* ==========================================================================
+   PSTORE — CONFIGURACIÓN GLOBAL Y CONSTANTES (js/config.js)
+   ========================================================================== */
 
-const CONFIG_PSTORE = {
-  // 0. Columnas en móvil por defecto ("grid-1", "grid-2", "grid-4")
-  columnasMovilDefecto: "grid-4",
+const CONFIG = {
+  // Configuración de Google Sheets (CSV)
+  SHEET_CSV_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_EXAMPLE_KEY/pub?output=csv',
   
-  // 1. Identidad y Contacto de la Tienda
-  nombreTienda: "Pstore",
-  urlLogo: "assets/pstore.jpg",
-  numeroWhatsapp: "+584126216661",
-  mensajeBienvenida: "¡Bienvenidos a Pstore!",
-  urlPdfCatalogo: "https://drive.google.com/file/d/1-nmOf4b58Y3ioW4Cnym-uev9I5j8h72C/view",
-  
-  // Redes Sociales (Opcionales)
-  linkInstagram: "https://www.instagram.com/pstorevzla",
-  linkFacebook: "https://www.facebook.com/people/Pstore-Variedades/100069365366035/",
+  // Datos de Contacto y Tienda
+  TIENDA_NOMBRE: 'Pstore',
+  WHATSAPP_PHONE: '584126216661',
+  INSTAGRAM_USER: 'pstorevzla',
+  CATALOGO_PDF_URL: 'https://drive.google.com/file/d/1-nmOf4b58Y3ioW4Cnym-uev9I5j8h72C/view',
 
-  // 2. Moneda Alternativa
-  // Importante: No colocamos tasa por defecto (null) para no mostrar valores desactualizados.
-  simboloMonedaAlt: "Bs.",
+  // Configuración Financiera y Monedas
+  MONEDA_BASE: 'USD',
+  MONEDA_SECUNDARIA: 'BS',
+  TASA_CAMBIO_BS: 36.5, // Valor por defecto / fallback
+  API_TASA_URL: 'https://p2p.binance.com/bapi/fiat/v1/public/bnc/welcome-p2p/search', // O endpoint de tasa personalizada
 
-  // 3. Enlace de publicación CSV de tu pestaña 'Configuracion' en Google Sheets
-  urlSheetConfig: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=1458625703&single=true&output=csv",
+  // Paginación y Renderizado
+  ITEMS_POR_PAGINA: 12,
+  OPCIONES_COLUMNAS: ['grid-auto', 'grid-1', 'grid-2', 'grid-4'],
 
-  // 4. Estilos CSS por defecto (Variables :root)
-  estilosCSS: {
-    "--brand-black": "#111111",
-    "--brand-gold": "#d4af37",
-    "--bg-main": "#0d0d0d",
-    "--bg-card": "#1e1e1e",
-    "--text-primary": "#ffffff",
-    "--text-secondary": "#a0a0a0",
-    "--border-color": "#333333"
+  // Clientes VIP / Promociones
+  CODIGOS_VIP: ['VIP2026', 'PSTOREVIP', 'CLIENTEESTRELLA'],
+  DESCUENTO_VIP_PORCENTAJE: 10,
+
+  // Ciudades y Métodos de Envío
+  ZONAS_COBERTURA: [
+    { id: 'bqto', nombre: 'Barquisimeto', costoEnvio: 0 },
+    { id: 'cbd', nombre: 'Cabudare', costoEnvio: 0 },
+    { id: 'acg', nombre: 'Acarigua', costoEnvio: 0 },
+    { id: 'yar', nombre: 'Yaracuy (San Felipe / Guama / Chivacoa)', costoEnvio: 0 },
+    { id: 'nac', nombre: 'Envío Nacional (MRW / Zoom / Tealca)', costoEnvio: 0 }
+  ],
+
+  METODOS_PAGO: [
+    'Pago Móvil',
+    'Efectivo ($ / €)',
+    'Zelle',
+    'Binance Pay (USDT)'
+  ],
+
+  // Cache y Almacenamiento Local
+  STORAGE_KEYS: {
+    CARRITO: 'pstore_carrito_v2',
+    WISHLIST: 'pstore_wishlist_v2',
+    MONEDA: 'pstore_moneda_pref',
+    CLIENTE_VIP: 'pstore_cliente_vip'
   }
 };
