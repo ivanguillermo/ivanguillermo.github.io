@@ -149,6 +149,11 @@ select:focus {
   width: 100%;
 }
 
+/* Clases explícitas por si activas el selector manual de columnas */
+.catalogo.grid-1 { grid-template-columns: 1fr !important; }
+.catalogo.grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+.catalogo.grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
+
 .tarjeta {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -180,6 +185,8 @@ select:focus {
   flex-direction: column;
   flex: 1;
 }
+
+
 
 .tarjeta .categoria {
   font-size: 0.75rem;
@@ -244,7 +251,57 @@ select:focus {
   background-color: #d35400; 
   color: #ffffff;
 }
+/* ==========================================
+   ADAPTACIÓN MÓVIL (2 COLUMNAS)
+   ========================================== */
+@media (max-width: 768px) {
+  .catalogo {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columnas forzadas en mobile */
+    gap: 0.65rem !important;                           /* Espaciado compacto */
+    padding: 0.75rem 0.5rem !important;
+  }
 
+  .tarjeta img {
+    height: 130px !important;                          /* Ajuste de altura de imagen */
+  }
+
+  .tarjeta .contenido {
+    padding: 0.6rem !important;
+  }
+
+  .tarjeta .nombre {
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .tarjeta .descripcion {
+    display: none !important;                          /* Se oculta la descripción en mobile para mantener tarjetas parejas */
+  }
+
+  .tarjeta .precio {
+    font-size: 0.95rem !important;
+  }
+
+  .tarjeta .precio-bs-tarjeta {
+    font-size: 0.72rem !important;
+  }
+
+  .badge-promo {
+    font-size: 0.65rem !important;
+    padding: 0.2rem 0.4rem !important;
+    top: 5px !important;
+    left: 5px !important;
+  }
+
+  .btn-fav {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.9rem !important;
+    top: 5px !important;
+    right: 5px !important;
+  }
+}
 /* ==========================================
    4. MODALES (Detalle de Producto y Carrito)
    ========================================== */
