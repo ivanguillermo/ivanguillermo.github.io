@@ -633,6 +633,13 @@ function cerrarModal() {
   if (modal) {
     modal.classList.remove("activo");
     history.replaceState(null, null, window.location.pathname);
+
+    // Restablecer meta tags originales de Pstore
+    document.title = "Pstore | Catálogo Online — Envíos a Barquisimeto, Cabudare, Acarigua y Yaracuy";
+    actualizarMetaTag("property", "og:title", "Pstore | Tu Tienda Online");
+    actualizarMetaTag("property", "og:description", "Explora nuestro catálogo exclusivo, ofertas y novedades con entregas rápidas.");
+    actualizarMetaTag("property", "og:image", "https://ivanguillermo.github.io/pstore/assets/pstore.jpg");
+    actualizarMetaTag("property", "og:url", "https://ivanguillermo.github.io/pstore/");
   }
 }
 
