@@ -580,8 +580,7 @@ function abrirModal(producto) {
   const fotosRaw = producto.imagen ? producto.imagen.split(",") : [];
   const fotos = fotosRaw.map(url => obtenerUrlDirectaDrive(url.trim())).filter(Boolean);
 
-  const imagenPrincipal = fotos.length > 0 ? fotos[0] : 'https://ivanguillermo.github.io/pstore/assets/pstore.jpg';
-  modalImg.src = imagenPrincipal;
+  modalImg.src = fotos.length > 0 ? fotos[0] : 'assets/pstore.jpg';
   modalImg.alt = producto.nombre || "Producto";
 
   if (fotos.length > 1) {
@@ -612,35 +611,16 @@ function abrirModal(producto) {
   }
   document.getElementById("modal-precio").textContent = textoPrecio;
 
-  // --- ACTUALIZACIÓN DINÁMICA DE METATAGS Y TÍTULO ---
-  const urlProducto = `${window.location.origin}${window.location.pathname}#${producto.id}`;
-  const tituloProducto = `${producto.nombre} | Pstore ($${parseFloat(producto.precio).toFixed(2)})`;
-  const descProducto = producto.descripcion ? producto.descripcion.substring(0, 150) : "Consíguelo en Pstore con envíos y entregas en Lara y Yaracuy.";
-
-  document.title = tituloProducto;
-  actualizarMetaTag("property", "og:title", tituloProducto);
-  actualizarMetaTag("property", "og:description", descProducto);
-  actualizarMetaTag("property", "og:image", imagenPrincipal);
-  actualizarMetaTag("property", "og:url", urlProducto);
-
   actualizarEnlacesCompartir(producto);
   if (producto.id) history.replaceState(null, null, `#${producto.id}`);
   modal.classList.add("activo");
 }
-  document.getElementById("modal-precio").textContent = textoPrecio;
 
 function cerrarModal() {
   const modal = document.getElementById("modal-producto");
   if (modal) {
     modal.classList.remove("activo");
     history.replaceState(null, null, window.location.pathname);
-
-    // Restablecer meta tags originales de Pstore
-    document.title = "Pstore | Catálogo Online — Envíos a Barquisimeto, Cabudare, Acarigua y Yaracuy";
-    actualizarMetaTag("property", "og:title", "Pstore | Tu Tienda Online");
-    actualizarMetaTag("property", "og:description", "Explora nuestro catálogo exclusivo, ofertas y novedades con entregas rápidas.");
-    actualizarMetaTag("property", "og:image", "https://ivanguillermo.github.io/pstore/assets/pstore.jpg");
-    actualizarMetaTag("property", "og:url", "https://ivanguillermo.github.io/pstore/");
   }
 }
 
@@ -668,19 +648,14 @@ function configurarEventosModal() {
 
 function actualizarEnlacesCompartir(producto) {
   const urlProducto = `${window.location.origin}${window.location.pathname}#${producto.id}`;
-  const textoMensaje = `¡Mira este producto en Pstore!\n*${producto.nombre}*\nPrecio: $${parseFloat(producto.precio).toFixed(2)}`;
+  const textoMensaje = `¡Mira este producto en Pstore! ${producto.nombre} - $${parseFloat(producto.precio).toFixed(2)}`;
   
   const btnWa = document.getElementById("share-wa");
   const btnFb = document.getElementById("share-fb");
 
-  if (btnWa) {
-    btnWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje + "\n" + urlProducto)}`;
-  }
-  if (btnFb) {
-    btnFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlProducto)}`;
-  }
+  if (btnWa) btnWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje + " " + urlProducto)}`;
+  if (btnFb) btnFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlProducto)}`;
 }
-
 
 // ==========================================
 // CARRITO Y WISHLIST
@@ -967,15 +942,4 @@ function actualizarOpcionesCheckout() {
   } else if (opcionCredito) {
     opcionCredito.remove();
   }
-}
-
-// Función para actualizar o crear Meta Tags dinámicamente
-function actualizarMetaTag(atributo, clave, contenido) {
-  let element = document.querySelector(`meta[${atributo}="${clave}"]`);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(atributo, clave);
-    document.head.appendChild(element);
-  }
-  element.setAttribute('content', contenido);
 }
