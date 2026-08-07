@@ -974,3 +974,14 @@ function actualizarOpcionesCheckout() {
     opcionCredito.remove();
   }
 }
+
+// Función para actualizar o crear Meta Tags dinámicamente
+function actualizarMetaTag(atributo, clave, contenido) {
+  let element = document.querySelector(`meta[${atributo}="${clave}"]`);
+  if (!element) {
+    element = document.createElement('meta');
+    element.setAttribute(atributo, clave);
+    document.head.appendChild(element);
+  }
+  element.setAttribute('content', contenido);
+}
