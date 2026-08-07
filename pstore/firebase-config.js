@@ -1,8 +1,6 @@
-// firebase-config.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging.js";
 
-// Tu configuración de Firebase extraída del panel
 const firebaseConfig = {
   apiKey: "AIzaSyDk3HfCEalNjDbvx67HHdMybaAIpNw1IWY",
   authDomain: "pstorechat.firebaseapp.com",
@@ -13,30 +11,35 @@ const firebaseConfig = {
   measurementId: "G-904HWSPGTP"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
-// Función para solicitar permiso de notificaciones push
-export async function solicitarPermisoNotificaciones(vapidKey) {
+// AQUÍ PEGAS TU VAPID KEY
+const VAPID_KEY = "BIsvsKQYY5veWnIxbC-K7EGRkLhqS7aRWbefB9PU-F0D_Kfg8wCKJMt_n8AEiPld1aKV5Bg4wLKZ2K7c-nMI-_w"; 
+
+export async function pedirPermisoPush() {
   try {
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
-      const token = await getToken(messaging, { vapidKey: vapidKey });
-      console.log('✅ Token del cliente para Push:', token);
+      const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+      console.log('✅ Token FCM registrado:', token);
       return token;
     } else {
-      console.warn('⚠️ Permiso de notificaciones denegado.');
+      console.warn('⚠️ Permiso denegado.');
     }
-  } catch (error) {
-    console.error('❌ Error al obtener token de notificaciones:', error);
+  } catch (err) {
+    console.error('❌ Error Push:', err);
   }
 }
 
-// Escuchar mensajes cuando el usuario tiene la PWA abierta (Primer Plano)
+// Escuchar si la app está abierta
 onMessage(messaging, (payload) => {
-  console.log('🔔 Notificación en primer plano:', payload);
   if (payload.notification) {
     alert(`📢 ${payload.notification.title}\n${payload.notification.body}`);
   }
+});
+
+// Pedir permiso automáticamente cuando abra la web
+window.addEventListener('load', () => {
+  pedirPermisoPush();
 });
