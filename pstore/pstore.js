@@ -667,13 +667,17 @@ function configurarEventosModal() {
 
 function actualizarEnlacesCompartir(producto) {
   const urlProducto = `${window.location.origin}${window.location.pathname}#${producto.id}`;
-  const textoMensaje = `¡Mira este producto en Pstore! ${producto.nombre} - $${parseFloat(producto.precio).toFixed(2)}`;
+  const textoMensaje = `¡Mira este producto en Pstore!\n*${producto.nombre}*\nPrecio: $${parseFloat(producto.precio).toFixed(2)}`;
   
   const btnWa = document.getElementById("share-wa");
   const btnFb = document.getElementById("share-fb");
 
-  if (btnWa) btnWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje + " " + urlProducto)}`;
-  if (btnFb) btnFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlProducto)}`;
+  if (btnWa) {
+    btnWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje + "\n" + urlProducto)}`;
+  }
+  if (btnFb) {
+    btnFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlProducto)}`;
+  }
 }
 
 // ==========================================
