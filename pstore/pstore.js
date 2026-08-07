@@ -633,12 +633,6 @@ function abrirModal(producto) {
   if (producto.id) history.replaceState(null, null, `#${producto.id}`);
   modal.classList.add("activo");
 }
-  document.getElementById("modal-precio").textContent = textoPrecio;
-
-  actualizarEnlacesCompartir(producto);
-  if (producto.id) history.replaceState(null, null, `#${producto.id}`);
-  modal.classList.add("activo");
-}
 
 function cerrarModal() {
   const modal = document.getElementById("modal-producto");
