@@ -580,7 +580,8 @@ function abrirModal(producto) {
   const fotosRaw = producto.imagen ? producto.imagen.split(",") : [];
   const fotos = fotosRaw.map(url => obtenerUrlDirectaDrive(url.trim())).filter(Boolean);
 
-  modalImg.src = fotos.length > 0 ? fotos[0] : 'assets/pstore.jpg';
+  const imagenPrincipal = fotos.length > 0 ? fotos[0] : 'https://ivanguillermo.github.io/pstore/assets/pstore.jpg';
+  modalImg.src = imagenPrincipal;
   modalImg.alt = producto.nombre || "Producto";
 
   if (fotos.length > 1) {
@@ -610,6 +611,17 @@ function abrirModal(producto) {
     textoPrecio += ` (Bs. ${montoBs})`;
   }
   document.getElementById("modal-precio").textContent = textoPrecio;
+
+  // --- ACTUALIZACIÓN DINÁMICA DE METATAGS Y TÍTULO ---
+  const urlProducto = `${window.location.origin}${window.location.pathname}#${producto.id}`;
+  const tituloProducto = `${producto.nombre} | Pstore ($${parseFloat(producto.precio).toFixed(2)})`;
+  const descProducto = producto.descripcion ? producto.descripcion.substring(0, 150) : "Consíguelo en Pstore con envíos y entregas en Lara y Yaracuy.";
+
+  document.title = tituloProducto;
+  actualizarMetaTag("property", "og:title", tituloProducto);
+  actualizarMetaTag("property", "og:description", descProducto);
+  actualizarMetaTag("property", "og:image", imagenPrincipal);
+  actualizarMetaTag("property", "og:url", urlProducto);
 
   actualizarEnlacesCompartir(producto);
   if (producto.id) history.replaceState(null, null, `#${producto.id}`);
