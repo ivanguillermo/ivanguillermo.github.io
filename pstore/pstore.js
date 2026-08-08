@@ -674,7 +674,8 @@ function configurarEventosModal() {
 }
 
 function actualizarEnlacesCompartir(producto) {
-  const urlProducto = `${window.location.origin}${window.location.pathname}#${producto.id}`;
+  // 1. Usamos la URL puente de Vercel en lugar del enlace directo a GitHub Pages
+  const urlProducto = `https://pstore-share.vercel.app/api/p?id=${producto.id}`;  
   const textoMensaje = `¡Mira este producto en Pstore!\n*${producto.nombre}*\nPrecio: $${parseFloat(producto.precio).toFixed(2)}`;
   
   const btnWa = document.getElementById("share-wa");
