@@ -1228,14 +1228,39 @@ footer {
 }
 
 /* Adaptación Móvil */
-@media (max-width: 768px) {
+/* Layout Principal (Pantallas Desktop/Tablets) */
+@media (min-width: 769px) {
+  /* En computadoras mantenemos el menú lateral fijo o con un ancho adecuado */
+  .menu-lateral {
+    width: 320px; /* Un poco más ancho para albergar cómodamente los filtros */
+  }
+  
   .layout-tienda {
-    grid-template-columns: 1fr;
+    display: block; /* Se simplifica la grilla general ya que el filtro está en el lateral */
   }
-  .sidebar-filtros {
-    display: none; /* Se despliega mediante toggle */
+}
+
+/* Adaptación Móvil */
+@media (max-width: 768px) {
+  .menu-lateral {
+    width: 85vw; /* Ocupa el 85% de la pantalla en teléfonos */
+    max-width: 340px;
   }
-  .sidebar-filtros.abierto {
-    display: block;
+
+  .contenido-menu {
+    max-height: calc(100vh - 70px);
+    overflow-y: auto; /* Permite deslizar verticalmente todos los filtros en el teléfono */
+    padding-bottom: 2rem;
+  }
+
+  .seccion-filtros-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .precio-inputs input {
+    background: #ffffff !important;
+    color: #000000 !important;
   }
 }
