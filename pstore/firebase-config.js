@@ -14,32 +14,42 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
-// AQUÍ PEGAS TU VAPID KEY
 const VAPID_KEY = "BIsvsKQYY5veWnIxbC-K7EGRkLhqS7aRWbefB9PU-F0D_Kfg8wCKJMt_n8AEiPld1aKV5Bg4wLKZ2K7c-nMI-_w"; 
 
 export async function pedirPermisoPush() {
   try {
+    // 1. Registrar explícitamente el Service Worker de Firebase
+    const registration = await navigator.serviceWorker.register('./firebase-messaging-sw.js');
+    console.log('✅ Service Worker de Firebase registrado en:', registration.scope);
+
+    // 2. Pedir Permisos
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
-      const token = await getToken(messaging, { vapidKey: VAPID_KEY });
-      console.log('✅ Token FCM registrado:', token);
+      // 3. Pasar el serviceWorkerRegistration al getToken
+      const token = await getToken(messaging, { 
+        vapidKey: VAPID_KEY,
+        serviceWorkerRegistration: registration 
+      });
+      
+      console.log('🔥 TOKEN FCM OBTENIDO EXITOSAMENTE:');
+      console.log(token);
       return token;
     } else {
-      console.warn('⚠️ Permiso denegado.');
+      console.warn('⚠️ Permiso de notificaciones denegado por el usuario.');
     }
   } catch (err) {
-    console.error('❌ Error Push:', err);
+    console.error('❌ Error al configurar Push:', err);
   }
 }
 
-// Escuchar si la app está abierta
 onMessage(messaging, (payload) => {
   if (payload.notification) {
     alert(`📢 ${payload.notification.title}\n${payload.notification.body}`);
   }
 });
 
-// Pedir permiso automáticamente cuando abra la web
 window.addEventListener('load', () => {
-  pedirPermisoPush();
+  if ('serviceWorker' in navigator) {
+    pedirPermisoPush();
+  }
 });
