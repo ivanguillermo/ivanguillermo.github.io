@@ -62,39 +62,76 @@
   <div id="menu-overlay" class="menu-overlay"></div>
   
   <!-- Menú Lateral Nivel Superior (Hamburguesa) -->
+  <!-- Menú Lateral Nivel Superior (Hamburguesa) -->
   <aside id="menu-lateral" class="menu-lateral">
     <div class="header-menu">
       <h2>Menú Pstore</h2>
       <button id="btn-cerrar-menu" class="btn-cerrar">&times;</button>
     </div>
+  
     <button id="btn-ver-favoritos-side" class="item-menu-lateral" onclick="alternarVerFavoritos()">
       ❤️ Ver Mis Favoritos (<span id="wishlist-count-side">0</span>)
     </button>
   
     <nav class="contenido-menu">
       <!-- Opción para Instalar App PWA -->
-      <button id="btn-instalar-pwa" class="btn-menu-item btn-pwa" style="display: ;">
+      <button id="btn-instalar-pwa" class="btn-menu-item btn-pwa">
         📲 Instalar App Pstore
       </button>
-
+  
       <hr class="separador-menu" />
-
+  
       <div class="seccion-vip">
         <h3>Acceso VIP</h3>
         <input type="text" id="input-codigo-cliente-side" placeholder="Correo o Código VIP" />
         <button id="btn-validar-cliente-side" class="btn-secundario">Validar Código</button>
       </div>
-
+  
       <hr class="separador-menu" />
-      
-      <!-- Categorías -->
-      <div class="links-menu">
-        <h3>Categorías</h3>
-        <ul id="menu-categorias-list"></ul>
+  
+      <!-- AQUÍ INSERTAMOS LOS FILTROS DENTRO DEL MENÚ HAMBURGUESA -->
+      <div class="seccion-filtros-mobile">
+        <div class="filtros-header">
+          <h3>Filtrar por</h3>
+          <button id="btn-limpiar-filtros" class="btn-link">Limpiar todo</button>
+        </div>
+  
+        <div class="filtro-grupo">
+          <h4>Categoría Principal</h4>
+          <div id="grupo-categoria" class="grupo-checkboxes"></div>
+        </div>
+  
+        <div class="filtro-grupo">
+          <h4>Público</h4>
+          <div id="grupo-categoria_secundaria" class="grupo-checkboxes"></div>
+        </div>
+  
+        <div class="filtro-grupo">
+          <h4>Colección / Franquicia</h4>
+          <div id="grupo-coleccion" class="grupo-checkboxes"></div>
+        </div>
+  
+        <div class="filtro-grupo">
+          <h4>Talla</h4>
+          <div id="grupo-tallas" class="tallas-grid"></div>
+        </div>
+  
+        <div class="filtro-grupo">
+          <h4>Estado</h4>
+          <div id="grupo-estado" class="grupo-checkboxes"></div>
+        </div>
+  
+        <div class="filtro-grupo">
+          <h4>Rango de Precio ($)</h4>
+          <div class="precio-inputs">
+            <input type="number" id="precio-min" placeholder="Mín" min="0" />
+            <span>-</span>
+            <input type="number" id="precio-max" placeholder="Máx" min="0" />
+          </div>
+        </div>
       </div>
     </nav>
-  </aside> 
-
+  </aside>
   <!-- Header Principal -->
   <header class="main-header">
     <div class="header-fila-1">
@@ -144,48 +181,7 @@
 
   <!-- Layout Principal con Sidebar de Filtros -->
   <main class="layout-tienda" style="max-width: 1200px; margin: 0 auto; padding: 1rem;">
-    
-    <!-- Sidebar de Filtros en la Grilla -->
-    <aside id="sidebar-filtros" class="sidebar-filtros">
-      <div class="filtros-header">
-        <h3>Filtrar por</h3>
-        <button id="btn-limpiar-filtros" class="btn-link">Limpiar todo</button>
-      </div>
-
-      <div class="filtro-grupo">
-        <h4>Categoría Principal</h4>
-        <div id="grupo-categoria" class="grupo-checkboxes"></div>
-      </div>
-
-      <div class="filtro-grupo">
-        <h4>Público</h4>
-        <div id="grupo-categoria_secundaria" class="grupo-checkboxes"></div>
-      </div>
-
-      <div class="filtro-grupo">
-        <h4>Colección / Franquicia</h4>
-        <div id="grupo-coleccion" class="grupo-checkboxes"></div>
-      </div>
-
-      <div class="filtro-grupo">
-        <h4>Talla</h4>
-        <div id="grupo-tallas" class="tallas-grid"></div>
-      </div>
-
-      <div class="filtro-grupo">
-        <h4>Estado</h4>
-        <div id="grupo-estado" class="grupo-checkboxes"></div>
-      </div>
-
-      <div class="filtro-grupo">
-        <h4>Rango de Precio ($)</h4>
-        <div class="precio-inputs">
-          <input type="number" id="precio-min" placeholder="Mín" min="0" />
-          <span>-</span>
-          <input type="number" id="precio-max" placeholder="Máx" min="0" />
-        </div>
-      </div>
-    </aside>
+  
 
     <!-- Contenedor del Catálogo de Productos -->
     <section>
