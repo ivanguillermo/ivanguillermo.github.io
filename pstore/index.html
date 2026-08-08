@@ -56,7 +56,6 @@
 
   gtag('config', 'G-4N3BEFRW5Z');
 </script>
-<script type="module" src="firebase-config.js"></script>
 <body>
 
   <!-- Overlay para el Menú Lateral -->
@@ -335,14 +334,6 @@
 
   <script src="config.js"></script>
   <script src="pstore.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('Service Worker de Pstore registrado con éxito:', reg.scope))
-          .catch(err => console.error('Error registrando Service Worker:', err));
-      });
-    }
-  </script>
+  <script type="module" src="firebase-config.js"></script>
 </body>
 </html>
