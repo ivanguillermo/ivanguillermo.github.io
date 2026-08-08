@@ -13,32 +13,22 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
-
 const VAPID_KEY = "BIsvsKQYY5veWnIxbC-K7EGRkLhqS7aRWbefB9PU-F0D_Kfg8wCKJMt_n8AEiPld1aKV5Bg4wLKZ2K7c-nMI-_w"; 
 
 export async function pedirPermisoPush() {
   try {
-    // 1. Registrar explícitamente el Service Worker de Firebase
-    const registration = await navigator.serviceWorker.register('./firebase-messaging-sw.js');
-    console.log('✅ Service Worker de Firebase registrado en:', registration.scope);
-
-    // 2. Pedir Permisos
+    const registration = await navigator.serviceWorker.register('./sw.js');
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
-      // 3. Pasar el serviceWorkerRegistration al getToken
       const token = await getToken(messaging, { 
         vapidKey: VAPID_KEY,
         serviceWorkerRegistration: registration 
       });
-      
-      console.log('🔥 TOKEN FCM OBTENIDO EXITOSAMENTE:');
-      console.log(token);
+      console.log('🔥 TOKEN FCM OBTENIDO:', token);
       return token;
-    } else {
-      console.warn('⚠️ Permiso de notificaciones denegado por el usuario.');
     }
   } catch (err) {
-    console.error('❌ Error al configurar Push:', err);
+    console.error('❌ Error Push:', err);
   }
 }
 
@@ -49,7 +39,5 @@ onMessage(messaging, (payload) => {
 });
 
 window.addEventListener('load', () => {
-  if ('serviceWorker' in navigator) {
-    pedirPermisoPush();
-  }
+  if ('serviceWorker' in navigator) pedirPermisoPush();
 });
