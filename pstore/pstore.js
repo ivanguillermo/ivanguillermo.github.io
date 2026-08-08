@@ -555,14 +555,22 @@ function resetearFiltros() {
   mostrandoSoloFavoritos = false;
   document.getElementById("btn-ver-favoritos-side")?.classList.remove("activo");
   document.querySelectorAll(".filter-check").forEach(cb => cb.checked = false);
+  
   if (document.getElementById("input-busqueda")) document.getElementById("input-busqueda").value = "";
   if (document.getElementById("precio-min")) document.getElementById("precio-min").value = "";
   if (document.getElementById("precio-max")) document.getElementById("precio-max").value = "";
   if (document.getElementById("select-categoria")) document.getElementById("select-categoria").value = "todas";
   if (document.getElementById("select-personaje")) document.getElementById("select-personaje").value = "todas";
+  
   paginaActual = 1;
   history.replaceState(null, null, window.location.pathname);
   aplicarFiltrosYPaginacion();
+
+  // Cerrar menú en móviles al limpiar
+  const menuLateral = document.getElementById("menu-lateral");
+  const menuOverlay = document.getElementById("menu-overlay");
+  menuLateral?.classList.remove("activo");
+  menuOverlay?.classList.remove("activo");
 }
 
 // ==========================================
