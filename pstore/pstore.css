@@ -1058,11 +1058,13 @@ footer {
   margin-top: 0.2rem;
 }
 /* Layout Principal */
+
 .layout-tienda {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 /* Sidebar de Filtros Facetados */
