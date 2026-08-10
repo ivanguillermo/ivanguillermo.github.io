@@ -214,8 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 // --- MÓDULO DE PAGINACIÓN Y FILTRADO ---
-let paginaActual = 1;
-const productosPorPagina = 12;
 
 function obtenerProductosFiltrados() {
   const busqueda = (document.getElementById("input-busqueda")?.value || "").toLowerCase().trim();
