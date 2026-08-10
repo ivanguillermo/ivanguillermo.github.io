@@ -13,6 +13,37 @@ let mostrandoBolivares = false;
 let paginaActual = 1;
 const productosPorPagina = 20;
 
+// 1. Algoritmo para mezclar elementos de forma aleatoria (Fisher-Yates)
+function mezclarArreglo(arreglo) {
+  const copia = [...arreglo];
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+
+// 2. Función principal: Separa las 4 novedades y mezcla el resto
+function ordenarProductosParaCatalogo(todosLosProductos) {
+  if (!todosLosProductos || todosLosProductos.length === 0) return [];
+
+  // Si hay 4 o menos productos en total, se devuelven tal cual
+  if (todosLosProductos.length <= 4) {
+    return todosLosProductos;
+  }
+
+  // Extrae los últimos 4 agregados al Sheet (los más nuevos)
+  const productosNuevos = todosLosProductos.slice(-4).reverse();
+
+  // Toma el resto del inventario
+  const productosRestantes = todosLosProductos.slice(0, todosLosProductos.length - 4);
+
+  // Mezcla el resto aleatoriamente
+  const restantesMezclados = mezclarArreglo(productosRestantes);
+
+  // Une las 4 novedades al inicio + el resto mezclado
+  return [...productosNuevos, ...restantesMezclados];
+}
 // --- OBTENCIÓN AUTOMÁTICA DE TASA BCV ---
 async function obtenerTasaBCV() {
   try {
