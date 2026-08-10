@@ -49,6 +49,10 @@ const ASSETS_TO_CACHE = [
   './pstore.css',
   './pstore.js',
   './manifest.json',
+  './config.js',
+  './firebase-config.js',
+  './terminos.html',
+  '.admin.html/',
   './assets/pstore.jpg'
 ];
 
