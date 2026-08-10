@@ -9,7 +9,7 @@ const CONFIG_PSTORE = {
   numeroWhatsapp: "+584126216661",
   mensajeBienvenida: "¡Bienvenidos a Pstore!",
   urlPdfCatalogo: "https://drive.google.com/file/d/1UbvpO9gN32uocysk-97mQ3RFlLUp-R9q/view?usp=sharing",
-  
+  tasaBcvRespaldo: 0, 
   
   // Redes Sociales (Opcionales)
   linkInstagram: "https://www.instagram.com/pstorevzla",
