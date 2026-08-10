@@ -143,7 +143,7 @@
     }
 
     // Respuesta tras presionar el botón de Google
-    // Reemplaza la función handleCredentialResponse por esta:
+  
 async function handleCredentialResponse(response) {
   const payload = parseJwt(response.credential);
   if (!payload || !payload.email) return;
