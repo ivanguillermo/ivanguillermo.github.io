@@ -143,21 +143,38 @@
     }
 
     // Respuesta tras presionar el botón de Google
-    function handleCredentialResponse(response) {
-      const payload = parseJwt(response.credential);
+    // Reemplaza la función handleCredentialResponse por esta:
+async function handleCredentialResponse(response) {
+  const payload = parseJwt(response.credential);
+  if (!payload || !payload.email) return;
+
+  const correoUsuario = payload.email.toLowerCase();
+  const errDiv = document.getElementById("loginError");
+
+  try {
+    // Consultar lista de usuarios autorizados desde Google Sheets
+    const res = await fetch(SCRIPT_URL);
+    const data = await res.json();
+    
+    // Obtenemos el array de usuarios devuelto por la API
+    const listaPermitida = data.usuarios || [];
+
+    if (listaPermitida.includes(correoUsuario)) {
+      sessionStorage.setItem("user_authenticated", "true");
+      sessionStorage.setItem("user_email", correoUsuario);
       
-      if (payload && payload.email === ADMIN_EMAIL) {
-        // Guardar sesión
-        sessionStorage.setItem("user_authenticated", "true");
-        sessionStorage.setItem("user_email", payload.email);
-        
-        mostrarDashboard();
-      } else {
-        const errDiv = document.getElementById("loginError");
-        errDiv.innerText = `Acceso denegado a: ${payload ? payload.email : 'usuario desconocido'}`;
-        errDiv.style.display = "block";
-      }
+      // Pasar los datos de ventas ya cargados para no volver a hacer fetch
+      mostrarDashboard(data.ventas || []);
+    } else {
+      errDiv.innerText = `⛔ Acceso denegado: El correo ${correoUsuario} no está autorizado.`;
+      errDiv.style.display = "block";
     }
+  } catch (err) {
+    console.error("Error al validar usuario:", err);
+    errDiv.innerText = "Error de conexión al verificar permisos.";
+    errDiv.style.display = "block";
+  }
+}
 
     function mostrarDashboard() {
       document.getElementById("loginScreen").style.display = "none";
