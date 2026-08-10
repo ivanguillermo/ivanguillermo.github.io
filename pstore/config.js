@@ -4,7 +4,7 @@
 
 const CONFIG_PSTORE = {
   // 1. Identidad y Contacto de la Tienda
-  nombreTienda: "Pstore",
+  nombreTienda: "Pstorep",
   urlLogo: "assets/pstore.jpg",
   numeroWhatsapp: "+584126216661",
   mensajeBienvenida: "¡Bienvenidos a Pstore!",
