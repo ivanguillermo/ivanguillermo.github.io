@@ -1,124 +1,246 @@
-<script>
-  // === CONFIGURACIÓN ===
-  const ADMIN_EMAIL = "ivanglopezp@gmail.com";
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCCOFnNPRXeWEpAOFtBpAkthyrBC5-2Erl_RTDdxHYxrXCDnQuube2oRsgQuCFRdnCcg/exec";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Pstore</title>
+  
+  <!-- Cargar Librería Oficial de Google Identity -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-  // Decodificador JWT
-  function parseJwt(token) {
-    try {
-      const base64Url = token.split('.')[1];
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join(''));
-      return JSON.parse(jsonPayload);
-    } catch(e) {
-      return null;
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; }
+    
+    /* PANTALLA DE LOGIN */
+    #loginScreen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
     }
-  }
+    .login-card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    .login-card h2 { margin-bottom: 8px; font-size: 22px; }
+    .login-card p { color: #666; font-size: 14px; margin-bottom: 24px; }
+    #loginError { color: #e11d48; margin-top: 15px; font-size: 13px; font-weight: 600; display: none; }
 
-  // Manejo de la respuesta de Google
-  async function handleCredentialResponse(response) {
-    const payload = parseJwt(response.credential);
-    if (!payload || !payload.email) return;
+    /* DASHBOARD (OCULTO POR DEFECTO) */
+    #dashboardContent { display: none; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    h1 { margin: 0; font-size: 24px; color: #111; }
+    
+    /* Tarjetas KPI */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+    .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .card h3 { margin: 0 0 10px 0; font-size: 14px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+    .card .value { font-size: 28px; font-weight: bold; color: #111; }
+    .card .value.green { color: #10b981; }
+    
+    /* Tabla de Pedidos */
+    .table-container { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 12px 15px; border-bottom: 1px solid #edf2f7; font-size: 14px; }
+    th { background-color: #f8fafc; color: #64748b; font-weight: 600; }
+    tr:hover { background-color: #f8fafc; }
+    
+    .btn-logout { background-color: #ef4444; color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-left: 10px; }
+    .btn-refresh { background-color: #000; color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+  </style>
+</head>
+<body>
 
-    const correoUsuario = payload.email.toLowerCase();
-    const errDiv = document.getElementById("loginError");
-
-    try {
-      // Consultar API en Google Apps Script
-      const res = await fetch(SCRIPT_URL);
-      const data = await res.json();
+  <!-- PANTALLA 1: Inicio de Sesión con Google -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h2>Acceso Administrativo</h2>
+      <p>Inicia sesión con tu cuenta autorizada de Google para ver el panel de ventas.</p>
       
-      // Extraer lista de usuarios y lista de ventas
-      const listaPermitida = (data.usuarios || []).map(u => String(u).toLowerCase());
-      const listaVentas = data.ventas || (Array.isArray(data) ? data : []);
+      <!-- Contenedor donde Google renderiza el botón -->
+      <div id="g_id_onload"
+           data-client_id="1051720410997-kc6qojr44e03ofm9r8ni0enng367sauh.apps.googleusercontent.com"
+           data-callback="handleCredentialResponse">
+      </div>
+      
+      <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
 
-      // Permitir si está en la lista de Sheets O si es el ADMIN_EMAIL definido
-      if (listaPermitida.includes(correoUsuario) || correoUsuario === ADMIN_EMAIL.toLowerCase()) {
-        sessionStorage.setItem("user_authenticated", "true");
-        sessionStorage.setItem("user_email", correoUsuario);
+      <div id="loginError">⛔ Tu cuenta no tiene permisos de administración.</div>
+    </div>
+  </div>
+
+  <!-- PANTALLA 2: Contenido Protegido (Dashboard) -->
+  <div id="dashboardContent">
+    <div class="header">
+      <h1>📊 Dashboard de Ventas - Pstore</h1>
+      <div>
+        <button class="btn-refresh" onclick="cargarVentas()">🔄 Actualizar</button>
+        <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+      </div>
+    </div>
+
+    <!-- Métricas Generales -->
+    <div class="kpi-grid">
+      <div class="card">
+        <h3>Ventas Totales</h3>
+        <div class="value green" id="totalMonto">$0.00</div>
+      </div>
+      <div class="card">
+        <h3>Pedidos Realizados</h3>
+        <div class="value" id="totalPedidos">0</div>
+      </div>
+      <div class="card">
+        <h3>Ticket Promedio</h3>
+        <div class="value" id="ticketPromedio">$0.00</div>
+      </div>
+    </div>
+
+    <!-- Tabla de Ventas -->
+    <div class="table-container">
+      <h3>Últimos Pedidos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Cliente / Contacto</th>
+            <th>Detalle de Productos</th>
+            <th>Monto Total</th>
+          </tr>
+        </thead>
+        <tbody id="tablaCuerpo">
+          <tr>
+            <td colspan="4" style="text-align: center; color: #888;">Cargando datos de ventas...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // === CONFIGURACIÓN ===
+    const ADMIN_EMAIL = "ivanglopezp@gmail.com";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCCOFnNPRXeWEpAOFtBpAkthyrBC5-2Erl_RTDdxHYxrXCDnQuube2oRsgQuCFRdnCcg/exec";
+
+    // Decodificador JWT
+    function parseJwt(token) {
+      try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+      } catch(e) {
+        return null;
+      }
+    }
+
+    // Manejo de la respuesta de Google
+    async function handleCredentialResponse(response) {
+      const payload = parseJwt(response.credential);
+      if (!payload || !payload.email) return;
+
+      const correoUsuario = payload.email.toLowerCase();
+      const errDiv = document.getElementById("loginError");
+
+      try {
+        const res = await fetch(SCRIPT_URL);
+        const data = await res.json();
         
-        mostrarDashboard();
-        renderizarVentas(listaVentas);
-      } else {
-        errDiv.innerText = `⛔ Acceso denegado: El correo ${correoUsuario} no está autorizado.`;
+        const listaPermitida = (data.usuarios || []).map(u => String(u).toLowerCase());
+        const listaVentas = data.ventas || (Array.isArray(data) ? data : []);
+
+        if (listaPermitida.includes(correoUsuario) || correoUsuario === ADMIN_EMAIL.toLowerCase()) {
+          sessionStorage.setItem("user_authenticated", "true");
+          sessionStorage.setItem("user_email", correoUsuario);
+          
+          mostrarDashboard();
+          renderizarVentas(listaVentas);
+        } else {
+          errDiv.innerText = `⛔ Acceso denegado: El correo ${correoUsuario} no está autorizado.`;
+          errDiv.style.display = "block";
+        }
+      } catch (err) {
+        console.error("Error al validar usuario:", err);
+        errDiv.innerText = "Error de conexión al verificar permisos o cargar datos.";
         errDiv.style.display = "block";
       }
-    } catch (err) {
-      console.error("Error al validar usuario:", err);
-      errDiv.innerText = "Error de conexión al verificar permisos o cargar datos.";
-      errDiv.style.display = "block";
-    }
-  }
-
-  function mostrarDashboard() {
-    document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("dashboardContent").style.display = "block";
-  }
-
-  function cerrarSesion() {
-    sessionStorage.clear();
-    window.location.reload();
-  }
-
-  window.onload = function() {
-    if (sessionStorage.getItem("user_authenticated") === "true") {
-      mostrarDashboard();
-      cargarVentas();
-    }
-  };
-
-  // Función para consultar ventas desde cero
-  async function cargarVentas() {
-    try {
-      const res = await fetch(SCRIPT_URL);
-      const data = await res.json();
-      const listaVentas = data.ventas || (Array.isArray(data) ? data : []);
-      renderizarVentas(listaVentas);
-    } catch (err) {
-      console.error("Error al cargar ventas:", err);
-      document.getElementById('tablaCuerpo').innerHTML = `<tr><td colspan="4" style="text-align:center; color:red;">Error al cargar las ventas.</td></tr>`;
-    }
-  }
-
-  // Función dedicada a pintar las métricas y la tabla
-  function renderizarVentas(ventas) {
-    let acumuladoMonto = 0;
-    let cantidadPedidos = ventas.length;
-    let htmlTabla = "";
-
-    if (cantidadPedidos === 0) {
-      document.getElementById('tablaCuerpo').innerHTML = `<tr><td colspan="4" style="text-align:center;">No hay registro de ventas aún.</td></tr>`;
-      document.getElementById('totalMonto').innerText = "$0.00";
-      document.getElementById('totalPedidos').innerText = "0";
-      document.getElementById('ticketPromedio').innerText = "$0.00";
-      return;
     }
 
-    [...ventas].reverse().forEach(v => {
-      const fecha = v.marca_temporal || v.fecha || "N/A";
-      const cliente = v.nombre || v.cliente || v.telefono || "Cliente";
-      const productos = v.productos || v.detalle || v.producto || "Pedido";
-      
-      let monto = parseFloat(v.total || v.monto || v.precio || 0);
-      if (isNaN(monto)) monto = 0;
+    function mostrarDashboard() {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("dashboardContent").style.display = "block";
+    }
 
-      acumuladoMonto += monto;
+    function cerrarSesion() {
+      sessionStorage.clear();
+      window.location.reload();
+    }
 
-      htmlTabla += `
-        <tr>
-          <td>${new Date(fecha).toLocaleDateString() !== 'Invalid Date' ? new Date(fecha).toLocaleDateString() : fecha}</td>
-          <td><strong>${cliente}</strong></td>
-          <td>${productos}</td>
-          <td><strong>$${monto.toFixed(2)}</strong></td>
-        </tr>
-      `;
-    });
+    window.onload = function() {
+      if (sessionStorage.getItem("user_authenticated") === "true") {
+        mostrarDashboard();
+        cargarVentas();
+      }
+    };
 
-    document.getElementById('totalMonto').innerText = `$${acumuladoMonto.toFixed(2)}`;
-    document.getElementById('totalPedidos').innerText = cantidadPedidos;
-    document.getElementById('ticketPromedio').innerText = `$${(cantidadPedidos > 0 ? acumuladoMonto / cantidadPedidos : 0).toFixed(2)}`;
-    document.getElementById('tablaCuerpo').innerHTML = htmlTabla;
-  }
-</script>
+    async function cargarVentas() {
+      try {
+        const res = await fetch(SCRIPT_URL);
+        const data = await res.json();
+        const listaVentas = data.ventas || (Array.isArray(data) ? data : []);
+        renderizarVentas(listaVentas);
+      } catch (err) {
+        console.error("Error al cargar ventas:", err);
+        document.getElementById('tablaCuerpo').innerHTML = `<tr><td colspan="4" style="text-align:center; color:red;">Error al cargar las ventas.</td></tr>`;
+      }
+    }
+
+    function renderizarVentas(ventas) {
+      let acumuladoMonto = 0;
+      let cantidadPedidos = ventas.length;
+      let htmlTabla = "";
+
+      if (cantidadPedidos === 0) {
+        document.getElementById('tablaCuerpo').innerHTML = `<tr><td colspan="4" style="text-align:center;">No hay registro de ventas aún.</td></tr>`;
+        document.getElementById('totalMonto').innerText = "$0.00";
+        document.getElementById('totalPedidos').innerText = "0";
+        document.getElementById('ticketPromedio').innerText = "$0.00";
+        return;
+      }
+
+      [...ventas].reverse().forEach(v => {
+        const fecha = v.marca_temporal || v.fecha || "N/A";
+        const cliente = v.nombre || v.cliente || v.telefono || "Cliente";
+        const productos = v.productos || v.detalle || v.producto || "Pedido";
+        
+        let monto = parseFloat(v.total || v.monto || v.precio || 0);
+        if (isNaN(monto)) monto = 0;
+
+        acumuladoMonto += monto;
+
+        htmlTabla += `
+          <tr>
+            <td>${new Date(fecha).toLocaleDateString() !== 'Invalid Date' ? new Date(fecha).toLocaleDateString() : fecha}</td>
+            <td><strong>${cliente}</strong></td>
+            <td>${productos}</td>
+            <td><strong>$${monto.toFixed(2)}</strong></td>
+          </tr>
+        `;
+      });
+
+      document.getElementById('totalMonto').innerText = `$${acumuladoMonto.toFixed(2)}`;
+      document.getElementById('totalPedidos').innerText = cantidadPedidos;
+      document.getElementById('ticketPromedio').innerText = `$${(cantidadPedidos > 0 ? acumuladoMonto / cantidadPedidos : 0).toFixed(2)}`;
+      document.getElementById('tablaCuerpo').innerHTML = htmlTabla;
+    }
+  </script>
+</body>
+</html>
