@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    if (btnInstalarPWA) btnInstalarPWA.style.display = "block";
+    if (btnInstalarPWA) btnInstalarPWA.style.display = "none";
   });
 
   if (btnInstalarPWA) {
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }))
         .filter((p) => p.nombre && p.categoria && p.precio);
 
-      poblarCategorias(listaProductosCompleta);
+      poblarCategorias(ordenarProductosParaCatalogo(listaProductosCompleta));
       construirFiltrosDinamicos();
       aplicarFiltrosYPaginacion();
       configurarEventosBuscador();
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 2. Cargar Clientes VIP
-  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=1777061918&single=true&output=csv", {
+  Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_D4Cym7p0ATsh5UCG2Q3kbvhy5WuMPx0Q8gCfdz_l9IDoaCb4jn1T8zQ9YKCCvt-0GA0vkDrwKXX2/pub?gid=277594200&single=true&output=csv", {
     download: true,
     header: true,
     skipEmptyLines: true,
@@ -350,7 +350,7 @@ function obtenerValoresUnicos(lista, propiedad) {
   lista.forEach(p => {
     const val = p[propiedad];
     if (!val) return;
-    if (propiedad === "tallas") {
+    if (propiedad === "talla") {
       val.split(",").forEach(t => valoresSet.add(t.trim().toUpperCase()));
     } else {
       valoresSet.add(val.trim());
@@ -364,7 +364,7 @@ function construirFiltrosDinamicos() {
     { idContenedor: "grupo-categoria", claveCSV: "categoria" },
     { idContenedor: "grupo-categoria_secundaria", claveCSV: "categoria_secundaria" },
     { idContenedor: "grupo-coleccion", claveCSV: "coleccion" },
-    { idContenedor: "grupo-tallas", claveCSV: "tallas" },
+    { idContenedor: "grupo-talla", claveCSV: "talla" },
     { idContenedor: "grupo-estado", claveCSV: "estado" }
   ];
 
@@ -377,7 +377,7 @@ function construirFiltrosDinamicos() {
 
     valoresUnicos.forEach(valor => {
       const label = document.createElement("label");
-      if (claveCSV === "tallas") {
+      if (claveCSV === "talla") {
         label.className = "tag-check";
         label.innerHTML = `<input type="checkbox" class="filter-check" data-grupo="${claveCSV}" value="${valor}" /> ${valor}`;
       } else {
@@ -397,7 +397,7 @@ function construirFiltrosDinamicos() {
 
 function obtenerFiltrosSeleccionados() {
   const checkboxes = document.querySelectorAll(".filter-check:checked");
-  const filtros = { categoria: [], categoria_secundaria: [], coleccion: [], tallas: [], estado: [] };
+  const filtros = { categoria: [], categoria_secundaria: [], coleccion: [], talla: [], estado: [] };
 
   checkboxes.forEach(cb => {
     const grupo = cb.dataset.grupo;
@@ -469,9 +469,9 @@ function filtrarProductos() {
     if (filtros.categoria_secundaria.length > 0 && !filtros.categoria_secundaria.includes(prod.categoria_secundaria?.toLowerCase())) return false;
     if (filtros.coleccion.length > 0 && !filtros.coleccion.includes(prod.coleccion?.toLowerCase())) return false;
 
-    if (filtros.tallas.length > 0) {
-      const tallasProd = (prod.tallas || "").toLowerCase().split(",").map(t => t.trim());
-      if (!filtros.tallas.some(t => tallasProd.includes(t))) return false;
+    if (filtros.talla.length > 0) {
+      const tallaProd = (prod.talla || "").toLowerCase().split(",").map(t => t.trim());
+      if (!filtros.talla.some(t => tallaProd.includes(t))) return false;
     }
 
     if (filtros.estado.length > 0 && !filtros.estado.includes(prod.estado?.toLowerCase())) return false;
@@ -721,10 +721,6 @@ function actualizarEnlacesCompartir(producto) {
 // ==========================================
 // CARRITO Y WISHLIST
 // ==========================================
-
-
-
-
 
 function agregarAlCarrito(prod) {
   const existe = carrito.find((p) => p.nombre === prod.nombre);
