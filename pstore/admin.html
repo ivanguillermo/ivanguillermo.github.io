@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard de Ventas | Pstore</title>
+  <title>Dashboard | Pstore</title>
+  
+  <!-- Cargar Librería Oficial de Google Identity -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
   <style>
     * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: #f4f6f8; margin: 0; padding: 20px; color: #333; }
+    
+    /* PANTALLA DE LOGIN */
+    #loginScreen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+    .login-card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    .login-card h2 { margin-bottom: 8px; font-size: 22px; }
+    .login-card p { color: #666; font-size: 14px; margin-bottom: 24px; }
+    #loginError { color: #e11d48; margin-top: 15px; font-size: 13px; font-weight: 600; display: none; }
+
+    /* DASHBOARD (OCULTO POR DEFECTO) */
+    #dashboardContent { display: none; }
     .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
     h1 { margin: 0; font-size: 24px; color: #111; }
     
@@ -24,60 +52,132 @@
     th { background-color: #f8fafc; color: #64748b; font-weight: 600; }
     tr:hover { background-color: #f8fafc; }
     
-    .badge { padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: bold; }
-    .badge.completado { background-color: #d1fae5; color: #065f46; }
-    .badge.pendiente { background-color: #fef3c7; color: #92400e; }
-    
-    .btn-refresh { background-color: #000; color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; }
-    .btn-refresh:hover { opacity: 0.9; }
+    .btn-logout { background-color: #ef4444; color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-left: 10px; }
+    .btn-refresh { background-color: #000; color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <h1>📊 Dashboard de Ventas - Pstore</h1>
-    <button class="btn-refresh" onclick="cargarVentas()">🔄 Actualizar</button>
-  </div>
+  <!-- PANTALLA 1: Inicio de Sesión con Google -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h2>Acceso Administrativo</h2>
+      <p>Inicia sesión con tu cuenta autorizada de Google para ver el panel de ventas.</p>
+      
+      <!-- Contenedor donde Google renderiza el botón -->
+      <div id="g_id_onload"
+           data-client_id="1051720410997-kc6qojr44e03ofm9r8ni0enng367sauh.apps.googleusercontent.com"
+           data-callback="handleCredentialResponse">
+      </div>
+      
+      <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
 
-  <!-- Métricas Generales -->
-  <div class="kpi-grid">
-    <div class="card">
-      <h3>Ventas Totales</h3>
-      <div class="value green" id="totalMonto">$0.00</div>
-    </div>
-    <div class="card">
-      <h3>Pedidos Realizados</h3>
-      <div class="value" id="totalPedidos">0</div>
-    </div>
-    <div class="card">
-      <h3>Ticket Promedio</h3>
-      <div class="value" id="ticketPromedio">$0.00</div>
+      <div id="loginError">⛔ Tu cuenta no tiene permisos de administración.</div>
     </div>
   </div>
 
-  <!-- Tabla de Ventas -->
-  <div class="table-container">
-    <h3>Últimos Pedidos</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Cliente / Contacto</th>
-          <th>Detalle de Productos</th>
-          <th>Monto Total</th>
-        </tr>
-      </thead>
-      <tbody id="tablaCuerpo">
-        <tr>
-          <td colspan="4" style="text-align: center; color: #888;">Cargando datos de ventas...</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- PANTALLA 2: Contenido Protegido (Dashboard) -->
+  <div id="dashboardContent">
+    <div class="header">
+      <h1>📊 Dashboard de Ventas - Pstore</h1>
+      <div>
+        <button class="btn-refresh" onclick="cargarVentas()">🔄 Actualizar</button>
+        <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+      </div>
+    </div>
+
+    <!-- Métricas Generales -->
+    <div class="kpi-grid">
+      <div class="card">
+        <h3>Ventas Totales</h3>
+        <div class="value green" id="totalMonto">$0.00</div>
+      </div>
+      <div class="card">
+        <h3>Pedidos Realizados</h3>
+        <div class="value" id="totalPedidos">0</div>
+      </div>
+      <div class="card">
+        <h3>Ticket Promedio</h3>
+        <div class="value" id="ticketPromedio">$0.00</div>
+      </div>
+    </div>
+
+    <!-- Tabla de Ventas -->
+    <div class="table-container">
+      <h3>Últimos Pedidos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Cliente / Contacto</th>
+            <th>Detalle de Productos</th>
+            <th>Monto Total</th>
+          </tr>
+        </thead>
+        <tbody id="tablaCuerpo">
+          <tr>
+            <td colspan="4" style="text-align: center; color: #888;">Cargando datos de ventas...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCCOFnNPRXeWEpAOFtBpAkthyrBC5-2Erl_RTDdxHYxrXCDnQuube2oRsgQuCFRdnCcg/exec";
+    // === CONFIGURACIÓN SEGURO ===
+    const ADMIN_EMAIL = "ivanglopezp@gmail.com"; // Escribe tu correo exacto de Gmail
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCCOFnNPRXeWEpAOFtBpAkthyrBC5-2Erl_RTDdxHYxrXCDnQuube2oRsgQuCFRdnCcg/exec"
 
+    // DecodificadorJWT para leer el token de Google sin librerías pesadas
+    function parseJwt(token) {
+      try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+      } catch(e) {
+        return null;
+      }
+    }
+
+    // Respuesta tras presionar el botón de Google
+    function handleCredentialResponse(response) {
+      const payload = parseJwt(response.credential);
+      
+      if (payload && payload.email === ADMIN_EMAIL) {
+        // Guardar sesión
+        sessionStorage.setItem("user_authenticated", "true");
+        sessionStorage.setItem("user_email", payload.email);
+        
+        mostrarDashboard();
+      } else {
+        const errDiv = document.getElementById("loginError");
+        errDiv.innerText = `Acceso denegado a: ${payload ? payload.email : 'usuario desconocido'}`;
+        errDiv.style.display = "block";
+      }
+    }
+
+    function mostrarDashboard() {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("dashboardContent").style.display = "block";
+      cargarVentas();
+    }
+
+    function cerrarSesion() {
+      sessionStorage.clear();
+      window.location.reload();
+    }
+
+    // Verificar si ya inició sesión en esta ventana previamente
+    window.onload = function() {
+      if (sessionStorage.getItem("user_authenticated") === "true") {
+        mostrarDashboard();
+      }
+    };
+
+    // Consulta los datos del Google Apps Script
     async function cargarVentas() {
       try {
         const res = await fetch(SCRIPT_URL);
@@ -93,7 +193,6 @@
         }
 
         ventas.reverse().forEach(v => {
-          // Extraer campos (ajusta los nombres según los encabezados de tu hoja)
           const fecha = v.marca_temporal || v.fecha || "N/A";
           const cliente = v.nombre || v.cliente || v.telefono || "Cliente";
           const productos = v.productos || v.detalle || v.producto || "Pedido";
@@ -113,12 +212,9 @@
           `;
         });
 
-        // Actualizar KPIs
         document.getElementById('totalMonto').innerText = `$${acumuladoMonto.toFixed(2)}`;
         document.getElementById('totalPedidos').innerText = cantidadPedidos;
         document.getElementById('ticketPromedio').innerText = `$${(cantidadPedidos > 0 ? acumuladoMonto / cantidadPedidos : 0).toFixed(2)}`;
-
-        // Renderizar Tabla
         document.getElementById('tablaCuerpo').innerHTML = htmlTabla;
 
       } catch (err) {
@@ -126,9 +222,7 @@
         document.getElementById('tablaCuerpo').innerHTML = `<tr><td colspan="4" style="text-align:center; color:red;">Error al cargar las ventas. Revisa la consola.</td></tr>`;
       }
     }
-
-    // Cargar al entrar
-    cargarVentas();
   </script>
 </body>
 </html>
+
