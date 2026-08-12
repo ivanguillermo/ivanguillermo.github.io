@@ -122,6 +122,65 @@
       </table>
     </div>
   </div>
+  <!-- DASHBOARD DE EVENTOS Y MÉTRICAS PSTORE -->
+<div class="dashboard-container" style="padding: 1.5rem; background: #1a1d2e; color: #fff; border-radius: 12px; margin: 1.5rem 0;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+    <h2 style="margin: 0; color: #a78bfa;">📊 Métricas y Analítica de Eventos</h2>
+    <button onclick="cargarMetricasEventos()" style="background: #7c3aed; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">
+      🔄 Actualizar Datos
+    </button>
+  </div>
+
+  <!-- TARJETAS DE RESUMEN RÁPIDO -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+    <div style="background: #23273e; padding: 1rem; border-radius: 8px; border-left: 4px solid #ef4444;">
+      <span style="font-size: 0.85rem; color: #9ca3af;">Total Favoritos (❤️)</span>
+      <h3 id="stat-favoritos" style="font-size: 1.8rem; margin-top: 0.25rem;">0</h3>
+    </div>
+    <div style="background: #23273e; padding: 1rem; border-radius: 8px; border-left: 4px solid #10b981;">
+      <span style="font-size: 0.85rem; color: #9ca3af;">Clicks Pedidos (💬)</span>
+      <h3 id="stat-pedidos" style="font-size: 1.8rem; margin-top: 0.25rem;">0</h3>
+    </div>
+    <div style="background: #23273e; padding: 1rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
+      <span style="font-size: 0.85rem; color: #9ca3af;">Compartidos (🔗)</span>
+      <h3 id="stat-compartidos" style="font-size: 1.8rem; margin-top: 0.25rem;">0</h3>
+    </div>
+    <div style="background: #23273e; padding: 1rem; border-radius: 8px; border-left: 4px solid #f59e0b;">
+      <span style="font-size: 0.85rem; color: #9ca3af;">Total Eventos</span>
+      <h3 id="stat-total" style="font-size: 1.8rem; margin-top: 0.25rem;">0</h3>
+    </div>
+  </div>
+
+  <!-- TABLAS DE TOP PRODUCTOS Y ACTIVIDAD RECIENTE -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    
+    <!-- Top Productos Interactuados -->
+    <div style="background: #23273e; padding: 1.2rem; border-radius: 8px;">
+      <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #d4af37;">🔥 Top Productos más Populares</h3>
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid #374151; text-align: left; color: #9ca3af;">
+            <th style="padding: 0.5rem;">Producto</th>
+            <th style="padding: 0.5rem; text-align: center;">Favoritos</th>
+            <th style="padding: 0.5rem; text-align: center;">Compartidos</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-top-productos">
+          <tr><td colspan="3" style="padding: 1rem; text-align: center; color: #9ca3af;">Cargando datos...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Registro de Última Actividad -->
+    <div style="background: #23273e; padding: 1.2rem; border-radius: 8px;">
+      <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #a78bfa;">🕒 Última Actividad de Usuarios</h3>
+      <div id="lista-actividad-reciente" style="max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.6rem;">
+        <span style="color: #9ca3af;">Cargando actividad...</span>
+      </div>
+    </div>
+
+  </div>
+</div>
     <script>
     // === CONFIGURACIÓN ===
     const ADMIN_EMAIL = "ivanglopezp@gmail.com";
@@ -243,6 +302,92 @@
       document.getElementById('tablaCuerpo').innerHTML = htmlTabla;
     }
   </script>
+  const URL_APPS_SCRIPT_GET = "https://script.google.com/macros/s/AKfycbzCCOFnNPRXeWEpAOFtBpAkthyrBC5-2Erl_RTDdxHYxrXCDnQuube2oRsgQuCFRdnCcg/exec";
+
+async function cargarMetricasEventos() {
+  try {
+    const res = await fetch(URL_APPS_SCRIPT_GET);
+    const data = await res.json();
+    
+    // Si la respuesta trae datos de eventos o el array acumulado
+    const eventos = data.eventos || [];
+    
+    let favCount = 0;
+    let pedidoCount = 0;
+    let shareCount = 0;
+    const conteoProductos = {};
+
+    eventos.forEach(ev => {
+      const tipo = ev.evento || ev[1];
+      const idProd = ev.detalle || ev[2];
+      const nombreProd = ev.extra || ev[3] || idProd;
+
+      if (tipo === "producto_favorito") {
+        favCount++;
+        if (!conteoProductos[nombreProd]) conteoProductos[nombreProd] = { favs: 0, shares: 0 };
+        conteoProductos[nombreProd].favs++;
+      } else if (tipo === "pedido_whatsapp") {
+        pedidoCount++;
+      } else if (tipo === "producto_compartido") {
+        shareCount++;
+        if (!conteoProductos[nombreProd]) conteoProductos[nombreProd] = { favs: 0, shares: 0 };
+        conteoProductos[nombreProd].shares++;
+      }
+    });
+
+    // Actualizar Contadores Generales
+    document.getElementById("stat-favoritos").textContent = favCount;
+    document.getElementById("stat-pedidos").textContent = pedidoCount;
+    document.getElementById("stat-compartidos").textContent = shareCount;
+    document.getElementById("stat-total").textContent = eventos.length;
+
+    // Renderizar Tabla Top Productos
+    const tbody = document.getElementById("tabla-top-productos");
+    tbody.innerHTML = "";
+    
+    const productosOrdenados = Object.entries(conteoProductos)
+      .sort((a, b) => (b[1].favs + b[1].shares) - (a[1].favs + a[1].shares))
+      .slice(0, 5);
+
+    if (productosOrdenados.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="3" style="padding: 1rem; text-align: center; color: #9ca3af;">Sin interacciones registradas.</td></tr>`;
+    } else {
+      productosOrdenados.forEach(([nombre, stats]) => {
+        tbody.innerHTML += `
+          <tr style="border-bottom: 1px solid #2e344e;">
+            <td style="padding: 0.6rem;">${nombre}</td>
+            <td style="padding: 0.6rem; text-align: center; color: #ef4444; font-weight: bold;">${stats.favs}</td>
+            <td style="padding: 0.6rem; text-align: center; color: #3b82f6; font-weight: bold;">${stats.shares}</td>
+          </tr>
+        `;
+      });
+    }
+
+    // Renderizar Últimos Eventos
+    const containerActividad = document.getElementById("lista-actividad-reciente");
+    containerActividad.innerHTML = "";
+
+    const ultimosEventos = eventos.slice(-8).reverse();
+    ultimosEventos.forEach(ev => {
+      const fecha = ev.fecha ? new Date(ev.fecha).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "Hace un momento";
+      const tipo = ev.evento || ev[1];
+      const detalle = ev.extra || ev[3] || ev.detalle || ev[2];
+
+      containerActividad.innerHTML += `
+        <div style="background: #1a1d2e; padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+          <span><strong>${tipo}</strong>: ${detalle}</span>
+          <span style="color: #9ca3af; font-size: 0.75rem;">${fecha}</span>
+        </div>
+      `;
+    });
+
+  } catch (error) {
+    console.error("Error cargando métricas:", error);
+  }
+}
+
+// Cargar métricas al iniciar la página
+document.addEventListener("DOMContentLoaded", cargarMetricasEventos);
 </body>
 </html>
 
