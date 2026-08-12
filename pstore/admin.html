@@ -301,7 +301,7 @@
       document.getElementById('ticketPromedio').innerText = `$${(cantidadPedidos > 0 ? acumuladoMonto / cantidadPedidos : 0).toFixed(2)}`;
       document.getElementById('tablaCuerpo').innerHTML = htmlTabla;
     }
-  </script>
+  
   const URL_APPS_SCRIPT_GET = "https://script.google.com/macros/s/AKfycbzCCOFnNPRXeWEpAOFtBpAkthyrBC5-2Erl_RTDdxHYxrXCDnQuube2oRsgQuCFRdnCcg/exec";
 
 async function cargarMetricasEventos() {
@@ -388,6 +388,7 @@ async function cargarMetricasEventos() {
 
 // Cargar métricas al iniciar la página
 document.addEventListener("DOMContentLoaded", cargarMetricasEventos);
+      </script>
 </body>
 </html>
 
