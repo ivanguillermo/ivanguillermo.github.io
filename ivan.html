@@ -1,194 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sitio web personal y portafolio de Ivan Lopez Pedreanez - Profesor, Programador Web y Matemático">
-  <title>Ivan Lopez Pedreañez</title>
-
-  <link rel="manifest" href="/manifest.json">
-  <link rel="shortcut icon" href="imgx/favicon.ico" type="image/x-icon">
-
-  <!-- Fuentes e Iconos optimizados -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <link rel="stylesheet" href="ivan.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan Guillermo - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <main>
-    <!-- 1. PESTAÑA: INICIO / HERO -->
-    <section class="tab-content active" id="jumbo_ivan">
-      <div class="container media">
-        <div class="media-left">
-          <img alt="Foto de Ivan Lopez Pedreañez" class="media-object" src="yo2019.png" />
-          <a href="bio.html" id="about_btn" class="btn">Mi Historia</a>
-        </div>
-        <div class="media-body">
-          <h1 class="media-heading">Ivan Lopez Pedreañez</h1>
-          <div id="resume" class="resume">
-            <p>Me llamo Ivan y soy Profesor de Informática y Programador Web</p>
-            <p>Actualmente estudio Licenciatura en Matemática</p>
-            <p>Soy fan de crear proyectos y aprender cosas nuevas cada día</p>
-          </div>
-        </div>
-      </div>
-     </section>
+    <!-- Navegación Principal -->
+    <header class="main-header">
+        <nav class="nav-container">
+            <a href="#portada" class="nav-logo">IG</a>
+            <ul class="nav-menu">
+                <li><a href="#portada">Inicio</a></li>
+                <li><a href="#programador">Programador</a></li>
+                <li><a href="#traductor">Traductor</a></li>
+                <li><a href="#matematico">Matemático</a></li>
+                <li><a href="#educador">Educador</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-      <!-- Cita integrada dentro de Inicio -->
-      <section class="tab-content" id="quote">
-        <p>
-          <q>Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas</q><br>
-          <em>— Friedrich Nietzsche</em>
-        </p>
-      
+    <main>
 
-      <!-- Redes Sociales integradas en la vista principal -->
-      <div class="rrss">
-        <a href="https://www.facebook.com/ivanguillermolopezp" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook-official"></i></a>
-        <a href="https://www.instagram.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-        <a href="https://x.com/ivanguillermolp" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-        <a href="https://www.youtube.com/channel/UCyGK5IPY9cHB_k_5u43oMtA" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
-        <a href="https://www.linkedin.com/in/ivanguillermolp/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-        <a href="https://github.com/ivanguillermo" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github"></i></a>
-      </div>
-    </section>
+        <!-- 1. MÓDULO: PORTADA -->
+        <section id="portada" class="module-section">
+            <div class="profile-card">
+                <img src="avatar.jpg" alt="Foto de Ivan Guillermo" class="avatar-circle">
+                <a href="wikipedia-style.html" class="wiki-link" target="_blank" rel="noopener">Mi Historia (Estilo Wikipedia)</a>
+            </div>
+            <div class="intro-text">
+                <h1>Ivan Guillermo</h1>
+                <p class="tagline">Desarrollador, Educador y Matemático</p>
+            </div>
+        </section>
 
-    <!-- 2. PESTAÑA: TRADUCTOR -->
-    <section class="tab-content job" id="translator">
-      <h2 class="sec_tit">TRADUCTOR</h2>
-      <div class="body2" id="myDIV2"></div>
+        <!-- 2. MÓDULO: INTRO -->
+        <section id="intro" class="module-section">
+            <blockquote class="philosophical-quote">
+                <p>«El ser humano es algo que debe ser superado.»</p>
+                <cite>— Friedrich Nietzsche</cite>
+            </blockquote>
+            <p class="personal-quote">"El código construye herramientas; la matemática, el pensamiento; la educación, el futuro."</p>
+            
+            <div class="skills-svg-grid">
+                <!-- Icono SVG Programador -->
+                <div class="skill-icon" title="Programador">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <span>Programador</span>
+                </div>
+                <!-- Icono SVG Políglota -->
+                <div class="skill-icon" title="Políglota">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span>Políglota</span>
+                </div>
+                <!-- Icono SVG Matemático -->
+                <div class="skill-icon" title="Matemático">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19L10 5L14 14L17 8L20 12"></path>
+                    </svg>
+                    <span>Matemático</span>
+                </div>
+            </div>
+        </section>
 
-      <div id="langs_p">
-        <p>He trabajado como traductor freelance y profesor de Inglés con mi propia </br><a href="https://englishprime.github.io/" target="_blank" rel="noopener">plataforma de enseñanza</a>.</p>
-        <span id="tr_txt">
-          Puedo traducir entre cinco idiomas. Hablo ESPAÑOL e INGLÉS con alta fluidez.<br>
-          Traducciones disponibles desde: 
-          ALEMÁN <img src="https://flagcdn.com/16x12/de.png" srcset="https://flagcdn.com/32x24/de.png 2x,
-    https://flagcdn.com/48x36/de.png 3x" width="16" height="12" alt="Germany">,
-          FRANCÉS<img src="https://flagcdn.com/16x12/fr.png" srcset="https://flagcdn.com/32x24/fr.png 2x,
-    https://flagcdn.com/48x36/fr.png 3x" width="16" height="12" alt="France">,
-          PORTUGUÉS <img src="https://flagcdn.com/16x12/pt.png" srcset="https://flagcdn.com/32x24/pt.png 2x,
-    https://flagcdn.com/48x36/pt.png 3x" width="16" height="12" alt="Portugal">.
-        </span>
-      </div>
+        <!-- 3. MÓDULO: PROGRAMADOR -->
+        <section id="programador" class="module-section">
+            <h2>Programación & Desarrollo</h2>
+            <p class="philosophy-text">"Código limpio, modular y enfocado en la resolución eficiente de problemas realistas."</p>
+            
+            <a href="https://github.com/ivanguillermo" target="_blank" rel="noopener" class="btn-github">Ver Perfil en GitHub</a>
 
-      <div id="langs">
-        <button class="aflag" data-lang="0" aria-label="Portugués"><img alt="Brasil" class="flagies" src="imgx/langs/bra.png" /></button>
-        <button class="aflag" data-lang="1" aria-label="Alemán"><img alt="Alemania" class="flagies" src="imgx/langs/deu.png" /></button>
-        <button class="aflag" data-lang="2" aria-label="Francés"><img alt="Francia" class="flagies" src="imgx/langs/fra.png" /></button>
-        <button class="aflag big_flag" data-lang="3" aria-label="Español"><img alt="España" class="flagies" src="imgx/langs/spa.png" /></button>
-        <button class="aflag" data-lang="4" aria-label="Inglés"><img alt="EEUU" class="flagies" src="imgx/langs/eng.png" /></button>
-      </div>
-    </section>
+            <div class="tech-stack-icons">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Google Sheets API</span>
+                <span class="tech-tag">Google Slides</span>
+            </div>
 
-    <!-- 3. PESTAÑA: PROGRAMADOR -->
-    <section class="tab-content job" id="programmer">
-      <h2 class="sec_tit">PROGRAMADOR</h2>
-      <div class="progr_info">
-        <p>
-          Inicié en JavaScript, Python y Java. Para matemática aprendí Pascal y Octave. Durante mi carrera en Educación Informática descubrí mi pasión por el <strong>Desarrollo Frontend</strong>.
-        </p>
-        <p>
-          Especializado en <strong>HTML, CSS y JavaScript</strong>. Manejo Git, Node.js, Bootstrap y React.js.
-        </p>
-      </div>
+            <nav class="projects-subnav">
+                <h3>Proyectos Menores / Demos</h3>
+                <ul>
+                    <li><button data-project="piano">Piano Interactivo</button></li>
+                    <li><button data-project="maduroctm">MaduroCTM</button></li>
+                    <li><a href="https://pstore.com.ve" target="_blank" rel="noopener">PStore.com.ve</a></li>
+                </ul>
+            </nav>
+            <div id="project-viewer-container">
+                <!-- Se cargará el iframe o componente dinámicamente -->
+            </div>
+        </section>
 
-      <div id="progr_langs">
-        <div class="p_langs" id="python">
-          <a target="_blank" rel="noopener" href="https://github.com/ivanguillermo/python"><img class="p_langs_img" alt="python" src="imgx/devs/python.png"/></a>
-        </div>
-        <div class="p_langs" id="html">
-          <img class="p_langs_img" alt="html5" src="imgx/devs/html.png"/>
-        </div>
-        <div class="p_langs" id="css">
-          <img class="p_langs_img" alt="css" src="imgx/devs/css.png"/>
-        </div>
-        <div class="p_langs" id="js">
-          <img class="p_langs_img" alt="javascript" src="imgx/devs/js.png"/>
-        </div>
-        <div class="p_langs" id="php">
-          <a target="_blank" rel="noopener" href="https://github.com/ivanguillermo/PrettyHorribleProjects"><img class="p_langs_img" alt="php" src="imgx/devs/php2.png"/></a>
-        </div>
-        <div class="p_langs" id="mysql">
-          <a target="_blank" rel="noopener" href="https://github.com/ivanguillermo/mySQL_databases"><img class="p_langs_img" alt="mysql" src="imgx/devs/mysql.png"/></a>
-        </div>
-      </div>
+        <!-- 4. MÓDULO: TRADUCTOR -->
+        <section id="traductor" class="module-section">
+            <h2>Traducción e Idiomas</h2>
+            <div class="lang-selector">
+                <button data-lang="es" class="active">Español</button>
+                <button data-lang="en">English</button>
+                <button data-lang="de">Deutsch</button>
+                <button data-lang="fr">Français</button>
+                <button data-lang="pt">Português</button>
+            </div>
+            
+            <!-- Contenedor dinámico de palabras flotantes animadas con CSS -->
+            <div class="floating-words-stage" id="wordsStage">
+                <span class="word-bubble color-1" style="--delay: 1s;">Hola</span>
+                <span class="word-bubble color-2" style="--delay: 3s;">Welcome</span>
+                <span class="word-bubble color-3" style="--delay: 2s;">Willkommen</span>
+                <span class="word-bubble color-4" style="--delay: 4s;">Bonjour</span>
+            </div>
+        </section>
 
-      <a class="github_btn" href="https://github.com/ivanguillermo" target="_blank" rel="noopener">Mi GitHub <i class="fa fa-github"></i></a>
-    </section>
+        <!-- 5. MÓDULO: MATEMÁTICO -->
+        <section id="matematico" class="module-section">
+            <h2>Matemáticas Aplicadas</h2>
+            
+            <div class="skills-carousel-wrapper">
+                <div class="carousel-track">
+                    <article class="carousel-card">
+                        <h3>Optimización</h3>
+                        <p>Investigación de operaciones, programación lineal y algoritmos Branch & Bound.</p>
+                        <a href="#" class="card-link">Ver Software / Docs</a>
+                    </article>
+                    <article class="carousel-card">
+                        <h3>Análisis de Datos</h3>
+                        <p>Análisis discriminante y correlación canónica aplicada a métricas deportivas.</p>
+                        <a href="#" class="card-link">Ver Presentación</a>
+                    </article>
+                    <article class="carousel-card">
+                        <h3>Cálculo</h3>
+                        <p>Análisis de variable compleja y transformaciones matriciales avanzadas.</p>
+                        <a href="#" class="card-link">Ver Proyectos</a>
+                    </article>
+                    <article class="carousel-card">
+                        <h3>Estadística</h3>
+                        <p>Modelación multivariada y probabilidad aplicada a la toma de decisiones.</p>
+                        <a href="#" class="card-link">Ver Análisis</a>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <!-- 4. PESTAÑA: MATEMÁTICO -->
-    <section class="tab-content job" id="matematico">
-      <h2 class="sec_tit">MATEMÁTICO</h2>
-      <div class="mat_cards">
-        <article id="mat_estad" class="mat_card">
-          <h3>ESTADÍSTICA</h3>
-          <p>Análisis y descripción de datos para la toma de decisiones.</p>
-        </article>
-        <article id="mat_calc" class="mat_card">
-          <h3>CÁLCULO</h3>
-          <p>Análisis de variaciones y consecuencias cuantificables de eventos.</p>
-        </article>
-        <article id="mat_optim" class="mat_card">
-          <h3>OPTIMIZACIÓN</h3>
-          <p>Técnicas de modelación matemática para planificación y toma eficiente de decisiones.</p>
-        </article>
-      </div>
-    </section>
+        <!-- 6. MÓDULO: EDUCADOR -->
+        <section id="educador" class="module-section">
+            <h2>Educación & Didáctica</h2>
+            <p>Demostración de maquetación avanzada mediante CSS Grid (Grid Showroom de presentaciones):</p>
+            
+            <div class="slides-grid-showroom">
+                <div class="grid-item item-large">
+                    <iframe src="https://docs.google.com/presentation/d/e/.../embed" frameborder="0" allowfullscreen="true" title="Presentación Principal"></iframe>
+                </div>
+                <div class="grid-item item-medium">
+                    <iframe src="https://docs.google.com/presentation/d/e/.../embed" frameborder="0" allowfullscreen="true" title="Presentación Secundaria 1"></iframe>
+                </div>
+                <div class="grid-item item-small">
+                    <iframe src="https://docs.google.com/presentation/d/e/.../embed" frameborder="0" allowfullscreen="true" title="Presentación Secundaria 2"></iframe>
+                </div>
+            </div>
+        </section>
 
-    <!-- 5. PESTAÑA: EDUCADOR -->
-    <section class="tab-content job" id="educador">
-      <h2 class="sec_tit">EDUCADOR</h2>
-      <div class="educador_grid" id="pptx_container">
-        <!-- Las miniaturas se cargan dinámicamente vía JS -->
-      </div>
+        <!-- 7. MÓDULO: CURSOS (APP INTERNA) -->
+        <section id="cursos" class="module-section">
+            <h2>Cursos & Certificaciones</h2>
+            
+            <nav class="courses-filter">
+                <button data-filter="all" class="active">Todos</button>
+                <button data-filter="programacion">Programación</button>
+                <button data-filter="matematica">Matemática</button>
+                <button data-filter="educacion">Educación</button>
+            </nav>
 
-      <div class="educador_txt">
-        <p>Apasionado por la educación y compartir conocimientos. Enseñar es el mejor medio para reforzar lo aprendido.</p>
-        <p>
-          Visita mi blog educativo: 
-          <a target="_blank" rel="noopener" href="https://ivanguillermo.github.io/informaticos15/">Informáticos 15</a>
-        </p>
-      </div>
-    </section>
-  </main>
+            <!-- Renderizado dinámico desde Google Sheets -->
+            <div class="courses-store-grid" id="coursesContainer">
+                <p>Cargando cursos desde la base de datos...</p>
+            </div>
 
-  <!-- Modal Diapositivas -->
-  <dialog id="pptx_modal" class="modal">
-    <div class="modal-content">
-      <header class="containerheader">
-        <h3 id="pptx_shower_tit">Presentación</h3>
-        <button id="close_modal" class="closebtn">&times;</button>
-      </header>
-      <div class="containercontainer">
-        <iframe id="pptx_shower_frame" src="" frameborder="0" width="100%" allowfullscreen="true"></iframe>
-      </div>
-    </div>
-  </dialog>
+            <!-- Modal Nativo HTML5 para detalles del curso -->
+            <dialog id="courseModal" class="course-detail-modal">
+                <form method="dialog">
+                    <button class="close-btn">&times;</button>
+                </form>
+                <div id="modalContent">
+                    <!-- Contenido inyectado por JS -->
+                </div>
+            </dialog>
+        </section>
 
-  <!-- Navbar fija inferior -->
-  <nav id="navbarIvan" class="navbar-fixed-bottom">
-    <button class="navbar-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
-    <div class="nav-links">
-      <button class="nav-tab active" data-tab="jumbo_ivan" style="background-color: var(--color-primary); color:black;font-family: var(--font-heading)">Hola!</button>
-      <button class="nav-tab" data-tab="quote">ivanguillermo</button>
-      <button class="nav-tab" data-tab="translator">TRADUCTOR</button>
-      <button class="nav-tab" data-tab="programmer">PROGRAMADOR</button>
-      <button class="nav-tab" data-tab="matematico">MATEMÁTICO</button>
-      <button class="nav-tab" data-tab="educador">EDUCADOR</button>
-      <button class="nav-tab" data-tab="nada"></button>
-      <button class="nav-tab" data-tab="contacto" style="background-color: var(--color-primary); color:white">CONTACTO</button>
-    </div>
-  </nav>
+        <!-- 8. MÓDULO: CONTACTO -->
+        <section id="contacto" class="module-section">
+            <h2>Contacto</h2>
+            <form id="contactForm" class="modern-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                <div id="formStatus" class="form-status-msg"></div>
+            </form>
+        </section>
 
-  <script src="ivan.js"></script>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ivan Guillermo. Desarrollado con HTML5 Semántico y JS Vanilla.</p>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
