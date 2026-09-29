@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/manifest.json" rel="manifest" />
+
+    <link href="imgx/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="imgx/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <meta name="msapplication-TileColor" content="#4fdb98">
+    <meta name="msapplication-TileImage" content="imgx/favicon.ico">
+    <meta name="theme-color" content="#4fdb98">
+    <meta class='swiftype' name='image' data-type='enum' content='imgx/ivanlopezpedreanez.jpg' />
+    <meta name="image" content="imgx/ivanlopezpedreanez.jpg">
+    <meta name="keywords" content="Ivan Lopez Pedreanez, Ivan Guillermo Lopez, Ivan Guillermo Lopez Pedreanez, Programador web, frontend developer, frontend, matematico">
+    <meta name="author" content="ivan lopez pedreanez">
+    <meta name="description" content="Cursos realizados por Ivan Lopez Pedreanez"/>
+    
+    <title>Mis Cursos</title>
+  
+    <!-- Tipografías e Iconos CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- PapaParse para parsear CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <style>
+        :root {
+          --color: #4fdb98;
+          --blue: #1AA9EC;
+          --orange: #ff9800;
+          --magenta: #D1215F;
+          --green: #a3bf34;
+          --dark-bg: #232323;
+          --dark-card: #292929;
+        }
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        html {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
+          scroll-behavior: smooth;
+        }
+
+        body {
+          background-color: #fff;
+          color: #333;
+          overflow-x: hidden;
+          padding-bottom: 90px;
+        }
+
+        /* Tipografía y Títulos */
+        .pptx_title {
+          font-size: 42px;
+          text-align: center;
+          font-family: 'Barriecito', cursive;
+          margin: 25px 0 15px 0;
+        }
+
+        h2 {
+          margin: 25px 0 15px 0;
+          display: flex;
+          align-items: center;
+        }
+
+        .section-header-img {
+          height: 45px;
+          max-width: 220px;
+          object-fit: contain;
+        }
+
+        .category-group-title {
+          font-size: 22px;
+          font-weight: 700;
+          color: #222;
+          border-bottom: 2px solid var(--color);
+          padding-bottom: 5px;
+          margin: 25px 0 15px 0;
+          text-transform: capitalize;
+        }
+
+        /* Barra de Filtros / Leyenda */
+        .controls-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          margin: 20px 0;
+        }
+
+        .selector-box {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        #selector {
+          padding: 8px 15px;
+          background-color: var(--color);
+          color: #000;
+          font-weight: 700;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        .btn-ordenar {
+          padding: 8px 16px;
+          background: #fff;
+          border: 1px solid #333;
+          border-radius: 4px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .btn-ordenar:hover {
+          background: #eee;
+        }
+
+        .leyenda-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 10px;
+        }
+
+        .btn-leyenda {
+          padding: 8px 16px;
+          border: none;
+          border-radius: 4px;
+          color: #fff;
+          font-weight: 600;
+          cursor: pointer;
+          min-width: 110px;
+          transition: transform 0.1s, opacity 0.2s;
+        }
+
+        .btn-leyenda:hover {
+          opacity: 0.9;
+          transform: translateY(-1px);
+        }
+
+        .btn-info { background-color: var(--blue); }
+        .btn-success { background-color: var(--color); color: #000; }
+        .btn-warning { background-color: var(--orange); }
+        .btn-danger { background-color: var(--magenta); }
+        .btn-default { background-color: #777; color: #fff; }
+
+        /* Contenedores de Cursos (Grid Adaptativo) */
+        .courses {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 16px;
+          margin-bottom: 20px;
+        }
+
+        /* Tarjeta de Curso */
+        .curso_btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 12px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          color: white;
+          width: 100%;
+          text-align: center;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .curso_btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        .curso_btn img {
+          width: 100%;
+          max-height: 140px;
+          object-fit: contain;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 4px;
+        }
+
+        .course_data {
+          margin-top: 10px;
+          width: 100%;
+          font-size: 14px;
+          font-weight: 600;
+          text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .course_data h3 {
+          font-size: 15px;
+          margin-bottom: 4px;
+          line-height: 1.2;
+        }
+
+        .course_data h4 {
+          font-size: 13px;
+          font-weight: 400;
+          opacity: 0.9;
+        }
+
+        /* Sección Codecademy */
+        #codecademy {
+          text-align: center;
+          margin: 40px 0;
+          padding: 20px;
+          background: #f9f9f9;
+          border-radius: 8px;
+        }
+
+        #codecademy h2 {
+          justify-content: center;
+          color: #333;
+          margin-bottom: 15px;
+        }
+
+        .img_codecademy {
+          max-width: 100%;
+          width: 700px;
+          height: auto;
+          margin-top: 15px;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+        }
+
+        /* Talleres / Otros Cursos Online */
+        .talleres {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 15px;
+          margin: 20px 0 40px 0;
+        }
+
+        .taller {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background: #f5f5f5;
+          border: 2px solid var(--orange);
+          border-radius: 8px;
+          padding: 10px;
+          cursor: pointer;
+          text-align: left;
+          transition: background 0.2s;
+        }
+
+        .taller:hover {
+          background: #eee;
+        }
+
+        .vop {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 4px;
+          margin-right: 12px;
+          flex-shrink: 0;
+          border: 1px solid #ccc;
+        }
+
+        .partes {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          color: #222;
+          font-size: 12px;
+          overflow: hidden;
+        }
+
+        .partes b {
+          font-size: 13px;
+          color: #000;
+        }
+
+        /* Tabla Presenciales */
+        .table-responsive {
+          width: 100%;
+          overflow-x: auto;
+          margin-top: 15px;
+        }
+
+        table#otros {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 30px;
+        }
+
+        table#otros th, table#otros td {
+          padding: 10px;
+          border: 1px solid var(--color);
+          text-align: left;
+        }
+
+        table#otros tr:first-child {
+          background-color: var(--orange);
+          color: white;
+        }
+
+        table#otros tr:nth-child(even) {
+          background-color: rgba(79, 219, 152, 0.15);
+        }
+
+        .table-btn-link {
+          background: none;
+          border: none;
+          color: #1a0dab;
+          text-decoration: underline;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 14px;
+        }
+
+        /* Modales */
+        .modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.85);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+          padding: 15px;
+        }
+
+        .modal.active {
+          display: flex;
+        }
+
+        .modal-dialog {
+          background-color: var(--dark-bg);
+          color: white;
+          border-radius: 12px;
+          max-width: 700px;
+          width: 100%;
+          max-height: 90vh;
+          overflow-y: auto;
+          border: 1px solid #555;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+          padding: 15px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #444;
+        }
+
+        .modal-header h2 {
+          font-size: 20px;
+          color: #fff;
+          margin: 0;
+        }
+
+        .closebtn {
+          font-size: 28px;
+          color: #aaa;
+          cursor: pointer;
+          border: none;
+          background: none;
+        }
+
+        .closebtn:hover {
+          color: #fff;
+        }
+
+        .modal-body {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+
+        @media (min-width: 600px) {
+          .modal-body {
+            flex-direction: row;
+            align-items: flex-start;
+          }
+        }
+
+        #cert_shower {
+          max-width: 100%;
+          width: 320px;
+          height: auto;
+          border-radius: 6px;
+          border: 1px solid #444;
+        }
+
+        .modal-description {
+          background: var(--dark-card);
+          padding: 15px;
+          border-radius: 6px;
+          flex: 1;
+          font-size: 14px;
+          line-height: 1.5;
+          color: #ddd;
+        }
+
+        .modal-footer {
+          padding: 15px 20px;
+          border-top: 1px solid #444;
+          text-align: right;
+        }
+
+        .modal-footer a {
+          display: inline-block;
+          background-color: var(--color);
+          color: #000;
+          padding: 8px 18px;
+          border-radius: 4px;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        /* Navbar Fijo Inferior */
+        .navbar-custom {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background-color: #222;
+          z-index: 900;
+          box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+
+        .navbar-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 8px 15px;
+        }
+
+        .navbar-brand {
+          background-color: var(--color);
+          color: #000;
+          padding: 6px 16px;
+          font-weight: bold;
+          text-decoration: none;
+          border-radius: 4px;
+        }
+
+        .navbar-links {
+          display: flex;
+          gap: 15px;
+          list-style: none;
+        }
+
+        .navbar-links a {
+          color: #ddd;
+          text-decoration: none;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .navbar-links a:hover {
+          color: var(--color);
+        }
+
+        .langs {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+        }
+
+        .lang-img {
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+        }
+
+        /* Ajustes Responsivos */
+        @media (max-width: 768px) {
+          .navbar-links {
+            display: none; /* Simplificado para móviles */
+          }
+          .pptx_title {
+            font-size: 30px;
+          }
+        }
+    </style>
+</head>
+
+<body>
+
+  <!-- MODAL PARA VISUALIZAR CERTIFICADOS -->
+  <div id="id01" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id='cert_shower_t'>Título del Curso</h2>
+        <button class="closebtn" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img id='cert_shower' src="" alt="Certificado" onerror="this.src='imgx/cursos/coursera.svg'" />
+        <div class="modal-description">
+          <p id='cert_txt_shower'></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a target='_blank' id='cert_shower_go' rel="noopener noreferrer">Ir al sitio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 15px;">
+    
+    <h1 class="pptx_title">Mis Cursos Realizados</h1>
+
+    <!-- BARRA DE FILTROS Y ORDENAMIENTO -->
+    <div class="controls-container">
+      <div class="selector-box">
+        <label for="selector"><b>Ordenar por:</b></label>
+        <select id='selector'>
+            <option value="school">Escuela</option>
+            <option value="area">Área</option>
+            <option value="year">Año</option>
+            <option value="relevance">Relevancia</option>
+        </select>
+        <button id='btn_ordenar' class="btn-ordenar">Ordenar</button>
+      </div>
+
+      <div class='leyenda-container'>
+        <button data-cat='school' class="btn-leyenda btn-info">Escuela</button>
+        <button data-cat='area' class="btn-leyenda btn-success">Área</button>
+        <button data-cat='year' class="btn-leyenda btn-warning">Año</button>
+        <button data-cat='relevance' class="btn-leyenda btn-danger">Relevancia</button>      
+      </div> 
+    </div>   
+   
+    <!-- CONTENEDOR DINÁMICO DE CURSOS -->
+    <div id="dynamic_courses_container"></div>
+    
+    <!-- CODECADEMY -->
+    <section id='codecademy'>
+      <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R" style="text-decoration:none; color:inherit;">
+        <h2>Codecademy</h2>
+      </a>  
+      <div>
+        <p>Learn SQL &bull; SQL: Transformation tables &bull; Learn Java</p>
+      </div>
+      <a target="_blank" href="https://www.codecademy.com/profiles/IvanD413R">  
+        <img class="img_codecademy" src="imgx/cursos/codecademy.png" alt="Perfil de Codecademy"/>
+      </a>       
+    </section>
+    
+    <hr id='nocertificados' style="margin: 30px 0;">
+
+    <!-- OTROS CURSOS ONLINE (TALLERES) -->
+    <section>
+      <h2>Otros Cursos Online</h2>
+      <div class="talleres" id='talleres_container'></div>
+    </section>
+
+    <!-- CURSOS PRESENCIALES -->
+    <section>
+      <h2>Cursos Presenciales</h2>
+      <div class="table-responsive">
+        <table id='otros'>
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Escuela</th>
+              <th>Área</th>
+              <th>Año</th>
+              <th>Duración</th>
+            </tr>  
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reparación de PC</td>                
+              <td>INCES (Venezuela)</td>
+              <td>Tecnología</td>
+              <td>2015</td>
+              <td>3 Meses</td>
+            </tr>  
+            <tr>
+              <td>Carpintería</td>
+              <td>INCES (Venezuela)</td>
+              <td>Arte</td>                
+              <td>2016</td>
+              <td>3 Meses</td>
+            </tr> 
+            <tr>
+              <td> 
+                <button class="table-btn-link" onclick="openModal('LAMP', 'Servidores y programación web con Linux, Apache, MySQL y PHP.', 'https://ivanguillermo.github.io', 'imgx/cursos/una_php.jpeg')">
+                  Linux + Apache + PHP + MySQL
+                </button>
+              </td>
+              <td>UNA (Venezuela)</td>
+              <td>Programación</td>
+              <td>2017</td>
+              <td>2 Meses</td>
+            </tr>
+            <tr>
+              <td>Automatización</td>
+              <td>SMATA (Argentina)</td>
+              <td>Programación</td>                
+              <td>2018</td>
+              <td>4 Meses</td>
+            </tr> 
+            <tr>
+              <td> 
+                <button class="table-btn-link" onclick="openModal('Ajedrez', 'Curso de táctica y estrategia en ajedrez.', 'https://ivanguillermo.github.io', 'imgx/cursos/peon_vuelve.jpeg')">
+                  Ajedrez
+                </button>
+              </td>
+              <td>Peón Vuelve (Argentina)</td>
+              <td>Arte</td>
+              <td>2019</td>
+              <td>2 Meses</td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+    </section>  
+  </div>
+
+  <!-- BARRA DE NAVEGACIÓN FIJA -->
+  <nav class="navbar-custom">
+    <div class="navbar-container">
+      <a class="navbar-brand" href="https://ivanguillermo.github.io">Ivan</a>
+
+      <ul class="navbar-links">
+        <li><a href="#dynamic_courses_container"><i class="fa fa-graduation-cap"></i> Cursos Online</a></li>
+        <li><a href="#codecademy"><i class="fa fa-code"></i> Codecademy</a></li>
+        <li><a href="#nocertificados"><i class="fa fa-book"></i> Otros Online</a></li>
+        <li><a href="#otros"><i class="fa fa-users"></i> Presenciales</a></li>
+      </ul>
+
+      <div class='langs'>
+        <img class='lang-img' src='imgx/langs/spa.png' alt='Español' title='Español'/> 
+        <img class='lang-img' src='imgx/langs/eng.png' alt='English' title='English'/>
+        <img class='lang-img' src='imgx/langs/deu.png' alt='Deutsch' title='Deutsch'/> 
+        <img class='lang-img' src='imgx/langs/fra.png' alt='Français' title='Français'/>               
+      </div>
+
+      <a href="contacto.html" style="background-color:var(--color); color:black; padding: 5px 10px; border-radius:4px; font-weight:bold; text-decoration:none;">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- LÓGICA JAVASCRIPT VANILLA Y CONEXIÓN DE DATOS -->
+  <script>
+    // =========================================================================
+    // CONFIGURACIÓN DE FUENTES DE DATOS
+    // =========================================================================
+    // Reemplaza esta URL con el enlace CSV que obtendrás al publicar tu Google Sheet:
+    const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_TU_GOOGLE_SHEETS_CSV_ID/pub?output=csv';
+    const LOCAL_CSV_URL = 'cursos.csv';
+
+    // Estilos de botones asignados en ciclo
+    const colorClasses = ['btn-danger', 'btn-info', 'btn-success', 'btn-warning', 'btn-default'];
+    
+    // Logos oficiales por escuela
+    const schoolLogos = {
+      'coursera': 'coursera.svg',
+      'saylor': 'saylor.svg',
+      'udemy': 'udemy.png',
+      'edx': 'edx.png',
+      'duolingo': 'duolingo.png',
+      'w3schools': 'duolingo.png',
+      'linkedin': 'linkedin.png'
+    };
+
+    let allCourses = [];
+    let currentSortKey = 'school'; // 'school' | 'area' | 'year' | 'relevance'
+
+    // =========================================================================
+    // INICIALIZACIÓN Y CARGA DE DATOS (GOOGLE SHEETS CON FALLBACK LOCAL)
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCourseData();
+      initEventListeners();
+    });
+
+    function loadCourseData() {
+      // Intenta cargar desde Google Sheets CSV
+      Papa.parse(GOOGLE_SHEETS_CSV_URL, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: (results) => {
+          if (results.data && results.data.length > 0 && results.data[0].name) {
+            processData(results.data);
+          } else {
+            fallbackToLocal();
+          }
+        },
+        error: () => {
+          fallbackToLocal();
+        }
+      });
+    }
+
+    function fallbackToLocal() {
+      Papa.parse(LOCAL_CSV_URL, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: (results) => {
+          if (results.data) {
+            processData(results.data);
+          }
+        }
+      });
+    }
+
+    function processData(data) {
+      allCourses = data.map(item => ({
+        name: item.name || 'Sin título',
+        src: item.src ? (item.src.startsWith('http') || item.src.includes('/') ? item.src : `imgx/cursos/${item.src}.png`) : 'imgx/cursos/coursera.svg',
+        school: item.school || 'Otra',
+        year: item.year || 'N/A',
+        area: item.area || 'General',
+        link: item.link || '#',
+        resume: item.resume || '',
+        relevance: item.relevance || item.level || '3',
+        type: (item.type || 'online').toLowerCase().trim()
+      }));
+
+      renderMainCourses();
+      renderTalleres();
+    }
+
+    // =========================================================================
+    // RENDERIZADO DINÁMICO DE CURSOS PRINCIPALES
+    // =========================================================================
+    function renderMainCourses() {
+      const container = document.getElementById('dynamic_courses_container');
+      container.innerHTML = '';
+
+      // Filtra solo los cursos marcados como online/principales
+      const onlineCourses = allCourses.filter(c => c.type === 'online' || c.type === '');
+
+      // Agrupar cursos dinámicamente según la clave seleccionada
+      const grouped = {};
+
+      onlineCourses.forEach(course => {
+        let groupValue = course[currentSortKey] || 'Otros';
+        if (currentSortKey === 'relevance') {
+          groupValue = `Nivel de Relevancia ${groupValue}`;
+        }
+        if (!grouped[groupValue]) {
+          grouped[groupValue] = [];
+        }
+        grouped[groupValue].push(course);
+      });
+
+      // Ordenar las claves del grupo (ej: años de más reciente a antiguo)
+      let keys = Object.keys(grouped);
+      if (currentSortKey === 'year') {
+        keys.sort((a, b) => b.localeCompare(a));
+      } else {
+        keys.sort();
+      }
+
+      // Generar HTML para cada grupo
+      keys.forEach((groupName, groupIdx) => {
+        const groupSection = document.createElement('div');
+        
+        // Encabezado del grupo
+        let headerHTML = '';
+        const lowerName = groupName.toLowerCase();
+        
+        if (currentSortKey === 'school' && schoolLogos[lowerName]) {
+          headerHTML = `<h2><img class='section-header-img' src='imgx/cursos/${schoolLogos[lowerName]}' alt='${groupName}' /></h2>`;
+        } else {
+          headerHTML = `<h3 class="category-group-title">${groupName}</h3>`;
+        }
+
+        groupSection.innerHTML = headerHTML;
+
+        // Grid de tarjetas del grupo
+        const grid = document.createElement('div');
+        grid.className = 'courses';
+
+        grouped[groupName].forEach((course, idx) => {
+          const btnColor = colorClasses[idx % colorClasses.length];
+          
+          const card = document.createElement('button');
+          card.type = 'button';
+          card.className = `curso_btn ${btnColor}`;
+          
+          card.innerHTML = `
+            <img src="${course.src}" alt="${course.name}" onerror="this.src='imgx/cursos/coursera.svg'"/>
+            <div class='course_data'>
+              <h3>${course.name}</h3>
+              <h4>${course.school} (${course.year})</h4>
+              <p style="font-size:11px; opacity:0.8">${course.area}</p>
+            </div>
+          `;
+
+          card.addEventListener('click', () => {
+            openModal(course.name, course.resume, course.link, course.src);
+          });
+
+          grid.appendChild(card);
+        });
+
+        groupSection.appendChild(grid);
+        container.appendChild(groupSection);
+      });
+    }
+
+    // =========================================================================
+    // RENDERIZADO DE OTROS CURSOS ONLINE (TALLERES)
+    // =========================================================================
+    function renderTalleres() {
+      const container = document.getElementById('talleres_container');
+      container.innerHTML = '';
+
+      // Filtra de la lista completa los clasificados como 'workshop' o 'taller'
+      let workshops = allCourses.filter(c => c.type === 'workshop' || c.type === 'taller');
+
+      // Si no hay talleres definidos en la fuente, cargar una lista predeterminada
+      if (workshops.length === 0) {
+        workshops = [
+          { name: 'Reason and Persuasion', school: 'National Univ. of Singapore', year: '2014', src: 'imgx/cursos/plato.jpg', resume: 'Thinking Through Three Dialogues By Plato' },
+          { name: 'Mathematical Thinking', school: 'Stanford University', year: '2015', src: 'imgx/cursos/math_thinking.png', resume: 'Introduction to Mathematical Thinking' },
+          { name: 'Soul Beliefs', school: 'Rutgers University', year: '2015', src: 'imgx/cursos/soul_beliefs.jpg', resume: 'Causes and Consequences' },
+          { name: 'Shakespeare in Community', school: 'Univ. of Wisconsin–Madison', year: '2016', src: 'imgx/cursos/shakespeare.png', resume: 'Literature & Community' },
+          { name: 'French Revolution', school: 'Univ. of Melbourne', year: '2015', src: 'imgx/cursos/FrenchRev.jpg', resume: 'History and impact' },
+          { name: 'Animal Behaviour', school: 'Univ. of Edinburgh', year: '2015', src: 'imgx/cursos/animal_beh.jpg', resume: 'Animal Behaviour and Welfare' }
+        ];
+      }
+
+      workshops.forEach(w => {
+        const item = document.createElement('div');
+        item.className = 'taller';
+        item.innerHTML = `
+          <img src="${w.src}" class="vop" alt="${w.name}" onerror="this.src='imgx/cursos/coursera.svg'"/>
+          <div class="partes">
+            <b>${w.name}</b>
+            <i>${w.school}</i>
+            <i>${w.year}</i>
+          </div>
+        `;
+        item.addEventListener('click', () => {
+          openModal(w.name, w.resume || `${w.school} (${w.year})`, w.link || '#', w.src);
+        });
+        container.appendChild(item);
+      });
+    }
+
+    // =========================================================================
+    // MANEJO DE MODAL
+    // =========================================================================
+    function openModal(title, description, link, imgSrc) {
+      document.getElementById('cert_shower_t').innerText = title || 'Certificado';
+      document.getElementById('cert_txt_shower').innerText = description || 'Sin descripción disponible.';
+      document.getElementById('cert_shower_go').href = link || '#';
+      document.getElementById('cert_shower').src = imgSrc || 'imgx/cursos/coursera.svg';
+
+      document.getElementById('id01').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('id01').classList.remove('active');
+    }
+
+    // Cerrar modal al hacer clic en el fondo negro o con la tecla ESC
+    document.getElementById('id01').addEventListener('click', (e) => {
+      if (e.target.id === 'id01') closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // =========================================================================
+    // EVENT LISTENERS DE FILTROS Y ORDEN
+    // =========================================================================
+    function initEventListeners() {
+      const selector = document.getElementById('selector');
+      const btnOrdenar = document.getElementById('btn_ordenar');
+
+      btnOrdenar.addEventListener('click', () => {
+        currentSortKey = selector.value;
+        renderMainCourses();
+      });
+
+      document.querySelectorAll('.btn-leyenda').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          currentSortKey = e.currentTarget.dataset.cat;
+          selector.value = currentSortKey;
+          renderMainCourses();
+        });
+      });
+    }
+  </script>
+</body>
+</html>
