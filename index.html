@@ -18,15 +18,152 @@
 <body>
 
     <main id="app-content">
-        <!-- Contenedores de cada sección -->
-        <section id="sec-bio" class="app-section active"></section>
-        <section id="sec-translator" class="app-section"></section>
-        <section id="sec-programmer" class="app-section"></section>
-        <section id="sec-math" class="app-section"></section>
-        <section id="sec-educator" class="app-section"></section>
+
+        <!-- 1. PERFIL / BIO -->
+        <section id="sec-bio" class="app-section active">
+            <div class="bio-card">
+                <img src="imgx/ivan.png" alt="Ivan Lopez" class="media-object img-circle" />
+                <h1 class="media-heading">Ivan Guillermo López</h1>
+                <p class="resume-p">
+                    Profesor de Informática y apasionado del análisis matemático, el desarrollo web y la comunicación multicultural.
+                </p>
+                <div id="quote">
+                    <p id="quote-text" style="transition: opacity 0.5s ease;">
+                        «El verdadero viaje de descubrimiento no consiste en buscar nuevos paisajes, sino en tener nuevos ojos.»
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROGRAMADOR -->
+        <section id="sec-programmer" class="app-section">
+            <h2 class="sec-title">Desarrollo & Tecnologías</h2>
+            
+            <div id="github-stats-container"></div>
+
+            <div class="progr-langs">
+                <div class="p-lang-card" data-lang="HTML5 / CSS3">
+                    <i class="fa fa-html5 fa-3x"></i>
+                    <span>HTML / CSS</span>
+                </div>
+                <div class="p-lang-card" data-lang="JavaScript ES6">
+                    <i class="fa fa-code fa-3x"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="p-lang-card" data-lang="Python">
+                    <i class="fa fa-terminal fa-3x"></i>
+                    <span>Python</span>
+                </div>
+                <div class="p-lang-card" data-lang="Google Apps Script">
+                    <i class="fa fa-google fa-3x"></i>
+                    <span>Apps Script</span>
+                </div>
+                <div class="p-lang-card" data-lang="Git & GitHub">
+                    <i class="fa fa-github fa-3x"></i>
+                    <span>GitHub</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. MATEMÁTICO -->
+        <section id="sec-math" class="app-section">
+            <h2 class="sec-title">Área Matemática</h2>
+
+            <div id="mathCarousel" class="carousel slide math-carousel" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#mathCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#mathCarousel" data-slide-to="1"></li>
+                    <li data-target="#mathCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="carousel-caption">
+                            <h3>Análisis & Optimización</h3>
+                            <p>Modelado matemático y algoritmos lineales.</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-caption">
+                            <h3>Álgebra & Topología</h3>
+                            <p>Estructuras abstractas y espacios vectoriales.</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-caption">
+                            <h3>Análisis Multivariado</h3>
+                            <p>Procesamiento de datos y estadística avanzada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="left carousel-control" href="#mathCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#mathCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. TRADUCTOR / IDIOMAS -->
+        <section id="sec-translator" class="app-section">
+            <h2 class="sec-title">Idiomas</h2>
+
+            <div class="flags-container">
+                <div class="aflag big_flag" data-lang="3">
+                    <img src="imgx/es.png" alt="Español" title="Español" />
+                </div>
+                <div class="aflag" data-lang="4">
+                    <img src="imgx/en.png" alt="English" title="English" />
+                </div>
+                <div class="aflag" data-lang="0">
+                    <img src="imgx/pt.png" alt="Português" title="Português" />
+                </div>
+                <div class="aflag" data-lang="1">
+                    <img src="imgx/de.png" alt="Deutsch" title="Deutsch" />
+                </div>
+                <div class="aflag" data-lang="2">
+                    <img src="imgx/fr.png" alt="Français" title="Français" />
+                </div>
+            </div>
+
+            <p id="tr_txt" style="margin-top: 25px; text-align: center; max-width: 500px; font-weight: 500;">
+                Puedo traducir entre cinco idiomas. Soy un hablante nativo de ESPAÑOL...
+            </p>
+        </section>
+
+        <!-- 5. EDUCADOR -->
+        <section id="sec-educator" class="app-section">
+            <h2 class="sec-title">Recursos Educativos</h2>
+
+            <div class="educator-grid">
+                <div class="pptx-thumb" data-title="Números Naturales e Enteros" data-embed-url="">
+                    <div class="thumbnail text-center" style="background: rgba(0,0,0,0.3); color: #fff; padding: 20px;">
+                        <i class="fa fa-file-powerpoint-o fa-3x"></i>
+                        <p style="margin-top: 10px;">Números Naturales</p>
+                    </div>
+                </div>
+                <div class="pptx-thumb" data-title="Números Racionales" data-embed-url="">
+                    <div class="thumbnail text-center" style="background: rgba(0,0,0,0.3); color: #fff; padding: 20px;">
+                        <i class="fa fa-file-powerpoint-o fa-3x"></i>
+                        <p style="margin-top: 10px;">Números Racionales</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Navegación estilo App (Bottom Bar) -->
+    <!-- Modal Educativo Global -->
+    <div id="educator-modal" class="app-modal">
+        <div class="app-modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modal-body-content"></div>
+        </div>
+    </div>
+
+    <!-- Navegación Móvil (Bottom Bar) -->
     <nav class="app-nav">
         <button data-target="sec-bio" class="nav-btn active">
             <i class="fa fa-user"></i> <span>Perfil</span>
@@ -45,11 +182,9 @@
         </button>
     </nav>
 
-    <!-- Scripts de la App -->
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <!-- Carga del orquestador principal (módulos ES6) -->
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
