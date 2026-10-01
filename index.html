@@ -85,80 +85,137 @@
             </div>
         </section>
 
-        <!-- 3. MATEMÁTICO -->
-       <!-- 3. MATEMÁTICO -->
-<section id="sec-math" class="app-section">
-    <div class="math-container">
-        <h2 class="sec-title text-center">Matemática & Análisis</h2>
+        <!-- 3. MATEMÁTICO -->      
+        <section id="sec-math" class="app-section">
+            <div class="math-container">
+                <h2 class="sec-title text-center">Matemática & Análisis</h2>
+                
+                <!-- Banner Proyecto Principal: MateUNA -->
+                <div class="mateuna-banner">
+                    <div class="mateuna-content">
+                        <h3><i class="fa fa-graduation-cap"></i> MateUNA</h3>
+                        <p>Plataforma interactiva para el estudio y práctica de asignaturas de la Licenciatura en Matemática (Universidad Nacional Abierta).</p>
+                    </div>
+                    <a href="https://mateuna.github.io" target="_blank" rel="noopener" class="btn-mateuna">
+                        Visitar App <i class="fa fa-external-link"></i>
+                    </a>
+                </div>
         
-        <!-- Banner Proyecto Principal: MateUNA -->
-        <div class="mateuna-banner">
-            <div class="mateuna-content">
-                <h3><i class="fa fa-graduation-cap"></i> MateUNA</h3>
-                <p>Plataforma interactiva para el estudio y práctica de asignaturas de la Licenciatura en Matemática (Universidad Nacional Abierta).</p>
+                <!-- Carrusel de Áreas de Dominio -->
+                <h3 class="math-subtitle">Áreas de Dominio</h3>
+                <div class="math-carousel">
+                    <div class="math-card">
+                        <div class="math-card-icon"><i class="fa fa-line-chart"></i></div>
+                        <h4>Análisis & Optimización</h4>
+                        <p>Investigación de operaciones, algoritmos de transporte y programación lineal.</p>
+                    </div>
+                    <div class="math-card">
+                        <div class="math-card-icon"><i class="fa fa-cubes"></i></div>
+                        <h4>Álgebra & Topología</h4>
+                        <p>Espacios vectoriales, transformaciones abstractas y topología general.</p>
+                    </div>
+                    <div class="math-card">
+                        <div class="math-card-icon"><i class="fa fa-database"></i></div>
+                        <h4>Análisis de Datos</h4>
+                        <p>Estadística avanzada, modelos multivariados y distribuciones de probabilidad.</p>
+                    </div>
+                    <div class="math-card">
+                        <div class="math-card-icon"><i class="fa fa-connectdevelop"></i></div>
+                        <h4>Geometría Analítica</h4>
+                        <p>Mundo Triangular, soluciones cúbicas y exploración de razones metálicas.</p>
+                    </div>
+                </div>
+        
+                <!-- Fila de Proximos Lanzamientos (LaTeX, Python, Fútbol) -->
+                <div class="math-upcoming">
+                    <p><i class="fa fa-cogs"></i> <strong>Laboratorio en construcción:</strong> Próximamente integración de scripts de optimización en Python, formularios en LaTeX y modelos predictivos de fútbol.</p>
+                </div>
             </div>
-            <a href="https://mateuna.github.io" target="_blank" rel="noopener" class="btn-mateuna">
-                Visitar App <i class="fa fa-external-link"></i>
-            </a>
-        </div>
-
-        <!-- Carrusel de Áreas de Dominio -->
-        <h3 class="math-subtitle">Áreas de Dominio</h3>
-        <div class="math-carousel">
-            <div class="math-card">
-                <div class="math-card-icon"><i class="fa fa-line-chart"></i></div>
-                <h4>Análisis & Optimización</h4>
-                <p>Investigación de operaciones, algoritmos de transporte y programación lineal.</p>
-            </div>
-            <div class="math-card">
-                <div class="math-card-icon"><i class="fa fa-cubes"></i></div>
-                <h4>Álgebra & Topología</h4>
-                <p>Espacios vectoriales, transformaciones abstractas y topología general.</p>
-            </div>
-            <div class="math-card">
-                <div class="math-card-icon"><i class="fa fa-database"></i></div>
-                <h4>Análisis de Datos</h4>
-                <p>Estadística avanzada, modelos multivariados y distribuciones de probabilidad.</p>
-            </div>
-            <div class="math-card">
-                <div class="math-card-icon"><i class="fa fa-connectdevelop"></i></div>
-                <h4>Geometría Analítica</h4>
-                <p>Mundo Triangular, soluciones cúbicas y exploración de razones metálicas.</p>
-            </div>
-        </div>
-
-        <!-- Fila de Proximos Lanzamientos (LaTeX, Python, Fútbol) -->
-        <div class="math-upcoming">
-            <p><i class="fa fa-cogs"></i> <strong>Laboratorio en construcción:</strong> Próximamente integración de scripts de optimización en Python, formularios en LaTeX y modelos predictivos de fútbol.</p>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- 4. TRADUCTOR / IDIOMAS -->
         <section id="sec-translator" class="app-section">
-            <h2 class="sec-title">Idiomas</h2>
-
-            <div class="flags-container">
-                <div class="aflag big_flag" data-lang="3">
-                    <img src="imgx/langs/spa.png" alt="Español" title="Español" />
-                </div>
-                <div class="aflag" data-lang="4">
-                    <img src="imgx/langs/eng.png" alt="English" title="English" />
-                </div>
-                <div class="aflag" data-lang="0">
-                    <img src="imgx/langs/bra.png" alt="Português" title="Português" />
-                </div>
-                <div class="aflag" data-lang="1">
-                    <img src="imgx/langs/deu.png" alt="Deutsch" title="Deutsch" />
-                </div>
-                <div class="aflag" data-lang="2">
-                    <img src="imgx/langs/fra.png" alt="Français" title="Français" />
+            <div class="lang-container">
+                <!-- Canvas / Contenedor para las burbujas animadas -->
+                <div id="bubbles-container" class="bubbles-bg"></div>
+        
+                <div class="lang-content-wrapper">
+                    <h2 class="sec-title text-center">Idiomas & Traducción</h2>
+        
+                    <!-- Selector de Banderas -->
+                    <div class="flags-container">
+                        <div class="aflag active" data-lang="es" title="Español">
+                            <img src="imgx/es.png" alt="Español" />
+                        </div>
+                        <div class="aflag" data-lang="en" title="English">
+                            <img src="imgx/en.png" alt="English" />
+                        </div>
+                        <div class="aflag" data-lang="pt" title="Português">
+                            <img src="imgx/pt.png" alt="Português" />
+                        </div>
+                        <div class="aflag" data-lang="de" title="Deutsch">
+                            <img src="imgx/de.png" alt="Deutsch" />
+                        </div>
+                        <div class="aflag" data-lang="fr" title="Français">
+                            <img src="imgx/fr.png" alt="Français" />
+                        </div>
+                    </div>
+        
+                    <!-- Caja con Frase / Discurso Dinámico -->
+                    <div class="quote-display-card">
+                        <i class="fa fa-quote-left quote-icon"></i>
+                        <p id="tr_txt">
+                            "Puedo realizar traducciones fluidas entre cinco idiomas. El lenguaje no es solo una herramienta de comunicación, sino una forma de moldear el pensamiento."
+                        </p>
+                        <span id="tr_lang_tag" class="lang-tag">Español (Nativo)</span>
+                    </div>
+        
+                    <!-- Grid de Proyectos / Duolingo -->
+                    <div class="lang-grid">
+                        <!-- Promo English Prime -->
+                        <div class="englishprime-card">
+                            <div class="ep-header">
+                                <i class="fa fa-book fa-2x"></i>
+                                <div>
+                                    <h4>English Prime</h4>
+                                    <p>Plataforma para el aprendizaje y práctica de Inglés.</p>
+                                </div>
+                            </div>
+                            <a href="https://englishprime.github.io" target="_blank" rel="noopener" class="btn-ep">
+                                Explorar Sitio <i class="fa fa-external-link"></i>
+                            </a>
+                        </div>
+        
+                        <!-- Badge Duolingo Stats -->
+                        <div class="duolingo-card">
+                            <div class="duo-header">
+                                <span class="duo-owl-icon">🦉</span>
+                                <div>
+                                    <h4>Mi Perfil Duolingo</h4>
+                                    <span class="duo-username">@IvanLopez</span>
+                                </div>
+                            </div>
+                            <div class="duo-stats-grid">
+                                <div class="duo-stat">
+                                    <span class="stat-icon">🔥</span>
+                                    <span class="stat-value">365+</span>
+                                    <span class="stat-label">Racha</span>
+                                </div>
+                                <div class="duo-stat">
+                                    <span class="stat-icon">⚡</span>
+                                    <span class="stat-value">25.4K</span>
+                                    <span class="stat-label">XP Total</span>
+                                </div>
+                                <div class="duo-stat">
+                                    <span class="stat-icon">🏆</span>
+                                    <span class="stat-value">Diamond</span>
+                                    <span class="stat-label">Liga</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <p id="tr_txt" style="margin-top: 25px; text-align: center; max-width: 500px; font-weight: 500;">
-                Puedo traducir entre cinco idiomas. Soy un hablante nativo de ESPAÑOL...
-            </p>
         </section>
 
         <!-- 5. EDUCADOR -->
