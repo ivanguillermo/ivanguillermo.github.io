@@ -59,3 +59,23 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.querySelectorAll('.app-section').forEach(sec => observer.observe(sec));
+
+// Control del Menú Hamburguesa
+const menuToggle = document.getElementById('menu-toggle');
+const menuClose = document.getElementById('menu-close');
+const sideMenu = document.getElementById('side-menu');
+const menuOverlay = document.getElementById('menu-overlay');
+
+function openMenu() {
+    sideMenu.classList.add('open');
+    menuOverlay.classList.add('active');
+}
+
+function closeMenu() {
+    sideMenu.classList.remove('open');
+    menuOverlay.classList.remove('active');
+}
+
+if (menuToggle) menuToggle.addEventListener('click', openMenu);
+if (menuClose) menuClose.addEventListener('click', closeMenu);
+if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
