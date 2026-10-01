@@ -22,7 +22,7 @@ html {
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--color-blue);
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
     margin: 0;
@@ -412,7 +412,7 @@ body {
     position: relative;
     background: #4fdb98;
     color: #fff;
-    min-height: calc(100vh - 110px);
+    height: 100vh;
     overflow: hidden;
     padding: 20px 15px;
 }
