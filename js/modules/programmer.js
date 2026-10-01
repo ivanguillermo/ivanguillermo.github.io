@@ -1,4 +1,4 @@
-// URL de tu Web App de Google Apps Script o Endpoint JSON de tu Google Sheet
+// URL de tu Web App de Google Apps Script
 const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbwe5BQ8TtzKHbTaBFX3-2hDuldvzjyhviYGiVKjzgqnXzx9lhLwQOp-orIV-5S0Ft_R/exec';
 
 export async function init() {
@@ -28,12 +28,11 @@ function renderTechCards(techList, container) {
     container.innerHTML = ''; // Limpiar loader
 
     techList.forEach(item => {
-        // Estructurar los 3 ejemplos dinámicamente
         const examples = [
             { name: item.ejemplo_1, link: item.ejemplo_1_link },
             { name: item.ejemplo_2, link: item.ejemplo_2_link },
             { name: item.ejemplo_3, link: item.ejemplo_3_link }
-        ].filter(ex => ex.name && ex.link); // Filtra los que no estén vacíos
+        ].filter(ex => ex.name && ex.link);
 
         const card = document.createElement('div');
         card.className = 'tech-card';
@@ -59,44 +58,4 @@ function renderTechCards(techList, container) {
 
         container.appendChild(card);
     });
-}
-
-export function init() {
-    console.log('Módulo Programador cargado.');
-
-    // Configuración de proyectos/tecnologías
-    const techCards = document.querySelectorAll('.p-lang-card');
-    
-    techCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const lang = card.getAttribute('data-lang') || 'Tecnología';
-            highlightTech(card);
-            console.log(`Seleccionada la tecnología: ${lang}`);
-        });
-    });
-
-    renderGitHubStats();
-}
-
-function highlightTech(selectedCard) {
-    document.querySelectorAll('.p-lang-card').forEach(card => {
-        card.style.opacity = '0.5';
-        card.style.transform = 'scale(0.95)';
-    });
-
-    selectedCard.style.opacity = '1';
-    selectedCard.style.transform = 'scale(1.05)';
-}
-
-function renderGitHubStats() {
-    const container = document.getElementById('github-stats-container');
-    if (!container) return;
-
-    // Inserción dinámica de métricas/resumen de proyectos
-    container.innerHTML = `
-        <div class="repo-badge">
-            <i class="fa fa-github"></i>
-            <span>Proyectos activos en PWA, Google Apps Script & Web Tools</span>
-        </div>
-    `;
 }
