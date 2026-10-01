@@ -149,6 +149,119 @@ body {
 }
 
 /* ==========================================
+   ESTILOS SECCIÓN DEV / PROGRAMADOR
+   ========================================== */
+.dev-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 15px;
+}
+
+.dev-intro {
+    font-size: 1.1rem;
+    color: #333;
+    max-width: 600px;
+    margin: 0 auto 15px auto;
+}
+
+.btn-github {
+    display: inline-block;
+    background-color: #24292e;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-bottom: 25px;
+}
+
+.btn-github:hover {
+    background-color: #000;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* GRID DE TECNOLOGÍAS */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.tech-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    padding: 20px;
+    color: #222;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.tech-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.tech-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.tech-card-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.examples-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #666;
+    font-weight: 600;
+}
+
+.tech-examples-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+
+.tech-examples-list li {
+    margin-bottom: 8px;
+}
+
+.tech-examples-list a {
+    color: #1AA9EC;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.tech-examples-list a:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/* ==========================================
    5. SECCIÓN: MATEMÁTICO (#sec-math)
    ========================================== */
 #sec-math {
