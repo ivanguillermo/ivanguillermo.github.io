@@ -1,0 +1,23 @@
+{
+  "short_name": "Ivan Lopez",
+  "name": "Ivan Lopez Pedreañez | Web App",
+  "icons": [
+    {
+      "src": "yo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "yo192.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#ffb800",
+  "theme_color": "#ffb800",
+  "display": "standalone",
+  "orientation": "portrait"
+}
