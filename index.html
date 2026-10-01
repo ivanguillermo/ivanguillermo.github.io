@@ -19,16 +19,43 @@
 
     <main id="app-content">
 
+        <header class="app-header">
+            <div class="header-logo">
+                <span>IL</span>
+            </div>
+            <button class="hamburger-btn" id="menu-toggle" aria-label="Abrir menú">
+                <i class="fa fa-bars"></i>
+            </button>
+        </header>
+
+        <div id="side-menu" class="side-menu">
+            <button class="close-menu-btn" id="menu-close">&times;</button>
+            <ul class="side-menu-links">
+                <li><a href="#cursos"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
+                <li><a href="#bio-completa"><i class="fa fa-user-circle"></i> Bio Completa</a></li>
+                <li><a href="#juegos"><i class="fa fa-gamepad"></i> Juegos</a></li>
+                <li><a href="#proyectos"><i class="fa fa-briefcase"></i> Proyectos</a></li>
+            </ul>
+        </div>
+        <div id="menu-overlay" class="menu-overlay"></div>
+
         <!-- 1. PERFIL / BIO -->
         <section id="sec-bio" class="app-section active">
             <div class="bio-card">
-                <img src="imgx/ivan.png" alt="Ivan Lopez" class="media-object img-circle" />
-                <h1 class="media-heading">Ivan Guillermo López</h1>
+                <div class="profile-header-inline">
+                    <img src="imgx/ivan.png" alt="Ivan Lopez" class="media-object img-circle profile-avatar" />
+                    <div class="profile-title-container">
+                        <h1 class="media-heading main-title">Ivan Guillermo López</h1>
+                        <p class="profile-subtitle">Profesor de Informática | Developer | Math Enthusiast</p>
+                    </div>
+                </div>
+                
                 <p class="resume-p">
-                    Profesor de Informática y apasionado del análisis matemático, el desarrollo web y la comunicación multicultural.
+                    Apasionado del análisis matemático, el desarrollo web modular y la comunicación multicultural.
                 </p>
+                
                 <div id="quote">
-                    <p id="quote-text" style="transition: opacity 0.5s ease;">
+                    <p id="quote-text">
                         «El verdadero viaje de descubrimiento no consiste en buscar nuevos paisajes, sino en tener nuevos ojos.»
                     </p>
                 </div>
