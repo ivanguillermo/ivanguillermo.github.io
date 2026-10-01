@@ -1,4 +1,4 @@
-const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbwe5BQ8TtzKHbTaBFX3-2hDuldvzjyhviYGiVKjzgqnXzx9lhLwQOp-orIV-5S0Ft_R/exec?sheet=presentaciones';
+const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbziZxVwuC4V5Lqq4nRYSRhrtwlPMD3GY054OkJFIDf2XxU1I9k4roCH-FuMCyCU3rp2/exec?sheet=presentaciones';
 
 let allSlides = [];
 let rotateInterval = null;
