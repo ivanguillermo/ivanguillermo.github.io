@@ -14,8 +14,8 @@ async function fetchTechData() {
         const response = await fetch(SHEET_API_URL);
         const data = await response.json();
 
-        // Tomamos únicamente las primeras 5 tecnologías/filas
-        const top5Techs = data.slice(0, 6);
+        // Tomamos únicamente las primeras x tecnologías/filas
+        const top5Techs = data.slice(0, 3);
         
         renderTechCards(top5Techs, container);
     } catch (error) {
