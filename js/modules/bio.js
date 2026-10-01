@@ -6,9 +6,10 @@ export function init() {
 
 function initQuotesRotator() {
     const quotes = [
-        "«El verdadero viaje de descubrimiento no consiste en buscar nuevos paisajes, sino en tener nuevos ojos.»",
-        "«La tecnología es solo una herramienta. En términos de llevar a los niños a trabajar juntos y motivarlos, el profesor es lo más importante.»",
-        "«La matemática es la ciencia de los patrones y el arte de la estructura.»"
+        "«Es sencillo hacer que las cosas sean complicadas, pero difícil hacer que sean sencillas.» -Friedrich Nietzsche",
+        "«La vida de un hombre es lo que sus pensamientos hacen de ella.»",
+        "«La matemática, vista correctamente, posee no solo verdad, sino belleza suprema»"      
+
     ];
 
     const quoteElement = document.getElementById('quote-text');
