@@ -410,7 +410,7 @@ body {
    ========================================== */
 #sec-translator {
     position: relative;
-    background: var(--color-green);
+    background: #4fdb98;
     color: #fff;
     min-height: calc(100vh - 110px);
     overflow: hidden;
