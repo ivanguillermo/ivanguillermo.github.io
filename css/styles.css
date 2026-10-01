@@ -405,55 +405,239 @@ body {
 }
 
 /* ==========================================
-   6. SECCIÓN: TRADUCTOR (#sec-translator)
+   SECCIÓN IDIOMAS & TRADUCCIÓN
    ========================================== */
 #sec-translator {
-    background-color: var(--color-primary);
-    color: #111;
+    position: relative;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: calc(100vh - 110px);
+    overflow: hidden;
+    padding: 20px 15px;
 }
 
-#sec-translator .sec-title {
-    color: #111;
-    text-shadow: none;
+.lang-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
-.flags-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.aflag img {
-    width: 40px;
-    cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
-    filter: opacity(0.7);
-}
-
-.aflag.big_flag img {
-    transform: scale(1.3);
-    filter: opacity(1);
-    border: 2px solid #fff;
-    border-radius: 50%;
-}
-
-/* Contenedor dinámico de globos */
-.balloon {
+/* BURBUJAS FLOTANTES DE FONDO */
+.bubbles-bg {
     position: absolute;
-    animation: subir linear infinite;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
     z-index: 1;
 }
 
-@keyframes subir {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-120vh); opacity: 0; }
+.floating-bubble {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: bold;
+    white-space: nowrap;
+    user-select: none;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* FLAGS SELECTOR */
+.flags-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.aflag {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: transform 0.2s, border-color 0.2s, opacity 0.2s;
+    opacity: 0.6;
+}
+
+.aflag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.aflag.active, .aflag:hover {
+    opacity: 1;
+    transform: scale(1.15);
+    border-color: #1AA9EC;
+    box-shadow: 0 0 12px rgba(26, 169, 236, 0.6);
+}
+
+/* QUOTE CARD DISPLAY */
+.quote-display-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px 25px;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 1.2rem;
+    color: #1AA9EC;
+    margin-bottom: 8px;
+}
+
+#tr_txt {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.lang-tag {
+    display: inline-block;
+    background: #1AA9EC;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+/* GRID DE PROYECTOS / DUOLINGO */
+.lang-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+/* ENGLISH PRIME CARD */
+.englishprime-card {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ep-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ep-header h4 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.ep-header p {
+    margin: 3px 0 0 0;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.btn-ep {
+    margin-top: 15px;
+    align-self: flex-start;
+    background: #fff;
+    color: #11998e;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.btn-ep:hover {
+    transform: scale(1.05);
+    color: #11998e;
+    text-decoration: none;
+}
+
+/* DUOLINGO CARD */
+.duolingo-card {
+    background: #58cc02; /* Verde Duolingo */
+    color: #fff;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.duo-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.duo-owl-icon {
+    font-size: 2rem;
+}
+
+.duo-header h4 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.duo-username {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.duo-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.duo-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-icon {
+    font-size: 1.1rem;
+}
+
+.stat-value {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    opacity: 0.85;
 }
 
 /* ==========================================
