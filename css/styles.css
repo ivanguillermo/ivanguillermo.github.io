@@ -273,6 +273,7 @@ body {
     flex-direction: column;
     height: calc(100vh - 120px);
     max-height: 700px;
+    background-color:var(--color-blue);
 }
 
 /* Banner MateUNA */
@@ -409,7 +410,7 @@ body {
    ========================================== */
 #sec-translator {
     position: relative;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: var(--color-green);
     color: #fff;
     min-height: calc(100vh - 110px);
     overflow: hidden;
