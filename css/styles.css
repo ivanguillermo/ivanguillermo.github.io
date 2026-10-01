@@ -1106,3 +1106,93 @@ body {
         font-size: 0.7rem;
     }
 }
+
+/* ==========================================
+   BOTONES DE REDES SOCIALES
+   ========================================== */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+.social-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Colores de marca al pasar el cursor */
+.social-btn.linkedin:hover {
+    background-color: #0077b5;
+    box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
+}
+
+.social-btn.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 12px rgba(220, 39, 67, 0.4);
+}
+
+.social-btn.freelancer:hover {
+    background-color: #29b2fe;
+    box-shadow: 0 4px 12px rgba(41, 178, 254, 0.4);
+}
+
+.social-btn.x-twitter:hover {
+    background-color: #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Redes dentro del Menú Lateral */
+.menu-social-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+}
+
+.menu-social-footer p {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.menu-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.menu-social-icons a {
+    color: #fff;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.menu-social-icons a:hover {
+    color: #1AA9EC;
+}
